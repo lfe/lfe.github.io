@@ -1,3 +1,5 @@
+.. image:: https://github.com/lfe/lfe.github.com/raw/master/images/LispFlavoredErlang-tiny.png
+
 Lisp Flavored Erlang Github Site
 ================================
 

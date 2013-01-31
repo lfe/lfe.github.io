@@ -7,17 +7,31 @@ layout: home
 To the taste of Erlang, aged in the oaken barrels of Lisp, served at a
 temperature of perfect hotness.
 
-Welcome to LFE -- Lisp Flavoured Erlang -- a Lisp syntax front-end to the
-Erlang compiler. LFE is a Lisp-2, like Common Lisp. LFE comes with a REPL
-(shell) for use with interactive coding. Also, note that code produced with LFE
-is compatible with normal Erlang code.
+### What is this?
+
+You are at the home page of LFE -- Lisp Flavoured Erlang -- a Lisp syntax
+front-end to the Erlang compiler. LFE is a Lisp-2, like Common Lisp. LFE comes
+with a REPL (shell) for use with interactive coding.
+
+Also, note that code produced with LFE is compatible with normal Erlang code.
 
 ### Features
+
+Below are some of the key features of LFE, with code samples to help illustrate
+them.
+
+#### Macros
+
+TBD
+
+#### Pattern Matching
 
 TBD
 
 ### Shiny!
+
 For those that can't wait, here's an example client/server in action:
+
 {% highlight cl %}
 (defmodule ping_pong
   (export (start_link 0) (ping 0))

@@ -11,4 +11,4 @@ implementation on the Erlang VM.
 Checkout the `LFE web site`_.
 
 .. links
-.. _LFE web site: https://lfe.github.com/
+.. _LFE web site: http://lfe.github.com/

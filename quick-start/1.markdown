@@ -1,0 +1,21 @@
+---
+layout: quick-start
+title: 1 Introduction
+guide: 1
+total_guides: 7
+---
+# {{ page.title }}
+
+## 1.1 Building
+
+### 1.1.1 Using ```make```
+
+### 1.1.2 Using Rebar
+
+## 1.2 The Basics
+
+### 1.2.1 The REPL
+
+### 1.2.2 Types
+
+### 1.2.3 Operators

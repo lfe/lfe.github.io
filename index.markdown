@@ -2,7 +2,7 @@
 layout: home
 ---
 
-### Nothing Quite Compares
+## Nothing Quite Compares
 
 To the taste of Erlang, aged in the oaken barrels of Lisp, served at a
 temperature of perfect hotness.

@@ -2,11 +2,22 @@
 layout: home
 ---
 
-# Nothing Quite Compares
+### Nothing Quite Compares
 
 To the taste of Erlang, aged in the oaken barrels of Lisp, served at a
-temperature of perfect hotness:
+temperature of perfect hotness.
 
+Welcome to LFE -- Lisp Flavoured Erlang -- a Lisp syntax front-end to the
+Erlang compiler. LFE is a Lisp-2, like Common Lisp. LFE comes with a REPL
+(shell) for use with interactive coding. Also, note that code produced with LFE
+is compatible with normal Erlang code.
+
+### Features
+
+TBD
+
+### Shiny!
+For those that can't wait, here's an example client/server in action:
 {% highlight cl %}
 (defmodule ping_pong
   (export (start_link 0) (ping 0))
@@ -48,29 +59,22 @@ temperature of perfect hotness:
   (tuple 'ok state))
 {% endhighlight %}
 
-### Designer Templates
+### Cool! How do I start?
+The docs for the project are maintained in the source code:
+https://github.com/rvirding/lfe/tree/master/doc
+
+However, this site is attempting to provide a gentler introduction. As such,
+you can check out the <a href="/quick-start/1.html">Quick Start</a> pages, if
+you're looking for a nice general overview of LFE.
+
+Over time, we will be providing a more verbose version of the source code docs
+here: http://lfe.github.com/docs. For now, though, those pages are empty.
+
+More complete code that you can run are kept in the project repo's
+"examples" directory: https://github.com/rvirding/lfe/tree/master/examples
+
 We've crafted some handsome templates for you to use. Go ahead and continue to
 layouts to browse through them. You can easily go back to edit your page before
 publishing. After publishing your page, you can revisit the page generator and
 switch to another theme. Your Page content will be preserved if it remained
 markdown format.
-
-### Rather Drive Stick?
-If you prefer to not use the automatic generator, push a branch named
-`gh-pages` to your repository to create a page manually. In addition to
-supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog
-aware static site generator written by our own Tom Preston-Werner. Jekyll makes
-it easy to create site-wide headers and footers without having to copy them
-across every page. It also offers intelligent blog support and other advanced
-templating features.
-
-### Authors and Contributors
-You can @mention a GitHub username to generate a link to their profile. The
-resulting `<a>` element will link to the contributor's GitHub Profile. For
-example: In 2007, Chris Wanstrath (@defunkt), PJ Hyett (@pjhyett), and Tom
-Preston-Werner (@mojombo) founded GitHub.
-
-### Support or Contact
-Having trouble with Pages? Check out the documentation at
-http://help.github.com/pages or contact support@github.com and we’ll help you
-sort it out.

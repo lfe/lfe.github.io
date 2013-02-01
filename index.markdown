@@ -20,6 +20,14 @@ Also, note that code produced with LFE is compatible with normal Erlang code.
 Below are some of the key features of LFE, with code samples to help illustrate
 them.
 
+#### Records
+
+TBD
+
+#### Pattern Matching
+
+TBD
+
 #### Macros
 
 Here are a couple example LFE macros:
@@ -38,11 +46,7 @@ Here are a couple example LFE macros:
 Note that the functionality represented by the LFE code above was implemented
 internally in Erlang, not in LFE itself.
 
-#### Pattern Matching
-
-TBD
-
-### Shiny!
+### More Shiny!
 
 For those that can't wait, here's an example client/server in action:
 

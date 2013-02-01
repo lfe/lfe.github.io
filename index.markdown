@@ -22,7 +22,21 @@ them.
 
 #### Macros
 
-TBD
+Here are a couple example LFE macros:
+
+{% highlight cl %}
+(defmacro caar (x) `(car (car ,x)))
+{% endhighlight %}
+
+{% highlight cl %}
+(defmacro list*
+  ((list e) e)
+  ((cons e es) `(cons ,e (list* . ,es)))
+  (() ()))
+{% endhighlight %}
+
+Note that the functionality represented by the LFE code above was implemented
+internally in Erlang, not in LFE itself.
 
 #### Pattern Matching
 

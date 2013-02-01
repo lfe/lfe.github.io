@@ -74,21 +74,19 @@ For those that can't wait, here's an example client/server in action:
 {% endhighlight %}
 
 ### Cool! How do I start?
-The docs for the project are maintained in the source code:
-https://github.com/rvirding/lfe/tree/master/doc
+LFE documentation is maintained in the source code in the
+<a href="https://github.com/rvirding/lfe/tree/master/doc">doc directory</a>.
+However, this site is attempting to provide a gentler and more verbose
+introduction to Lisp Flavored Erlang. We aim to accomplish this in two
+important ways:
 
-However, this site is attempting to provide a gentler introduction. As such,
-you can check out the <a href="/quick-start/1.html">Quick Start</a> pages, if
-you're looking for a nice general overview of LFE.
+* First, with a <a href="/quick-start/1.html">Quick Start</a>. This set of
+  pages gives a nice general overview of LFE.
+* Secondly, over time, we will be providing a more detailed version of the
+  source code documentation in the <a href="http://lfe.github.com/docs">Docs</a>
+  section of this site. Note, however, that for now, those pages are empty.
 
-Over time, we will be providing a more verbose version of the source code docs
-here: http://lfe.github.com/docs. For now, though, those pages are empty.
-
-More complete code that you can run are kept in the project repo's
-"examples" directory: https://github.com/rvirding/lfe/tree/master/examples
-
-We've crafted some handsome templates for you to use. Go ahead and continue to
-layouts to browse through them. You can easily go back to edit your page before
-publishing. After publishing your page, you can revisit the page generator and
-switch to another theme. Your Page content will be preserved if it remained
-markdown format.
+A final resource for the curious and motivated is available in the
+<a href="https://github.com/rvirding/lfe/tree/master/examples">examples</a>
+directory of the project repo. This is functioning code those shows how to use
+LFE in blocks of code larger than the snippets provided in the documentation.

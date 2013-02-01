@@ -1,0 +1,22 @@
+---
+section: docs
+---
+
+{% include top.html %}
+
+<div id="sidebar-primary" class="sidebar">
+  <div class="widget">
+    <h3 class="widget-title">Index</h3>
+
+    {% include docs-toc.html %}
+
+  </div>
+</div>
+
+<div id="content">
+  <article>
+    {{ content }}
+  </article>
+</div>
+
+{% include bottom.html %}

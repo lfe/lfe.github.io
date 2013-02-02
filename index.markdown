@@ -13,7 +13,7 @@ You are at the home page of LFE --
 <a href="https://github.com/rvirding/lfe/">Lisp Flavoured Erlang</a>
 -- a Lisp syntax front-end to the Erlang compiler. LFE is a
 <a href="http://en.wikipedia.org/wiki/Lisp-1_vs._Lisp-2#The_function_namespace">Lisp-2</a>,
-like Common Lisp. LFE comes with a
+like Common Lisp, and comes with a
 <a href="http://en.wikipedia.org/wiki/REPL">REPL</a> (shell) for use with
 interactive coding.
 

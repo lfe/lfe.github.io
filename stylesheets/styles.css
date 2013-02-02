@@ -551,10 +551,6 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: normal;
 }
 
-h1 {
-  color: #ffcc00;
-}
-
 p, ul, ol, table, pre, dl {
   margin: 0 0 20px;
 }
@@ -564,6 +560,7 @@ h1, h2, h3 {
 }
 
 h1 {
+  color: #ffcc00;
   font-size: 28px;
 }
 
@@ -571,20 +568,15 @@ h2 {
   font-size: 24px;
 }
 
-h4, h5, h6 {
-  color: #e8e8e8;
-}
-
 h3 {
   font-size: 18px;
   line-height: 24px;
   font-family: 'OpenSansRegular', "Helvetica Neue", Helvetica, Arial, sans-serif !important;
   font-weight: normal;
-  color: #b6b6b6;
 }
 
 h4 {
-  text-decoration: dotted;
+  text-decoration: underline;
 }
 
 a {

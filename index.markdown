@@ -62,12 +62,10 @@ For those that can't wait, here's an example client/server in action:
     (tuple 'local 'ping_pong) 'ping_pong (list) (list)))
 
 ;; Client API
-
 (defun ping ()
   (: gen_server call 'ping_pong 'ping))
 
 ;; Gen_server callbacks
-
 (defrecord state (pings 0))
 
 (defun init (args)
@@ -76,7 +74,9 @@ For those that can't wait, here's an example client/server in action:
 (defun handle_call (req from state)
   (let* ((new-count (+ (state-pings state) 1))
          (new-state (set-state-pings state new-count)))
-    (tuple 'reply (tuple 'pong new-count) new-state)))
+    (tuple 'reply
+           (tuple 'pong new-count)
+           new-state)))
 
 (defun handle_cast (msg state)
   (tuple 'noreply state))

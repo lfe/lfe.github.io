@@ -545,10 +545,14 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: #e8e8e8;
+  color: #ff8000;
   margin: 0 0 10px;
   font-family: 'OpenSansRegular', "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: normal;
+}
+
+h1 {
+  color: #ffcc00;
 }
 
 p, ul, ol, table, pre, dl {
@@ -577,6 +581,10 @@ h3 {
   font-family: 'OpenSansRegular', "Helvetica Neue", Helvetica, Arial, sans-serif !important;
   font-weight: normal;
   color: #b6b6b6;
+}
+
+h4 {
+  text-decoration: dotted;
 }
 
 a {

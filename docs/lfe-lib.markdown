@@ -1,6 +1,11 @@
 ---
 layout: docs
 ---
+
+# LFE Documentation
+
+## Internal LFE Library
+
 {% highlight text %}
     MODULE
 

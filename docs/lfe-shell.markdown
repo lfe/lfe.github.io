@@ -1,6 +1,11 @@
 ---
 layout: docs
 ---
+
+# LFE Documentation
+
+## LFE Shell (REPL)
+
 {% highlight text %}
     MODULE
 

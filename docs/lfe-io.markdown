@@ -1,6 +1,10 @@
 ---
 layout: docs
 ---
+# LFE Documentation
+
+## I/O Functions
+
 {% highlight text %}
     MODULE
 
@@ -72,13 +76,13 @@ layout: docs
         Print formatted output. The following commands are valid in
         the format string:
 
-        ~w, ~W		- print LFE terms
-        ~p, ~P		- prettyprint LFE terms
-        ~s  		- print a string
-        ~e, ~f, ~g	- print floats
-        ~b, ~B		- based integers
-        ~x, ~X		- based integers with a prefix
-        ~+, ~#		- based integers in vanilla erlang format
+        ~w, ~W        - print LFE terms
+        ~p, ~P        - prettyprint LFE terms
+        ~s            - print a string
+        ~e, ~f, ~g    - print floats
+        ~b, ~B        - based integers
+        ~x, ~X        - based integers with a prefix
+        ~+, ~#        - based integers in vanilla erlang format
         ~c, ~n, ~i
 
         Currently they behave as for vanilla erlang except that ~w,

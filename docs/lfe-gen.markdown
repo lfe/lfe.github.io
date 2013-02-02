@@ -1,6 +1,10 @@
 ---
 layout: docs
 ---
+# LFE Documentation
+
+## Dynamic Code Generator
+
 {% highlight text %}
     MODULE
 
@@ -126,7 +130,7 @@ layout: docs
             %% Build function.
             Func = [defun,Param,[f],['case',f,Cls]],
             make_funcs(Ps, lfe_gen:add_form(Func, Mod));
-        make_funcs([], Mod) -> Mod.			%All done
+        make_funcs([], Mod) -> Mod.            %All done
 
 
     Error Information

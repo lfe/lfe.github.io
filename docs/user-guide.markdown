@@ -1,6 +1,10 @@
 ---
 layout: docs
 ---
+# LFE Documentation
+
+## User Guide
+
 {% highlight cl %}
     Note \{\{ ... \}\} is use to denote optional syntax.
 

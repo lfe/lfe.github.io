@@ -1,6 +1,11 @@
 ---
 layout: docs
 ---
+
+# LFE Documentation
+
+## Common Binary Functions
+
 {% highlight text %}
     MODULE
 

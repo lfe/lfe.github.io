@@ -1,6 +1,11 @@
 ---
 layout: docs
 ---
+
+# LFE Documentation
+
+## Macro Expander
+
 {% highlight text %}
     MODULE
 

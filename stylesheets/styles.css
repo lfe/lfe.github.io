@@ -576,7 +576,7 @@ h3 {
 }
 
 h4 {
-  text-decoration: underline;
+  border-bottom: 1px dotted;
 }
 
 a {

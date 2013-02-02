@@ -545,7 +545,6 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: #ff8000;
   margin: 0 0 10px;
   font-family: 'OpenSansRegular', "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: normal;
@@ -565,10 +564,12 @@ h1 {
 }
 
 h2 {
+  color: #99bf17;
   font-size: 24px;
 }
 
 h3 {
+  color: #85a614;
   font-size: 18px;
   line-height: 24px;
   font-family: 'OpenSansRegular', "Helvetica Neue", Helvetica, Arial, sans-serif !important;
@@ -576,7 +577,12 @@ h3 {
 }
 
 h4 {
+  color: #708c11;
   border-bottom: 1px dotted;
+}
+
+h4 {
+  color: #5c730e;
 }
 
 a {

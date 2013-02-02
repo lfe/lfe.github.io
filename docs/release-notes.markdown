@@ -22,7 +22,8 @@ layout: docs
   arguments to change it back.
 
 - Being a Lisp-2 has introduced some new core forms to handle them:
-  flet, flet*, fletrec and funcall. Letrec has been removed.
+  ```flet```, ```flet*```, ```fletrec``` and ```funcall```. ```Letrec```
+  has been removed.
 
 - The handling of macros has been cleaned up.
 

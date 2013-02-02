@@ -849,3 +849,15 @@ section #title .credits.right {
     display: none;
   }
 }
+
+div#content {
+  margin-top: 100px;
+}
+
+.sidebar .widget {
+  float: right;
+  width: 30%;
+  margin-bottom: 26px;
+  margin-right: -200px;
+  color: #888;
+}

@@ -9,7 +9,7 @@ layout: common
 If you'd like to work on the source code for LFE, you can checkout master from
 <a href="https://github.com/rvirding/lfe">github</a> and then submit a pull
 request when done. If you'd like to file a bug or feature request, you can
-<a ="https://github.com/rvirding/lfe/issues">submit an issue</a>.
+<a href="https://github.com/rvirding/lfe/issues">submit an issue</a>.
 
 ## Keeping in Touch and Asking Questions
 

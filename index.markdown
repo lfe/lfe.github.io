@@ -98,9 +98,10 @@ For those that can't wait, here's an example client/server in action:
 ### Cool! How do I start?
 LFE documentation is maintained in the source code in the
 <a href="https://github.com/rvirding/lfe/tree/master/doc">doc directory</a>.
-However, this site is attempting to provide a gentler and more verbose
-introduction to Lisp Flavored Erlang. We aim to accomplish this in two
-important ways:
+There is also a <a href="https://github.com/rvirding/lfe/wiki">wiki</a> with
+some excellent content presented there.  However, this site is attempting to
+provide a gentler and more verbose introduction to Lisp Flavored Erlang. We aim
+to accomplish this in two important ways:
 
 * First, with a <a href="/quick-start/1.html">Quick Start</a>. This set of
   pages gives a nice general overview of LFE.

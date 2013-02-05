@@ -1,4 +1,4 @@
-.. image:: https://github.com/lfe/lfe.github.com/raw/master/images/LispFlavoredErlang-tiny.png
+.. image:: https://github.com/lfe/lfe.github.com/raw/master/images/logos/LispFlavoredErlang-tiny.png
 
 Lisp Flavored Erlang
 ====================

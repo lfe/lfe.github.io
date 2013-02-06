@@ -16,7 +16,11 @@ download page</a> or from the
 <a href="https://www.erlang-solutions.com/downloads/download-erlang-otp">Erlang
 Solutions page</a> (supports many more package types).
 
-[Editor's note: need to confirm the Ubuntu apt-get package name ...]
+If you will be using ```rebar``` to build LFE, you'll need to
+<a href="https://github.com/basho/rebar">get that</a> too.
+
+You will need to <a href="http://git-scm.com/downloads">download git</a> or
+install it using your favorite package manager.
 
 Next, you will need to download LFE itself:
 

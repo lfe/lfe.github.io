@@ -21,7 +21,6 @@ Solutions page</a> (supports many more package types).
 Next, you will need to download LFE itself:
 
     $ git clone git://github.com/rvirding/lfe.git
-    $ cd ./lfe
 
 ## 1.2 Building
 
@@ -29,6 +28,7 @@ With the dependencies installed, we're now ready to build LFE.
 
 ### 1.2.1 Using ```make```
 
+    $ cd ./lfe
     $ erlc -o src src/lfe_scan.xrl
     $ make
 

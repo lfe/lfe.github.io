@@ -1,7 +1,0 @@
----
-layout: quick-start
-title: 2 Diving In
-guide: 2
-total_guides: 7
----
-# {{ page.title }}

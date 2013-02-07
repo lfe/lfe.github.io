@@ -1,7 +1,0 @@
----
-layout: quick-start
-title: 7 Where to Go Next
-guide: 7
-total_guides: 7
----
-# {{ page.title }}

@@ -1,7 +1,0 @@
----
-layout: quick-start
-title: 3 Modules
-guide: 3
-total_guides: 7
----
-# {{ page.title }}

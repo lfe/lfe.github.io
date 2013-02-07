@@ -1,7 +1,0 @@
----
-layout: quick-start
-title: 5 Macros
-guide: 5
-total_guides: 7
----
-# {{ page.title }}

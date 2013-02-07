@@ -1,7 +1,0 @@
----
-layout: quick-start
-title: 6 Other Topics
-guide: 6
-total_guides: 7
----
-# {{ page.title }}

@@ -121,6 +121,15 @@ Note that this is the command line equivalent of the following:
     1> lfe_comp:file(hello).
     2> hello:start().
 
-### 1.3.3 Types
+### 1.3.3 OTP
 
-### 1.3.4 Operators
+Now what if you want to take advantage of code that exists in OTP? Super easy,
+just do this:
+
+    $
+
+### 1.3.4 Third-Party Libraries
+
+Finally, accessing code that is written in third-party library:
+
+    $

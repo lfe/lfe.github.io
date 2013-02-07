@@ -112,14 +112,18 @@ Note that this is the command line equivalent of the following:
 
     $ erl -pa ../ebin
     1> lfe_comp:file(hello).
+    {ok,hello}
     2> hello:start().
+    Lfe says 'Hello, World!'
+    ok
+    3>
 
 ### 1.3.3 Running Scripts from the REPL
 
 You can also use your new ```hello.lfe``` script in the REPL itself. Again,
 assuming that you are in ```lfe/tmp```:
 
-    $ ./lfe -pa ../ebin
+    $ ../lfe -pa ../ebin
     > (slurp '"hello.lfe")
     #(ok hello)
     > (: hello start)

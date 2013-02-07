@@ -40,7 +40,7 @@ Ordinarily, only the ```make``` command would be necessary. However, there's
 currently <a href="https://github.com/rvirding/lfe/issues/14">an issue</a> with
 the ```Makefile``` that temporarily requires that first step.
 
-### 1.2.2 Using Rebar
+### 1.2.2 Using ```rebar```
 
 Alternatively, one may use ```rebar``` to build LFE:
 
@@ -81,6 +81,37 @@ Now try doing some basic operations:
 Looking good!
 
 ### 1.3.2 Running Scripts
+
+Okay, so now that you can run things in the REPL, you want to run them as a
+script, yes? Here's how.
+
+Let's create a temporary subdirectory to play in without fear of messing up our LFE directory:
+
+    $ mkdir tmp
+    $ cd tmp
+
+Then, in that directory, let's create the following file and save it as hello.lfe:
+
+{% highlight cl %}
+(defmodule hello
+  (export (start 0)))
+
+(defun len (l)
+    (if (== l ()) 0
+        (+ 1 (len (cdr l)))))
+
+(defun start ()
+  (: io format '"Lfe is of length ~p~n" (list (len '"Lfe"))))
+{% endhighlight %}
+
+To compile that script and then run it, we can do this:
+
+    $ erl -pa ../ebin -s lfe_comp file hello -s erlang halt
+    $ erl -pa ../ebin -s hello start -s erlang halt
+
+Or, we could compile it and run it in the same command:
+
+    $ erl -pa ../ebin -s lfe_comp file hello -s hello start -s erlang halt
 
 ### 1.3.3 Types
 

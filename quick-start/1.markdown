@@ -64,7 +64,7 @@ This assumes that you are still in the ```lfe``` directory where you build LFE.
 Running that command will dump you into the LFE REPL, looking something like
 this:
 
-    Erlang R15B03 (erts-5.9.3.1) [source] [64-bit] [smp:8:8] [async-threads:0] [hipe] [kernel-poll:false] [dtrace]
+    Erlang R15B03 (erts-5.9.3.1) [source] [64-bit] [smp:8:8] [async-threads:0] ...
 
     LFE Shell V5.9.3.1 (abort with ^G)
     >

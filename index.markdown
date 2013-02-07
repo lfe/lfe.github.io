@@ -5,7 +5,8 @@ layout: home
 ## Nothing Quite Compares
 
 To the taste of Erlang, aged in the oaken barrels of Lisp, served at a
-temperature of perfect hotness.
+temperature of perfect hotness. New to LFE? Check out our
+<a href="/quick-start.html">Quick Start</a>!
 
 ### What is this?
 

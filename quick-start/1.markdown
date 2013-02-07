@@ -115,7 +115,7 @@ Or, we could compile it and run it in the same command:
 
     $ erl -pa ../ebin -s lfe_comp file hello -s hello start -s erlang halt
 
-Note that this is the commandline version of the following:
+Note that this is the command line equivalent of the following:
 
     $ ./lfe -pa ../ebin
     1> lfe_comp:file(hello).

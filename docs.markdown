@@ -6,12 +6,11 @@ layout: docs-home
 
 ## Guides
 
-* <a href="/quick-start.html">Quick Start</a>
-* <a href="/user-guide/1.html">User Guide</a>
+{% include guides-toc.html %}
 
 ## Tutorials
 
-TBD
+{% include tutorials-toc.html %}
 
 ## Classic Docs
 

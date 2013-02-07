@@ -85,12 +85,14 @@ Looking good!
 Okay, so now that you can run things in the REPL, you want to run them as a
 script, yes? Here's how.
 
-Let's create a temporary subdirectory to play in without fear of messing up our LFE directory:
+Let's create a temporary subdirectory to play in without fear of messing up our
+LFE directory:
 
     $ mkdir tmp
     $ cd tmp
 
-Then, in that directory, let's create the following file and save it as hello.lfe:
+Then, in that directory, let's create the following file and save it as
+```hello.lfe```:
 
 {% highlight cl %}
 (defmodule hello
@@ -112,6 +114,12 @@ To compile that script and then run it, we can do this:
 Or, we could compile it and run it in the same command:
 
     $ erl -pa ../ebin -s lfe_comp file hello -s hello start -s erlang halt
+
+Note that this is the commandline version of the following:
+
+    $ ./lfe -pa ../ebin
+    1> lfe_comp:file(hello).
+    2> hello:start().
 
 ### 1.3.3 Types
 

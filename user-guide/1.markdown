@@ -1,0 +1,21 @@
+---
+layout: user-guide
+title: 1 Introduction
+guide: 1
+total_guides: 7
+---
+# {{ page.title }}
+
+## Getting Started
+
+This guide assumes the following:
+
+* basic familiarity with Lisp or Lisp dialects
+* passing knowledge of Erlang
+* a working installation of Erlang and LFE
+
+For those that would like more background on any of these, we recommend the
+following resources:
+* TBD
+* TBD
+* LFE <a href="http://lfe.github.com/quick-start/1.html">Quick Start</a>

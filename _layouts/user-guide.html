@@ -1,0 +1,40 @@
+---
+section: user-guide
+---
+
+{% include top.html %}
+
+<div id="sidebar-primary" class="sidebar">
+  <div class="widget">
+    <h3 class="widget-title">User Guide Sections</h3>
+    <ol>
+      <li><a class="spec" href="/user-guide/1.html">Introduction</a></li>
+      <li><a class="spec" href="/user-guide/2.html">Diving In</a></li>
+      <li><a class="spec" href="/user-guide/3.html">Modules</a></li>
+      <li><a class="spec" href="/user-guide/4.html">Protocols &amp; Records</a></li>
+      <li><a class="spec" href="/user-guide/5.html">Macros</a></li>
+      <li><a class="spec" href="/user-guide/6.html">Other Topics</a></li>
+      <li><a class="spec" href="/user-guide/7.html">Where to Go Next</a></li>
+    </ol>
+  </div>
+</div>
+
+<div id="content">
+  <article>
+    {{ content }}
+  </article>
+
+  {% if page.guide %}
+  <div class="pagination loop-pagination">
+    {% if page.guide > 1 %}
+      <a href="{{page.guide | minus:1}}.html" class="previous page-numbers spec">&larr; Previous</a>
+    {% endif %}
+      <a class="page-numbers spec" href="#container">Top</a>
+    {% if page.guide < page.total_guides %}
+      <a href="{{page.guide | plus:1}}.html" class="next page-numbers spec">Next &rarr;</a>
+    {% endif %}
+  </div>
+  {% endif %}
+</div><!-- #content -->
+
+{% include bottom.html %}

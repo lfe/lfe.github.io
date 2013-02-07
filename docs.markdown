@@ -11,6 +11,10 @@ layout: docs-home
 
 ## Tutorials
 
-## Docs from the Code
+TBD
 
-{% include docs-toc.html %}
+## Classic Docs
+
+Below are links to the documentation taken from the LFE repository.
+
+{% include classic-docs-toc.html %}

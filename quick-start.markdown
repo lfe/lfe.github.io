@@ -1,10 +1,7 @@
 ---
-layout: quick-start
-title: 1 Introduction
-guide: 1
-total_guides: 7
+layout: docs-home
 ---
-# {{ page.title }}
+# Quick Start
 
 ## 1.1 Dependencies
 

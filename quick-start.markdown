@@ -44,7 +44,7 @@ Alternatively, one may use ```rebar``` to build LFE:
     $ cd ./lfe
     $ rebar compile
 
-## 1.3 The Basics
+## 1.3 Executing Code
 
 Once you've got LFE built, you want to play with it, right? Let's take a look
 at the REPL (interactive shell) first.
@@ -95,12 +95,8 @@ Then, in that directory, let's create the following file and save it as
 (defmodule hello
   (export (start 0)))
 
-(defun len (l)
-    (if (== l ()) 0
-        (+ 1 (len (cdr l)))))
-
 (defun start ()
-  (: io format '"Lfe is of length ~p~n" (list (len '"Lfe"))))
+  (: io format '"Lfe says 'Hello, World!'~n"))
 {% endhighlight %}
 
 To compile that script and then run it, we can do this:
@@ -114,18 +110,33 @@ Or, we could compile it and run it in the same command:
 
 Note that this is the command line equivalent of the following:
 
-    $ ./lfe -pa ../ebin
+    $ erl -pa ../ebin
     1> lfe_comp:file(hello).
     2> hello:start().
 
-### 1.3.3 OTP
+### 1.3.3 Running Scripts from the REPL
+
+You can also use your new ```hello.lfe``` script in the REPL itself. Again,
+assuming that you are in ```lfe/tmp```:
+
+    $ ./lfe -pa ../ebin
+    > (slurp '"hello.lfe")
+    #(ok hello)
+    > (: hello start)
+    Lfe says 'Hello, World!'
+    ok
+    >
+
+## 1.4 Using Libraries
+
+### 1.4.1 OTP
 
 Now what if you want to take advantage of code that exists in OTP? Super easy,
 just do this:
 
     $
 
-### 1.3.4 Third-Party Libraries
+### 1.4.2 Third-Party Libraries
 
 Finally, accessing code that is written in third-party libraries:
 

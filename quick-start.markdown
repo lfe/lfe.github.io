@@ -3,7 +3,7 @@ layout: docs-home
 ---
 # Quick Start
 
-## 1.1 Dependencies
+## 1 Dependencies
 
 First and foremost, you will need Erlang installed. On Mac OS X, this is as
 easy as executing ```brew install erlang``` or on Ubuntu ```apt-get install
@@ -23,11 +23,11 @@ Next, you will need to download LFE itself:
 
     $ git clone git://github.com/rvirding/lfe.git
 
-## 1.2 Building
+## 2 Building
 
 With the dependencies installed, we're now ready to build LFE.
 
-### 1.2.1 Using ```make```
+### 2.1 Using ```make```
 
     $ cd ./lfe
     $ erlc -o src src/lfe_scan.xrl
@@ -37,19 +37,19 @@ Ordinarily, only the ```make``` command would be necessary. However, there's
 currently <a href="https://github.com/rvirding/lfe/issues/14">an issue</a> with
 the ```Makefile``` that temporarily requires that first step.
 
-### 1.2.2 Using ```rebar```
+### 2.2 Using ```rebar```
 
 Alternatively, one may use ```rebar``` to build LFE:
 
     $ cd ./lfe
     $ rebar compile
 
-## 1.3 Executing Code
+## 3 Executing Code
 
 Once you've got LFE built, you want to play with it, right? Let's take a look
 at the REPL (interactive shell) first.
 
-### 1.3.1 The REPL
+### 3.1 The REPL
 
 To start the REPL, simply run the ```lfe``` script and tell ```erl``` (which is
 being run in the scrip) which additional code paths it should look for (in this
@@ -78,7 +78,7 @@ Now try doing some basic operations:
 
 Looking good!
 
-### 1.3.2 Running Scripts
+### 3.2 Running Scripts
 
 Okay, so now that you can run things in the REPL, you want to run them as a
 script, yes? Here's how.
@@ -119,7 +119,7 @@ Note that this is the command line equivalent of the following:
     ok
     3>
 
-### 1.3.3 Running Scripts from the REPL
+### 3.3 Running Scripts from the REPL
 
 You can also use your new ```hello.lfe``` script in the REPL itself. Again,
 assuming that you are in ```lfe/tmp```:
@@ -135,9 +135,9 @@ ok
 >
 {% endhighlight %}
 
-## 1.4 Using Libraries
+## 4 Using Libraries
 
-### 1.4.1 OTP Modules
+### 4.1 OTP Modules
 
 Taking advantage of the
 <a href="http://erldocs.com/R15B/index.html?i=734#stdlib">Erlang stdlib</a> is
@@ -156,7 +156,7 @@ Here's an example ```base64``` usage from the Erlang ```stdlib```:
 "And so the Universe ended."
 {% endhighlight %}
 
-### 1.4.2 More OTP
+### 4.2 More OTP
 
 The rest of OTP utilizes the same ```: <module> <function> <parameters>```
 format. Let's take a more in-depth look, exercising some of the niftier
@@ -166,7 +166,7 @@ features of OTP, starting with a server:
 {% endhighlight %}
 
 
-### 1.4.3 Third-Party Libraries
+### 4.3 Third-Party Libraries
 
 Finally, accessing code that is written in third-party libraries is exactly the
 same. Simply use the modules they have provided:
@@ -174,3 +174,10 @@ same. Simply use the modules they have provided:
 
 {% highlight cl %}
 {% endhighlight %}
+
+## 5 Next Steps
+
+This has been a quick overview of what LFE has to offer, so you might enjoy
+reading the <a href="http://lfe.github.com/user-guide/1.html">User Guide</a>
+next. You can see all our docs at a glance by visiting the
+<a href="/docs.html">Docs</a> page.

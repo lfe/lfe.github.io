@@ -100,15 +100,17 @@ For those that can't wait, here's an example client/server in action:
 LFE documentation is maintained in the source code in the
 <a href="https://github.com/rvirding/lfe/tree/master/doc">doc directory</a>.
 There is also a <a href="https://github.com/rvirding/lfe/wiki">wiki</a> with
-some excellent content presented there.  However, this site is attempting to
-provide a gentler and more verbose introduction to Lisp Flavored Erlang. We aim
-to accomplish this in two important ways:
+some excellent content presented there.  However, the site you are currently
+reading is attempting to provide a gentler and more verbose introduction to
+Lisp Flavored Erlang. We aim to accomplish this in two important ways:
 
-* First, with a <a href="/quick-start/1.html">Quick Start</a>. This set of
-  pages gives a nice general overview of LFE.
+* First, with a <a href="/quick-start.html">Quick Start</a>. This page gives a
+  nice general overview of LFE, providing some content as well as a sense of
+  what you can do with it.
 * Secondly, over time, we will be providing a more detailed version of the
   source code documentation in the <a href="http://lfe.github.com/docs">Docs</a>
-  section of this site. Note, however, that for now, those pages are empty.
+  section of this site. Note, however, that for now, those pages are currently
+  under active development.
 
 A final resource for the curious and motivated is available in the
 <a href="https://github.com/rvirding/lfe/tree/master/examples">examples</a>

@@ -3,7 +3,8 @@ layout: quick-start
 ---
 # Quick Start
 
-<a id="Dependencies" />
+<a id="Dependencies" href="">
+</a>
 
 ## 1 Dependencies
 

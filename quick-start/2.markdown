@@ -29,13 +29,15 @@ this:
 
 Now try doing some basic operations:
 
-    > (+ 1 2 3)
-    6
-    > (cons 1 2)
-    (1 . 2)
-    > (cons (list 1 2) (list 3 4))
-    ((1 2) 3 4)
-    >
+{% highlight cl %}
+> (+ 1 2 3)
+6
+> (cons 1 2)
+(1 . 2)
+> (cons (list 1 2) (list 3 4))
+((1 2) 3 4)
+>
+{% endhighlight %}
 
 Looking good!
 

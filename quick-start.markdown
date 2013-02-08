@@ -74,6 +74,7 @@ Now try doing some basic operations:
     (1 . 2)
     > (cons (list 1 2) (list 3 4))
     ((1 2) 3 4)
+    >
 
 Looking good!
 
@@ -123,25 +124,55 @@ Note that this is the command line equivalent of the following:
 You can also use your new ```hello.lfe``` script in the REPL itself. Again,
 assuming that you are in ```lfe/tmp```:
 
-    $ ../lfe -pa ../ebin
-    > (slurp '"hello.lfe")
-    #(ok hello)
-    > (: hello start)
-    Lfe says 'Hello, World!'
-    ok
-    >
+
+{% highlight cl %}
+$ ../lfe -pa ../ebin
+> (slurp '"hello.lfe")
+#(ok hello)
+> (: hello start)
+Lfe says 'Hello, World!'
+ok
+>
+{% endhighlight %}
 
 ## 1.4 Using Libraries
 
-### 1.4.1 OTP
+### 1.4.1 OTP Modules
 
-Now what if you want to take advantage of code that exists in OTP? Super easy,
-just do this:
+Taking advantage of the
+<a href="http://erldocs.com/R15B/index.html?i=734#stdlib">Erlang stdlib</a> is
+straightforward. All you need to do is prepend the call with a ```:``` and
+adjust to use the LFE syntax vs. the Erlang styntax.
 
-    $
+In fact, we've already seen an example of this above with the ```(: io format ...)```
+call.
 
-### 1.4.2 Third-Party Libraries
+Here's an example ```base64``` usage from the Erlang ```stdlib```:
 
-Finally, accessing code that is written in third-party libraries:
+{% highlight cl %}
+> (: base64 encode_to_string '"There's a frood who really knows where his towel
+> is.")
+"VGhlcmUncyBhIGZyb29kIHdobyByZWFsbHkga25vd3Mgd2hlcmUgaGlzIHRvd2VsIGlzLg=="
+> (: base64 decode_to_string
+> '"VGhlIEd1aWRlIGlzIGRlZmluaXRpdmUuIFJlYWxpdHkgaXMgZnJlcXVlbnRseSBpbmFjY3VyYXRl") 
+"The Guide is definitive. Reality is frequently inaccurate"
+{% endhighlight %}
 
-    $
+### 1.4.2 More OTP
+
+The rest of OTP utilizes the same ```: <module> <function> <parameters>```
+format. Let's take a more in-depth look, exercising some of the niftier
+features of OTP, starting with a server:
+
+{% highlight cl %}
+{% endhighlight %}
+
+
+### 1.4.3 Third-Party Libraries
+
+Finally, accessing code that is written in third-party libraries is exactly the
+same. Simply use the modules they have provided:
+
+
+{% highlight cl %}
+{% endhighlight %}

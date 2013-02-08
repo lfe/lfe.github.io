@@ -11,6 +11,13 @@ If you'd like to work on the source code for LFE, you can checkout master from
 request when done. If you'd like to file a bug or feature request, you can
 <a href="https://github.com/rvirding/lfe/issues">submit an issue</a>.
 
+## Helping with Documentation
+
+If you've got a good idea for the LFE docs, you can <a
+href="https://github.com/lfe/lfe.github.com/issues">create an issue</a> or
+<a href="https://github.com/lfe/lfe.github.com">fork the docs</a> and then
+submit a pull request when done.
+
 ## Keeping in Touch and Asking Questions
 
 We have a low-volume

@@ -11,3 +11,8 @@ This has been a quick overview of what LFE has to offer, so you might enjoy
 reading the <a href="http://lfe.github.com/user-guide/1.html">User Guide</a>
 next. You can see all our docs at a glance by visiting the
 <a href="/docs.html">Docs</a> page.
+
+If at any time you would like to provide feedback about the documentation on
+this site, feel free to
+<a href="https://github.com/lfe/lfe.github.com/issues">create an issue</a>. Be
+sure to give a full description so that we can best help you!

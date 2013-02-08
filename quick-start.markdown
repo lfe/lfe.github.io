@@ -150,12 +150,10 @@ call.
 Here's an example ```base64``` usage from the Erlang ```stdlib```:
 
 {% highlight cl %}
-> (: base64 encode_to_string '"There's a frood who really knows where his towel
-> is.")
-"VGhlcmUncyBhIGZyb29kIHdobyByZWFsbHkga25vd3Mgd2hlcmUgaGlzIHRvd2VsIGlzLg=="
-> (: base64 decode_to_string
-> '"VGhlIEd1aWRlIGlzIGRlZmluaXRpdmUuIFJlYWxpdHkgaXMgZnJlcXVlbnRseSBpbmFjY3VyYXRl") 
-"The Guide is definitive. Reality is frequently inaccurate"
+> (: base64 encode_to_string '"Space is big. Really big.")
+"U3BhY2UgaXMgYmlnLiBSZWFsbHkgYmlnLg=="
+> (: base64 decode_to_string '"QW5kIHNvIHRoZSBVbml2ZXJzZSBlbmRlZC4=")
+"And so the Universe ended."
 {% endhighlight %}
 
 ### 1.4.2 More OTP

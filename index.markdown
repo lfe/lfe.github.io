@@ -6,7 +6,7 @@ layout: home
 
 To the taste of Erlang, aged in the oaken barrels of Lisp, served at a
 temperature of perfect hotness. New to LFE? Check out our
-<a href="/quick-start.html">Quick Start</a>!
+<a href="/quick-start/1.html">Quick Start</a>!
 
 ### What is this?
 
@@ -104,8 +104,8 @@ some excellent content presented there.  However, the site you are currently
 reading is attempting to provide a gentler and more verbose introduction to
 Lisp Flavored Erlang. We aim to accomplish this in two important ways:
 
-* First, with a <a href="/quick-start.html">Quick Start</a>. This page gives a
-  nice general overview of LFE, providing some content as well as a sense of
+* First, with a <a href="/quick-start/1.html">Quick Start</a>. This page gives
+  a nice general overview of LFE, providing some content as well as a sense of
   what you can do with it.
 * Secondly, over time, we will be providing a more detailed version of the
   source code documentation in the <a href="http://lfe.github.com/docs">Docs</a>

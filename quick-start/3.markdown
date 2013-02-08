@@ -1,0 +1,46 @@
+---
+layout: quick-start
+guide: 3
+total_guides: 4
+---
+# Quick Start
+
+## 3 Using Libraries
+
+### 3.1 OTP Modules
+
+Taking advantage of the
+<a href="http://erldocs.com/R15B/index.html?i=734#stdlib">Erlang stdlib</a> is
+straightforward. All you need to do is prepend the call with a ```:``` and
+adjust to use the LFE syntax vs. the Erlang styntax.
+
+In fact, we've already seen an example of this above with the ```(: io format ...)```
+call.
+
+Here's an example ```base64``` usage from the Erlang ```stdlib```:
+
+{% highlight cl %}
+> (: base64 encode_to_string '"Space is big. Really big.")
+"U3BhY2UgaXMgYmlnLiBSZWFsbHkgYmlnLg=="
+> (: base64 decode_to_string '"QW5kIHNvIHRoZSBVbml2ZXJzZSBlbmRlZC4=")
+"And so the Universe ended."
+{% endhighlight %}
+
+### 3.2 More OTP
+
+The rest of OTP utilizes the same ```: <module> <function> <parameters>```
+format. Let's take a more in-depth look, exercising some of the niftier
+features of OTP, starting with a server:
+
+{% highlight cl %}
+{% endhighlight %}
+
+
+### 3.3 Third-Party Libraries
+
+Finally, accessing code that is written in third-party libraries is exactly the
+same. Simply use the modules they have provided:
+
+
+{% highlight cl %}
+{% endhighlight %}

@@ -18,4 +18,4 @@ For those that would like more background on any of these, we recommend the
 following resources:
 * TBD
 * TBD
-* The LFE <a href="http://lfe.github.com/quick-start.html">Quick Start</a>
+* The LFE <a href="http://lfe.github.com/quick-start/1.html">Quick Start</a>

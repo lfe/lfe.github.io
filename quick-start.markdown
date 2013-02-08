@@ -4,6 +4,7 @@ layout: quick-start
 # Quick Start
 
 <a id="Dependencies"></a>
+
 ## 1 Dependencies
 
 First and foremost, you will need Erlang installed. On Mac OS X, this is as
@@ -25,11 +26,13 @@ Next, you will need to download LFE itself:
     $ git clone git://github.com/rvirding/lfe.git
 
 <a id="Building"></a>
+
 ##2 Building
 
 With the dependencies installed, we're now ready to build LFE.
 
 <a id="Using-make"></a>
+
 ### 2.1 Using ```make```
 
     $ cd ./lfe

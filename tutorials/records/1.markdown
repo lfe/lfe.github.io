@@ -1,0 +1,27 @@
+---
+layout: records-tutorial
+guide: 1
+total_guides: 3
+---
+# Tutorial: LFE Records
+
+## 1 Creating a Record
+
+{% highlight cl %}
+(defmodule person
+  (export (print-data 0)))
+
+(defrecord person
+  name
+  address
+  age)
+
+(defun print-data ()
+  (let ((ford (make-person name '"Ford Prefect"
+                           address '"Betelgeuse Seven"
+                           age 234)))
+    (: io format '"~p~n" (list ford))
+    (: io format '"~p~n" (list (person-name ford)))
+    (: io format '"~p~n" (list (person-address ford)))
+    (: io format '"~p~n" (list (person-age ford)))))
+{% endhighlight %}

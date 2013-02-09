@@ -39,6 +39,18 @@ Now try doing some basic operations:
 >
 {% endhighlight %}
 
+Next, let's operate on some variables:
+
+{% highlight cl %}
+> (let ((x 123456789)) x)
+123456789
+> (let ((x 123456789)) (* x x))
+15241578750190521
+> (let ((x 123456789)) (* x x x x))
+232305722798259244150093798251441
+>
+{% endhighlight %}
+
 Looking good!
 
 ### 2.2 Running Scripts

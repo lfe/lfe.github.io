@@ -27,7 +27,18 @@ them.
 
 #### Records
 
-TBD
+Records are very simple in LFE. They are created with the ```defrecord``` form
+like so:
+
+{% highlight cl %}
+(defrecord person
+  name
+  address
+  age)
+{% endhighlight %}
+
+For more information, see the
+<a href="/tutorials/records/1.html">tutorial on LFE records</a>.
 
 #### Pattern Matching
 

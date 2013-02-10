@@ -14,8 +14,8 @@ Taking advantage of the
 straightforward. All you need to do is prepend the call with a ```:``` and
 adjust to use the LFE syntax vs. the Erlang styntax.
 
-In fact, we've already seen an example of this above with the ```(: io format ...)```
-call.
+In fact, we've already seen an example of this in Section 2
+when we called ```(: io format ...)``` as part of a "Hello World."
 
 Here's an example ```base64``` usage from the Erlang ```stdlib```:
 
@@ -30,11 +30,30 @@ Here's an example ```base64``` usage from the Erlang ```stdlib```:
 
 The rest of OTP utilizes the same ```: <module> <function> <parameters>```
 format. Let's take a more in-depth look, exercising some of the niftier
-features of OTP, starting with a server:
+features of OTP.
+
+Let's start with a server:
 
 {% highlight cl %}
 {% endhighlight %}
 
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+For more details and discussion around OTP and creating your own serviers, see
+the <a href="/tutorials/otp-servers/1.html">OTP Servers tutorial</a>.
 
 ### 3.3 Third-Party Libraries
 

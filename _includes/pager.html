@@ -3,7 +3,9 @@
     {% if page.guide > 1 %}
       <a href="{{page.guide | minus:1}}.html" class="previous page-numbers spec">&larr; Previous</a> |
     {% endif %}
-      <a class="page-numbers spec" href="">Top</a>
+      <a class="page-numbers spec" href="">Top</a> |
+      <a class="page-numbers spec" href="/docs.html">Docs</a> |
+      <a class="page-numbers spec" href="/">Home</a>
     {% if page.guide < page.total_guides %}
       | <a href="{{page.guide | plus:1}}.html" class="next page-numbers spec">Next &rarr;</a>
     {% endif %}

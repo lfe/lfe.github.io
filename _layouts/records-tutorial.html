@@ -20,17 +20,8 @@ section: records-tutorial
     {{ content }}
   </article>
 
-  {% if page.guide %}
-  <div class="pagination loop-pagination">
-    {% if page.guide > 1 %}
-      <a href="{{page.guide | minus:1}}.html" class="previous page-numbers spec">&larr; Previous</a>
-    {% endif %}
-      <a class="page-numbers spec" href="#container">Top</a>
-    {% if page.guide < page.total_guides %}
-      <a href="{{page.guide | plus:1}}.html" class="next page-numbers spec">Next &rarr;</a>
-    {% endif %}
-  </div>
-  {% endif %}
+{% include pager.html %}
+
 </div><!-- #content -->
 
 {% include bottom.html %}

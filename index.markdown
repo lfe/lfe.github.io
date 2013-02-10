@@ -8,7 +8,7 @@ To the taste of Erlang, aged in the oaken barrels of Lisp, served at a
 temperature of perfect hotness. New to LFE? Check out our
 <a href="/quick-start/1.html">Quick Start</a>!
 
-### What is this?
+### What Is This?
 
 You are at the home page of LFE --
 <a href="https://github.com/rvirding/lfe/">Lisp Flavoured Erlang</a>

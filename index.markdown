@@ -22,8 +22,9 @@ Also, note that code produced with LFE is compatible with normal Erlang code.
 
 ### Features
 
-Below are some of the key features of LFE, with code samples to help illustrate
-them.
+Below are a selection of code samples representing features available in LFE.
+There's much more to see, though -- so don't forget to visit the
+<a href="/docs.html">Docs</a> page!
 
 #### Records
 
@@ -42,7 +43,16 @@ For more information, see the
 
 #### Pattern Matching
 
-TBD
+The power of Erlang's pattern matching are available in Lisp form:
+
+{% highlight cl %}
+(let (((tuple name place age) #("Ford Prefect" "Betelgeuse Seven" 234)))
+  (list name place age))
+{% endhighlight %}
+
+For more information, see the
+<a href="/user-guide/1.html">User Guide</a> as well as the
+<a href="/tutorials/patterns/1.html">tutorial on pattern matching</a>.
 
 #### Macros
 

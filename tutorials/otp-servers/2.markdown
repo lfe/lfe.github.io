@@ -1,0 +1,8 @@
+---
+layout: servers-tutorial
+guide: 2
+total_guides: 3
+---
+# Tutorial: LFE Records
+
+## 2 Creating a Record

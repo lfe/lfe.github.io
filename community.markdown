@@ -26,3 +26,10 @@ Google Groups for your reading and questioning pleasure.
 
 Additionally, we have a <a href="https://twitter.com/ErlangLisp">Twitter
 account</a> where news items of interest will be posted.
+
+## Code from the Wild
+
+Be sure to check out the "Examples" section of the
+<a href="/docs.html">Docs</a> page, as we have collected a list of project and
+code samples that folks have put on in various corners of Github -- all for
+your convenience!

@@ -31,5 +31,5 @@ account</a> where news items of interest will be posted.
 
 Be sure to check out the "Examples" section of the
 <a href="/docs.html">Docs</a> page, as we have collected a list of project and
-code samples that folks have put on in various corners of Github -- all for
+code samples that folks have put up in various corners of Github -- all for
 your convenience!

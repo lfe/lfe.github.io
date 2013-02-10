@@ -43,7 +43,7 @@ For more information, see the
 
 #### Pattern Matching
 
-The power of Erlang's pattern matching are available in Lisp form:
+The power of Erlang's pattern matching is available in Lisp form:
 
 {% highlight cl %}
 (let (((tuple name place age) #("Ford Prefect" "Betelgeuse Seven" 234)))

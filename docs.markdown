@@ -4,6 +4,10 @@ layout: docs-home
 
 # LFE Documentation
 
+## Erlang Resources
+
+{% include erlang-docs.html %}
+
 ## Guides
 
 {% include guides-toc.html %}

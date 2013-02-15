@@ -32,7 +32,7 @@ do so via our:
 * low-volume
   <a href="http://groups.google.com/group/lisp-flavoured-erlang">mail list</a>
   on Google Groups, and
-* <a href="https://twitter.com/ErlangLisp">Twitter account</a>
+* the project <a href="https://twitter.com/ErlangLisp">Twitter account</a>
   where news items of interest will be posted.
 
 ## Code from the Wild

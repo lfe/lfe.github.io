@@ -32,9 +32,12 @@ do so via:
 
 * our low-volume
   <a href="http://groups.google.com/group/lisp-flavoured-erlang">mail list</a>
-  on Google Groups, and
+  on Google Groups,
 * our project <a href="https://twitter.com/ErlangLisp">Twitter account</a>
-  where news items of interest will be posted.
+  where news items of interest will be posted,
+* on <a href="https://github.com/rvirding/lfe">github</a>
+  (<a href="https://github.com/lfe/lfe.github.com">docs</a>), and
+* the <a href="https://www.ohloh.net/p/lfe">project page</a> on Ohloh.
 
 ## Code from the Wild
 

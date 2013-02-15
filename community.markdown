@@ -8,7 +8,11 @@ layout: common
 
 If you'd like to work on the source code for LFE, you can checkout master from
 <a href="https://github.com/rvirding/lfe">github</a> and then submit a pull
-request when done. If you'd like to file a bug or feature request, you can
+request when done. Bug fixes and new features are done against the
+```develop``` branch, so be sure that your pull request is for a merge into
+that one!
+
+If you'd like to file a bug or feature request, you can
 <a href="https://github.com/rvirding/lfe/issues">submit an issue</a>.
 
 ## Helping with Documentation

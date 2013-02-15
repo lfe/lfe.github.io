@@ -20,16 +20,20 @@ If you'd like to file a bug or feature request, you can
 If you've got a good idea for the LFE docs, you can <a
 href="https://github.com/lfe/lfe.github.com/issues">create an issue</a> or
 <a href="https://github.com/lfe/lfe.github.com">fork the docs</a> and then
-submit a pull request when done.
+submit a pull request when done. If you've got any questions about the docs,
+feel free to email <a href="mailto:oubiwann@cogitat.io">the maintainer</a> or
+use the mail list and Twitter account listed below.
 
-## Keeping in Touch and Asking Questions
+## Mail List and Social Media
 
-We have a low-volume
-<a href="http://groups.google.com/group/lisp-flavoured-erlang">mail list</a> on
-Google Groups for your reading and questioning pleasure.
+If you'd like to ask questions or just keep in touch with the project, you can
+do so via our:
 
-Additionally, we have a <a href="https://twitter.com/ErlangLisp">Twitter
-account</a> where news items of interest will be posted.
+* low-volume
+  <a href="http://groups.google.com/group/lisp-flavoured-erlang">mail list</a>
+  on Google Groups, and
+* <a href="https://twitter.com/ErlangLisp">Twitter account</a> where news items
+  of interest will be posted.
 
 ## Code from the Wild
 

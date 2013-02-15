@@ -27,12 +27,12 @@ use the mail list and Twitter account listed below.
 ## Mail List and Social Media
 
 If you'd like to ask questions or just keep in touch with the project, you can
-do so via our:
+do so via:
 
-* low-volume
+* our low-volume
   <a href="http://groups.google.com/group/lisp-flavoured-erlang">mail list</a>
   on Google Groups, and
-* the project <a href="https://twitter.com/ErlangLisp">Twitter account</a>
+* our project <a href="https://twitter.com/ErlangLisp">Twitter account</a>
   where news items of interest will be posted.
 
 ## Code from the Wild

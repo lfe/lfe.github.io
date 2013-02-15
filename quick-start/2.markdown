@@ -16,7 +16,7 @@ To start the REPL, simply run the ```lfe``` script and tell ```erl``` (which is
 being run in the scrip) which additional code paths it should look for (in this
 case, the compiled LFE code):
 
-    $ ./lfe -pa ./ebin
+    $ ./bin/lfe -pa ./ebin
 
 This assumes that you are still in the ```lfe``` directory where you build LFE.
 Running that command will dump you into the LFE REPL, looking something like
@@ -101,7 +101,7 @@ assuming that you are in ```lfe/tmp```:
 
 
 {% highlight cl %}
-$ ../lfe -pa ../ebin
+$ ../bin/lfe -pa ../ebin
 > (slurp '"hello.lfe")
 #(ok hello)
 > (: hello start)

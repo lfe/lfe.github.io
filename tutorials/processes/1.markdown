@@ -6,14 +6,19 @@ total_guides: 4
 # Tutorial: Lightweight Processes
 
 Due to it's Erlang foundation, an LFE program is composed of anything from 1 to
-hundreds of thousands of lightweight processes. Each process operates
-independently with its own private memory, communicating via message passing.
-In fact, a
+hundreds of thousands of lightweight processes.  In fact, a
 <a href="https://groups.google.com/forum/?fromgroups=#!topic/comp.lang.functional/5kldn1QJ73c">2005 message</a>
 to
 <a href="https://groups.google.com/forum/?fromgroups=#!forum/comp.lang.functional">comp.lang.functional</a>
-reported spawning 20 million messages in
-a ring benchmark (on a 1.5 GHz SPARC with 16 GB RAM).
+reported spawning 20 million messages in a ring benchmark (on a 1.5 GHz SPARC
+with 16 GB RAM).
+
+This is possible in part because each process operates independently with its
+own private memory, communicating via message passing, and the overhead for an
+Erlang process is pretty low (~1.5k for 32-bit and ~2.7k for 64-bit; see the
+Efficiency Guide's section on
+<a href="http://www.erlang.org/doc/efficiency_guide/processes.html">processes</a>
+for more info).
 
 This tutorial aims to decrease the mystery around Erlang processes and how to
 use them in LFE programs.

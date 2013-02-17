@@ -18,7 +18,9 @@ like Common Lisp, and comes with a
 <a href="http://en.wikipedia.org/wiki/REPL">REPL</a> (shell) for use with
 interactive coding.
 
-Also, note that code produced with LFE is compatible with normal Erlang code.
+LFE coexists seamlessly with vanilla Erlang and OTP. As such, code written in
+LFE can freely be used together with modules written in vanilla Erlang and
+applications in Erlang/OTP.
 
 ### Features
 

@@ -1,8 +1,8 @@
 ---
 layout: patterns-tutorial
-guide: 2
+guide: 3
 total_guides: 3
 ---
 # Tutorial: Pattern Matching
 
-## 2 Creating a Record
+## 3 More with Patterns

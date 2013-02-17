@@ -48,7 +48,7 @@ PID:
 {% endhighlight %}
 
 The messages are sitting in the inbox of the process they were sent to, the
-REPL. If we flush the REPLs inbox, we can see them:
+REPL. If we flush the REPL's inbox, we can see them:
 
 {% highlight cl %}
 > (: c flush)

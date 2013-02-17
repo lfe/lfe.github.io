@@ -118,15 +118,26 @@ ok
 
 ### 1.3 Shell ```spawn```
 
-So far, we've only look at the process for the REPL itself. Now, we're going to
-look at creating a process in the REPL and writing to it instead of our shell.
+So far, we've only look at the process for the REPL itself. We'd like to expand
+our horizons and look at creating a process in the REPL, writing to it
+instead of our shell.
+
+However, we are faced with some difficulties:
+* LFE doesn't let us define functions (or macros) in the REPL, and
+* Erlang's ```spawn``` function takes a module and function as a parameter.
+
+We can sort of get around that first point using ```lambda```:
 
 {% highlight cl %}
+> (set print-result
+    (lambda (x)
+      (: io format '"Received message: '~s'~n" (list x))))
+#Fun<lfe_eval.10.53503600>
+> (funcall print-result '"Zaphod was here.")
+Received message: 'Zaphod was here.'
+ok
+>
 {% endhighlight %}
 
-{% highlight cl %}
-{% endhighlight %}
-
-{% highlight cl %}
-{% endhighlight %}
-
+The second bullet item, though, stops us dead in our tracks ;-) To do our
+"shell spawn", we'll need to pull code in that we define in a module.

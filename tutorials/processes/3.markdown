@@ -1,0 +1,8 @@
+---
+layout: processes-tutorial
+guide: 3
+total_guides: 4
+---
+# Tutorial: Lightweight Processes
+
+## 3 Protecting Your Process

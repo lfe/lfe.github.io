@@ -24,3 +24,104 @@ This tutorial aims to decrease the mystery around Erlang processes and how to
 use them in LFE programs.
 
 ## 1 Interacting with Processes
+
+### 1.1 Dump and Flush
+
+Processes in LFE are built from functions. These running functions communicate
+with other running functions via messages. When you start up the LFE REPL,
+you're using an Erlang process, and you can communicate with it just like any
+other process.
+
+Let's get the REPL's process id and then send messages to the REPL using the
+PID:
+
+{% highlight cl %}
+> (set pid (self))
+<0.30.0>
+> (! pid '"Testing: 1, 2, 3!")
+"Testing: 1, 2, 3!"
+> (! pid '"This is another test message...")
+"This is another test message..."
+> (! pid (list 1 2 3))
+(1 2 3)
+>
+{% endhighlight %}
+
+The messages are sitting in the inbox of the process they were sent to, the
+REPL. If we flush the REPLs inbox, we can see them:
+
+{% highlight cl %}
+> (: c flush)
+Shell got "Test1"
+Shell got "Testing: 1, 2, 3!"
+Shell got "This is another test message..."
+Shell got [1,2,3]
+ok
+>
+{% endhighlight %}
+
+### 1.2 Getting Classy with ```receive```
+
+As you might imagine, there's a better way to do this. Let's send another
+message to the REPL's message queue (inbox):
+
+{% highlight cl %}
+> (! pid (list 1 2 3))
+(1 2 3)
+>
+{% endhighlight %}
+
+Now let's take a look at that message without flushing the queue:
+
+{% highlight cl %}
+> (receive
+    ((tuple a b c)
+     (: io format '"results: ~p ~p ~p~n" (list a b c))))
+results: 1 2 3
+ok
+>
+{% endhighlight %}
+
+If there is a message in the inbox matching the pattern we have defined (in
+this case, a 3-tuple), then we will have access to the data that is matched and
+bound to the variables. For more information on patter matching, see
+<a href="/tutorials/patterns/1.html">the tutorial</a>.
+
+If there are a bunch of messages in the inbox, they will all be iterated until
+a match is found:
+
+{% highlight cl %}
+> (set pid (self))
+<0.30.0>
+> (! pid (tuple 1 2 3))
+#(1 2 3)
+> (! pid (tuple 2 3))
+#(2 3)
+> (! pid (tuple 3))
+#(3)
+> (receive
+    ((tuple a)
+     (: io format '"results: ~p ~n" (list a))))
+results: 3
+ok
+{% endhighlight %}
+
+Let's confirm that only the last message we entered was matched:
+
+{% highlight cl %}
+> (: c flush)
+Shell got {1,2,3}
+Shell got {2,3}
+ok
+>
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+

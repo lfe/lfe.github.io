@@ -25,7 +25,7 @@ use them in LFE programs.
 
 ## 1 Interacting with Processes
 
-### 1.1 Dump and Flush
+### 1.1 Dump and ```flush```
 
 Processes in LFE are built from functions. These running functions communicate
 with other running functions via messages. When you start up the LFE REPL,

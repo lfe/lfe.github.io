@@ -6,3 +6,41 @@ total_guides: 4
 # Tutorial: Lightweight Processes
 
 ## 2 Processes in Modules
+
+### 2.1 Shell ```spawn```: The Sequel
+
+In the last section, we were all primed to explore spawning processes from the
+REPL. We discovered, though, that in order to do this we need to save our code
+to a module. Let's do it!
+
+Save the code below to ```messenger.lfe```:
+
+{% highlight cl %}
+(defmodule messenger
+ (export (print-result 1)))
+
+(defun print-result (x)
+    (: io format '"Received message: '~s'~n" (list x)))
+{% endhighlight %}
+
+Then start up ```lfe``` compile your new module and run our print function:
+{% highlight cl %}
+> (c '"messenger")
+#(module messenger)
+> (: messenger print-result '"Zaphod was here")
+Received message: 'Zaphod was here'
+ok
+>
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}

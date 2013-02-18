@@ -130,8 +130,8 @@ We can sort of get around that first point using ```lambda```:
 
 {% highlight cl %}
 > (set print-result
-    (lambda (x)
-      (: io format '"Received message: '~s'~n" (list x))))
+    (lambda (msg)
+      (: io format '"Received message: '~s'~n" (list msg))))
 #Fun<lfe_eval.10.53503600>
 > (funcall print-result '"Zaphod was here.")
 Received message: 'Zaphod was here.'
@@ -139,5 +139,26 @@ ok
 >
 {% endhighlight %}
 
-The second bullet item, though, stops us dead in our tracks ;-) To do our
-"shell spawn", we'll need to pull code in that we define in a module.
+Let's update this function so that it can respond to messages when it's running
+as an Erlang process using the call to ```receive```:
+{% highlight cl %}
+> (set print-result
+    (lambda ()
+      (receive (msg
+        (: io format '"Received message: '~s'~n" (list msg))))))
+#Fun<lfe_eval.21.53503600>
+> (set pid (spawn (lambda () (funcall print-result))))
+<0.66.0>
+> (! pid '"Time is an illusion. Lunchtime doubly so.")
+"Time is an illusion. Lunchtime doubly so."
+Received message: 'Time is an illusion. Lunchtime doubly so.'
+{% endhighlight %}
+
+As you can see, when we send our message to the process we started with
+```spawn```, the process' function prints out the message that it received from
+us.
+
+We had to go through some gymnastics here, due to the limitations of the shell
+and using ```funcall``` in a ```spawn``` call. An an anti-intuitive twist,
+you'll see that doing the same thing from a module is more clear that doing it
+in the shell ;-)

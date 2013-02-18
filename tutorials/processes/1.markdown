@@ -166,6 +166,8 @@ As you can see, when we send our message to the process we started with
 us.
 
 We had to go through some gymnastics here, due to the limitations of the shell
-and using ```funcall``` in a ```spawn``` call. An an anti-intuitive twist,
+and using ```funcall``` in a ```spawn``` call.
+
+Up next: in an anti-intuitive twist,
 you'll see that doing the same thing from a module is more clear that doing it
 in the shell ;-)

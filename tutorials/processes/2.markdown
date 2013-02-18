@@ -10,8 +10,9 @@ total_guides: 4
 ### 2.1 Shell ```spawn```: The Sequel
 
 In the last section, we were all primed to explore spawning processes from the
-REPL. We discovered, though, that in order to do this we need to save our code
-to a module. Let's do it!
+REPL. As we explored, we discovered that message passing in the REPL is a
+little cumbersome. You were also promised that it would be cleaner when we
+moved the code to modules. Let's see if that's true ;-)
 
 Save the code below to ```messenger.lfe```:
 {% highlight cl %}

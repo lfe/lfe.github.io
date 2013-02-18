@@ -1,30 +1,11 @@
 ---
 layout: patterns-tutorial
 guide: 2
-total_guides: 3
+total_guides: 5
 ---
 # Tutorial: Pattern Matching
 
-## 2 Patterns in LFE
+## 2 Function Dispatch and Patterns
 
 {% highlight cl %}
-> (let (((tuple a b c d) #("ford" "betel" 234 ""))) (list a))
-("ford")
-> (let (((tuple a b c d) #("ford" "betel" 234 ""))) (list a b c))
-("ford" "betel" 234)
-> (let (((tuple a b c d) #("Ford Prefect" "Betelgeuse Seven" 234 ""))) (list a b c))
-("Ford Prefect" "Betelgeuse Seven" 234)
-> (let (((tuple name place age) #("Ford Prefect" "Betelgeuse Seven" 234))) (list name place age))
-("Ford Prefect" "Betelgeuse Seven" 234)
-> (let (((list a b) (list 1 2 3 4))) (list a b))
-exception error: #(badmatch (1 2 3 4))
-
-> (let (((list a b c d) (list 1 2 3 4))) (list a b))
-(1 2)
-> (let (((tuple a "abc") #("cat" "abc"))) (list a))
-("cat")
-> (let (((tuple a "abc") #("cat" "abcd"))) (list a))
-exception error: #(badmatch #("cat" "abcd"))
-
->
 {% endhighlight %}

@@ -47,10 +47,9 @@ listening again:
  (export (print-result 0)))
 
 (defun print-result ()
-  (receive
-    (msg
-      (: io format '"Received message: '~s'~n" (list msg)
-      (print-result)))))
+  (receive (msg
+    (: io format '"Received message: '~s'~n" (list msg))
+    (print-result))))
 {% endhighlight %}
 
 Let's take it for a test drive:
@@ -71,6 +70,8 @@ Received message: 'Arthur is pining for Trillian.'
 {% endhighlight %}
 
 Horray! You've just written a simple listener in LFE!
+
+### Process Registry in Erlang/LFE
 
 {% highlight cl %}
 {% endhighlight %}

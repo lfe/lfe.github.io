@@ -137,5 +137,7 @@ Lisp Flavored Erlang. We aim to accomplish this in two important ways:
 
 A final resource for the curious and motivated is available in the
 <a href="https://github.com/rvirding/lfe/tree/master/examples">examples</a>
-directory of the project repo. This is functioning code those shows how to use
-LFE in blocks of code larger than the snippets provided in the documentation.
+directory of the project repo. Each sample provides functioning code that
+shows how to use LFE in larger contexts.
+
+Enjoy!

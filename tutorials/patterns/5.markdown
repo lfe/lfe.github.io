@@ -1,0 +1,8 @@
+---
+layout: patterns-tutorial
+guide: 5
+total_guides: 5
+---
+# Tutorial: Pattern Matching
+
+## 5 Using Patterns with Message Passing

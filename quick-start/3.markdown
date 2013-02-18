@@ -26,40 +26,45 @@ Here's an example ```base64``` usage from the Erlang ```stdlib```:
 "And so the Universe ended."
 {% endhighlight %}
 
-### 3.2 More OTP
+### 3.2 Processes in LFE
 
-The rest of OTP utilizes the same ```: <module> <function> <parameters>```
-format. Let's take a more in-depth look, exercising some of the niftier
-features of OTP.
-
-Let's start with a server:
+One of the first things that people want to do with LFE is examine the message
+passing syntax so that they can compare it with vanilla Erlang. Here's a small
+example of what this looks like in LFE:
 
 {% highlight cl %}
+(defun print-result ()
+  (receive (msg
+    (: io format '"Received message: '~s'~n" (list msg))
+    (print-result))))
 {% endhighlight %}
 
+If that was saved in a module called ```messenger```, then one could utilize it
+thusly:
 {% highlight cl %}
+> (set pid (spawn 'messenger 'print-result ()))
+<0.34.0>
+> (! pid '"Ford is missing.")
+"Ford is missing."
+Received message: 'Ford is missing.'
 {% endhighlight %}
 
-{% highlight cl %}
-{% endhighlight %}
+For  more information on working with processes in LFE, be sure to view the
+<a href="/tutorials/processes/1.html">tutorial</a>.
 
-{% highlight cl %}
-{% endhighlight %}
-
-{% highlight cl %}
-{% endhighlight %}
-
-{% highlight cl %}
-{% endhighlight %}
-
-For more details and discussion around OTP and creating your own serviers, see
-the <a href="/tutorials/otp-servers/1.html">OTP Servers tutorial</a>.
+Related to this, you can file details and discussion around OTP and creating
+your own serviers, see the
+<a href="/tutorials/otp-servers/1.html">OTP Servers tutorial</a>.
 
 ### 3.3 Third-Party Libraries
 
 Finally, accessing code that is written in third-party libraries is exactly the
-same. Simply use the modules they have provided:
-
+same. Simply use the modules they have provided. If you started the LFE REPL
+pointing to your third-party libraries with a ```-pa``` (path) option, then all
+you have to do is this:
 
 {% highlight cl %}
+> (: your-module some-function '"some parameter")
 {% endhighlight %}
+
+That's it!

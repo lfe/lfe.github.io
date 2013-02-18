@@ -32,16 +32,18 @@ Then start up ```lfe```, compile your new module, and spawn our print function:
 <0.51.0>
 {% endhighlight %}
 
-Great! It works as expected. Now let's play... by sending it a message. From the REPL:
+Great! It works as expected. Now let's play... by sending it a message from
+the REPL:
 {% highlight cl %}
 > (! pid '"Zaphod was here.")
 "Zaphod was here."
 Received message: 'Zaphod was here.'
 {% endhighlight %}
 
-The only problem with our solution is that it's a one-shot deal. We can change
-that, though: let's make sure that once it prints the message, it starts
-listening again:
+The only problem with our solution is that it's a one-shot deal; subsequent
+sends to the pid won't call our function, since that function is no longer
+running. We can change that, though: let's make sure that once it prints the
+message, it starts listening again:
 {% highlight cl %}
 (defmodule messenger
  (export (print-result 0)))

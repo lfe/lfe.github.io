@@ -53,7 +53,7 @@ For  more information on working with processes in LFE, be sure to view the
 <a href="/tutorials/processes/1.html">tutorial</a>.
 
 Related to this, you can find details and discussion around OTP and creating
-your own serviers in the
+your own servers in the
 <a href="/tutorials/otp-servers/1.html">OTP Servers tutorial</a>.
 
 ### 3.3 Third-Party Libraries

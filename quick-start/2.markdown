@@ -109,3 +109,66 @@ Lfe says 'Hello, World!'
 ok
 >
 {% endhighlight %}
+
+### 2.4 Getting out of Trouble
+
+Every once in a while you may find that you do something which causes the REPL
+to crash, presenting you with something that looks like this:
+
+    >
+      =ERROR REPORT==== 17-Feb-2013::15:39:33 ===
+      ...
+
+You don't have to quit and restart the REPL, if you don't want to! There are a
+couple of steps that you can take instead.
+
+#### 2.4.1 Interrupting a Shell Process
+
+When you get an error as seen above, type ```^g```. This will put you into JCL
+(Job Control Language) mode. At the JCL prompt, type ```?``` to see a list of
+options:
+
+    User switch command
+     --> ?
+      c [nn]            - connect to job
+      i [nn]            - interrupt job
+      k [nn]            - kill job
+      j                 - list all jobs
+      s [shell]         - start local shell
+      r [node [shell]]  - start remote shell
+      q        - quit erlang
+      ? | h             - this message
+
+Let's see what's running:
+
+    --> j
+      1* {lfe_shell,start,[]}
+
+Our shell process is still alive, though not responding. Let's interrupt it and
+then connect to it again:
+
+    --> i 1
+    --> c 1
+   exception error: function_clause
+     in (: lists sublist #(error interrupted) 1)
+     in (lfe_scan string 4)
+     in (lfe_io scan_and_parse 3)
+
+    >
+
+Once we interrupted the job, our error messages were printed to the REPL and we
+were placed back at the LFE prompt.
+
+#### 2.4.2 Starting a New Shell
+
+Sometimes, though, there is no shell process any more.  Here's how to start up
+a new shell process if the one that you're using dies:
+
+    --> s lfe_shell
+    --> j
+          2* {lfe_shell,start,[]}
+    --> c 2
+    LFE Shell V5.9.3.1 (abort with ^G)
+    >
+
+And you're back up!

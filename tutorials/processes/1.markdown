@@ -147,6 +147,7 @@ as an Erlang process using the call to ```receive```:
       (receive (msg
         (: io format '"Received message: '~s'~n" (list msg))))))
 #Fun<lfe_eval.21.53503600>
+>
 {% endhighlight %}
 
 Now that we've got our message-capable function, let's ```spawn``` it and
@@ -157,6 +158,7 @@ capture the process id so that we can write to it:
 > (! pid '"Time is an illusion. Lunchtime doubly so.")
 "Time is an illusion. Lunchtime doubly so."
 Received message: 'Time is an illusion. Lunchtime doubly so.'
+>
 {% endhighlight %}
 
 As you can see, when we send our message to the process we started with

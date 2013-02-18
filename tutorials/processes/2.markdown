@@ -12,7 +12,7 @@ total_guides: 4
 In the last section, we were all primed to explore spawning processes from the
 REPL. As we explored, we discovered that message passing in the REPL is a
 little cumbersome. You were also promised that it would be cleaner when we
-moved the code to modules. Let's see if that's true ;-)
+moved the code to modules. Let's see if that's true ...
 
 Save the code below to ```messenger.lfe```:
 {% highlight cl %}

@@ -14,28 +14,52 @@ REPL. We discovered, though, that in order to do this we need to save our code
 to a module. Let's do it!
 
 Save the code below to ```messenger.lfe```:
-
 {% highlight cl %}
 (defmodule messenger
- (export (print-result 1)))
+ (export (print-result 0)))
 
-(defun print-result (x)
-    (: io format '"Received message: '~s'~n" (list x)))
+(defun print-result ()
+  (receive
+    (msg
+      (: io format '"Received message: '~s'~n" (list msg)))))
 {% endhighlight %}
 
-Then start up ```lfe``` compile your new module and run our print function:
+Then start up ```lfe```, compile your new module, and spawn our print function:
 {% highlight cl %}
 > (c '"messenger")
 #(module messenger)
-> (: messenger print-result '"Zaphod was here")
-Received message: 'Zaphod was here'
-ok
->
+> (set pid (spawn 'messenger 'print-result ()))
+<0.51.0>
 {% endhighlight %}
 
+Great! It works as expected. Now let's play... by sending it a message. From the REPL:
 {% highlight cl %}
+> (! pid '"Zaphod was here.")
+"Zaphod was here."
+Received message: 'Zaphod was here.'
 {% endhighlight %}
 
+The only problem with our solution is that it's a one-shot deal. We can change
+that, though: let's make sure that once it prints the message, it starts
+listening again:
+{% highlight cl %}
+(defmodule messenger
+ (export (print-result 0)))
+
+(defun print-result ()
+  (receive
+    (msg
+      (: io format '"Received message: '~s'~n" (list msg)
+      (print-result)))))
+{% endhighlight %}
+
+Then start up ```lfe```, compile your new module, and spawn our print function:
+{% highlight cl %}
+> (c '"messenger")
+#(module messenger)
+> (set pid (spawn 'messenger 'print-result ()))
+<0.51.0>
+{% endhighlight %}
 {% highlight cl %}
 {% endhighlight %}
 

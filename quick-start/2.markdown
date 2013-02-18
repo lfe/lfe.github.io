@@ -153,6 +153,7 @@ then connect to it again:
      in (: lists sublist #(error interrupted) 1)
      in (lfe_scan string 4)
      in (lfe_io scan_and_parse 3)
+
     >
 
 Once we interrupted the job, our error messages were printed to the REPL and we

@@ -53,13 +53,25 @@ listening again:
       (print-result)))))
 {% endhighlight %}
 
-Then start up ```lfe```, compile your new module, and spawn our print function:
+Let's take it for a test drive:
 {% highlight cl %}
 > (c '"messenger")
 #(module messenger)
 > (set pid (spawn 'messenger 'print-result ()))
-<0.51.0>
+<0.55.0>
+> (! pid '"Zaphod was here.")
+"Zaphod was here."
+Received message: 'Zaphod was here.'
+> (! pid '"Ford is missing.")
+"Ford is missing."
+Received message: 'Ford is missing.'
+> (! pid '"Arthur is pining for Trillian.")
+"Arthur is pining for Trillian."
+Received message: 'Arthur is pining for Trillian.'
 {% endhighlight %}
+
+Horray! You've just written a simple listener in LFE!
+
 {% highlight cl %}
 {% endhighlight %}
 

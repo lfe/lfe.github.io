@@ -149,7 +149,7 @@ then connect to it again:
 
     --> i 1
     --> c 1
-   exception error: function_clause
+    exception error: function_clause
      in (: lists sublist #(error interrupted) 1)
      in (lfe_scan string 4)
      in (lfe_io scan_and_parse 3)

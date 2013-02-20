@@ -127,7 +127,9 @@ true
 Now, if we call ```(: c regs)``` again, we'll see our newly registered process
 in the table:
 
-  'msg-svc'             <0.75.0>     messenger:'print-result'/            1    0
+{% highlight %}
+'msg-svc'             <0.75.0>     messenger:'print-result'/            1    0
+{% endhighlight %}
 
 We see that it's running; let's do a lookup on it by name to get the pid:
 {% highlight cl %}

@@ -20,8 +20,9 @@ Save the code below to ```messenger.lfe```:
  (export (print-result 0)))
 
 (defun print-result ()
-  (receive (msg
-    (: io format '"Received message: '~s'~n" (list msg)))))
+  (receive
+    (msg
+      (: io format '"Received message: '~s'~n" (list msg)))))
 {% endhighlight %}
 
 Then start up ```lfe```, compile your new module, and spawn our print function:
@@ -49,9 +50,10 @@ message, it starts listening again:
  (export (print-result 0)))
 
 (defun print-result ()
-  (receive (msg
-    (: io format '"Received message: '~s'~n" (list msg))
-    (print-result))))
+  (receive
+    (msg
+      (: io format '"Received message: '~s'~n" (list msg))
+      (print-result))))
 {% endhighlight %}
 
 Let's take it for a test drive:

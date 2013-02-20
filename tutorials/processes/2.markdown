@@ -2,7 +2,7 @@
 markdown: redcarpet
 layout: processes-tutorial
 guide: 2
-total_guides: 4
+total_guides: 5
 ---
 # Tutorial: Lightweight Processes
 
@@ -75,82 +75,3 @@ Received message: 'Arthur is pining for Trillian.'
 {% endhighlight %}
 
 Horray! You've just written a simple listener in LFE!
-
-### Process Registry in Erlang/LFE
-
-We've been setting a variable in the REPL so that we don't have to call
-```(self)``` repeatedly to get the pid. However, you don't *have* to use the
-pid. If you have a function running in a process whose purpose is to act as a
-service for any number of other processes, you may find the Erlang process
-registration system just the thing for you.
-
-There are a handful of processes that are registered; here are the ones running
-on my shell right now:
-
-
-{% highlight cl %}
- > (: c regs)
-{% endhighlight %}
-
-    ** Registered procs on node nonode@nohost **
-    Name                  Pid          Initial Call                      Reds Msgs
-    application_controlle <0.6.0>      erlang:apply/2                     434    0
-    code_server           <0.18.0>     erlang:apply/2                  205428    0
-    erl_prim_loader       <0.3.0>      erlang:apply/2                  633205    0
-    error_logger          <0.5.0>      gen_event:init_it/6               4973    0
-    file_server_2         <0.17.0>     file_server:init/1                 660    0
-    global_group          <0.16.0>     global_group:init/1                 59    0
-    global_name_server    <0.12.0>     global:init/1                       50    0
-    inet_db               <0.15.0>     inet_db:init/1                     851    0
-    init                  <0.0.0>      otp_ring0:start/2                 4663    0
-    kernel_safe_sup       <0.24.0>     supervisor:kernel/1                 58    0
-    kernel_sup            <0.10.0>     supervisor:kernel/1              37499    0
-    rex                   <0.11.0>     rpc:init/1                          35    0
-    standard_error        <0.20.0>     erlang:apply/2                       9    0
-    standard_error_sup    <0.19.0>     supervisor_bridge:standar           41    0
-    user                  <0.22.0>     erlang:apply/2                    8009    0
-    user_drv              <0.28.0>     user_drv:server/2                52096    0
-
-    ** Registered ports on node nonode@nohost **
-    Name                  Id              Command
-    ok
-    >
-
-Let's spawn our function from above and register it:
-{% highlight cl %}
-> (set pid-2 (spawn 'messenger 'print-result ()))
-<0.52.0>
-> (register 'msg-svc pid-2)
-true
->
-{% endhighlight %}
-
-Now, if we call ```(: c regs)``` again, we'll see our newly registered process
-in the table:
-
-    'msg-svc'             <0.52.0>     messenger:'print-result'/            1    0
-
-We see that it's running; let's do a lookup on it by name to get the pid:
-{% highlight cl %}
-> (whereis 'msg-svc)
-<0.52.0>
->
-{% endhighlight %}
-
-Just to confirm that this is the same process we spaned:
-{% highlight cl %}
-> pid-2
-<0.52.0>
-{% endhighlight %}
-
-We've poked around a bit, now let's acutally use the new atom we've set as the
-reference for our messaging service:
-{% highlight cl %}
-> (! 'msg-svc '"This is Prostetnic Vogon Jeltz...")
-"This is Prostetnic Vogon Jeltz..."
-Received message: 'This is Prostetnic Vogon Jeltz...'
->
-{% endhighlight %}
-
-That about wraps it up for the process registry!
-

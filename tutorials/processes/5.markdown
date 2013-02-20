@@ -1,8 +1,8 @@
 ---
 layout: processes-tutorial
-guide: 4
+guide: 5
 total_guides: 5
 ---
 # Tutorial: Lightweight Processes
 
-## 4 Protecting Your Process
+## 5 Process Communications

@@ -75,7 +75,7 @@ Now let's take a look at that message without flushing the queue:
 
 {% highlight cl %}
 > (receive
-    ((tuple a b c)
+    ((list a b c)
      (: io format '"results: ~p ~p ~p~n" (list a b c))))
 results: 1 2 3
 ok

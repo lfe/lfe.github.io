@@ -8,15 +8,14 @@ total_guides: 5
 
 ## 3 Process Registry in Erlang/LFE
 
-We've been setting a variable in the REPL so that we don't have to call
-```(self)``` repeatedly to get the pid. However, you don't *have* to use the
-pid. If you have a function running in a process whose purpose is to act as a
-service for any number of other processes, you may find the Erlang process
-registration system just the thing for you.
+We've been setting the ```pid``` variable in the REPL so that we don't have to
+call ```(self)``` repeatedly. However, you don't *have* to use the pid. If you
+have a function running in a process whose purpose is to act as a service for
+any number of other processes, you may find the Erlang process registration
+system just the thing for you.
 
-There are a handful of processes that are registered; here are the ones running
-on my shell right now:
-
+There are a handful of processes that are registered by the shell. We can see
+them by doing the following:
 
 {% highlight cl %}
  > (: c regs)
@@ -46,7 +45,7 @@ on my shell right now:
     ok
     >
 
-Let's spawn our function from above and register it:
+Let's spawn our previously-defined function and register it:
 {% highlight cl %}
 > (set pid-2 (spawn 'messenger 'print-result ()))
 <0.52.0>

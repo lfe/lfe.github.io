@@ -1,4 +1,5 @@
 ---
+markdown: redcarpet
 layout: processes-tutorial
 guide: 2
 total_guides: 4

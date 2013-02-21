@@ -144,8 +144,9 @@ as an Erlang process using the call to ```receive```:
 {% highlight cl %}
 > (set print-result
     (lambda ()
-      (receive (msg
-        (: io format '"Received message: '~s'~n" (list msg))))))
+      (receive
+        (msg
+          (: io format '"Received message: '~s'~n" (list msg))))))
 #Fun<lfe_eval.21.53503600>
 >
 {% endhighlight %}

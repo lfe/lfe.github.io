@@ -1,8 +1,72 @@
 ---
 layout: processes-tutorial
 guide: 4
-total_guides: 5
+total_guides: 4
 ---
 # Tutorial: Lightweight Processes
 
-## 4 Protecting Your Process
+## 4 Process Communications
+
+### 4.1 It's a Two Way Street
+
+We've spent some time looking at sending messages to processes manually. Now
+let's see how processes can send messages to each other. This has the practical
+implication of being able to report back on something from one process to
+another process which might have initiated the current action.
+
+For instance, if we could have a function that spawns several lightweight
+processes, each of which may return data and a status code. If these spanwed
+processes have the calling process' ID, then they can, in turn, send their
+results back to the caller so that the data and statues may be reported upon.
+
+### 4.2 Walk the Talk
+
+To demonstrate this, let's update our ```print-result``` function to do this:
+* pattern match for a process id as well as a message
+* write message about sending data to another process
+* actually send that data to the other process
+
+Additionally, let's create a new function that ```spawn```s the
+```print-result``` listener  and then sends a message to it.
+
+Save the following as ```messenger-back.lfe```:
+{% highlight cl %}
+(defmodule messenger-back
+ (export (print-result 0) (send-message 1)))
+
+(defun print-result ()
+  (receive
+    ((tuple pid msg)
+      (: io format '"Received message: '~s'~n" (list msg))
+      (: io format '"Sending message to process ~p ...~n" (list pid))
+      (! pid (tuple msg))
+      (print-result))))
+
+(defun send-message (calling-pid msg)
+  (let ((spawned-pid (spawn 'messenger-back 'print-result ())))
+    (! spawned-pid (tuple calling-pid msg))))
+{% endhighlight %}
+
+With these in place, let's start up our LFE REPL and try it out. First we'll
+compile our code and then kick things off with our ```send-message``` function.
+Note that this will ```spawn``` a listener and send it a message:
+{% highlight cl %}
+> (c '"messenger-back")
+#(module messenger-back)
+> (: messenger-back send-message '"There was a terrible ghastly silence.")
+#(<0.25.0> "There was a terrible ghastly silence.")
+Received message: 'There was a terrible ghastly silence.'
+Sending message to process <0.25.0> ...
+>
+{% endhighlight %}
+
+Let's take a look at shell's message queue (the quick and dirty way) to see if,
+in fact, th message *was* sent to the shell process:
+{% highlight cl %}
+> (: c flush)
+Shell got {"There was a terrible ghastly silence."}
+ok
+>
+{% endhighlight %}
+
+Sure enough, it was :-)

@@ -2,7 +2,7 @@
 markdown: redcarpet
 layout: processes-tutorial
 guide: 3
-total_guides: 5
+total_guides: 4
 ---
 # Tutorial: Lightweight Processes
 

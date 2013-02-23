@@ -1,8 +1,0 @@
----
-layout: processes-tutorial
-guide: 5
-total_guides: 5
----
-# Tutorial: Lightweight Processes
-
-## 5 Process Communications

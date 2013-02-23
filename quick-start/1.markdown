@@ -47,3 +47,32 @@ Alternatively, one may use ```rebar``` to build LFE:
 
     $ cd ./lfe
     $ rebar compile
+
+### 1.3 Installing
+
+On non-development systems, or any system where you don't want to run LFE from
+a git checkout, installing system-wide is the preferred way to use LFE. If you
+set your ```$ERL_LIBS``` environment variable, LFE will install there. Here's
+how one might do this on a Mac OS X system with Erlang installed by
+<a href="http://mxcl.github.com/homebrew/">Homebrew</a>:
+
+    $ export ERL_LIBS=/usr/local/lib/erlang/lib
+    $ make install
+
+You can then check that everything is where you expect:
+
+    $ ls -1 $ERL_LIBS|grep lfe
+    lfe-0.7
+
+Now you can use LFE from anywhere:
+{% highlight erlang %}
+$ erl
+Erlang R15B03 (erts-5.9.3.1) [source] [64-bit] [smp:8:8] [async-threads:0]
+[hipe] [kernel-poll:false] [dtrace]
+
+Eshell V5.9.3.1  (abort with ^G)
+1> lfe_shell:start().
+LFE Shell V5.9.3.1 (abort with ^G)
+<0.33.0>
+>
+{% endhighlight %}

@@ -70,3 +70,10 @@ ok
 {% endhighlight %}
 
 Sure enough, it was :-)
+
+### 4.3 Conclusion
+
+Well, that about wraps it up. We may add more information about working with
+Erlang lightweight processes in LFE, but the material covered so far in this
+tutorial should give you a solid foundation for exploring the ways in which you
+can use processes to breathe life into your applications.

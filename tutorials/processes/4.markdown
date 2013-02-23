@@ -61,7 +61,7 @@ Sending message to process <0.25.0> ...
 {% endhighlight %}
 
 Let's take a look at shell's message queue (the quick and dirty way) to see if,
-in fact, th message *was* sent to the shell process:
+in fact, the message *was* sent to the shell process:
 {% highlight cl %}
 > (: c flush)
 Shell got {"There was a terrible ghastly silence."}

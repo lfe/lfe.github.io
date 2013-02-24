@@ -5,7 +5,7 @@ total_guides: 4
 ---
 # Tutorial: Lightweight Processes
 
-Due to it's Erlang foundation, an LFE program is composed of anything from 1 to
+Due to its Erlang foundation, an LFE program is composed of anywhere from 1 to
 hundreds of thousands of lightweight processes.  In fact, a
 <a href="https://groups.google.com/forum/?fromgroups=#!topic/comp.lang.functional/5kldn1QJ73c">2005 message</a>
 to
@@ -83,11 +83,11 @@ ok
 {% endhighlight %}
 
 If there is a message in the inbox matching the pattern we have defined (in
-this case, a 3-tuple), then we will have access to the data that is matched and
-bound to the variables. For more information on patter matching, see
+this case, a list of length 3), then we will have access to the data that is matched and
+bound to the variables. For more information on pattern matching, see
 <a href="/tutorials/patterns/1.html">the tutorial</a>.
 
-If there are a bunch of messages in the inbox, they will all be iterated until
+If there are a bunch of messages in the inbox, they will all be iterated over until
 a match is found:
 
 {% highlight cl %}

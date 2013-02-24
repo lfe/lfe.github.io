@@ -15,9 +15,9 @@ implication of being able to report back on something from one process to
 another process which might have initiated the current action.
 
 For instance, if we could have a function that spawns several lightweight
-processes, each of which may return data and a status code. If these spanwed
+processes, each of which may return data and a status code. If these spawned
 processes have the calling process' ID, then they can, in turn, send their
-results back to the caller so that the data and statues may be reported upon.
+results back to the caller so that the data and statuses may be reported upon.
 
 ### 4.2 Walk the Talk
 

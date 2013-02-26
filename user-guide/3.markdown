@@ -1,7 +1,6 @@
 ---
-layout: user-guide
-title: 3 Modules
+layout: user-guide-main
 guide: 3
-total_guides: 7
+total_guides: 3
 ---
-# {{ page.title }}
+# 7 External Data

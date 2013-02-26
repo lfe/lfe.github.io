@@ -1,7 +1,6 @@
 ---
-layout: user-guide
-title: 2 Diving In
+layout: user-guide-main
 guide: 2
-total_guides: 7
+total_guides: 3
 ---
-# {{ page.title }}
+# 6 Processes and Servers

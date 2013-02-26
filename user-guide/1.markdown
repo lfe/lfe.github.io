@@ -24,7 +24,7 @@ following resources:
 The intent of this guide is to follow the same general pattern that the best
 Erlang books do, covering the following (mostly in this order):
 
-Diving In
+**Diving In**
 * Operators, numbers
 * Atoms and strings
 * Working with the shell/REPL

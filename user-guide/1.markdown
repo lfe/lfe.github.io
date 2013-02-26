@@ -19,9 +19,34 @@ following resources:
 * TBD
 * The LFE <a href="http://lfe.github.com/quick-start/1.html">Quick Start</a>
 
-## 1.2 About LFE
+## 1.2 What to Expect from this Guide
 
-### 1.2.1 What LFE Isn't
+The intent of this guide is to follow the same general pattern that the best
+Erlang books do, covering the following (mostly in this order):
+* Operators, numbers, strings, working with the shell/REPL
+* Atoms, tuples, lists
+* Binary data and bitstrings
+* Functions and modules
+* LFE-specific functions
+* Records
+* List and binary comprehensions
+* Pattern matching
+* Guards
+* Exception handling
+* Processes
+* Macros
+* EUnit and TDD
+* Working with data, Mnesia, and Riak
+* OTP and writing clients/servers
+* Writing for multi-core
+
+Some of these will be covered in dedicated tutorials or other in-depth
+documents; in those cases, we provide links to that material. If your favorite
+topic is not covered above, let us know! We'll try to find a place for it :-)
+
+## 1.3 About LFE
+
+### 1.3.1 What LFE Isn't
 
 Just to clear the air and set some expectations, here's what you're *not* going
 to find in LFE:
@@ -35,7 +60,7 @@ As such, you will not find the following:
 * CL packages or munged names faking packages
 * Access to Java libraries
 
-### 1.2.2 What LFE Is!
+### 1.3.2 What LFE Is!
 
 Here's what you *can* expect of LFE:
 

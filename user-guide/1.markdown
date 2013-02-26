@@ -23,21 +23,41 @@ following resources:
 
 The intent of this guide is to follow the same general pattern that the best
 Erlang books do, covering the following (mostly in this order):
-* Operators, numbers, strings, working with the shell/REPL
-* Atoms, tuples, lists
+
+Diving In
+* Operators, numbers
+* Atoms and strings
+* Working with the shell/REPL
 * Binary data and bitstrings
-* Functions and modules
-* LFE-specific functions
-* Records
+
+Lists and Data
+* Tuples and Lists
 * List and binary comprehensions
+* Records
+
+Functions and Modules
+* Functions
+* LFE-specific functions
+* Modules
+* Projects
+
+Checks, Errors, and Tests
 * Pattern matching
 * Guards
 * Exception handling
-* Processes
-* Macros
 * EUnit and TDD
-* Working with data, Mnesia, and Riak
-* OTP and writing clients/servers
+
+Processes and Servers
+* Processes
+* Clients
+* Servers
+
+External Data
+* Mnesia
+* Riak
+
+Additional Topics
+* Macros
 * Writing for multi-core
 
 Some of these will be covered in dedicated tutorials or other in-depth

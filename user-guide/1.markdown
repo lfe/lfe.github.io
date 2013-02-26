@@ -30,33 +30,33 @@ Erlang books do, covering the following (mostly in this order):
 * Working with the shell/REPL
 * Binary data and bitstrings
 
-Lists and Data
+**Lists and Data**
 * Tuples and Lists
 * List and binary comprehensions
 * Records
 
-Functions and Modules
+**Functions and Modules**
 * Functions
 * LFE-specific functions
 * Modules
 * Projects
 
-Checks, Errors, and Tests
+**Checks, Errors, and Tests**
 * Pattern matching
 * Guards
 * Exception handling
 * EUnit and TDD
 
-Processes and Servers
+**Processes and Servers**
 * Processes
 * Clients
 * Servers
 
-External Data
+**External Data**
 * Mnesia
 * Riak
 
-Additional Topics
+**Additional Topics**
 * Macros
 * Writing for multi-core
 

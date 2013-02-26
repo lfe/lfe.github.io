@@ -3,4 +3,6 @@ layout: user-guide
 guide: 3
 total_guides: 3
 ---
-# 
+# 2 Diving In
+
+## 2.3 Binary and Bitstrings

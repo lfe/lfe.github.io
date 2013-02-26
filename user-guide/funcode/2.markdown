@@ -3,4 +3,6 @@ layout: user-guide
 guide: 2
 total_guides: 4
 ---
-# 
+# 4 Functions and Modules
+
+## 4.2 LFE-Specific Functions

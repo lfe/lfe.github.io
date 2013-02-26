@@ -3,4 +3,6 @@ layout: user-guide
 guide: 1
 total_guides: 4
 ---
-# 
+# 4 Functions and Modules
+
+## 4.1 Functions

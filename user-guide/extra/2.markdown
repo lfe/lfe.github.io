@@ -3,4 +3,6 @@ layout: user-guide
 guide: 2
 total_guides: 2
 ---
-# 
+# 8 Additional Topics
+
+## 8.2 Writing for Multi-Core

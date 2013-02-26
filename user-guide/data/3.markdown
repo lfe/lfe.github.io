@@ -1,6 +1,8 @@
 ---
 layout: user-guide
 guide: 3
-total_guides: 3
+total_guides: 4
 ---
-# 
+# 3 Lists and Simple Data
+
+## 3.3 Records

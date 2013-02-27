@@ -1,8 +1,8 @@
 ---
 layout: user-guide
-guide: 2
+guide: 4
 total_guides: 4
 ---
 # 2 Diving In
 
-## 2.2 Atoms and Strings
+## 2.4 Variables

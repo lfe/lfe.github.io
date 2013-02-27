@@ -1,5 +1,5 @@
 ---
-markdown: redcarpet
+markdown: maruku
 layout: user-guide-main
 guide: 1
 total_guides: 3

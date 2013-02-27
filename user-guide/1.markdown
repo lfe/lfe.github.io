@@ -33,14 +33,10 @@ Online:
 * [Structure and Interpretation of Computer Programs](http://mitpress.mit.edu/sicp/)
 
 Books:
-* <a href="http://pragprog.com/book/jaerlang/programming-erlang">Programming
-  Erlang: Software for a Concurrent World</a>
-* <a href="http://shop.oreilly.com/product/9780596518189.do"> Erlang
-  Programming A Concurrent Approach to Software Development</a>
-* <a href="http://shop.oreilly.com/product/0636920025818.do">Introducing
-  Erlang</a>
-* <a href="http://norvig.com/paip.html">Paradigms of Artificial Intelligence
-  Programming: Case Studies in Common Lisp</a>
+* [Programming Erlang: Software for a Concurrent World](http://pragprog.com/book/jaerlang/programming-erlang)
+* [Erlang Programming: A Concurrent Approach to Software Development](http://shop.oreilly.com/product/9780596518189.do)
+* [Introducing Erlang](http://shop.oreilly.com/product/0636920025818.do)
+* [Paradigms of Artificial Intelligence Programming: Case Studies in Common Lisp](http://norvig.com/paip.html)
 
 ## 1.3 Moee About LFE
 

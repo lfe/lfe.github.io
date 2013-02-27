@@ -9,7 +9,7 @@ total_guides: 3
 
 Let's start with something simple :-) To follow along, fire up your LFE REPL.
 Numbers are simple in LFE, just like Erlang:
-{% highlight text %}
+{% highlight cl %}
 > 1
 1
 > 2
@@ -21,7 +21,7 @@ Numbers are simple in LFE, just like Erlang:
 
 Of course, it might be more interesting to look at something like different
 bases:
-{% highlight text %}
+{% highlight cl %}
 > #b101010
 42
 > #o52
@@ -35,7 +35,7 @@ bases:
 
 With some help from calling an Erlang function, we can work this in reverse,
 too:
-{% highlight text %}
+{% highlight cl %}
 > (: erlang integer_to_list 123 2)
 "1111011"
 {% endhighlight %}
@@ -46,7 +46,7 @@ for more details).
 
 But numbers by themselves aren't going to do us much good if we can't operate
 on them. The usual apply:
-{% highlight text %}
+{% highlight cl %}
 > (+ 1 2 3 4 5 6)
 21
 > (- 6 21)
@@ -62,18 +62,18 @@ on them. The usual apply:
 >
 {% endhighlight %}
 
-{% highlight text %}
+{% highlight cl %}
 {% endhighlight %}
 
-{% highlight text %}
+{% highlight cl %}
 {% endhighlight %}
 
-{% highlight text %}
+{% highlight cl %}
 {% endhighlight %}
 
-{% highlight text %}
+{% highlight cl %}
 {% endhighlight %}
 
-{% highlight text %}
+{% highlight cl %}
 {% endhighlight %}
 

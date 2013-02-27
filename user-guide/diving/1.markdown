@@ -7,6 +7,8 @@ total_guides: 3
 
 ## 2.1 Numbers and Operators
 
+### 2.1.1 Integers and Floats
+
 Let's start with something simple :-) To follow along, fire up your LFE REPL.
 Numbers are simple in LFE, just like Erlang:
 {% highlight cl %}
@@ -44,6 +46,8 @@ is the base you want to use (see
 <a href="http://erldocs.com/R14B/erts/erlang.html?i=1&search=integer#integer_to_list/2">here</a>
 for more details).
 
+### 2.1.2 Arithmatic Operators
+
 But numbers by themselves aren't going to do us much good if we can't operate
 on them. The usual apply:
 {% highlight cl %}
@@ -59,14 +63,54 @@ on them. The usual apply:
 168
 > (: erlang integer_to_list (+ #b1001 #b100 #b10) 2)
 "1111"
+> (div 11 2)
+5
+> (rem 11 2)
+1
+> `(,(div 11 2) ,(rem 11 2))
+(5 1)
 >
 {% endhighlight %}
 
+### 2.1.3 Logical Operators
+
+The usual suspects are used as follows:
 {% highlight cl %}
+> (< 1 2)
+true
+> (> 1 2)
+false
+> (>= 2 2)
+true
+> (=< 3 2)
+false
+> (>= 3 2)
+true
+> (== 1 1)
+true
+> (== 1 1.0)
+true
+> (/= 1 1)
+false
+> (/= 2 1)
+true
+>
 {% endhighlight %}
 
-{% highlight cl %}
+Then there are the operators which also check against type for exact
+(non-)equality: {% highlight cl %}
+> (=:= 1 1.0)
+false
+> (=:= 1.0 1.0)
+true
+> (=/= 1.0 1.0)
+false
+> (=/= 1 1.0)
+true
+>
 {% endhighlight %}
+
+### 2.1.4 Boolean Operators
 
 {% highlight cl %}
 {% endhighlight %}

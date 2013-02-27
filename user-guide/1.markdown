@@ -1,5 +1,5 @@
 ---
-markdown: maruku
+markdown: rdiscount
 layout: user-guide-main
 guide: 1
 total_guides: 3

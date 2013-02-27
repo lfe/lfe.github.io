@@ -1,5 +1,4 @@
 ---
-markdown: rdiscount
 layout: user-guide-main
 guide: 1
 total_guides: 3
@@ -26,13 +25,12 @@ For those that would like additional information on any of these, we recommend
 the resources below.
 
 Online:
-* The LFE <a href="http://lfe.github.com/quick-start/1.html">Quick Start</a>
-* <a href="http://learnyousomeerlang.com/content">Learn You Some Erlang for
-  Great Good</a> (<a href="https://github.com/igstan/learn-you-some-erlang-kindle/downloads">.mobi</a>)
-* <a href="http://www.gigamonkeys.com/book/">Practical Common Lisp</a>
-* <a href="http://www.paulgraham.com/onlisp.html">On Lisp</a>
-* <a href="http://mitpress.mit.edu/sicp/">Structure and Interpretation of
-  Computer Programs</a>
+* The LFE [Quick Start](http://lfe.github.com/quick-start/1.html)
+* [Learn You Some Erlang for Great Good](http://learnyousomeerlang.com/content)
+  ([.mobi](https://github.com/igstan/learn-you-some-erlang-kindle/downloads))
+* [Practical Common Lisp](http://www.gigamonkeys.com/book/)
+* [On Lisp](http://www.paulgraham.com/onlisp.html)
+* [Structure and Interpretation of Computer Programs](http://mitpress.mit.edu/sicp/)
 
 Books:
 * <a href="http://pragprog.com/book/jaerlang/programming-erlang">Programming

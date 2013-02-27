@@ -27,6 +27,12 @@ this:
     LFE Shell V5.9.3.1 (abort with ^G)
     >
 
+Note that you can also start the the LFE shell manually from an existing Erlang
+shell (as we did earlier in this guide) or you can pass parameters to ```erl```
+to start it up:
+
+    $ erl -pa ebin -s lfe_shell -noshell
+
 Now try doing some basic operations:
 
 {% highlight cl %}

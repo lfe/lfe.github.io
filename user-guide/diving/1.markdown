@@ -5,4 +5,75 @@ total_guides: 3
 ---
 # 2 Diving In
 
-## 2.1 Operators and Numbers
+## 2.1 Numbers and Operators
+
+Let's start with something simple :-) To follow along, fire up your LFE REPL.
+Numbers are simple in LFE, just like Erlang:
+{% highlight text %}
+> 1
+1
+> 2
+2
+> 3
+3
+>
+{% endhighlight %}
+
+Of course, it might be more interesting to look at something like different
+bases:
+{% highlight text %}
+> #b101010
+42
+> #o52
+42
+> #x2a
+42
+> #36r16
+42
+>
+{% endhighlight %}
+
+With some help from calling an Erlang function, we can work this in reverse,
+too:
+{% highlight text %}
+> (: erlang integer_to_list 123 2)
+"1111011"
+{% endhighlight %}
+Note that the first argument is the number you want to convert and the second
+is the base you want to use (see
+<a href="http://erldocs.com/R14B/erts/erlang.html?i=1&search=integer#integer_to_list/2">here</a>
+for more details).
+
+But numbers by themselves aren't going to do us much good if we can't operate
+on them. The usual apply:
+{% highlight text %}
+> (+ 1 2 3 4 5 6)
+21
+> (- 6 21)
+15
+> (/ 36 7)
+5.142857142857143
+> (+ #b101010 #o52 #x2a #36r16)
+168
+> (* 42 4)
+168
+> (: erlang integer_to_list (+ #b1001 #b100 #b10) 2)
+"1111"
+>
+{% endhighlight %}
+
+{% highlight text %}
+{% endhighlight %}
+
+{% highlight text %}
+{% endhighlight %}
+
+{% highlight text %}
+{% endhighlight %}
+
+{% highlight text %}
+{% endhighlight %}
+
+{% highlight text %}
+{% endhighlight %}
+

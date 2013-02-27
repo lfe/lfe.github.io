@@ -38,7 +38,7 @@ Books:
 * [Introducing Erlang](http://shop.oreilly.com/product/0636920025818.do)
 * [Paradigms of Artificial Intelligence Programming: Case Studies in Common Lisp](http://norvig.com/paip.html)
 
-## 1.3 Moee About LFE
+## 1.3 More About LFE
 
 ### 1.3.1 What LFE Isn't
 

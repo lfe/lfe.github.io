@@ -7,8 +7,42 @@ total_guides: 4
 
 ## 2.2 Atoms and Strings
 
+### 2.2.1 Atoms
+
+Atoms are a data type in Erlang that is used to represent non-numerical
+constants. In LFE, the typographical limitations of Erlang don't apply, since
+they're always quoted in LFE ;-)
+
+Atoms have a value: the same as their text:
 {% highlight cl %}
+> 'monday
+monday
+>
 {% endhighlight %}
+We saw this in the section on Boolean operators with the atoms of ```true```
+and ```false```. Since there are no Boolean types in Erlang or LFE, the atoms
+```true``` and ```false``` are used instead.
+
+Here are some more examples of atoms:
+{% highlight cl %}
+> 'Tuesday
+Tuesday
+> '_Weds
+_Weds
+> '+
++
+> '*
+*
+> '"and now with spaces"
+"and now with spaces"
+>
+{% endhighlight %}
+
+Though very simple, atoms have a huge impact on our everyday use of Erlang and
+LFE, primarily in the area of pattern matching. Hold that thought, though;
+we're not quite ready for it yet!
+
+### 2.2.2 Strings
 
 {% highlight cl %}
 {% endhighlight %}

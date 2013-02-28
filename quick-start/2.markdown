@@ -110,7 +110,7 @@ assuming that you are in ```lfe/tmp```:
 $ ../bin/lfe -pa ../ebin
 > (slurp '"hello.lfe")
 #(ok hello)
-> (: hello start)
+> (start)
 Lfe says 'Hello, World!'
 ok
 >

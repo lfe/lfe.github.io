@@ -102,10 +102,11 @@ Note that this is the command line equivalent of the following:
 
 ### 2.3 Running Scripts from the REPL
 
-You can also use your new ```hello.lfe``` script in the REPL itself. Again,
-assuming that you are in ```lfe/tmp```:
-
-
+You can also use your new ```hello.lfe``` script in the REPL itself. There are
+two ways you can do this, using ```slurp``` or compiling the file. If you use
+```slurp```, all the functions are pulled into the shell namespace, and you
+won't have to reference the module name.  Again, assuming that you are in
+```lfe/tmp```:
 {% highlight cl %}
 $ ../bin/lfe -pa ../ebin
 > (slurp '"hello.lfe")
@@ -115,6 +116,19 @@ Lfe says 'Hello, World!'
 ok
 >
 {% endhighlight %}
+
+If you choose to compile your module instead, you will use it like so:
+{% highlight cl %}
+$ ../bin/lfe -pa ../ebin
+> (c '"hello")
+#(module hello)
+> (: hello start)
+Lfe says 'Hello, World!'
+ok
+>
+{% endhighlight %}
+
+Note that in the second example, you need to reference the module.
 
 ### 2.4 Getting out of Trouble
 

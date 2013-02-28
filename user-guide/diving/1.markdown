@@ -96,6 +96,8 @@ false
 true
 >
 {% endhighlight %}
+Note the rather awkward different between "less than" and "greater than": it's
+easy to forget that the angle brackets go at different ends for each.
 
 Then there are the operators which also check against type for exact
 (non-)equality: {% highlight cl %}
@@ -112,12 +114,67 @@ true
 
 ### 2.1.4 Boolean Operators
 
+How about some logic?
 {% highlight cl %}
+> (and 'true 'false)
+false
+> (and 'true 'true)
+true
+> (or 'true 'true)
+true
+> (or 'true 'false)
+true
+> (or 'false 'false)
+false
+> (not 'false)
+true
+> (not 'true)
+false
+> (xor 'true 'true)
+false
+> (xor 'false 'false)
+false
+> (xor 'true 'false)
+true
+>
 {% endhighlight %}
 
+There are also two boolean operators that you can use if you want to make a
+decision based on the truth value of the first term without having to compute
+the second term, it not needed:
 {% highlight cl %}
+> (andalso 'false 1)
+false
+> (andalso 'true 1)
+1
+> (orelse 'true 1)
+true
+> (orelse 'false 1)
+1
+>
 {% endhighlight %}
+In the case of ```andalso``` if the first argument is ```false``` the second
+one will not be evaluated; ```false``` will be returned. In the case of
+```orelse``` if the first argument is ```true``` then ```true``` will be
+returned without evaluating the second argument.
 
+Contrast this to regular ```or``` and ```and```:
 {% highlight cl %}
-{% endhighlight %}
+> (and 'false 1)
+exception error: badarg
+  in (: erlang and false 1)
 
+> (and 'true 1)
+exception error: badarg
+  in (: erlang and true 1)
+
+> (or 'false 1)
+exception error: badarg
+  in (: erlang or false 1)
+
+> (or 'true 1)
+exception error: badarg
+  in (: erlang or true 1)
+
+>
+{% endhighlight %}

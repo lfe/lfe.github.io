@@ -182,9 +182,10 @@ exception error: badarg
 ### 2.1.5 Bitwise Operators
 
 As one would expect, Erlang has the usual bitwise operators as well. Binary
-representation is used below for clarity of demonstration:
+representation is used below for clarity of demonstration. Let's define a
+utility function that will save a little typing:
 {% highlight cl %}
-> (set dec2bin (lambda (x) (: erlang integer_to_list x 2)))
+> (set dec-to-bin (lambda (x) (: erlang integer_to_list x 2)))
 #Fun<lfe_eval.10.53503600>
 >
 {% endhighlight %}
@@ -192,19 +193,19 @@ representation is used below for clarity of demonstration:
 With that defined so that we can use it, let's take a look at some of these
 operators:
 {% highlight cl %}
-> (funcall dec2bin (band #b10001 #b1001))
+> (funcall dec-to-bin (band #b10001 #b1001))
 "1"
-> (funcall dec2bin (bor #b10001 #b1001))
+> (funcall dec-to-bin (bor #b10001 #b1001))
 "11001"
-> (funcall dec2bin (bxor #b10001 #b1001))
+> (funcall dec-to-bin (bxor #b10001 #b1001))
 "11000"
-> (funcall dec2bin (bnot #b10001))
+> (funcall dec-to-bin (bnot #b10001))
 "-10010"
-> (funcall dec2bin (bnot (bnot #b10001)))
+> (funcall dec-to-bin (bnot (bnot #b10001)))
 "10001"
-> (funcall dec2bin (bsl #b10001 1))
+> (funcall dec-to-bin (bsl #b10001 1))
 "100010"
-> (funcall dec2bin (bsr #b10001 1))
+> (funcall dec-to-bin (bsr #b10001 1))
 "1000"
 >
 {% endhighlight %}

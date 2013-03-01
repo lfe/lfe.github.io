@@ -33,8 +33,8 @@ _Weds
 +
 > '*
 *
-> '"and now with spaces"
-"and now with spaces"
+> '|and now with spaces|
+|and now with spaces|
 >
 {% endhighlight %}
 
@@ -42,9 +42,19 @@ Though very simple, atoms have a huge impact on our everyday use of Erlang and
 LFE, primarily in the area of pattern matching. Hold that thought, though;
 we're not quite ready for it yet!
 
+Furthermore, atoms are stored differently in Erlang than strings. They take up
+less space and are more efficient to compare than strings.
+
 ### 2.2.2 Strings
 
+Now we come to the oddball of Erlang: the string. In truth, there is no such
+thing. Strings in Erlang are just lists of integers:
 {% highlight cl %}
+> '"hello"
+"hello"
+> (list 104 101 108 108 111)
+"hello"
+>
 {% endhighlight %}
 
 {% highlight cl %}

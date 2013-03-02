@@ -5,4 +5,57 @@ total_guides: 4
 ---
 # 3 Lists and Simple Data
 
-## 3.1 Tupels and Lists
+## 3.1 Tuples and Lists
+
+### 3.1.1 Tuples
+
+Tuples are the data melting pot for Erlang: you can combine any of Erlang's
+data types (including lists and other tuples) into a single composite data
+type. This comes in very handy with pattern matching, but in general, makes
+passing data around much easier.
+
+Here's a simple data structure:
+{% highlight cl %}
+> (set data
+    (tuple '|things to see|
+      (list '"moons of Jaglan Beta"
+            '"beaches of Santraginus V"
+            '"desert world of Kakrafoon"
+            '"heavy river Moth")))
+#(|things to see|
+  ("moons of Jaglan Beta"
+   "beaches of Santraginus V"
+   "desert world of Kakrafoon"
+   "heavy river Moth"))
+>
+{% endhighlight %}
+
+Now let's poke around at our new data structure:
+{% highlight cl %}
+> (: erlang tuple_size data)
+2
+> (: erlang element 1 data)
+|things to see|
+> (: erlang element 2 data)
+("moons of Jaglan Beta"
+ "beaches of Santraginus V"
+ "desert world of Kakrafoon"
+ "heavy river Moth")
+>
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+

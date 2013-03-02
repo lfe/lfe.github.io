@@ -57,23 +57,7 @@ thing. Strings in Erlang are just lists of integers:
 >
 {% endhighlight %}
 
-{% highlight cl %}
-{% endhighlight %}
-
-{% highlight cl %}
-{% endhighlight %}
-
-{% highlight cl %}
-{% endhighlight %}
-
-{% highlight cl %}
-{% endhighlight %}
-
-{% highlight cl %}
-{% endhighlight %}
-
-{% highlight cl %}
-{% endhighlight %}
-
-{% highlight cl %}
-{% endhighlight %}
+Because Erlang (and thus LFE) strings consume 8 bytes per character on 32-bit
+systems and 16 bytes on 64-bit systems, they are not very efficient. As such,
+if you need to work with long strings in LFE, you probably want to use
+```(binary ...)```, but that's in the next section :-)

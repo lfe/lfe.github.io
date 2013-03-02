@@ -7,6 +7,8 @@ total_guides: 4
 
 ## 2.3 Binary and Bitstrings
 
+### 2.3.1 Lists and ```binary```
+
 A full discussion of the binary type is a huge topic that probably deserves one
 or more dedicated tutorials, especially given the close connection with pattern
 matching and the efficient parsing of binary data. However, for now, we're just
@@ -34,6 +36,8 @@ easily:
 #B(84 104 101 114 101 39 115 32 97 32 102 114 111 111 100 32 119 104 111 ...)
 {% endhighlight %}
 
+### 2.3.2 Binary Functions in OTP
+
 Let's convert it back to a list using a function from the Erlang stdlib
 ```binary``` module:
 {% highlight cl %}
@@ -41,48 +45,61 @@ Let's convert it back to a list using a function from the Erlang stdlib
 "There's a frood who really knows where his towel is."
 {% endhighlight %}
 
-{% highlight cl %}
+Note that the LFE ```binary``` function is quite different than the call to the
+```binary``` module in the Erlang stdlib! The ```binary``` module has all sorts
+of nifty functions we can use (check out the
+<a href="http://www.erlang.org/doc/man/binary.html">docs</a>). Here's an
+example of splitting our data: {% highlight cl %}
+> (: binary split data (binary " who really knows "))
+(#B(84 104 101 114 101 39 115 32 97 32 102 114 111 111 100)
+ #B(119 104 101 114 101 32 104 105 115 32 116 111 119 101 108 32 105 115 46))
 {% endhighlight %}
 
+The ```split``` gives us two pieces; here's how we can get the new string from
+that ```split```:
 {% highlight cl %}
+(: binary bin_to_list
+  (: erlang iolist_to_binary
+    (: binary split data (binary "who really knows "))))
 {% endhighlight %}
 
+### 2.3.3 Bit-Packing (and Unpacking)
+
+For this section, let's use the 16-bit color example that is given in Joe
+Armstrong's Erlang book where 5 bits are allocated for the red channel, 6 for
+the green and 5 for the blue. In LFE, we can create a 16-bit memory area like
+so:
 {% highlight cl %}
+> (set red 2)
+2
+> (set green 61)
+61
+> (set blue 20)
+20
+> (binary
+  (red (size 5))
+  (green (size 6))
+  (blue (size > 5)))
+#B(23 180)
+>
 {% endhighlight %}
 
-{% highlight cl %}
-{% endhighlight %}
+All packed and ready!
 
+We can use patterns to unpack binary data in a ```let``` expression into the
+variables ```r```, ```g```, and ```b```, printing out the results within the
+```let```:
 {% highlight cl %}
-{% endhighlight %}
+> (let (((binary (r (size 5)) (g (size 6)) (b (size 5))) #b(23 180)))
+       (: io format '"~p ~p ~p~n" (list r g b)))
+2 61 20
+ok
+>
 
-{% highlight cl %}
-{% endhighlight %}
+### 2.3.4 So What's a Bitstring?
 
-{% highlight cl %}
-{% endhighlight %}
-
-{% highlight cl %}
-{% endhighlight %}
-
-{% highlight cl %}
-{% endhighlight %}
-
-{% highlight cl %}
-{% endhighlight %}
-
-{% highlight cl %}
-{% endhighlight %}
-
-{% highlight cl %}
-{% endhighlight %}
-
-{% highlight cl %}
-{% endhighlight %}
-
-{% highlight cl %}
-{% endhighlight %}
-
-{% highlight cl %}
-{% endhighlight %}
-
+We've been looking at binaries in LFE, but what's a bitstring? The
+<a href="http://www.erlang.org/doc/programming_examples/bit_syntax.html">Erlang docs</a>
+say it well: A bitstring is a sequence of zero or more bits, where the number
+of bits doesn't need to be divisible by 8. If the number of bits is divisible
+by 8, the bitstring is also a binary.

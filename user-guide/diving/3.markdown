@@ -95,6 +95,7 @@ variables ```r```, ```g```, and ```b```, printing out the results within the
 2 61 20
 ok
 >
+{% endhighlight %}
 
 ### 2.3.4 So What's a Bitstring?
 

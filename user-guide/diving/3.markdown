@@ -65,6 +65,10 @@ that ```split```:
 >
 {% endhighlight %}
 
+```iolist_to_binary``` combined the two binaries in the list to a single binary
+and then ```bin_to_list``` converted the binary back to a list (string) giving
+us the new string that we created by splitting on ```"who really knows "```.
+
 ### 2.3.3 Bit-Packing (and Unpacking)
 
 For this section, let's use the 16-bit color example that is given in Joe

@@ -82,13 +82,13 @@ it), the following hold:
 The intent of this guide is to follow the same general pattern that the best
 Erlang books do, covering the following (mostly in this order):
 
-**Diving In** (started)
+**Diving In**
 * Operators and numbers
 * Atoms and strings
 * Working with the shell/REPL
 * Binary data and bitstrings
 
-**Lists and Data** (stubbed)
+**Lists and Data** (started)
 * Tuples and Lists
 * List and binary comprehensions
 * Records

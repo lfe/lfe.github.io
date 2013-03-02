@@ -7,13 +7,64 @@ total_guides: 4
 
 ## 2.3 Binary and Bitstrings
 
-The binary type is a huge topic that probably deserves one or more dedicated
-tutorials, especially given the close connection with pattern matching and the
-efficient parsing of binary data.  However, for now, we're just going to look
-at working with strings as binary data.
+A full discussion of the binary type is a huge topic that probably deserves one
+or more dedicated tutorials, especially given the close connection with pattern
+matching and the efficient parsing of binary data. However, for now, we're just
+going to look at one particular area: working with strings as binary data.
 
 In the previous section, we had mentioned using ```(binary ...)``` to more
-efficiently represent large strings 
+efficiently represent large strings. Here's an example (pretending, for now,
+that our example is using a very large string ;-)):
+{% highlight cl %}
+> (binary "There's a frood who really knows where his towel is.")
+#B(84 104 101 114 101 39 115 32 97 32 102 114 111 111 100 32 119 104 111 ...)
+{% endhighlight %}
+
+Or you could use the Erlang function, if you wanted:
+{% highlight cl %}
+> (: erlang list_to_binary '"There's a frood who really knows...")
+#B(84 104 101 114 101 39 115 32 97 32 102 114 111 111 100 32 119 104 111 ...)
+101 97 108 108 121 32 107 110 111 ...)
+{% endhighlight %}
+
+Let's set a variable with this value in the shell, so we can work with it more
+easily:
+{% highlight cl %}
+(set data (binary "There's a frood who really knows where his towel is."))
+#B(84 104 101 114 101 39 115 32 97 32 102 114 111 111 100 32 119 104 111 ...)
+{% endhighlight %}
+
+Let's convert it back to a list using a function from the Erlang stdlib
+```binary``` module:
+{% highlight cl %}
+> (: binary bin_to_list data)
+"There's a frood who really knows where his towel is."
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
 {% highlight cl %}
 {% endhighlight %}
 

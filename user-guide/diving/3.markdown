@@ -58,9 +58,11 @@ example of splitting our data: {% highlight cl %}
 The ```split``` gives us two pieces; here's how we can get the new string from
 that ```split```:
 {% highlight cl %}
-(: binary bin_to_list
-  (: erlang iolist_to_binary
-    (: binary split data (binary "who really knows "))))
+> (: binary bin_to_list
+    (: erlang iolist_to_binary
+      (: binary split data (binary "who really knows "))))
+"There's a frood where his towel is."
+>
 {% endhighlight %}
 
 ### 2.3.3 Bit-Packing (and Unpacking)
@@ -77,9 +79,9 @@ so:
 > (set blue 20)
 20
 > (binary
-  (red (size 5))
-  (green (size 6))
-  (blue (size > 5)))
+    (red (size 5))
+    (green (size 6))
+    (blue (size > 5)))
 #B(23 180)
 >
 {% endhighlight %}
@@ -90,12 +92,16 @@ We can use patterns to unpack binary data in a ```let``` expression into the
 variables ```r```, ```g```, and ```b```, printing out the results within the
 ```let```:
 {% highlight cl %}
-> (let (((binary (r (size 5)) (g (size 6)) (b (size 5))) #b(23 180)))
+> (let (((binary (r (size 5)) (g (size 6)) (b (size 5)))
+         #b(23 180)))
        (: io format '"~p ~p ~p~n" (list r g b)))
 2 61 20
 ok
 >
 {% endhighlight %}
+
+We're getting a little ahead of ourselves here, by throwing a pattern in the
+mix, but it's a good enough example to risk it :-)
 
 ### 2.3.4 So What's a Bitstring?
 

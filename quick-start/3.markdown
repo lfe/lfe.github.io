@@ -34,9 +34,10 @@ example of what this looks like in LFE:
 
 {% highlight cl %}
 (defun print-result ()
-  (receive (msg
-    (: io format '"Received message: '~s'~n" (list msg))
-    (print-result))))
+  (receive
+    (msg
+      (: io format '"Received message: '~s'~n" (list msg))
+      (print-result))))
 {% endhighlight %}
 
 If that was saved in a module called ```messenger```, then one could utilize it

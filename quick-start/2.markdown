@@ -83,6 +83,10 @@ Then, in that directory, let's create the following file and save it as
 
 To compile that script and then run it, we can do this:
 
+    $ ../bin/lfec hello.lfe
+
+Or, if we want to use Erlang directly, we could do this:
+
     $ erl -pa ../ebin -s lfe_comp file hello -s erlang halt
     $ erl -pa ../ebin -s hello start -s erlang halt
 

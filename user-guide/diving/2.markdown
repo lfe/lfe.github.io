@@ -15,8 +15,8 @@ they're always quoted in LFE ;-)
 
 Atoms have a value: the same as their text:
 {% highlight cl %}
-> 'monday
-monday
+> 'strag
+strag
 >
 {% endhighlight %}
 We saw this in the section on Boolean operators with the atoms of ```true```
@@ -25,16 +25,16 @@ and ```false```. Since there are no Boolean types in Erlang or LFE, the atoms
 
 Here are some more examples of atoms:
 {% highlight cl %}
-> 'Tuesday
-Tuesday
-> '_Weds
-_Weds
+> 'Vogon
+Vogon
+> '_Gargle_Blaster
+_Gargle_Blaster
 > '+
 +
 > '*
 *
-> '|and now with spaces|
-|and now with spaces|
+> '|and now with hyperspace bypasses|
+|and now with hyperspace bypasses|
 >
 {% endhighlight %}
 
@@ -50,10 +50,10 @@ less space and are more efficient to compare than strings.
 Now we come to the oddball of Erlang: the string. In truth, there is no such
 thing. Strings in Erlang are just lists of integers:
 {% highlight cl %}
-> '"hello"
-"hello"
-> (list 104 101 108 108 111)
-"hello"
+> '"Don't Panic."
+"Don't Panic."
+> (list 68 111 110 39 116 32 80 97 110 105 99 46)
+"Don't Panic."
 >
 {% endhighlight %}
 

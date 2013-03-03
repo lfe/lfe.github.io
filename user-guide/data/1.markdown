@@ -88,7 +88,7 @@ Not let's try out ```filter``` with our new predicate:
 >
 {% endhighlight %}
 
-There are many, many more highly useful functions in the ```list``` module --
+There are many, many more highly useful functions in the ```lists``` module --
 be sure to give the docs a thorough reading, lest you miss something fun!
 
 ## 3.2 Tuples

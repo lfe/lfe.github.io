@@ -85,7 +85,7 @@ so:
 > (binary
     (red (size 5))
     (green (size 6))
-    (blue (size > 5)))
+    (blue (size 5)))
 #B(23 180)
 >
 {% endhighlight %}

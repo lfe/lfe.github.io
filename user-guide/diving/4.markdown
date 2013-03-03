@@ -13,9 +13,9 @@ Variables in LFE don't have the same syntactical limitations that vanilla
 Erlang has. Let's take a look at some examples in the REPL:
 
 {% highlight cl %}
-> (set * '"Mostly Harmless")
+> (set &$% '"Mostly Harmless")
 "Mostly Harmless"
-> *
+> &$%
 "Mostly Harmless"
 {% endhighlight %}
 Your variable does *not* have to start with a capital letter and not only can

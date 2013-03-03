@@ -144,7 +144,8 @@ true
 
 There are also two boolean operators that you can use if you want to make a
 decision based on the truth value of the first term without having to compute
-the second term, it not needed:
+the second term (useful if you have no need to do the second computation when
+the first term is false):
 {% highlight cl %}
 > (andalso 'false 1)
 false

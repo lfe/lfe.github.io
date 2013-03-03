@@ -632,14 +632,8 @@ code {
   font-family: Monaco, Bitstream Vera Sans Mono, Lucida Console, Terminal;
   color: #efefef;
   font-size: 13px;
-  margin: 0 4px;
+  margin: 0;
   padding: 0;
-  -moz-border-radius: 2px;
-  -webkit-border-radius: 2px;
-  -o-border-radius: 2px;
-  -ms-border-radius: 2px;
-  -khtml-border-radius: 2px;
-  border-radius: 2px;
 }
 
 pre {

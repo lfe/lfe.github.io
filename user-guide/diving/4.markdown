@@ -61,11 +61,13 @@ Unlike Erlang, the LFE REPL doesn't have the ```b()``` and ```f()``` functions
 Unlike Lisp, LFE doesn't support global variables, so (unless you create some
 dirty hacks!) you won't be doing things like this in your modules:
 {% highlight cl %}
-(setf *sneaky-global-data* ...)
-(setq *side-effect-special* ...)
+(defvar *sneaky-global-data* ...)
+(defparameter *side-effect-special* ...)
+(defconstant +my-constant+ ...)
 {% endhighlight %}
 
-(Not to mention that LFE doesn't even *define* ```setf``` or ```setq```.)
+(Not to mention that LFE doesn't even *define* ```defvar```,
+```defparameter```, or ```defconstant```.)
 
 As such, you shouldn't run into variables that are defined at the module-level,
 only inside actual functions.
@@ -75,13 +77,20 @@ only inside actual functions.
 There are *all sorts* of ways one might set a variable in an LFE function. The
 snippets below illustrate some of these.
 {% highlight cl %}
-> (let ((x 2) (y 3)) (list x y (* x y)))
+> (let ((x 2)
+        (y 3))
+    (list x y (* x y)))
 (2 3 6)
 >
 {% endhighlight %}
 
 
 {% highlight cl %}
+> (let* ((x 2)
+         (y 3)
+         (z (* x y)))
+    (list x y z))
+(2 3 6)
 {% endhighlight %}
 
 {% highlight cl %}

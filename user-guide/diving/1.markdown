@@ -34,9 +34,12 @@ bases:
 42
 >
 {% endhighlight %}
+LFE supports representing binary (```#b```), octal (```#o```), decimal
+(```#d```), hexidecimal (```#x```), as well as aribtrary bases from 1 through
+36 (```#XrY```).
 
-With some help from calling an Erlang function, we can work this in reverse,
-too:
+With some help from calling an Erlang function, we can work the bases in
+reverse, too:
 {% highlight cl %}
 > (: erlang integer_to_list 123 2)
 "1111011"

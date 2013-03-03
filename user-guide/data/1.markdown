@@ -5,9 +5,91 @@ total_guides: 4
 ---
 # 3 Lists and Simple Data
 
-## 3.1 Tuples and Lists
+## 3.1 Lists
 
-### 3.1.1 Tuples
+Lists in Erlang and LFE are straight-forward; those coming from another
+programming language will not find anything surprising about them. Lists are
+generally good for storing and iterating over data that is of a similar type.
+There are other types one can use for more structured or complex data type
+combos.
+
+You can create lists in LFE in the following ways:
+{% highlight cl %}
+> (list 1 3 9 27)
+(1 3 9 27)
+> '(1 3 9 27)
+(1 3 9 27)
+> (== '(1 3 9 27) (list 1 3 9 27))
+true
+> (=:= '(1 3 9 27) (list 1 3 9 27))
+true
+>
+{% endhighlight %}
+
+Later, we will discuss Lisp-specific functions that have been implemented in
+LFE, but this is a good time to mention a few classic functions:
+{% highlight cl %}
+> (car '(1 2 3 4 5 6))
+1
+> (cdr '(1 2 3 4 5 6))
+(2 3 4 5 6)
+> (cadr '(1 2 3 4 5 6))
+2
+> (cddr '(1 2 3 4 5 6))
+(3 4 5 6)
+> (cons '(1 2 3) '(4 5 6))
+((1 2 3) 4 5 6)
+>
+{% endhighlight %}
+
+There is an Erlang <a href="http://www.erlang.org/doc/man/lists.html">module
+dedicated to handling lists</a> that we can take advantage of:
+{% highlight cl %}
+> (: lists append '(1 2) '(3 4))
+(1 2 3 4)
+> (: lists append (list '(1 2) '(3 4) '(5 6)))
+(1 2 3 4 5 6)
+>
+{% endhighlight %}
+
+You can also use the ```++``` operator to combine two lists:
+{% highlight cl %}
+> (++ '(1 2 3) '(4 5 6))
+(1 2 3 4 5 6)
+>
+{% endhighlight %}
+
+Here's a ```map``` example that generates the same list we manually created
+above:
+{% highlight cl %}
+> (: lists map
+    (lambda (x)
+      (trunc
+        (: math pow 3 x)))
+    '(0 1 2 3))
+(1 3 9 27)
+>
+{% endhighlight %}
+
+Another one is ```filter```, but before we use it, let's first define a
+predicate that returns ```true``` for even numbers:
+{% highlight cl %}
+> (set evenp (lambda (x) (== 0 (rem x 2))))
+#Fun<lfe_eval.10.53503600>
+>
+{% endhighlight %}
+
+Not let's try out ```filter``` with our new predicate:
+{% highlight cl %}
+> (: lists filter evenp '(1 2 3 4 5 6))
+(2 4 6)
+>
+{% endhighlight %}
+
+There are many, many more highly useful functions in the ```list``` module --
+be sure to give the docs a thorough reading, lest you miss something fun!
+
+## 3.2 Tuples
 
 Tuples are the data melting pot for Erlang: you can combine any of Erlang's
 data types (including lists and other tuples) into a single composite data
@@ -23,6 +105,12 @@ Creating a tuple can be as simple as:
 But perhaps more useful:
 {% highlight cl %}
 > (tuple 'odds '"5 to 1 against")
+#(odds "5 to 1 against")
+{% endhighlight %}
+
+You could also have done this:
+{% highlight cl %}
+> #(odds "5 to 1 against")
 #(odds "5 to 1 against")
 {% endhighlight %}
 
@@ -67,9 +155,3 @@ Now let's poke around at our new data structure:
 
 {% highlight cl %}
 {% endhighlight %}
-
-### 3.1.2 Lists
-
-{% highlight cl %}
-{% endhighlight %}
-

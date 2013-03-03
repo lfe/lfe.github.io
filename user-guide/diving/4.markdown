@@ -6,3 +6,72 @@ total_guides: 4
 # 2 Diving In
 
 ## 2.4 Variables
+
+### 2.4.1 Variables in the REPL
+
+Variables in LFE don't have the same syntactical limitations that vanilla
+Erlang has. Let's take a look at some examples in the REPL:
+
+{% highlight cl %}
+> (set * '"Mostly Harmless")
+"Mostly Harmless"
+> *
+"Mostly Harmless"
+{% endhighlight %}
+Your variable does **not** have to start with a capital letter and not only can
+it contain special characters, it can **entirely consist** of them! We don't
+recommend this, however ;-)
+
+Furthermore, LFE also does not share with Erlang the characteristic of not
+being able to change a variable once you've set it's value. In the REPL you can
+do this without issue:
+{% highlight cl %}
+> (set phrase '"Don't Panic")
+"Don't Panic"
+> phrase
+"Don't Panic"
+> (set phrase '"Mostly Harmless")
+"Mostly Harmless"
+> phrase
+"Mostly Harmless"
+>
+{% endhighlight %}
+
+In previous sections we've set variables and worked with those variables in the
+REPL (saving us some typing), so this should all seem a bit familiar.
+
+This should be fairly intuitive:
+{% highlight cl %}
+> (set the-answer 42)
+42
+> (* the-answer 2)
+84
+> (* the-answer the-answer)
+1764
+> (* the-answer the-answer the-answer)
+74088
+> 
+{% endhighlight %}
+
+### 2.4.2 Variables in LFE Modules
+
+Unlike Lisp, LFE doesn't support global variables, so (unless you create some
+dirty hacks!) you won't be doing things like this in your modules:
+{% highlight cl %}
+(setf *sneaky-global-data* ...)
+(setq *side-effect-special* ...)
+{% endhighlight %}
+
+(Not to mention that LFE doesn't even *define* ```setf``` or setq```.)
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+
+

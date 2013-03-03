@@ -74,7 +74,9 @@ above:
 Another one is ```filter```, but before we use it, let's first define a
 predicate that returns ```true``` for even numbers:
 {% highlight cl %}
-> (set evenp (lambda (x) (== 0 (rem x 2))))
+> (set evenp
+    (lambda (x)
+      (== 0 (rem x 2))))
 #Fun<lfe_eval.10.53503600>
 >
 {% endhighlight %}

@@ -14,6 +14,18 @@ data types (including lists and other tuples) into a single composite data
 type. This comes in very handy with pattern matching, but in general, makes
 passing data around much easier.
 
+Creating a tuple can be as simple as:
+{% highlight cl %}
+> (tuple)
+#()
+{% endhighlight %}
+
+But perhaps more useful:
+{% highlight cl %}
+> (tuple 'odds '"5 to 1 against")
+#(odds "5 to 1 against")
+{% endhighlight %}
+
 Here's a simple data structure:
 {% highlight cl %}
 > (set data
@@ -55,6 +67,8 @@ Now let's poke around at our new data structure:
 
 {% highlight cl %}
 {% endhighlight %}
+
+### 3.1.2 Lists
 
 {% highlight cl %}
 {% endhighlight %}

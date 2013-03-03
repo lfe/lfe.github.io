@@ -18,8 +18,8 @@ Erlang has. Let's take a look at some examples in the REPL:
 > *
 "Mostly Harmless"
 {% endhighlight %}
-Your variable does **not** have to start with a capital letter and not only can
-it contain special characters, it can **entirely consist** of them! We don't
+Your variable does *not* have to start with a capital letter and not only can
+it contain special characters, it can *entirely consist* of them! We don't
 recommend this, however ;-)
 
 Furthermore, LFE also does not share with Erlang the characteristic of not
@@ -40,7 +40,7 @@ do this without issue:
 In previous sections we've set variables and worked with those variables in the
 REPL (saving us some typing), so this should all seem a bit familiar.
 
-This should be fairly intuitive:
+As such, this should be fairly intuitive clear at this point:
 {% highlight cl %}
 > (set the-answer 42)
 42
@@ -50,7 +50,7 @@ This should be fairly intuitive:
 1764
 > (* the-answer the-answer the-answer)
 74088
-> 
+>
 {% endhighlight %}
 
 ### 2.4.2 Variables in LFE Modules
@@ -62,7 +62,7 @@ dirty hacks!) you won't be doing things like this in your modules:
 (setq *side-effect-special* ...)
 {% endhighlight %}
 
-(Not to mention that LFE doesn't even *define* ```setf``` or setq```.)
+(Not to mention that LFE doesn't even *define* ```setf``` or ```setq```.)
 
 {% highlight cl %}
 {% endhighlight %}

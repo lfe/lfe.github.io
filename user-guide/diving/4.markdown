@@ -53,6 +53,9 @@ As such, this should be fairly intuitive clear at this point:
 >
 {% endhighlight %}
 
+Unlike Erlang, the LFE REPL doesn't have the ```b()``` and ```f()``` functions
+("show bound variables" and "flush bound variables" respectively).
+
 ### 2.4.2 Variables in LFE Modules
 
 Unlike Lisp, LFE doesn't support global variables, so (unless you create some
@@ -64,6 +67,20 @@ dirty hacks!) you won't be doing things like this in your modules:
 
 (Not to mention that LFE doesn't even *define* ```setf``` or ```setq```.)
 
+As such, you shouldn't run into variables that are defined at the module-level,
+only inside actual functions.
+
+### 2.4.2 Variables in Functions
+
+There are *all sorts* of ways one might set a variable in an LFE function. The
+snippets below illustrate some of these.
+{% highlight cl %}
+> (let ((x 2) (y 3)) (list x y (* x y)))
+(2 3 6)
+>
+{% endhighlight %}
+
+
 {% highlight cl %}
 {% endhighlight %}
 
@@ -73,5 +90,18 @@ dirty hacks!) you won't be doing things like this in your modules:
 {% highlight cl %}
 {% endhighlight %}
 
+{% highlight cl %}
+{% endhighlight %}
 
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
 

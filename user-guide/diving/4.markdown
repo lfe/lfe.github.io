@@ -75,7 +75,8 @@ only inside actual functions.
 ### 2.4.2 Variables in Functions
 
 There are *all sorts* of ways one might set a variable in an LFE function. The
-snippets below illustrate some of these.
+snippets below illustrate some of these, though for demonstration purposes,
+they are executed in the REPL.
 {% highlight cl %}
 > (let ((x 2)
         (y 3))
@@ -83,7 +84,8 @@ snippets below illustrate some of these.
 (2 3 6)
 >
 {% endhighlight %}
-
+Above we set two variables, and then withing the scope of the ```let``` with
+display some values, one of which is computed from the variables.
 
 {% highlight cl %}
 > (let* ((x 2)
@@ -91,26 +93,21 @@ snippets below illustrate some of these.
          (z (* x y)))
     (list x y z))
 (2 3 6)
+>
 {% endhighlight %}
+In this example, we make use of ```let*```'s ability to use defined variables
+in subsequent variables assignments. Tying this with regular ```let``` will
+result in an error.
 
 {% highlight cl %}
+> (let (((tuple name place age) #("Ford Prefect" "Betelgeuse Seven" 234)))
+    (list name place age))
+("Ford Prefect" "Betelgeuse Seven" 234)
+>
 {% endhighlight %}
+Here is an example of multiple-binding in LFE. We haven't covered patterns yet,
+but we will -- and this example is making use of patterns to assign data from
+the given record to the variables in the ```tuple```.
 
-{% highlight cl %}
-{% endhighlight %}
-
-{% highlight cl %}
-{% endhighlight %}
-
-{% highlight cl %}
-{% endhighlight %}
-
-{% highlight cl %}
-{% endhighlight %}
-
-{% highlight cl %}
-{% endhighlight %}
-
-{% highlight cl %}
-{% endhighlight %}
-
+Patterns may be used in several different LFE forms, each of which may do some
+varaible binding.

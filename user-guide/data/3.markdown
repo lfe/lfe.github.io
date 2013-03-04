@@ -6,3 +6,100 @@ total_guides: 5
 # 3 Lists and Simple Data
 
 ## 3.3 Hashes
+
+There is no builtin "dictionary" or "hash" type in Erlang. However, there are
+some libraries that support data structures like these. There is also a concept
+of "records" which we will discuss in another section.
+
+### 3.3.1 The Dictionary
+
+The Erlang ```dict``` module implements a key/value dictionary part of which is
+an additional ```dict``` data type which supplements the built-in Erlang data
+types.
+
+Here's how you create a new ```dict```:
+{% highlight cl %}
+> (set my-dict (: dict new))
+#(dict
+  0
+  16
+  16
+  8
+  80
+  48
+  #(() () () () () () () () () () () () () () () ())
+  #(#(() () () () () () () () () () () () () () () ())))
+>
+{% endhighlight %}
+
+Let's check that there's no actual data in it:
+{% highlight cl %}
+> (: dict size my-dict)
+0
+{% endhighlight %}
+
+Now let's add some!
+{% highlight cl %}
+> (set my-dict (: dict append '|to see| '"moons of Jaglan Beta" my-dict))
+#(dict ...
+> (set my-dict (: dict append '|to avoid| '"small piece of fairy cake" my-dict))
+#(dict ...
+>
+{% endhighlight %}
+
+As you might guess from the usage, ```dict```s are not updated in-place. A new
+dictionary is returned with each call to ```append```. As such, we need to
+re```set``` with each append.
+Is everything there?
+{% highlight cl %}
+> (: dict size my-dict)
+2
+>
+{% endhighlight %}
+Yes!
+
+Now let's get some data out:
+{% highlight cl %}
+> (: dict fetch '|to avoid| my-dict)
+("small piece of fairy cake")
+>
+{% endhighlight %}
+
+Why the is the function called "append"? Well, ```dict``` accepts multiple
+values for keys. Take a look:
+{% highlight cl %}
+> (set my-dict (: dict append '|to see| '"beaches of Santraginus V" my-dict))
+> (: dict fetch '|to see| my-dict)
+("moons of Jaglan Beta" "beaches of Santraginus V")
+> (: erlang length (: dict fetch '|to see| my-dict))
+2
+> (: dict size my-dict)
+2
+>
+{% endhighlight %}
+
+The size of the ```my-dict``` didn't change because we didn't add a new key;
+rather, we updated an existing one, appending a new value. The ```|to see|```
+key now has two values in it.
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+

@@ -56,9 +56,9 @@ Is everything there?
 2
 >
 {% endhighlight %}
-Yes!
 
-Now let's get some data out:
+Looking good so far...  Now let's get some data out:
+
 {% highlight cl %}
 > (: dict fetch '|to avoid| my-dict)
 ("small piece of fairy cake")
@@ -66,9 +66,10 @@ Now let's get some data out:
 {% endhighlight %}
 
 Why the is the function called "append"? Well, ```dict``` accepts multiple
-values for keys. Take a look:
+values for keys. Let's try this out, and then re-query our ```dict```:
 {% highlight cl %}
 > (set my-dict (: dict append '|to see| '"beaches of Santraginus V" my-dict))
+#(dict ...
 > (: dict fetch '|to see| my-dict)
 ("moons of Jaglan Beta" "beaches of Santraginus V")
 > (: erlang length (: dict fetch '|to see| my-dict))

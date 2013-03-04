@@ -24,7 +24,7 @@ aren't adepts at functional programming. This is a well-known pattern. Erlang
 offers another pattern, though: comprehensions.
 
 LFE supports Erlang comprehensions via two macros: ```lc``` for list
-comprehensions and ```bc``` for binary comprehensions.
+comprehensions and ```bc``` for bitstring comprehensions.
 
 ### 3.2.1 List Comprehensions
 
@@ -33,7 +33,8 @@ comprehension version of our ```map```/```lambda``` combo above:
 {% highlight cl %}
 > (lc
     ((<- x '(0 1 2 3)))
-    (trunc (: math pow 3 x)))
+    (trunc
+      (: math pow 3 x)))
 (1 3 9 27)
 >
 {% endhighlight %}
@@ -45,23 +46,54 @@ In Erlang, this would have looked like the following:
 2>
 {% endhighlight %}
 
+As we can see, the LFE syntax is not as concise as the native Erlang syntax,
+though it is pretty close. Our original example is 62 characters long; the LFE
+list comprehension is 49 characters long; the Erlang version is 41 characters.
 
+To a Lisper, the original is probably much more legible. However, in Erlang
+these is no question that the list comprehensions are shorter and easier to
+read than using anonymous functions.
+
+### 3.2.1 Bitstring Comprehensions
+
+For binary data, we have something similar to the list comprehension. Here's
+what a bitstring comprehension looks like (adapted from the example given by
+Francesco Cesarini and Simon Thompson in their book, "Erlang Programming":
 {% highlight cl %}
+> (bc
+    ((<= (x (size 1)) (binary (42 (size 6)))))
+    ((bnot x) (size 1)))
+#B((21 (size 6)))
+>
+{% endhighlight %}
+
+Note that the bitstring comprehension uses the ```<=``` operator (not to be
+confused with the ```=<``` equality operator!) instead of the ```<-``` that
+list comprehensions use.
+
+Here's the Erlang version:
+{% highlight cl %}
+2> << <<bnot(X):1>> || <<X:1>> <= <<42:6>> >>.
+<<21:6>>
+3>
+{% endhighlight %}
+
+As we might expect, the native Erlang versiosn is much more concise.
+Fortunately, though, in LFE we don't need to enter the whole binary form, just
+the bit syntax portion. In other words, instead of writing this:
+{% highlight cl %}
+(binary (x (size 1)))
+{% endhighlight %}
+and this:
+{% highlight cl %}
+(binar ((bnot x) (size 1)))
+{% endhighlight %}
+
+we only had to write this:
+{% highlight cl %}
+(x (size 1))
 {% endhighlight %}
 
 {% highlight cl %}
-{% endhighlight %}
-
-{% highlight cl %}
-{% endhighlight %}
-
-{% highlight cl %}
-{% endhighlight %}
-
-### 3.2.1 Binary Comprehensions
-
-{% highlight cl %}
-{% endhighlight %}
-
-{% highlight cl %}
+((bnot x) (size 1))
 {% endhighlight %}

@@ -26,6 +26,13 @@ true
 >
 {% endhighlight %}
 
+To get the length of a list, you'll need to use the ```length``` function from
+the ```erlang``` module:
+{% highlight cl %}
+> (: erlang length '(1 2 3 4 5 6 7))
+7
+{% endhighlight %}
+
 Later, we will discuss Lisp-specific functions that have been implemented in
 LFE, but this is a good time to mention a few classic functions:
 {% highlight cl %}

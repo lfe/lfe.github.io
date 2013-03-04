@@ -133,18 +133,21 @@ Creating a tuple can be as simple as:
 {% highlight cl %}
 > (tuple)
 #()
+>
 {% endhighlight %}
 
 But perhaps more useful:
 {% highlight cl %}
 > (tuple 'odds '"5 to 1 against")
 #(odds "5 to 1 against")
+>
 {% endhighlight %}
 
 You could also have done this:
 {% highlight cl %}
 > #(odds "5 to 1 against")
 #(odds "5 to 1 against")
+>
 {% endhighlight %}
 
 Here's a simple data structure:
@@ -196,7 +199,11 @@ patterns. Take a look:
    "heavy river Moth")
   |things to avoid|
   ("Ravenous Bugblatter Beast of Traal" "small piece of fairy cake"))
+>
 {% endhighlight %}
+
+To be clear: had we needed to do this in a function, we would have used
+```let``` ;-)
 
 Now we can references our data by the variables we bound when we extracted it
 with the pattern in our ```set``` call:
@@ -212,7 +219,5 @@ with the pattern in our ```set``` call:
  "heavy river Moth")
 > val2
 ("Ravenous Bugblatter Beast of Traal" "small piece of fairy cake")
+>
 {% endhighlight %}
-
-To be clear, had we needed to do this in a function, we would have used
-```let``` ;-)

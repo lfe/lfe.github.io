@@ -150,41 +150,69 @@ You could also have done this:
 Here's a simple data structure:
 {% highlight cl %}
 > (set data
-    (tuple '|things to see|
+    (tuple
+      '|things to see|
       (list '"moons of Jaglan Beta"
             '"beaches of Santraginus V"
             '"desert world of Kakrafoon"
-            '"heavy river Moth")))
+            '"heavy river Moth")
+      '|things to avoid|
+      (list '"Ravenous Bugblatter Beast of Traal"
+            '"small piece of fairy cake")))
 #(|things to see|
   ("moons of Jaglan Beta"
    "beaches of Santraginus V"
    "desert world of Kakrafoon"
-   "heavy river Moth"))
+   "heavy river Moth")
+  |things to avoid|
+  ("Ravenous Bugblatter Beast of Traal" "small piece of fairy cake"))
 >
 {% endhighlight %}
 
 Now let's poke around at our new data structure:
 {% highlight cl %}
 > (: erlang tuple_size data)
-2
+4
 > (: erlang element 1 data)
 |things to see|
-> (: erlang element 2 data)
+> (: erlang element 3 data)
+|things to avoid|
+>
+{% endhighlight %}
+
+Using the erlang module's function is one way to get our tuple data, but you'll
+probably not use that as much as the next method we show you.
+
+We're going to sneak ahead here a bit, and touch on patterns again; we'll
+explain in more detail in the actual section on patterns! For now, though, just
+know that extracting data from structures such as our tuple is very easy with
+patterns. Take a look:
+{% highlight cl %}
+> (set (tuple key1 val1 key2 val2) data)
+#(|things to see|
+  ("moons of Jaglan Beta"
+   "beaches of Santraginus V"
+   "desert world of Kakrafoon"
+   "heavy river Moth")
+  |things to avoid|
+  ("Ravenous Bugblatter Beast of Traal" "small piece of fairy cake"))
+{% endhighlight %}
+
+Now we can references our data by the variables we bound when we extracted it
+with the pattern in our ```set``` call:
+{% highlight cl %}
+> key1
+|things to see|
+> key2
+|things to avoid|
+> val1
 ("moons of Jaglan Beta"
  "beaches of Santraginus V"
  "desert world of Kakrafoon"
  "heavy river Moth")
->
+> val2
+("Ravenous Bugblatter Beast of Traal" "small piece of fairy cake")
 {% endhighlight %}
 
-{% highlight cl %}
-{% endhighlight %}
-
-{% highlight cl %}
-{% endhighlight %}
-
-{% highlight cl %}
-{% endhighlight %}
-
-{% highlight cl %}
-{% endhighlight %}
+To be clear, had we needed to do this in a function, we would have used
+```let``` ;-)

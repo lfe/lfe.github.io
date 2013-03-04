@@ -1,8 +1,8 @@
 ---
 layout: user-guide
-guide: 4
+guide: 5
 total_guides: 5
 ---
 # 3 Lists and Simple Data
 
-## 3.4 Records
+## 3.5 ```.hrl``` Header Files

@@ -93,7 +93,7 @@ we only had to write this:
 {% highlight cl %}
 (x (size 1))
 {% endhighlight %}
-
+and this:
 {% highlight cl %}
 ((bnot x) (size 1))
 {% endhighlight %}

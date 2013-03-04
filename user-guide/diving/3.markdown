@@ -114,3 +114,24 @@ We've been looking at binaries in LFE, but what's a bitstring? The
 say it well: A bitstring is a sequence of zero or more bits, where the number
 of bits doesn't need to be divisible by 8. If the number of bits is divisible
 by 8, the bitstring is also a binary.
+
+### 2.3.5 LFE's Exact Definition of Binary
+
+Here's the full  definition for the ```binary``` from in LFE:
+
+{% highlight cl %}
+(binary seg ... )
+{% endhighlight %}
+
+Where ```seg``` is:
+{% highlight cl %}
+byte
+string
+(val integer|float|binary|bitstring|bytes|bits
+     (size n) (unit n)
+     big-endian|little-endian|native-endian|little|native|big
+     signed|unsigned)
+{% endhighlight %}
+
+This should help you puzzle through some of the more complex binary
+constructions you come accross ;-)

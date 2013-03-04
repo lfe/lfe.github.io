@@ -91,14 +91,15 @@ Not let's try out ```filter``` with our new predicate:
 There are many, many more highly useful functions in the ```lists``` module --
 be sure to give the docs a thorough reading, lest you miss something fun!
 
-### 3.1.1 IOLists
+### 3.1.1 I/O Lists
 
 There is another type of list that is used for such things as file and network
 operations; it's called an ```IoList```. An ```IoList``` is a list whose
 elements are either
 * integers ranging from 0 to 255,
-* binaries, or
-* other ```IoList``s
+* binaries,
+* other ```IoList```s, or
+* a combination of these.
 
 Here's an example for you:
 {% highlight cl %}
@@ -114,7 +115,8 @@ them efficiently for you.
 We saw an example of this in a previous section when we were playing with
 strings as binaries. We ended up calling a function that accepted an
 ```IoList``` as a parameter and this saved us from having to flatten the list
-of binaries ourselves. If you recall, the ```data``` was a list of binaries:
+of binaries ourselves. If you recall, ```data``` was a long string and the
+```split``` function returned a list of binaries:
 {% highlight cl %}
 > (: unicode characters_to_list
     (: binary split data (binary "who really knows ")))

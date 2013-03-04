@@ -5,7 +5,7 @@ total_guides: 5
 ---
 # 3 Lists and Simple Data
 
-## 3.2 List and Binary Comprehensions
+## 3.2 Comprehensions
 
 In the section on lists, we gave an example of building a list using the
 ```map``` function:

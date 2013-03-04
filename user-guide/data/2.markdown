@@ -39,6 +39,10 @@ comprehension version of our ```map```/```lambda``` combo above:
 >
 {% endhighlight %}
 
+This can be translated to English as "the list integers whose values are
+```x``` raised to the power of three where ```x``` is taken from the list we
+provided, iterated in order from first to last."
+
 In Erlang, this would have looked like the following:
 {% highlight erlang %}
 1> [trunc(math:pow(X,3)) || X <- [0,1,2,3]].

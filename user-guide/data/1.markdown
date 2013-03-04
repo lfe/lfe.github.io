@@ -91,6 +91,33 @@ Not let's try out ```filter``` with our new predicate:
 There are many, many more highly useful functions in the ```lists``` module --
 be sure to give the docs a thorough reading, lest you miss something fun!
 
+### 3.1.1 IOLists
+
+There is another type of list that is used for such things as file and network
+operations; it's called an ```IoList```. An ```IoList``` is a list whose
+elements are either
+* integers ranging from 0 to 255,
+* binaries, or
+* other ```IoList``s
+
+You don't need to flatten ```IoList```s; they get passed as they are to the
+various low-level functions that accept an ```IoList``` and Erlang will flatten
+them efficiently.
+
+We saw an example of this in a previous section when we were playing with
+strings as binaries. We ended up calling a function that accepted an
+```IoList``` as a parameter and this saved us from having to flatten the list
+of binaries ourselves:
+
+The ```split``` gives us two pieces; here's how we can get the new string from
+that ```split```:
+{% highlight cl %}
+> (: unicode characters_to_list
+    (: binary split data (binary "who really knows ")))
+"There's a frood where his towel is."
+>
+{% endhighlight %}
+
 ## 3.2 Tuples
 
 Tuples are the data melting pot for Erlang: you can combine any of Erlang's

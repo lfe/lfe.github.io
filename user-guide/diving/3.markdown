@@ -64,10 +64,10 @@ that ```split```:
 >
 {% endhighlight %}
 
-```binary split``` creates a list of binaries, but since this is an iolist and
-```unicode characters_to_list``` can handle those without us having to flatten
-them, our work is done! We get our result: the new string that we created by
-splitting on ```"who really knows "```.
+```binary split``` creates a list of binaries, but since this is an
+```IoList``` and ```unicode characters_to_list``` can handle those without us
+having to flatten them, our work is done! We get our result: the new string
+that we created by splitting on ```"who really knows "```.
 
 ### 2.3.3 Bit-Packing (and Unpacking)
 

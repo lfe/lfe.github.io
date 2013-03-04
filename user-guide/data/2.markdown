@@ -58,7 +58,7 @@ read than using anonymous functions.
 
 For binary data, we have something similar to the list comprehension. Here's
 what a bitstring comprehension looks like (adapted from the example given by
-Francesco Cesarini and Simon Thompson in their book, "Erlang Programming":
+Francesco Cesarini and Simon Thompson in their book, "Erlang Programming"):
 {% highlight cl %}
 > (bc
     ((<= (x (size 1)) (binary (42 (size 6)))))

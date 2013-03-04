@@ -86,7 +86,7 @@ the bit syntax portion. In other words, instead of writing this:
 {% endhighlight %}
 and this:
 {% highlight cl %}
-(binar ((bnot x) (size 1)))
+(binary ((bnot x) (size 1)))
 {% endhighlight %}
 
 we only had to write this:

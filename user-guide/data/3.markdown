@@ -83,24 +83,29 @@ The size of the ```my-dict``` didn't change because we didn't add a new key;
 rather, we updated an existing one, appending a new value. The ```|to see|```
 key now has two values in it.
 
+You can also build ```dict```s from a list of tuples:
 {% highlight cl %}
+> (set my-dict-2 (: dict from_list '(#('key1 '"foo") #('key2 '"bar"))))
+#(dict ...
+> (: dict size my-dict-2)
+2
+>
 {% endhighlight %}
 
-{% highlight cl %}
-{% endhighlight %}
+There are many more functions to explore in the
+<a href="http://www.erlang.org/doc/man/dict.html">dict docs</a>.
 
-{% highlight cl %}
-{% endhighlight %}
+### 3.3.2 Other Hash Tables
 
-{% highlight cl %}
-{% endhighlight %}
+OTP comes with the ```ets``` module which provides the ability to store very
+large quantities of data in an Erlang runtime system. The ```ets``` module
+supports hash tables of the following types:
+* ```set```
+* ```ordered_set```
+* ```bag```
+* ```duplicate_bag```
 
-{% highlight cl %}
-{% endhighlight %}
-
-{% highlight cl %}
-{% endhighlight %}
-
-{% highlight cl %}
-{% endhighlight %}
-
+The documentation for this module is
+<a href="http://www.erlang.org/doc/man/ets.html">here</a>, though we will be
+adding information on how to use this from LFE at a later point (likely a
+dedicated tutorial).

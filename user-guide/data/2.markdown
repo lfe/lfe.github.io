@@ -72,7 +72,7 @@ confused with the ```=<``` equality operator!) instead of the ```<-``` that
 list comprehensions use.
 
 Here's the Erlang version:
-{% highlight cl %}
+{% highlight erlang %}
 2> << <<bnot(X):1>> || <<X:1>> <= <<42:6>> >>.
 <<21:6>>
 3>

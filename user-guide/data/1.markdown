@@ -100,17 +100,21 @@ elements are either
 * binaries, or
 * other ```IoList``s
 
+Here's an example for you:
+{% highlight cl %}
+> (list '"hoopy" 42 #b("frood" 210) (list #b(42 84 126) 168 252))
+("hoopy" 42 #B(102 114 111 111 100 210) (#B(42 84 126) 168 252))
+>
+{% endhighlight %}
+
 You don't need to flatten ```IoList```s; they get passed as they are to the
 various low-level functions that accept an ```IoList``` and Erlang will flatten
-them efficiently.
+them efficiently for you.
 
 We saw an example of this in a previous section when we were playing with
 strings as binaries. We ended up calling a function that accepted an
 ```IoList``` as a parameter and this saved us from having to flatten the list
-of binaries ourselves:
-
-The ```split``` gives us two pieces; here's how we can get the new string from
-that ```split```:
+of binaries ourselves. If you recall, the ```data``` was a list of binaries:
 {% highlight cl %}
 > (: unicode characters_to_list
     (: binary split data (binary "who really knows ")))

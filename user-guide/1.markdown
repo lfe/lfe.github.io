@@ -80,44 +80,10 @@ it), the following hold:
 ## 1.4 What to Expect from this Guide
 
 The intent of this guide is to follow the same general pattern that the best
-Erlang books do, covering the following (mostly in this order):
+Erlang books do, covering the topics listed in the User Guide table of contents
+from an LFE perspective.
 
-**Diving In**
-* Operators and numbers
-* Atoms and strings
-* Working with the shell/REPL
-* Binary data and bitstrings
-
-**Lists and Data** (started)
-* Tuples and Lists
-* List and binary comprehensions
-* Records
-
-**Functions and Modules** (stubbed)
-* Functions
-* LFE-specific functions
-* Modules
-* Projects
-
-**Checks, Errors, and Tests** (stubbed)
-* Pattern matching
-* Guards
-* Exception handling
-* EUnit and TDD
-
-**Processes and Servers** (stubbed)
-* Processes
-* Clients
-* Servers
-
-**External Data** (stubbed)
-* Mnesia
-* Riak
-
-**Additional Topics** (stubbed)
-* Macros
-* Writing for multi-core
-
-Some of these will be covered in dedicated tutorials or other in-depth
-documents; in those cases, we provide links to that material. If your favorite
-topic is not covered above, let us know! We'll try to find a place for it :-)
+Some of the Guide's sections will be covered in dedicated tutorials or other
+in-depth documents; in those cases, we provide links to that material. If your
+favorite topic is not covered above, let us know! We'll try to find a place for
+it :-)

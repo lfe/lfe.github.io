@@ -5,4 +5,15 @@ total_guides: 5
 ---
 #  2 Diving In
 
-## 5.1 Pattern Matching
+## 2.5 Pattern Matching
+
+### 2.5.1 Patterns and Variable Assignment
+### 2.5.2 Patterns as Conditional Statements
+### 2.5.3 Patterns for Dispatching
+### 2.5.4 Patterns in Forms
+#### 2.5.4.1 ```let```
+#### 2.5.4.2 ```case```
+#### 2.5.4.3 ```receive```
+#### 2.5.4.4 ```cond```
+#### 2.5.4.5 ```defun``` Arguments
+

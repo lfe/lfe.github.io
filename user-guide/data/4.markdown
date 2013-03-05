@@ -77,6 +77,10 @@ you will enjoy the relative succinctness of the following usages:
 "Betelgeuse Seven"
 > (person-age ford)
 234
+{% endhighlight %}
+
+Let's make some changes to our data:
+{% highlight cl %}
 > (set ford
     (set-person-age ford 244))
 #(person "Ford Prefect" "Betelgeuse Seven" 244)

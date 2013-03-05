@@ -117,15 +117,17 @@ Looking good so far...  Now let's get some data out:
 Why the is the function called "append"? Well, ```dict``` accepts multiple
 values for keys. Let's try this out, and then re-query our ```dict```:
 {% highlight cl %}
+> (: erlang length (: dict fetch '|to see| my-dict))
+1
 > (set my-dict
     (: dict append '|to see| '"beaches of Santraginus V" my-dict))
 #(dict ...
-> (: dict fetch '|to see| my-dict)
-("moons of Jaglan Beta" "beaches of Santraginus V")
 > (: erlang length (: dict fetch '|to see| my-dict))
 2
 > (: dict size my-dict)
 2
+> (: dict fetch '|to see| my-dict)
+("moons of Jaglan Beta" "beaches of Santraginus V")
 >
 {% endhighlight %}
 

@@ -5,13 +5,60 @@ total_guides: 5
 ---
 # 3 Lists and Simple Data
 
-## 3.3 Hashes
+## 3.3 Property Lists and Hashes
+
+### 3.3.1 Property Lists
+
+Property lists are just lists whose entries are key/value tuples.
+Alternatively, an antry may be a single atom, in which case it implies a tuple
+with the atom as the key and ```true``` as the value.
+
+Since there's no special type here, we just create a regular list:
+{% highlight cl %}
+> (set plist
+    (list
+      (tuple '|to see|
+             '"moons of Jaglan Beta"
+             '"beaches of Santraginus V")
+      (tuple '|to avoid|
+             '"small piece of fairy cake")))
+>
+{% endhighlight %}
+
+Let's see what keys we have defined:
+{% highlight cl %}
+> (: proplists get_keys plist)
+(|to avoid| |to see|)
+>
+{% endhighlight %}
+
+Extracting data by key:
+{% highlight cl %}
+> (: proplists lookup '|to see| plist)
+#(|to see| "moons of Jaglan Beta" "beaches of Santraginus V")
+> (: proplists lookup '|to avoid| plist)
+#(|to avoid| "small piece of fairy cake")
+>
+{% endhighlight %}
+
+If you know that your value is single-valued (e.g., not a list), then you can
+do this:
+{% highlight cl %}
+> (: proplists get_value '|to avoid| plist)
+"small piece of fairy cake"
+>
+{% endhighlight %}
+
+There is more information about property lists on the
+<a href="http://www.erlang.org/doc/man/proplists.html">docs</a> page for them.
+
+### 3.3.2 Hashes
 
 There is no builtin "dictionary" or "hash" type in Erlang. However, there are
 some libraries that support data structures like these. There is also a concept
 of "records" which we will discuss in another section.
 
-### 3.3.1 The Dictionary
+#### 3.3.2.1 The Dictionary
 
 The Erlang ```dict``` module implements a key/value dictionary part of which is
 an additional ```dict``` data type which supplements the built-in Erlang data
@@ -95,7 +142,7 @@ You can also build ```dict```s from a list of tuples:
 There are many more functions to explore in the
 <a href="http://www.erlang.org/doc/man/dict.html">dict docs</a>.
 
-### 3.3.2 Other Hash Tables
+#### 3.3.2.2 Other Hash Tables
 
 OTP comes with the ```ets``` module which provides the ability to store very
 large quantities of data in an Erlang runtime system. The ```ets``` module

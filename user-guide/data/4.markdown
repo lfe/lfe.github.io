@@ -7,6 +7,8 @@ total_guides: 5
 
 ## 3.4 Records
 
+### 3.4.1 Just Records
+
 Sometimes lists, tuples, property lists, or hashes are not quite what is
 needed. With tuples, you can't name keys (without awkward work-arounds), and
 this makes working with large tuples rather cwcumbersome. Records are one way
@@ -98,7 +100,69 @@ re-use the ```ford``` variable here).
 Also, note that there are also ```set-person-name``` and
 ```set-person-address```.
 
+## 3.4.2 Records and ETS
+
 Additional convenience functions for records are provided by LFE, but some of
 these will only make sense in the context of ETS (Erlang Term Storage), when
-when the ability to store large amounts of data in memory becomes important.
-Fear not, though -- this too we will cover in a dedicated section.
+when the ability to store large amounts of data in memory becomes important. We
+will be discussing this in detail later, but this section provides a quick
+preview.
+
+Let's create an ETS data:
+{% highlight cl %}
+> (set people
+    (: ets new 'people-table '(#(keypos 2) set)))
+16401
+>
+{% endhighlight %}
+
+Now let's insert the two ```person``` records that we created:
+{% highlight cl %}
+> (: ets insert people ford)
+true
+> (: ets insert people trillian)
+true
+>
+{% endhighlight %}
+
+Now that we have a table with some data in it, we can do some querying. Let's
+start with the ```emp-match``` LFE macro. Here's how we can get the name for
+every record in the table:
+{% highlight cl %}
+> (: ets match people (emp-person name '$1))
+(("Ford Prefect") ("Tricia Marie McMillan"))
+>
+{% endhighlight %}
+
+Or, we can adjust that to return the name and address:
+{% highlight cl %}
+> (: ets match people (emp-person name '$1 address '$2))
+(("Ford Prefect" "Betelgeuse Seven") ("Tricia Marie McMillan" undefined))
+>
+{% endhighlight %}
+
+With the ```match-person``` LFE macro, we can do more  sophisticated querying
+{% highlight cl %}
+> (: ets select people
+    (match-spec (((match-person name found-name age found-age))
+                 (when (> 100 found-age))
+                 found-name)))
+> ("Tricia Marie McMillan")
+>
+{% endhighlight %}
+
+Here we've done a select in the "people" table for any person whose age is less
+than 100.
+
+Here's what it looks like when multiple records are returned:
+{% highlight cl %}
+> (: ets select people
+    (match-spec (((match-person name found-name age found-age))
+                 (when (< 21 found-age))
+                 found-name)))
+> ("Ford Prefect" "Tricia Marie McMillan")
+>
+{% endhighlight %}
+
+This should be enough of an ETS taste to last until you get to the dedicated
+tutorial ;-)

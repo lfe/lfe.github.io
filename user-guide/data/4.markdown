@@ -108,7 +108,7 @@ when the ability to store large amounts of data in memory becomes important. We
 will be discussing this in detail later, but this section provides a quick
 preview.
 
-Let's create an ETS data:
+Let's create an ETS table:
 {% highlight cl %}
 > (set people
     (: ets new 'people-table '(#(keypos 2) set)))
@@ -116,7 +116,7 @@ Let's create an ETS data:
 >
 {% endhighlight %}
 
-Now let's insert the two ```person``` records that we created:
+Now let's insert the two ```person``` records that we created above:
 {% highlight cl %}
 > (: ets insert people ford)
 true

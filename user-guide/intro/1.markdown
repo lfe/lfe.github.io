@@ -1,5 +1,5 @@
 ---
-layout: user-guide-main
+layout: user-guide
 guide: 1
 total_guides: 3
 ---

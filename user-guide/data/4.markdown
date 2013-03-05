@@ -6,3 +6,34 @@ total_guides: 5
 # 3 Lists and Simple Data
 
 ## 3.4 Records
+
+Sometimes lists, tuples, property lists, or hashes are not quite what is
+needed. With tuples, you can't name keys (without awkward work-arounds), and
+this makes working with large tuples rather cwcumbersome. Records are one way
+around this.
+
+A record is a data structure for storing a fixed number of elements. It has
+named fields and LFE provides some convenience functions/macros for interacting
+with them.
+
+However, it is important to note that record expressions are translated to
+tuple expressions during compilation. Due to this, record expressions are not
+understood by the shell in both Erlang and LFE. The examples in this section,
+therefore, will assume that you are saving the code to a file.
+
+Let's start by defining a record:
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+

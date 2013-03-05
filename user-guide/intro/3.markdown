@@ -1,6 +1,6 @@
 ---
 layout: user-guide
-guide: 1
+guide: 3
 total_guides: 3
 ---
 # 1 Introduction

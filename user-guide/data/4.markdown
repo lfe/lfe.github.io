@@ -21,7 +21,68 @@ tuple expressions during compilation. Due to this, record expressions are not
 understood by the shell in both Erlang and LFE. The examples in this section,
 therefore, will assume that you are saving the code to a file.
 
-Let's start by defining a record:
+Let's start by defining a record. Save this in a file named ```record.lfe```:
+{% highlight cl %}
+(defmodule rec)
+
+(defrecord person
+  name
+  address
+  age)
+{% endhighlight %}
+
+Then load it up in the REPL:
+{% highlight cl %}
+> (slurp '"record.lfe")
+#(ok rec)
+>
+{% endhighlight %}
+
+Now let's created a person:
+{% highlight cl %}
+> (set ford
+    (make-person name '"Ford Prefect"
+                 address '"Betelgeuse Seven"
+                 age 234))
+#(person "Ford Prefect" "Betelgeuse Seven" 234)
+>
+{% endhighlight %}
+
+Let's define a non-person, too:
+{% highlight cl %}
+> (set zaphod #("Zaphod Beeblebrox"))
+#("Zaphod Beeblebrox")
+>
+{% endhighlight %}
+
+Some quick checks:
+{% highlight cl %}
+> (is-person ford)
+true
+> (is-person zaphod)
+false
+>
+{% endhighlight %}
+
+If you remember working with the tuples, property lists, and dictionaries, then
+you will enjoy the relative succinctness of the following usages:
+{% highlight cl %}
+> (person-name ford)
+"Ford Prefect"
+> (person-address ford)
+"Betelgeuse Seven"
+> (person-age ford)
+234
+> (set ford
+    (set-person-age ford 244))
+#(person "Ford Prefect" "Betelgeuse Seven" 244)
+> (person-age ford)
+244
+>
+{% endhighlight %}
+
+Note that there are also ```set-person-name``` and ```set-person-address```.
+
 {% highlight cl %}
 {% endhighlight %}
 

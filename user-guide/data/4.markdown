@@ -38,13 +38,17 @@ Then load it up in the REPL:
 >
 {% endhighlight %}
 
-Now let's created a person:
+Now let's create some people:
 {% highlight cl %}
 > (set ford
     (make-person name '"Ford Prefect"
                  address '"Betelgeuse Seven"
                  age 234))
 #(person "Ford Prefect" "Betelgeuse Seven" 234)
+> (set trillian
+    (make-person name '"Tricia Marie McMillan"
+                 age 60))
+#(person "Tricia Marie McMillan" undefined 60)
 >
 {% endhighlight %}
 

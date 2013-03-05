@@ -1,6 +1,6 @@
 ---
 layout: user-guide-main
 guide: 2
-total_guides: 3
+total_guides: 2
 ---
-# 6 Processes and Servers
+# 7 External Data

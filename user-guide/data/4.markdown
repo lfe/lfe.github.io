@@ -100,7 +100,7 @@ re-use the ```ford``` variable here).
 Also, note that there are also ```set-person-name``` and
 ```set-person-address```.
 
-## 3.4.2 Records and ETS
+### 3.4.2 Records and ETS
 
 Additional convenience functions for records are provided by LFE, but some of
 these will only make sense in the context of ETS (Erlang Term Storage), when

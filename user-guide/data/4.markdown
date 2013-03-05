@@ -77,6 +77,7 @@ you will enjoy the relative succinctness of the following usages:
 "Betelgeuse Seven"
 > (person-age ford)
 234
+>
 {% endhighlight %}
 
 Let's make some changes to our data:
@@ -97,18 +98,7 @@ re-use the ```ford``` variable here).
 Also, note that there are also ```set-person-name``` and
 ```set-person-address```.
 
-{% highlight cl %}
-{% endhighlight %}
-
-{% highlight cl %}
-{% endhighlight %}
-
-{% highlight cl %}
-{% endhighlight %}
-
-{% highlight cl %}
-{% endhighlight %}
-
-{% highlight cl %}
-{% endhighlight %}
-
+Additional convenience functions for records are provided by LFE, but some of
+these will only make sense in the context of ETS (Erlang Term Storage), when
+when the ability to store large amounts of data in memory becomes important.
+Fear not, though -- this too we will cover in a dedicated section.

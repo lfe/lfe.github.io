@@ -1,7 +1,7 @@
 ---
 layout: user-guide
 guide: 2
-total_guides: 4
+total_guides: 5
 ---
 # 2 Diving In
 

@@ -1,0 +1,8 @@
+---
+layout: user-guide
+guide: 5
+total_guides: 5
+---
+#  2 Diving In
+
+## 5.1 Pattern Matching

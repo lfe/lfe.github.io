@@ -1,8 +1,0 @@
----
-layout: user-guide
-guide: 4
-total_guides: 4
----
-#  5 Checks, Errors, and Tests
-
-## 5.4 EUnit and TDD

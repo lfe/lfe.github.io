@@ -1,8 +1,8 @@
 ---
 layout: user-guide
 guide: 2
-total_guides: 4
+total_guides: 3
 ---
 #  5 Checks, Errors, and Tests
 
-## 5.2 Guards
+## 5.3 Exception Handling

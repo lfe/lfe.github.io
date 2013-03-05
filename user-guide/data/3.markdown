@@ -87,9 +87,11 @@ Let's check that there's no actual data in it:
 
 Now let's add some!
 {% highlight cl %}
-> (set my-dict (: dict append '|to see| '"moons of Jaglan Beta" my-dict))
+> (set my-dict
+    (: dict append '|to see| '"moons of Jaglan Beta" my-dict))
 #(dict ...
-> (set my-dict (: dict append '|to avoid| '"small piece of fairy cake" my-dict))
+> (set my-dict
+    (: dict append '|to avoid| '"small piece of fairy cake" my-dict))
 #(dict ...
 >
 {% endhighlight %}
@@ -115,7 +117,8 @@ Looking good so far...  Now let's get some data out:
 Why the is the function called "append"? Well, ```dict``` accepts multiple
 values for keys. Let's try this out, and then re-query our ```dict```:
 {% highlight cl %}
-> (set my-dict (: dict append '|to see| '"beaches of Santraginus V" my-dict))
+> (set my-dict
+    (: dict append '|to see| '"beaches of Santraginus V" my-dict))
 #(dict ...
 > (: dict fetch '|to see| my-dict)
 ("moons of Jaglan Beta" "beaches of Santraginus V")
@@ -132,7 +135,8 @@ key now has two values in it.
 
 You can also build ```dict```s from a list of tuples:
 {% highlight cl %}
-> (set my-dict-2 (: dict from_list '(#('key1 '"foo") #('key2 '"bar"))))
+> (set my-dict-2
+    (: dict from_list '(#('key1 '"foo") #('key2 '"bar"))))
 #(dict ...
 > (: dict size my-dict-2)
 2

@@ -6,3 +6,11 @@ total_guides: 3
 # 1 Introduction
 
 ## 1.2 The LFE REPL
+
+### 1.2.1 Using the REPL
+
+### 1.2.2 Special Functions
+
+### 1.2.3 Special Commands
+
+### 1.2.4 Getting Out of Trouble

@@ -85,7 +85,13 @@ you will enjoy the relative succinctness of the following usages:
 >
 {% endhighlight %}
 
-Note that there are also ```set-person-name``` and ```set-person-address```.
+Just as we saw with the ```dict``` examples, ```set-person-age``` doesn't
+modify the data in-place, but rather returns a new record. If we want to use
+that data in the future, we'll need to assign it to a variable (sensibly, we
+re-use the ```ford``` variable here).
+
+Also, note that there are also ```set-person-name``` and
+```set-person-address```.
 
 {% highlight cl %}
 {% endhighlight %}

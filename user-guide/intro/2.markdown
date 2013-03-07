@@ -9,6 +9,9 @@ total_guides: 3
 
 ### 1.2.1 Using the REPL
 
+We covered basic REPL usage in the user guide. That's the best place to go for
+an introduction to using the LFE REPL.
+
 ### 1.2.2 Special Functions
 
 ### 1.2.3 Special Commands

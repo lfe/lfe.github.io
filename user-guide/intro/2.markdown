@@ -77,7 +77,9 @@ Note that you can't define modules, macros, functions or records from the REPL;
 you'll have to put those in a module file and compile or ```slurp``` the file
 from the REPL. You can, however, use ```lambda``` from the REPL:
 {% highlight cl %}
-> (set exp (lambda (x y) (trunc (: math pow x y))))
+> (set exp
+    (lambda (x y)
+      (trunc (: math pow x y))))
 #Fun<lfe_eval.15.53503600>
 > (funcall exp 2 6)
 64

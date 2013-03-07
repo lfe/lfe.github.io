@@ -81,8 +81,14 @@ from the REPL. You can, however, use ```lambda``` from the REPL:
     (lambda (x y)
       (trunc (: math pow x y))))
 #Fun<lfe_eval.15.53503600>
+>
+{% endhighlight %}
+
+Then, using the ```lambda``` you have just defined is as easy as this:
+{% highlight cl %}
 > (funcall exp 2 6)
 64
+>
 {% endhighlight %}
 
 Or, if you want to get nuts:

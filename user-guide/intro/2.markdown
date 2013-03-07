@@ -154,6 +154,93 @@ These are listed below with information about their use.
 
 ### 1.2.3 Special Variables
 
+LFE also provides some convenience variables similar to what Lisp
+has defined for
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_pl_plp.htm"> +, ++, +++</a>,
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/v__stst_.htm">*, **, ***</a>,
+and
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/v__.htm">-</a>.
+
+* ```+/++/+++``` - The three previous expressions input.
+* ```*/**/***``` - The values of the previous 3 expressions.
+* ```-``` - The current expression input.
+
+These probably warrant some examples.
+
+Let's say you had just entered the following in the REPL:
+{% highlight cl %}
+> (+ 1 2)
+3
+> (: c memory)
+(#(total 10026672)
+ #(processes 1656528)
+ #(processes_used 1656528)
+ #(system 8370144)
+ #(atom 153321)
+ #(atom_used 147399)
+ #(binary 1338560)
+ #(code 3255239)
+ #(ets 290544))
+> (set my-func (lambda () (: io format '"Hello, Zaphod!")))
+#Fun<lfe_eval.21.53503600>
+>
+{% endhighlight %}
+
+Then you can get the previous expressions you input with the following
+commands:
+{% highlight cl %}
+> +++
+(+ 1 2)
+> +++
+(: c memory)
+> +++
+(set my-func (lambda () (: io format '"Hello, Zaphod!")))
+> ++
++++
+> +
+++
+>
+{% endhighlight %}
+
+Most of us will actually use the arrow keys, thanks to the ```readline```
+library. However, the classic, pre-```readline``` approach is still available,
+should you choose to use it.
+
+Similarly, you can get the results returned by using the variabels from the
+second bullet item. If you're following along in the REPL, go ahead and
+re-enter the commands we typed above to reset the last three items in your
+command history. Then do the following:
+{% highlight cl %}
+> ***
+3
+> ***
+(#(total 9976496)
+ #(processes 1606688)
+ #(processes_used 1606688)
+ #(system 8369808)
+ #(atom 153321)
+ #(atom_used 147399)
+ #(binary 1338096)
+ #(code 3255239)
+ #(ets 290544))
+> ***
+#Fun<lfe_eval.21.53503600>
+> (funcall *)
+Hello, Zaphod!
+ok
+>
+{% endhighlight %}
+
+Finally, for the last one, one (the ```-``` variable):
+{% highlight cl %}
+> (: io format '"Evaluating the expression '~p' ...~n" (list -))
+Evaluating the expression '[':',io,format,
+                            [quote,"Evaluating the expression '~p' ...~n"],
+                            [list,'-']]' ...
+ok
+>
+{% endhighlight %}
+
 ### 1.2.4 Getting Out of Trouble
 
 Every once in a while you may find that you do something which causes the REPL

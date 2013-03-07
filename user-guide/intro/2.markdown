@@ -67,7 +67,7 @@ LFE Shell V5.9.3.1 (abort with ^G)
 #### 1.2.1.2 Running Commands
 
 Once you're in the REPL, it's just a matter of entering code:
-{% highlight erlang %}
+{% highlight cl %}
 > (+ 1 2 3 4 5 6 7)
 28
 >
@@ -75,14 +75,30 @@ Once you're in the REPL, it's just a matter of entering code:
 
 Note that you can't define modules, macros, functions or records from the REPL;
 you'll have to put those in a module file and compile or ```slurp``` the file
-from the REPL. You can, however, use ```lambda``` from the REPL.
+from the REPL. You can, however, use ```lambda``` from the REPL:
+{% highlight cl %}
+> (set exp (lambda (x y) (trunc (: math pow x y))))
+#Fun<lfe_eval.15.53503600>
+> (funcall exp 2 6)
+64
+{% endhighlight %}
+
+Or, if you want to get nuts:
+{% highlight cl %}
+> (: lists map
+    (lambda (z)
+      (funcall exp (car z) (cadr z)))
+    (list (list 1 2) (list 3 4) (list 5 6)))
+(1 81 15625)
+>
+{% endhighlight %}
 
 #### 1.2.1.3 Quitting the REPL
 
 Just as there are multiple ways in which you can start the REPL, there are a
 couple ways you can leave it. You can jump into the JCL from the LFE prompt by
 hitting ^g and then entering ```q```:
-{% highlight erlang %}
+{% highlight cl %}
 > ^g
 User switch command
  --> q

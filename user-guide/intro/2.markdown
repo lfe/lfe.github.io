@@ -123,7 +123,7 @@ $
 
 ### 1.2.2 Special Functions
 
-There are some functions specially defined in LFE for running from the REPL.
+There are some functions specially defined in LFE for use from the REPL.
 These are listed below with information about their use.
 
 * ```(c File [Options])``` - Compile and load an LFE file. Assumes default
@@ -148,7 +148,8 @@ These are listed below with information about their use.
   binding variables in it. These variables can then be used in the shell and
   also rebound in another set.
 
-* ```(: c Command Arg ...)``` - All the commands in the standard Erlang shell
+* ```(: c Command Arg ...)``` - All the commands in the Erlang shell's
+  <a href="http://www.erlang.org/doc/man/c.html">Command Interface Module</a>
   can be reached in this way.
 
 ### 1.2.3 Special Variables

@@ -104,11 +104,11 @@ hitting ^g and then entering ```q```:
 > ^g
 User switch command
  --> q
- $
+$
 {% endhighlight %}
 
 or you can call the Erlang shell's quit function:
-{% highlight erlang %}
+{% highlight cl %}
 > (: c q)
 ok
 >
@@ -117,7 +117,35 @@ $
 
 ### 1.2.2 Special Functions
 
-### 1.2.3 Special Commands
+There are some functions specially defined in LFE for running from the REPL.
+These are listed below with information about their use.
+
+* ```(c File [Options])``` - Compile and load an LFE file. Assumes default
+  extension ```.lfe```.
+
+* ```(l Module ...)``` - Load modules.
+
+* ```(m Module ...)``` - Print out module information, if no modules are given
+  then print information about all modules.
+
+* ```(ec File [Options])``` - Compile and load an Erlang file.
+
+* ```(slurp File)``` - Slurp in a source LFE file and makes all functions and
+  macros defined in the file available in the shell. Only one file can be
+  slurped at a time and slurping a new file removes all data about the previous
+  one.
+
+* ```(unslurp)``` - Remove all function and macro definitions except the
+  default ones.
+
+* ```(set Pattern Expr)``` - Evaluate Expr ad match the result with Pattern
+  binding variables in it. These variables can then be used in the shell and
+  also rebound in another set.
+
+* ```(: c Command Arg ...)``` - All the commands in the standard Erlang shell
+  can be reached in this way.
+
+### 1.2.3 Special Variables
 
 ### 1.2.4 Getting Out of Trouble
 

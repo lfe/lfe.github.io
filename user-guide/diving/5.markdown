@@ -41,29 +41,18 @@ or this:
 (cons h t)
 {% endhighlight %}
 
+and the ```<expression>``` is any legal LFE expression. Ideally, it will return
+data that will be matched by the pattern.
+
 If the matching succeeds, any unbound variables in the pattern become bound. If
 the matching fails, a run-time error occurs.  All of this is best understood
-through the examples given below. However, before we present the examples,
-let's take a look at some of the general forms, for the sake of clarity and to
-ease the discussion of patterns in LFE.
+through the examples given below. Each example is preceeded by the general form
+of patterns as used in the given content. This should help keep things clear,
+even as the examples get convoluted.
 
 ### 2.5.2 Patterns in Forms
 
-#### 2.5.2.1 ```=```
-
-{% highlight cl %}
-{% endhighlight %}
-
-{% highlight cl %}
-{% endhighlight %}
-
-{% highlight cl %}
-{% endhighlight %}
-
-{% highlight cl %}
-{% endhighlight %}
-
-#### 2.5.2.2 ```let```
+#### 2.5.2.1 ```let```
 
 Pattern matching in ```let``` has the following general form:
 {% highlight cl %}
@@ -145,7 +134,7 @@ this simpler by using the "I don't care" variable (the underscore):
 ("msg too short")
 {% endhighlight %}
 
-#### 2.5.2.3 ```case```
+#### 2.5.2.2 ```case```
 
 Pattern matching in ```case``` has the following general form:
 {% highlight cl %}
@@ -164,7 +153,7 @@ Pattern matching in ```case``` has the following general form:
 {% highlight cl %}
 {% endhighlight %}
 
-#### 2.5.2.4 ```receive```
+#### 2.5.2.3 ```receive```
 
 Pattern matching in ```receive``` has the following general form:
 {% highlight cl %}
@@ -185,13 +174,27 @@ Pattern matching in ```receive``` has the following general form:
 {% highlight cl %}
 {% endhighlight %}
 
-#### 2.5.2.5 ```cond```
+#### 2.5.2.4 ```cond```
 
 Pattern matching in ```cond``` has the following general form:
 {% highlight cl %}
 (cond (<test> ... )
       ((?= <pattern> <expr>) ... )
       ... )
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+#### 2.5.2.5 ```=```
+
+{% highlight cl %}
 {% endhighlight %}
 
 {% highlight cl %}

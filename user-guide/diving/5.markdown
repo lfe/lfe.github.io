@@ -41,12 +41,6 @@ or this:
 (cons h t)
 {% endhighlight %}
 
-{% highlight cl %}
-{% endhighlight %}
-
-{% highlight cl %}
-{% endhighlight %}
-
 If the matching succeeds, any unbound variables in the pattern become bound. If
 the matching fails, a run-time error occurs.  All of this is best understood
 through the examples given below. However, before we present the examples,
@@ -223,12 +217,3 @@ Pattern matching in functions has the following general form:
 
 {% highlight cl %}
 {% endhighlight %}
-
-### 2.5.3 Patterns and Variable Assignment
-
-Now let's take a look at some examples, starting with variable assignment.
-
-### 2.5.4 Patterns as Conditional Statements
-
-### 2.5.5 Patterns for Dispatching
-

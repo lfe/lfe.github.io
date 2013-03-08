@@ -7,6 +7,8 @@ total_guides: 5
 
 ## 2.5 Pattern Matching
 
+### 2.5.1 What Are Patterns?
+
 Pattern matching in Erlang is huge, and it has a proportional impact on LFE and
 what one can do with this dialect of Lisp. Pattern matching in LFE can be used
 in function clauses, ```let```, ```case```, ```receive``` and in the macros
@@ -45,25 +47,29 @@ or this:
 {% highlight cl %}
 {% endhighlight %}
 
-
 If the matching succeeds, any unbound variables in the pattern become bound. If
 the matching fails, a run-time error occurs.  All of this is best understood
-through the examples given below.
+through the examples given below. However, before we present the examples,
+let's take a look at some of the general forms, for the sake of clarity and to
+ease the discussion of patterns in LFE.
 
-### 2.5.1 Patterns and Variable Assignment
+### 2.5.2 Patterns in Forms
 
-### 2.5.2 Patterns as Conditional Statements
-
-### 2.5.3 Patterns for Dispatching
-
-### 2.5.4 Patterns in Forms
-
-#### 2.5.4.1 ```=```
+#### 2.5.2.1 ```=```
 
 {% highlight cl %}
 {% endhighlight %}
 
-#### 2.5.4.2 ```let```
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+#### 2.5.2.2 ```let```
 
 Pattern matching in ```let``` has the following general form:
 {% highlight cl %}
@@ -72,7 +78,68 @@ Pattern matching in ```let``` has the following general form:
   ... )
 {% endhighlight %}
 
-#### 2.5.4.3 ```case```
+Examples:
+
+{% highlight cl %}
+> (let (((tuple len status data) #(8 ok "Trillian")))
+       (list len status data))
+(8 ok "Trillian")
+>
+{% endhighlight %}
+
+In this example, we have a pattern of ```(tuple len status data)``` and this is
+getting matched against our expression which is some data of the form
+```#(8 ok "Trillian")```. The pattern expects a tuple, and a tuple is what we
+gave it. With the pattern's variables bound inside the ```let```, we can return
+a list of the variables.
+
+Whatever our expression is going to be needs to be matched in the pattern. If
+we had a list integers in the expression, we would need a pattern like
+```(list i1 i2 i3 ...)```.
+
+Here's a super-simplified version of a ```let``` with pattern matching:
+{% highlight cl %}
+> (let ((data '"Trillian"))
+       (list data))
+("Trillian")
+>
+{% endhighlight %}
+
+Here our pattern was simply the variable ```data``` and our expression was the
+string "Trillian".
+
+Patterns can nest, though, and with this you can start to get a sense of the
+power they hold. Let's look at a more complicated example:
+{% highlight cl %}
+> (let (((tuple lens status data)
+         #((8 43) #(err "msg too short") "Trillian")))
+       (list lens status data))
+("\b+" #(err "msg too short") "Trillian")
+>
+{% endhighlight %}
+
+As you can see, we've nested our expression: length is a two-valued list and
+status is a two-valued tuple. Our pattern, however, is still simple. It doesn't
+have to be that way, though: we can extract nested data inside a pattern:
+{% highlight cl %}
+> (let (((tuple (list len-data len-total) (tuple status-code status-msg) data)
+         #((8 43) #(err "msg too short") "Trillian")))
+       (list len-data len-total status-code status-msg data))
+(8 43 err "msg too short" "Trillian")
+>
+{% endhighlight %}
+
+As you can see, our nested pattern extracted the data into the pattern's
+variables. If all we cared about was the status message, we could make
+this simpler by using the "I don't care" variable (the underscore):
+{% highlight cl %}
+> (let (((tuple (list _ _) (tuple _ status-msg) _)
+         #((8 43) #(err "msg too short") "Trillian")))
+       (list status-msg))
+("msg too short")
+{% endhighlight %}
+
+#### 2.5.2.3 ```case```
 
 Pattern matching in ```case``` has the following general form:
 {% highlight cl %}
@@ -82,7 +149,16 @@ Pattern matching in ```case``` has the following general form:
   ...)
 {% endhighlight %}
 
-#### 2.5.4.4 ```receive```
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+#### 2.5.2.4 ```receive```
 
 Pattern matching in ```receive``` has the following general form:
 {% highlight cl %}
@@ -94,7 +170,16 @@ Pattern matching in ```receive``` has the following general form:
     ... ))
 {% endhighlight %}
 
-#### 2.5.4.5 ```cond```
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+#### 2.5.2.5 ```cond```
 
 Pattern matching in ```cond``` has the following general form:
 {% highlight cl %}
@@ -103,9 +188,35 @@ Pattern matching in ```cond``` has the following general form:
       ... )
 {% endhighlight %}
 
-#### 2.5.4.6 ```defun``` Arguments
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+#### 2.5.2.6 ```defun``` Arguments
 
 Pattern matching in functions has the following general form:
 {% highlight cl %}
 {% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+### 2.5.3 Patterns and Variable Assignment
+
+Now let's take a look at some examples, starting with variable assignment.
+
+### 2.5.4 Patterns as Conditional Statements
+
+### 2.5.5 Patterns for Dispatching
 

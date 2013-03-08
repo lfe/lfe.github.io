@@ -8,15 +8,104 @@ total_guides: 5
 ## 2.5 Pattern Matching
 
 Pattern matching in Erlang is huge, and it has a proportional impact on LFE and
-what one can do with this dialect of Lisp.
+what one can do with this dialect of Lisp. Pattern matching in LFE can be used
+in function clauses, ```let```, ```case```, ```receive``` and in the macros
+```cond```, ```lc```, and ```bc```.
+
+Pattern matching in LFE happens when an expression matches a given pattern,
+e.g.:
+
+    (... (<pattern> <expression>) ...)
+
+where the ```<pattern>``` might be something like this:
+
+{% highlight cl %}
+(binary (f float (size 32))
+        (b bitstring))
+{% endhighlight %}
+
+or this:
+{% highlight cl %}
+(tuple 'ok value)
+{% endhighlight %}
+
+or this:
+{% highlight cl %}
+(list a b c)
+{% endhighlight %}
+
+or this:
+{% highlight cl %}
+(cons h t)
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+
+If the matching succeeds, any unbound variables in the pattern become bound. If
+the matching fails, a run-time error occurs.  All of this is best understood
+through the examples given below.
+
 ### 2.5.1 Patterns and Variable Assignment
+
 ### 2.5.2 Patterns as Conditional Statements
+
 ### 2.5.3 Patterns for Dispatching
+
 ### 2.5.4 Patterns in Forms
+
 #### 2.5.4.1 ```=```
+
+{% highlight cl %}
+{% endhighlight %}
+
 #### 2.5.4.2 ```let```
+
+Pattern matching in ```let``` has the following general form:
+{% highlight cl %}
+(let ((<pattern> <expression>)
+      (<pattern> <expression>) ... )
+  ... )
+{% endhighlight %}
+
 #### 2.5.4.3 ```case```
+
+Pattern matching in ```case``` has the following general form:
+{% highlight cl %}
+(case <expression>
+  (<pattern> <expression> ... )
+  (<pattern> <expression> ... )
+  ...)
+{% endhighlight %}
+
 #### 2.5.4.4 ```receive```
+
+Pattern matching in ```receive``` has the following general form:
+{% highlight cl %}
+(receive
+  (<pattern> ... )
+  (<pattern> ... )
+  ...
+  (after timeout
+    ... ))
+{% endhighlight %}
+
 #### 2.5.4.5 ```cond```
+
+Pattern matching in ```cond``` has the following general form:
+{% highlight cl %}
+(cond (<test> ... )
+      ((?= <pattern> <expr>) ... )
+      ... )
+{% endhighlight %}
+
 #### 2.5.4.6 ```defun``` Arguments
+
+Pattern matching in functions has the following general form:
+{% highlight cl %}
+{% endhighlight %}
 

@@ -130,8 +130,9 @@ power they hold. Let's look at a more complicated example:
 {% endhighlight %}
 
 As you can see, we've nested our expression: length is a two-valued list and
-status is a two-valued tuple. Our pattern, however, is still simple. It doesn't
-have to be that way, though: we can extract nested data inside a pattern:
+status is a two-valued tuple. Our pattern, however, is still simple. But this
+is going to change: we want to extract our data into more variables, and we do
+this by mirroring the expression data structure in the pattern itself:
 {% highlight cl %}
 > (let (((tuple (list len-data len-total) (tuple status-code status-msg) data)
          #((8 43) #(err "msg too short") "Trillian")))

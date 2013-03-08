@@ -116,7 +116,8 @@ Here's a super-simplified version of a ```let``` with pattern matching:
 {% endhighlight %}
 
 Here our pattern was simply the variable ```data``` and our expression was the
-string "Trillian".
+string "Trillian". This, of course, is easily recognized as a standard variable
+assignment within a ```let```.
 
 Patterns can nest, though, and with this you can start to get a sense of the
 power they hold. Let's look at a more complicated example:

@@ -93,6 +93,16 @@ getting matched against our expression which is some data of the form
 gave it. With the pattern's variables bound inside the ```let```, we can return
 a list of the variables.
 
+If our pattern was written to expect a list and the expression was a tuple,
+we'd get a ```badmatch``` error:
+{% highlight cl %}
+> (let (((list len status data) #(8 ok "Trillian")))
+       (list len status data))
+exception error: #(badmatch #(8 ok "Trillian"))
+
+>
+{% endhighlight %}
+
 Whatever our expression is going to be needs to be matched in the pattern. If
 we had a list integers in the expression, we would need a pattern like
 ```(list i1 i2 i3 ...)```.

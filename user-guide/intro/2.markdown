@@ -144,7 +144,7 @@ These are listed below with information about their use.
 * ```(unslurp)``` - Remove all function and macro definitions except the
   default ones.
 
-* ```(set Pattern Expr)``` - Evaluate Expr ad match the result with Pattern
+* ```(set Pattern Expr)``` - Evaluate Expr and match the result with Pattern
   binding variables in it. These variables can then be used in the shell and
   also rebound in another set.
 

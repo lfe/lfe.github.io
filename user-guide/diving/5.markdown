@@ -208,13 +208,13 @@ Pattern matching in ```receive``` has the following general form:
     ... ))
 {% endhighlight %}
 
-There is a tutorial on working with Erlang's
-<a href="/tutorials/processes/1.html">light weight processes in LFE</a>, and
+There is a tutorial on working with Erlang's <a
+href="/tutorials/processes/1.html">light weight processes in LFE</a>, and
 several example usages of ```receive``` are given there. On the second page of
 that tutorial, we see that any message sent to ```receive``` is accepted and
-processed. In the example below, we replace the simple pattern of the whole data (i.e., ```msg```)
-with a series of patterns that will print only if the message matches one of
-the provided patterns.
+processed. In the example below, we replace the simple pattern of the whole
+data (i.e., ```msg```) with a series of patterns that will print only if the
+message matches one of the provided patterns.
 
 Save the following in a file named ```rcv-pttrn.lfe```:
 {% highlight cl %}
@@ -279,10 +279,18 @@ Pattern matching in ```cond``` has the following general form:
       ... )
 {% endhighlight %}
 
+Typically, a ```cond``` looks like this:
 {% highlight cl %}
+(cond ((== a 1) (: io format '"It's one!"))
+      ((== a 2) (: io format '"It's two!")))
 {% endhighlight %}
+In other words, a series of tests with conditional results. LFE extends the
+basic form with support for pattern matching, as seen in the general form
+above.
 
+Here's an example of how one can do pattern matching in LFE with ```cond```:
 {% highlight cl %}
+
 {% endhighlight %}
 
 {% highlight cl %}

@@ -16,11 +16,11 @@ in function clauses, ```let```, ```case```, ```receive``` and in the macros
 
 Pattern matching in LFE happens when an expression matches a given pattern,
 e.g.:
-
-    (... (<pattern> <expression>) ...)
+{% highlight cl %}
+(... (<pattern> <expression>) ...)
+{% endhighlight %}
 
 where the ```<pattern>``` might be something like this:
-
 {% highlight cl %}
 (binary (f float (size 32))
         (b bitstring))
@@ -134,6 +134,10 @@ this simpler by using the "I don't care" variable (the underscore):
 ("msg too short")
 {% endhighlight %}
 
+Having seen these examples, you are probably gaining some insight into the
+power of pattern matching in Erlang and LFE. There's more, though :-) See below
+for equally potent uses.
+
 #### 2.5.2.2 ```case```
 
 Pattern matching in ```case``` has the following general form:
@@ -143,6 +147,10 @@ Pattern matching in ```case``` has the following general form:
   (<pattern> <expression> ... )
   ...)
 {% endhighlight %}
+
+Keep in mind that ```case``` may also be used (optionally) inside the ```try```
+form. For more information on ```try```, see
+<a href="http://lfe.github.com/user-guide/check/2.html">section 5.2</a>.
 
 {% highlight cl %}
 {% endhighlight %}
@@ -235,7 +243,7 @@ Aliases can be used anywhere in a pattern.
 List and binary comprehensions make use of patterns in a limited sense. They
 have the following general forms:
 {% highlight cl %}
- (<- pat guard list-expr)
+(<- pat guard list-expr)
 {% endhighlight %}
 and
 {% highlight cl %}

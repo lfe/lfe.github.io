@@ -5,4 +5,4 @@ total_guides: 3
 ---
 #  5 Checks, Errors, and Tests
 
-## 5.2 Guards
+## 5.1 Guards

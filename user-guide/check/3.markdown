@@ -5,4 +5,4 @@ total_guides: 3
 ---
 #  5 Checks, Errors, and Tests
 
-## 5.4 EUnit and TDD
+## 5.3 EUnit and TDD

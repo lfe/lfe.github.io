@@ -5,4 +5,4 @@ total_guides: 3
 ---
 #  5 Checks, Errors, and Tests
 
-## 5.3 Exception Handling
+## 5.2 Exception Handling

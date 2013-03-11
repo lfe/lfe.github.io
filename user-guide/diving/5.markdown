@@ -290,59 +290,7 @@ Pattern matching in ```cond``` has the following general form:
 
 ### 2.5.3 Special Cases
 
-#### 2.5.3.1 Arguments to ```defun```
-
-Pattern matching in functions has the following general form:
-{% highlight cl %}
-    (defun name
-      ((argpat ...) ...)
-      ...)
-{% endhighlight %}
-
-{% highlight cl %}
-{% endhighlight %}
-
-{% highlight cl %}
-{% endhighlight %}
-
-{% highlight cl %}
-{% endhighlight %}
-
-#### 2.5.3.2 Aliases with ```=```
-
-Aliases are defined with the following general form:
-{% highlight cl %}
-( ... (= <pattern 1> <pattern 2>) ... )
-{% endhighlight %}
-
-Aliases can be used anywhere in a pattern.
-
-{% highlight cl %}
-{% endhighlight %}
-
-{% highlight cl %}
-{% endhighlight %}
-
-{% highlight cl %}
-{% endhighlight %}
-
-#### 2.5.3.3 Patterns in Comprehensions
-
-List and binary comprehensions make use of patterns in a limited sense. They
-have the following general forms:
-{% highlight cl %}
-(<- pat guard list-expr)
-{% endhighlight %}
-and
-{% highlight cl %}
-(<= bin-pat guard binary-expr)
-{% endhighlight %}
-where the ```guard``` in both cases is optional.
-
-You can read more about LFE comprehensions in
-<a href="/user-guide/data/2.html">section 3.2</a>
-
-#### 2.5.3.4 ```set``` in the REPL
+#### 2.5.3.1 ```set``` in the REPL
 
 Using ```set``` in the REPL has the following general form:
 {% highlight cl %}
@@ -361,3 +309,75 @@ ok
 "Trillian"
 >
 {% endhighlight %}
+
+#### 2.5.3.2 Aliases with ```=```
+
+Aliases are defined with the following general form:
+{% highlight cl %}
+( ... (= <pattern 1> <pattern 2>) ... )
+{% endhighlight %}
+
+Aliases can be used anywhere in a pattern. A quick example of this, updating
+the previous example with aliases:
+{% highlight cl %}
+> (set (= (tuple len status data) (tuple a b c))
+       #(8 ok "Trillian"))
+#(8 ok "Trillian")
+>
+{% endhighlight %}
+
+The same variables that were bound in the previous example are bound in this
+one:
+{% highlight cl %}
+> len
+8
+> status
+ok
+> data
+"Trillian"
+>
+{% endhighlight %}
+
+In addition, however, we have aliases new variables to these:
+{% highlight cl %}
+> a
+8
+> b
+ok
+> c
+"Trillian"
+{% endhighlight %}
+
+#### 2.5.3.3 Arguments to ```defun```
+
+Pattern matching in functions has the following general form:
+{% highlight cl %}
+    (defun name
+      ((argpat ...) ...)
+      ...)
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+#### 2.5.3.4 Patterns in Comprehensions
+
+List and binary comprehensions make use of patterns in a limited sense. They
+have the following general forms:
+{% highlight cl %}
+(<- pat guard list-expr)
+{% endhighlight %}
+and
+{% highlight cl %}
+(<= bin-pat guard binary-expr)
+{% endhighlight %}
+where the ```guard``` in both cases is optional.
+
+You can read more about LFE comprehensions in
+<a href="/user-guide/data/2.html">section 3.2</a>

@@ -209,9 +209,11 @@ Pattern matching in ```receive``` has the following general form:
 
 There is a tutorial on working with Erlang's
 <a href="/tutorials/processes/1.html">light weight processes in LFE</a>, and
-several example usages of receive are given there. On the first page of the
-tutorial, any message sent to ```receive``` is accepted. Let's replace the
-simple pattern of the whole data (i.e., ```msg```) with a series of patterns.
+several example usages of ```receive``` are given there. On the second page of
+that tutorial, we see that any message sent to ```receive``` is accepted and
+processed. In the example below, we replace the simple pattern of the whole data (i.e., ```msg```)
+with a series of patterns that will print only if the message matches one of
+the provided patterns.
 
 Save the following in a file named ```rcv-pttrn.lfe```:
 {% highlight cl %}
@@ -257,7 +259,7 @@ Withdraw from Krikkit immediately!
 As you can see, the ```receive``` patterns are working.
 
 We can also see what happens when we send messages that don't match any of the
-defined patterns.
+defined patterns:
 {% highlight cl %}
 > (! pid #(noop "This won't be matched"))
 #(noop "This won't be matched")

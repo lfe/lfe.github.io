@@ -10,7 +10,7 @@ total_guides: 5
 ### 3.3.1 Property Lists
 
 Property lists are just lists whose entries are key/value tuples.
-Alternatively, an antry may be a single atom, in which case it implies a tuple
+Alternatively, an entry may be a single atom, in which case it implies a tuple
 with the atom as the key and ```true``` as the value.
 
 Since there's no special type here, we just create a regular list:

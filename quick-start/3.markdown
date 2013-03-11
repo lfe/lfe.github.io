@@ -12,7 +12,7 @@ total_guides: 4
 Taking advantage of the
 <a href="http://erldocs.com/R15B/index.html?i=734#stdlib">Erlang stdlib</a> is
 straightforward. All you need to do is prepend the call with a ```:``` and
-adjust to use the LFE syntax vs. the Erlang styntax.
+adjust to use the LFE syntax vs. the Erlang syntax.
 
 In fact, we've already seen an example of this in Section 2
 when we called ```(: io format ...)``` as part of a "Hello World."

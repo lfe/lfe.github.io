@@ -152,13 +152,47 @@ Keep in mind that ```case``` may also be used (optionally) inside the ```try```
 form. For more information on ```try```, see
 <a href="http://lfe.github.com/user-guide/check/2.html">section 5.2</a>.
 
+Let's take a look at ```case``` in action:
 {% highlight cl %}
+> (set data #(6 warn "Arthur"))
+#(6 warn "Arthur")
+> (case data
+    ((tuple len 'ok msg)
+      (: io format '"~s seems good.~n" (list msg)))
+    ((tuple len 'err msg)
+      (: io format '"There's a problem with ~s.~n" (list msg)))
+    ((tuple len 'warn msg)
+      (: io format '"Be careful of ~s.~n" (list msg))))
+Be careful of Arthur.
+ok
+>
 {% endhighlight %}
 
+The patterns we are using in this ```case``` example expect data of one
+particular format, differentiating by the second element of the provided tuple.
+With new data, we can exercise the other cases:
 {% highlight cl %}
+> (set data #(8 ok "Trillian"))
+#(8 ok "Trillian")
 {% endhighlight %}
 
+We won't re-type the ```case``` example here; just hit the "up" arror until you
+get to the ```case``` entry and hit return:
 {% highlight cl %}
+> (case ...)
+Trillian seems good.
+ok
+>
+{% endhighlight %}
+
+Similarly, we can test the remaining case:
+{% highlight cl %}
+> (set data #(6 err "Zaphod"))
+#(6 err "Zaphod")
+> (case ...)
+There's a problem with Zaphod.
+ok
+>
 {% endhighlight %}
 
 #### 2.5.2.3 ```receive```
@@ -173,6 +207,9 @@ Pattern matching in ```receive``` has the following general form:
     ... ))
 {% endhighlight %}
 
+There is a tutorial on working with Erlang's
+<a href="/tutorials/processes/1.html">light weight processes in LFE</a>, and
+several example usages of receive are given there.
 {% highlight cl %}
 {% endhighlight %}
 

@@ -82,7 +82,7 @@ Here's the Erlang version:
 3>
 {% endhighlight %}
 
-As we might expect, the native Erlang versiosn is much more concise.
+As we might expect, the native Erlang version is much more concise.
 Fortunately, though, in LFE we don't need to enter the whole binary form, just
 the bit syntax portion. In other words, instead of writing this:
 {% highlight cl %}

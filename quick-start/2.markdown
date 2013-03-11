@@ -13,7 +13,7 @@ at the REPL (interactive shell) first.
 ### 2.1 The REPL
 
 To start the REPL, simply run the ```lfe``` script and tell ```erl``` (which is
-being run in the scrip) which additional code paths it should look for (in this
+being run in the script) which additional code paths it should look for (in this
 case, the compiled LFE code):
 
     $ ./bin/lfe -pa ./ebin

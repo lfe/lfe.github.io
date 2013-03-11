@@ -209,15 +209,63 @@ Pattern matching in ```receive``` has the following general form:
 
 There is a tutorial on working with Erlang's
 <a href="/tutorials/processes/1.html">light weight processes in LFE</a>, and
-several example usages of receive are given there.
+several example usages of receive are given there. On the first page of the
+tutorial, any message sent to ```receive``` is accepted. Let's replace the
+simple pattern of the whole data (i.e., ```msg```) with a series of patterns.
+
+Save the following in a file named ```rcv-pttrn.lfe```:
 {% highlight cl %}
+(defmodule rcv-pttrn
+  (export (safety-check 0)))
+
+(defun safety-check ()
+  (receive
+    ((tuple 'ok item)
+      (: io format '"~s is safe to approach.~n" (list item))
+      (safety-check))
+    ((tuple 'warn item)
+      (: io format '"Approach ~s with extreme caution.~n" (list item))
+      (safety-check))
+    ((tuple 'crit item)
+      (: io format '"Withdraw from ~s immediately!~n" (list item))
+      (safety-check))))
 {% endhighlight %}
 
+Next, start up the LFE REPL, compile the module above, and start our safety
+server:
 {% highlight cl %}
+> (c '"rcv-pttrn")
+#(module rcv-pttrn)
+> (set pid (spawn 'rcv-pttrn 'safety-check ()))
+<0.34.0>
+>
 {% endhighlight %}
 
+Now let's give our patterns a try by sending messages to the server process:
 {% highlight cl %}
+> (! pid #(ok "Earth"))
+#(ok "Earth")
+Earth is safe to approach.
+> (! pid #(warn "Frogstar"))
+#(warn "Frogstar")
+Approach Frogstar with extreme caution.
+> (! pid #(crit "Krikkit"))
+#(crit "Krikkit")
+Withdraw from Krikkit immediately!
+>
 {% endhighlight %}
+As you can see, the ```receive``` patterns are working.
+
+We can also see what happens when we send messages that don't match any of the
+defined patterns.
+{% highlight cl %}
+> (! pid #(noop "This won't be matched"))
+#(noop "This won't be matched")
+> (! pid '"Neither will this"))
+"Neither will this"
+>
+{% endhighlight %}
+Absolutely nothing, that's what.
 
 #### 2.5.2.4 ```cond```
 

@@ -12,7 +12,8 @@ total_guides: 5
 Pattern matching in Erlang is huge, and it has a proportional impact on LFE and
 what one can do with this dialect of Lisp. Pattern matching in LFE can be used
 in function clauses, ```let```, ```case```, ```receive``` and in the macros
-```cond```, ```lc```, and ```bc```.
+```cond```, ```lc```, and ```bc```. From the REPL, pattern matching may be done
+in ```set``` as well.
 
 Pattern matching in LFE happens when an expression matches a given pattern,
 e.g.:
@@ -340,3 +341,23 @@ where the ```guard``` in both cases is optional.
 
 You can read more about LFE comprehensions in
 <a href="/user-guide/data/2.html">section 3.2</a>
+
+#### 2.5.3.4 ```set``` in the REPL
+
+Using ```set``` in the REPL has the following general form:
+{% highlight cl %}
+(set <pattern> <expression>)
+{% endhighlight %}
+
+Note that ```set``` is only valid when running the LFE shell. Example usage:
+{% highlight cl %}
+> (set (tuple len status data) #(8 ok "Trillian"))
+#(8 ok "Trillian")
+> len
+8
+> status
+ok
+> data
+"Trillian"
+>
+{% endhighlight %}

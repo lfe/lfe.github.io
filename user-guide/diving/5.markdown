@@ -299,7 +299,8 @@ Using ```set``` in the REPL has the following general form:
 
 Note that ```set``` is only valid when running the LFE shell. Example usage:
 {% highlight cl %}
-> (set (tuple len status data) #(8 ok "Trillian"))
+> (set (tuple len status data)
+       #(8 ok "Trillian"))
 #(8 ok "Trillian")
 > len
 8

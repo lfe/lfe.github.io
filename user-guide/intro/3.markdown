@@ -7,10 +7,56 @@ total_guides: 3
 
 ## 1.3 Loading Files
 
+There are several ways in which one may load files in LFE.
+
 ### 1.3.1 ```slurp```
+
+As mentioned in the section on
+<a href="/user-guide/intro/2.html">LFE's REPL</a>, ```slurp```ing a file makes
+all functions and macros defined in the file available in the shell. One does
+not need to reference the module (and, in fact, attempting to do so will result
+in an error. Also, note that only one file can be slurped at a time; slurping a
+new one removes all data about the previous file.
+{% highlight cl %}
+> (slurp '"my-module.lfe")
+#(ok my-module)
+>
+{% endhighlight %}
 
 ### 1.3.2 ```c```
 
-### 1.3.3 ```include-file```
+Compiling a module from the REPL is what you need if you wish to work with
+multiple modules simultaneously:
+{% highlight cl %}
+> (c '"my-module")
+#(module my-module)
+>
+{% endhighlight %}
 
-### 1.3.4 ```include-lib```
+### 1.3.3 ```ec```
+
+You can also load Erlang files in LFE:
+{% highlight cl %}
+> (ec '"../lfe/src/lfe_macro.erl")
+#(ok lfe_macro)
+>
+{% endhighlight %}
+
+### 1.3.4 ```l```
+
+If a module is in your Erlang/LFE path,  you can load that too:
+{% highlight cl %}
+> (l 'mochiweb)
+(#(module mochiweb))
+>
+{% endhighlight %}
+
+### 1.3.4 ```include-file```
+
+{% highlight cl %}
+{% endhighlight %}
+
+### 1.3.5 ```include-lib```
+
+{% highlight cl %}
+{% endhighlight %}

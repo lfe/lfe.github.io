@@ -8,7 +8,7 @@ total_guides: 4
 ## 4 Next Steps
 
 This has been a quick overview of what LFE has to offer, so you might enjoy
-reading the <a href="http://lfe.github.com/user-guide/1.html">User Guide</a>
+reading the <a href="/user-guide/intro/1.html">User Guide</a>
 next. You can see all our docs at a glance by visiting the
 <a href="/docs.html">Docs</a> page.
 

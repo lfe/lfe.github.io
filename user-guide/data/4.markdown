@@ -11,7 +11,7 @@ total_guides: 5
 
 Sometimes lists, tuples, property lists, or hashes are not quite what is
 needed. With tuples, you can't name keys (without awkward work-arounds), and
-this makes working with large tuples rather cwcumbersome. Records are one way
+this makes working with large tuples rather cumbersome. Records are one way
 around this.
 
 A record is a data structure for storing a fixed number of elements. It has

@@ -288,12 +288,38 @@ In other words, a series of tests with conditional results. LFE extends the
 basic form with support for pattern matching, as seen in the general form
 above.
 
-Here's an example of how one can do pattern matching in LFE with ```cond```:
+Here's an example of how one can do pattern matching in LFE with ```cond```
+(starting with the setting of some data):
 {% highlight cl %}
-
+> (set data #(8 ok "Trillian"))
+#(8 ok "Trillian")
+> (cond ((?= (tuple len 'ok msg) data)
+         (: io format '"~s seems good.~n" (list msg)))
+        ((?= (tuple len 'err msg) data)
+         (: io format '"There's a problem with ~s.~n" (list msg)))
+        ((?= (tuple len 'warn msg) data)
+         (: io format '"Be careful of ~s.~n" (list msg))))
+Trillian seems good.
+ok
+>
 {% endhighlight %}
+Note that this is a replacement of the ```case``` example above.
 
+We can set the ```data``` variable differently to exercise the other code
+paths, and then enter the ```cond``` expression from above (elided below to
+save space):
 {% highlight cl %}
+> (set data #(6 warn "Arthur"))
+#(6 warn "Arthur")
+> (cond ... )
+Be careful of Arthur.
+ok
+> (set data #(6 err "Zaphod"))
+#(6 err "Zaphod")
+> (cond ... )
+There's a problem with Zaphod.
+ok
+>
 {% endhighlight %}
 
 ### 2.5.3 Special Cases

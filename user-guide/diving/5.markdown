@@ -358,6 +358,10 @@ Pattern matching in functions has the following general form:
       ...)
 {% endhighlight %}
 
+We haven't covered functions yet (that's coming up in
+<a href="/user-guide/funcode/1.html">Chapter 4</a>), so this will be a short
+preview focusing just on the pattern usage in functions, with more detail
+coming later.
 {% highlight cl %}
 {% endhighlight %}
 

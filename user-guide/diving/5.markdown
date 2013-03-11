@@ -47,8 +47,8 @@ data that will be matched by the pattern.
 If the matching succeeds, any unbound variables in the pattern become bound. If
 the matching fails, a run-time error occurs.  All of this is best understood
 through the examples given below. Each example is preceeded by the general form
-of patterns as used in the given content. This should help keep things clear,
-even as the examples get convoluted.
+of pattern as used in the given context. This should help keep things clear,
+even when the examples get convoluted.
 
 ### 2.5.2 Patterns in Forms
 
@@ -192,24 +192,15 @@ Pattern matching in ```cond``` has the following general form:
 {% highlight cl %}
 {% endhighlight %}
 
-#### 2.5.2.5 ```=```
+### 2.5.3 Special Cases
 
-{% highlight cl %}
-{% endhighlight %}
-
-{% highlight cl %}
-{% endhighlight %}
-
-{% highlight cl %}
-{% endhighlight %}
-
-{% highlight cl %}
-{% endhighlight %}
-
-#### 2.5.2.6 ```defun``` Arguments
+#### 2.5.3.1 Arguments to ```defun```
 
 Pattern matching in functions has the following general form:
 {% highlight cl %}
+    (defun name
+      ((argpat ...) ...)
+      ...)
 {% endhighlight %}
 
 {% highlight cl %}
@@ -220,3 +211,43 @@ Pattern matching in functions has the following general form:
 
 {% highlight cl %}
 {% endhighlight %}
+
+#### 2.5.3.2 Aliases with ```=```
+
+Aliases are defined with the following general form:
+{% highlight cl %}
+( ... (= <pattern 1> <pattern 2>) ... )
+{% endhighlight %}
+
+Aliases can be used anywhere in a pattern.
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+#### 2.5.3.3 Patterns in Comprehensions
+
+List and binary comprehensions make use of patterns in a limited sense. They
+have the following general forms:
+{% highlight cl %}
+ (<- pat guard list-expr)
+{% endhighlight %}
+and
+{% highlight cl %}
+(<= bin-pat guard binary-expr)
+{% endhighlight %}
+where the ```guard``` in both cases is optional.
+
+You can read more about LFE comprehensions in
+<a href="/user-guide/data/2.html">section 3.2</a>
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+

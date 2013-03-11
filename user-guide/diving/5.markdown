@@ -339,7 +339,7 @@ ok
 >
 {% endhighlight %}
 
-In addition, however, we have aliases new variables to these:
+In addition, however, we have aliased new variables to these:
 {% highlight cl %}
 > a
 8

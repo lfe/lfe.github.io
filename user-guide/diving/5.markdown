@@ -268,7 +268,8 @@ defined patterns:
 "Neither will this"
 >
 {% endhighlight %}
-Absolutely nothing, that's what.
+Absolutely nothing, that's what. Well, nothing from the process we spawned,
+that is... just the REPL doing its thang.
 
 #### 2.5.2.4 ```cond```
 

@@ -396,13 +396,46 @@ We haven't covered functions yet (that's coming up in
 <a href="/user-guide/funcode/1.html">Chapter 4</a>), so this will be a short
 preview focusing just on the pattern usage in functions, with more detail
 coming later.
+
+Proper functions can't be defined in the LFE REPL, so save the following to
+```func-pttrn.lfe```:
 {% highlight cl %}
+(defmodule func-pttrn
+  (export (safety-check 2)))
+
+(defun safety-check
+  (('ok msg)
+    (: io format '"~s seems good.~n" (list msg)))
+  (('warn msg)
+    (: io format '"There's a problem with ~s.~n" (list msg)))
+  (('crit msg)
+    (: io format '"Be careful of ~s.~n" (list msg))))
 {% endhighlight %}
 
+As you can see, the usual function arguments have been replaced with a pattern.
+In particular, this function will accept any of three options with two
+arguments each: where the first argument is ```'ok```, or where it is
+```'warn```, or where it is ```'crit```.
+
+Let's compile our new module from the LFE REPL:
 {% highlight cl %}
+> (c '"func-pttrn")
+#(module func-pttrn)
+>
 {% endhighlight %}
 
+Now let's step it through its paces:
 {% highlight cl %}
+> (: func-pttrn safety-check 'ok '"Trillian")
+Trillian seems good.
+ok
+> (: func-pttrn safety-check 'warn '"Arthur")
+There's a problem with Arthur.
+ok
+> (: func-pttrn safety-check 'crit '"Zaphod")
+Be careful of Zaphod.
+ok
+>
 {% endhighlight %}
 
 #### 2.5.3.4 Patterns in Comprehensions

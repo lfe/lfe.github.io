@@ -6,3 +6,19 @@ total_guides: 3
 #  5 Checks, Errors, and Tests
 
 ## 5.3 EUnit and TDD
+
+### 5.3.1 The Face of a Unit Test
+
+### 5.3.2 Mixed Tests or Separate Modules?
+
+### 5.3.3 Running Unit Tests
+
+### 5.3.4 Distributing Code with Unit Tests
+
+### 5.3.5 A Unit Test in Detail
+
+#### 5.3.5.1 Erlang EUnit Assert Macros
+
+#### 5.3.5.2 Setup and Cleanup
+
+#### 5.3.5.3 Generating Tests

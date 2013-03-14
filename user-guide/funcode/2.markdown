@@ -5,4 +5,14 @@ total_guides: 4
 ---
 # 4 Functions and Modules
 
-## 4.2 LFE-Specific Functions
+## 4.2 LFE-Specific Functions and Macros
+
+### 4.2.1 Core Forms
+
+### 4.2.2 Macro Forms
+
+### 4.2.3 Common Lisp Inspired Macros
+
+### 4.2.4 Scheme Inspired Macros
+
+### 4.2.5 Additional Lisp Functions

@@ -5,7 +5,7 @@ total_guides: 3
 ---
 #  5 Checks, Errors, and Tests
 
-## 5.3 EUnit and TDD
+## 5.3 EUnit
 
 ### 5.3.1 The Face of a Unit Test
 
@@ -22,3 +22,23 @@ total_guides: 3
 #### 5.3.5.2 Setup and Cleanup
 
 #### 5.3.5.3 Generating Tests
+
+## 5.4 TDD
+
+### 5.4.1 Creating an API and Writing Tests
+
+### 5.4.2 Making Tests Pass
+
+#### 5.4.2.1 Factoring Out Common Test Logic
+
+### 5.4.3 Testing the Server
+
+### 5.4.4 Testing the Client
+
+### 5.4.5 Cleaning Up After Tests
+
+### 5.4.6 Handling Logged Errors
+
+### 5.4.7 Resolving a Bug
+
+### 5.4.8 Code Coverage

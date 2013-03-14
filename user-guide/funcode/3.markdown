@@ -6,3 +6,7 @@ total_guides: 4
 # 4 Functions and Modules
 
 ## 4.3 Modules
+
+### 4.3.1 What Modules Do
+
+### 4.3.2 What Modules Don't Do

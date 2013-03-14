@@ -6,3 +6,17 @@ total_guides: 4
 # 4 Functions and Modules
 
 ## 4.1 Functions
+
+### 4.1.1 Intro and Recap
+
+### 4.1.2 Parity
+
+### 4.1.3 More Patterns
+
+### 4.1.4 Anonymouns Functions
+
+### 4.1.5 Higher-Order Functions
+
+#### 4.1.5.1 As Input
+
+#### 4.1.5.2 As Output

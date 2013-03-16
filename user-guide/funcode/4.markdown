@@ -6,3 +6,13 @@ total_guides: 4
 # 4 Functions and Modules
 
 ## 4.4 Projects
+
+### 4.4.1 Collections of Modules
+
+### 4.4.2 Defining a Project with Rebar
+
+### 4.4.3 Dependencies
+
+### 4.4.4 Distributing A Project
+
+### 4.4.5 Installing Projects

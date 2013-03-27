@@ -55,9 +55,43 @@ If a module is in your Erlang/LFE path,  you can load that too:
 
 ### 1.6.2 Loading Files in Modules
 
+Code may be included wholesale into LFE modules by either using
+```include-file``` or ```include-lib```.
+
 #### 1.6.2.1 ```include-file```
 
+If you have records or data that you would like to be available to more than
+one module, you can put those in a dedicated file and pull them in to your
+modules. For example, let's say I had defined the following constants in the
+file ```include/consts.lfe```:
+
 {% highlight cl %}
+(defmacro *base-cool-factor* _ `0.8)
+(defmacro *earth-adjustment* _ `0.3)
+{% endhighlight %}
+
+Then, in the following two files I could easily use those constants by
+including them:
+{% highlight cl %}
+(defmodule zaphod
+  (export all)
+
+(include-file "include/consts.lfe")
+
+(defun get-coolness ()
+  (let ((zaphod-cool-factor 0.9))
+    (* (*base-cool-factor*) zaphod-cool-factor)))
+{% endhighlight %}
+
+{% highlight cl %}
+(defmodule arthur
+  (export all)
+
+(include-file "include/consts.lfe")
+
+(defun get-coolness ()
+  (let ((arthur-cool-factor 0.1))
+    (* (*base-cool-factor*) (*earth-adjustment*) arthur-cool-factor)))
 {% endhighlight %}
 
 #### 1.6.2.2 ```include-lib```

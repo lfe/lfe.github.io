@@ -10,3 +10,50 @@ total_guides: 4
 ### 4.3.1 What Modules Do
 
 ### 4.3.2 What Modules Don't Do
+
+### 4.3.3 Creating a Module
+
+### 4.3.4 Parameterized Modules
+
+{% highlight cl %}
+(defmodule (zaphod-rest-api request)
+  (export (get-greeting 2)))
+
+(defun get-greeting
+  (('GET ())
+   (tuple 'output '"Zaphod says 'hello!'"))
+  (('GET _)
+   (tuple 'output '"Zaphod says 'hello' to anything...")))
+{% endhighlight %}
+
+{% highlight cl %}
+> (set req (: zaphod-rest-api new '"a request"))
+#(zaphod-rest-api "a request")
+> (call req 'get-greeting 'GET ())
+#(output "Zaphod says 'hello!'")
+> (call req 'get-greeting 'GET '"stuff")
+#(output "Zaphod says 'hello' to anything...")
+>
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+

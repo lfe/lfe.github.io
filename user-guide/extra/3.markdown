@@ -1,8 +1,8 @@
 ---
 layout: user-guide
-guide: 2
+guide: 3
 total_guides: 3
 ---
 # 8 Additional Topics
 
-## 8.2 Macros
+## 8.3 Writing for Multi-Core

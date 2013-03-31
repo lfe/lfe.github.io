@@ -6,3 +6,15 @@ total_guides: 3
 #  5 Checks, Errors, and Tests
 
 ## 5.2 Exception Handling
+
+Erlang, and thus LFE, provide a means of evaluating expressions and not only
+handling normal results, but abnormal termination as well. This is done with
+```(try ... (catch ... ))```.
+
+Note that ```(try ... )``` doesn't need to have a ```(catch ...)```, however,
+since we will be exploring exception handling in this section, all of our
+examples will be using ```(catch ...)```.
+
+### 5.2.1 A Simple Case
+
+

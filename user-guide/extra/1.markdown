@@ -1,8 +1,22 @@
 ---
 layout: user-guide
 guide: 1
-total_guides: 2
+total_guides: 3
 ---
 # 8 Additional Topics
 
-## 8.1 Macros
+## 8.1 Recursion
+
+### 8.1.1 See Section 8.1
+
+### 8.1.2 A Simple Example
+
+### 8.1.3 With an Accumulator
+
+### 8.1.4 With Return Values
+
+### 8.1.5 With Lists
+
+### 8.1.6 Tail Calls in LFE
+
+### 8.1.7 Tail Call Optimization

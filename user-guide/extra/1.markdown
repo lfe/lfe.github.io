@@ -33,7 +33,15 @@ Sorry, couldn't resist.
 
 ### 8.1.2 A Mathematical Side Trip
 
+For those that are math-averse, don't let this frighten you -- this will be a
+quick and peaceful side-trip that will not leave you bewildered. Rather, one
+hopes you will actually understand and enjoy this little jaunt!
+
 #### 8.1.2.1 The Dedekind-Peano Axioms
+
+[Add note aboute the early difficulties in exactly defining the natural
+numbers.] The Italian mathematician Guiseppe Peano sought "to make the theory
+clearer, more precise, and easier to learn."
 
 #### 8.1.2.2 The Ackermann Function
 

@@ -7,9 +7,31 @@ total_guides: 3
 
 ## 8.1 Recursion
 
+In functional languages, recursion plays an important role. For Erlang in
+particular, recursion is important because variables can't be changed and
+therefor is often very useful take advantage of recursion (examples are given
+below).
+
+However, recursion is interesting in and of itself. The roots of functional
+programming languages such as Lisp, ML, Erlang, Haskell and others, can
+be traced to the concept of recursion in general and the lambda calculus in
+particular. Dedekind and Peano seem to be the first to have employed recursion.
+Furthermore, Peano gave Bertrand Russell a copy of his "Formulario" which
+impacted Russell hugely and quite possibly influenced his efforts on "Principia
+Mathematica" which he coauthered several years later. It was from the Principia
+that Church derived his lambda notation. Church's student John McCarthy was the
+creator of Lisp, and used both the lambda and the concept of recursion in his
+new language.
+
+In this section of the user guide, we explore various aspects of recursion as
+they can be formulated in LFE.
+
 ### 8.1.1 See Section 8.1
 
+Sorry, couldn't resist.
+
 ### 8.1.2 A Simple Example
+
 
 ### 8.1.3 With an Accumulator
 

@@ -19,9 +19,10 @@ particular. Dedekind and Peano seem to be the first to have employed recursion.
 Furthermore, Peano gave Bertrand Russell a copy of his "Formulario" which
 impacted Russell hugely and quite possibly influenced his efforts on "Principia
 Mathematica" which he coauthered several years later. It was from the Principia
-that Church derived his lambda notation. Church's student John McCarthy was the
-creator of Lisp, and used both the lambda and the concept of recursion in his
-new language.
+that Alonzo Church derived his lambda notation. Church's student John McCarthy
+was the creator of Lisp, and used both the lambda and the concept of recursion
+in his new language (and, along with Dijkstra, advocated for the inclusions of
+recursion in ALGOL).
 
 In this section of the user guide, we explore various aspects of recursion as
 they can be formulated in LFE.
@@ -30,15 +31,22 @@ they can be formulated in LFE.
 
 Sorry, couldn't resist.
 
-### 8.1.2 A Simple Example
+### 8.1.2 A Mathematical Side Trip
 
+#### 8.1.2.1 The Dedekind-Peano Axioms
 
-### 8.1.3 With an Accumulator
+#### 8.1.2.2 The Ackermann Function
 
-### 8.1.4 With Return Values
+### 8.1.3 Practical Examples in Computing
 
-### 8.1.5 With Lists
+#### 8.1.3.1 A Simple Example
 
-### 8.1.6 Tail Calls in LFE
+#### 8.1.3.2 With an Accumulator
 
-### 8.1.7 Tail Call Optimization
+#### 8.1.3.3 With Return Values
+
+#### 8.1.3.4 With Lists
+
+### 8.1.4 Tail Calls in LFE
+
+#### 8.1.4.1 Tail Call Optimization

@@ -18,7 +18,7 @@ be traced to the concept of recursion in general and the lambda calculus in
 particular. Dedekind and Peano seem to be the first to have employed recursion.
 Furthermore, Peano gave Bertrand Russell a copy of his "Formulario" which
 impacted Russell hugely and quite possibly influenced his efforts on "Principia
-Mathematica" which he coauthered several years later. It was from the Principia
+Mathematica" which he coauthored several years later. It was from the Principia
 that Alonzo Church derived his lambda notation. Church's student John McCarthy
 was the creator of Lisp, and used both the lambda and the concept of recursion
 in his new language (and, along with Dijkstra, advocated for the inclusions of
@@ -34,14 +34,30 @@ Sorry, couldn't resist.
 ### 8.1.2 A Mathematical Side Trip
 
 For those that are math-averse, don't let this frighten you -- this will be a
-quick and peaceful side-trip that will not leave you bewildered. Rather, one
-hopes you will actually understand and enjoy this little jaunt!
+quick and peaceful side-trip that will not leave you bewildered. Rather, it
+should provide some nice background for how recursion came to be used. With the
+history reviewed, we'll jump into practical implementations.
 
 #### 8.1.2.1 The Dedekind-Peano Axioms
 
-[[Add note aboute the early difficulties in exactly defining the natural
-numbers.]] The Italian mathematician Guiseppe Peano sought "to make the theory
-clearer, more precise, and easier to learn."
+Despite the fluorescence of maths in the 17th and 18th centuries and the
+growing impact of number theory, the ground upon which mathematics were built
+was shaky at best. Indeed, what we now consider to be the foundations of
+mathematics had not even been agreed upon (and this didn't happen until the
+first half of the 20th century with the maturation of logic and rise of
+axiomatic set theory).
+
+One of the big problems facing mathematicians and one that also prevented the
+clarification of the foundations, was understanding integers and operations on
+them (e.g., addition, multiplication, etc.). There was a lot of hand-waving
+that occurred as well as some clever and mostly-correct analysis.
+
+Richard Dedekind attempted to address this with his method of cuts, however it
+was Guiseppe Peano that supplied us with the clearest, most easily described
+axioms defining the natural numbers and arithmetic. These can be easily found
+in text books and on the Internet; we will take a slightly unique approach,
+however, and cast them in Erlang.
+
 
 #### 8.1.2.2 The Ackermann Function
 

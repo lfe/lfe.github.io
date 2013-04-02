@@ -56,10 +56,104 @@ Richard Dedekind attempted to address this with his method of cuts, however it
 was Guiseppe Peano that supplied us with the clearest, most easily described
 axioms defining the natural numbers and arithmetic. These can be easily found
 in text books and on the Internet; we will take a slightly unique approach,
-however, and cast them in Erlang.
+however, and cast them in Lisp Flavored Erlang.
 
 
-#### 8.1.2.2 The Ackermann Function
+##### 8.1.2.1.1 A Constant and Equality
+
+The first five Peano axioms deal with the constant (often written as "0") and
+the reflexive, symmetric, transitive and closed eqaulity relations. These don't
+relate recursion directly, so we're going to skip them ;-)
+
+##### 8.1.2.1.2 Successor Function
+
+The concept of the "successor" in the Peano axioms is a primitive; it is taken
+as being true without having proved it. It is informally defined as being the
+next number following a given number "n".
+
+In LFE:
+{% highlight cl %}
+(defun successor (n)
+  (+ n 1))
+{% endhighlight %}
+
+The things to keep in mind here is that 1) we haven't defined addition yet, and
+2) you must not interpred "+" as addition in this context, rather as the
+operator that allows for succession to occur. In the world of the Peano axioms,
+"+" is only validly used with "n" and "1".
+
+This function is defined as being "basic primitive recursive" (defined by
+axioms; the term was coined by Rózsa Péter).
+
+##### 8.1.2.1.3 The Remaining Axioms
+
+The remaining three Peano axioms do not touch upon recursion directly, so we
+leave them to your own research and reading pleasure.
+
+#### 8.1.2.2 Primitive Recursive Functions
+
+In addition to the successor function, the other basic privimtive recursive
+functions defined are the "zero function", the "projection function" and the
+"identity function". These combined with the Peano axioms allow us to define
+other primitive functions.
+
+##### 8.1.2.2.1 Addition
+
+Often, one sees the primitive function definition of addition done in the
+following manner:
+
+    add(0, x) = x
+    add(n + 1, x) = add(n, x) + 1
+
+or:
+
+    add(0, x) = x
+    add(s(n), x) = s(add(n, x))
+
+In LFE, we'd like to maintain symmetry with this... however, patterns don't
+accept function calls (e.g., to ```(successor n)```). As such, we do a little
+juggling instead:
+{% highlight cl %}
+(defun predecessor
+  ((0) 0)
+  ((n) (- n 1)))
+{% endhighlight %}
+
+Now, we can recast the canonical form above using the workaround of the
+```predecessor``` primitive recursive function:
+{% highlight cl %}
+(defun add
+  ((0 x) x)
+  ((n x) (+ (add (predecessor n) x) 1)))
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+
+##### 8.1.2.1.3
+
+##### 8.1.2.1.4
+
+#### 8.1.2.3 The Ackermann Function
 
 ### 8.1.3 Practical Examples in Computing
 

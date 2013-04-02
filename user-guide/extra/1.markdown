@@ -171,7 +171,7 @@ Again, using our pattern workaround:
   ((n x) (add x (multiply x (predecessor n)))))
 {% endhighlight %}
 
-##### 8.1.2.3
+#### 8.1.2.3
 
 {% highlight cl %}
 {% endhighlight %}
@@ -185,10 +185,10 @@ Again, using our pattern workaround:
 {% highlight cl %}
 {% endhighlight %}
 
-###### 8.1.2.3.1
-###### 8.1.2.3.2
-###### 8.1.2.3.3
-###### 8.1.2.3.4
+##### 8.1.2.3.1
+##### 8.1.2.3.2
+##### 8.1.2.3.3
+##### 8.1.2.3.4
 
 #### 8.1.2.4 The Ackermann Function
 

@@ -178,7 +178,46 @@ Again, using our pattern workaround:
   ((n x) (add x (multiply x (predecessor n)))))
 {% endhighlight %}
 
-#### 8.1.2.3 The Lambda Calculus
+#### 8.1.2.3 The Ackermann Function
+
+The Ackermann function is one of the simplest and earliest-discovered examples
+of a "total computable function" that is not primitive recursive. The variant
+of the function that we present below is the two-variable version developed by
+Rózsa Péter and Raphael Robinson (the original was more verbose and with three
+variables).
+
+Here is the function in LFE
+{% highlight cl %}
+(defun ackermann
+  ((0 n) (+ n 1))
+  ((m 0) (ackermann (- m 1) 1))
+  ((m n) (ackermann (- m 1) (ackermann m (- n 1)))))
+{% endhighlight %}
+
+Here's some example usage:
+{% highlight cl %}
+> (c '"prf")
+#(module prf)
+> (: prf ackermann 0 0)
+1
+> (: prf ackermann 0 1)
+2
+> (: prf ackermann 1 0)
+2
+> (: prf ackermann 1 1)
+3
+> (: prf ackermann 1 2)
+4
+> (: prf ackermann 2 2)
+7
+> (: prf ackermann 2 4)
+11
+> (: prf ackermann 4 1)
+65533
+>
+{% endhighlight %}
+
+#### 8.1.2.4 The Lambda Calculus
 
 Oh, yeah. We just went there.
 
@@ -241,8 +280,6 @@ under Church encoding.
 
 {% highlight cl %}
 {% endhighlight %}
-
-#### 8.1.2.4 The Ackermann Function
 
 ### 8.1.3 Practical Examples in Computing
 

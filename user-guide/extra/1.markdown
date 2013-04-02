@@ -171,7 +171,22 @@ Again, using our pattern workaround:
   ((n x) (add x (multiply x (predecessor n)))))
 {% endhighlight %}
 
-#### 8.1.2.3
+#### 8.1.2.3 The Lambda Calculus
+
+Oh, yeah, we just went there.
+
+Keep in mind that the Peano axioms made use of recursion, that Giuseppe Peano
+played a key role in Bertrand Russell's development of the Principia, that
+Alonzo Church sought to make improvements on the Principia, and the lambda
+calculus eventually arose from these efforts.
+
+Church realized when creating the lambda calculus that with only a lambda at
+his disposal, he could define numbers and perform arithmetic upon them. This is
+known as "Church encoding". Using what we have defined above, we should be able
+to peer into this forest of lambdas and perhaps perceive some trees.
+
+Let's get our feet wet with figuring out how we can define the natural numbers
+under Church encoding.
 
 {% highlight cl %}
 {% endhighlight %}
@@ -186,9 +201,36 @@ Again, using our pattern workaround:
 {% endhighlight %}
 
 ##### 8.1.2.3.1
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
 ##### 8.1.2.3.2
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
 ##### 8.1.2.3.3
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
 ##### 8.1.2.3.4
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
 
 #### 8.1.2.4 The Ackermann Function
 

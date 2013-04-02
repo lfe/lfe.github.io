@@ -108,7 +108,7 @@ following manner:
 or:
 
     add(0, x) = x
-    add(s(n), x) = s(add(n, x))
+    add(succ(n), x) = succ(add(n, x))
 
 In LFE, we'd like to maintain symmetry with this... however, patterns don't
 accept function calls (e.g., to ```(successor n)```). As such, we do a little
@@ -124,8 +124,54 @@ Now, we can recast the canonical form above using the workaround of the
 {% highlight cl %}
 (defun add
   ((0 x) x)
-  ((n x) (+ (add (predecessor n) x) 1)))
+  ((n x) (successor (add (predecessor n) x))))
 {% endhighlight %}
+
+All of this may seem rather absurb, given what we do in every-day programming.
+Remember, thought: the verbosity of these axioms and derrivatives serves to
+explicitly show that no assumptions are being made and that all these
+operations can indeed be built upon basic principles.
+
+##### 8.1.2.2.2 Subtraction
+
+Next up, let's take a look at subtraction:
+
+    sub(0, x) = x
+    sub(pred(n), x) = pred(sub(n, x))
+
+Similar to addition above, we make some adjustments for the convenience of
+pattern matching:
+{% highlight cl %}
+(defun subtract
+  ((0 x) x)
+  ((n x) (predecessor (subtract (predecessor n) x))))
+{% endhighlight %}
+
+Note that the usual usage is reversed for our ```subtract``` function:
+{% highlight cl %}
+> (slurp '"prf.lfe")
+#(ok prf)
+> (subtract 1 100)
+99
+>
+{% endhighlight %}
+
+##### 8.1.2.2.3 Multiplication
+
+The last one of these that we will look at is multiplication, and then we'll
+move on to something a little more complicated :-)
+
+    mult(0, x) = 0
+    mult(succ(n), x) = x + (x * n)
+
+Again, using our pattern workaround:
+{% highlight cl %}
+(defun multiply
+  ((0 x) 0)
+  ((n x) (add x (multiply x (predecessor n)))))
+{% endhighlight %}
+
+##### 8.1.2.3
 
 {% highlight cl %}
 {% endhighlight %}
@@ -139,21 +185,12 @@ Now, we can recast the canonical form above using the workaround of the
 {% highlight cl %}
 {% endhighlight %}
 
-{% highlight cl %}
-{% endhighlight %}
+###### 8.1.2.3.1
+###### 8.1.2.3.2
+###### 8.1.2.3.3
+###### 8.1.2.3.4
 
-{% highlight cl %}
-{% endhighlight %}
-
-{% highlight cl %}
-{% endhighlight %}
-
-
-##### 8.1.2.1.3
-
-##### 8.1.2.1.4
-
-#### 8.1.2.3 The Ackermann Function
+#### 8.1.2.4 The Ackermann Function
 
 ### 8.1.3 Practical Examples in Computing
 

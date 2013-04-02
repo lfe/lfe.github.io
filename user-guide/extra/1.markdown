@@ -135,8 +135,8 @@ Now, we can recast the canonical form above using the workaround of the
 {% endhighlight %}
 
 All of this may seem rather absurb, given what we do in every-day programming.
-Remember, thought: the verbosity of these axioms and derrivatives serves to
-explicitly show that no assumptions are being made and that all these
+Remember, though: the verbosity of these axioms and their derrived definitions
+serves to explicitly show that no assumptions are being made and that all these
 operations can indeed be built upon basic principles.
 
 ##### 8.1.2.2.2 Subtraction

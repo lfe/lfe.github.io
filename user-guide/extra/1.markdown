@@ -9,20 +9,23 @@ total_guides: 3
 
 In functional languages, recursion plays an important role. For Erlang in
 particular, recursion is important because variables can't be changed and
-therefor is often very useful take advantage of recursion (examples are given
-below).
+therefor is often very useful take advantage of recursion to work with changing
+values (examples are given below).
 
 However, recursion is interesting in and of itself. The roots of functional
 programming languages such as Lisp, ML, Erlang, Haskell and others, can
 be traced to the concept of recursion in general and the lambda calculus in
-particular. Dedekind and Peano seem to be the first to have employed recursion.
-Furthermore, Peano gave Bertrand Russell a copy of his "Formulario" which
-impacted Russell hugely and quite possibly influenced his efforts on "Principia
-Mathematica" which he coauthored several years later. It was from the Principia
-that Alonzo Church derived his lambda notation. Church's student John McCarthy
-was the creator of Lisp, and used both the lambda and the concept of recursion
-in his new language (and, along with Dijkstra, advocated for the inclusions of
-recursion in ALGOL).
+particular.
+
+The Italian mathematician Giuseppe Peano seems to have been one of the first to
+have made prominent use of recursion when defining his axioms for deining the
+natural numbers. Furthermore, Peano gave Bertrand Russell a copy of his
+"Formulario". This impacted Russell hugely and quite possibly influenced his
+efforts on "Principia Mathematica" which he coauthored several years later. It
+was from the Principia that Alonzo Church derived his lambda notation. Church's
+student John McCarthy was the creator of Lisp, and used both the lambda
+notation and the concept of recursion in his new language (and, along with
+Dijkstra, advocated for the inclusions of recursion in ALGOL).
 
 In this section of the user guide, we explore various aspects of recursion as
 they can be formulated in LFE.
@@ -77,13 +80,14 @@ In LFE:
   (+ n 1))
 {% endhighlight %}
 
-The things to keep in mind here is that 1) we haven't defined addition yet, and
-2) you must not interpred "+" as addition in this context, rather as the
+The things to keep in mind here are that 1) we haven't defined addition yet,
+and 2) you must not interpred "+" as addition in this context, rather as the
 operator that allows for succession to occur. In the world of the Peano axioms,
 "+" is only validly used with "n" and "1".
 
-This function is defined as being "basic primitive recursive" (defined by
-axioms; the term was coined by Rózsa Péter).
+This function is defined as being "basic primitive recursive". The basic
+primitive recursives are defined by axioms; the term was coined by Rózsa
+Péter.
 
 ##### 8.1.2.1.3 The Remaining Axioms
 

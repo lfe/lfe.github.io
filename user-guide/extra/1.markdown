@@ -180,7 +180,10 @@ Again, using our pattern workaround:
 
 #### 8.1.2.3 The Lambda Calculus
 
-Oh, yeah, we just went there.
+Oh, yeah. We just went there.
+
+Take heart, though... this is going to be fun. And after this bit, we'll
+finally get to the practical coding bits :-)
 
 Keep in mind that the Peano axioms made use of recursion, that Giuseppe Peano
 played a key role in Bertrand Russell's development of the Principia, that

@@ -102,12 +102,12 @@ leave them to your own research and reading pleasure.
 In addition to the successor function, the other basic privimtive recursive
 functions defined are the "zero function", the "projection function" and the
 "identity function". These combined with the Peano axioms allow us to define
-other primitive functions.
+other primitive recursive functions.
 
 ##### 8.1.2.2.1 Addition
 
-Often, one sees the primitive function definition of addition done in the
-following manner:
+Often, one sees the primitive recursive function definition of addition done in
+the following manner:
 
     add(0, x) = x
     add(n + 1, x) = add(n, x) + 1

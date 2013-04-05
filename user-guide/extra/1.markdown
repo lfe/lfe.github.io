@@ -235,9 +235,12 @@ known as "Church encoding". Using what we have defined above, we should be able
 to peer into this forest of lambdas and perhaps perceive some trees.
 
 Let's get our feet wet with figuring out how we can define the natural numbers
-under Church encoding.
+under Church encoding, starting with `zero`:
 
 {% highlight cl %}
+(define zero
+  (lambda (f)
+    (lambda (x) x)))
 {% endhighlight %}
 
 {% highlight cl %}

@@ -219,7 +219,7 @@ Here's some example usage:
 
 #### 8.1.2.4 The Lambda Calculus
 
-Oh, yeah. We just went there.
+Oh, yeah. We just went there: the lambda calculus.
 
 Take heart, though... this is going to be fun. And after this bit, we'll
 finally get to the practical coding bits :-)
@@ -233,6 +233,8 @@ Church realized when creating the lambda calculus that with only a lambda at
 his disposal, he could define numbers and perform arithmetic upon them. This is
 known as "Church encoding". Using what we have defined above, we should be able
 to peer into this forest of lambdas and perhaps perceive some trees.
+
+##### 8.1.2.3.1 Church Encoding
 
 Let's get our feet wet with figuring out how we can define the natural numbers
 under Church encoding, starting with `zero`:
@@ -252,7 +254,6 @@ under Church encoding, starting with `zero`:
 {% highlight cl %}
 {% endhighlight %}
 
-##### 8.1.2.3.1
 
 {% highlight cl %}
 {% endhighlight %}
@@ -260,7 +261,7 @@ under Church encoding, starting with `zero`:
 {% highlight cl %}
 {% endhighlight %}
 
-##### 8.1.2.3.2
+##### 8.1.2.3.2 Logic
 
 {% highlight cl %}
 {% endhighlight %}
@@ -268,13 +269,14 @@ under Church encoding, starting with `zero`:
 {% highlight cl %}
 {% endhighlight %}
 
-##### 8.1.2.3.3
+##### 8.1.2.3.3 Resources
 
-{% highlight cl %}
-{% endhighlight %}
+The material for this section was taken from a collection of papers on the
+lambda calculus that we have provided here:
 
-{% highlight cl %}
-{% endhighlight %}
+ * http://goo.gl/aKXvp
+
+Enjoy!
 
 ##### 8.1.2.3.4
 

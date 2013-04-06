@@ -238,15 +238,15 @@ to peer into this forest of lambdas and perhaps perceive some trees.
 
 In the literature, you will see such things as:
 
-  λx.x
+    λx.x
 
 or
 
-  (λx.x)y
+    (λx.x)y
 
 or
 
-  (λwyx.y(wyx))(λsz.z)
+    (λwyx.y(wyx))(λsz.z)
 
 This is standard notation for the lambda calculus, and here's how you read it:
 

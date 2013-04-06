@@ -28,9 +28,9 @@ use the mail list and Twitter account listed below.
 ### Docs Site Acknowlegements
 
 The logo that the site uses for Lisp Flavored Erlang was originally taken from
-one done by a "Starexterminator" in 2009. You van get the original here:
-
-* http://openclipart.org/detail/25974/green-mug-of-tea-by-anonymous-25974
+one done by a "Starexterminator" in 2009. You van get the original on the
+<a href="http://openclipart.org/detail/25974/green-mug-of-tea-by-anonymous-25974">Open
+Clip Art Library</a> site.
 
 We made several significant changes to the .svg, including color changes, layer
 removals, removing the tea bag and the original logo from the mug. We added the

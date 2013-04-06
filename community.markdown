@@ -4,6 +4,22 @@ layout: common
 
 # LFE Community Resources
 
+## Mail List and Social Media
+
+If you'd like to ask questions or just keep in touch with the project, you can
+do so via:
+
+* our low-volume
+  <a href="http://groups.google.com/group/lisp-flavoured-erlang">forum/mail list</a>
+  on Google Groups,
+* our project <a href="https://twitter.com/ErlangLisp">Twitter account</a>
+  where news items of interest will be posted,
+* a <a href="https://plus.google.com/u/1/communities/103919485468949397234">Google+
+  Community</a>
+* on <a href="https://github.com/rvirding/lfe">github</a>
+  (<a href="https://github.com/lfe/lfe.github.com">docs</a>), and
+* the <a href="https://www.ohloh.net/p/lfe">project page</a> on Ohloh.
+
 ## Contributing Code
 
 If you'd like to work on the source code for LFE, you can checkout master from
@@ -42,22 +58,6 @@ by <a href="https://twitter.com/michigangraham">Matt Graham</a>. It is the
 <a href="http://mattgraham.github.io/Midnight/">Midnight</a> template with
 modifications to heading styles, top nav, and font colors. Simply put, the LFE
 site provides more green ;-) Thanks, Matt!
-
-## Mail List and Social Media
-
-If you'd like to ask questions or just keep in touch with the project, you can
-do so via:
-
-* our low-volume
-  <a href="http://groups.google.com/group/lisp-flavoured-erlang">forum/mail list</a>
-  on Google Groups,
-* our project <a href="https://twitter.com/ErlangLisp">Twitter account</a>
-  where news items of interest will be posted,
-* a <a href="https://plus.google.com/u/1/communities/103919485468949397234">Google+
-  Community</a>
-* on <a href="https://github.com/rvirding/lfe">github</a>
-  (<a href="https://github.com/lfe/lfe.github.com">docs</a>), and
-* the <a href="https://www.ohloh.net/p/lfe">project page</a> on Ohloh.
 
 ## Code from the Wild
 

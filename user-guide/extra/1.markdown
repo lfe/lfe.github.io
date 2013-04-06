@@ -234,7 +234,30 @@ his disposal, he could define numbers and perform arithmetic upon them. This is
 known as "Church encoding". Using what we have defined above, we should be able
 to peer into this forest of lambdas and perhaps perceive some trees.
 
-##### 8.1.2.3.1 Church Encoding
+##### 8.1.2.3.1 A Quick Primer
+
+In the literature, you will see such things as:
+
+  λx.x
+
+or
+
+  (λx.x)y
+
+or
+
+  (λwyx.y(wyx))(λsz.z)
+
+This is standard notation for the lambda calculus, and here's how you read it:
+
+* an expression can be a name, a function, or an application, e.g.: `x` or
+  `λx.x` or `(λx.x)3`
+* a function is represented by a lambda followed by a name, a dot, and an
+  expression, e.g.: `λx.x`
+* an application is represented as two expressions right next to each other,
+  e.g.: `(λx.x)3`
+
+##### 8.1.2.3.2 Church Encoding
 
 Let's get our feet wet with figuring out how we can define the natural numbers
 under Church encoding, starting with `zero`:

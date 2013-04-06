@@ -25,6 +25,23 @@ submit a pull request when done. If you've got any questions about the docs,
 feel free to email <a href="mailto:oubiwann@cogitat.io">the maintainer</a> or
 use the mail list and Twitter account listed below.
 
+### Docs Site Acknowlegements
+
+The logo that the site uses for Lisp Flavored Erlang was originally taken from
+one done by a "Starexterminator" in 2009. You van get the original here:
+
+* http://openclipart.org/detail/25974/green-mug-of-tea-by-anonymous-25974
+
+We made several significant changes to the .svg, including color changes, layer
+removals, removing the tea bag and the original logo from the mug. We added the
+"Erlang" and the lambda ;-)
+
+The site design itself is one of the Github pages templates, originally created
+by <a href="https://twitter.com/michigangraham">Matt Graham</a>. It is the
+<a href="http://mattgraham.github.io/Midnight/">Midnight</a> template with
+modifications to heading styles, top nav, and font colors. Simply put, the LFE
+site provides more green ;-) Thanks, Matt!
+
 ## Mail List and Social Media
 
 If you'd like to ask questions or just keep in touch with the project, you can

@@ -25,7 +25,7 @@ For those that would like additional information on any of these, we recommend
 the resources below.
 
 Online:
-* The LFE [Quick Start](http://lfe.github.com/quick-start/1.html)
+* The LFE [Quick Start](/quick-start/1.html)
 * [Learn You Some Erlang for Great Good](http://learnyousomeerlang.com/content)
   ([.mobi](https://github.com/igstan/learn-you-some-erlang-kindle/downloads))
 * [Practical Common Lisp](http://www.gigamonkeys.com/book/)
@@ -38,7 +38,7 @@ Books:
 * [Introducing Erlang](http://shop.oreilly.com/product/0636920025818.do)
 * [Paradigms of Artificial Intelligence Programming: Case Studies in Common Lisp](http://norvig.com/paip.html)
 
-The LFE [Quick Start](http://lfe.github.com/quick-start/1.html) is an important
+The LFE [Quick Start](/quick-start/1.html) is an important
 resource, as it covers dependencies, building LFE, installation, using the
 REPL, running scripts, and using modules/libraries (OTP and third-party).
 

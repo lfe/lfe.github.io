@@ -131,9 +131,9 @@ Lisp Flavored Erlang. We aim to accomplish this in two important ways:
   a nice general overview of LFE, providing some content as well as a sense of
   what you can do with it.
 * Secondly, over time, we will be providing a more detailed version of the
-  source code documentation in the <a href="http://lfe.github.com/docs">Docs</a>
-  section of this site. Note, however, that for now, those pages are currently
-  under active development.
+  source code documentation in the <a href="/docs">Docs</a> section of this
+  site. Note, however, that for now, those pages are currently under active
+  development.
 
 A final resource for the curious and motivated is available in the
 <a href="https://github.com/rvirding/lfe/tree/master/examples">examples</a>

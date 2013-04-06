@@ -1,4 +1,4 @@
-.. image:: https://github.com/lfe/lfe.github.com/raw/master/images/logos/LispFlavoredErlang-tiny.png
+.. image:: https://github.com/lfe/lfe.github.io/raw/master/images/logos/LispFlavoredErlang-tiny.png
 
 Lisp Flavored Erlang
 ====================
@@ -11,4 +11,4 @@ implementation on the Erlang VM.
 Checkout the `LFE web site`_.
 
 .. links
-.. _LFE web site: http://lfe.github.com/
+.. _LFE web site: http://lfe.github.io/

@@ -14,5 +14,5 @@ next. You can see all our docs at a glance by visiting the
 
 If at any time you would like to provide feedback about the documentation on
 this site, feel free to
-<a href="https://github.com/lfe/lfe.github.com/issues">create an issue</a>. Be
+<a href="https://github.com/lfe/lfe.github.io/issues">create an issue</a>. Be
 sure to give a full description so that we can best help you!

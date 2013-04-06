@@ -17,7 +17,7 @@ do so via:
 * a <a href="https://plus.google.com/u/1/communities/103919485468949397234">Google+
   Community</a>
 * on <a href="https://github.com/rvirding/lfe">github</a>
-  (<a href="https://github.com/lfe/lfe.github.com">docs</a>), and
+  (<a href="https://github.com/lfe/lfe.github.io">docs</a>), and
 * the <a href="https://www.ohloh.net/p/lfe">project page</a> on Ohloh.
 
 ## Contributing Code
@@ -35,15 +35,15 @@ If you'd like to file a bug or make a feature request, you can
 ## Helping with Documentation
 
 If you've got a good idea for the LFE docs, you can <a
-href="https://github.com/lfe/lfe.github.com/issues">create an issue</a> or
-<a href="https://github.com/lfe/lfe.github.com">fork the docs</a> and then
+href="https://github.com/lfe/lfe.github.io/issues">create an issue</a> or
+<a href="https://github.com/lfe/lfe.github.io">fork the docs</a> and then
 submit a pull request when done. If you've got any questions about the docs,
 feel free to email <a href="mailto:oubiwann@cogitat.io">the maintainer</a> or
 use the mail list and Twitter account listed below.
 
 ### Docs Site Acknowlegements
 
-The <a href="https://github.com/lfe/lfe.github.com/blob/master/images/logos/LispFlavoredErlang-large.png?raw=true">logo</a>
+The <a href="https://github.com/lfe/lfe.github.io/blob/master/images/logos/LispFlavoredErlang-large.png?raw=true">logo</a>
 that the site uses for Lisp Flavored Erlang was originally taken from
 one done by an individual who went ny the name  "Starexterminator" in 2009. You can get the original on the
 <a href="http://openclipart.org/detail/25974/green-mug-of-tea-by-anonymous-25974">Open

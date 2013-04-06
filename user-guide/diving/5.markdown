@@ -151,7 +151,7 @@ Pattern matching in ```case``` has the following general form:
 
 Keep in mind that ```case``` may also be used (optionally) inside the ```try```
 form. For more information on ```try```, see
-<a href="http://lfe.github.com/user-guide/check/2.html">section 5.2</a>.
+<a href="/user-guide/check/2.html">section 5.2</a>.
 
 Let's take a look at ```case``` in action:
 {% highlight cl %}

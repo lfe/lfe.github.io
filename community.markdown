@@ -27,7 +27,8 @@ use the mail list and Twitter account listed below.
 
 ### Docs Site Acknowlegements
 
-The logo that the site uses for Lisp Flavored Erlang was originally taken from
+The <a href="https://github.com/lfe/lfe.github.com/blob/master/images/logos/LispFlavoredErlang-large.png?raw=true">logo</a>
+that the site uses for Lisp Flavored Erlang was originally taken from
 one done by a "Starexterminator" in 2009. You can get the original on the
 <a href="http://openclipart.org/detail/25974/green-mug-of-tea-by-anonymous-25974">Open
 Clip Art Library</a> site.

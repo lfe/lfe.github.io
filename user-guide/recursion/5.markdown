@@ -24,7 +24,7 @@ his disposal, he could define numbers and perform arithmetic upon them. This is
 known as "Church encoding". Using what we have defined above, we should be able
 to peer into this forest of lambdas and perhaps perceive some trees.
 
-##### 8.1.7.1 A Quick Primer
+#### 8.1.7.1 A Quick Primer
 
 In the literature, you will see such things as:
 
@@ -51,7 +51,7 @@ As such, one says that `λx.x` is a function that takes one parameter, `x`, and
 produces one output, `x`. `λxy.y` takes two parameters, `x` and `y` and
 produces one output, `y`.
 
-##### 8.1.7.2 Church Encoding
+#### 8.1.7.2 Church Encoding
 
 Let's get our feet wet with figuring out how we can define the natural numbers
 under Church encoding, starting with `zero`. In the standard λ-calculus, this
@@ -142,7 +142,7 @@ And then call it like so:
 > (church->int2 #'one/0)
 {% endhighlight %}
 
-##### 8.1.7.3 Logic
+#### 8.1.7.3 Logic
 
 {% highlight cl %}
 {% endhighlight %}
@@ -165,7 +165,7 @@ And then call it like so:
 {% highlight cl %}
 {% endhighlight %}
 
-##### 8.1.7.4 Logic
+#### 8.1.7.4 Logic
 
 {% highlight cl %}
 {% endhighlight %}
@@ -173,7 +173,7 @@ And then call it like so:
 {% highlight cl %}
 {% endhighlight %}
 
-##### 8.1.7.5 Resources
+#### 8.1.7.5 Resources
 
 The material for this section was taken from a collection of papers on the
 λ-calculus that we have provided here:

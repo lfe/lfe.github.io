@@ -39,13 +39,13 @@ Internet; we will take a slightly unique approach, however, and cast them in
 LFE.
 
 
-##### 8.1.4.2 A Constant and Equality
+#### 8.1.4.2 A Constant and Equality
 
 The first five Peano axioms deal with the constant (often written as "0") and
 the reflexive, symmetric, transitive and closed eqaulity relations. These don't
 relate recursion directly, so we're going to skip them ;-)
 
-##### 8.1.4.3 Successor Function
+#### 8.1.4.3 Successor Function
 
 The concept of the "successor" in the Peano axioms is a primitive; it is taken
 as being true without having proved it. It is informally defined as being the
@@ -66,7 +66,7 @@ This function is defined as being "basic primitive recursive". The basic
 primitive recursives are defined by axioms; the term was coined by Rózsa
 Péter.
 
-##### 8.1.4.4 The Remaining Axioms
+#### 8.1.4.4 The Remaining Axioms
 
 The remaining three Peano axioms do not touch upon recursion directly, so we
 leave them to your own research and reading pleasure.

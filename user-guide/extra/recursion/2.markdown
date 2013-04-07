@@ -1,0 +1,72 @@
+---
+layout: user-guide
+guide: 2
+total_guides: 7
+---
+# 8 Additional Topics
+
+## 8.1 Recursion
+
+### 8.1.4 The Dedekind-Peano Axioms
+
+For those that are math-averse, don't let this frighten you -- this will be a
+peaceful journey that should not leave you bewildered. Rather, it
+will provide some nice background for how recursion came to be used. With the
+history reviewed, we'll make our way into practical implementations.
+
+
+#### 8.1.4.1 Foundations
+
+Despite the fluorescence of maths in the 17th and 18th centuries and the
+growing impact of number theory, the ground upon which mathematics were built
+was shaky at best. Indeed, what we now consider to be the foundations of
+mathematics had not even been agreed upon (and this didn't happen until the
+first half of the 20th century with the maturation of logic and rise of
+axiomatic set theory).
+
+One of the big problems facing mathematicians and one that also prevented the
+clarification of the foundations, was this: a thorough, precise, and consistent
+definition of the natural numbers as well as operations that could be performed
+on them (e.g., addition, multiplication, etc.). There was a long-accepted
+intuitive understanding, however, this was insufficient for complete
+mathematical rigor.
+
+Richard Dedekind addressed this with his method of cuts, but it was Giuseppe
+Peano that supplied us with the clearest, most easily described axioms defining
+the natural numbers and arithmetic. And in so doing, made effective use of
+recursion. His definitions can be easily found in text books and on the
+Internet; we will take a slightly unique approach, however, and cast them in
+LFE.
+
+
+##### 8.1.4.2 A Constant and Equality
+
+The first five Peano axioms deal with the constant (often written as "0") and
+the reflexive, symmetric, transitive and closed eqaulity relations. These don't
+relate recursion directly, so we're going to skip them ;-)
+
+##### 8.1.4.3 Successor Function
+
+The concept of the "successor" in the Peano axioms is a primitive; it is taken
+as being true without having proved it. It is informally defined as being the
+next number following a given number "n".
+
+In LFE:
+{% highlight cl %}
+(defun successor (n)
+  (+ n 1))
+{% endhighlight %}
+
+The things to keep in mind here are that 1) we haven't defined addition yet,
+and 2) you must not interpred "+" as addition in this context, rather as the
+operator that allows for succession to occur. In the world of the Peano axioms,
+"+" is only validly used with "n" and "1".
+
+This function is defined as being "basic primitive recursive". The basic
+primitive recursives are defined by axioms; the term was coined by Rózsa
+Péter.
+
+##### 8.1.4.4 The Remaining Axioms
+
+The remaining three Peano axioms do not touch upon recursion directly, so we
+leave them to your own research and reading pleasure.

@@ -1,0 +1,18 @@
+---
+layout: user-guide
+guide: 7
+total_guides: 7
+---
+# 8 Additional Topics
+
+## 8.1 Recursion
+
+### 8.1.9 Tail Calls in LFE
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+#### 8.1.9.1 Tail Call Optimization

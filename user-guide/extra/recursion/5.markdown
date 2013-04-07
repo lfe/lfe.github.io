@@ -1,0 +1,183 @@
+---
+layout: user-guide
+guide: 5
+total_guides: 7
+---
+# 8 Additional Topics
+
+## 8.1 Recursion
+
+### 8.1.7 The λ-Calculus
+
+Oh, yeah. We just went there: the λ-calculus.
+
+Take heart, though... this is going to be fun. And after this bit, we'll
+finally get to the practical coding bits :-)
+
+Keep in mind that the Peano axioms made use of recursion, that Giuseppe Peano
+played a key role in Bertrand Russell's development of the Principia, that
+Alonzo Church sought to make improvements on the Principia, and the lambda
+calculus eventually arose from these efforts.
+
+Church realized when creating the λ-calculus that with only a lambda at
+his disposal, he could define numbers and perform arithmetic upon them. This is
+known as "Church encoding". Using what we have defined above, we should be able
+to peer into this forest of lambdas and perhaps perceive some trees.
+
+##### 8.1.7.1 A Quick Primer
+
+In the literature, you will see such things as:
+
+    λx.x
+
+or
+
+    (λx.x)y
+
+or
+
+    (λwyx.y(wyx))(λsz.z)
+
+This is standard notation for the λ-calculus, and here's how you read it:
+
+* an expression can be a name, a function, or an application, e.g.: `x` or
+  `λx.x` or `(λx.x)3`
+* a function is represented by a lambda followed by a name, a dot, and an
+  expression, e.g.: `λx.x`
+* an application is represented as two expressions right next to each other,
+  e.g.: `(λx.x)3`
+
+As such, one says that `λx.x` is a function that takes one parameter, `x`, and
+produces one output, `x`. `λxy.y` takes two parameters, `x` and `y` and
+produces one output, `y`.
+
+##### 8.1.7.2 Church Encoding
+
+Let's get our feet wet with figuring out how we can define the natural numbers
+under Church encoding, starting with `zero`. In the standard λ-calculus, this
+is done in the following manner:
+
+    λs.λx.x
+
+We are defining the successor function from above as `λs`. We are also defining
+`x` as "that which represents zero". So this reads something like "We pass our
+counting function represented as `s` as the first parameter; there's nothing to
+do but then pass the second parameter `x` to the next function, which returns
+`x`". We never do anything with `s` and only return `x` itself.
+
+In the λ-calculus, zero is defined as taking the successor function, doing
+nothing with it, and returning the value for zero from the identify function.
+In LFE, this is simple:
+
+{% highlight cl %}
+(defun zero ()
+  (lambda (s)
+    (lambda (x) x)))
+{% endhighlight %}
+
+We've got some nested functions that represent "zero"; now what? Well, we
+didn't use the successor inside the zero function, if we *do*, we should get
+"one", yes? But how? Well, we'll "apply" the successor function that is passed
+in, as opposed to ignoring it like we did in `zero`. Here's `one`:
+
+    λs.λx.s x
+
+Let's try that in LFE:
+{% highlight cl %}
+(defun one ()
+  (lambda (s)
+    (lambda (x)
+      (funcall s x))))
+{% endhighlight %}
+
+Congratulations, you've written your second Church numeral in LFE now :-)
+Successive numbers are very similar: an additional `(funcall s` before the
+`(funcall s x`.
+
+Now that we see Church numerals are nested `lambda`s with nested calls on the
+successor function, we want to peek inside. How does one convert a Church
+numeral to, say, an interger representation? Looking at the `one` function, we
+can make an educated guess:
+
+1. We will need to call `one` so that the top-most lambda is "exposed".
+2. We will need to apply (`funcall`; it's more convenient) the our choice of
+   successor function to that top-most lambda.
+3. We will need to apply our representation of "zero" to the next lambda.
+
+With each of those done, any of our Church numerals will have everything they
+need in order to give us a representation appropriate for our givens. Here's a
+practical demonstration:
+
+{% highlight cl %}
+> (slurp '"church.lfe")
+#(ok church)
+> (one)
+#Fun<lfe_eval.10.53503600>
+> (funcall (funcall (one) #'successor/1) 0)
+1
+{% endhighlight %}
+
+Let's write a function that allows us to get the integer representation of a
+Church numeral more easily. There are a couple ways to do this. First:
+{% highlight cl %}
+(defun church->int1 (church-numeral)
+  (funcall (funcall church-numeral #'successor/1) 0))
+{% endhighlight %}
+
+This would require that we call it in the following manner (assuming that we've
+re-`slurp`ed the `church.lfe` file):
+{% highlight cl %}
+> (church->int1 (one))
+1
+{% endhighlight %}
+
+Alternatively, we could do this:
+{% highlight cl %}
+(defun church->int2 (church-numeral)
+  (funcall (funcall (funcall church-numeral) #'successor/1) 0))
+{% endhighlight %}
+
+And then call it like so:
+{% highlight cl %}
+> (church->int2 #'one/0)
+{% endhighlight %}
+
+##### 8.1.7.3 Logic
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+##### 8.1.7.4 Logic
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+##### 8.1.7.5 Resources
+
+The material for this section was taken from a collection of papers on the
+λ-calculus that we have provided here:
+
+ * [http://goo.gl/aKXvp](http://goo.gl/aKXvp)
+
+Enjoy!

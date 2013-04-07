@@ -1,0 +1,24 @@
+---
+layout: user-guide
+guide: 6
+total_guides: 7
+---
+# 8 Additional Topics
+
+## 8.1 Recursion
+
+### 8.1.8 Practical Examples in Computing
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+#### 8.1.8.1 A Simple Example
+
+#### 8.1.8.2 With an Accumulator
+
+#### 8.1.8.3 With Return Values
+
+#### 8.1.8.4 With Lists

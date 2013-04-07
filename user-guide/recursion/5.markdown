@@ -101,13 +101,13 @@ numeral to, say, an interger representation? Looking at the `one` function, we
 can make an educated guess:
 
 1. We will need to call `one` so that the top-most lambda is "exposed".
-2. We will need to apply (`funcall`; it's more convenient) the our choice of
+2. We will need to apply (`funcall`; it's more convenient) our choice of
    successor function to that top-most lambda.
 3. We will need to apply our representation of "zero" to the next lambda.
 
-With each of those done, any of our Church numerals will have everything they
-need in order to give us a representation appropriate for our givens. Here's a
-practical demonstration:
+With each of those done we end up with a solution that's actually quite general
+and can be used on any of our Church numerals.  Here's a practical
+demonstration:
 
 {% highlight cl %}
 > (slurp '"church.lfe")

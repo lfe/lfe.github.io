@@ -300,12 +300,72 @@ Let's try that in LFE:
       (funcall s x))))
 {% endhighlight %}
 
+Congratulations, you've written your second Church numeral in LFE now :-)
+Successive numbers are very similar: an additional `(funcall s` before the
+`(funcall s x`.
+
+Now that we see Church numerals are nested `lambda`s with nested calls on the
+successor function, we want to peek inside. How does one convert a Church
+numeral to, say, an interger representation? Looking at the `one` function, we
+can make an educated guess:
+
+1. We will need to call `one` so that the top-most lambda is "exposed".
+2. We will need to apply (`funcall`; it's more convenient) the our choice of
+   successor function to that top-most lambda.
+3. We will need to apply our representation of "zero" to the next lambda.
+
+With each of those done, any of our Church numerals will have everything they
+need in order to give us a representation appropriate for our givens. Here's a
+practical demonstration:
+
+{% highlight cl %}
+> (slurp '"church.lfe")
+#(ok church)
+> (one)
+#Fun<lfe_eval.10.53503600>
+> (funcall (funcall (one) #'successor/1) 0)
+1
+{% endhighlight %}
+
+Let's write a function that allows us to get the integer representation of a
+Church numeral more easily. There are a couple ways to do this. First:
+{% highlight cl %}
+(defun church->int1 (church-numeral)
+  (funcall (funcall church-numeral #'successor/1) 0))
+{% endhighlight %}
+
+This would require that we call it in the following manner (assuming that we've
+re-`slurp`ed the `church.lfe` file):
+{% highlight cl %}
+> (church->int1 (one))
+1
+{% endhighlight %}
+
+Alternatively, we could do this:
+{% highlight cl %}
+(defun church->int2 (church-numeral)
+  (funcall (funcall (funcall church-numeral) #'successor/1) 0))
+{% endhighlight %}
+
+And then call it like so:
+{% highlight cl %}
+> (church->int2 #'one/0)
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
 {% highlight cl %}
 {% endhighlight %}
 
 {% highlight cl %}
 {% endhighlight %}
 
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
 
 {% highlight cl %}
 {% endhighlight %}

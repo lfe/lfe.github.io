@@ -59,7 +59,7 @@ is done in the following manner:
 
     λs.λx.x
 
-We are defining the successor function from above as `λs`. We are also defining
+We are defining the successor function from above as `s`. We are also defining
 `x` as "that which represents zero". So this reads something like "We pass our
 counting function represented as `s` as the first parameter; there's nothing to
 do but then pass the second parameter `x` to the next function, which returns

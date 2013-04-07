@@ -386,7 +386,7 @@ And then call it like so:
 The material for this section was taken from a collection of papers on the
 λ-calculus that we have provided here:
 
- * http://goo.gl/aKXvp
+ * [http://goo.gl/aKXvp](http://goo.gl/aKXvp)
 
 Enjoy!
 

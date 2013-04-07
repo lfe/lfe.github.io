@@ -78,7 +78,8 @@ In LFE, this is simple:
 We've got some nested functions that represent "zero"; now what? Well, we
 didn't use the successor inside the zero function, if we *do*, we should get
 "one", yes? But how? Well, we'll "apply" the successor function that is passed
-in, as opposed to ignoring it like we did in `zero`. Here's `one`:
+in, as opposed to ignoring it like we did in `zero`. Here's the Church numeral
+definition for `one`:
 
     λs.λx.s x
 

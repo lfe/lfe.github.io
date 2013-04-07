@@ -118,15 +118,17 @@ demonstration:
 1
 {% endhighlight %}
 
-Let's write a function that allows us to get the integer representation of a
-Church numeral more easily. There are a couple ways to do this. First:
+Typing that into the REPL whenever we want to check our Church numeral will be
+tedious. Let's write a function that allows us to get the integer
+representation of a Church numeral more easily. There are a couple ways to do
+this. First:
 {% highlight cl %}
 (defun church->int1 (church-numeral)
   (funcall (funcall church-numeral #'successor/1) 0))
 {% endhighlight %}
 
-This would require that we call it in the following manner (assuming that we've
-re-`slurp`ed the `church.lfe` file):
+This would require that we call our Church numeral in the following manner
+(assuming that we've re-`slurp`ed the `church.lfe` file):
 {% highlight cl %}
 > (church->int1 (one))
 1
@@ -138,12 +140,12 @@ Alternatively, we could do this:
   (funcall (funcall (funcall church-numeral) #'successor/1) 0))
 {% endhighlight %}
 
-And then call it like so:
+This second approach lets us pass the Church numeral without calling it:
 {% highlight cl %}
 > (church->int2 #'one/0)
 {% endhighlight %}
 
-#### 8.1.7.3 Logic
+#### 8.1.7.3 Arithmetic
 
 {% highlight cl %}
 {% endhighlight %}

@@ -14,7 +14,7 @@ values (examples are given below).
 
 However, recursion is interesting in and of itself. The roots of functional
 programming languages such as Lisp, ML, Erlang, Haskell and others, can
-be traced to the concept of recursion in general and the lambda calculus in
+be traced to the concept of recursion in general and the λ-calculus in
 particular.
 
 The Italian mathematician Giuseppe Peano seems to have been one of the first to
@@ -217,9 +217,9 @@ Here's some example usage:
 >
 {% endhighlight %}
 
-#### 8.1.2.4 The Lambda Calculus
+#### 8.1.2.4 The λ-Calculus
 
-Oh, yeah. We just went there: the lambda calculus.
+Oh, yeah. We just went there: the λ-calculus.
 
 Take heart, though... this is going to be fun. And after this bit, we'll
 finally get to the practical coding bits :-)
@@ -229,7 +229,7 @@ played a key role in Bertrand Russell's development of the Principia, that
 Alonzo Church sought to make improvements on the Principia, and the lambda
 calculus eventually arose from these efforts.
 
-Church realized when creating the lambda calculus that with only a lambda at
+Church realized when creating the λ-calculus that with only a lambda at
 his disposal, he could define numbers and perform arithmetic upon them. This is
 known as "Church encoding". Using what we have defined above, we should be able
 to peer into this forest of lambdas and perhaps perceive some trees.
@@ -248,7 +248,7 @@ or
 
     (λwyx.y(wyx))(λsz.z)
 
-This is standard notation for the lambda calculus, and here's how you read it:
+This is standard notation for the λ-calculus, and here's how you read it:
 
 * an expression can be a name, a function, or an application, e.g.: `x` or
   `λx.x` or `(λx.x)3`
@@ -257,18 +257,47 @@ This is standard notation for the lambda calculus, and here's how you read it:
 * an application is represented as two expressions right next to each other,
   e.g.: `(λx.x)3`
 
+As such, one says that `λx.x` is a function that takes one parameter, `x`, and
+produces one output, `x`. `λxy.y` takes two parameters, `x` and `y` and
+produces one output, `y`.
+
 ##### 8.1.2.3.2 Church Encoding
 
 Let's get our feet wet with figuring out how we can define the natural numbers
-under Church encoding, starting with `zero`:
+under Church encoding, starting with `zero`. In the standard λ-calculus, this
+is done in the following manner:
+
+    λs.λx.x
+
+We are defining the successor function from above as `λs`. We are also defining
+`x` as "that which represents zero". So this reads something like "We pass our
+counting function represented as `s` as the first parameter; there's nothing to
+do but then pass the second parameter `x` to the next function, which returns
+`x`". We never do anything with `s` and only return `x` itself.
+
+In the λ-calculus, zero is defined as taking the successor function, doing
+nothing with it, and returning the value for zero from the identify function.
+In LFE, this is simple:
 
 {% highlight cl %}
-(define zero
-  (lambda (f)
+(defun zero ()
+  (lambda (s)
     (lambda (x) x)))
 {% endhighlight %}
 
+We've got some nested functions that represent "zero"; now what? Well, we
+didn't use the successor inside the zero function, if we *do*, we should get
+"one", yes? But how? Well, we'll "apply" the successor function that is passed
+in, as opposed to ignoring it like we did in `zero`. Here's `one`:
+
+    λs.λx.s x
+
+Let's try that in LFE:
 {% highlight cl %}
+(defun one ()
+  (lambda (s)
+    (lambda (x)
+      (funcall s x))))
 {% endhighlight %}
 
 {% highlight cl %}
@@ -295,7 +324,7 @@ under Church encoding, starting with `zero`:
 ##### 8.1.2.3.3 Resources
 
 The material for this section was taken from a collection of papers on the
-lambda calculus that we have provided here:
+λ-calculus that we have provided here:
 
  * http://goo.gl/aKXvp
 

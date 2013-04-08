@@ -201,8 +201,8 @@ However, it's a bit cumbersome to use. Let's see if we can do better:
 
 Now we've got two `get-church` functions, each with different arity.
 `get-church/1` calls `get-church/3` with the appropriate initial arguments, at
-which point `get-church/3` until the limit is reached and returns a Church
-numeral.
+which point `get-church/3` calls itself until the limit is reached and returns
+a Church numeral.
 
 Let's take a look:
 {% highlight cl %}

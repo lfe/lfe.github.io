@@ -24,6 +24,12 @@ his disposal, he could define numbers and perform arithmetic upon them. This is
 known as "Church encoding". Using what we have defined above, we should be able
 to peer into this forest of lambdas and perhaps perceive some trees.
 
+Previously, we examined natural numbers and operations such as addition in the
+context of positive integers. However, in the sections below, we will be
+leaving behind the comfort of the familiar. The λ-calculus does not concern
+itself with natural numbers per se; rather the ability to do something a given
+number of times.
+
 #### 8.1.7.1 A Quick Primer
 
 In the literature, you will see such things as:

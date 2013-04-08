@@ -95,6 +95,11 @@ Congratulations, you've written your second Church numeral in LFE now :-)
 Successive numbers are very similar: an additional `(funcall s` before the
 `(funcall s x`.
 
+A small but significant caveat: technically speaking, the functions `zero` and
+`one` are not actual Church numerals, rather they wrap the Church numberals.
+Once you call these functions, you will have the Church numberals themselves
+(the lambda that is returned when the numberal functions are called).
+
 Now that we see Church numerals are nested `lambda`s with nested calls on the
 successor function, we want to peek inside. How does one convert a Church
 numeral to, say, an interger representation? Looking at the `one` function, we

@@ -150,6 +150,84 @@ This second approach lets us pass the Church numeral without calling it:
 > (church->int2 #'one/0)
 {% endhighlight %}
 
+As mentioned earlier, we know that we can get successive Church numerals by
+adding more `(funcall s` applications (i.e., incrementing with a successor
+function). For instance, here is the Church numeral `four`:
+{% highlight cl %}
+(defun four ()
+  (lambda (s)
+    (lambda (x)
+      (funcall s
+        (funcall s
+          (funcall s
+            (funcall s x)))))))
+{% endhighlight %}
+
+Using this method of writing out Church numerals is going to be more tedious
+that putting beans in a pile to represent integers. What can we do? Well, we
+need a general (i.e., non-integer) λ-calculus representation for  a successor
+function. Then we need to be able to apply that to `zero` `n` times in order to
+get the desired Church numeral. Let's start with a Church numeral successor
+function:
+{% highlight cl %}
+(defun church-successor (n)
+  (lambda (s)
+    (lambda (x)
+      (funcall s
+        (funcall
+          (funcall n s) x)))))
+{% endhighlight %}
+
+Next we need a function that can give us a Church numeral for a given number of
+applications of the `church-successor`:
+{% highlight cl %}
+(defun get-church (church-numeral count limit)
+  (cond ((== count limit) church-numeral)
+        ((/= count limit)
+         (get-church (church-successor church-numeral) (+ 1 count) limit))))
+{% endhighlight %}
+
+We're getting a little bit ahead of ourselves, since we haven't yet talked
+about countdown or countup recursive functions in LFE; consider this a teaser
+;-) Our `get-church` function keeps track of how many times it is recursed and
+returns the appropriate Church numeral when the limit has been readhed.
+However, it's a bit cumbersome to use. Let's see if we can do better:
+{% highlight cl %}
+(defun get-church (integer)
+  (get-church (zero) 0 integer))
+{% endhighlight %}
+
+Now we've got two `get-church` functions, each with different arity. We'll be
+using the second one:
+{% highlight cl %}
+> (slurp '"examples/church.lfe")
+#(ok church)
+> (get-church 0)
+#Fun<lfe_eval.10.53503600>
+> (== (zero) (get-church 0))
+true
+> (get-church 1000)
+#Fun<lfe_eval.10.53503600>
+{% endhighlight %}
+
+Looks good so far. Let's check out the values:
+{% highlight cl %}
+> (church->int1 (get-church 1)))
+1
+> (church->int1 (get-church 50)))
+50
+> (church->int1 (get-church 100)))
+100
+> (church->int1 (get-church 2000)))
+2000
+> (church->int1 (get-church 10000)))
+10000
+>
+{% endhighlight %}
+
+That last one caused a little lag in the LFE REPL, but still quite impressive
+given the fact that it just applied so many thousands of lambdas!
+
 #### 8.1.7.3 Arithmetic
 
 {% highlight cl %}

@@ -169,6 +169,10 @@ need a general (i.e., non-integer) λ-calculus representation for  a successor
 function. Then we need to be able to apply that to `zero` `n` times in order to
 get the desired Church numeral. Let's start with a Church numeral successor
 function:
+
+    λn.λs.λx. s (n s x)
+
+We translate that to LFE with the following:
 {% highlight cl %}
 (defun church-successor (n)
   (lambda (s)

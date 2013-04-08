@@ -244,6 +244,9 @@ Looks good so far. Let's check out the values:
 That last one caused a little lag in the LFE REPL, but still quite impressive
 given the fact that it just applied so many thousands of lambdas!
 
+How fortunate that we didn't have to type 10,000 `funcall`s (and the
+corresponding set of opening and closing parentheses 10,000 times).
+
 #### 8.1.7.3 Arithmetic
 
 {% highlight cl %}

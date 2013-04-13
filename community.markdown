@@ -12,6 +12,8 @@ do so via:
 * our low-volume
   <a href="http://groups.google.com/group/lisp-flavoured-erlang">forum/mail list</a>
   on Google Groups,
+* we have a small IRC channel that's not really used for much yet, but you can
+  come by and say "hi" -- #erlang-lisp on Freenode.net,
 * our project <a href="https://twitter.com/ErlangLisp">Twitter account</a>
   where news items of interest will be posted,
 * a <a href="https://plus.google.com/u/1/communities/103919485468949397234">Google+

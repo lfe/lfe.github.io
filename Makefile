@@ -9,10 +9,13 @@ pygments:
 	sudo pip install pygments
 
 doc-deps: $(JEKYLL) pygments
+	sudo pip install markdown
 
 build-site:
 	jekyll build
 
-docs: doc-deps build-site
+build-books: doc-deps
+	python bin/generateBooksMarkdown.py
 
-mobi: docs
+build-mobi: build-books build-site
+	#run mobi gen

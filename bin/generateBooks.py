@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import glob
 import os
 
@@ -10,6 +11,7 @@ class Organizer(object):
 
 user_guide = Organizer()
 user_guide.html_file = "downloads/user-guide.html"
+user_guide.md_file = "downloads/user-guide.markdown"
 user_guide.mobi_file = "downloads/user-guide.mobi"
 user_guide.chapters = [
     "user-guide/intro",
@@ -26,6 +28,7 @@ user_guide.chapters = [
 
 process_tutorial = Organizer()
 process_tutorial.html_file = "downloads/processes-tutorial.html"
+process_tutorial.md_file = "downloads/processes-tutorial.markdown"
 process_tutorial.mobi_file = "downloads/processes-tutorial.mobi"
 process_tutorial.chapters = [
     "tutorials"
@@ -35,10 +38,14 @@ process_tutorial.chapters = [
 docs = [user_guide, process_tutorial]
 
 
-# XXX don't do markdown until all files have been assembled
 def read_file(filename):
     with open(filename) as fh:
         return fh.read().decode("utf-8")
+
+
+def write_file(filename, data):
+    with open(filename, "w") as fh:
+        fh.write(data)
 
 
 def scan_dir(path):
@@ -57,21 +64,46 @@ def build_chapter(path):
     return chapter
 
 
-def assemble_book(doc, remove_front_matter=True):
+def filter_front_matter(chapter):
+    """
+    Scan each chapter for Jekyll annotations at the beginning of each section
+    and remove them.
+    """
+    delimiter = "---"
+    sections = []
+    for section in chapter:
+        counts = 0
+        start = None
+        lines = section.splitlines()
+        for index, line in enumerate(lines):
+            if counts == 2:
+                start = index
+                break
+            if line == delimiter:
+                counts += 1
+        sections.append("\n".join(lines[start:]))
+    return sections
+
+
+def assemble_chapters(doc, remove_front_matter=True):
     chapters = []
-    for chapter in doc.chapters:
-        chapters.extend(build_chapter(chapter))
-    if remove_front_matter:
-        # scan each chapter for Jekyll annotations at the beginning and remove
-        # them
-        pass
+    for chapter_location in doc.chapters:
+        chapter = build_chapter(chapter_location)
+        if remove_front_matter:
+            chapter = filter_front_matter(chapter)
+        chapters.extend(chapter)
     return chapters
 
 
-def create_html_file(filename, data):
-    html = markdown.markdown("\n".join(data)).encode("utf-8")
-    with open(filename, "w") as fh:
-        fh.write(html)
+def assemble_book(doc, remove_front_matter=True):
+    chapters = ["---", "layout: book", "---"] + assemble_chapters(
+        doc, remove_front_matter)
+    book = "\n".join(chapters)
+    return book.encode("utf-8")
+
+
+def create_markdown_file(filename, markdown_data):
+    write_file(filename, markdown_data)
 
 
 def create_mobi_file(html_file, mobi_file):
@@ -79,8 +111,8 @@ def create_mobi_file(html_file, mobi_file):
 
 
 def generate_doc(doc):
-    files_data = assemble_chapters(doc)
-    create_html_file(doc.html_file, files_data)
+    markdown_data = assemble_book(doc)
+    create_markdown_file(doc.md_file, markdown_data)
     create_mobi_file(doc.html_file, doc.mobi_file)
 
 

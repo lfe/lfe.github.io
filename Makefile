@@ -11,11 +11,15 @@ pygments:
 doc-deps: $(JEKYLL) pygments
 	sudo pip install markdown
 
-build-site:
+build-site: build-books
 	jekyll build
 
 build-books: doc-deps
-	python bin/generateBooksMarkdown.py
+	python bin/generateBooks.py
 
-build-mobi: build-books build-site
-	#run mobi gen
+publish-books: build-books
+	git commit \
+	downloads/*.markdown \
+	downloads/*.html \
+	downloads/*.mobi \
+	-m "Updated LFE ebooks."

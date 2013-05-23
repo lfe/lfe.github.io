@@ -5,14 +5,51 @@ total_guides: 4
 ---
 # 4 Functions and Modules
 
-## 4.4 Projects
+## 4.4 Projects with Rebar
+
+In this section we'll be exploring how rebar can be used to manage LFE projects.
+
+This section will make use of two example projects on github:
+* https://github.com/lfe/lfe-library-example
+* https://github.com/lfe/lfe-service-example
 
 ### 4.4.1 Collections of Modules
 
-### 4.4.2 Defining a Project with Rebar
+The first question we should probably address is this: How are we defining a
+project?
+
+An LFE project is a set of modules developed and distributed to accomplish a
+particular goal. The project should have a rebar configuration file, a source
+directory with `.lfe` files in it, possibly an include directory, andn ideally
+unit tests in a `test` directory.
+
+### 4.4.2 Project Structure
+
+Let's expand upon the project definition given above, focusing on the directory
+structure of a prototypical project and some of the files one might find in an
+LFE project.
+
+{% highlight %}
+├── ebin
+│   └── libexample.app
+├── src
+│   └── libexample.lfe
+├── Makefile
+├── README.md
+└── rebar.config
+{% endhighlight %}
+
+Rebar supports LFE files. All that it needs is the standard `rebar.config` and
+an `.app` file in the `ebin` directory. With these, Rebar will be able to
+download the project dependencies and compile the `*.lfe` files in `src` to the
+`ebin` directory as `*.beam` files.
 
 ### 4.4.3 Dependencies
 
-### 4.4.4 Distributing A Project
+### 4.4.4 Defining a Library Project
 
-### 4.4.5 Installing Projects
+### 4.4.5 Defining a Service Project
+
+### 4.4.6 Distributing A Project
+
+### 4.4.7 Installing Projects

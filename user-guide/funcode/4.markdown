@@ -10,8 +10,8 @@ total_guides: 4
 In this section we'll be exploring how rebar can be used to manage LFE projects.
 
 This section will make use of two example projects on github:
-* https://github.com/lfe/lfe-library-example
-* https://github.com/lfe/lfe-service-example
+* <a href="https://github.com/lfe/lfe-library-example">https://github.com/lfe/lfe-library-example</a>
+* <a href="https://github.com/lfe/lfe-service-example">https://github.com/lfe/lfe-service-example</a>
 
 ### 4.4.1 Collections of Modules
 

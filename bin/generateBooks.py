@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# -*- coding: utf-8
 import glob
 import os
 
@@ -31,11 +32,13 @@ process_tutorial.html_file = "downloads/processes-tutorial.html"
 process_tutorial.md_file = "downloads/processes-tutorial.markdown"
 process_tutorial.mobi_file = "downloads/processes-tutorial.mobi"
 process_tutorial.chapters = [
-    "tutorials"
+    "tutorials/processes"
     ]
 
 
 docs = [user_guide, process_tutorial]
+#docs = [process_tutorial]
+delimiter = "---"
 
 
 def read_file(filename):
@@ -69,7 +72,6 @@ def filter_front_matter(chapter):
     Scan each chapter for Jekyll annotations at the beginning of each section
     and remove them.
     """
-    delimiter = "---"
     sections = []
     for section in chapter:
         counts = 0
@@ -85,18 +87,55 @@ def filter_front_matter(chapter):
     return sections
 
 
+def is_heading(key):
+    if (key.startswith("#") and
+        not key.startswith("#B(") and
+        not key.startswith("#(") and
+        not key.startswith("#Fun")):
+        return True
+    return False
+
+
+def is_seen(key, seen):
+    if seen.intersection([key]):
+        return True
+    return False
+
+
+def remove_extra_headings(chapter):
+    """
+    Several chapters have their headings listed more than once (due to multiple
+    markdown docs). This function removes all but the first one.
+    """
+    sections = []
+    seen = set()
+    for section in chapter:
+        filtered_section = []
+        for line in section.splitlines():
+            key = line.strip()
+            if is_heading(key):
+                if not is_seen(key, seen):
+                    filtered_section.append(line)
+                    seen.add(key)
+            else:
+                filtered_section.append(line)
+        sections.append("\n".join(filtered_section))
+    return sections
+
+
 def assemble_chapters(doc, remove_front_matter=True):
     chapters = []
     for chapter_location in doc.chapters:
         chapter = build_chapter(chapter_location)
         if remove_front_matter:
             chapter = filter_front_matter(chapter)
+        chapter = remove_extra_headings(chapter)
         chapters.extend(chapter)
     return chapters
 
 
 def assemble_book(doc, remove_front_matter=True):
-    chapters = ["---", "layout: book", "---"] + assemble_chapters(
+    chapters = [delimiter, "layout: book", delimiter] + assemble_chapters(
         doc, remove_front_matter)
     book = "\n".join(chapters)
     return book.encode("utf-8")

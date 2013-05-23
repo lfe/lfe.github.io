@@ -7,7 +7,7 @@ total_guides: 7
 
 ## 5.6 Total Recursive Functions
 
-[TBD]
+TBD
 
 ### 5.6.1 The Ackermann Function
 

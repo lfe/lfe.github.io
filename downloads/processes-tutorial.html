@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE ncx PUBLIC
+    "-//NISO//DTD ncx 2005-1//EN"
+    "http://www.daisy.org/z3986/2005/ncx-2005-1.dtd">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<html>
+  <body>
+  <h1 id='tutorial_lightweight_processes'>Tutorial: Lightweight Processes</h1>
+
+<p>Due to its Erlang foundation, an LFE program is composed of anywhere from 1 to hundreds of thousands of lightweight processes. In fact, a <a href='https://groups.google.com/forum/?fromgroups=#!topic/comp.lang.functional/5kldn1QJ73c'>2005 message</a> to <a href='https://groups.google.com/forum/?fromgroups=#!forum/comp.lang.functional'>comp.lang.functional</a> reported spawning 20 million messages in a ring benchmark (on a 1.5 GHz SPARC with 16 GB RAM).</p>
+
+<p>This is possible in part because each process operates independently with its own private memory, communicating via message passing, and the overhead for an Erlang process is pretty low (~1.5k for 32-bit and ~2.7k for 64-bit; see the Efficiency Guide&#8217;s section on <a href='http://www.erlang.org/doc/efficiency_guide/processes.html'>processes</a> for more info).</p>
+
+<p>This tutorial aims to decrease the mystery around Erlang processes and how to use them in LFE programs.</p>
+
+<h2 id='1_interacting_with_processes'>1 Interacting with Processes</h2>
+
+<h3 id='11_dump_and_'>1.1 Dump and <code>flush</code></h3>
+
+<p>Processes in LFE are built from functions. These running functions communicate with other running functions via messages. When you start up the LFE REPL, you&#8217;re using an Erlang process, and you can communicate with it just like any other process.</p>
+
+<p>Let&#8217;s get the REPL&#8217;s process id and then send messages to the REPL using the PID:</p>
+<div class='highlight'><pre><code class='cl'><span class='nb'>&gt;</span> <span class='p'>(</span><span class='nb'>set</span> <span class='nv'>pid</span> <span class='p'>(</span><span class='nv'>self</span><span class='p'>))</span>
+<span class='nv'>&lt;0.30.0&gt;</span>
+<span class='nb'>&gt;</span> <span class='p'>(</span><span class='nv'>!</span> <span class='nv'>pid</span> <span class='o'>&#39;</span><span class='s'>&quot;Testing: 1, 2, 3!&quot;</span><span class='p'>)</span>
+<span class='s'>&quot;Testing: 1, 2, 3!&quot;</span>
+<span class='nb'>&gt;</span> <span class='p'>(</span><span class='nv'>!</span> <span class='nv'>pid</span> <span class='o'>&#39;</span><span class='s'>&quot;This is another test message...&quot;</span><span class='p'>)</span>
+<span class='s'>&quot;This is another test message...&quot;</span>
+<span class='nb'>&gt;</span> <span class='p'>(</span><span class='nv'>!</span> <span class='nv'>pid</span> <span class='p'>(</span><span class='nb'>list</span> <span class='mi'>1</span> <span class='mi'>2</span> <span class='mi'>3</span><span class='p'>))</span>
+<span class='p'>(</span><span class='mi'>1</span> <span class='mi'>2</span> <span class='mi'>3</span><span class='p'>)</span>
+<span class='nb'>&gt;</span>
+</code></pre></div>
+<p>The messages are sitting in the inbox of the process they were sent to, the REPL. If we flush the REPL&#8217;s inbox, we can see them:</p>
+<div class='highlight'><pre><code class='cl'><span class='nb'>&gt;</span> <span class='p'>(</span><span class='err'>:</span> <span class='nv'>c</span> <span class='nv'>flush</span><span class='p'>)</span>
+<span class='nv'>Shell</span> <span class='nv'>got</span> <span class='s'>&quot;Test1&quot;</span>
+<span class='nv'>Shell</span> <span class='nv'>got</span> <span class='s'>&quot;Testing: 1, 2, 3!&quot;</span>
+<span class='nv'>Shell</span> <span class='nv'>got</span> <span class='s'>&quot;This is another test message...&quot;</span>
+<span class='nv'>Shell</span> <span class='nv'>got</span> <span class='nv'>[1,2,3]</span>
+<span class='nv'>ok</span>
+<span class='nb'>&gt;</span>
+</code></pre></div>
+<h3 id='12_getting_classy_with_'>1.2 Getting Classy with <code>receive</code></h3>
+
+<p>As you might imagine, there&#8217;s a better way to do this. Let&#8217;s send another message to the REPL&#8217;s message queue (inbox):</p>
+<div class='highlight'><pre><code class='cl'><span class='nb'>&gt;</span> <span class='p'>(</span><span class='nv'>!</span> <span class='nv'>pid</span> <span class='p'>(</span><span class='nb'>list</span> <span class='mi'>1</span> <span class='mi'>2</span> <span class='mi'>3</span><span class='p'>))</span>
+<span class='p'>(</span><span class='mi'>1</span> <span class='mi'>2</span> <span class='mi'>3</span><span class='p'>)</span>
+<span class='nb'>&gt;</span>
+</code></pre></div>
+<p>Now let&#8217;s take a look at that message without flushing the queue:</p>
+<div class='highlight'><pre><code class='cl'><span class='nb'>&gt;</span> <span class='p'>(</span><span class='nv'>receive</span>
+    <span class='p'>((</span><span class='nb'>list</span> <span class='nv'>a</span> <span class='nv'>b</span> <span class='nv'>c</span><span class='p'>)</span>
+     <span class='p'>(</span><span class='err'>:</span> <span class='nv'>io</span> <span class='nb'>format</span> <span class='o'>&#39;</span><span class='s'>&quot;results: ~p ~p ~p~n&quot;</span> <span class='p'>(</span><span class='nb'>list</span> <span class='nv'>a</span> <span class='nv'>b</span> <span class='nv'>c</span><span class='p'>))))</span>
+<span class='nv'>results:</span> <span class='mi'>1</span> <span class='mi'>2</span> <span class='mi'>3</span>
+<span class='nv'>ok</span>
+<span class='nb'>&gt;</span>
+</code></pre></div>
+<p>If there is a message in the inbox matching the pattern we have defined (in this case, a list of length 3), then we will have access to the data that is matched and bound to the variables. For more information on pattern matching, see <a href='/tutorials/patterns/1.html'>the tutorial</a>.</p>
+
+<p>If there are a bunch of messages in the inbox, they will all be iterated over until a match is found:</p>
+<div class='highlight'><pre><code class='cl'><span class='nb'>&gt;</span> <span class='p'>(</span><span class='nb'>set</span> <span class='nv'>pid</span> <span class='p'>(</span><span class='nv'>self</span><span class='p'>))</span>
+<span class='nv'>&lt;0.30.0&gt;</span>
+<span class='nb'>&gt;</span> <span class='p'>(</span><span class='nv'>!</span> <span class='nv'>pid</span> <span class='p'>(</span><span class='nv'>tuple</span> <span class='mi'>1</span> <span class='mi'>2</span> <span class='mi'>3</span><span class='p'>))</span>
+<span class='o'>#(</span><span class='mi'>1</span> <span class='mi'>2</span> <span class='mi'>3</span><span class='p'>)</span>
+<span class='nb'>&gt;</span> <span class='p'>(</span><span class='nv'>!</span> <span class='nv'>pid</span> <span class='p'>(</span><span class='nv'>tuple</span> <span class='mi'>2</span> <span class='mi'>3</span><span class='p'>))</span>
+<span class='o'>#(</span><span class='mi'>2</span> <span class='mi'>3</span><span class='p'>)</span>
+<span class='nb'>&gt;</span> <span class='p'>(</span><span class='nv'>!</span> <span class='nv'>pid</span> <span class='p'>(</span><span class='nv'>tuple</span> <span class='mi'>3</span><span class='p'>))</span>
+<span class='o'>#(</span><span class='mi'>3</span><span class='p'>)</span>
+<span class='nb'>&gt;</span> <span class='p'>(</span><span class='nv'>receive</span>
+    <span class='p'>((</span><span class='nv'>tuple</span> <span class='nv'>a</span><span class='p'>)</span>
+     <span class='p'>(</span><span class='err'>:</span> <span class='nv'>io</span> <span class='nb'>format</span> <span class='o'>&#39;</span><span class='s'>&quot;results: ~p ~n&quot;</span> <span class='p'>(</span><span class='nb'>list</span> <span class='nv'>a</span><span class='p'>))))</span>
+<span class='nv'>results:</span> <span class='mi'>3</span>
+<span class='nv'>ok</span>
+</code></pre></div>
+<p>Let&#8217;s confirm that only the last message we entered was matched:</p>
+<div class='highlight'><pre><code class='cl'><span class='nb'>&gt;</span> <span class='p'>(</span><span class='err'>:</span> <span class='nv'>c</span> <span class='nv'>flush</span><span class='p'>)</span>
+<span class='nv'>Shell</span> <span class='nv'>got</span> <span class='nv'>{1,2,3}</span>
+<span class='nv'>Shell</span> <span class='nv'>got</span> <span class='nv'>{2,3}</span>
+<span class='nv'>ok</span>
+<span class='nb'>&gt;</span>
+</code></pre></div>
+<h3 id='13_shell_'>1.3 Shell <code>spawn</code></h3>
+
+<p>So far, we&#8217;ve only look at the process for the REPL itself. We&#8217;d like to expand our horizons and look at creating a process in the REPL, writing to it instead of our shell.</p>
+
+<p>However, we are faced with some difficulties:</p>
+
+<ul>
+<li>LFE doesn&#8217;t let us define functions (or macros) in the REPL, and</li>
+
+<li>Erlang&#8217;s <code>spawn</code> function takes a module and function as a parameter.</li>
+</ul>
+
+<p>We can sort of get around that first point using <code>lambda</code>:</p>
+<div class='highlight'><pre><code class='cl'><span class='nb'>&gt;</span> <span class='p'>(</span><span class='nb'>set</span> <span class='nv'>print-result</span>
+    <span class='p'>(</span><span class='k'>lambda</span> <span class='p'>(</span><span class='nv'>msg</span><span class='p'>)</span>
+      <span class='p'>(</span><span class='err'>:</span> <span class='nv'>io</span> <span class='nb'>format</span> <span class='o'>&#39;</span><span class='s'>&quot;Received message: &#39;~s&#39;~n&quot;</span> <span class='p'>(</span><span class='nb'>list</span> <span class='nv'>msg</span><span class='p'>))))</span>
+<span class='err'>#</span><span class='nv'>Fun&lt;lfe_eval.10.53503600&gt;</span>
+<span class='nb'>&gt;</span> <span class='p'>(</span><span class='nb'>funcall</span> <span class='nv'>print-result</span> <span class='o'>&#39;</span><span class='s'>&quot;Zaphod was here.&quot;</span><span class='p'>)</span>
+<span class='nv'>Received</span> <span class='nv'>message:</span> <span class='ss'>&#39;Zaphod</span> <span class='nv'>was</span> <span class='nv'>here.</span><span class='o'>&#39;</span>
+<span class='nv'>ok</span>
+<span class='nb'>&gt;</span>
+</code></pre></div>
+<p>Let&#8217;s update this function so that it can respond to messages when it&#8217;s running as an Erlang process using the call to <code>receive</code>:</p>
+<div class='highlight'><pre><code class='cl'><span class='nb'>&gt;</span> <span class='p'>(</span><span class='nb'>set</span> <span class='nv'>print-result</span>
+    <span class='p'>(</span><span class='k'>lambda</span> <span class='p'>()</span>
+      <span class='p'>(</span><span class='nv'>receive</span>
+        <span class='p'>(</span><span class='nv'>msg</span>
+          <span class='p'>(</span><span class='err'>:</span> <span class='nv'>io</span> <span class='nb'>format</span> <span class='o'>&#39;</span><span class='s'>&quot;Received message: &#39;~s&#39;~n&quot;</span> <span class='p'>(</span><span class='nb'>list</span> <span class='nv'>msg</span><span class='p'>))))))</span>
+<span class='err'>#</span><span class='nv'>Fun&lt;lfe_eval.21.53503600&gt;</span>
+<span class='nb'>&gt;</span>
+</code></pre></div>
+<p>Now that we&#8217;ve got our message-capable function, let&#8217;s <code>spawn</code> it and capture the process id so that we can write to it:</p>
+<div class='highlight'><pre><code class='cl'><span class='nb'>&gt;</span> <span class='p'>(</span><span class='nb'>set</span> <span class='nv'>pid</span> <span class='p'>(</span><span class='nv'>spawn</span> <span class='p'>(</span><span class='k'>lambda</span> <span class='p'>()</span> <span class='p'>(</span><span class='nb'>funcall</span> <span class='nv'>print-result</span><span class='p'>))))</span>
+<span class='nv'>&lt;0.66.0&gt;</span>
+<span class='nb'>&gt;</span> <span class='p'>(</span><span class='nv'>!</span> <span class='nv'>pid</span> <span class='o'>&#39;</span><span class='s'>&quot;Time is an illusion. Lunchtime doubly so.&quot;</span><span class='p'>)</span>
+<span class='s'>&quot;Time is an illusion. Lunchtime doubly so.&quot;</span>
+<span class='nv'>Received</span> <span class='nv'>message:</span> <span class='ss'>&#39;Time</span> <span class='nv'>is</span> <span class='nv'>an</span> <span class='nv'>illusion.</span> <span class='nv'>Lunchtime</span> <span class='nv'>doubly</span> <span class='nv'>so.</span><span class='o'>&#39;</span>
+<span class='nb'>&gt;</span>
+</code></pre></div>
+<p>As you can see, when we send our message to the process we started with <code>spawn</code>, the process&#8217; function prints out the message that it received from us.</p>
+
+<p>We had to go through some gymnastics here, due to the limitations of the shell and using <code>funcall</code> in a <code>spawn</code> call.</p>
+
+<p>Up next: in an anti-intuitive twist, you&#8217;ll see that doing the same thing from a module is more clear that doing it in the shell ;-)</p>
+
+<h2 id='2_processes_in_modules'>2 Processes in Modules</h2>
+
+<h3 id='21_shell__the_sequel'>2.1 Shell <code>spawn</code>: The Sequel</h3>
+
+<p>In the last section, we were all primed to explore spawning processes from the REPL. As we explored, we discovered that message passing in the REPL is a little cumbersome. You were also promised that it would be cleaner when we moved the code to modules. Let&#8217;s see if that&#8217;s true &#8230;</p>
+
+<p>Save the code below to <code>messenger.lfe</code>:</p>
+<div class='highlight'><pre><code class='cl'><span class='p'>(</span><span class='nv'>defmodule</span> <span class='nv'>messenger</span>
+ <span class='p'>(</span><span class='nb'>export</span> <span class='p'>(</span><span class='nv'>print-result</span> <span class='mi'>0</span><span class='p'>)))</span>
+
+<span class='p'>(</span><span class='nb'>defun</span> <span class='nv'>print-result</span> <span class='p'>()</span>
+  <span class='p'>(</span><span class='nv'>receive</span>
+    <span class='p'>(</span><span class='nv'>msg</span>
+      <span class='p'>(</span><span class='err'>:</span> <span class='nv'>io</span> <span class='nb'>format</span> <span class='o'>&#39;</span><span class='s'>&quot;Received message: &#39;~s&#39;~n&quot;</span> <span class='p'>(</span><span class='nb'>list</span> <span class='nv'>msg</span><span class='p'>)))))</span>
+</code></pre></div>
+<p>Then start up <code>lfe</code>, compile your new module, and spawn our print function:</p>
+<div class='highlight'><pre><code class='cl'><span class='nb'>&gt;</span> <span class='p'>(</span><span class='nv'>c</span> <span class='o'>&#39;</span><span class='s'>&quot;messenger&quot;</span><span class='p'>)</span>
+<span class='o'>#(</span><span class='nv'>module</span> <span class='nv'>messenger</span><span class='p'>)</span>
+<span class='nb'>&gt;</span> <span class='p'>(</span><span class='nb'>set</span> <span class='nv'>pid</span> <span class='p'>(</span><span class='nv'>spawn</span> <span class='ss'>&#39;messenger</span> <span class='ss'>&#39;print-result</span> <span class='p'>()))</span>
+<span class='nv'>&lt;0.51.0&gt;</span>
+</code></pre></div>
+<p>Great! It works as expected. Now let&#8217;s play&#8230; by sending it a message from the REPL:</p>
+<div class='highlight'><pre><code class='cl'><span class='nb'>&gt;</span> <span class='p'>(</span><span class='nv'>!</span> <span class='nv'>pid</span> <span class='o'>&#39;</span><span class='s'>&quot;Zaphod was here.&quot;</span><span class='p'>)</span>
+<span class='s'>&quot;Zaphod was here.&quot;</span>
+<span class='nv'>Received</span> <span class='nv'>message:</span> <span class='ss'>&#39;Zaphod</span> <span class='nv'>was</span> <span class='nv'>here.</span><span class='o'>&#39;</span>
+</code></pre></div>
+<p>The only problem with our solution is that it&#8217;s a one-shot deal; subsequent sends to the pid won&#8217;t call our function, since that function is no longer running. We can change that, though: let&#8217;s make sure that once it prints the message, it starts listening again:</p>
+<div class='highlight'><pre><code class='cl'><span class='p'>(</span><span class='nv'>defmodule</span> <span class='nv'>messenger</span>
+ <span class='p'>(</span><span class='nb'>export</span> <span class='p'>(</span><span class='nv'>print-result</span> <span class='mi'>0</span><span class='p'>)))</span>
+
+<span class='p'>(</span><span class='nb'>defun</span> <span class='nv'>print-result</span> <span class='p'>()</span>
+  <span class='p'>(</span><span class='nv'>receive</span>
+    <span class='p'>(</span><span class='nv'>msg</span>
+      <span class='p'>(</span><span class='err'>:</span> <span class='nv'>io</span> <span class='nb'>format</span> <span class='o'>&#39;</span><span class='s'>&quot;Received message: &#39;~s&#39;~n&quot;</span> <span class='p'>(</span><span class='nb'>list</span> <span class='nv'>msg</span><span class='p'>))</span>
+      <span class='p'>(</span><span class='nv'>print-result</span><span class='p'>))))</span>
+</code></pre></div>
+<p>Let&#8217;s take it for a test drive:</p>
+<div class='highlight'><pre><code class='cl'><span class='nb'>&gt;</span> <span class='p'>(</span><span class='nv'>c</span> <span class='o'>&#39;</span><span class='s'>&quot;messenger&quot;</span><span class='p'>)</span>
+<span class='o'>#(</span><span class='nv'>module</span> <span class='nv'>messenger</span><span class='p'>)</span>
+<span class='nb'>&gt;</span> <span class='p'>(</span><span class='nb'>set</span> <span class='nv'>pid</span> <span class='p'>(</span><span class='nv'>spawn</span> <span class='ss'>&#39;messenger</span> <span class='ss'>&#39;print-result</span> <span class='p'>()))</span>
+<span class='nv'>&lt;0.55.0&gt;</span>
+<span class='nb'>&gt;</span> <span class='p'>(</span><span class='nv'>!</span> <span class='nv'>pid</span> <span class='o'>&#39;</span><span class='s'>&quot;Zaphod was here.&quot;</span><span class='p'>)</span>
+<span class='s'>&quot;Zaphod was here.&quot;</span>
+<span class='nv'>Received</span> <span class='nv'>message:</span> <span class='ss'>&#39;Zaphod</span> <span class='nv'>was</span> <span class='nv'>here.</span><span class='o'>&#39;</span>
+<span class='nb'>&gt;</span> <span class='p'>(</span><span class='nv'>!</span> <span class='nv'>pid</span> <span class='o'>&#39;</span><span class='s'>&quot;Ford is missing.&quot;</span><span class='p'>)</span>
+<span class='s'>&quot;Ford is missing.&quot;</span>
+<span class='nv'>Received</span> <span class='nv'>message:</span> <span class='ss'>&#39;Ford</span> <span class='nv'>is</span> <span class='nv'>missing.</span><span class='o'>&#39;</span>
+<span class='nb'>&gt;</span> <span class='p'>(</span><span class='nv'>!</span> <span class='nv'>pid</span> <span class='o'>&#39;</span><span class='s'>&quot;Arthur is pining for Trillian.&quot;</span><span class='p'>)</span>
+<span class='s'>&quot;Arthur is pining for Trillian.&quot;</span>
+<span class='nv'>Received</span> <span class='nv'>message:</span> <span class='ss'>&#39;Arthur</span> <span class='nv'>is</span> <span class='nv'>pining</span> <span class='nv'>for</span> <span class='nv'>Trillian.</span><span class='o'>&#39;</span>
+</code></pre></div>
+<p>Horray! You&#8217;ve just written a simple listener in LFE!</p>
+
+<h2 id='3_process_registry_in_erlanglfe'>3 Process Registry in Erlang/LFE</h2>
+
+<p>We&#8217;ve been setting the <code>pid</code> variable in the REPL so that we don&#8217;t have to call <code>(self)</code> repeatedly. However, you don&#8217;t <em>have</em> to use the pid. If you have a function running in a process whose purpose is to act as a service for any number of other processes, you may find the Erlang process registration system just the thing for you.</p>
+
+<p>There are a handful of processes that are registered by the shell. We can see them by doing the following:</p>
+<div class='highlight'><pre><code class='cl'> <span class='nb'>&gt;</span> <span class='p'>(</span><span class='err'>:</span> <span class='nv'>c</span> <span class='nv'>regs</span><span class='p'>)</span>
+</code></pre></div>
+<pre><code>** Registered procs on node nonode@nohost **
+Name                  Pid          Initial Call                      Reds Msgs
+application_controlle &lt;0.6.0&gt;      erlang:apply/2                     434    0
+code_server           &lt;0.18.0&gt;     erlang:apply/2                  205428    0
+erl_prim_loader       &lt;0.3.0&gt;      erlang:apply/2                  633205    0
+error_logger          &lt;0.5.0&gt;      gen_event:init_it/6               4973    0
+file_server_2         &lt;0.17.0&gt;     file_server:init/1                 660    0
+global_group          &lt;0.16.0&gt;     global_group:init/1                 59    0
+global_name_server    &lt;0.12.0&gt;     global:init/1                       50    0
+inet_db               &lt;0.15.0&gt;     inet_db:init/1                     851    0
+init                  &lt;0.0.0&gt;      otp_ring0:start/2                 4663    0
+kernel_safe_sup       &lt;0.24.0&gt;     supervisor:kernel/1                 58    0
+kernel_sup            &lt;0.10.0&gt;     supervisor:kernel/1              37499    0
+rex                   &lt;0.11.0&gt;     rpc:init/1                          35    0
+standard_error        &lt;0.20.0&gt;     erlang:apply/2                       9    0
+standard_error_sup    &lt;0.19.0&gt;     supervisor_bridge:standar           41    0
+user                  &lt;0.22.0&gt;     erlang:apply/2                    8009    0
+user_drv              &lt;0.28.0&gt;     user_drv:server/2                52096    0
+
+** Registered ports on node nonode@nohost **
+Name                  Id              Command
+ok
+&gt;</code></pre>
+
+<p>Let&#8217;s spawn our previously-defined function and register it:</p>
+<div class='highlight'><pre><code class='cl'><span class='nb'>&gt;</span> <span class='p'>(</span><span class='nb'>set</span> <span class='nv'>pid-2</span> <span class='p'>(</span><span class='nv'>spawn</span> <span class='ss'>&#39;messenger</span> <span class='ss'>&#39;print-result</span> <span class='p'>()))</span>
+<span class='nv'>&lt;0.52.0&gt;</span>
+<span class='nb'>&gt;</span> <span class='p'>(</span><span class='nv'>register</span> <span class='ss'>&#39;msg-svc</span> <span class='nv'>pid-2</span><span class='p'>)</span>
+<span class='nv'>true</span>
+<span class='nb'>&gt;</span>
+</code></pre></div>
+<p>Now, if we call <code>(: c regs)</code> again, we&#8217;ll see our newly-registered process in the table:</p>
+
+<pre><code>&#39;msg-svc&#39;             &lt;0.52.0&gt;     messenger:&#39;print-result&#39;/            1    0</code></pre>
+
+<p>We see that it&#8217;s running; let&#8217;s do a lookup on it by name to get the pid:</p>
+<div class='highlight'><pre><code class='cl'><span class='nb'>&gt;</span> <span class='p'>(</span><span class='nv'>whereis</span> <span class='ss'>&#39;msg-svc</span><span class='p'>)</span>
+<span class='nv'>&lt;0.52.0&gt;</span>
+<span class='nb'>&gt;</span>
+</code></pre></div>
+<p>Just to confirm that this is the same process we spawned:</p>
+<div class='highlight'><pre><code class='cl'><span class='nb'>&gt;</span> <span class='nv'>pid-2</span>
+<span class='nv'>&lt;0.52.0&gt;</span>
+</code></pre></div>
+<p>We&#8217;ve poked around a bit, now let&#8217;s acutally use the new atom we&#8217;ve set as the reference for our messaging service:</p>
+<div class='highlight'><pre><code class='cl'><span class='nb'>&gt;</span> <span class='p'>(</span><span class='nv'>!</span> <span class='ss'>&#39;msg-svc</span> <span class='o'>&#39;</span><span class='s'>&quot;This is Prostetnic Vogon Jeltz...&quot;</span><span class='p'>)</span>
+<span class='s'>&quot;This is Prostetnic Vogon Jeltz...&quot;</span>
+<span class='nv'>Received</span> <span class='nv'>message:</span> <span class='ss'>&#39;This</span> <span class='nv'>is</span> <span class='nv'>Prostetnic</span> <span class='nv'>Vogon</span> <span class='nv'>Jeltz...</span><span class='o'>&#39;</span>
+<span class='nb'>&gt;</span>
+</code></pre></div>
+<p>That about wraps it up for the process registry!</p>
+
+<h2 id='4_process_communications'>4 Process Communications</h2>
+
+<h3 id='41_its_a_two_way_street'>4.1 It&#8217;s a Two Way Street</h3>
+
+<p>We&#8217;ve spent some time looking at sending messages to processes manually. Now let&#8217;s see how processes can send messages to each other. This has the practical implication of being able to report back on something from one process to another process which might have initiated the current action.</p>
+
+<p>For instance, if we could have a function that spawns several lightweight processes, each of which may return data and a status code. If these spawned processes have the calling process&#8217; ID, then they can, in turn, send their results back to the caller so that the data and statuses may be reported upon.</p>
+
+<h3 id='42_walk_the_talk'>4.2 Walk the Talk</h3>
+
+<p>To demonstrate this, let&#8217;s update our <code>print-result</code> function to do this:</p>
+
+<ul>
+<li>pattern match for a process id as well as a message</li>
+
+<li>write message about sending data to another process</li>
+
+<li>actually send that data to the other process</li>
+</ul>
+
+<p>Additionally, let&#8217;s create a new function that <code>spawn</code>s the <code>print-result</code> listener and then sends a message to it.</p>
+
+<p>Save the following as <code>messenger-back.lfe</code>:</p>
+<div class='highlight'><pre><code class='cl'><span class='p'>(</span><span class='nv'>defmodule</span> <span class='nv'>messenger-back</span>
+ <span class='p'>(</span><span class='nb'>export</span> <span class='p'>(</span><span class='nv'>print-result</span> <span class='mi'>0</span><span class='p'>)</span> <span class='p'>(</span><span class='nv'>send-message</span> <span class='mi'>1</span><span class='p'>)))</span>
+
+<span class='p'>(</span><span class='nb'>defun</span> <span class='nv'>print-result</span> <span class='p'>()</span>
+  <span class='p'>(</span><span class='nv'>receive</span>
+    <span class='p'>((</span><span class='nv'>tuple</span> <span class='nv'>pid</span> <span class='nv'>msg</span><span class='p'>)</span>
+      <span class='p'>(</span><span class='err'>:</span> <span class='nv'>io</span> <span class='nb'>format</span> <span class='o'>&#39;</span><span class='s'>&quot;Received message: &#39;~s&#39;~n&quot;</span> <span class='p'>(</span><span class='nb'>list</span> <span class='nv'>msg</span><span class='p'>))</span>
+      <span class='p'>(</span><span class='err'>:</span> <span class='nv'>io</span> <span class='nb'>format</span> <span class='o'>&#39;</span><span class='s'>&quot;Sending message to process ~p ...~n&quot;</span> <span class='p'>(</span><span class='nb'>list</span> <span class='nv'>pid</span><span class='p'>))</span>
+      <span class='p'>(</span><span class='nv'>!</span> <span class='nv'>pid</span> <span class='p'>(</span><span class='nv'>tuple</span> <span class='nv'>msg</span><span class='p'>))</span>
+      <span class='p'>(</span><span class='nv'>print-result</span><span class='p'>))))</span>
+
+<span class='p'>(</span><span class='nb'>defun</span> <span class='nv'>send-message</span> <span class='p'>(</span><span class='nv'>calling-pid</span> <span class='nv'>msg</span><span class='p'>)</span>
+  <span class='p'>(</span><span class='k'>let</span> <span class='p'>((</span><span class='nv'>spawned-pid</span> <span class='p'>(</span><span class='nv'>spawn</span> <span class='ss'>&#39;messenger-back</span> <span class='ss'>&#39;print-result</span> <span class='p'>())))</span>
+    <span class='p'>(</span><span class='nv'>!</span> <span class='nv'>spawned-pid</span> <span class='p'>(</span><span class='nv'>tuple</span> <span class='nv'>calling-pid</span> <span class='nv'>msg</span><span class='p'>))))</span>
+</code></pre></div>
+<p>With these in place, let&#8217;s start up our LFE REPL and try it out. First we&#8217;ll compile our code and then kick things off with our <code>send-message</code> function. Note that this will <code>spawn</code> a listener and send it a message:</p>
+<div class='highlight'><pre><code class='cl'><span class='nb'>&gt;</span> <span class='p'>(</span><span class='nv'>c</span> <span class='o'>&#39;</span><span class='s'>&quot;messenger-back&quot;</span><span class='p'>)</span>
+<span class='o'>#(</span><span class='nv'>module</span> <span class='nv'>messenger-back</span><span class='p'>)</span>
+<span class='nb'>&gt;</span> <span class='p'>(</span><span class='err'>:</span> <span class='nv'>messenger-back</span> <span class='nv'>send-message</span> <span class='o'>&#39;</span><span class='s'>&quot;There was a terrible ghastly silence.&quot;</span><span class='p'>)</span>
+<span class='o'>#(</span><span class='nv'>&lt;0.25.0&gt;</span> <span class='s'>&quot;There was a terrible ghastly silence.&quot;</span><span class='p'>)</span>
+<span class='nv'>Received</span> <span class='nv'>message:</span> <span class='ss'>&#39;There</span> <span class='nv'>was</span> <span class='nv'>a</span> <span class='nv'>terrible</span> <span class='nv'>ghastly</span> <span class='nv'>silence.</span><span class='o'>&#39;</span>
+<span class='nv'>Sending</span> <span class='nv'>message</span> <span class='nv'>to</span> <span class='nv'>process</span> <span class='nv'>&lt;0.25.0&gt;</span> <span class='o'>...</span>
+<span class='nb'>&gt;</span>
+</code></pre></div>
+<p>Let&#8217;s take a look at shell&#8217;s message queue (the quick and dirty way) to see if, in fact, the message <em>was</em> sent to the shell process:</p>
+<div class='highlight'><pre><code class='cl'><span class='nb'>&gt;</span> <span class='p'>(</span><span class='err'>:</span> <span class='nv'>c</span> <span class='nv'>flush</span><span class='p'>)</span>
+<span class='nv'>Shell</span> <span class='nv'>got</span> <span class='nv'>{</span><span class='s'>&quot;There was a terrible ghastly silence.&quot;</span><span class='nv'>}</span>
+<span class='nv'>ok</span>
+<span class='nb'>&gt;</span>
+</code></pre></div>
+<p>Sure enough, it was :-)</p>
+
+<h3 id='43_conclusion'>4.3 Conclusion</h3>
+
+<p>Well, that about wraps it up. We may add more information about working with Erlang lightweight processes in LFE, but the material covered so far in this tutorial should give you a solid foundation for exploring the ways in which you can use processes to breathe life into your applications.</p>
+  </body>
+</html>

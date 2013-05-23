@@ -1,5 +1,6 @@
 JEKYLL = /usr/bin/jekyll
-BOOK_SRC = ./build/downloads
+SITE_BUILD = ./build
+BOOK_SRC = $(SITE_BUILD)/downloads
 BOOK_DST = ./downloads
 
 PYGMENTS = $(shell python -c "import pygments;print pygments.__path__[0]")
@@ -19,11 +20,14 @@ $(MARKDOWN):
 doc-deps: $(JEKYLL) $(PYGMENTS) $(MARKDOWN)
 
 build-books: doc-deps
+	@echo "Generating books ..."
+	rm -f downloads/*.html downloads/*.mobi downloads/*.markdown
 	python bin/generateBooks.py
-	cp $(BOOK_SRC)/*.html $(BOOK_DST)/
 
 build-site: build-books
+	rm -rf $(SITE_BUILD)
 	jekyll build
+	cp $(BOOK_SRC)/*.html $(BOOK_DST)/
 
 publish-books: build-books
 	git commit \
@@ -31,3 +35,5 @@ publish-books: build-books
 	downloads/*.html \
 	downloads/*.mobi \
 	-m "Updated LFE ebooks."
+
+.PHONY: build-books

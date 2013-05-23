@@ -3,11 +3,9 @@ layout: user-guide
 guide: 5
 total_guides: 7
 ---
-# 8 Additional Topics
+# 5 Recursion
 
-## 8.1 Recursion
-
-### 8.1.7 The λ-Calculus
+## 5.7 The λ-Calculus
 
 Oh, yeah. We just went there: the λ-calculus.
 
@@ -30,7 +28,7 @@ leaving behind the comfort of the familiar. The λ-calculus does not concern
 itself with natural numbers per se; rather the ability to do something a given
 number of times.
 
-#### 8.1.7.1 A Quick Primer
+### 5.7.1 A Quick Primer
 
 In the literature, you will see such things as:
 
@@ -57,7 +55,7 @@ As such, one says that `λx.x` is a function that takes one parameter, `x`, and
 produces one output, `x`. `λxy.y` takes two parameters, `x` and `y` and
 produces one output, `y`.
 
-#### 8.1.7.2 Church Encoding
+### 5.7.2 Church Encoding
 
 Let's get our feet wet with figuring out how we can define the natural numbers
 under Church encoding, starting with `zero`. In the standard λ-calculus, this
@@ -247,7 +245,7 @@ given the fact that it just applied so many thousands of lambdas!
 How fortunate that we didn't have to type 10,000 `funcall`s (and the
 corresponding set of opening and closing parentheses 10,000 times).
 
-#### 8.1.7.3 Arithmetic
+### 5.7.3 Arithmetic
 
 {% highlight cl %}
 {% endhighlight %}
@@ -270,7 +268,7 @@ corresponding set of opening and closing parentheses 10,000 times).
 {% highlight cl %}
 {% endhighlight %}
 
-#### 8.1.7.4 Logic
+### 5.7.4 Logic
 
 {% highlight cl %}
 {% endhighlight %}
@@ -278,7 +276,7 @@ corresponding set of opening and closing parentheses 10,000 times).
 {% highlight cl %}
 {% endhighlight %}
 
-#### 8.1.7.5 Resources
+### 5.7.5 Resources
 
 The material for this section was taken from a collection of papers on the
 λ-calculus that we have provided here:

@@ -3,15 +3,13 @@ layout: user-guide
 guide: 1
 total_guides: 7
 ---
-# 8 Additional Topics
+# 5 Recursion
 
-## 8.1 Recursion
-
-### 8.1.1 See Section 8.1
+## 5.1 See Section 5
 
 Sorry, couldn't resist.
 
-### 8.1.2 A Brief History
+## 5.2 A Brief History
 
 In functional languages, recursion plays an important role. For Erlang in
 particular, recursion is important because variables can't be changed. It is
@@ -36,7 +34,7 @@ and the related concept of recursion in his new language.  (Interestingly
 enough, McCarthy and Dijkstra both advocated for the inclusions of recursion in
 ALGOL.)
 
-### 8.1.3 A Preview
+## 5.3 A Preview
 
 In the sections of the user guide, we explore various aspects of recursion as
 they can be formulated in Lisp Flavored Erlang. We will cover the following:

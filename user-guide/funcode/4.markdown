@@ -5,14 +5,80 @@ total_guides: 4
 ---
 # 4 Functions and Modules
 
-## 4.4 Projects
+## 4.4 Projects with Rebar
+
+In this section we'll be exploring how rebar can be used to manage LFE projects.
+
+This section will make use of two example projects on github:
+* <a href="https://github.com/lfe/lfe-library-example">https://github.com/lfe/lfe-library-example</a>
+* <a href="https://github.com/lfe/lfe-service-example">https://github.com/lfe/lfe-service-example</a>
 
 ### 4.4.1 Collections of Modules
 
-### 4.4.2 Defining a Project with Rebar
+The first question we should probably address is this: How are we defining a
+project?
+
+An LFE project is a set of modules developed and distributed to accomplish a
+particular goal. The project should have a rebar configuration file, a source
+directory with `.lfe` files in it, possibly an include directory, andn ideally
+unit tests in a `test` directory.
+
+### 4.4.2 Project Structure
+
+Let's expand upon the project definition given above, focusing on the directory
+structure of a prototypical project and some of the files one might find in an
+LFE project.
+
+{% highlight text %}
+├── ebin
+│   └── libexample.app
+├── src
+│   └── libexample.lfe
+├── Makefile
+├── README.md
+└── rebar.config
+{% endhighlight %}
+
+This is from a sample project whose purpose is to provide a library for use by
+other LFE (or Erlang!) projects. More on that below.
+
+Rebar supports LFE files. All that it needs is the standard `rebar.config` and
+an `.app` file in the `ebin` directory. With these, Rebar will be able to
+download the project dependencies and compile the `*.lfe` files in `src` to the
+`ebin` directory as `*.beam` files.
 
 ### 4.4.3 Dependencies
 
-### 4.4.4 Distributing A Project
+Dependencies are handled very nicely with Rebar: just add a git repo in your
+`rebar.config` file like so:
 
-### 4.4.5 Installing Projects
+{% highlight erlang %}
+{deps, [
+    {lfe, ".*", {git, "git://github.com/rvirding/lfe.git", "develop"}}
+  ]}.
+{% endhighlight %}
+
+Any dependencies listed here will be downloaded with the `rebar get-deps`
+command. Once downloaded, issuing the `rebar compile` command will not only
+compile your project's `src/*` files into its `ebin` directory, but will compile
+all dependency project source code as well.
+
+### 4.4.4 Defining a Library Project
+
+We've seen the directory structure above for a library project. We're defining
+a "library" project as one that doesn't start up any services as part of its
+basic operations. Instead, it provides code that other projects make use of.
+
+In particular, in a library project, you do not need to define `mod` in your
+`ebin/libname.app` file. Similarly, in your `src` directory, you do not need
+to create application nor supervisor files.
+
+We're making a rather arbitrary distinction here (between "library" projects and
+"service" projects, and one with undoubtedly many blurry lines. Regardless, it
+may be instructive or useful as a guideline.
+
+### 4.4.5 Defining a Service Project
+
+### 4.4.6 Distributing A Project
+
+### 4.4.7 Installing Projects

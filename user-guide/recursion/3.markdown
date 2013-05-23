@@ -3,11 +3,9 @@ layout: user-guide
 guide: 3
 total_guides: 7
 ---
-# 8 Additional Topics
+# 5 Recursion
 
-## 8.1 Recursion
-
-#### 8.1.5 Primitive Recursive Functions
+## 5.5 Primitive Recursive Functions
 
 In the previous section, we leaned about the primitive recursive funtion called
 the "successor", one that was used by Peano in his axioms. There are other
@@ -20,7 +18,7 @@ primitive recursive funtions as well, and these are usually given as axioms
 These combined with the Peano axioms allow us to define other primitive
 recursive functions.
 
-#### 8.1.5.1 Addition
+### 5.5.1 Addition
 
 Often, one sees the primitive recursive function definition of addition done in
 the following manner:
@@ -55,7 +53,7 @@ Remember, though: the verbosity of these axioms and their derrived definitions
 serves to explicitly show that no assumptions are being made and that all these
 operations can indeed be built upon basic principles.
 
-#### 8.1.5.2 Subtraction
+### 5.5.2 Subtraction
 
 Next up, let's take a look at subtraction:
 
@@ -79,7 +77,7 @@ Note that the usual usage is reversed for our ```subtract``` function:
 >
 {% endhighlight %}
 
-#### 8.1.5.3 Multiplication
+### 5.5.3 Multiplication
 
 The last one of these that we will look at is multiplication, and then we'll
 move on to something a little more complicated :-)

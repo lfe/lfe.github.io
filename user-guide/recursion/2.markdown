@@ -3,11 +3,9 @@ layout: user-guide
 guide: 2
 total_guides: 7
 ---
-# 8 Additional Topics
+# 5 Recursion
 
-## 8.1 Recursion
-
-### 8.1.4 The Dedekind-Peano Axioms
+## 5.4 The Dedekind-Peano Axioms
 
 For those that are math-averse, don't let this frighten you -- this will be a
 peaceful journey that should not leave you bewildered. Rather, it
@@ -15,7 +13,7 @@ will provide some nice background for how recursion came to be used. With the
 history reviewed, we'll make our way into practical implementations.
 
 
-#### 8.1.4.1 Foundations
+### 5.4.1 Foundations
 
 Despite the fluorescence of maths in the 17th and 18th centuries and the
 growing impact of number theory, the ground upon which mathematics were built
@@ -39,13 +37,13 @@ Internet; we will take a slightly unique approach, however, and cast them in
 LFE.
 
 
-#### 8.1.4.2 A Constant and Equality
+### 5.4.2 A Constant and Equality
 
 The first five Peano axioms deal with the constant (often written as "0") and
 the reflexive, symmetric, transitive and closed eqaulity relations. These don't
 relate recursion directly, so we're going to skip them ;-)
 
-#### 8.1.4.3 Successor Function
+### 5.4.3 Successor Function
 
 The concept of the "successor" in the Peano axioms is a primitive; it is taken
 as being true without having proved it. It is informally defined as being the
@@ -66,7 +64,7 @@ This function is defined as being "basic primitive recursive". The basic
 primitive recursives are defined by axioms; the term was coined by Rózsa
 Péter.
 
-#### 8.1.4.4 The Remaining Axioms
+### 5.4.4 The Remaining Axioms
 
 The remaining three Peano axioms do not touch upon recursion directly, so we
 leave them to your own research and reading pleasure.

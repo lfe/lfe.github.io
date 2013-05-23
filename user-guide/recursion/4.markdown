@@ -3,15 +3,13 @@ layout: user-guide
 guide: 4
 total_guides: 7
 ---
-# 8 Additional Topics
+# 5 Recursion
 
-## 8.1 Recursion
-
-#### 8.1.6 Total Recursive Functions
+## 5.6 Total Recursive Functions
 
 [TBD]
 
-#### 8.1.6.1 The Ackermann Function
+### 5.6.1 The Ackermann Function
 
 The Ackermann function is one of the simplest and earliest-discovered examples
 of a "total computable function" that is not primitive recursive. The variant

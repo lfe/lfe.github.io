@@ -29,7 +29,7 @@ Let's expand upon the project definition given above, focusing on the directory
 structure of a prototypical project and some of the files one might find in an
 LFE project.
 
-{% highlight %}
+{% highlight text %}
 ├── ebin
 │   └── libexample.app
 ├── src

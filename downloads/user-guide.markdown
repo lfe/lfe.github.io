@@ -91,7 +91,7 @@ it :-)
 ### 1.5.1 Using the REPL
 
 We covered basic REPL usage in the
-<a href="/quick-start/2.html">user guide</a>. That's the best place to go for
+<a href="/quick-start/2.html">quick start</a>. That's the best place to go for
 an introduction to using the LFE REPL. Regardless (and for your convenience),
 we also provide some information about the REPL in the document you are
 currently reading :-)

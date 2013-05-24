@@ -2834,10 +2834,10 @@ examples will be using ```(catch ...)```.
 ### 6.4.7 Resolving a Bug
 
 ### 6.4.8 Code Coverage
-# 6 Processes and Servers
-# 7 External Data
-# 8 Additional Topics
+# 7 Processes and Servers
+# 8 External Data
+# 9 Additional Topics
 
-## 8.2 Macros
+## 9.1 Macros
 
-## 8.3 Writing for Multi-Core
+## 9.2 Writing for Multi-Core

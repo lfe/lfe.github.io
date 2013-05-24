@@ -3,6 +3,6 @@ layout: user-guide
 guide: 2
 total_guides: 3
 ---
-# 8 Additional Topics
+# 9 Additional Topics
 
-## 8.2 Macros
+## 9.1 Macros

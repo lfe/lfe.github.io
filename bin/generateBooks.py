@@ -141,18 +141,9 @@ def assemble_book(doc, remove_front_matter=True):
     return book.encode("utf-8")
 
 
-def create_markdown_file(filename, markdown_data):
-    write_file(filename, markdown_data)
-
-
-def create_mobi_file(html_file, mobi_file):
-    pass
-
-
 def generate_doc(doc):
     markdown_data = assemble_book(doc)
-    create_markdown_file(doc.md_file, markdown_data)
-    create_mobi_file(doc.html_file, doc.mobi_file)
+    write_file(doc.md_file, markdown_data)
 
 
 def generate_docs():

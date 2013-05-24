@@ -1,5 +1,6 @@
 ---
 layout: book
+title: LFE User Guide
 ---
 # 1 Introduction
 

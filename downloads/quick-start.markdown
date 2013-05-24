@@ -1,5 +1,6 @@
 ---
 layout: book
+title: LFE Quick Start
 ---
 # Quick Start
 

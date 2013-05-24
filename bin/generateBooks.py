@@ -11,6 +11,7 @@ class Organizer(object):
 
 
 quick_start = Organizer()
+quick_start.title = "LFE Quick Start"
 quick_start.html_file = "downloads/quick-start.html"
 quick_start.md_file = "downloads/quick-start.markdown"
 quick_start.mobi_file = "downloads/quick-start.mobi"
@@ -19,6 +20,7 @@ quick_start.chapters = [
     ]
 
 user_guide = Organizer()
+user_guide.title = "LFE User Guide"
 user_guide.html_file = "downloads/user-guide.html"
 user_guide.md_file = "downloads/user-guide.markdown"
 user_guide.mobi_file = "downloads/user-guide.mobi"
@@ -36,6 +38,7 @@ user_guide.chapters = [
 
 
 process_tutorial = Organizer()
+process_tutorial.title = "LFE Tutorial - Lightweight Processes"
 process_tutorial.html_file = "downloads/processes-tutorial.html"
 process_tutorial.md_file = "downloads/processes-tutorial.markdown"
 process_tutorial.mobi_file = "downloads/processes-tutorial.mobi"
@@ -143,8 +146,8 @@ def assemble_chapters(doc, remove_front_matter=True):
 
 
 def assemble_book(doc, remove_front_matter=True):
-    chapters = [delimiter, "layout: book", delimiter] + assemble_chapters(
-        doc, remove_front_matter)
+    chapters = [delimiter, "layout: book", "title: %s" % doc.title,
+                delimiter] + assemble_chapters(doc, remove_front_matter)
     book = "\n".join(chapters)
     return book.encode("utf-8")
 

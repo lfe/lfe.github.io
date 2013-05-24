@@ -1,5 +1,6 @@
 ---
 layout: book
+title: LFE Tutorial - Lightweight Processes
 ---
 # Tutorial: Lightweight Processes
 

@@ -37,6 +37,7 @@ publish-books: build-books
 	-m "Updated LFE ebooks."
 
 build-mobi: build-site
+	-./bin/kindlegen downloads/quick-start.html -c2
 	-./bin/kindlegen downloads/user-guide.html -c2
 	-./bin/kindlegen downloads/processes-tutorial.html -c2
 

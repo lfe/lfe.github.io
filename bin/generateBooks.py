@@ -10,6 +10,14 @@ class Organizer(object):
     pass
 
 
+quick_start = Organizer()
+quick_start.html_file = "downloads/quick-start.html"
+quick_start.md_file = "downloads/quick-start.markdown"
+quick_start.mobi_file = "downloads/quick-start.mobi"
+quick_start.chapters = [
+    "quick-start"
+    ]
+
 user_guide = Organizer()
 user_guide.html_file = "downloads/user-guide.html"
 user_guide.md_file = "downloads/user-guide.markdown"
@@ -36,7 +44,7 @@ process_tutorial.chapters = [
     ]
 
 
-docs = [user_guide, process_tutorial]
+docs = [quick_start, user_guide, process_tutorial]
 #docs = [process_tutorial]
 delimiter = "---"
 

@@ -3,6 +3,6 @@ layout: user-guide
 guide: 1
 total_guides: 3
 ---
-#  5 Checks, Errors, and Tests
+# 6 Checks, Errors, and Tests
 
-## 5.1 Guards
+## 6.1 Guards

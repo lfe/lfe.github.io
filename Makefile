@@ -36,4 +36,8 @@ publish-books: build-books
 	downloads/*.mobi \
 	-m "Updated LFE ebooks."
 
-.PHONY: build-books
+build-mobi: build-site
+	-./bin/kindlegen downloads/user-guide.html -c2
+	-./bin/kindlegen downloads/processes-tutorial.html -c2
+
+.PHONY: build-books build-mobi

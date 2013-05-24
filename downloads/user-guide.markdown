@@ -2780,11 +2780,11 @@ Enjoy!
 {% endhighlight %}
 
 ### 5.9.1 Tail Call Optimization
-#  5 Checks, Errors, and Tests
+# 6 Checks, Errors, and Tests
 
-## 5.1 Guards
+## 6.1 Guards
 
-## 5.2 Exception Handling
+## 6.2 Exception Handling
 
 Erlang, and thus LFE, provide a means of evaluating expressions and not only
 handling normal results, but abnormal termination as well. This is done with
@@ -2794,46 +2794,46 @@ Note that ```(try ... )``` doesn't need to have a ```(catch ...)```, however,
 since we will be exploring exception handling in this section, all of our
 examples will be using ```(catch ...)```.
 
-### 5.2.1 A Simple Case
+### 6.2.1 A Simple Case
 
 
-## 5.3 EUnit
+## 6.3 EUnit
 
-### 5.3.1 The Face of a Unit Test
+### 6.3.1 The Face of a Unit Test
 
-### 5.3.2 Mixed Tests or Separate Modules?
+### 6.3.2 Mixed Tests or Separate Modules?
 
-### 5.3.3 Running Unit Tests
+### 6.3.3 Running Unit Tests
 
-### 5.3.4 Distributing Code with Unit Tests
+### 6.3.4 Distributing Code with Unit Tests
 
-### 5.3.5 A Unit Test in Detail
+### 6.3.5 A Unit Test in Detail
 
-#### 5.3.5.1 Erlang EUnit Assert Macros
+#### 6.3.5.1 Erlang EUnit Assert Macros
 
-#### 5.3.5.2 Setup and Cleanup
+#### 6.3.5.2 Setup and Cleanup
 
-#### 5.3.5.3 Generating Tests
+#### 6.3.5.3 Generating Tests
 
-## 5.4 TDD
+## 6.4 TDD
 
-### 5.4.1 Creating an API and Writing Tests
+### 6.4.1 Creating an API and Writing Tests
 
-### 5.4.2 Making Tests Pass
+### 6.4.2 Making Tests Pass
 
-#### 5.4.2.1 Factoring Out Common Test Logic
+#### 6.4.2.1 Factoring Out Common Test Logic
 
-### 5.4.3 Testing the Server
+### 6.4.3 Testing the Server
 
-### 5.4.4 Testing the Client
+### 6.4.4 Testing the Client
 
-### 5.4.5 Cleaning Up After Tests
+### 6.4.5 Cleaning Up After Tests
 
-### 5.4.6 Handling Logged Errors
+### 6.4.6 Handling Logged Errors
 
-### 5.4.7 Resolving a Bug
+### 6.4.7 Resolving a Bug
 
-### 5.4.8 Code Coverage
+### 6.4.8 Code Coverage
 # 6 Processes and Servers
 # 7 External Data
 # 8 Additional Topics

@@ -26,7 +26,7 @@ build-books: doc-deps
 
 build-site: build-books
 	rm -rf $(SITE_BUILD)
-	jekyll build
+	jekyll build -d $(SITE_BUILD)
 	cp $(BOOK_SRC)/*.html $(BOOK_DST)/
 
 publish-books: build-books

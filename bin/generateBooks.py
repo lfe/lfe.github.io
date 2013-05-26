@@ -5,51 +5,12 @@ import os
 
 import markdown
 
-
-class Organizer(object):
-    pass
+from scriptlib import config, const
 
 
-quick_start = Organizer()
-quick_start.title = "LFE Quick Start"
-quick_start.html_file = "downloads/quick-start.html"
-quick_start.md_file = "downloads/quick-start.markdown"
-quick_start.mobi_file = "downloads/quick-start.mobi"
-quick_start.chapters = [
-    "quick-start"
-    ]
-
-user_guide = Organizer()
-user_guide.title = "LFE User Guide"
-user_guide.html_file = "downloads/user-guide.html"
-user_guide.md_file = "downloads/user-guide.markdown"
-user_guide.mobi_file = "downloads/user-guide.mobi"
-user_guide.chapters = [
-    "user-guide/intro",
-    "user-guide/diving",
-    "user-guide/data",
-    "user-guide/funcode",
-    "user-guide/recursion",
-    "user-guide/check",
-    "user-guide/1.markdown",
-    "user-guide/2.markdown",
-    "user-guide/extra",
-    ]
 
 
-process_tutorial = Organizer()
-process_tutorial.title = "LFE Tutorial - Lightweight Processes"
-process_tutorial.html_file = "downloads/processes-tutorial.html"
-process_tutorial.md_file = "downloads/processes-tutorial.markdown"
-process_tutorial.mobi_file = "downloads/processes-tutorial.mobi"
-process_tutorial.chapters = [
-    "tutorials/processes"
-    ]
 
-
-docs = [quick_start, user_guide, process_tutorial]
-#docs = [process_tutorial]
-delimiter = "---"
 
 
 def read_file(filename):
@@ -92,7 +53,7 @@ def filter_front_matter(chapter):
             if counts == 2:
                 start = index
                 break
-            if line == delimiter:
+            if line == const.delimiter:
                 counts += 1
         sections.append("\n".join(lines[start:]))
     return sections
@@ -146,8 +107,11 @@ def assemble_chapters(doc, remove_front_matter=True):
 
 
 def assemble_book(doc, remove_front_matter=True):
-    chapters = [delimiter, "layout: book", "title: %s" % doc.title,
-                delimiter] + assemble_chapters(doc, remove_front_matter)
+    chapters = [const.delimiter,
+                "layout: book",
+                "title: %s" % doc.title,
+                "author: %s" % doc.author,
+                const.delimiter] + assemble_chapters(doc, remove_front_matter)
     book = "\n".join(chapters)
     return book.encode("utf-8")
 
@@ -158,7 +122,7 @@ def generate_doc(doc):
 
 
 def generate_docs():
-    for doc in docs:
+    for doc in config.docs:
         generate_doc(doc)
 
 

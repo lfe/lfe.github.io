@@ -2,7 +2,7 @@ JEKYLL = /usr/bin/jekyll
 SITE_BUILD = ./build
 BOOK_SRC = $(SITE_BUILD)/downloads
 BOOK_DST = ./downloads
-
+PYTHONPATH = PYTHONPATH=.
 PYGMENTS = $(shell python -c "import pygments;print pygments.__path__[0]")
 MARKDOWN = $(shell python -c "import markdown;print markdown.__path__[0]")
 
@@ -22,7 +22,7 @@ doc-deps: $(JEKYLL) $(PYGMENTS) $(MARKDOWN)
 build-books: doc-deps
 	@echo "Generating books ..."
 	rm -f downloads/*.html downloads/*.mobi downloads/*.markdown
-	python bin/generateBooks.py
+	$(PYTHONPATH) python bin/generateBooks.py
 
 build-site: build-books
 	rm -rf $(SITE_BUILD)

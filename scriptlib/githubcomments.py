@@ -89,12 +89,8 @@ def error_check(func, args, err_msg):
     return result
 
 
-def main():
+def do_import():
     error_check(
         import_comments,
         [],
         "Couldn't import comments.")
-
-
-if __name__ == '__main__':
-    main()

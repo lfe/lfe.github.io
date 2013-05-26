@@ -28,7 +28,7 @@ dst_url = "https://%s/repos/%s" % (server, dst_repo)
 print "Using the following URLs:"
 print "\tsource: %s" % src_url
 print "\tdestination: %s" % dst_url
-print 
+print
 
 def get_labels(url):
     response = urllib2.urlopen("%s/labels" % url)
@@ -66,7 +66,7 @@ def import_milestones(milestones):
         req.add_header("Content-Type", "application/json")
         req.add_header("Accept", "application/json")
         res = urllib2.urlopen(req)
-        
+
         data = res.read()
         res_milestone = json.load(StringIO(data))
         print "Successfully created milestone %s" % res_milestone["title"]
@@ -147,7 +147,7 @@ def error_check(func, args, err_msg):
     return result
 
 
-def main():
+def do_import():
     #get milestones and issues to import
     milestones = error_check(
         get_milestones, [src_url], "Couldn't get source milestones.")
@@ -169,7 +169,3 @@ def main():
     error_check(
         import_issues, [issues, milestones, labels],
         "Couldn't import issues.")
-
-
-if __name__ == '__main__':
-    main()

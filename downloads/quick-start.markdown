@@ -1,6 +1,7 @@
 ---
 layout: book
 title: LFE Quick Start
+author: Duncan McGreggor
 ---
 # Quick Start
 

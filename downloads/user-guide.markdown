@@ -1,6 +1,7 @@
 ---
 layout: book
 title: LFE User Guide
+author: Duncan McGreggor
 ---
 # 1 Introduction
 

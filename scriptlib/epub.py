@@ -27,7 +27,7 @@ def create_container(path):
         fh.write(const.container_xml)
 
 
-def get_authors(book_config):
+def get_opf_authors(book_config):
     xml = []
     for author in book_config.authors:
         xml.append(const.opf_author % author)
@@ -39,24 +39,34 @@ def get_opf_metadata(book_config):
         "uuid": uuid.uuid4(),
         "lang": const.lang,
         "title": book_config.title,
-        "authors": get_authors(book_config),
+        "authors": get_opf_authors(book_config),
         "generator": const.generator,
         "year": book_config.publication_year,
         "coverid": const.coverid}
 
 
-def get_opf_manifest(book_config, html_file):
+def get_opf_manifest(book_config):
     data = [
-        # main page
-        const.opf_manifest_html % {
-            "id": "html_1",
-            "mime": const.mimetype_html,
-            "filename": os.path.basename(html_file)},
         # book cover
         const.opf_manifest_html % {
             "id": const.coverid,
             "mime": const.mimetype_jpg,
             "filename": const.cover},
+        # title page
+        const.opf_manifest_html % {
+            "id": "html_1",
+            "mime": const.mimetype_html,
+            "filename": "1.html"},
+        # acknowledgements page
+        const.opf_manifest_html % {
+            "id": "html_2",
+            "mime": const.mimetype_html,
+            "filename": "2.html"},
+        # main page
+        const.opf_manifest_html % {
+            "id": "html_3",
+            "mime": const.mimetype_html,
+            "filename": "3.html"},
         ]
     return "\n".join(data)
 
@@ -66,7 +76,14 @@ def get_opf_spine(book_config):
 
 
 def get_opf_guide(book_config):
-    return ""
+    data = [
+        # title page
+        const.opf_guide_html % {
+            "htmlpage": "1.html",
+            "type": "title-page",
+            "title": "Title Page"},
+        ]
+    return "\n".join(data)
 
 
 def build_skeleton(path, html_file):
@@ -83,7 +100,7 @@ def create_content_opf(path, html_file):
     book_config = get_config(path)
     data = const.content_opf_xml % {
         "metadata": get_opf_metadata(book_config),
-        "manifest": get_opf_manifest(book_config, html_file),
+        "manifest": get_opf_manifest(book_config),
         "spine": get_opf_spine(book_config),
         "guide": get_opf_guide(book_config)}
     with open(os.path.join(path, const.content_opf_file), "w") as fh:
@@ -98,6 +115,36 @@ def copy_file(src, dst):
     with open(src) as fhr:
         with open(dst, "w") as fhw:
             fhw.write(fhr.read())
+
+
+def get_html_authors(book_config):
+    html = []
+    for author in book_config.authors:
+        html.append(const.author_html % author)
+    return "\n".join(html)
+
+
+def create_title_page(path, dst):
+    book_config = get_config(path)
+    data = const.title_page_html % {
+        "title": book_config.title,
+        "subtitle": book_config.subtitle,
+        "authors": get_html_authors(book_config)}
+    with open(dst, "w") as fh:
+        fh.write(data)
+
+
+def create_acks_page(dst):
+    data = const.acknowledgements_page_html % {
+        "title": "Acknowledgements",
+        "contributors": ", ".join(const.contributors.strip().splitlines())}
+    with open(dst, "w") as fh:
+        fh.write(data)
+
+
+def create_css_file(dst):
+    with open(dst, "w") as fh:
+        fh.write(const.css)
 
 
 def create_archive(archive_path, files):
@@ -121,12 +168,19 @@ def generate_epub(archive_path, src_html, clean_up=True):
     book_name = get_book_name(src_html)
     dst_path = os.path.join(archive_path, book_name)
     build_skeleton(dst_path, src_html)
-    # add main html file
-    dst_html = get_file_path(dst_path, "1.html")
-    copy_file(src=src_html, dst=dst_html)
     # add cover image
     dst_cover = get_file_path(dst_path, const.cover)
     copy_file(src=const.cover_src, dst=dst_cover)
-    files = [dst_html, dst_cover]
+    # add title page
+    dst_title = get_file_path(dst_path, "1.html")
+    create_title_page(path=dst_path, dst=dst_title)
+    # add acknowledgements page
+    dst_acks = get_file_path(dst_path, "2.html")
+    create_acks_page(dst=dst_acks)
+    # add main html file
+    dst_html = get_file_path(dst_path, "3.html")
+    copy_file(src=src_html, dst=dst_html)
+    # assumble epub files
+    files = [dst_cover, dst_title, dst_acks, dst_html]
     create_content_opf(dst_path, dst_html)
     create_archive(dst_path, files)

@@ -5,6 +5,7 @@ class Organizer(object):
 
 quick_start = Organizer()
 quick_start.title = "LFE Quick Start"
+quick_start.subtitle = "Lisp Flavored Erlang for the Impatient"
 quick_start.authors = ["Duncan McGreggor"]
 quick_start.name = "quick-start"
 quick_start.filename = "%s.html" % quick_start.name
@@ -18,6 +19,7 @@ quick_start.chapters = [
 
 user_guide = Organizer()
 user_guide.title = "LFE User Guide"
+user_guide.subtitle = "A Comprehensive Introduction to Lisp Flavored Erlang"
 user_guide.authors = ["Duncan McGreggor", "Robert Virding"]
 user_guide.name = "user-guide"
 user_guide.filename = "%s.html" % user_guide.name
@@ -38,7 +40,8 @@ user_guide.chapters = [
 
 
 processes_tutorial = Organizer()
-processes_tutorial.title = "LFE Tutorial - Lightweight Processes"
+processes_tutorial.title = "Lightweight Processes in LFE"
+processes_tutorial.subtitle = "A Lisp Flavored Erlang Tutorial"
 processes_tutorial.authors = ["Duncan McGreggor"]
 processes_tutorial.name = "processes-tutorial"
 processes_tutorial.filename = "%s.html" % processes_tutorial.name

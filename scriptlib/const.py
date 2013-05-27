@@ -1,5 +1,9 @@
 delimiter = "---"
-
+contributors = """
+John Daily
+Mats Westin
+Tim Fletcher
+"""
 
 # EPub constants
 extension = ".epub"
@@ -27,6 +31,7 @@ lang = "en-US"
 generator = "lfe.github.io (custom scripts)"
 coverid = "image_1"
 
+
 # EPub XML fragments
 container_xml = """
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
@@ -52,6 +57,9 @@ opf_metadata = """
 opf_manifest_html = """
     <opf:item id="%(id)s" media-type="%(mime)s" href="%(filename)s"/>
 """
+opf_guide_html = """
+    <opf:reference href="%(htmlpage)s" type="%(type)s" title="%(title)s"/>
+"""
 content_opf_xml = """
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <opf:package
@@ -71,4 +79,46 @@ content_opf_xml = """
 %(guide)s
   </opf:guide>
 </opf:package>
+"""
+
+# HTML fragments
+author_html = """
+      <p style="font-size: 150%%">%s</p>
+      <br/>
+"""
+title_page_html = """
+<html>
+  <head>
+    <title>%(title)s</title>
+  </head>
+  <body>
+    <div style="text-align: center">
+      <br/><br/>
+      <h1>%(title)s</h1>
+      <br/><br/>
+      <h2><i>%(subtitle)s</i></h2>
+      <br/><br/><br/><br/>
+%(authors)s
+    </div>
+  </body>
+</html>
+"""
+acknowledgements_page_html = """
+<html>
+  <head>
+    <title>%(title)s</title>
+  </head>
+  <body>
+    <div style="text-align: center">
+      <br/><br/>
+      <h1>%(title)s</h1>
+      <br/><br/>
+      <p style="font-size: 150%%">
+        We would like to thank the following individuals who have contributed to
+        the text of this book, listed in alphabetical order by first name:
+      </p>
+      <p style="font-size: 150%%">%(contributors)s</p>
+    </div>
+  </body>
+</html>
 """

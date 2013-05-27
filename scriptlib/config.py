@@ -1,13 +1,16 @@
 class Organizer(object):
-    author = "Duncan McGreggor"
+    authors = ["Duncan McGreggor", "Robert Virding"]
     cover = "images/logos/LispFlavoredErlang-large-cover.jpg"
+    publication_year = "2013"
 
 
 quick_start = Organizer()
 quick_start.title = "LFE Quick Start"
-quick_start.html_file = "downloads/quick-start.html"
-quick_start.md_file = "downloads/quick-start.markdown"
-quick_start.mobi_file = "downloads/quick-start.mobi"
+quick_start.name = "quick-start"
+quick_start.filename = "%s.html" % quick_start.name
+quick_start.html_file = "downloads/%s" % quick_start.filename
+quick_start.md_file = "downloads/%s.markdown" % quick_start.name
+quick_start.mobi_file = "downloads/%s.mobi" % quick_start.name
 quick_start.chapters = [
     "quick-start"
     ]
@@ -15,9 +18,11 @@ quick_start.chapters = [
 
 user_guide = Organizer()
 user_guide.title = "LFE User Guide"
-user_guide.html_file = "downloads/user-guide.html"
-user_guide.md_file = "downloads/user-guide.markdown"
-user_guide.mobi_file = "downloads/user-guide.mobi"
+user_guide.name = "user-guide"
+user_guide.filename = "%s.html" % user_guide.name
+user_guide.html_file = "downloads/%s" % user_guide.filename
+user_guide.md_file = "downloads/%s.markdown" % user_guide.name
+user_guide.mobi_file = "downloads/%s.mobi" % user_guide.name
 user_guide.chapters = [
     "user-guide/intro",
     "user-guide/diving",
@@ -31,14 +36,20 @@ user_guide.chapters = [
     ]
 
 
-process_tutorial = Organizer()
-process_tutorial.title = "LFE Tutorial - Lightweight Processes"
-process_tutorial.html_file = "downloads/processes-tutorial.html"
-process_tutorial.md_file = "downloads/processes-tutorial.markdown"
-process_tutorial.mobi_file = "downloads/processes-tutorial.mobi"
-process_tutorial.chapters = [
+processes_tutorial = Organizer()
+processes_tutorial.title = "LFE Tutorial - Lightweight Processes"
+processes_tutorial.name = "processes-tutorial"
+processes_tutorial.filename = "%s.html" % processes_tutorial.name
+processes_tutorial.html_file = "downloads/%s" % processes_tutorial.filename
+processes_tutorial.md_file = "downloads/%s.markdown" % processes_tutorial.name
+processes_tutorial.mobi_file = "downloads/%s.mobi" % processes_tutorial.name
+processes_tutorial.chapters = [
     "tutorials/processes"
     ]
 
 
-docs = [quick_start, user_guide, process_tutorial]
+docs = [quick_start, user_guide, processes_tutorial]
+
+
+def get_book_names():
+    return " ".join([x.name for x in docs])

@@ -4,6 +4,8 @@ John Daily
 Mats Westin
 Tim Fletcher
 """
+font = "fonts/Philosopher.ttf"
+font_italic = "fonts/Philosopher-Italic.ttf"
 
 # EPub constants
 extension = ".epub"
@@ -14,13 +16,14 @@ mimetype_ncx = 'application/x-dtbncx+xml'
 mimetype_js = 'text/javascript'
 mimetype_css = 'text/css'
 mimetype_jpg = 'image/jpeg'
+mimetype_png = 'image/png'
 metainf_dir = "META-INF"
 container_file = "%s/container.xml" % metainf_dir
 mimetype_file = "mimetype"
 oebps_dir = "OEBPS"
 content_opf_file = "%s/content.opf" % oebps_dir
-cover = "cover.jpg"
-cover_src = "images/logos/LispFlavoredErlang-large-cover.jpg"
+cover = "cover.png"
+cover_src = "images/logos/LispFlavoredErlang-large-cover.png"
 style = "%s/style.css" % oebps_dir
 title_page = "%s/title.html" % oebps_dir
 copyright_page = "%s/copyright.html" % oebps_dir
@@ -84,7 +87,6 @@ content_opf_xml = """
 # HTML fragments
 author_html = """
       <p style="font-size: 150%%">%s</p>
-      <br/>
 """
 title_page_html = """
 <html>

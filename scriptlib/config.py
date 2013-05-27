@@ -40,7 +40,7 @@ user_guide.chapters = [
 
 
 processes_tutorial = Organizer()
-processes_tutorial.title = "Lightweight Processes in LFE"
+processes_tutorial.title = "Lightweight Processes"
 processes_tutorial.subtitle = "A Lisp Flavored Erlang Tutorial"
 processes_tutorial.authors = ["Duncan McGreggor"]
 processes_tutorial.name = "processes-tutorial"

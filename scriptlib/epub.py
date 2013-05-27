@@ -2,6 +2,8 @@ import os
 import uuid
 import zipfile
 
+from PIL import Image, ImageDraw, ImageFont
+
 from scriptlib import config, const
 
 
@@ -50,7 +52,7 @@ def get_opf_manifest(book_config):
         # book cover
         const.opf_manifest_html % {
             "id": const.coverid,
-            "mime": const.mimetype_jpg,
+            "mime": const.mimetype_png,
             "filename": const.cover},
         # title page
         const.opf_manifest_html % {
@@ -116,6 +118,20 @@ def copy_file(src, dst):
         with open(dst, "w") as fhw:
             fhw.write(fhr.read())
 
+def create_cover_image(path, src, dst):
+    book_config = get_config(path)
+    img = Image.open(src)
+    draw = ImageDraw.Draw(img)
+    title_font = ImageFont.truetype(const.font, 200)
+    author_font = ImageFont.truetype(const.font_italic, 80)
+    draw.text((110, 150), book_config.title, (127,127,127), font=title_font)
+    draw.text((105, 145), book_config.title, (255,255,255), font=title_font)
+    draw.text((105, 390), book_config.subtitle, (255,255,255), font=author_font)
+    location = 2750
+    for author in book_config.authors:
+        draw.text((105, location), author, (255,255,255), font=author_font)
+        location += 120
+    img.save(dst)
 
 def get_html_authors(book_config):
     html = []
@@ -170,7 +186,7 @@ def generate_epub(archive_path, src_html, clean_up=True):
     build_skeleton(dst_path, src_html)
     # add cover image
     dst_cover = get_file_path(dst_path, const.cover)
-    copy_file(src=const.cover_src, dst=dst_cover)
+    create_cover_image(path=dst_path, src=const.cover_src, dst=dst_cover)
     # add title page
     dst_title = get_file_path(dst_path, "1.html")
     create_title_page(path=dst_path, dst=dst_title)

@@ -35,8 +35,7 @@ build-site: build-books
 	jekyll build -d $(SITE_BUILD)
 	cp $(BOOK_SRC)/*.html $(BOOK_DST)/
 
-build-pdf: $(WKHTMLTOPDF)
-	echo $(WKHTMLTOPDF)
+build-pdf: $(WKPDF)
 	for BOOK in $(BOOKS); do \
 	$(WKPDF) \
 	--source $(BOOK_DST)/$$BOOK.html \

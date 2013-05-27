@@ -7,7 +7,7 @@ PYGMENTS = $(shell python -c "import pygments;print pygments.__path__[0]")
 MARKDOWN = $(shell python -c "import markdown;print markdown.__path__[0]")
 BOOKS = $(shell $(PYTHONPATH) python -c "from scriptlib import config;print config.get_book_names()")
 EPUB_BUILD = $(SITE_BUILD)/epub
-WKHTMLTOPDF = /usr/local/bin/wkhtmltopdf
+WKPDF = /usr/bin/wkpdf
 
 $(JEKYLL):
 	sudo gem update --system
@@ -20,10 +20,10 @@ $(PYGMENTS):
 $(MARKDOWN):
 	sudo pip install markdown
 
-$(WKHTMLTOPDF):
-	brew install wkhtmltopdf
+$(WKPDF):
+	sudo gem install wkpdf
 
-doc-deps: $(JEKYLL) $(PYGMENTS) $(MARKDOWN) $(WKHTMLTOPDF)
+doc-deps: $(JEKYLL) $(PYGMENTS) $(MARKDOWN) $(WKPDF)
 
 build-books: doc-deps
 	@echo "Generating books ..."
@@ -38,7 +38,9 @@ build-site: build-books
 build-pdf: $(WKHTMLTOPDF)
 	echo $(WKHTMLTOPDF)
 	for BOOK in $(BOOKS); do \
-	$(WKHTMLTOPDF) $(BOOK_DST)/$$BOOK.html $(BOOK_DST)/$$BOOK.pdf; done
+	$(WKPDF) \
+	--source $(BOOK_DST)/$$BOOK.html \
+	--output $(BOOK_DST)/$$BOOK.pdf; done
 
 build-epub: build-site build-pdf
 	for BOOK in $(BOOKS); do \

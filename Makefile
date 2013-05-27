@@ -7,6 +7,7 @@ PYGMENTS = $(shell python -c "import pygments;print pygments.__path__[0]")
 MARKDOWN = $(shell python -c "import markdown;print markdown.__path__[0]")
 BOOKS = $(shell $(PYTHONPATH) python -c "from scriptlib import config;print config.get_book_names()")
 EPUB_BUILD = $(SITE_BUILD)/epub
+WKHTMLTOPDF = $(shell which wkhtmltopdf)
 
 $(JEKYLL):
 	sudo gem update --system
@@ -19,7 +20,10 @@ $(PYGMENTS):
 $(MARKDOWN):
 	sudo pip install markdown
 
-doc-deps: $(JEKYLL) $(PYGMENTS) $(MARKDOWN)
+$(WKHTMLTOPDF):
+	brew install wkhtmltopdf
+
+doc-deps: $(JEKYLL) $(PYGMENTS) $(MARKDOWN) $(WKHTMLTOPDF)
 
 build-books: doc-deps
 	@echo "Generating books ..."
@@ -31,7 +35,11 @@ build-site: build-books
 	jekyll build -d $(SITE_BUILD)
 	cp $(BOOK_SRC)/*.html $(BOOK_DST)/
 
-build-epub:build-site
+build-pdf:
+	for BOOK in $(BOOKS); do \
+	$(WKHTMLTOPDF) $(BOOK_DST)/$$BOOK.html $(BOOK_DST)/$$BOOK.pdf; done
+
+build-epub: build-site build-pdf
 	for BOOK in $(BOOKS); do \
 	$(PYTHONPATH) python bin/generateEPub.py \
 	--html=$(BOOK_DST)/$$BOOK.html \
@@ -46,6 +54,7 @@ publish-books: build-mobi
 	git commit \
 	$(BOOK_DST)/*.markdown \
 	$(BOOK_DST)/*.html \
+	$(BOOK_DST)/*.pdf \
 	$(BOOK_DST)/*.epub \
 	$(BOOK_DST)/*.mobi \
 	-m "Updated LFE ebooks."

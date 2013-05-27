@@ -105,7 +105,7 @@ def assemble_book(doc, remove_front_matter=True):
     chapters = [const.delimiter,
                 "layout: book",
                 "title: %s" % doc.title,
-                "author: %s" % doc.author,
+                "author: %s" % ", ".join(doc.authors),
                 const.delimiter] + assemble_chapters(doc, remove_front_matter)
     book = "\n".join(chapters)
     return book.encode("utf-8")

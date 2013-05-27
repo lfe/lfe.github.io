@@ -47,10 +47,16 @@ def get_opf_metadata(book_config):
 
 def get_opf_manifest(book_config, html_file):
     data = [
+        # main page
         const.opf_manifest_html % {
             "id": "html_1",
             "mime": const.mimetype_html,
-            "filename": os.path.basename(html_file)}
+            "filename": os.path.basename(html_file)},
+        # book cover
+        const.opf_manifest_html % {
+            "id": const.coverid,
+            "mime": const.mimetype_jpg,
+            "filename": const.cover},
         ]
     return "\n".join(data)
 
@@ -84,7 +90,11 @@ def create_content_opf(path, html_file):
         fh.write(data)
 
 
-def copy_html_file(src, dst):
+def get_file_path(dst_path, filename):
+    return os.path.join(dst_path, const.oebps_dir, filename)
+
+
+def copy_file(src, dst):
     with open(src) as fhr:
         with open(dst, "w") as fhw:
             fhw.write(fhr.read())
@@ -99,9 +109,9 @@ def create_archive(archive_path, files):
         file_list = []
         file_list.append(const.container_file)
         file_list.append(const.content_opf_file)
-        # XXX maybe we should just pass these files in, already with the correct
-        # paths, and the others in file_list can be appended to `files`
-        file_list.extend([os.path.join(const.oebps_dir, x) for x in files])
+        relative_files = [
+            os.path.join(const.oebps_dir, os.path.basename(x)) for x in files]
+        file_list.extend(relative_files)
         for file_path in file_list:
             fh.write(file_path, compress_type=zipfile.ZIP_DEFLATED)
         os.chdir(cwd)
@@ -109,10 +119,14 @@ def create_archive(archive_path, files):
 
 def generate_epub(archive_path, src_html, clean_up=True):
     book_name = get_book_name(src_html)
-    dest_path = os.path.join(archive_path, book_name)
-    build_skeleton(dest_path, src_html)
-    dst_html = os.path.join(dest_path, const.oebps_dir, "1.html")
-    files = ["1.html"]
-    copy_html_file(src=src_html, dst=dst_html)
-    create_content_opf(dest_path, dst_html)
-    create_archive(dest_path, files)
+    dst_path = os.path.join(archive_path, book_name)
+    build_skeleton(dst_path, src_html)
+    # add main html file
+    dst_html = get_file_path(dst_path, "1.html")
+    copy_file(src=src_html, dst=dst_html)
+    # add cover image
+    dst_cover = get_file_path(dst_path, const.cover)
+    copy_file(src=const.cover_src, dst=dst_cover)
+    files = [dst_html, dst_cover]
+    create_content_opf(dst_path, dst_html)
+    create_archive(dst_path, files)

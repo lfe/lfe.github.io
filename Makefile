@@ -31,8 +31,7 @@ build-site: build-books
 	jekyll build -d $(SITE_BUILD)
 	cp $(BOOK_SRC)/*.html $(BOOK_DST)/
 
-#build-epub:build-site
-build-epub:
+build-epub:build-site
 	for BOOK in $(BOOKS); do \
 	$(PYTHONPATH) python bin/generateEPub.py \
 	--html=$(BOOK_DST)/$$BOOK.html \

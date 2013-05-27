@@ -24,6 +24,7 @@ $(WKPDF):
 	sudo gem install wkpdf
 
 doc-deps: $(JEKYLL) $(PYGMENTS) $(MARKDOWN) $(WKPDF)
+	sudo pip install pil
 
 build-books: doc-deps
 	@echo "Generating books ..."
@@ -60,5 +61,8 @@ publish-books: build-mobi
 	$(BOOK_DST)/*.epub \
 	$(BOOK_DST)/*.mobi \
 	-m "Updated LFE ebooks."
+
+contributors:
+	git log --pretty=format:"%an"|sort -u
 
 .PHONY: build-books build-epub build-mobi

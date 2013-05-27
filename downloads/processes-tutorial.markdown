@@ -1,6 +1,6 @@
 ---
 layout: book
-title: LFE Tutorial - Lightweight Processes
+title: Lightweight Processes
 author: Duncan McGreggor
 ---
 # Tutorial: Lightweight Processes

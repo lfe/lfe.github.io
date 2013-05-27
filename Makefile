@@ -7,7 +7,7 @@ PYGMENTS = $(shell python -c "import pygments;print pygments.__path__[0]")
 MARKDOWN = $(shell python -c "import markdown;print markdown.__path__[0]")
 BOOKS = $(shell $(PYTHONPATH) python -c "from scriptlib import config;print config.get_book_names()")
 EPUB_BUILD = $(SITE_BUILD)/epub
-WKHTMLTOPDF = $(shell which wkhtmltopdf)
+WKHTMLTOPDF = /usr/local/bin/wkhtmltopdf
 
 $(JEKYLL):
 	sudo gem update --system
@@ -35,7 +35,8 @@ build-site: build-books
 	jekyll build -d $(SITE_BUILD)
 	cp $(BOOK_SRC)/*.html $(BOOK_DST)/
 
-build-pdf:
+build-pdf: $(WKHTMLTOPDF)
+	echo $(WKHTMLTOPDF)
 	for BOOK in $(BOOKS); do \
 	$(WKHTMLTOPDF) $(BOOK_DST)/$$BOOK.html $(BOOK_DST)/$$BOOK.pdf; done
 

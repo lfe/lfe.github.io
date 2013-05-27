@@ -124,3 +124,36 @@ acknowledgements_page_html = """
   </body>
 </html>
 """
+copyright_page_html = """
+<html>
+  <body>
+    <div style="text-align: center">
+      <br/><br/>
+      <p>
+        XXX
+      </p>
+      <p>
+        XXX
+      </p>
+      <p>
+        XXX
+      </p>
+      <p>
+        XXX
+      </p>
+      <p>
+        XXX
+      </p>
+      <p>
+        XXX
+      </p>
+      <p>
+        XXX
+      </p>
+      <p>
+        XXX
+      </p>
+    </div>
+  </body>
+</html>
+"""

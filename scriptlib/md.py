@@ -63,6 +63,15 @@ def is_heading(key):
     return False
 
 
+def get_anchor_name(heading):
+    return heading.replace('#', '').strip().replace('.', '').replace(
+        ' ', '_').lower()
+
+
+def get_anchor(heading):
+    return '<a name="%s"></a>' % get_anchor_name(heading)
+
+
 def is_seen(key, seen):
     if seen.intersection([key]):
         return True
@@ -82,6 +91,7 @@ def remove_extra_headings(chapter):
             key = line.strip()
             if is_heading(key):
                 if not is_seen(key, seen):
+                    filtered_section.append(get_anchor(line))
                     filtered_section.append(line)
                     seen.add(key)
             else:

@@ -14,12 +14,13 @@
     <base href="http://lfe.github.io/" />
   </head>
   <body>
-  <h1 id='1_introduction'>1 Introduction</h1>
-
+  <a name='1_introduction' />
+<h1 id='1_introduction'>1 Introduction</h1>
+<a name='11_what_is_lfe?' />
 <h2 id='11_what_is_lfe'>1.1 What is LFE?</h2>
 
 <p>LFE is &#8220;Lisp Flavoured Erlang.&#8221; It is a Lisp syntax front-end to the Erlang compiler. LFE is a Lisp-2, like Common Lisp, and comes with a REPL (shell). LFE coexists seamlessly with vanilla Erlang and OTP. As such, code written in LFE can freely be used together with modules written in vanilla Erlang and applications in Erlang/OTP.</p>
-
+<a name='12_getting_started' />
 <h2 id='12_getting_started'>1.2 Getting Started</h2>
 
 <p>The user guide assumes the following background knowledge:</p>
@@ -61,9 +62,9 @@
 </ul>
 
 <p>The LFE <a href='/quick-start/1.html'>Quick Start</a> is an important resource, as it covers dependencies, building LFE, installation, using the REPL, running scripts, and using modules/libraries (OTP and third-party).</p>
-
+<a name='13_more_about_lfe' />
 <h2 id='13_more_about_lfe'>1.3 More About LFE</h2>
-
+<a name='131_what_lfe_isn&apos;t' />
 <h3 id='131_what_lfe_isnt'>1.3.1 What LFE Isn&#8217;t</h3>
 
 <p>Just to clear the air and set some expectations, here&#8217;s what you&#8217;re <em>not</em> going to find in LFE:</p>
@@ -85,7 +86,7 @@
 
 <li>Access to Java libraries</li>
 </ul>
-
+<a name='132_what_lfe_is!' />
 <h3 id='132_what_lfe_is'>1.3.2 What LFE Is!</h3>
 
 <p>Here&#8217;s what you <em>can</em> expect of LFE:</p>
@@ -117,19 +118,19 @@
 
 <li>Lisp macros</li>
 </ul>
-
+<a name='14_what_to_expect_from_this_guide' />
 <h2 id='14_what_to_expect_from_this_guide'>1.4 What to Expect from this Guide</h2>
 
 <p>The intent of this guide is to follow the same general pattern that the best Erlang books do, covering the topics listed in the User Guide table of contents from an LFE perspective.</p>
 
 <p>Some of the Guide&#8217;s sections will be covered in dedicated tutorials or other in-depth documents; in those cases, we provide links to that material. If your favorite topic is not covered above, let us know! We&#8217;ll try to find a place for it :-)</p>
-
+<a name='15_the_lfe_repl' />
 <h2 id='15_the_lfe_repl'>1.5 The LFE REPL</h2>
-
+<a name='151_using_the_repl' />
 <h3 id='151_using_the_repl'>1.5.1 Using the REPL</h3>
 
 <p>We covered basic REPL usage in the <a href='/quick-start/2.html'>quick start</a>. That&#8217;s the best place to go for an introduction to using the LFE REPL. Regardless (and for your convenience), we also provide some information about the REPL in the document you are currently reading :-)</p>
-
+<a name='1511_starting_the_repl' />
 <h4 id='1511_starting_the_repl'>1.5.1.1 Starting the REPL</h4>
 
 <p>If you have LFE installed system-wide, then starting the shell can be done in the ways listed below.</p>
@@ -167,7 +168,7 @@
 <span class='o'>&lt;</span><span class='mi'>0</span><span class='p'>.</span><span class='mi'>33</span><span class='p'>.</span><span class='mi'>0</span><span class='o'>&gt;</span>
 
 <span class='o'>&gt;</span>
-</code></pre></div>
+</code></pre></div><a name='1512_running_commands' />
 <h4 id='1512_running_commands'>1.5.1.2 Running Commands</h4>
 
 <p>Once you&#8217;re in the REPL, it&#8217;s just a matter of entering code:</p>
@@ -194,7 +195,7 @@
     <span class='p'>(</span><span class='nb'>list</span> <span class='p'>(</span><span class='nb'>list</span> <span class='mf'>1.5</span><span class='p'>)</span> <span class='p'>(</span><span class='nb'>list</span> <span class='mi'>3</span> <span class='mi'>4</span><span class='p'>)</span> <span class='p'>(</span><span class='nb'>list</span> <span class='mi'>5</span> <span class='mi'>6</span><span class='p'>)))</span>
 <span class='p'>(</span><span class='mi'>1</span> <span class='mi'>81</span> <span class='mi'>15625</span><span class='p'>)</span>
 <span class='nb'>&gt;</span>
-</code></pre></div>
+</code></pre></div><a name='1513_quitting_the_repl' />
 <h4 id='1513_quitting_the_repl'>1.5.1.3 Quitting the REPL</h4>
 
 <p>Just as there are multiple ways in which you can start the REPL, there are a couple ways you can leave it. You can jump into the JCL from the LFE prompt by hitting ^g and then entering <code>q</code>:</p>
@@ -208,7 +209,7 @@
 <span class='nv'>ok</span>
 <span class='nb'>&gt;</span>
 <span class='nv'>$</span>
-</code></pre></div>
+</code></pre></div><a name='152_special_functions' />
 <h3 id='152_special_functions'>1.5.2 Special Functions</h3>
 
 <p>There are some functions specially defined in LFE for use from the REPL. These are listed below with information about their use.</p>
@@ -246,7 +247,7 @@
 <p><code>(: c Command Arg ...)</code> - All the commands in the Erlang shell&#8217;s <a href='http://www.erlang.org/doc/man/c.html'>Command Interface Module</a> can be reached in this way.</p>
 </li>
 </ul>
-
+<a name='153_special_variables' />
 <h3 id='153_special_variables'>1.5.3 Special Variables</h3>
 
 <p>LFE also provides some convenience variables similar to what Lisp has defined for <a href='http://www.lispworks.com/documentation/HyperSpec/Body/v_pl_plp.htm'> +, ++, +++</a>, <a href='http://www.lispworks.com/documentation/HyperSpec/Body/v__stst_.htm'>*, **, ***</a>, and <a href='http://www.lispworks.com/documentation/HyperSpec/Body/v__.htm'>-</a>.</p>
@@ -320,7 +321,7 @@
                             <span class='nv'>[list,</span><span class='ss'>&#39;-&#39;]]</span><span class='o'>&#39;</span> <span class='o'>...</span>
 <span class='nv'>ok</span>
 <span class='nb'>&gt;</span>
-</code></pre></div>
+</code></pre></div><a name='154_getting_out_of_trouble' />
 <h3 id='154_getting_out_of_trouble'>1.5.4 Getting Out of Trouble</h3>
 
 <p>Every once in a while you may find that you do something which causes the REPL to crash, presenting you with something that looks like this:</p>
@@ -330,7 +331,7 @@
   ...</code></pre>
 
 <p>You don&#8217;t have to quit and restart the REPL, if you don&#8217;t want to! There are a couple of steps that you can take instead.</p>
-
+<a name='1541_interrupting_a_shell_process' />
 <h4 id='1541_interrupting_a_shell_process'>1.5.4.1 Interrupting a Shell Process</h4>
 
 <p>When you get an error as seen above, type <code>^g</code>. This will put you into JCL (Job Control Language) mode. At the JCL prompt, type <code>?</code> to see a list of options:</p>
@@ -363,7 +364,7 @@ exception error: function_clause
 &gt;</code></pre>
 
 <p>Once we interrupted the job, our error messages were printed to the REPL and we were placed back at the LFE prompt.</p>
-
+<a name='1542_starting_a_new_shell' />
 <h4 id='1542_starting_a_new_shell'>1.5.4.2 Starting a New Shell</h4>
 
 <p>Sometimes, though, there is no shell process any more. Here&#8217;s how to start up a new shell process if the one that you&#8217;re using dies:</p>
@@ -376,45 +377,45 @@ LFE Shell V5.9.3.1 (abort with ^G)
 &gt;</code></pre>
 
 <p>And you&#8217;re back up!</p>
-
+<a name='16_loading_files' />
 <h2 id='16_loading_files'>1.6 Loading Files</h2>
-
+<a name='161_loading_files_in_the_repl' />
 <h3 id='161_loading_files_in_the_repl'>1.6.1 Loading Files in the REPL</h3>
 
 <p>There are several ways in which one may load files in LFE.</p>
-
+<a name='1611_```slurp```' />
 <h4 id='1611_'>1.6.1.1 <code>slurp</code></h4>
 
 <p>As mentioned in the section on <a href='/user-guide/intro/2.html'>LFE's REPL</a>, <code>slurp</code>ing a file makes all functions and macros defined in the file available in the shell. One does not need to reference the module (and, in fact, attempting to do so will result in an error. Also, note that only one file can be slurped at a time; slurping a new one removes all data about the previous file.</p>
 <div class='highlight'><pre><code class='cl'><span class='nb'>&gt;</span> <span class='p'>(</span><span class='nv'>slurp</span> <span class='o'>&#39;</span><span class='s'>&quot;my-module.lfe&quot;</span><span class='p'>)</span>
 <span class='o'>#(</span><span class='nv'>ok</span> <span class='nv'>my-module</span><span class='p'>)</span>
 <span class='nb'>&gt;</span>
-</code></pre></div>
+</code></pre></div><a name='1612_```c```' />
 <h4 id='1612_'>1.6.1.2 <code>c</code></h4>
 
 <p>Compiling a module from the REPL is what you need if you wish to work with multiple modules simultaneously:</p>
 <div class='highlight'><pre><code class='cl'><span class='nb'>&gt;</span> <span class='p'>(</span><span class='nv'>c</span> <span class='o'>&#39;</span><span class='s'>&quot;my-module&quot;</span><span class='p'>)</span>
 <span class='o'>#(</span><span class='nv'>module</span> <span class='nv'>my-module</span><span class='p'>)</span>
 <span class='nb'>&gt;</span>
-</code></pre></div>
+</code></pre></div><a name='1613_```ec```' />
 <h4 id='1613_'>1.6.1.3 <code>ec</code></h4>
 
 <p>You can also load Erlang files in LFE:</p>
 <div class='highlight'><pre><code class='cl'><span class='nb'>&gt;</span> <span class='p'>(</span><span class='nv'>ec</span> <span class='o'>&#39;</span><span class='s'>&quot;../lfe/src/lfe_macro.erl&quot;</span><span class='p'>)</span>
 <span class='o'>#(</span><span class='nv'>ok</span> <span class='nv'>lfe_macro</span><span class='p'>)</span>
 <span class='nb'>&gt;</span>
-</code></pre></div>
+</code></pre></div><a name='1614_```l```' />
 <h4 id='1614_'>1.6.1.4 <code>l</code></h4>
 
 <p>If a module is in your Erlang/LFE path, you can load that too:</p>
 <div class='highlight'><pre><code class='cl'><span class='nb'>&gt;</span> <span class='p'>(</span><span class='nv'>l</span> <span class='ss'>&#39;mochiweb</span><span class='p'>)</span>
 <span class='p'>(</span><span class='o'>#(</span><span class='nv'>module</span> <span class='nv'>mochiweb</span><span class='p'>))</span>
 <span class='nb'>&gt;</span>
-</code></pre></div>
+</code></pre></div><a name='162_loading_files_in_modules' />
 <h3 id='162_loading_files_in_modules'>1.6.2 Loading Files in Modules</h3>
 
 <p>Code may be included wholesale into LFE modules by either using <code>include-file</code> or <code>include-lib</code>.</p>
-
+<a name='1621_```include-file```' />
 <h4 id='1621_'>1.6.2.1 <code>include-file</code></h4>
 
 <p>If you have records or data that you would like to be available to more than one module, you can put those in a dedicated file and pull them in to your modules. For example, let&#8217;s say I had defined the following constants in the file <code>include/consts.lfe</code>:</p>
@@ -438,14 +439,14 @@ LFE Shell V5.9.3.1 (abort with ^G)
 <span class='p'>(</span><span class='nb'>defun</span> <span class='nv'>get-coolness</span> <span class='p'>()</span>
   <span class='p'>(</span><span class='k'>let</span> <span class='p'>((</span><span class='nv'>arthur-cool-factor</span> <span class='mf'>0.1</span><span class='p'>))</span>
     <span class='p'>(</span><span class='nb'>*</span> <span class='p'>(</span><span class='vg'>*base-cool-factor*</span><span class='p'>)</span> <span class='p'>(</span><span class='vg'>*earth-adjustment*</span><span class='p'>)</span> <span class='nv'>arthur-cool-factor</span><span class='p'>)))</span>
-</code></pre></div>
+</code></pre></div><a name='1622_```include-lib```' />
 <h4 id='1622_'>1.6.2.2 <code>include-lib</code></h4>
 <div class='highlight'><pre><code class='cl'>
-</code></pre></div>
+</code></pre></div><a name='2_diving_in' />
 <h1 id='2_diving_in'>2 Diving In</h1>
-
+<a name='21_numbers_and_operators' />
 <h2 id='21_numbers_and_operators'>2.1 Numbers and Operators</h2>
-
+<a name='211_integers_and_floats' />
 <h3 id='211_integers_and_floats'>2.1.1 Integers and Floats</h3>
 
 <p>Let&#8217;s start with something simple :-) To follow along, fire up your LFE REPL. Numbers are simple in LFE, just like Erlang:</p>
@@ -475,7 +476,7 @@ LFE Shell V5.9.3.1 (abort with ^G)
 <span class='s'>&quot;1111011&quot;</span>
 </code></pre></div>
 <p>Note that the first argument is the number you want to convert and the second is the base you want to use (see <a href='http://erldocs.com/R14B/erts/erlang.html?i=1&search=integer#integer_to_list/2'>here</a> for more details).</p>
-
+<a name='212_arithmatic_operators' />
 <h3 id='212_arithmatic_operators'>2.1.2 Arithmatic Operators</h3>
 
 <p>But numbers by themselves aren&#8217;t going to do us much good if we can&#8217;t operate on them. The usual apply:</p>
@@ -498,7 +499,7 @@ LFE Shell V5.9.3.1 (abort with ^G)
 <span class='nb'>&gt;</span> <span class='o'>`</span><span class='p'>(</span><span class='o'>,</span><span class='p'>(</span><span class='nv'>div</span> <span class='mi'>11</span> <span class='mi'>2</span><span class='p'>)</span> <span class='o'>,</span><span class='p'>(</span><span class='nb'>rem</span> <span class='mi'>11</span> <span class='mi'>2</span><span class='p'>))</span>
 <span class='p'>(</span><span class='mi'>5</span> <span class='mi'>1</span><span class='p'>)</span>
 <span class='nb'>&gt;</span>
-</code></pre></div>
+</code></pre></div><a name='213_logical_operators' />
 <h3 id='213_logical_operators'>2.1.3 Logical Operators</h3>
 
 <p>The usual suspects are used as follows:</p>
@@ -534,7 +535,7 @@ LFE Shell V5.9.3.1 (abort with ^G)
 <span class='nv'>true</span>
 <span class='nb'>&gt;</span>
 </code></pre></div></p>
-
+<a name='214_boolean_operators' />
 <h3 id='214_boolean_operators'>2.1.4 Boolean Operators</h3>
 
 <p>How about some logic?</p>
@@ -591,7 +592,7 @@ LFE Shell V5.9.3.1 (abort with ^G)
   <span class='nv'>in</span> <span class='p'>(</span><span class='err'>:</span> <span class='nv'>erlang</span> <span class='nb'>or</span> <span class='nv'>true</span> <span class='mi'>1</span><span class='p'>)</span>
 
 <span class='nb'>&gt;</span>
-</code></pre></div>
+</code></pre></div><a name='215_bitwise_operators' />
 <h3 id='215_bitwise_operators'>2.1.5 Bitwise Operators</h3>
 
 <p>As one would expect, Erlang has the usual bitwise operators as well. Binary representation is used below for clarity of demonstration. Let&#8217;s define a utility function that will save a little typing:</p>
@@ -615,9 +616,9 @@ LFE Shell V5.9.3.1 (abort with ^G)
 <span class='nb'>&gt;</span> <span class='p'>(</span><span class='nb'>funcall</span> <span class='nv'>dec-to-bin</span> <span class='p'>(</span><span class='nv'>bsr</span> <span class='m'>#b10001</span> <span class='mi'>1</span><span class='p'>))</span>
 <span class='s'>&quot;1000&quot;</span>
 <span class='nb'>&gt;</span>
-</code></pre></div>
+</code></pre></div><a name='22_atoms_and_strings' />
 <h2 id='22_atoms_and_strings'>2.2 Atoms and Strings</h2>
-
+<a name='221_atoms' />
 <h3 id='221_atoms'>2.2.1 Atoms</h3>
 
 <p>Atoms are a data type in Erlang that is used to represent non-numerical constants. In LFE, the typographical limitations of Erlang don&#8217;t apply, since they&#8217;re always quoted in LFE ;-)</p>
@@ -645,7 +646,7 @@ LFE Shell V5.9.3.1 (abort with ^G)
 <p>Though very simple, atoms have a huge impact on our everyday use of Erlang and LFE, primarily in the area of pattern matching. Hold that thought, though; we&#8217;re not quite ready for it yet!</p>
 
 <p>Furthermore, atoms are stored differently in Erlang than strings. They take up less space and are more efficient to compare than strings.</p>
-
+<a name='222_strings' />
 <h3 id='222_strings'>2.2.2 Strings</h3>
 
 <p>Now we come to the oddball of Erlang: the string. In truth, there is no such thing. Strings in Erlang are just lists of integers:</p>
@@ -656,9 +657,9 @@ LFE Shell V5.9.3.1 (abort with ^G)
 <span class='nb'>&gt;</span>
 </code></pre></div>
 <p>Because Erlang (and thus LFE) strings consume 8 bytes per character on 32-bit systems and 16 bytes on 64-bit systems, they are not very efficient. As such, if you need to work with long strings in LFE, you probably want to use <code>(binary ...)</code>, but that&#8217;s in the next section :-)</p>
-
+<a name='23_binary_and_bitstrings' />
 <h2 id='23_binary_and_bitstrings'>2.3 Binary and Bitstrings</h2>
-
+<a name='231_lists_and_```binary```' />
 <h3 id='231_lists_and_'>2.3.1 Lists and <code>binary</code></h3>
 
 <p>A full discussion of the binary type is a huge topic that probably deserves one or more dedicated tutorials, especially given the close connection with pattern matching and the efficient parsing of binary data. However, for now, we&#8217;re just going to look at one particular area: working with strings as binary data.</p>
@@ -675,7 +676,7 @@ LFE Shell V5.9.3.1 (abort with ^G)
 <p>Let&#8217;s set a variable with this value in the shell, so we can work with it more easily:</p>
 <div class='highlight'><pre><code class='cl'><span class='p'>(</span><span class='nb'>set</span> <span class='nv'>data</span> <span class='p'>(</span><span class='nv'>binary</span> <span class='s'>&quot;There&#39;s a frood who really knows where his towel is.&quot;</span><span class='p'>))</span>
 <span class='err'>#</span><span class='nv'>B</span><span class='p'>(</span><span class='mi'>84</span> <span class='mi'>104</span> <span class='mi'>101</span> <span class='mi'>114</span> <span class='mi'>101</span> <span class='mi'>39</span> <span class='mi'>115</span> <span class='mi'>32</span> <span class='mi'>97</span> <span class='mi'>32</span> <span class='mi'>102</span> <span class='mi'>114</span> <span class='mi'>111</span> <span class='mi'>111</span> <span class='mi'>100</span> <span class='mi'>32</span> <span class='mi'>119</span> <span class='mi'>104</span> <span class='mi'>111</span> <span class='o'>...</span><span class='p'>)</span>
-</code></pre></div>
+</code></pre></div><a name='232_binary_functions_in_otp' />
 <h3 id='232_binary_functions_in_otp'>2.3.2 Binary Functions in OTP</h3>
 
 <p>Let&#8217;s convert it back to a list using a function from the Erlang stdlib <code>binary</code> module:</p>
@@ -694,7 +695,7 @@ LFE Shell V5.9.3.1 (abort with ^G)
 <span class='nb'>&gt;</span>
 </code></pre></div>
 <p><code>binary split</code> creates a list of binaries, but since this is an <code>IoList</code> and <code>unicode characters_to_list</code> can handle those without us having to flatten them, our work is done! We get our result: the new string that we created by splitting on <code>&quot;who really knows &quot;</code>.</p>
-
+<a name='233_bit-packing_(and_unpacking)' />
 <h3 id='233_bitpacking_and_unpacking'>2.3.3 Bit-Packing (and Unpacking)</h3>
 
 <p>For this section, let&#8217;s use the 16-bit color example that is given in Joe Armstrong&#8217;s Erlang book where 5 bits are allocated for the red channel, 6 for the green and 5 for the blue. In LFE, we can create a 16-bit memory area like so:</p>
@@ -715,6 +716,7 @@ LFE Shell V5.9.3.1 (abort with ^G)
 
 <p>We can use patterns to unpack binary data in a <code>let</code> expression into the variables <code>r</code>, <code>g</code>, and <code>b</code>, printing out the results within the <code>let</code>:</p>
 <div class='highlight'><pre><code class='cl'><span class='nb'>&gt;</span> <span class='p'>(</span><span class='k'>let</span> <span class='p'>(((</span><span class='nv'>binary</span> <span class='p'>(</span><span class='nv'>r</span> <span class='p'>(</span><span class='nv'>size</span> <span class='mi'>5</span><span class='p'>))</span> <span class='p'>(</span><span class='nv'>g</span> <span class='p'>(</span><span class='nv'>size</span> <span class='mi'>6</span><span class='p'>))</span> <span class='p'>(</span><span class='nv'>b</span> <span class='p'>(</span><span class='nv'>size</span> <span class='mi'>5</span><span class='p'>)))</span>
+<span class='nv'>&lt;a</span> <span class='nv'>name=</span><span class='s'>&quot;b(23_180)))&quot;</span><span class='nv'>&gt;&lt;/a&gt;</span>
          <span class='err'>#</span><span class='nv'>b</span><span class='p'>(</span><span class='mi'>23</span> <span class='mi'>180</span><span class='p'>)))</span>
        <span class='p'>(</span><span class='err'>:</span> <span class='nv'>io</span> <span class='nb'>format</span> <span class='o'>&#39;</span><span class='s'>&quot;~p ~p ~p~n&quot;</span> <span class='p'>(</span><span class='nb'>list</span> <span class='nv'>r</span> <span class='nv'>g</span> <span class='nv'>b</span><span class='p'>)))</span>
 <span class='mi'>2</span> <span class='mi'>61</span> <span class='mi'>20</span>
@@ -722,11 +724,11 @@ LFE Shell V5.9.3.1 (abort with ^G)
 <span class='nb'>&gt;</span>
 </code></pre></div>
 <p>We&#8217;re getting a little ahead of ourselves here, by throwing a pattern in the mix, but it&#8217;s a good enough example to risk it :-)</p>
-
+<a name='234_so_what&apos;s_a_bitstring?' />
 <h3 id='234_so_whats_a_bitstring'>2.3.4 So What&#8217;s a Bitstring?</h3>
 
 <p>We&#8217;ve been looking at binaries in LFE, but what&#8217;s a bitstring? The <a href='http://www.erlang.org/doc/programming_examples/bit_syntax.html'>Erlang docs</a> say it well: A bitstring is a sequence of zero or more bits, where the number of bits doesn&#8217;t need to be divisible by 8. If the number of bits is divisible by 8, the bitstring is also a binary.</p>
-
+<a name='235_lfe&apos;s_exact_definition_of_binary' />
 <h3 id='235_lfes_exact_definition_of_binary'>2.3.5 LFE&#8217;s Exact Definition of Binary</h3>
 
 <p>Here&#8217;s the full definition for the <code>binary</code> from in LFE:</p>
@@ -741,9 +743,9 @@ LFE Shell V5.9.3.1 (abort with ^G)
      <span class='nv'>signed</span><span class='err'>|</span><span class='nv'>unsigned</span><span class='p'>)</span>
 </code></pre></div>
 <p>This should help you puzzle through some of the more complex binary constructions you come accross ;-)</p>
-
+<a name='24_variables' />
 <h2 id='24_variables'>2.4 Variables</h2>
-
+<a name='241_variables_in_the_repl' />
 <h3 id='241_variables_in_the_repl'>2.4.1 Variables in the REPL</h3>
 
 <p>Variables in LFE don&#8217;t have the same syntactical limitations that vanilla Erlang has. Let&#8217;s take a look at some examples in the REPL:</p>
@@ -779,7 +781,7 @@ LFE Shell V5.9.3.1 (abort with ^G)
 <span class='nb'>&gt;</span>
 </code></pre></div>
 <p>Unlike Erlang, the LFE REPL doesn&#8217;t have the <code>b()</code> and <code>f()</code> functions (&#8220;show bound variables&#8221; and &#8220;flush bound variables&#8221; respectively).</p>
-
+<a name='242_variables_in_lfe_modules' />
 <h3 id='242_variables_in_lfe_modules'>2.4.2 Variables in LFE Modules</h3>
 
 <p>Unlike Lisp, LFE doesn&#8217;t support global variables, so (unless you create some dirty hacks!) you won&#8217;t be doing things like this in your modules:</p>
@@ -790,7 +792,7 @@ LFE Shell V5.9.3.1 (abort with ^G)
 <p>(Not to mention that LFE doesn&#8217;t even <em>define</em> <code>defvar</code>, <code>defparameter</code>, or <code>defconstant</code>.)</p>
 
 <p>As such, you shouldn&#8217;t run into variables that are defined at the module-level, only inside actual functions.</p>
-
+<a name='242_variables_in_functions' />
 <h3 id='242_variables_in_functions'>2.4.2 Variables in Functions</h3>
 
 <p>There are <em>all sorts</em> of ways one might set a variable in an LFE function. The snippets below illustrate some of these, though for demonstration purposes, they are executed in the REPL.</p>
@@ -817,9 +819,9 @@ LFE Shell V5.9.3.1 (abort with ^G)
 <p>Here is an example of multiple-binding in LFE. We haven&#8217;t covered patterns yet, but we will &#8211; and this example is making use of patterns to assign data from the given record to the variables in the <code>tuple</code>.</p>
 
 <p>Patterns may be used in several different LFE forms, each of which may do some varaible binding.</p>
-
+<a name='25_pattern_matching' />
 <h2 id='25_pattern_matching'>2.5 Pattern Matching</h2>
-
+<a name='251_what_are_patterns?' />
 <h3 id='251_what_are_patterns'>2.5.1 What Are Patterns?</h3>
 
 <p>Pattern matching in Erlang is huge, and it has a proportional impact on LFE and what one can do with this dialect of Lisp. Pattern matching in LFE can be used in function clauses, <code>let</code>, <code>case</code>, <code>receive</code> and in the macros <code>cond</code>, <code>lc</code>, and <code>bc</code>. From the REPL, pattern matching may be done in <code>set</code> as well.</p>
@@ -843,9 +845,9 @@ LFE Shell V5.9.3.1 (abort with ^G)
 <p>and the <code>&lt;expression&gt;</code> is any legal LFE expression. Ideally, it will return data that will be matched by the pattern.</p>
 
 <p>If the matching succeeds, any unbound variables in the pattern become bound. If the matching fails, a run-time error occurs. All of this is best understood through the examples given below. Each example is preceeded by the general form of pattern as used in the given context. This should help keep things clear, even when the examples get convoluted.</p>
-
+<a name='252_patterns_in_forms' />
 <h3 id='252_patterns_in_forms'>2.5.2 Patterns in Forms</h3>
-
+<a name='2521_```let```' />
 <h4 id='2521_'>2.5.2.1 <code>let</code></h4>
 
 <p>Pattern matching in <code>let</code> has the following general form:</p>
@@ -899,7 +901,7 @@ LFE Shell V5.9.3.1 (abort with ^G)
 <span class='p'>(</span><span class='s'>&quot;msg too short&quot;</span><span class='p'>)</span>
 </code></pre></div>
 <p>Having seen these examples, you are probably gaining some insight into the power of pattern matching in Erlang and LFE. There&#8217;s more, though :-) See below for equally potent uses.</p>
-
+<a name='2522_```case```' />
 <h4 id='2522_'>2.5.2.2 <code>case</code></h4>
 
 <p>Pattern matching in <code>case</code> has the following general form:</p>
@@ -941,7 +943,7 @@ LFE Shell V5.9.3.1 (abort with ^G)
 <span class='nv'>There</span><span class='ss'>&#39;s</span> <span class='nv'>a</span> <span class='nv'>problem</span> <span class='nv'>with</span> <span class='nv'>Zaphod.</span>
 <span class='nv'>ok</span>
 <span class='nb'>&gt;</span>
-</code></pre></div>
+</code></pre></div><a name='2523_```receive```' />
 <h4 id='2523_'>2.5.2.3 <code>receive</code></h4>
 
 <p>Pattern matching in <code>receive</code> has the following general form:</p>
@@ -999,7 +1001,7 @@ LFE Shell V5.9.3.1 (abort with ^G)
 <span class='nb'>&gt;</span>
 </code></pre></div>
 <p>Absolutely nothing, that&#8217;s what. Well, nothing from the process we spawned, that is&#8230; just the REPL doing its thang.</p>
-
+<a name='2524_```cond```' />
 <h4 id='2524_'>2.5.2.4 <code>cond</code></h4>
 
 <p>Pattern matching in <code>cond</code> has the following general form:</p>
@@ -1040,9 +1042,9 @@ LFE Shell V5.9.3.1 (abort with ^G)
 <span class='nv'>There</span><span class='ss'>&#39;s</span> <span class='nv'>a</span> <span class='nv'>problem</span> <span class='nv'>with</span> <span class='nv'>Zaphod.</span>
 <span class='nv'>ok</span>
 <span class='nb'>&gt;</span>
-</code></pre></div>
+</code></pre></div><a name='253_special_cases' />
 <h3 id='253_special_cases'>2.5.3 Special Cases</h3>
-
+<a name='2531_```set```_in_the_repl' />
 <h4 id='2531__in_the_repl'>2.5.3.1 <code>set</code> in the REPL</h4>
 
 <p>Using <code>set</code> in the REPL has the following general form:</p>
@@ -1059,7 +1061,7 @@ LFE Shell V5.9.3.1 (abort with ^G)
 <span class='nb'>&gt;</span> <span class='nv'>data</span>
 <span class='s'>&quot;Trillian&quot;</span>
 <span class='nb'>&gt;</span>
-</code></pre></div>
+</code></pre></div><a name='2532_aliases_with_```=```' />
 <h4 id='2532_aliases_with_'>2.5.3.2 Aliases with <code>=</code></h4>
 
 <p>Aliases are defined with the following general form:</p>
@@ -1087,7 +1089,7 @@ LFE Shell V5.9.3.1 (abort with ^G)
 <span class='nv'>ok</span>
 <span class='nb'>&gt;</span> <span class='nv'>c</span>
 <span class='s'>&quot;Trillian&quot;</span>
-</code></pre></div>
+</code></pre></div><a name='2533_arguments_to_```defun```' />
 <h4 id='2533_arguments_to_'>2.5.3.3 Arguments to <code>defun</code></h4>
 
 <p>Pattern matching in functions has the following general form:</p>
@@ -1127,7 +1129,7 @@ LFE Shell V5.9.3.1 (abort with ^G)
 <span class='nv'>Be</span> <span class='nv'>careful</span> <span class='nv'>of</span> <span class='nv'>Zaphod.</span>
 <span class='nv'>ok</span>
 <span class='nb'>&gt;</span>
-</code></pre></div>
+</code></pre></div><a name='2534_patterns_in_comprehensions' />
 <h4 id='2534_patterns_in_comprehensions'>2.5.3.4 Patterns in Comprehensions</h4>
 
 <p>List and binary comprehensions make use of patterns in a limited sense. They have the following general forms:</p>
@@ -1138,10 +1140,10 @@ LFE Shell V5.9.3.1 (abort with ^G)
 </code></pre></div>
 <p>where the <code>guard</code> in both cases is optional.</p>
 
-<p>You can read more about LFE comprehensions in <a href='/user-guide/data/2.html'>section 3.2</a></p>
+<p>You can read more about LFE comprehensions in <a href='/user-guide/data/2.html'>section 3.2</a> <a name='3_lists_and_simple_data' /></p>
 
 <h1 id='3_lists_and_simple_data'>3 Lists and Simple Data</h1>
-
+<a name='31_lists' />
 <h2 id='31_lists'>3.1 Lists</h2>
 
 <p>Lists in Erlang and LFE are straight-forward; those coming from another programming language will not find anything surprising about them. Lists are generally good for storing and iterating over data that is of a similar type. There are other types one can use for more structured or complex data type combos.</p>
@@ -1209,7 +1211,7 @@ dedicated to handling lists</a> that we can take advantage of:</p>
 <span class='nb'>&gt;</span>
 </code></pre></div>
 <p>There are many, many more highly useful functions in the <code>lists</code> module &#8211; be sure to give the docs a thorough reading, lest you miss something fun!</p>
-
+<a name='311_i/o_lists' />
 <h3 id='311_io_lists'>3.1.1 I/O Lists</h3>
 
 <p>There is another type of list that is used for such things as file and network operations; it&#8217;s called an <code>IoList</code>. An <code>IoList</code> is a list whose elements are either</p>
@@ -1236,7 +1238,7 @@ dedicated to handling lists</a> that we can take advantage of:</p>
     <span class='p'>(</span><span class='err'>:</span> <span class='nv'>binary</span> <span class='nv'>split</span> <span class='nv'>data</span> <span class='p'>(</span><span class='nv'>binary</span> <span class='s'>&quot;who really knows &quot;</span><span class='p'>)))</span>
 <span class='s'>&quot;There&#39;s a frood where his towel is.&quot;</span>
 <span class='nb'>&gt;</span>
-</code></pre></div>
+</code></pre></div><a name='32_tuples' />
 <h2 id='32_tuples'>3.2 Tuples</h2>
 
 <p>Tuples are the data melting pot for Erlang: you can combine any of Erlang&#8217;s data types (including lists and other tuples) into a single composite data type. This comes in very handy with pattern matching, but in general, makes passing data around much easier.</p>
@@ -1313,7 +1315,7 @@ dedicated to handling lists</a> that we can take advantage of:</p>
 <span class='nb'>&gt;</span> <span class='nv'>val2</span>
 <span class='p'>(</span><span class='s'>&quot;Ravenous Bugblatter Beast of Traal&quot;</span> <span class='s'>&quot;small piece of fairy cake&quot;</span><span class='p'>)</span>
 <span class='nb'>&gt;</span>
-</code></pre></div>
+</code></pre></div><a name='32_comprehensions' />
 <h2 id='32_comprehensions'>3.2 Comprehensions</h2>
 
 <p>In the section on lists, we gave an example of building a list using the <code>map</code> function:</p>
@@ -1328,7 +1330,7 @@ dedicated to handling lists</a> that we can take advantage of:</p>
 <p>This sort of approach should be familiar to many programmers, even those who aren&#8217;t adepts at functional programming. This is a well-known pattern. Erlang offers another pattern, though: comprehensions.</p>
 
 <p>LFE supports Erlang comprehensions via two macros: <code>lc</code> for list comprehensions and <code>bc</code> for bitstring comprehensions.</p>
-
+<a name='321_list_comprehensions' />
 <h3 id='321_list_comprehensions'>3.2.1 List Comprehensions</h3>
 
 <p>Let&#8217;s take a look at an example and then discuss it. Here&#8217;s a list comprehension version of our <code>map</code>/<code>lambda</code> combo above:</p>
@@ -1349,7 +1351,7 @@ dedicated to handling lists</a> that we can take advantage of:</p>
 <p>As we can see, the LFE syntax is not as concise as the native Erlang syntax, though it is pretty close. Our original example is 62 characters long; the LFE list comprehension is 49 characters long; the Erlang version is 41 characters.</p>
 
 <p>To a Lisper, the original is probably much more legible. However, in Erlang these is no question that the list comprehensions are shorter and easier to read than using anonymous functions.</p>
-
+<a name='321_bitstring_comprehensions' />
 <h3 id='321_bitstring_comprehensions'>3.2.1 Bitstring Comprehensions</h3>
 
 <p>For binary data, we have something similar to the list comprehension. Here&#8217;s what a bitstring comprehension looks like (adapted from the example given by Francesco Cesarini and Simon Thompson in their book, &#8220;Erlang Programming&#8221;):</p>
@@ -1377,9 +1379,9 @@ dedicated to handling lists</a> that we can take advantage of:</p>
 </code></pre></div>
 <p>and this:</p>
 <div class='highlight'><pre><code class='cl'><span class='p'>((</span><span class='nv'>bnot</span> <span class='nv'>x</span><span class='p'>)</span> <span class='p'>(</span><span class='nv'>size</span> <span class='mi'>1</span><span class='p'>))</span>
-</code></pre></div>
+</code></pre></div><a name='33_property_lists_and_hashes' />
 <h2 id='33_property_lists_and_hashes'>3.3 Property Lists and Hashes</h2>
-
+<a name='331_property_lists' />
 <h3 id='331_property_lists'>3.3.1 Property Lists</h3>
 
 <p>Property lists are just lists whose entries are key/value tuples. Alternatively, an entry may be a single atom, in which case it implies a tuple with the atom as the key and <code>true</code> as the value.</p>
@@ -1412,11 +1414,11 @@ dedicated to handling lists</a> that we can take advantage of:</p>
 <span class='nb'>&gt;</span>
 </code></pre></div>
 <p>There is more information about property lists on the <a href='http://www.erlang.org/doc/man/proplists.html'>docs</a> page for them.</p>
-
+<a name='332_hashes' />
 <h3 id='332_hashes'>3.3.2 Hashes</h3>
 
 <p>There is no builtin &#8220;dictionary&#8221; or &#8220;hash&#8221; type in Erlang. However, there are some libraries that support data structures like these. There is also a concept of &#8220;records&#8221; which we will discuss in another section.</p>
-
+<a name='3321_the_dictionary' />
 <h4 id='3321_the_dictionary'>3.3.2.1 The Dictionary</h4>
 
 <p>The Erlang <code>dict</code> module implements a key/value dictionary part of which is an additional <code>dict</code> data type which supplements the built-in Erlang data types.</p>
@@ -1482,7 +1484,7 @@ dedicated to handling lists</a> that we can take advantage of:</p>
 <span class='nb'>&gt;</span>
 </code></pre></div>
 <p>There are many more functions to explore in the <a href='http://www.erlang.org/doc/man/dict.html'>dict docs</a>.</p>
-
+<a name='3322_other_hash_tables' />
 <h4 id='3322_other_hash_tables'>3.3.2.2 Other Hash Tables</h4>
 
 <p>OTP comes with the <code>ets</code> module which provides the ability to store very large quantities of data in an Erlang runtime system. The <code>ets</code> module supports hash tables of the following types:</p>
@@ -1498,9 +1500,9 @@ dedicated to handling lists</a> that we can take advantage of:</p>
 </ul>
 
 <p>The documentation for this module is <a href='http://www.erlang.org/doc/man/ets.html'>here</a>, though we will be adding information on how to use this from LFE at a later point (likely a dedicated tutorial).</p>
-
+<a name='34_records' />
 <h2 id='34_records'>3.4 Records</h2>
-
+<a name='341_just_records' />
 <h3 id='341_just_records'>3.4.1 Just Records</h3>
 
 <p>Sometimes lists, tuples, property lists, or hashes are not quite what is needed. With tuples, you can&#8217;t name keys (without awkward work-arounds), and this makes working with large tuples rather cumbersome. Records are one way around this.</p>
@@ -1566,7 +1568,7 @@ dedicated to handling lists</a> that we can take advantage of:</p>
 <p>Just as we saw with the <code>dict</code> examples, <code>set-person-age</code> doesn&#8217;t modify the data in-place, but rather returns a new record. If we want to use that data in the future, we&#8217;ll need to assign it to a variable (sensibly, we re-use the <code>ford</code> variable here).</p>
 
 <p>Also, note that there are also <code>set-person-name</code> and <code>set-person-address</code>.</p>
-
+<a name='342_records_and_ets' />
 <h3 id='342_records_and_ets'>3.4.2 Records and ETS</h3>
 
 <p>Additional convenience functions for records are provided by LFE, but some of these will only make sense in the context of ETS (Erlang Term Storage), when when the ability to store large amounts of data in memory becomes important. We will be discussing this in detail later, but this section provides a quick preview.</p>
@@ -1613,47 +1615,47 @@ dedicated to handling lists</a> that we can take advantage of:</p>
 <span class='nb'>&gt;</span>
 </code></pre></div>
 <p>This should be enough of an ETS taste to last until you get to the dedicated tutorial ;-)</p>
-
+<a name='35_```hrl```_header_files' />
 <h2 id='35__header_files'>3.5 <code>.hrl</code> Header Files</h2>
-
+<a name='4_functions_and_modules' />
 <h1 id='4_functions_and_modules'>4 Functions and Modules</h1>
-
+<a name='41_functions' />
 <h2 id='41_functions'>4.1 Functions</h2>
-
+<a name='411_intro_and_recap' />
 <h3 id='411_intro_and_recap'>4.1.1 Intro and Recap</h3>
-
+<a name='412_parity' />
 <h3 id='412_parity'>4.1.2 Parity</h3>
-
+<a name='413_more_patterns' />
 <h3 id='413_more_patterns'>4.1.3 More Patterns</h3>
-
+<a name='414_anonymouns_functions' />
 <h3 id='414_anonymouns_functions'>4.1.4 Anonymouns Functions</h3>
-
+<a name='415_higher-order_functions' />
 <h3 id='415_higherorder_functions'>4.1.5 Higher-Order Functions</h3>
-
+<a name='4151_as_input' />
 <h4 id='4151_as_input'>4.1.5.1 As Input</h4>
-
+<a name='4152_as_output' />
 <h4 id='4152_as_output'>4.1.5.2 As Output</h4>
-
+<a name='42_lfe-specific_functions_and_macros' />
 <h2 id='42_lfespecific_functions_and_macros'>4.2 LFE-Specific Functions and Macros</h2>
-
+<a name='421_core_forms' />
 <h3 id='421_core_forms'>4.2.1 Core Forms</h3>
-
+<a name='422_macro_forms' />
 <h3 id='422_macro_forms'>4.2.2 Macro Forms</h3>
-
+<a name='423_common_lisp_inspired_macros' />
 <h3 id='423_common_lisp_inspired_macros'>4.2.3 Common Lisp Inspired Macros</h3>
-
+<a name='424_scheme_inspired_macros' />
 <h3 id='424_scheme_inspired_macros'>4.2.4 Scheme Inspired Macros</h3>
-
+<a name='425_additional_lisp_functions' />
 <h3 id='425_additional_lisp_functions'>4.2.5 Additional Lisp Functions</h3>
-
+<a name='43_modules' />
 <h2 id='43_modules'>4.3 Modules</h2>
-
+<a name='431_what_modules_do' />
 <h3 id='431_what_modules_do'>4.3.1 What Modules Do</h3>
-
+<a name='432_what_modules_don&apos;t_do' />
 <h3 id='432_what_modules_dont_do'>4.3.2 What Modules Don&#8217;t Do</h3>
-
+<a name='433_creating_a_module' />
 <h3 id='433_creating_a_module'>4.3.3 Creating a Module</h3>
-
+<a name='434_parameterized_modules' />
 <h3 id='434_parameterized_modules'>4.3.4 Parameterized Modules</h3>
 <div class='highlight'><pre><code class='cl'><span class='p'>(</span><span class='nv'>defmodule</span> <span class='p'>(</span><span class='nv'>zaphod-rest-api</span> <span class='nv'>request</span><span class='p'>)</span>
   <span class='p'>(</span><span class='nb'>export</span> <span class='p'>(</span><span class='nv'>get-greeting</span> <span class='mi'>2</span><span class='p'>)))</span>
@@ -1677,7 +1679,7 @@ dedicated to handling lists</a> that we can take advantage of:</p>
 </code></pre></div><div class='highlight'><pre><code class='cl'>
 </code></pre></div><div class='highlight'><pre><code class='cl'>
 </code></pre></div><div class='highlight'><pre><code class='cl'>
-</code></pre></div>
+</code></pre></div><a name='44_projects_with_rebar' />
 <h2 id='44_projects_with_rebar'>4.4 Projects with Rebar</h2>
 
 <p>In this section we&#8217;ll be exploring how rebar can be used to manage LFE projects.</p>
@@ -1689,13 +1691,13 @@ dedicated to handling lists</a> that we can take advantage of:</p>
 
 <li />
 </ul>
-
+<a name='441_collections_of_modules' />
 <h3 id='441_collections_of_modules'>4.4.1 Collections of Modules</h3>
 
 <p>The first question we should probably address is this: How are we defining a project?</p>
 
 <p>An LFE project is a set of modules developed and distributed to accomplish a particular goal. The project should have a rebar configuration file, a source directory with <code>.lfe</code> files in it, possibly an include directory, andn ideally unit tests in a <code>test</code> directory.</p>
-
+<a name='442_project_structure' />
 <h3 id='442_project_structure'>4.4.2 Project Structure</h3>
 
 <p>Let&#8217;s expand upon the project definition given above, focusing on the directory structure of a prototypical project and some of the files one might find in an LFE project.</p>
@@ -1710,7 +1712,7 @@ dedicated to handling lists</a> that we can take advantage of:</p>
 <p>This is from a sample project whose purpose is to provide a library for use by other LFE (or Erlang!) projects. More on that below.</p>
 
 <p>Rebar supports LFE files. All that it needs is the standard <code>rebar.config</code> and an <code>.app</code> file in the <code>ebin</code> directory. With these, Rebar will be able to download the project dependencies and compile the <code>*.lfe</code> files in <code>src</code> to the <code>ebin</code> directory as <code>*.beam</code> files.</p>
-
+<a name='443_dependencies' />
 <h3 id='443_dependencies'>4.4.3 Dependencies</h3>
 
 <p>Dependencies are handled very nicely with Rebar: just add a git repo in your <code>rebar.config</code> file like so:</p>
@@ -1719,7 +1721,7 @@ dedicated to handling lists</a> that we can take advantage of:</p>
   <span class='p'>]}.</span>
 </code></pre></div>
 <p>Any dependencies listed here will be downloaded with the <code>rebar get-deps</code> command. Once downloaded, issuing the <code>rebar compile</code> command will not only compile your project&#8217;s <code>src/*</code> files into its <code>ebin</code> directory, but will compile all dependency project source code as well.</p>
-
+<a name='444_defining_a_library_project' />
 <h3 id='444_defining_a_library_project'>4.4.4 Defining a Library Project</h3>
 
 <p>We&#8217;ve seen the directory structure above for a library project. We&#8217;re defining a &#8220;library&#8221; project as one that doesn&#8217;t start up any services as part of its basic operations. Instead, it provides code that other projects make use of.</p>
@@ -1727,19 +1729,19 @@ dedicated to handling lists</a> that we can take advantage of:</p>
 <p>In particular, in a library project, you do not need to define <code>mod</code> in your <code>ebin/libname.app</code> file. Similarly, in your <code>src</code> directory, you do not need to create application nor supervisor files.</p>
 
 <p>We&#8217;re making a rather arbitrary distinction here (between &#8220;library&#8221; projects and &#8220;service&#8221; projects, and one with undoubtedly many blurry lines. Regardless, it may be instructive or useful as a guideline.</p>
-
+<a name='445_defining_a_service_project' />
 <h3 id='445_defining_a_service_project'>4.4.5 Defining a Service Project</h3>
-
+<a name='446_distributing_a_project' />
 <h3 id='446_distributing_a_project'>4.4.6 Distributing A Project</h3>
-
+<a name='447_installing_projects' />
 <h3 id='447_installing_projects'>4.4.7 Installing Projects</h3>
-
+<a name='5_recursion' />
 <h1 id='5_recursion'>5 Recursion</h1>
-
+<a name='51_see_section_5' />
 <h2 id='51_see_section_5'>5.1 See Section 5</h2>
 
 <p>Sorry, couldn&#8217;t resist.</p>
-
+<a name='52_a_brief_history' />
 <h2 id='52_a_brief_history'>5.2 A Brief History</h2>
 
 <p>In functional languages, recursion plays an important role. For Erlang in particular, recursion is important because variables can&#8217;t be changed. It is therefor often very useful to take advantage of recursion n order to work with changing values (examples are given in the latter half of this chapter).</p>
@@ -1749,7 +1751,7 @@ dedicated to handling lists</a> that we can take advantage of:</p>
 <p>The Italian mathematician Giuseppe Peano seems to have been one of the first to have made prominent use of recursion when defining his axioms for the natural numbers. Furthermore, Peano gave Bertrand Russell a copy of his &#8220;Formulario&#8221; (in fact, he gave Russell all of his published works!). This impacted Russell hugely and quite possibly influenced his efforts on &#8220;Principia Mathematica&#8221; which he coauthored several years later.</p>
 
 <p>It was from the Principia that Alonzo Church derived his lambda notation. When Church&#8217;s student, John McCarthy, created Lisp, he used both the lambda notation and the related concept of recursion in his new language. (Interestingly enough, McCarthy and Dijkstra both advocated for the inclusions of recursion in ALGOL.)</p>
-
+<a name='53_a_preview' />
 <h2 id='53_a_preview'>5.3 A Preview</h2>
 
 <p>In the sections of the user guide, we explore various aspects of recursion as they can be formulated in Lisp Flavored Erlang. We will cover the following:</p>
@@ -1767,11 +1769,11 @@ dedicated to handling lists</a> that we can take advantage of:</p>
 
 <li>Tail-Calls</li>
 </ul>
-
+<a name='54_the_dedekind-peano_axioms' />
 <h2 id='54_the_dedekindpeano_axioms'>5.4 The Dedekind-Peano Axioms</h2>
 
 <p>For those that are math-averse, don&#8217;t let this frighten you &#8211; this will be a peaceful journey that should not leave you bewildered. Rather, it will provide some nice background for how recursion came to be used. With the history reviewed, we&#8217;ll make our way into practical implementations.</p>
-
+<a name='541_foundations' />
 <h3 id='541_foundations'>5.4.1 Foundations</h3>
 
 <p>Despite the fluorescence of maths in the 17th and 18th centuries and the growing impact of number theory, the ground upon which mathematics were built was shaky at best. Indeed, what we now consider to be the foundations of mathematics had not even been agreed upon (and this didn&#8217;t happen until the first half of the 20th century with the maturation of logic and rise of axiomatic set theory).</p>
@@ -1779,11 +1781,11 @@ dedicated to handling lists</a> that we can take advantage of:</p>
 <p>One of the big problems facing mathematicians and one that also prevented the clarification of the foundations, was this: a thorough, precise, and consistent definition of the natural numbers as well as operations that could be performed on them (e.g., addition, multiplication, etc.). There was a long-accepted intuitive understanding, however, this was insufficient for complete mathematical rigor.</p>
 
 <p>Richard Dedekind addressed this with his method of cuts, but it was Giuseppe Peano that supplied us with the clearest, most easily described axioms defining the natural numbers and arithmetic. And in so doing, made effective use of recursion. His definitions can be easily found in text books and on the Internet; we will take a slightly unique approach, however, and cast them in LFE.</p>
-
+<a name='542_a_constant_and_equality' />
 <h3 id='542_a_constant_and_equality'>5.4.2 A Constant and Equality</h3>
 
 <p>The first five Peano axioms deal with the constant (often written as &#8220;0&#8221;) and the reflexive, symmetric, transitive and closed eqaulity relations. These don&#8217;t relate recursion directly, so we&#8217;re going to skip them ;-)</p>
-
+<a name='543_successor_function' />
 <h3 id='543_successor_function'>5.4.3 Successor Function</h3>
 
 <p>The concept of the &#8220;successor&#8221; in the Peano axioms is a primitive; it is taken as being true without having proved it. It is informally defined as being the next number following a given number &#8220;n&#8221;.</p>
@@ -1795,11 +1797,11 @@ dedicated to handling lists</a> that we can take advantage of:</p>
 <p>The things to keep in mind here are that 1) we haven&#8217;t defined addition yet, and 2) you must not interpred &#8221;+&#8221; as addition in this context, rather as the operator that allows for succession to occur. In the world of the Peano axioms, &#8221;+&#8221; is only validly used with &#8220;n&#8221; and &#8220;1&#8221;.</p>
 
 <p>This function is defined as being &#8220;basic primitive recursive&#8221;. The basic primitive recursives are defined by axioms; the term was coined by Rózsa Péter.</p>
-
+<a name='544_the_remaining_axioms' />
 <h3 id='544_the_remaining_axioms'>5.4.4 The Remaining Axioms</h3>
 
 <p>The remaining three Peano axioms do not touch upon recursion directly, so we leave them to your own research and reading pleasure.</p>
-
+<a name='55_primitive_recursive_functions' />
 <h2 id='55_primitive_recursive_functions'>5.5 Primitive Recursive Functions</h2>
 
 <p>In the previous section, we leaned about the primitive recursive funtion called the &#8220;successor&#8221;, one that was used by Peano in his axioms. There are other primitive recursive funtions as well, and these are usually given as axioms (i.e., without proof):</p>
@@ -1813,7 +1815,7 @@ dedicated to handling lists</a> that we can take advantage of:</p>
 </ul>
 
 <p>These combined with the Peano axioms allow us to define other primitive recursive functions.</p>
-
+<a name='551_addition' />
 <h3 id='551_addition'>5.5.1 Addition</h3>
 
 <p>Often, one sees the primitive recursive function definition of addition done in the following manner:</p>
@@ -1837,7 +1839,7 @@ add(succ(n), x) = succ(add(n, x))</code></pre>
   <span class='p'>((</span><span class='nv'>n</span> <span class='nv'>x</span><span class='p'>)</span> <span class='p'>(</span><span class='nv'>successor</span> <span class='p'>(</span><span class='nv'>add</span> <span class='p'>(</span><span class='nv'>predecessor</span> <span class='nv'>n</span><span class='p'>)</span> <span class='nv'>x</span><span class='p'>))))</span>
 </code></pre></div>
 <p>All of this may seem rather absurb, given what we do in every-day programming. Remember, though: the verbosity of these axioms and their derrived definitions serves to explicitly show that no assumptions are being made and that all these operations can indeed be built upon basic principles.</p>
-
+<a name='552_subtraction' />
 <h3 id='552_subtraction'>5.5.2 Subtraction</h3>
 
 <p>Next up, let&#8217;s take a look at subtraction:</p>
@@ -1856,7 +1858,7 @@ sub(pred(n), x) = pred(sub(n, x))</code></pre>
 <span class='nb'>&gt;</span> <span class='p'>(</span><span class='nv'>subtract</span> <span class='mi'>1</span> <span class='mi'>100</span><span class='p'>)</span>
 <span class='mi'>99</span>
 <span class='nb'>&gt;</span>
-</code></pre></div>
+</code></pre></div><a name='553_multiplication' />
 <h3 id='553_multiplication'>5.5.3 Multiplication</h3>
 
 <p>The last one of these that we will look at is multiplication, and then we&#8217;ll move on to something a little more complicated :-)</p>
@@ -1868,11 +1870,11 @@ mult(succ(n), x) = x + (x * n)</code></pre>
 <div class='highlight'><pre><code class='cl'><span class='p'>(</span><span class='nb'>defun</span> <span class='nv'>multiply</span>
   <span class='p'>((</span><span class='mi'>0</span> <span class='nv'>x</span><span class='p'>)</span> <span class='mi'>0</span><span class='p'>)</span>
   <span class='p'>((</span><span class='nv'>n</span> <span class='nv'>x</span><span class='p'>)</span> <span class='p'>(</span><span class='nv'>add</span> <span class='nv'>x</span> <span class='p'>(</span><span class='nv'>multiply</span> <span class='nv'>x</span> <span class='p'>(</span><span class='nv'>predecessor</span> <span class='nv'>n</span><span class='p'>)))))</span>
-</code></pre></div>
+</code></pre></div><a name='56_total_recursive_functions' />
 <h2 id='56_total_recursive_functions'>5.6 Total Recursive Functions</h2>
 
 <p>TBD</p>
-
+<a name='561_the_ackermann_function' />
 <h3 id='561_the_ackermann_function'>5.6.1 The Ackermann Function</h3>
 
 <p>The Ackermann function is one of the simplest and earliest-discovered examples of a &#8220;total computable function&#8221; that is not primitive recursive. The variant of the function that we present below is the two-variable version developed by Rózsa Péter and Raphael Robinson (the original was more verbose and with three variables).</p>
@@ -1903,7 +1905,7 @@ mult(succ(n), x) = x + (x * n)</code></pre>
 <span class='nb'>&gt;</span> <span class='p'>(</span><span class='err'>:</span> <span class='nv'>prf</span> <span class='nv'>ackermann</span> <span class='mi'>4</span> <span class='mi'>1</span><span class='p'>)</span>
 <span class='mi'>65533</span>
 <span class='nb'>&gt;</span>
-</code></pre></div>
+</code></pre></div><a name='57_the_λ-calculus' />
 <h2 id='57_the_calculus'>5.7 The λ-Calculus</h2>
 
 <p>Oh, yeah. We just went there: the λ-calculus.</p>
@@ -1915,7 +1917,7 @@ mult(succ(n), x) = x + (x * n)</code></pre>
 <p>Church realized when creating the λ-calculus that with only a lambda at his disposal, he could define numbers and perform arithmetic upon them. This is known as &#8220;Church encoding&#8221;. Using what we have defined above, we should be able to peer into this forest of lambdas and perhaps perceive some trees.</p>
 
 <p>Previously, we examined natural numbers and operations such as addition in the context of positive integers. However, in the sections below, we will be leaving behind the comfort of the familiar. The λ-calculus does not concern itself with natural numbers per se; rather the ability to do something a given number of times.</p>
-
+<a name='571_a_quick_primer' />
 <h3 id='571_a_quick_primer'>5.7.1 A Quick Primer</h3>
 
 <p>In the literature, you will see such things as:</p>
@@ -1941,7 +1943,7 @@ mult(succ(n), x) = x + (x * n)</code></pre>
 </ul>
 
 <p>As such, one says that <code>λx.x</code> is a function that takes one parameter, <code>x</code>, and produces one output, <code>x</code>. <code>λxy.y</code> takes two parameters, <code>x</code> and <code>y</code> and produces one output, <code>y</code>.</p>
-
+<a name='572_church_encoding' />
 <h3 id='572_church_encoding'>5.7.2 Church Encoding</h3>
 
 <p>Let&#8217;s get our feet wet with figuring out how we can define the natural numbers under Church encoding, starting with <code>zero</code>. In the standard λ-calculus, this is done in the following manner:</p>
@@ -2063,7 +2065,7 @@ mult(succ(n), x) = x + (x * n)</code></pre>
 <p>That last one caused a little lag in the LFE REPL, but still quite impressive given the fact that it just applied so many thousands of lambdas!</p>
 
 <p>How fortunate that we didn&#8217;t have to type 10,000 <code>funcall</code>s (and the corresponding set of opening and closing parentheses 10,000 times).</p>
-
+<a name='573_arithmetic' />
 <h3 id='573_arithmetic'>5.7.3 Arithmetic</h3>
 <div class='highlight'><pre><code class='cl'>
 </code></pre></div><div class='highlight'><pre><code class='cl'>
@@ -2072,11 +2074,11 @@ mult(succ(n), x) = x + (x * n)</code></pre>
 </code></pre></div><div class='highlight'><pre><code class='cl'>
 </code></pre></div><div class='highlight'><pre><code class='cl'>
 </code></pre></div><div class='highlight'><pre><code class='cl'>
-</code></pre></div>
+</code></pre></div><a name='574_logic' />
 <h3 id='574_logic'>5.7.4 Logic</h3>
 <div class='highlight'><pre><code class='cl'>
 </code></pre></div><div class='highlight'><pre><code class='cl'>
-</code></pre></div>
+</code></pre></div><a name='575_resources' />
 <h3 id='575_resources'>5.7.5 Resources</h3>
 
 <p>The material for this section was taken from a collection of papers on the λ-calculus that we have provided here:</p>
@@ -2086,83 +2088,83 @@ mult(succ(n), x) = x + (x * n)</code></pre>
 </ul>
 
 <p>Enjoy!</p>
-
+<a name='58_practical_examples_in_computing' />
 <h2 id='58_practical_examples_in_computing'>5.8 Practical Examples in Computing</h2>
 <div class='highlight'><pre><code class='cl'>
 </code></pre></div><div class='highlight'><pre><code class='cl'>
-</code></pre></div>
+</code></pre></div><a name='581_a_simple_example' />
 <h3 id='581_a_simple_example'>5.8.1 A Simple Example</h3>
-
+<a name='582_with_an_accumulator' />
 <h3 id='582_with_an_accumulator'>5.8.2 With an Accumulator</h3>
-
+<a name='583_with_return_values' />
 <h3 id='583_with_return_values'>5.8.3 With Return Values</h3>
-
+<a name='584_with_lists' />
 <h3 id='584_with_lists'>5.8.4 With Lists</h3>
-
+<a name='59_tail_calls_in_lfe' />
 <h2 id='59_tail_calls_in_lfe'>5.9 Tail Calls in LFE</h2>
 <div class='highlight'><pre><code class='cl'>
 </code></pre></div><div class='highlight'><pre><code class='cl'>
-</code></pre></div>
+</code></pre></div><a name='591_tail_call_optimization' />
 <h3 id='591_tail_call_optimization'>5.9.1 Tail Call Optimization</h3>
-
+<a name='6_checks,_errors,_and_tests' />
 <h1 id='6_checks_errors_and_tests'>6 Checks, Errors, and Tests</h1>
-
+<a name='61_guards' />
 <h2 id='61_guards'>6.1 Guards</h2>
-
+<a name='62_exception_handling' />
 <h2 id='62_exception_handling'>6.2 Exception Handling</h2>
 
 <p>Erlang, and thus LFE, provide a means of evaluating expressions and not only handling normal results, but abnormal termination as well. This is done with <code>(try ... (catch ... ))</code>.</p>
 
 <p>Note that <code>(try ... )</code> doesn&#8217;t need to have a <code>(catch ...)</code>, however, since we will be exploring exception handling in this section, all of our examples will be using <code>(catch ...)</code>.</p>
-
+<a name='621_a_simple_case' />
 <h3 id='621_a_simple_case'>6.2.1 A Simple Case</h3>
-
+<a name='63_eunit' />
 <h2 id='63_eunit'>6.3 EUnit</h2>
-
+<a name='631_the_face_of_a_unit_test' />
 <h3 id='631_the_face_of_a_unit_test'>6.3.1 The Face of a Unit Test</h3>
-
+<a name='632_mixed_tests_or_separate_modules?' />
 <h3 id='632_mixed_tests_or_separate_modules'>6.3.2 Mixed Tests or Separate Modules?</h3>
-
+<a name='633_running_unit_tests' />
 <h3 id='633_running_unit_tests'>6.3.3 Running Unit Tests</h3>
-
+<a name='634_distributing_code_with_unit_tests' />
 <h3 id='634_distributing_code_with_unit_tests'>6.3.4 Distributing Code with Unit Tests</h3>
-
+<a name='635_a_unit_test_in_detail' />
 <h3 id='635_a_unit_test_in_detail'>6.3.5 A Unit Test in Detail</h3>
-
+<a name='6351_erlang_eunit_assert_macros' />
 <h4 id='6351_erlang_eunit_assert_macros'>6.3.5.1 Erlang EUnit Assert Macros</h4>
-
+<a name='6352_setup_and_cleanup' />
 <h4 id='6352_setup_and_cleanup'>6.3.5.2 Setup and Cleanup</h4>
-
+<a name='6353_generating_tests' />
 <h4 id='6353_generating_tests'>6.3.5.3 Generating Tests</h4>
-
+<a name='64_tdd' />
 <h2 id='64_tdd'>6.4 TDD</h2>
-
+<a name='641_creating_an_api_and_writing_tests' />
 <h3 id='641_creating_an_api_and_writing_tests'>6.4.1 Creating an API and Writing Tests</h3>
-
+<a name='642_making_tests_pass' />
 <h3 id='642_making_tests_pass'>6.4.2 Making Tests Pass</h3>
-
+<a name='6421_factoring_out_common_test_logic' />
 <h4 id='6421_factoring_out_common_test_logic'>6.4.2.1 Factoring Out Common Test Logic</h4>
-
+<a name='643_testing_the_server' />
 <h3 id='643_testing_the_server'>6.4.3 Testing the Server</h3>
-
+<a name='644_testing_the_client' />
 <h3 id='644_testing_the_client'>6.4.4 Testing the Client</h3>
-
+<a name='645_cleaning_up_after_tests' />
 <h3 id='645_cleaning_up_after_tests'>6.4.5 Cleaning Up After Tests</h3>
-
+<a name='646_handling_logged_errors' />
 <h3 id='646_handling_logged_errors'>6.4.6 Handling Logged Errors</h3>
-
+<a name='647_resolving_a_bug' />
 <h3 id='647_resolving_a_bug'>6.4.7 Resolving a Bug</h3>
-
+<a name='648_code_coverage' />
 <h3 id='648_code_coverage'>6.4.8 Code Coverage</h3>
-
+<a name='7_processes_and_servers' />
 <h1 id='7_processes_and_servers'>7 Processes and Servers</h1>
-
+<a name='8_external_data' />
 <h1 id='8_external_data'>8 External Data</h1>
-
+<a name='9_additional_topics' />
 <h1 id='9_additional_topics'>9 Additional Topics</h1>
-
+<a name='91_macros' />
 <h2 id='91_macros'>9.1 Macros</h2>
-
+<a name='92_writing_for_multi-core' />
 <h2 id='92_writing_for_multicore'>9.2 Writing for Multi-Core</h2>
   </body>
 </html>

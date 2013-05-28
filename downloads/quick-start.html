@@ -14,10 +14,11 @@
     <base href="http://lfe.github.io/" />
   </head>
   <body>
-  <h1 id='quick_start'>Quick Start</h1>
-
+  <a name='quick_start' />
+<h1 id='quick_start'>Quick Start</h1>
+<a name='1_getting_set_up' />
 <h2 id='1_getting_set_up'>1 Getting Set Up</h2>
-
+<a name='11_dependencies' />
 <h3 id='11_dependencies'>1.1 Dependencies</h3>
 
 <p>First and foremost, you will need Erlang installed. On Mac OS X, this is as easy as executing <code>brew install erlang</code> or on Ubuntu <code>apt-get install
@@ -32,11 +33,11 @@ Solutions page</a> (supports many more package types).</p>
 <p>Next, you will need to download LFE itself:</p>
 
 <pre><code>$ git clone git://github.com/rvirding/lfe.git</code></pre>
-
+<a name='12_building' />
 <h3 id='12_building'>1.2 Building</h3>
 
 <p>With the dependencies installed, we&#8217;re now ready to build LFE.</p>
-
+<a name='121_using_```make```' />
 <h4 id='121_using_'>1.2.1 Using <code>make</code></h4>
 
 <pre><code>$ cd ./lfe
@@ -44,14 +45,14 @@ $ erlc -o src src/lfe_scan.xrl
 $ make</code></pre>
 
 <p>Ordinarily, only the <code>make</code> command would be necessary. However, there&#8217;s currently <a href='https://github.com/rvirding/lfe/issues/14'>an issue</a> with the <code>Makefile</code> that temporarily requires that first step.</p>
-
+<a name='122_using_```rebar```' />
 <h4 id='122_using_'>1.2.2 Using <code>rebar</code></h4>
 
 <p>Alternatively, one may use <code>rebar</code> to build LFE:</p>
 
 <pre><code>$ cd ./lfe
 $ rebar compile</code></pre>
-
+<a name='13_installing' />
 <h3 id='13_installing'>1.3 Installing</h3>
 
 <p>On non-development systems, or any system where you don&#8217;t want to run LFE from a git checkout, installing system-wide is the preferred way to use LFE. If you set your <code>$ERL_LIBS</code> environment variable, LFE will install there. Here&#8217;s how one might do this on a Mac OS X system with Erlang installed by <a href='http://mxcl.github.com/homebrew/'>Homebrew</a>:</p>
@@ -74,11 +75,11 @@ lfe-0.7</code></pre>
 <span class='nv'>LFE</span> <span class='nv'>Shell</span> <span class='nv'>V5</span><span class='p'>.</span><span class='mi'>9</span><span class='p'>.</span><span class='mi'>3</span><span class='p'>.</span><span class='mi'>1</span> <span class='p'>(</span><span class='n'>abort</span> <span class='n'>with</span> <span class='err'>^</span><span class='nv'>G</span><span class='p'>)</span>
 <span class='o'>&lt;</span><span class='mi'>0</span><span class='p'>.</span><span class='mi'>33</span><span class='p'>.</span><span class='mi'>0</span><span class='o'>&gt;</span>
 <span class='o'>&gt;</span>
-</code></pre></div>
+</code></pre></div><a name='2_executing_code' />
 <h2 id='2_executing_code'>2 Executing Code</h2>
 
 <p>Once you&#8217;ve got LFE built, you want to play with it, right? Let&#8217;s take a look at the REPL (interactive shell) first.</p>
-
+<a name='21_the_repl' />
 <h3 id='21_the_repl'>2.1 The REPL</h3>
 
 <p>To start the REPL, simply run the <code>lfe</code> script and tell <code>erl</code> (which is being run in the script) which additional code paths it should look for (in this case, the compiled LFE code):</p>
@@ -115,7 +116,7 @@ LFE Shell V5.9.3.1 (abort with ^G)
 <span class='nb'>&gt;</span>
 </code></pre></div>
 <p>Looking good!</p>
-
+<a name='22_running_scripts' />
 <h3 id='22_running_scripts'>2.2 Running Scripts</h3>
 
 <p>Okay, so now that you can run things in the REPL, you want to run them as a script, yes? Here&#8217;s how.</p>
@@ -155,7 +156,7 @@ $ erl -pa ../ebin -s hello start -s erlang halt</code></pre>
 Lfe says &#39;Hello, World!&#39;
 ok
 3&gt;</code></pre>
-
+<a name='23_running_scripts_from_the_repl' />
 <h3 id='23_running_scripts_from_the_repl'>2.3 Running Scripts from the REPL</h3>
 
 <p>You can also use your new <code>hello.lfe</code> script in the REPL itself. There are two ways you can do this, using <code>slurp</code> or compiling the file. If you use <code>slurp</code>, all the functions are pulled into the shell namespace, and you won&#8217;t have to reference the module name. Again, assuming that you are in <code>lfe/tmp</code>:</p>
@@ -179,9 +180,9 @@ ok
 <p>Note that in the second example, you need to reference the module.</p>
 
 <p>For more information on the LFE shell, be sure to see the &#8220;REPL&#8221; section of the User Guide Introduction.</p>
-
+<a name='3_using_libraries' />
 <h2 id='3_using_libraries'>3 Using Libraries</h2>
-
+<a name='31_otp_modules' />
 <h3 id='31_otp_modules'>3.1 OTP Modules</h3>
 
 <p>Taking advantage of the <a href='http://erldocs.com/R15B/index.html?i=734#stdlib'>Erlang stdlib</a> is straightforward. All you need to do is prepend the call with a <code>:</code> and adjust to use the LFE syntax vs. the Erlang syntax.</p>
@@ -193,7 +194,7 @@ ok
 <span class='s'>&quot;U3BhY2UgaXMgYmlnLiBSZWFsbHkgYmlnLg==&quot;</span>
 <span class='nb'>&gt;</span> <span class='p'>(</span><span class='err'>:</span> <span class='nv'>base64</span> <span class='nv'>decode_to_string</span> <span class='o'>&#39;</span><span class='s'>&quot;QW5kIHNvIHRoZSBVbml2ZXJzZSBlbmRlZC4=&quot;</span><span class='p'>)</span>
 <span class='s'>&quot;And so the Universe ended.&quot;</span>
-</code></pre></div>
+</code></pre></div><a name='32_processes_in_lfe' />
 <h3 id='32_processes_in_lfe'>3.2 Processes in LFE</h3>
 
 <p>One of the first things that people want to do with LFE is examine the message passing syntax so that they can compare it with vanilla Erlang. Here&#8217;s a small example of what this looks like in LFE:</p>
@@ -213,14 +214,14 @@ ok
 <p>For more information on working with processes in LFE, be sure to view the <a href='/tutorials/processes/1.html'>tutorial</a>.</p>
 
 <p>Related to this, you can find details and discussion around OTP and creating your own servers in the <a href='/tutorials/otp-servers/1.html'>OTP Servers tutorial</a>.</p>
-
+<a name='33_third-party_libraries' />
 <h3 id='33_thirdparty_libraries'>3.3 Third-Party Libraries</h3>
 
 <p>Finally, accessing code that is written in third-party libraries is exactly the same. Simply use the modules they have provided. If you started the LFE REPL pointing to your third-party libraries with a <code>-pa</code> (path) option, then all you have to do is this:</p>
 <div class='highlight'><pre><code class='cl'><span class='nb'>&gt;</span> <span class='p'>(</span><span class='err'>:</span> <span class='nv'>your-module</span> <span class='nv'>some-function</span> <span class='o'>&#39;</span><span class='s'>&quot;some parameter&quot;</span><span class='p'>)</span>
 </code></pre></div>
 <p>That&#8217;s it!</p>
-
+<a name='4_next_steps' />
 <h2 id='4_next_steps'>4 Next Steps</h2>
 
 <p>This has been a quick overview of what LFE has to offer, so you might enjoy reading the <a href='/user-guide/intro/1.html'>User Guide</a> next. You can see all our docs at a glance by visiting the <a href='/docs.html'>Docs</a> page.</p>

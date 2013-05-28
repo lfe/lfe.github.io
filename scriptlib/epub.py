@@ -59,16 +59,21 @@ def get_opf_manifest(book_config):
             "id": "html_1",
             "mime": const.mimetype_html,
             "filename": "1.html"},
-        # acknowledgements page
+        # copyright page
         const.opf_manifest_html % {
             "id": "html_2",
             "mime": const.mimetype_html,
             "filename": "2.html"},
-        # main page
+        # acknowledgements page
         const.opf_manifest_html % {
             "id": "html_3",
             "mime": const.mimetype_html,
             "filename": "3.html"},
+        # main page
+        const.opf_manifest_html % {
+            "id": "html_4",
+            "mime": const.mimetype_html,
+            "filename": "4.html"},
         ]
     return "\n".join(data)
 
@@ -150,6 +155,15 @@ def create_title_page(path, dst):
         fh.write(data)
 
 
+def create_copyright_page(path, dst):
+    book_config = get_config(path)
+    data = const.copyright_page_html % {
+        "title": book_config.title,
+        "subtitle": book_config.subtitle}
+    with open(dst, "w") as fh:
+        fh.write(data)
+
+
 def create_acks_page(dst):
     data = const.acknowledgements_page_html % {
         "title": "Acknowledgements",
@@ -190,13 +204,16 @@ def generate_epub(archive_path, src_html, clean_up=True):
     # add title page
     dst_title = get_file_path(dst_path, "1.html")
     create_title_page(path=dst_path, dst=dst_title)
+    # add copyright page
+    dst_copyright = get_file_path(dst_path, "2.html")
+    create_copyright_page(path=dst_path, dst=dst_copyright)
     # add acknowledgements page
-    dst_acks = get_file_path(dst_path, "2.html")
+    dst_acks = get_file_path(dst_path, "3.html")
     create_acks_page(dst=dst_acks)
     # add main html file
-    dst_html = get_file_path(dst_path, "3.html")
+    dst_html = get_file_path(dst_path, "4.html")
     copy_file(src=src_html, dst=dst_html)
     # assumble epub files
-    files = [dst_cover, dst_title, dst_acks, dst_html]
+    files = [dst_cover, dst_title, dst_copyright, dst_acks, dst_html]
     create_content_opf(dst_path, dst_html)
     create_archive(dst_path, files)

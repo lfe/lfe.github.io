@@ -1,3 +1,5 @@
+# -*- coding: utf-8
+
 delimiter = "---"
 contributors = """
 John Daily
@@ -130,28 +132,43 @@ copyright_page_html = """
     <div style="text-align: center">
       <br/><br/>
       <p>
-        XXX
+        Editors <i>The LFE Community</i>
       </p>
       <p>
-        XXX
+        Email lisp-flavoured-erlang@googlegroups.com
+        <br/>
+        Web site http://lfe.github.io/
       </p>
       <p>
-        XXX
+        &copy; 2013, Duncan McGreggor
+        <br/>
+        All rights reserved.
+        <br/>
+        Printed wherever one can access the internet and download the code.
       </p>
       <p>
-        XXX
+        This work is licensed under a Creative Commons
+        <br/>
+        Attribution-NonCommercial-ShareAlike 3.0 Unported License.
       </p>
       <p>
-        XXX
+        This work may be copied, distributed, transmitted, and adapted under
+        <br/>
+        the conditions that attribution is given and it is not done for commercial
+        <br/>
+        purposes. Any alterations, transformations, or derivations of this work
+        <br/>
+        may be distributed under the same license.
       </p>
       <p>
-        XXX
+        McGreggor, Duncan.
+        <br/>
+        %(title)s: %(subtitle)s / Duncan McGreggor.
       </p>
       <p>
-        XXX
-      </p>
-      <p>
-        XXX
+        1. Electronic digital computers -- Programming. 2. Erlang
+        <br/>
+        (Computer program language) 3. Lisp  (Computer program language). I. Title.
       </p>
     </div>
   </body>

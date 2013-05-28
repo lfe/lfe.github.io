@@ -59,7 +59,9 @@ build-epub: build-site build-pdf
 	--archive-path=$(EPUB_BUILD); done
 	cp $(EPUB_BUILD)/*.epub $(BOOK_DST)
 
-build-mobi: build-epub
+build-mobi: build-epub build-mobi-fast
+
+build-mobi-fast:
 	@echo
 	@echo "Generating mobis for ebooks ..."
 	rm -f $(BOOK_DST)/*.mobi

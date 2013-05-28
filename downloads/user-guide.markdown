@@ -3,8 +3,10 @@ layout: book
 title: LFE User Guide
 author: Duncan McGreggor, Robert Virding
 ---
+<a name="1_introduction"></a>
 # 1 Introduction
 
+<a name="11_what_is_lfe?"></a>
 ## 1.1 What is LFE?
 
 LFE is "Lisp Flavoured Erlang." It is a Lisp syntax front-end to the Erlang
@@ -13,6 +15,7 @@ LFE coexists seamlessly with vanilla Erlang and OTP. As such, code written in
 LFE can freely be used together with modules written in vanilla Erlang and
 applications in Erlang/OTP.
 
+<a name="12_getting_started"></a>
 ## 1.2 Getting Started
 
 The user guide assumes the following background knowledge:
@@ -42,8 +45,10 @@ The LFE [Quick Start](/quick-start/1.html) is an important
 resource, as it covers dependencies, building LFE, installation, using the
 REPL, running scripts, and using modules/libraries (OTP and third-party).
 
+<a name="13_more_about_lfe"></a>
 ## 1.3 More About LFE
 
+<a name="131_what_lfe_isn't"></a>
 ### 1.3.1 What LFE Isn't
 
 Just to clear the air and set some expectations, here's what you're *not* going
@@ -58,6 +63,7 @@ As such, you will not find the following:
 * CL packages or munged names faking packages
 * Access to Java libraries
 
+<a name="132_what_lfe_is!"></a>
 ### 1.3.2 What LFE Is!
 
 Here's what you *can* expect of LFE:
@@ -77,6 +83,7 @@ it), the following hold:
 * functions with declared arity and fixed number of arguments
 * Lisp macros
 
+<a name="14_what_to_expect_from_this_guide"></a>
 ## 1.4 What to Expect from this Guide
 
 The intent of this guide is to follow the same general pattern that the best
@@ -88,8 +95,10 @@ in-depth documents; in those cases, we provide links to that material. If your
 favorite topic is not covered above, let us know! We'll try to find a place for
 it :-)
 
+<a name="15_the_lfe_repl"></a>
 ## 1.5 The LFE REPL
 
+<a name="151_using_the_repl"></a>
 ### 1.5.1 Using the REPL
 
 We covered basic REPL usage in the
@@ -98,6 +107,7 @@ an introduction to using the LFE REPL. Regardless (and for your convenience),
 we also provide some information about the REPL in the document you are
 currently reading :-)
 
+<a name="1511_starting_the_repl"></a>
 #### 1.5.1.1 Starting the REPL
 
 If you have LFE installed system-wide, then starting the shell can be done in
@@ -147,6 +157,7 @@ LFE Shell V5.9.3.1 (abort with ^G)
 >
 {% endhighlight %}
 
+<a name="1512_running_commands"></a>
 #### 1.5.1.2 Running Commands
 
 Once you're in the REPL, it's just a matter of entering code:
@@ -184,6 +195,7 @@ Or, if you want to get nuts:
 >
 {% endhighlight %}
 
+<a name="1513_quitting_the_repl"></a>
 #### 1.5.1.3 Quitting the REPL
 
 Just as there are multiple ways in which you can start the REPL, there are a
@@ -204,6 +216,7 @@ ok
 $
 {% endhighlight %}
 
+<a name="152_special_functions"></a>
 ### 1.5.2 Special Functions
 
 There are some functions specially defined in LFE for use from the REPL.
@@ -235,6 +248,7 @@ These are listed below with information about their use.
   <a href="http://www.erlang.org/doc/man/c.html">Command Interface Module</a>
   can be reached in this way.
 
+<a name="153_special_variables"></a>
 ### 1.5.3 Special Variables
 
 LFE also provides some convenience variables similar to what Lisp
@@ -324,6 +338,7 @@ ok
 >
 {% endhighlight %}
 
+<a name="154_getting_out_of_trouble"></a>
 ### 1.5.4 Getting Out of Trouble
 
 Every once in a while you may find that you do something which causes the REPL
@@ -336,6 +351,7 @@ to crash, presenting you with something that looks like this:
 You don't have to quit and restart the REPL, if you don't want to! There are a
 couple of steps that you can take instead.
 
+<a name="1541_interrupting_a_shell_process"></a>
 #### 1.5.4.1 Interrupting a Shell Process
 
 When you get an error as seen above, type ```^g```. This will put you into JCL
@@ -373,6 +389,7 @@ then connect to it again:
 Once we interrupted the job, our error messages were printed to the REPL and we
 were placed back at the LFE prompt.
 
+<a name="1542_starting_a_new_shell"></a>
 #### 1.5.4.2 Starting a New Shell
 
 Sometimes, though, there is no shell process any more.  Here's how to start up
@@ -387,12 +404,15 @@ a new shell process if the one that you're using dies:
 
 And you're back up!
 
+<a name="16_loading_files"></a>
 ## 1.6 Loading Files
 
+<a name="161_loading_files_in_the_repl"></a>
 ### 1.6.1 Loading Files in the REPL
 
 There are several ways in which one may load files in LFE.
 
+<a name="1611_```slurp```"></a>
 #### 1.6.1.1 ```slurp```
 
 As mentioned in the section on
@@ -407,6 +427,7 @@ new one removes all data about the previous file.
 >
 {% endhighlight %}
 
+<a name="1612_```c```"></a>
 #### 1.6.1.2 ```c```
 
 Compiling a module from the REPL is what you need if you wish to work with
@@ -417,6 +438,7 @@ multiple modules simultaneously:
 >
 {% endhighlight %}
 
+<a name="1613_```ec```"></a>
 #### 1.6.1.3 ```ec```
 
 You can also load Erlang files in LFE:
@@ -426,6 +448,7 @@ You can also load Erlang files in LFE:
 >
 {% endhighlight %}
 
+<a name="1614_```l```"></a>
 #### 1.6.1.4 ```l```
 
 If a module is in your Erlang/LFE path,  you can load that too:
@@ -435,11 +458,13 @@ If a module is in your Erlang/LFE path,  you can load that too:
 >
 {% endhighlight %}
 
+<a name="162_loading_files_in_modules"></a>
 ### 1.6.2 Loading Files in Modules
 
 Code may be included wholesale into LFE modules by either using
 ```include-file``` or ```include-lib```.
 
+<a name="1621_```include-file```"></a>
 #### 1.6.2.1 ```include-file```
 
 If you have records or data that you would like to be available to more than
@@ -476,14 +501,18 @@ including them:
     (* (*base-cool-factor*) (*earth-adjustment*) arthur-cool-factor)))
 {% endhighlight %}
 
+<a name="1622_```include-lib```"></a>
 #### 1.6.2.2 ```include-lib```
 
 {% highlight cl %}
 {% endhighlight %}
+<a name="2_diving_in"></a>
 # 2 Diving In
 
+<a name="21_numbers_and_operators"></a>
 ## 2.1 Numbers and Operators
 
+<a name="211_integers_and_floats"></a>
 ### 2.1.1 Integers and Floats
 
 Let's start with something simple :-) To follow along, fire up your LFE REPL.
@@ -526,6 +555,7 @@ is the base you want to use (see
 <a href="http://erldocs.com/R14B/erts/erlang.html?i=1&search=integer#integer_to_list/2">here</a>
 for more details).
 
+<a name="212_arithmatic_operators"></a>
 ### 2.1.2 Arithmatic Operators
 
 But numbers by themselves aren't going to do us much good if we can't operate
@@ -552,6 +582,7 @@ on them. The usual apply:
 >
 {% endhighlight %}
 
+<a name="213_logical_operators"></a>
 ### 2.1.3 Logical Operators
 
 The usual suspects are used as follows:
@@ -592,6 +623,7 @@ true
 >
 {% endhighlight %}
 
+<a name="214_boolean_operators"></a>
 ### 2.1.4 Boolean Operators
 
 How about some logic?
@@ -660,6 +692,7 @@ exception error: badarg
 >
 {% endhighlight %}
 
+<a name="215_bitwise_operators"></a>
 ### 2.1.5 Bitwise Operators
 
 As one would expect, Erlang has the usual bitwise operators as well. Binary
@@ -691,8 +724,10 @@ operators:
 >
 {% endhighlight %}
 
+<a name="22_atoms_and_strings"></a>
 ## 2.2 Atoms and Strings
 
+<a name="221_atoms"></a>
 ### 2.2.1 Atoms
 
 Atoms are a data type in Erlang that is used to represent non-numerical
@@ -731,6 +766,7 @@ we're not quite ready for it yet!
 Furthermore, atoms are stored differently in Erlang than strings. They take up
 less space and are more efficient to compare than strings.
 
+<a name="222_strings"></a>
 ### 2.2.2 Strings
 
 Now we come to the oddball of Erlang: the string. In truth, there is no such
@@ -748,8 +784,10 @@ systems and 16 bytes on 64-bit systems, they are not very efficient. As such,
 if you need to work with long strings in LFE, you probably want to use
 ```(binary ...)```, but that's in the next section :-)
 
+<a name="23_binary_and_bitstrings"></a>
 ## 2.3 Binary and Bitstrings
 
+<a name="231_lists_and_```binary```"></a>
 ### 2.3.1 Lists and ```binary```
 
 A full discussion of the binary type is a huge topic that probably deserves one
@@ -779,6 +817,7 @@ easily:
 #B(84 104 101 114 101 39 115 32 97 32 102 114 111 111 100 32 119 104 111 ...)
 {% endhighlight %}
 
+<a name="232_binary_functions_in_otp"></a>
 ### 2.3.2 Binary Functions in OTP
 
 Let's convert it back to a list using a function from the Erlang stdlib
@@ -812,6 +851,7 @@ that ```split```:
 having to flatten them, our work is done! We get our result: the new string
 that we created by splitting on ```"who really knows "```.
 
+<a name="233_bit-packing_(and_unpacking)"></a>
 ### 2.3.3 Bit-Packing (and Unpacking)
 
 For this section, let's use the 16-bit color example that is given in Joe
@@ -840,6 +880,7 @@ variables ```r```, ```g```, and ```b```, printing out the results within the
 ```let```:
 {% highlight cl %}
 > (let (((binary (r (size 5)) (g (size 6)) (b (size 5)))
+<a name="b(23_180)))"></a>
          #b(23 180)))
        (: io format '"~p ~p ~p~n" (list r g b)))
 2 61 20
@@ -850,6 +891,7 @@ ok
 We're getting a little ahead of ourselves here, by throwing a pattern in the
 mix, but it's a good enough example to risk it :-)
 
+<a name="234_so_what's_a_bitstring?"></a>
 ### 2.3.4 So What's a Bitstring?
 
 We've been looking at binaries in LFE, but what's a bitstring? The
@@ -858,6 +900,7 @@ say it well: A bitstring is a sequence of zero or more bits, where the number
 of bits doesn't need to be divisible by 8. If the number of bits is divisible
 by 8, the bitstring is also a binary.
 
+<a name="235_lfe's_exact_definition_of_binary"></a>
 ### 2.3.5 LFE's Exact Definition of Binary
 
 Here's the full  definition for the ```binary``` from in LFE:
@@ -879,8 +922,10 @@ string
 This should help you puzzle through some of the more complex binary
 constructions you come accross ;-)
 
+<a name="24_variables"></a>
 ## 2.4 Variables
 
+<a name="241_variables_in_the_repl"></a>
 ### 2.4.1 Variables in the REPL
 
 Variables in LFE don't have the same syntactical limitations that vanilla
@@ -930,6 +975,7 @@ As such, this should be fairly intuitive clear at this point:
 Unlike Erlang, the LFE REPL doesn't have the ```b()``` and ```f()``` functions
 ("show bound variables" and "flush bound variables" respectively).
 
+<a name="242_variables_in_lfe_modules"></a>
 ### 2.4.2 Variables in LFE Modules
 
 Unlike Lisp, LFE doesn't support global variables, so (unless you create some
@@ -946,6 +992,7 @@ dirty hacks!) you won't be doing things like this in your modules:
 As such, you shouldn't run into variables that are defined at the module-level,
 only inside actual functions.
 
+<a name="242_variables_in_functions"></a>
 ### 2.4.2 Variables in Functions
 
 There are *all sorts* of ways one might set a variable in an LFE function. The
@@ -986,8 +1033,10 @@ the given record to the variables in the ```tuple```.
 Patterns may be used in several different LFE forms, each of which may do some
 varaible binding.
 
+<a name="25_pattern_matching"></a>
 ## 2.5 Pattern Matching
 
+<a name="251_what_are_patterns?"></a>
 ### 2.5.1 What Are Patterns?
 
 Pattern matching in Erlang is huge, and it has a proportional impact on LFE and
@@ -1032,8 +1081,10 @@ through the examples given below. Each example is preceeded by the general form
 of pattern as used in the given context. This should help keep things clear,
 even when the examples get convoluted.
 
+<a name="252_patterns_in_forms"></a>
 ### 2.5.2 Patterns in Forms
 
+<a name="2521_```let```"></a>
 #### 2.5.2.1 ```let```
 
 Pattern matching in ```let``` has the following general form:
@@ -1120,6 +1171,7 @@ Having seen these examples, you are probably gaining some insight into the
 power of pattern matching in Erlang and LFE. There's more, though :-) See below
 for equally potent uses.
 
+<a name="2522_```case```"></a>
 #### 2.5.2.2 ```case```
 
 Pattern matching in ```case``` has the following general form:
@@ -1177,6 +1229,7 @@ ok
 >
 {% endhighlight %}
 
+<a name="2523_```receive```"></a>
 #### 2.5.2.3 ```receive```
 
 Pattern matching in ```receive``` has the following general form:
@@ -1252,6 +1305,7 @@ defined patterns:
 Absolutely nothing, that's what. Well, nothing from the process we spawned,
 that is... just the REPL doing its thang.
 
+<a name="2524_```cond```"></a>
 #### 2.5.2.4 ```cond```
 
 Pattern matching in ```cond``` has the following general form:
@@ -1304,8 +1358,10 @@ ok
 >
 {% endhighlight %}
 
+<a name="253_special_cases"></a>
 ### 2.5.3 Special Cases
 
+<a name="2531_```set```_in_the_repl"></a>
 #### 2.5.3.1 ```set``` in the REPL
 
 Using ```set``` in the REPL has the following general form:
@@ -1327,6 +1383,7 @@ ok
 >
 {% endhighlight %}
 
+<a name="2532_aliases_with_```=```"></a>
 #### 2.5.3.2 Aliases with ```=```
 
 Aliases are defined with the following general form:
@@ -1365,6 +1422,7 @@ ok
 "Trillian"
 {% endhighlight %}
 
+<a name="2533_arguments_to_```defun```"></a>
 #### 2.5.3.3 Arguments to ```defun```
 
 Pattern matching in functions has the following general form:
@@ -1420,6 +1478,7 @@ ok
 >
 {% endhighlight %}
 
+<a name="2534_patterns_in_comprehensions"></a>
 #### 2.5.3.4 Patterns in Comprehensions
 
 List and binary comprehensions make use of patterns in a limited sense. They
@@ -1435,8 +1494,10 @@ where the ```guard``` in both cases is optional.
 
 You can read more about LFE comprehensions in
 <a href="/user-guide/data/2.html">section 3.2</a>
+<a name="3_lists_and_simple_data"></a>
 # 3 Lists and Simple Data
 
+<a name="31_lists"></a>
 ## 3.1 Lists
 
 Lists in Erlang and LFE are straight-forward; those coming from another
@@ -1530,6 +1591,7 @@ Not let's try out ```filter``` with our new predicate:
 There are many, many more highly useful functions in the ```lists``` module --
 be sure to give the docs a thorough reading, lest you miss something fun!
 
+<a name="311_i/o_lists"></a>
 ### 3.1.1 I/O Lists
 
 There is another type of list that is used for such things as file and network
@@ -1563,6 +1625,7 @@ of binaries ourselves. If you recall, ```data``` was a long string and the
 >
 {% endhighlight %}
 
+<a name="32_tuples"></a>
 ## 3.2 Tuples
 
 Tuples are the data melting pot for Erlang: you can combine any of Erlang's
@@ -1663,6 +1726,7 @@ with the pattern in our ```set``` call:
 >
 {% endhighlight %}
 
+<a name="32_comprehensions"></a>
 ## 3.2 Comprehensions
 
 In the section on lists, we gave an example of building a list using the
@@ -1684,6 +1748,7 @@ offers another pattern, though: comprehensions.
 LFE supports Erlang comprehensions via two macros: ```lc``` for list
 comprehensions and ```bc``` for bitstring comprehensions.
 
+<a name="321_list_comprehensions"></a>
 ### 3.2.1 List Comprehensions
 
 Let's take a look at an example and then discuss it. Here's a list
@@ -1716,6 +1781,7 @@ To a Lisper, the original is probably much more legible. However, in Erlang
 these is no question that the list comprehensions are shorter and easier to
 read than using anonymous functions.
 
+<a name="321_bitstring_comprehensions"></a>
 ### 3.2.1 Bitstring Comprehensions
 
 For binary data, we have something similar to the list comprehension. Here's
@@ -1760,8 +1826,10 @@ and this:
 ((bnot x) (size 1))
 {% endhighlight %}
 
+<a name="33_property_lists_and_hashes"></a>
 ## 3.3 Property Lists and Hashes
 
+<a name="331_property_lists"></a>
 ### 3.3.1 Property Lists
 
 Property lists are just lists whose entries are key/value tuples.
@@ -1807,12 +1875,14 @@ do this:
 There is more information about property lists on the
 <a href="http://www.erlang.org/doc/man/proplists.html">docs</a> page for them.
 
+<a name="332_hashes"></a>
 ### 3.3.2 Hashes
 
 There is no builtin "dictionary" or "hash" type in Erlang. However, there are
 some libraries that support data structures like these. There is also a concept
 of "records" which we will discuss in another section.
 
+<a name="3321_the_dictionary"></a>
 #### 3.3.2.1 The Dictionary
 
 The Erlang ```dict``` module implements a key/value dictionary part of which is
@@ -1903,6 +1973,7 @@ You can also build ```dict```s from a list of tuples:
 There are many more functions to explore in the
 <a href="http://www.erlang.org/doc/man/dict.html">dict docs</a>.
 
+<a name="3322_other_hash_tables"></a>
 #### 3.3.2.2 Other Hash Tables
 
 OTP comes with the ```ets``` module which provides the ability to store very
@@ -1918,8 +1989,10 @@ The documentation for this module is
 adding information on how to use this from LFE at a later point (likely a
 dedicated tutorial).
 
+<a name="34_records"></a>
 ## 3.4 Records
 
+<a name="341_just_records"></a>
 ### 3.4.1 Just Records
 
 Sometimes lists, tuples, property lists, or hashes are not quite what is
@@ -2013,6 +2086,7 @@ re-use the ```ford``` variable here).
 Also, note that there are also ```set-person-name``` and
 ```set-person-address```.
 
+<a name="342_records_and_ets"></a>
 ### 3.4.2 Records and ETS
 
 Additional convenience functions for records are provided by LFE, but some of
@@ -2080,45 +2154,66 @@ Here's what it looks like when multiple records are returned:
 This should be enough of an ETS taste to last until you get to the dedicated
 tutorial ;-)
 
+<a name="35_```hrl```_header_files"></a>
 ## 3.5 ```.hrl``` Header Files
+<a name="4_functions_and_modules"></a>
 # 4 Functions and Modules
 
+<a name="41_functions"></a>
 ## 4.1 Functions
 
+<a name="411_intro_and_recap"></a>
 ### 4.1.1 Intro and Recap
 
+<a name="412_parity"></a>
 ### 4.1.2 Parity
 
+<a name="413_more_patterns"></a>
 ### 4.1.3 More Patterns
 
+<a name="414_anonymouns_functions"></a>
 ### 4.1.4 Anonymouns Functions
 
+<a name="415_higher-order_functions"></a>
 ### 4.1.5 Higher-Order Functions
 
+<a name="4151_as_input"></a>
 #### 4.1.5.1 As Input
 
+<a name="4152_as_output"></a>
 #### 4.1.5.2 As Output
 
+<a name="42_lfe-specific_functions_and_macros"></a>
 ## 4.2 LFE-Specific Functions and Macros
 
+<a name="421_core_forms"></a>
 ### 4.2.1 Core Forms
 
+<a name="422_macro_forms"></a>
 ### 4.2.2 Macro Forms
 
+<a name="423_common_lisp_inspired_macros"></a>
 ### 4.2.3 Common Lisp Inspired Macros
 
+<a name="424_scheme_inspired_macros"></a>
 ### 4.2.4 Scheme Inspired Macros
 
+<a name="425_additional_lisp_functions"></a>
 ### 4.2.5 Additional Lisp Functions
 
+<a name="43_modules"></a>
 ## 4.3 Modules
 
+<a name="431_what_modules_do"></a>
 ### 4.3.1 What Modules Do
 
+<a name="432_what_modules_don't_do"></a>
 ### 4.3.2 What Modules Don't Do
 
+<a name="433_creating_a_module"></a>
 ### 4.3.3 Creating a Module
 
+<a name="434_parameterized_modules"></a>
 ### 4.3.4 Parameterized Modules
 
 {% highlight cl %}
@@ -2163,6 +2258,7 @@ tutorial ;-)
 {% highlight cl %}
 {% endhighlight %}
 
+<a name="44_projects_with_rebar"></a>
 ## 4.4 Projects with Rebar
 
 In this section we'll be exploring how rebar can be used to manage LFE projects.
@@ -2171,6 +2267,7 @@ This section will make use of two example projects on github:
 * <a href="https://github.com/lfe/lfe-library-example">https://github.com/lfe/lfe-library-example</a>
 * <a href="https://github.com/lfe/lfe-service-example">https://github.com/lfe/lfe-service-example</a>
 
+<a name="441_collections_of_modules"></a>
 ### 4.4.1 Collections of Modules
 
 The first question we should probably address is this: How are we defining a
@@ -2181,6 +2278,7 @@ particular goal. The project should have a rebar configuration file, a source
 directory with `.lfe` files in it, possibly an include directory, andn ideally
 unit tests in a `test` directory.
 
+<a name="442_project_structure"></a>
 ### 4.4.2 Project Structure
 
 Let's expand upon the project definition given above, focusing on the directory
@@ -2205,6 +2303,7 @@ an `.app` file in the `ebin` directory. With these, Rebar will be able to
 download the project dependencies and compile the `*.lfe` files in `src` to the
 `ebin` directory as `*.beam` files.
 
+<a name="443_dependencies"></a>
 ### 4.4.3 Dependencies
 
 Dependencies are handled very nicely with Rebar: just add a git repo in your
@@ -2221,6 +2320,7 @@ command. Once downloaded, issuing the `rebar compile` command will not only
 compile your project's `src/*` files into its `ebin` directory, but will compile
 all dependency project source code as well.
 
+<a name="444_defining_a_library_project"></a>
 ### 4.4.4 Defining a Library Project
 
 We've seen the directory structure above for a library project. We're defining
@@ -2235,17 +2335,23 @@ We're making a rather arbitrary distinction here (between "library" projects and
 "service" projects, and one with undoubtedly many blurry lines. Regardless, it
 may be instructive or useful as a guideline.
 
+<a name="445_defining_a_service_project"></a>
 ### 4.4.5 Defining a Service Project
 
+<a name="446_distributing_a_project"></a>
 ### 4.4.6 Distributing A Project
 
+<a name="447_installing_projects"></a>
 ### 4.4.7 Installing Projects
+<a name="5_recursion"></a>
 # 5 Recursion
 
+<a name="51_see_section_5"></a>
 ## 5.1 See Section 5
 
 Sorry, couldn't resist.
 
+<a name="52_a_brief_history"></a>
 ## 5.2 A Brief History
 
 In functional languages, recursion plays an important role. For Erlang in
@@ -2271,6 +2377,7 @@ and the related concept of recursion in his new language.  (Interestingly
 enough, McCarthy and Dijkstra both advocated for the inclusions of recursion in
 ALGOL.)
 
+<a name="53_a_preview"></a>
 ## 5.3 A Preview
 
 In the sections of the user guide, we explore various aspects of recursion as
@@ -2283,6 +2390,7 @@ they can be formulated in Lisp Flavored Erlang. We will cover the following:
 * Practical Examples in Computing
 * Tail-Calls
 
+<a name="54_the_dedekind-peano_axioms"></a>
 ## 5.4 The Dedekind-Peano Axioms
 
 For those that are math-averse, don't let this frighten you -- this will be a
@@ -2291,6 +2399,7 @@ will provide some nice background for how recursion came to be used. With the
 history reviewed, we'll make our way into practical implementations.
 
 
+<a name="541_foundations"></a>
 ### 5.4.1 Foundations
 
 Despite the fluorescence of maths in the 17th and 18th centuries and the
@@ -2315,12 +2424,14 @@ Internet; we will take a slightly unique approach, however, and cast them in
 LFE.
 
 
+<a name="542_a_constant_and_equality"></a>
 ### 5.4.2 A Constant and Equality
 
 The first five Peano axioms deal with the constant (often written as "0") and
 the reflexive, symmetric, transitive and closed eqaulity relations. These don't
 relate recursion directly, so we're going to skip them ;-)
 
+<a name="543_successor_function"></a>
 ### 5.4.3 Successor Function
 
 The concept of the "successor" in the Peano axioms is a primitive; it is taken
@@ -2342,11 +2453,13 @@ This function is defined as being "basic primitive recursive". The basic
 primitive recursives are defined by axioms; the term was coined by Rózsa
 Péter.
 
+<a name="544_the_remaining_axioms"></a>
 ### 5.4.4 The Remaining Axioms
 
 The remaining three Peano axioms do not touch upon recursion directly, so we
 leave them to your own research and reading pleasure.
 
+<a name="55_primitive_recursive_functions"></a>
 ## 5.5 Primitive Recursive Functions
 
 In the previous section, we leaned about the primitive recursive funtion called
@@ -2360,6 +2473,7 @@ primitive recursive funtions as well, and these are usually given as axioms
 These combined with the Peano axioms allow us to define other primitive
 recursive functions.
 
+<a name="551_addition"></a>
 ### 5.5.1 Addition
 
 Often, one sees the primitive recursive function definition of addition done in
@@ -2395,6 +2509,7 @@ Remember, though: the verbosity of these axioms and their derrived definitions
 serves to explicitly show that no assumptions are being made and that all these
 operations can indeed be built upon basic principles.
 
+<a name="552_subtraction"></a>
 ### 5.5.2 Subtraction
 
 Next up, let's take a look at subtraction:
@@ -2419,6 +2534,7 @@ Note that the usual usage is reversed for our ```subtract``` function:
 >
 {% endhighlight %}
 
+<a name="553_multiplication"></a>
 ### 5.5.3 Multiplication
 
 The last one of these that we will look at is multiplication, and then we'll
@@ -2434,10 +2550,12 @@ Again, using our pattern workaround:
   ((n x) (add x (multiply x (predecessor n)))))
 {% endhighlight %}
 
+<a name="56_total_recursive_functions"></a>
 ## 5.6 Total Recursive Functions
 
 TBD
 
+<a name="561_the_ackermann_function"></a>
 ### 5.6.1 The Ackermann Function
 
 The Ackermann function is one of the simplest and earliest-discovered examples
@@ -2477,6 +2595,7 @@ Here's some example usage:
 >
 {% endhighlight %}
 
+<a name="57_the_λ-calculus"></a>
 ## 5.7 The λ-Calculus
 
 Oh, yeah. We just went there: the λ-calculus.
@@ -2500,6 +2619,7 @@ leaving behind the comfort of the familiar. The λ-calculus does not concern
 itself with natural numbers per se; rather the ability to do something a given
 number of times.
 
+<a name="571_a_quick_primer"></a>
 ### 5.7.1 A Quick Primer
 
 In the literature, you will see such things as:
@@ -2527,6 +2647,7 @@ As such, one says that `λx.x` is a function that takes one parameter, `x`, and
 produces one output, `x`. `λxy.y` takes two parameters, `x` and `y` and
 produces one output, `y`.
 
+<a name="572_church_encoding"></a>
 ### 5.7.2 Church Encoding
 
 Let's get our feet wet with figuring out how we can define the natural numbers
@@ -2717,6 +2838,7 @@ given the fact that it just applied so many thousands of lambdas!
 How fortunate that we didn't have to type 10,000 `funcall`s (and the
 corresponding set of opening and closing parentheses 10,000 times).
 
+<a name="573_arithmetic"></a>
 ### 5.7.3 Arithmetic
 
 {% highlight cl %}
@@ -2740,6 +2862,7 @@ corresponding set of opening and closing parentheses 10,000 times).
 {% highlight cl %}
 {% endhighlight %}
 
+<a name="574_logic"></a>
 ### 5.7.4 Logic
 
 {% highlight cl %}
@@ -2748,6 +2871,7 @@ corresponding set of opening and closing parentheses 10,000 times).
 {% highlight cl %}
 {% endhighlight %}
 
+<a name="575_resources"></a>
 ### 5.7.5 Resources
 
 The material for this section was taken from a collection of papers on the
@@ -2757,6 +2881,7 @@ The material for this section was taken from a collection of papers on the
 
 Enjoy!
 
+<a name="58_practical_examples_in_computing"></a>
 ## 5.8 Practical Examples in Computing
 
 {% highlight cl %}
@@ -2765,14 +2890,19 @@ Enjoy!
 {% highlight cl %}
 {% endhighlight %}
 
+<a name="581_a_simple_example"></a>
 ### 5.8.1 A Simple Example
 
+<a name="582_with_an_accumulator"></a>
 ### 5.8.2 With an Accumulator
 
+<a name="583_with_return_values"></a>
 ### 5.8.3 With Return Values
 
+<a name="584_with_lists"></a>
 ### 5.8.4 With Lists
 
+<a name="59_tail_calls_in_lfe"></a>
 ## 5.9 Tail Calls in LFE
 
 {% highlight cl %}
@@ -2781,11 +2911,15 @@ Enjoy!
 {% highlight cl %}
 {% endhighlight %}
 
+<a name="591_tail_call_optimization"></a>
 ### 5.9.1 Tail Call Optimization
+<a name="6_checks,_errors,_and_tests"></a>
 # 6 Checks, Errors, and Tests
 
+<a name="61_guards"></a>
 ## 6.1 Guards
 
+<a name="62_exception_handling"></a>
 ## 6.2 Exception Handling
 
 Erlang, and thus LFE, provide a means of evaluating expressions and not only
@@ -2796,50 +2930,75 @@ Note that ```(try ... )``` doesn't need to have a ```(catch ...)```, however,
 since we will be exploring exception handling in this section, all of our
 examples will be using ```(catch ...)```.
 
+<a name="621_a_simple_case"></a>
 ### 6.2.1 A Simple Case
 
 
+<a name="63_eunit"></a>
 ## 6.3 EUnit
 
+<a name="631_the_face_of_a_unit_test"></a>
 ### 6.3.1 The Face of a Unit Test
 
+<a name="632_mixed_tests_or_separate_modules?"></a>
 ### 6.3.2 Mixed Tests or Separate Modules?
 
+<a name="633_running_unit_tests"></a>
 ### 6.3.3 Running Unit Tests
 
+<a name="634_distributing_code_with_unit_tests"></a>
 ### 6.3.4 Distributing Code with Unit Tests
 
+<a name="635_a_unit_test_in_detail"></a>
 ### 6.3.5 A Unit Test in Detail
 
+<a name="6351_erlang_eunit_assert_macros"></a>
 #### 6.3.5.1 Erlang EUnit Assert Macros
 
+<a name="6352_setup_and_cleanup"></a>
 #### 6.3.5.2 Setup and Cleanup
 
+<a name="6353_generating_tests"></a>
 #### 6.3.5.3 Generating Tests
 
+<a name="64_tdd"></a>
 ## 6.4 TDD
 
+<a name="641_creating_an_api_and_writing_tests"></a>
 ### 6.4.1 Creating an API and Writing Tests
 
+<a name="642_making_tests_pass"></a>
 ### 6.4.2 Making Tests Pass
 
+<a name="6421_factoring_out_common_test_logic"></a>
 #### 6.4.2.1 Factoring Out Common Test Logic
 
+<a name="643_testing_the_server"></a>
 ### 6.4.3 Testing the Server
 
+<a name="644_testing_the_client"></a>
 ### 6.4.4 Testing the Client
 
+<a name="645_cleaning_up_after_tests"></a>
 ### 6.4.5 Cleaning Up After Tests
 
+<a name="646_handling_logged_errors"></a>
 ### 6.4.6 Handling Logged Errors
 
+<a name="647_resolving_a_bug"></a>
 ### 6.4.7 Resolving a Bug
 
+<a name="648_code_coverage"></a>
 ### 6.4.8 Code Coverage
+<a name="7_processes_and_servers"></a>
 # 7 Processes and Servers
+<a name="8_external_data"></a>
 # 8 External Data
+<a name="9_additional_topics"></a>
 # 9 Additional Topics
 
+<a name="91_macros"></a>
 ## 9.1 Macros
 
+<a name="92_writing_for_multi-core"></a>
 ## 9.2 Writing for Multi-Core

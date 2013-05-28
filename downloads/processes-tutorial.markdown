@@ -3,6 +3,7 @@ layout: book
 title: Lightweight Processes
 author: Duncan McGreggor
 ---
+<a name="tutorial:_lightweight_processes"></a>
 # Tutorial: Lightweight Processes
 
 Due to its Erlang foundation, an LFE program is composed of anywhere from 1 to
@@ -23,8 +24,10 @@ for more info).
 This tutorial aims to decrease the mystery around Erlang processes and how to
 use them in LFE programs.
 
+<a name="1_interacting_with_processes"></a>
 ## 1 Interacting with Processes
 
+<a name="11_dump_and_```flush```"></a>
 ### 1.1 Dump and ```flush```
 
 Processes in LFE are built from functions. These running functions communicate
@@ -60,6 +63,7 @@ ok
 >
 {% endhighlight %}
 
+<a name="12_getting_classy_with_```receive```"></a>
 ### 1.2 Getting Classy with ```receive```
 
 As you might imagine, there's a better way to do this. Let's send another
@@ -116,6 +120,7 @@ ok
 >
 {% endhighlight %}
 
+<a name="13_shell_```spawn```"></a>
 ### 1.3 Shell ```spawn```
 
 So far, we've only look at the process for the REPL itself. We'd like to expand
@@ -173,8 +178,10 @@ Up next: in an anti-intuitive twist,
 you'll see that doing the same thing from a module is more clear that doing it
 in the shell ;-)
 
+<a name="2_processes_in_modules"></a>
 ## 2 Processes in Modules
 
+<a name="21_shell_```spawn```:_the_sequel"></a>
 ### 2.1 Shell ```spawn```: The Sequel
 
 In the last section, we were all primed to explore spawning processes from the
@@ -243,6 +250,7 @@ Received message: 'Arthur is pining for Trillian.'
 
 Horray! You've just written a simple listener in LFE!
 
+<a name="3_process_registry_in_erlang/lfe"></a>
 ## 3 Process Registry in Erlang/LFE
 
 We've been setting the ```pid``` variable in the REPL so that we don't have to
@@ -320,8 +328,10 @@ Received message: 'This is Prostetnic Vogon Jeltz...'
 
 That about wraps it up for the process registry!
 
+<a name="4_process_communications"></a>
 ## 4 Process Communications
 
+<a name="41_it's_a_two_way_street"></a>
 ### 4.1 It's a Two Way Street
 
 We've spent some time looking at sending messages to processes manually. Now
@@ -334,6 +344,7 @@ processes, each of which may return data and a status code. If these spawned
 processes have the calling process' ID, then they can, in turn, send their
 results back to the caller so that the data and statuses may be reported upon.
 
+<a name="42_walk_the_talk"></a>
 ### 4.2 Walk the Talk
 
 To demonstrate this, let's update our ```print-result``` function to do this:
@@ -386,6 +397,7 @@ ok
 
 Sure enough, it was :-)
 
+<a name="43_conclusion"></a>
 ### 4.3 Conclusion
 
 Well, that about wraps it up. We may add more information about working with

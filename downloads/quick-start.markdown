@@ -3,10 +3,13 @@ layout: book
 title: LFE Quick Start
 author: Duncan McGreggor
 ---
+<a name="quick_start"></a>
 # Quick Start
 
+<a name="1_getting_set_up"></a>
 ## 1 Getting Set Up
 
+<a name="11_dependencies"></a>
 ### 1.1 Dependencies
 
 First and foremost, you will need Erlang installed. On Mac OS X, this is as
@@ -27,10 +30,12 @@ Next, you will need to download LFE itself:
 
     $ git clone git://github.com/rvirding/lfe.git
 
+<a name="12_building"></a>
 ### 1.2 Building
 
 With the dependencies installed, we're now ready to build LFE.
 
+<a name="121_using_```make```"></a>
 #### 1.2.1 Using ```make```
 
     $ cd ./lfe
@@ -41,6 +46,7 @@ Ordinarily, only the ```make``` command would be necessary. However, there's
 currently <a href="https://github.com/rvirding/lfe/issues/14">an issue</a> with
 the ```Makefile``` that temporarily requires that first step.
 
+<a name="122_using_```rebar```"></a>
 #### 1.2.2 Using ```rebar```
 
 Alternatively, one may use ```rebar``` to build LFE:
@@ -48,6 +54,7 @@ Alternatively, one may use ```rebar``` to build LFE:
     $ cd ./lfe
     $ rebar compile
 
+<a name="13_installing"></a>
 ### 1.3 Installing
 
 On non-development systems, or any system where you don't want to run LFE from
@@ -77,11 +84,13 @@ LFE Shell V5.9.3.1 (abort with ^G)
 >
 {% endhighlight %}
 
+<a name="2_executing_code"></a>
 ## 2 Executing Code
 
 Once you've got LFE built, you want to play with it, right? Let's take a look
 at the REPL (interactive shell) first.
 
+<a name="21_the_repl"></a>
 ### 2.1 The REPL
 
 To start the REPL, simply run the ```lfe``` script and tell ```erl``` (which is
@@ -131,6 +140,7 @@ Next, let's operate on some variables:
 
 Looking good!
 
+<a name="22_running_scripts"></a>
 ### 2.2 Running Scripts
 
 Okay, so now that you can run things in the REPL, you want to run them as a
@@ -177,6 +187,7 @@ Note that this is the command line equivalent of the following:
     ok
     3>
 
+<a name="23_running_scripts_from_the_repl"></a>
 ### 2.3 Running Scripts from the REPL
 
 You can also use your new ```hello.lfe``` script in the REPL itself. There are
@@ -210,8 +221,10 @@ Note that in the second example, you need to reference the module.
 For more information on the LFE shell, be sure to see the "REPL" section of the
 User Guide Introduction.
 
+<a name="3_using_libraries"></a>
 ## 3 Using Libraries
 
+<a name="31_otp_modules"></a>
 ### 3.1 OTP Modules
 
 Taking advantage of the
@@ -231,6 +244,7 @@ Here's an example ```base64``` usage from the Erlang ```stdlib```:
 "And so the Universe ended."
 {% endhighlight %}
 
+<a name="32_processes_in_lfe"></a>
 ### 3.2 Processes in LFE
 
 One of the first things that people want to do with LFE is examine the message
@@ -262,6 +276,7 @@ Related to this, you can find details and discussion around OTP and creating
 your own servers in the
 <a href="/tutorials/otp-servers/1.html">OTP Servers tutorial</a>.
 
+<a name="33_third-party_libraries"></a>
 ### 3.3 Third-Party Libraries
 
 Finally, accessing code that is written in third-party libraries is exactly the
@@ -275,6 +290,7 @@ you have to do is this:
 
 That's it!
 
+<a name="4_next_steps"></a>
 ## 4 Next Steps
 
 This has been a quick overview of what LFE has to offer, so you might enjoy

@@ -11,7 +11,4 @@ parser.add_argument('-a', '--archive-path', help='path to HTML file to convert')
 args = parser.parse_args()
 
 
-epub.generate_epub(
-    args.archive_path,
-    src_html=args.html,
-    clean_up=False)
+epub.generate_epub(args.archive_path, src_html=args.html)

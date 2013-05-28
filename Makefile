@@ -26,23 +26,33 @@ $(WKPDF):
 doc-deps: $(JEKYLL) $(PYGMENTS) $(MARKDOWN) $(WKPDF)
 	sudo pip install pil
 
-build-books: doc-deps
-	@echo "Generating books ..."
-	rm -f $(BOOK_DST)/*.html $(BOOK_DST)/*.mobi $(BOOK_DST)/*.markdown
-	$(PYTHONPATH) python bin/generateBooks.py
+build-md: doc-deps
+	@echo
+	@echo "Generating markdown for ebooks ..."
+	rm -f $(BOOK_DST)/*.markdown
+	$(PYTHONPATH) python bin/generateMD.py
 
-build-site: build-books
+build-site: build-md
+	@echo
+	@echo "Building site and generating html for ebooks ..."
 	rm -rf $(SITE_BUILD)
+	rm -f $(BOOK_DST)/*.html
 	jekyll build -d $(SITE_BUILD)
 	cp $(BOOK_SRC)/*.html $(BOOK_DST)/
 
 build-pdf: $(WKPDF)
+	@echo
+	@echo "Generating pdfs for ebooks ..."
+	rm -f $(BOOK_DST)/*.pdf
 	for BOOK in $(BOOKS); do \
 	$(WKPDF) \
 	--source $(BOOK_DST)/$$BOOK.html \
 	--output $(BOOK_DST)/$$BOOK.pdf; done
 
 build-epub: build-site build-pdf
+	@echo
+	@echo "Generating epubs for ebooks ..."
+	rm -f $(BOOK_DST)/*.epub
 	for BOOK in $(BOOKS); do \
 	$(PYTHONPATH) python bin/generateEPub.py \
 	--html=$(BOOK_DST)/$$BOOK.html \
@@ -50,6 +60,9 @@ build-epub: build-site build-pdf
 	cp $(EPUB_BUILD)/*.epub $(BOOK_DST)
 
 build-mobi: build-epub
+	@echo
+	@echo "Generating mobis for ebooks ..."
+	rm -f $(BOOK_DST)/*.mobi
 	for BOOK in $(BOOKS); do \
 	./bin/kindlegen $(BOOK_DST)/$$BOOK.epub -c2; done
 

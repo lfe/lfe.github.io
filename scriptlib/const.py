@@ -174,3 +174,18 @@ copyright_page_html = """
   </body>
 </html>
 """
+toc_entry = """
+    <div style="text-indent: %(indent)sem;">
+      <a href="%(filename)s#%(anchor)s">%(linktext)s</a>
+    </div>
+"""
+toc_page_html = """
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>%(title)s</title>
+  </head>
+  <body>
+%(tocentries)s
+  </body>
+</html>
+"""

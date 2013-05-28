@@ -4,7 +4,7 @@ import zipfile
 
 from PIL import Image, ImageDraw, ImageFont
 
-from scriptlib import config, const
+from scriptlib import config, const, md
 
 
 def get_book_name(html_file):
@@ -69,9 +69,14 @@ def get_opf_manifest(book_config):
             "id": "html_3",
             "mime": const.mimetype_html,
             "filename": "3.html"},
-        # main page
+        # embedded toc
         const.opf_manifest_html % {
             "id": "html_4",
+            "mime": const.mimetype_html,
+            "filename": "toc.html"},
+        # main page
+        const.opf_manifest_html % {
+            "id": "html_5",
             "mime": const.mimetype_html,
             "filename": "4.html"},
         ]
@@ -210,6 +215,9 @@ def generate_epub(archive_path, src_html, clean_up=True):
     # add acknowledgements page
     dst_acks = get_file_path(dst_path, "3.html")
     create_acks_page(dst=dst_acks)
+    # add embedded toc
+    dst_toc = get_file_path(dst_path, "toc.html")
+    create_toc_page(dst=dst_toc)
     # add main html file
     dst_html = get_file_path(dst_path, "4.html")
     copy_file(src=src_html, dst=dst_html)

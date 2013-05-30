@@ -176,10 +176,16 @@ copyright_page_html = """
 """
 toc_entry = """
     <div style="text-indent: %(indent)sem;">
+      <a href="#%(anchor)s">%(linktext)s</a>
+    </div>
+"""
+toc_entry_with_file = """
+    <div style="text-indent: %(indent)sem;">
       <a href="%(filename)s#%(anchor)s">%(linktext)s</a>
     </div>
 """
 toc_page_html = """
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <title>%(title)s</title>

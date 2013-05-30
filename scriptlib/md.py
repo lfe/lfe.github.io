@@ -57,6 +57,7 @@ def filter_front_matter(chapter):
 def is_heading(key):
     if (key.startswith("#") and
         not key.startswith("#B(") and
+        not key.startswith("#b(") and
         not key.startswith("#(") and
         not key.startswith("#Fun")):
         return True
@@ -64,8 +65,12 @@ def is_heading(key):
 
 
 def get_anchor_name(heading):
-    return heading.replace('#', '').strip().replace('.', '').replace(
-        ' ', '_').lower()
+    return heading.replace(
+        '#', '').strip().replace(
+        '.', '').replace(
+        ' ', '_').replace(
+        "'", '').replace(
+        '`', '').lower()
 
 
 def get_anchor(heading):
@@ -78,7 +83,8 @@ def is_seen(key, seen):
     return False
 
 
-def remove_extra_headings(chapter, headings_only=False):
+def remove_extra_headings(chapter, headings_only=False, include_anchors=True,
+                          as_string=True):
     """
     Several chapters have their headings listed more than once (due to multiple
     markdown docs). This function removes all but the first one.
@@ -91,19 +97,27 @@ def remove_extra_headings(chapter, headings_only=False):
             key = line.strip()
             if is_heading(key):
                 if not is_seen(key, seen):
-                    filtered_section.append(get_anchor(line))
+                    if include_anchors:
+                        filtered_section.append(get_anchor(line))
                     filtered_section.append(line)
                     seen.add(key)
             elif not headings_only:
                 filtered_section.append(line)
-        sections.append("\n".join(filtered_section))
+        if as_string:
+            sections.append("\n".join(filtered_section))
+        else:
+            sections.extend(filtered_section)
     return sections
 
 
 def assemble_headings(book_config):
     headings = []
     for chapter_location in book_config.chapters:
-        headings.extend(remove_extra_headings(headings_only=True))
+        chapter = build_chapter(chapter_location)
+        headings.extend(
+            remove_extra_headings(
+                chapter, headings_only=True, include_anchors=False,
+                as_string=False))
     return headings
 
 

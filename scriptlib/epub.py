@@ -184,10 +184,21 @@ def create_css_file(dst):
         fh.write(const.css)
 
 
+def get_indent(heading):
+    return heading.split()[0].count("#") - 1
+
+
 def get_toc_entries(book_config):
     html = []
-    headings = md.assemble_headings(book_config)
-    import pdb;pdb.set_trace()
+    # XXX add entries for external pages: cover, title, copyright, acks
+    for heading in md.assemble_headings(book_config):
+        entry = const.toc_entry_with_file % {
+            "linktext": heading.strip("#").replace("`", "").strip(),
+            "anchor": md.get_anchor_name(heading),
+            "indent": get_indent(heading),
+            "filename": "4.html"}
+        html.append(entry)
+    return "\n".join(html)
 
 
 def create_toc_page(path, dst):
@@ -196,7 +207,7 @@ def create_toc_page(path, dst):
         "title": book_config.title,
         "tocentries": get_toc_entries(book_config)}
     with open(dst, "w") as fh:
-        fh.write(data)
+        fh.write(data.encode("utf-8"))
 
 
 def create_archive(archive_path, files):
@@ -234,11 +245,11 @@ def generate_epub(archive_path, src_html, clean_up=True):
     create_acks_page(dst=dst_acks)
     # add embedded toc
     dst_toc = get_file_path(dst_path, "toc.html")
-    create_toc_page(dst=dst_toc)
+    create_toc_page(path=dst_path, dst=dst_toc)
     # add main html file
     dst_html = get_file_path(dst_path, "4.html")
     copy_file(src=src_html, dst=dst_html)
     # assumble epub files
-    files = [dst_cover, dst_title, dst_copyright, dst_acks, dst_html]
+    files = [dst_cover, dst_title, dst_copyright, dst_toc, dst_acks, dst_html]
     create_content_opf(dst_path, dst_html)
     create_archive(dst_path, files)

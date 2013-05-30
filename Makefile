@@ -3,34 +3,38 @@ SITE_BUILD = ./build
 BOOK_SRC = $(SITE_BUILD)/downloads
 BOOK_DST = ./downloads
 PYTHONPATH = PYTHONPATH=.
-PYGMENTS = $(shell python -c "import pygments;print pygments.__path__[0]")
-MARKDOWN = $(shell python -c "import markdown;print markdown.__path__[0]")
 BOOKS = $(shell $(PYTHONPATH) python -c "from scriptlib import config;print config.get_book_names()")
 EPUB_BUILD = $(SITE_BUILD)/epub
 WKPDF = /usr/bin/wkpdf
+VENV = .venv
+ACT = $(VENV)/bin/activate
+
+$(VENV):
+	virtualenv $(VENV)
+
+clean:
+	rm -rf $(VENV) $(SITE_BUILD)
 
 $(JEKYLL):
 	sudo gem update --system
 	sudo gem install jekyll
 	sudo gem install jekyll-tagging
 
-$(PYGMENTS):
-	sudo pip install pygments
-
-$(MARKDOWN):
-	sudo pip install markdown
-
 $(WKPDF):
 	sudo gem install wkpdf
 
-doc-deps: $(JEKYLL) $(PYGMENTS) $(MARKDOWN) $(WKPDF)
-	sudo pip install pil
+python-deps:
+	. $(ACT) && pip install pygments
+	. $(ACT) && pip install markdown
+	. $(ACT) && pip install pil
+
+doc-deps: $(VENV) $(JEKYLL) $(WKPDF) python-deps
 
 build-md: doc-deps
 	@echo
 	@echo "Generating markdown for ebooks ..."
 	rm -f $(BOOK_DST)/*.markdown
-	$(PYTHONPATH) python bin/generateMD.py
+	. $(ACT) && $(PYTHONPATH) python bin/generateMD.py
 
 build-site: build-md
 	@echo
@@ -54,7 +58,7 @@ build-epub: build-site build-pdf
 	@echo "Generating epubs for ebooks ..."
 	rm -f $(BOOK_DST)/*.epub
 	for BOOK in $(BOOKS); do \
-	$(PYTHONPATH) python bin/generateEPub.py \
+	. $(ACT) && $(PYTHONPATH) python bin/generateEPub.py \
 	--html=$(BOOK_DST)/$$BOOK.html \
 	--archive-path=$(EPUB_BUILD); done
 	cp $(EPUB_BUILD)/*.epub $(BOOK_DST)
@@ -80,4 +84,4 @@ publish-books: build-mobi
 contributors:
 	git log --pretty=format:"%an"|sort -u
 
-.PHONY: build-books build-epub build-mobi
+.PHONY: build-books build-epub build-mobi python-deps

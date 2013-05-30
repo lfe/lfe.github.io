@@ -78,7 +78,7 @@ def is_seen(key, seen):
     return False
 
 
-def remove_extra_headings(chapter):
+def remove_extra_headings(chapter, headings_only=False):
     """
     Several chapters have their headings listed more than once (due to multiple
     markdown docs). This function removes all but the first one.
@@ -94,15 +94,22 @@ def remove_extra_headings(chapter):
                     filtered_section.append(get_anchor(line))
                     filtered_section.append(line)
                     seen.add(key)
-            else:
+            elif not headings_only:
                 filtered_section.append(line)
         sections.append("\n".join(filtered_section))
     return sections
 
 
-def assemble_chapters(doc, remove_front_matter=True):
+def assemble_headings(book_config):
+    headings = []
+    for chapter_location in book_config.chapters:
+        headings.extend(remove_extra_headings(headings_only=True))
+    return headings
+
+
+def assemble_chapters(book_config, remove_front_matter=True):
     chapters = []
-    for chapter_location in doc.chapters:
+    for chapter_location in book_config.chapters:
         chapter = build_chapter(chapter_location)
         if remove_front_matter:
             chapter = filter_front_matter(chapter)
@@ -111,21 +118,22 @@ def assemble_chapters(doc, remove_front_matter=True):
     return chapters
 
 
-def assemble_book(doc, remove_front_matter=True):
+def assemble_book(book_config, remove_front_matter=True):
     chapters = [const.delimiter,
                 "layout: book",
-                "title: %s" % doc.title,
-                "author: %s" % ", ".join(doc.authors),
-                const.delimiter] + assemble_chapters(doc, remove_front_matter)
+                "title: %s" % book_config.title,
+                "author: %s" % ", ".join(book_config.authors),
+                const.delimiter] + assemble_chapters(
+                    book_config, remove_front_matter)
     book = "\n".join(chapters)
     return book.encode("utf-8")
 
 
-def generate_doc(doc):
-    markdown_data = assemble_book(doc)
-    write_file(doc.md_file, markdown_data)
+def generate_doc(book_config):
+    markdown_data = assemble_book(book_config)
+    write_file(book_config.md_file, markdown_data)
 
 
 def generate_docs():
-    for doc in config.docs:
-        generate_doc(doc)
+    for book_config in config.docs:
+        generate_doc(book_config)

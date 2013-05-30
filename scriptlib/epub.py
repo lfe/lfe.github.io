@@ -128,6 +128,7 @@ def copy_file(src, dst):
         with open(dst, "w") as fhw:
             fhw.write(fhr.read())
 
+
 def create_cover_image(path, src, dst):
     book_config = get_config(path)
     img = Image.open(src)
@@ -142,6 +143,7 @@ def create_cover_image(path, src, dst):
         draw.text((105, location), author, (255,255,255), font=author_font)
         location += 120
     img.save(dst)
+
 
 def get_html_authors(book_config):
     html = []
@@ -180,6 +182,21 @@ def create_acks_page(dst):
 def create_css_file(dst):
     with open(dst, "w") as fh:
         fh.write(const.css)
+
+
+def get_toc_entries(book_config):
+    html = []
+    headings = md.assemble_headings(book_config)
+    import pdb;pdb.set_trace()
+
+
+def create_toc_page(path, dst):
+    book_config = get_config(path)
+    data = const.toc_page_html % {
+        "title": book_config.title,
+        "tocentries": get_toc_entries(book_config)}
+    with open(dst, "w") as fh:
+        fh.write(data)
 
 
 def create_archive(archive_path, files):

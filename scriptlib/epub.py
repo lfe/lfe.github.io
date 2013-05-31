@@ -51,43 +51,13 @@ def get_opf_metadata(book_config):
 
 
 def get_opf_manifest(book_config):
-    data = [
-        # book cover
-        const.opf_manifest_html % {
-            "id": config.struct.cover.id,
-            "mime": const.mimetype_png,
-            "filename": config.struct.cover.filename},
-        # title page
-        const.opf_manifest_html % {
-            "id": config.struct.title.id,
-            "mime": const.mimetype_html,
-            "filename": config.struct.title.filename},
-        # copyright page
-        const.opf_manifest_html % {
-            "id": config.struct.copyright.id,
-            "mime": const.mimetype_html,
-            "filename": config.struct.copyright.filename},
-        # acknowledgements page
-        const.opf_manifest_html % {
-            "id": config.struct.ack.id,
-            "mime": const.mimetype_html,
-            "filename": config.struct.ack.filename},
-        # embedded toc
-        const.opf_manifest_html % {
-            "id": config.struct.html_toc.id,
-            "mime": const.mimetype_html,
-            "filename": config.struct.html_toc.filename},
-        # main page
-        const.opf_manifest_html % {
-            "id": config.struct.main.id,
-            "mime": const.mimetype_html,
-            "filename": config.struct.main.filename},
-        # ncx toc page
-        const.opf_manifest_html % {
-            "id": config.struct.ncx_toc.id,
-            "mime": const.mimetype_html,
-            "filename": config.struct.ncx_toc.filename},
-        ]
+    data = []
+    for component in config.struct.all_components:
+        component_data = const.opf_manifest_html % {
+            "id": component.id,
+            "mime": component.mimetype,
+            "filename": component.filename}
+        data.append(component_data)
     return "\n".join(data)
 
 

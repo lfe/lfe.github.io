@@ -30,13 +30,13 @@ python-deps:
 
 doc-deps: $(VENV) $(JEKYLL) $(WKPDF) python-deps
 
-build-md: doc-deps
+md: doc-deps
 	@echo
 	@echo "Generating markdown for ebooks ..."
 	rm -f $(BOOK_DST)/*.markdown
 	. $(ACT) && $(PYTHONPATH) python bin/generateMD.py
 
-build-site: build-md
+site: md
 	@echo
 	@echo "Building site and generating html for ebooks ..."
 	rm -rf $(SITE_BUILD)
@@ -44,7 +44,7 @@ build-site: build-md
 	jekyll build -d $(SITE_BUILD)
 	cp $(BOOK_SRC)/*.html $(BOOK_DST)/
 
-build-pdf: $(WKPDF)
+pdf: site $(WKPDF)
 	@echo
 	@echo "Generating pdfs for ebooks ..."
 	rm -f $(BOOK_DST)/*.pdf
@@ -53,7 +53,7 @@ build-pdf: $(WKPDF)
 	--source $(BOOK_DST)/$$BOOK.html \
 	--output $(BOOK_DST)/$$BOOK.pdf; done
 
-build-epub: build-site build-pdf
+epub: site pdf
 	@echo
 	@echo "Generating epubs for ebooks ..."
 	rm -f $(BOOK_DST)/*.epub
@@ -63,9 +63,9 @@ build-epub: build-site build-pdf
 	--archive-path=$(EPUB_BUILD); done
 	cp $(EPUB_BUILD)/*.epub $(BOOK_DST)
 
-build-mobi: build-epub build-mobi-fast
+mobi: epub mobi-fast
 
-build-mobi-fast:
+mobi-fast:
 	@echo
 	@echo "Generating mobis for ebooks ..."
 	rm -f $(BOOK_DST)/*.mobi

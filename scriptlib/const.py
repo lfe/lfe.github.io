@@ -201,7 +201,7 @@ toc_page_html = """
 """
 ncx_toc_entry = """
 <navPoint id="%(id)s" playOrder="%(playorder)s">
-<navLabel><text>%(indents)s%(linktext)s</text></navLabel>
+<navLabel><text>%(indent)s%(linktext)s</text></navLabel>
 <content src="%(filename)s#%(anchor)s"/>
 </navPoint>
 """

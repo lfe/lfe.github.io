@@ -51,43 +51,13 @@ def get_opf_metadata(book_config):
 
 
 def get_opf_manifest(book_config):
-    data = [
-        # book cover
-        const.opf_manifest_html % {
-            "id": config.struct.cover.id,
-            "mime": const.mimetype_png,
-            "filename": config.struct.cover.filename},
-        # title page
-        const.opf_manifest_html % {
-            "id": config.struct.title.id,
-            "mime": const.mimetype_html,
-            "filename": config.struct.title.filename},
-        # copyright page
-        const.opf_manifest_html % {
-            "id": config.struct.copyright.id,
-            "mime": const.mimetype_html,
-            "filename": config.struct.copyright.filename},
-        # acknowledgements page
-        const.opf_manifest_html % {
-            "id": config.struct.ack.id,
-            "mime": const.mimetype_html,
-            "filename": config.struct.ack.filename},
-        # embedded toc
-        const.opf_manifest_html % {
-            "id": config.struct.html_toc.id,
-            "mime": const.mimetype_html,
-            "filename": config.struct.html_toc.filename},
-        # main page
-        const.opf_manifest_html % {
-            "id": config.struct.main.id,
-            "mime": const.mimetype_html,
-            "filename": config.struct.main.filename},
-        # ncx toc page
-        const.opf_manifest_html % {
-            "id": config.struct.ncx_toc.id,
-            "mime": const.mimetype_html,
-            "filename": config.struct.ncx_toc.filename},
-        ]
+    data = []
+    for component in config.struct.all_components:
+        component_data = const.opf_manifest_html % {
+            "id": component.id,
+            "mime": component.mimetype,
+            "filename": component.filename}
+        data.append(component_data)
     return "\n".join(data)
 
 
@@ -202,16 +172,26 @@ def get_indent(heading):
     return heading.split()[0].count("#") - 1
 
 
+def get_toc_entry(linktext, filename, anchor="", indent=0):
+    return const.toc_entry_with_file % {
+        "linktext": linktext,
+        "anchor": anchor,
+        "indent": indent,
+        "filename": filename}
+
+
 def get_toc_entries(book_config):
-    html = []
-    # XXX add entries for external pages: cover, title, copyright, acks
+    html = [
+        get_toc_entry("Title Page", config.struct.title.filename),
+        get_toc_entry("Copyright", config.struct.copyright.filename),
+        get_toc_entry("Acknowledgements", config.struct.ack.filename),
+        ]
     for heading in md.assemble_headings(book_config):
-        entry = const.toc_entry_with_file % {
-            "linktext": heading.strip("#").replace("`", "").strip(),
-            "anchor": md.get_anchor_name(heading),
-            "indent": get_indent(heading),
-            "filename": config.struct.main.filename}
-        html.append(entry)
+        linktext = heading.strip("#").replace("`", "").strip()
+        anchor = md.get_anchor_name(heading)
+        indent = get_indent(heading)
+        filename = config.struct.main.filename
+        html.append(get_toc_entry(linktext, filename, anchor, indent))
     return "\n".join(html)
 
 
@@ -224,19 +204,28 @@ def create_toc_page(path, dst):
         fh.write(data.encode("utf-8"))
 
 
+def get_ncx_toc_entry(linktext, filename, playorder, anchor="", indent=""):
+    return const.ncx_toc_entry % {
+            "linktext": linktext,
+            "anchor": anchor,
+            "indent": indent,
+            "filename": filename,
+            "playorder": playorder,
+            "id": anchor}
+
+
 def get_ncx_toc_entries(book_config):
-    xml = []
-    # XXX add entries for external pages: cover, title, copyright, acks
+    xml = [
+        get_ncx_toc_entry("Title Page", config.struct.title.filename, 1),
+        get_ncx_toc_entry("Copyright", config.struct.copyright.filename, 2),
+        get_ncx_toc_entry("Acknowledgements", config.struct.ack.filename, 3),
+        ]
     for index, heading in enumerate(md.assemble_headings(book_config)):
-        clean_name = md.get_anchor_name(heading)
-        entry = const.ncx_toc_entry % {
-            "linktext": heading.strip("#").replace("`", "").strip(),
-            "anchor": clean_name,
-            "indents": get_indent(heading) * const.toc_indent,
-            "filename": config.struct.main.filename,
-            "playorder": index + 1,
-            "id": clean_name}
-        xml.append(entry)
+        anchor = md.get_anchor_name(heading)
+        linktext = heading.strip("#").replace("`", "").strip()
+        indent = get_indent(heading) * const.toc_indent
+        xml.append(get_ncx_toc_entry(linktext, config.struct.main.filename,
+                                     index + 4, anchor, indent))
     return "\n".join(xml)
 
 

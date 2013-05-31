@@ -7,6 +7,9 @@ from PIL import Image, ImageDraw, ImageFont
 from scriptlib import config, const, md
 
 
+content_uuid = uuid.uuid4()
+
+
 def get_book_name(html_file):
     return os.path.splitext(os.path.basename(html_file))[0]
 
@@ -38,63 +41,73 @@ def get_opf_authors(book_config):
 
 def get_opf_metadata(book_config):
     return const.opf_metadata % {
-        "uuid": uuid.uuid4(),
+        "uuid": content_uuid,
         "lang": const.lang,
         "title": book_config.title,
         "authors": get_opf_authors(book_config),
         "generator": const.generator,
         "year": book_config.publication_year,
-        "coverid": const.coverid}
+        "coverid": config.struct.cover.id}
 
 
 def get_opf_manifest(book_config):
     data = [
         # book cover
         const.opf_manifest_html % {
-            "id": const.coverid,
+            "id": config.struct.cover.id,
             "mime": const.mimetype_png,
-            "filename": const.cover},
+            "filename": config.struct.cover.filename},
         # title page
         const.opf_manifest_html % {
-            "id": "html_1",
+            "id": config.struct.title.id,
             "mime": const.mimetype_html,
-            "filename": "1.html"},
+            "filename": config.struct.title.filename},
         # copyright page
         const.opf_manifest_html % {
-            "id": "html_2",
+            "id": config.struct.copyright.id,
             "mime": const.mimetype_html,
-            "filename": "2.html"},
+            "filename": config.struct.copyright.filename},
         # acknowledgements page
         const.opf_manifest_html % {
-            "id": "html_3",
+            "id": config.struct.ack.id,
             "mime": const.mimetype_html,
-            "filename": "3.html"},
+            "filename": config.struct.ack.filename},
         # embedded toc
         const.opf_manifest_html % {
-            "id": "html_4",
+            "id": config.struct.html_toc.id,
             "mime": const.mimetype_html,
-            "filename": "toc.html"},
+            "filename": config.struct.html_toc.filename},
         # main page
         const.opf_manifest_html % {
-            "id": "html_5",
+            "id": config.struct.main.id,
             "mime": const.mimetype_html,
-            "filename": "4.html"},
+            "filename": config.struct.main.filename},
+        # ncx toc page
+        const.opf_manifest_html % {
+            "id": config.struct.ncx_toc.id,
+            "mime": const.mimetype_html,
+            "filename": config.struct.ncx_toc.filename},
         ]
     return "\n".join(data)
 
 
 def get_opf_spine(book_config):
-    return ""
+    data = []
+    for component in config.struct.all_components:
+        component_data = const.opf_spine_html % {
+            "idref": component.id,
+            "isprimary": "yes"}
+    return "\n".join(data)
 
 
 def get_opf_guide(book_config):
-    data = [
-        # title page
-        const.opf_guide_html % {
-            "htmlpage": "1.html",
-            "type": "title-page",
-            "title": "Title Page"},
-        ]
+    data = []
+    for component in config.struct.guide_components:
+        component_data = const.opf_guide_html % {
+            "htmlpage": component.filename,
+            "type": component.guide_type,
+            "title": component.name}
+        data.append(component_data)
     return "\n".join(data)
 
 
@@ -114,7 +127,8 @@ def create_content_opf(path, html_file):
         "metadata": get_opf_metadata(book_config),
         "manifest": get_opf_manifest(book_config),
         "spine": get_opf_spine(book_config),
-        "guide": get_opf_guide(book_config)}
+        "guide": get_opf_guide(book_config),
+        "ncxid": config.struct.ncx_toc.id}
     with open(os.path.join(path, const.content_opf_file), "w") as fh:
         fh.write(data)
 
@@ -196,7 +210,7 @@ def get_toc_entries(book_config):
             "linktext": heading.strip("#").replace("`", "").strip(),
             "anchor": md.get_anchor_name(heading),
             "indent": get_indent(heading),
-            "filename": "4.html"}
+            "filename": config.struct.main.filename}
         html.append(entry)
     return "\n".join(html)
 
@@ -206,6 +220,33 @@ def create_toc_page(path, dst):
     data = const.toc_page_html % {
         "title": book_config.title,
         "tocentries": get_toc_entries(book_config)}
+    with open(dst, "w") as fh:
+        fh.write(data.encode("utf-8"))
+
+
+def get_ncx_toc_entries(book_config):
+    xml = []
+    # XXX add entries for external pages: cover, title, copyright, acks
+    for index, heading in enumerate(md.assemble_headings(book_config)):
+        clean_name = md.get_anchor_name(heading)
+        entry = const.ncx_toc_entry % {
+            "linktext": heading.strip("#").replace("`", "").strip(),
+            "anchor": clean_name,
+            "indents": get_indent(heading) * const.toc_indent,
+            "filename": config.struct.main.filename,
+            "playorder": index + 1,
+            "id": clean_name}
+        xml.append(entry)
+    return "\n".join(xml)
+
+
+def create_ncx_toc_page(path, dst):
+    book_config = get_config(path)
+    data = const.ncx_page % {
+        "uuid": content_uuid,
+        "depth": const.toc_depth,
+        "title": book_config.title,
+        "tocentries": get_ncx_toc_entries(book_config)}
     with open(dst, "w") as fh:
         fh.write(data.encode("utf-8"))
 
@@ -232,24 +273,28 @@ def generate_epub(archive_path, src_html, clean_up=True):
     dst_path = os.path.join(archive_path, book_name)
     build_skeleton(dst_path, src_html)
     # add cover image
-    dst_cover = get_file_path(dst_path, const.cover)
+    dst_cover = get_file_path(dst_path, config.struct.cover.filename)
     create_cover_image(path=dst_path, src=const.cover_src, dst=dst_cover)
     # add title page
-    dst_title = get_file_path(dst_path, "1.html")
+    dst_title = get_file_path(dst_path, config.struct.title.filename)
     create_title_page(path=dst_path, dst=dst_title)
     # add copyright page
-    dst_copyright = get_file_path(dst_path, "2.html")
+    dst_copyright = get_file_path(dst_path,config.struct.copyright.filename)
     create_copyright_page(path=dst_path, dst=dst_copyright)
     # add acknowledgements page
-    dst_acks = get_file_path(dst_path, "3.html")
+    dst_acks = get_file_path(dst_path, config.struct.ack.filename)
     create_acks_page(dst=dst_acks)
     # add embedded toc
-    dst_toc = get_file_path(dst_path, "toc.html")
+    dst_toc = get_file_path(dst_path, config.struct.html_toc.filename)
     create_toc_page(path=dst_path, dst=dst_toc)
     # add main html file
-    dst_html = get_file_path(dst_path, "4.html")
+    dst_html = get_file_path(dst_path, config.struct.main.filename)
     copy_file(src=src_html, dst=dst_html)
+    # add ncx toc page
+    dst_ncx_toc = get_file_path(dst_path, config.struct.ncx_toc.filename)
+    create_ncx_toc_page(path=dst_path, dst=dst_ncx_toc)
     # assumble epub files
-    files = [dst_cover, dst_title, dst_copyright, dst_toc, dst_acks, dst_html]
+    files = [dst_cover, dst_title, dst_copyright, dst_toc, dst_acks, dst_html,
+             dst_ncx_toc]
     create_content_opf(dst_path, dst_html)
     create_archive(dst_path, files)

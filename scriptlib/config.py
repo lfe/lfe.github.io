@@ -1,9 +1,65 @@
+from scriptlib import const
+
+
 class Organizer(object):
+    pass
+
+
+class BookStructure(Organizer):
+    # cover
+    cover = Organizer()
+    cover.id = "cover"
+    cover.filename = "cover.png"
+    cover.mimetype = const.mimetype_png
+    # title page
+    title = Organizer()
+    title.id = "title"
+    title.filename = "title.html"
+    title.guide_type = "title-page"
+    title.name = "Title Page"
+    title.mimetype = const.mimetype_html
+    # copyright page
+    copyright = Organizer()
+    copyright.id = "copyright"
+    copyright.filename = "copyright.html"
+    copyright.mimetype = const.mimetype_html
+    # acknowledgements page
+    ack = Organizer()
+    ack.id = "acknowledgements"
+    ack.filename = "acknowledgements.html"
+    ack.mimetype = const.mimetype_html
+    # embedded toc
+    html_toc = Organizer()
+    html_toc.id = "toc_1"
+    html_toc.filename = "toc.html"
+    html_toc.guide_type = "toc"
+    html_toc.name = "Table of Contents"
+    html_toc.mimetype = const.mimetype_html
+    # ncx toc
+    ncx_toc = Organizer()
+    ncx_toc.id = "toc_2"
+    ncx_toc.filename = "toc.ncx"
+    ncx_toc.name = "Table of Contents"
+    ncx_toc.mimetype = const.mimetype_ncx
+    # main doc
+    main = Organizer()
+    main.id = "html_1"
+    main.filename = "1.html"
+    main.mimetype = const.mimetype_html
+    # all together now...
+    guide_components = [title, html_toc]
+    all_components = [cover, title, copyright, ack, html_toc, ncx_toc, main]
+
+
+struct = BookStructure()
+
+
+class BookConfig(Organizer):
     cover = "images/logos/LispFlavoredErlang-large-cover.jpg"
     publication_year = "2013"
 
 
-quick_start = Organizer()
+quick_start = BookConfig()
 quick_start.title = "LFE Quick Start"
 quick_start.subtitle = "Lisp Flavored Erlang for the Impatient"
 quick_start.authors = ["Duncan McGreggor"]
@@ -17,7 +73,7 @@ quick_start.chapters = [
     ]
 
 
-user_guide = Organizer()
+user_guide = BookConfig()
 user_guide.title = "LFE User Guide"
 user_guide.subtitle = "A Comprehensive Introduction to Lisp Flavored Erlang"
 user_guide.authors = ["Duncan McGreggor", "Robert Virding"]
@@ -39,7 +95,7 @@ user_guide.chapters = [
     ]
 
 
-processes_tutorial = Organizer()
+processes_tutorial = BookConfig()
 processes_tutorial.title = "Lightweight Processes"
 processes_tutorial.subtitle = "A Lisp Flavored Erlang Tutorial"
 processes_tutorial.authors = ["Duncan McGreggor"]

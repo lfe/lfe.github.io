@@ -1,5 +1,4 @@
 # -*- coding: utf-8
-
 delimiter = "---"
 contributors = """
 John Daily
@@ -8,6 +7,7 @@ Tim Fletcher
 """
 font = "fonts/Philosopher.ttf"
 font_italic = "fonts/Philosopher-Italic.ttf"
+
 
 # EPub constants
 extension = ".epub"
@@ -24,7 +24,6 @@ container_file = "%s/container.xml" % metainf_dir
 mimetype_file = "mimetype"
 oebps_dir = "OEBPS"
 content_opf_file = "%s/content.opf" % oebps_dir
-cover = "cover.png"
 cover_src = "images/logos/LispFlavoredErlang-large-cover.png"
 style = "%s/style.css" % oebps_dir
 title_page = "%s/title.html" % oebps_dir
@@ -34,7 +33,8 @@ toc_ncx = "%s/toc.ncx" % oebps_dir
 book_page = "%s/book.html" % oebps_dir
 lang = "en-US"
 generator = "lfe.github.io (custom scripts)"
-coverid = "image_1"
+toc_depth = 4
+toc_indent = "&nbsp;&nbsp;"
 
 
 # EPub XML fragments
@@ -62,6 +62,9 @@ opf_metadata = """
 opf_manifest_html = """
     <opf:item id="%(id)s" media-type="%(mime)s" href="%(filename)s"/>
 """
+opf_spine_html = """
+<opf:itemref idref="%(idref)s" linear="%(isprimary)s"/>
+"""
 opf_guide_html = """
     <opf:reference href="%(htmlpage)s" type="%(type)s" title="%(title)s"/>
 """
@@ -77,7 +80,7 @@ content_opf_xml = """
   <opf:manifest>
 %(manifest)s
   </opf:manifest>
-  <opf:spine toc="ncxtoc">
+  <opf:spine toc="%(ncxid)s">
 %(spine)s
   </opf:spine>
   <opf:guide>
@@ -191,7 +194,31 @@ toc_page_html = """
     <title>%(title)s</title>
   </head>
   <body>
+    <h1>Table of Contents</h1>
 %(tocentries)s
   </body>
 </html>
+"""
+ncx_toc_entry = """
+<navPoint id="%(id)s" playOrder="%(playorder)s">
+<navLabel><text>%(indents)s%(linktext)s</text></navLabel>
+<content src="%(filename)s#%(anchor)s"/>
+</navPoint>
+"""
+ncx_page = """
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ncx xmlns="http://www.daisy.org/z3986/2005/ncx/" version="2005-1">
+  <head>
+    <meta name="dtb:uid" content="urn:uuid:%(uuid)s"/>
+    <meta name="dtb:depth" content="%(depth)s"/>
+    <meta name="dtb:totalPageCount" content="0"/>
+    <meta name="dtb:maxPageNumber" content="0"/>
+  </head>
+  <docTitle>
+    <text>%(title)s</text>
+  </docTitle>
+  <navMap>
+%(tocentries)s
+  </navMap>
+</ncx>
 """

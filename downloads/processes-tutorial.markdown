@@ -27,7 +27,7 @@ use them in LFE programs.
 <a name="1_interacting_with_processes"></a>
 ## 1 Interacting with Processes
 
-<a name="11_dump_and_```flush```"></a>
+<a name="11_dump_and_flush"></a>
 ### 1.1 Dump and ```flush```
 
 Processes in LFE are built from functions. These running functions communicate
@@ -63,7 +63,7 @@ ok
 >
 {% endhighlight %}
 
-<a name="12_getting_classy_with_```receive```"></a>
+<a name="12_getting_classy_with_receive"></a>
 ### 1.2 Getting Classy with ```receive```
 
 As you might imagine, there's a better way to do this. Let's send another
@@ -120,7 +120,7 @@ ok
 >
 {% endhighlight %}
 
-<a name="13_shell_```spawn```"></a>
+<a name="13_shell_spawn"></a>
 ### 1.3 Shell ```spawn```
 
 So far, we've only look at the process for the REPL itself. We'd like to expand
@@ -181,7 +181,7 @@ in the shell ;-)
 <a name="2_processes_in_modules"></a>
 ## 2 Processes in Modules
 
-<a name="21_shell_```spawn```:_the_sequel"></a>
+<a name="21_shell_spawn:_the_sequel"></a>
 ### 2.1 Shell ```spawn```: The Sequel
 
 In the last section, we were all primed to explore spawning processes from the
@@ -331,7 +331,7 @@ That about wraps it up for the process registry!
 <a name="4_process_communications"></a>
 ## 4 Process Communications
 
-<a name="41_it's_a_two_way_street"></a>
+<a name="41_its_a_two_way_street"></a>
 ### 4.1 It's a Two Way Street
 
 We've spent some time looking at sending messages to processes manually. Now

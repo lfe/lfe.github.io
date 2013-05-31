@@ -48,7 +48,7 @@ REPL, running scripts, and using modules/libraries (OTP and third-party).
 <a name="13_more_about_lfe"></a>
 ## 1.3 More About LFE
 
-<a name="131_what_lfe_isn't"></a>
+<a name="131_what_lfe_isnt"></a>
 ### 1.3.1 What LFE Isn't
 
 Just to clear the air and set some expectations, here's what you're *not* going
@@ -412,7 +412,7 @@ And you're back up!
 
 There are several ways in which one may load files in LFE.
 
-<a name="1611_```slurp```"></a>
+<a name="1611_slurp"></a>
 #### 1.6.1.1 ```slurp```
 
 As mentioned in the section on
@@ -427,7 +427,7 @@ new one removes all data about the previous file.
 >
 {% endhighlight %}
 
-<a name="1612_```c```"></a>
+<a name="1612_c"></a>
 #### 1.6.1.2 ```c```
 
 Compiling a module from the REPL is what you need if you wish to work with
@@ -438,7 +438,7 @@ multiple modules simultaneously:
 >
 {% endhighlight %}
 
-<a name="1613_```ec```"></a>
+<a name="1613_ec"></a>
 #### 1.6.1.3 ```ec```
 
 You can also load Erlang files in LFE:
@@ -448,7 +448,7 @@ You can also load Erlang files in LFE:
 >
 {% endhighlight %}
 
-<a name="1614_```l```"></a>
+<a name="1614_l"></a>
 #### 1.6.1.4 ```l```
 
 If a module is in your Erlang/LFE path,  you can load that too:
@@ -464,7 +464,7 @@ If a module is in your Erlang/LFE path,  you can load that too:
 Code may be included wholesale into LFE modules by either using
 ```include-file``` or ```include-lib```.
 
-<a name="1621_```include-file```"></a>
+<a name="1621_include-file"></a>
 #### 1.6.2.1 ```include-file```
 
 If you have records or data that you would like to be available to more than
@@ -501,7 +501,7 @@ including them:
     (* (*base-cool-factor*) (*earth-adjustment*) arthur-cool-factor)))
 {% endhighlight %}
 
-<a name="1622_```include-lib```"></a>
+<a name="1622_include-lib"></a>
 #### 1.6.2.2 ```include-lib```
 
 {% highlight cl %}
@@ -787,7 +787,7 @@ if you need to work with long strings in LFE, you probably want to use
 <a name="23_binary_and_bitstrings"></a>
 ## 2.3 Binary and Bitstrings
 
-<a name="231_lists_and_```binary```"></a>
+<a name="231_lists_and_binary"></a>
 ### 2.3.1 Lists and ```binary```
 
 A full discussion of the binary type is a huge topic that probably deserves one
@@ -880,7 +880,6 @@ variables ```r```, ```g```, and ```b```, printing out the results within the
 ```let```:
 {% highlight cl %}
 > (let (((binary (r (size 5)) (g (size 6)) (b (size 5)))
-<a name="b(23_180)))"></a>
          #b(23 180)))
        (: io format '"~p ~p ~p~n" (list r g b)))
 2 61 20
@@ -891,7 +890,7 @@ ok
 We're getting a little ahead of ourselves here, by throwing a pattern in the
 mix, but it's a good enough example to risk it :-)
 
-<a name="234_so_what's_a_bitstring?"></a>
+<a name="234_so_whats_a_bitstring?"></a>
 ### 2.3.4 So What's a Bitstring?
 
 We've been looking at binaries in LFE, but what's a bitstring? The
@@ -900,7 +899,7 @@ say it well: A bitstring is a sequence of zero or more bits, where the number
 of bits doesn't need to be divisible by 8. If the number of bits is divisible
 by 8, the bitstring is also a binary.
 
-<a name="235_lfe's_exact_definition_of_binary"></a>
+<a name="235_lfes_exact_definition_of_binary"></a>
 ### 2.3.5 LFE's Exact Definition of Binary
 
 Here's the full  definition for the ```binary``` from in LFE:
@@ -1084,7 +1083,7 @@ even when the examples get convoluted.
 <a name="252_patterns_in_forms"></a>
 ### 2.5.2 Patterns in Forms
 
-<a name="2521_```let```"></a>
+<a name="2521_let"></a>
 #### 2.5.2.1 ```let```
 
 Pattern matching in ```let``` has the following general form:
@@ -1171,7 +1170,7 @@ Having seen these examples, you are probably gaining some insight into the
 power of pattern matching in Erlang and LFE. There's more, though :-) See below
 for equally potent uses.
 
-<a name="2522_```case```"></a>
+<a name="2522_case"></a>
 #### 2.5.2.2 ```case```
 
 Pattern matching in ```case``` has the following general form:
@@ -1229,7 +1228,7 @@ ok
 >
 {% endhighlight %}
 
-<a name="2523_```receive```"></a>
+<a name="2523_receive"></a>
 #### 2.5.2.3 ```receive```
 
 Pattern matching in ```receive``` has the following general form:
@@ -1305,7 +1304,7 @@ defined patterns:
 Absolutely nothing, that's what. Well, nothing from the process we spawned,
 that is... just the REPL doing its thang.
 
-<a name="2524_```cond```"></a>
+<a name="2524_cond"></a>
 #### 2.5.2.4 ```cond```
 
 Pattern matching in ```cond``` has the following general form:
@@ -1361,7 +1360,7 @@ ok
 <a name="253_special_cases"></a>
 ### 2.5.3 Special Cases
 
-<a name="2531_```set```_in_the_repl"></a>
+<a name="2531_set_in_the_repl"></a>
 #### 2.5.3.1 ```set``` in the REPL
 
 Using ```set``` in the REPL has the following general form:
@@ -1383,7 +1382,7 @@ ok
 >
 {% endhighlight %}
 
-<a name="2532_aliases_with_```=```"></a>
+<a name="2532_aliases_with_="></a>
 #### 2.5.3.2 Aliases with ```=```
 
 Aliases are defined with the following general form:
@@ -1422,7 +1421,7 @@ ok
 "Trillian"
 {% endhighlight %}
 
-<a name="2533_arguments_to_```defun```"></a>
+<a name="2533_arguments_to_defun"></a>
 #### 2.5.3.3 Arguments to ```defun```
 
 Pattern matching in functions has the following general form:
@@ -2154,7 +2153,7 @@ Here's what it looks like when multiple records are returned:
 This should be enough of an ETS taste to last until you get to the dedicated
 tutorial ;-)
 
-<a name="35_```hrl```_header_files"></a>
+<a name="35_hrl_header_files"></a>
 ## 3.5 ```.hrl``` Header Files
 <a name="4_functions_and_modules"></a>
 # 4 Functions and Modules
@@ -2207,7 +2206,7 @@ tutorial ;-)
 <a name="431_what_modules_do"></a>
 ### 4.3.1 What Modules Do
 
-<a name="432_what_modules_don't_do"></a>
+<a name="432_what_modules_dont_do"></a>
 ### 4.3.2 What Modules Don't Do
 
 <a name="433_creating_a_module"></a>

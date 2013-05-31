@@ -35,7 +35,7 @@ Next, you will need to download LFE itself:
 
 With the dependencies installed, we're now ready to build LFE.
 
-<a name="121_using_```make```"></a>
+<a name="121_using_make"></a>
 #### 1.2.1 Using ```make```
 
     $ cd ./lfe
@@ -46,7 +46,7 @@ Ordinarily, only the ```make``` command would be necessary. However, there's
 currently <a href="https://github.com/rvirding/lfe/issues/14">an issue</a> with
 the ```Makefile``` that temporarily requires that first step.
 
-<a name="122_using_```rebar```"></a>
+<a name="122_using_rebar"></a>
 #### 1.2.2 Using ```rebar```
 
 Alternatively, one may use ```rebar``` to build LFE:

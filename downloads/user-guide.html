@@ -64,7 +64,7 @@
 <p>The LFE <a href='/quick-start/1.html'>Quick Start</a> is an important resource, as it covers dependencies, building LFE, installation, using the REPL, running scripts, and using modules/libraries (OTP and third-party).</p>
 <a name='13_more_about_lfe' />
 <h2 id='13_more_about_lfe'>1.3 More About LFE</h2>
-<a name='131_what_lfe_isn&apos;t' />
+<a name='131_what_lfe_isnt' />
 <h3 id='131_what_lfe_isnt'>1.3.1 What LFE Isn&#8217;t</h3>
 
 <p>Just to clear the air and set some expectations, here&#8217;s what you&#8217;re <em>not</em> going to find in LFE:</p>
@@ -383,28 +383,28 @@ LFE Shell V5.9.3.1 (abort with ^G)
 <h3 id='161_loading_files_in_the_repl'>1.6.1 Loading Files in the REPL</h3>
 
 <p>There are several ways in which one may load files in LFE.</p>
-<a name='1611_```slurp```' />
+<a name='1611_slurp' />
 <h4 id='1611_'>1.6.1.1 <code>slurp</code></h4>
 
 <p>As mentioned in the section on <a href='/user-guide/intro/2.html'>LFE's REPL</a>, <code>slurp</code>ing a file makes all functions and macros defined in the file available in the shell. One does not need to reference the module (and, in fact, attempting to do so will result in an error. Also, note that only one file can be slurped at a time; slurping a new one removes all data about the previous file.</p>
 <div class='highlight'><pre><code class='cl'><span class='nb'>&gt;</span> <span class='p'>(</span><span class='nv'>slurp</span> <span class='o'>&#39;</span><span class='s'>&quot;my-module.lfe&quot;</span><span class='p'>)</span>
 <span class='o'>#(</span><span class='nv'>ok</span> <span class='nv'>my-module</span><span class='p'>)</span>
 <span class='nb'>&gt;</span>
-</code></pre></div><a name='1612_```c```' />
+</code></pre></div><a name='1612_c' />
 <h4 id='1612_'>1.6.1.2 <code>c</code></h4>
 
 <p>Compiling a module from the REPL is what you need if you wish to work with multiple modules simultaneously:</p>
 <div class='highlight'><pre><code class='cl'><span class='nb'>&gt;</span> <span class='p'>(</span><span class='nv'>c</span> <span class='o'>&#39;</span><span class='s'>&quot;my-module&quot;</span><span class='p'>)</span>
 <span class='o'>#(</span><span class='nv'>module</span> <span class='nv'>my-module</span><span class='p'>)</span>
 <span class='nb'>&gt;</span>
-</code></pre></div><a name='1613_```ec```' />
+</code></pre></div><a name='1613_ec' />
 <h4 id='1613_'>1.6.1.3 <code>ec</code></h4>
 
 <p>You can also load Erlang files in LFE:</p>
 <div class='highlight'><pre><code class='cl'><span class='nb'>&gt;</span> <span class='p'>(</span><span class='nv'>ec</span> <span class='o'>&#39;</span><span class='s'>&quot;../lfe/src/lfe_macro.erl&quot;</span><span class='p'>)</span>
 <span class='o'>#(</span><span class='nv'>ok</span> <span class='nv'>lfe_macro</span><span class='p'>)</span>
 <span class='nb'>&gt;</span>
-</code></pre></div><a name='1614_```l```' />
+</code></pre></div><a name='1614_l' />
 <h4 id='1614_'>1.6.1.4 <code>l</code></h4>
 
 <p>If a module is in your Erlang/LFE path, you can load that too:</p>
@@ -415,7 +415,7 @@ LFE Shell V5.9.3.1 (abort with ^G)
 <h3 id='162_loading_files_in_modules'>1.6.2 Loading Files in Modules</h3>
 
 <p>Code may be included wholesale into LFE modules by either using <code>include-file</code> or <code>include-lib</code>.</p>
-<a name='1621_```include-file```' />
+<a name='1621_include-file' />
 <h4 id='1621_'>1.6.2.1 <code>include-file</code></h4>
 
 <p>If you have records or data that you would like to be available to more than one module, you can put those in a dedicated file and pull them in to your modules. For example, let&#8217;s say I had defined the following constants in the file <code>include/consts.lfe</code>:</p>
@@ -439,7 +439,7 @@ LFE Shell V5.9.3.1 (abort with ^G)
 <span class='p'>(</span><span class='nb'>defun</span> <span class='nv'>get-coolness</span> <span class='p'>()</span>
   <span class='p'>(</span><span class='k'>let</span> <span class='p'>((</span><span class='nv'>arthur-cool-factor</span> <span class='mf'>0.1</span><span class='p'>))</span>
     <span class='p'>(</span><span class='nb'>*</span> <span class='p'>(</span><span class='vg'>*base-cool-factor*</span><span class='p'>)</span> <span class='p'>(</span><span class='vg'>*earth-adjustment*</span><span class='p'>)</span> <span class='nv'>arthur-cool-factor</span><span class='p'>)))</span>
-</code></pre></div><a name='1622_```include-lib```' />
+</code></pre></div><a name='1622_include-lib' />
 <h4 id='1622_'>1.6.2.2 <code>include-lib</code></h4>
 <div class='highlight'><pre><code class='cl'>
 </code></pre></div><a name='2_diving_in' />
@@ -659,7 +659,7 @@ LFE Shell V5.9.3.1 (abort with ^G)
 <p>Because Erlang (and thus LFE) strings consume 8 bytes per character on 32-bit systems and 16 bytes on 64-bit systems, they are not very efficient. As such, if you need to work with long strings in LFE, you probably want to use <code>(binary ...)</code>, but that&#8217;s in the next section :-)</p>
 <a name='23_binary_and_bitstrings' />
 <h2 id='23_binary_and_bitstrings'>2.3 Binary and Bitstrings</h2>
-<a name='231_lists_and_```binary```' />
+<a name='231_lists_and_binary' />
 <h3 id='231_lists_and_'>2.3.1 Lists and <code>binary</code></h3>
 
 <p>A full discussion of the binary type is a huge topic that probably deserves one or more dedicated tutorials, especially given the close connection with pattern matching and the efficient parsing of binary data. However, for now, we&#8217;re just going to look at one particular area: working with strings as binary data.</p>
@@ -716,7 +716,6 @@ LFE Shell V5.9.3.1 (abort with ^G)
 
 <p>We can use patterns to unpack binary data in a <code>let</code> expression into the variables <code>r</code>, <code>g</code>, and <code>b</code>, printing out the results within the <code>let</code>:</p>
 <div class='highlight'><pre><code class='cl'><span class='nb'>&gt;</span> <span class='p'>(</span><span class='k'>let</span> <span class='p'>(((</span><span class='nv'>binary</span> <span class='p'>(</span><span class='nv'>r</span> <span class='p'>(</span><span class='nv'>size</span> <span class='mi'>5</span><span class='p'>))</span> <span class='p'>(</span><span class='nv'>g</span> <span class='p'>(</span><span class='nv'>size</span> <span class='mi'>6</span><span class='p'>))</span> <span class='p'>(</span><span class='nv'>b</span> <span class='p'>(</span><span class='nv'>size</span> <span class='mi'>5</span><span class='p'>)))</span>
-<span class='nv'>&lt;a</span> <span class='nv'>name=</span><span class='s'>&quot;b(23_180)))&quot;</span><span class='nv'>&gt;&lt;/a&gt;</span>
          <span class='err'>#</span><span class='nv'>b</span><span class='p'>(</span><span class='mi'>23</span> <span class='mi'>180</span><span class='p'>)))</span>
        <span class='p'>(</span><span class='err'>:</span> <span class='nv'>io</span> <span class='nb'>format</span> <span class='o'>&#39;</span><span class='s'>&quot;~p ~p ~p~n&quot;</span> <span class='p'>(</span><span class='nb'>list</span> <span class='nv'>r</span> <span class='nv'>g</span> <span class='nv'>b</span><span class='p'>)))</span>
 <span class='mi'>2</span> <span class='mi'>61</span> <span class='mi'>20</span>
@@ -724,11 +723,11 @@ LFE Shell V5.9.3.1 (abort with ^G)
 <span class='nb'>&gt;</span>
 </code></pre></div>
 <p>We&#8217;re getting a little ahead of ourselves here, by throwing a pattern in the mix, but it&#8217;s a good enough example to risk it :-)</p>
-<a name='234_so_what&apos;s_a_bitstring?' />
+<a name='234_so_whats_a_bitstring?' />
 <h3 id='234_so_whats_a_bitstring'>2.3.4 So What&#8217;s a Bitstring?</h3>
 
 <p>We&#8217;ve been looking at binaries in LFE, but what&#8217;s a bitstring? The <a href='http://www.erlang.org/doc/programming_examples/bit_syntax.html'>Erlang docs</a> say it well: A bitstring is a sequence of zero or more bits, where the number of bits doesn&#8217;t need to be divisible by 8. If the number of bits is divisible by 8, the bitstring is also a binary.</p>
-<a name='235_lfe&apos;s_exact_definition_of_binary' />
+<a name='235_lfes_exact_definition_of_binary' />
 <h3 id='235_lfes_exact_definition_of_binary'>2.3.5 LFE&#8217;s Exact Definition of Binary</h3>
 
 <p>Here&#8217;s the full definition for the <code>binary</code> from in LFE:</p>
@@ -847,7 +846,7 @@ LFE Shell V5.9.3.1 (abort with ^G)
 <p>If the matching succeeds, any unbound variables in the pattern become bound. If the matching fails, a run-time error occurs. All of this is best understood through the examples given below. Each example is preceeded by the general form of pattern as used in the given context. This should help keep things clear, even when the examples get convoluted.</p>
 <a name='252_patterns_in_forms' />
 <h3 id='252_patterns_in_forms'>2.5.2 Patterns in Forms</h3>
-<a name='2521_```let```' />
+<a name='2521_let' />
 <h4 id='2521_'>2.5.2.1 <code>let</code></h4>
 
 <p>Pattern matching in <code>let</code> has the following general form:</p>
@@ -901,7 +900,7 @@ LFE Shell V5.9.3.1 (abort with ^G)
 <span class='p'>(</span><span class='s'>&quot;msg too short&quot;</span><span class='p'>)</span>
 </code></pre></div>
 <p>Having seen these examples, you are probably gaining some insight into the power of pattern matching in Erlang and LFE. There&#8217;s more, though :-) See below for equally potent uses.</p>
-<a name='2522_```case```' />
+<a name='2522_case' />
 <h4 id='2522_'>2.5.2.2 <code>case</code></h4>
 
 <p>Pattern matching in <code>case</code> has the following general form:</p>
@@ -943,7 +942,7 @@ LFE Shell V5.9.3.1 (abort with ^G)
 <span class='nv'>There</span><span class='ss'>&#39;s</span> <span class='nv'>a</span> <span class='nv'>problem</span> <span class='nv'>with</span> <span class='nv'>Zaphod.</span>
 <span class='nv'>ok</span>
 <span class='nb'>&gt;</span>
-</code></pre></div><a name='2523_```receive```' />
+</code></pre></div><a name='2523_receive' />
 <h4 id='2523_'>2.5.2.3 <code>receive</code></h4>
 
 <p>Pattern matching in <code>receive</code> has the following general form:</p>
@@ -1001,7 +1000,7 @@ LFE Shell V5.9.3.1 (abort with ^G)
 <span class='nb'>&gt;</span>
 </code></pre></div>
 <p>Absolutely nothing, that&#8217;s what. Well, nothing from the process we spawned, that is&#8230; just the REPL doing its thang.</p>
-<a name='2524_```cond```' />
+<a name='2524_cond' />
 <h4 id='2524_'>2.5.2.4 <code>cond</code></h4>
 
 <p>Pattern matching in <code>cond</code> has the following general form:</p>
@@ -1044,7 +1043,7 @@ LFE Shell V5.9.3.1 (abort with ^G)
 <span class='nb'>&gt;</span>
 </code></pre></div><a name='253_special_cases' />
 <h3 id='253_special_cases'>2.5.3 Special Cases</h3>
-<a name='2531_```set```_in_the_repl' />
+<a name='2531_set_in_the_repl' />
 <h4 id='2531__in_the_repl'>2.5.3.1 <code>set</code> in the REPL</h4>
 
 <p>Using <code>set</code> in the REPL has the following general form:</p>
@@ -1061,7 +1060,7 @@ LFE Shell V5.9.3.1 (abort with ^G)
 <span class='nb'>&gt;</span> <span class='nv'>data</span>
 <span class='s'>&quot;Trillian&quot;</span>
 <span class='nb'>&gt;</span>
-</code></pre></div><a name='2532_aliases_with_```=```' />
+</code></pre></div><a name='2532_aliases_with_=' />
 <h4 id='2532_aliases_with_'>2.5.3.2 Aliases with <code>=</code></h4>
 
 <p>Aliases are defined with the following general form:</p>
@@ -1089,7 +1088,7 @@ LFE Shell V5.9.3.1 (abort with ^G)
 <span class='nv'>ok</span>
 <span class='nb'>&gt;</span> <span class='nv'>c</span>
 <span class='s'>&quot;Trillian&quot;</span>
-</code></pre></div><a name='2533_arguments_to_```defun```' />
+</code></pre></div><a name='2533_arguments_to_defun' />
 <h4 id='2533_arguments_to_'>2.5.3.3 Arguments to <code>defun</code></h4>
 
 <p>Pattern matching in functions has the following general form:</p>
@@ -1615,7 +1614,7 @@ dedicated to handling lists</a> that we can take advantage of:</p>
 <span class='nb'>&gt;</span>
 </code></pre></div>
 <p>This should be enough of an ETS taste to last until you get to the dedicated tutorial ;-)</p>
-<a name='35_```hrl```_header_files' />
+<a name='35_hrl_header_files' />
 <h2 id='35__header_files'>3.5 <code>.hrl</code> Header Files</h2>
 <a name='4_functions_and_modules' />
 <h1 id='4_functions_and_modules'>4 Functions and Modules</h1>
@@ -1651,7 +1650,7 @@ dedicated to handling lists</a> that we can take advantage of:</p>
 <h2 id='43_modules'>4.3 Modules</h2>
 <a name='431_what_modules_do' />
 <h3 id='431_what_modules_do'>4.3.1 What Modules Do</h3>
-<a name='432_what_modules_don&apos;t_do' />
+<a name='432_what_modules_dont_do' />
 <h3 id='432_what_modules_dont_do'>4.3.2 What Modules Don&#8217;t Do</h3>
 <a name='433_creating_a_module' />
 <h3 id='433_creating_a_module'>4.3.3 Creating a Module</h3>

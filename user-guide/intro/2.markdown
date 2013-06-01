@@ -250,8 +250,9 @@ ok
 >
 {% endhighlight %}
 
-We've saved the best special variable to last: ```$ENV```. When you first
-start up a shell, the ```$ENV``` variable holds pristine state data:
+We've saved one of the more archane special variables to last: ```$ENV```.
+When you first start up a shell, the ```$ENV``` variable holds pristine state
+data:
 {% highlight cl %}
 > $ENV
 (#(variable *** ())

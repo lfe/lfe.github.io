@@ -155,6 +155,13 @@ def create_copyright_page(path, dst):
         fh.write(data)
 
 
+def create_dedication_page(dst):
+    data = const.dedication_page_html % {
+        "title": "Dedication"}
+    with open(dst, "w") as fh:
+        fh.write(data)
+
+
 def create_acks_page(dst):
     data = const.acknowledgements_page_html % {
         "title": "Acknowledgements",
@@ -184,6 +191,7 @@ def get_toc_entries(book_config):
     html = [
         get_toc_entry("Title Page", config.struct.title.filename),
         get_toc_entry("Copyright", config.struct.copyright.filename),
+        get_toc_entry("Dedication", config.struct.dedication.filename),
         get_toc_entry("Acknowledgements", config.struct.ack.filename),
         ]
     for heading in md.assemble_headings(book_config):
@@ -218,14 +226,15 @@ def get_ncx_toc_entries(book_config):
     xml = [
         get_ncx_toc_entry("Title Page", config.struct.title.filename, 1),
         get_ncx_toc_entry("Copyright", config.struct.copyright.filename, 2),
-        get_ncx_toc_entry("Acknowledgements", config.struct.ack.filename, 3),
+        get_ncx_toc_entry("Dedication", config.struct.dedication.filename, 3),
+        get_ncx_toc_entry("Acknowledgements", config.struct.ack.filename, 4),
         ]
     for index, heading in enumerate(md.assemble_headings(book_config)):
         anchor = md.get_anchor_name(heading)
         linktext = heading.strip("#").replace("`", "").strip()
         indent = get_indent(heading) * const.toc_indent
         xml.append(get_ncx_toc_entry(linktext, config.struct.main.filename,
-                                     index + 4, anchor, indent))
+                                     index + 5, anchor, indent))
     return "\n".join(xml)
 
 
@@ -270,6 +279,9 @@ def generate_epub(archive_path, src_html, clean_up=True):
     # add copyright page
     dst_copyright = get_file_path(dst_path,config.struct.copyright.filename)
     create_copyright_page(path=dst_path, dst=dst_copyright)
+    # add dedication page
+    dst_dedication = get_file_path(dst_path, config.struct.dedication.filename)
+    create_dedication_page(dst=dst_dedication)
     # add acknowledgements page
     dst_acks = get_file_path(dst_path, config.struct.ack.filename)
     create_acks_page(dst=dst_acks)
@@ -283,7 +295,7 @@ def generate_epub(archive_path, src_html, clean_up=True):
     dst_ncx_toc = get_file_path(dst_path, config.struct.ncx_toc.filename)
     create_ncx_toc_page(path=dst_path, dst=dst_ncx_toc)
     # assumble epub files
-    files = [dst_cover, dst_title, dst_copyright, dst_toc, dst_acks, dst_html,
-             dst_ncx_toc]
+    files = [dst_cover, dst_title, dst_copyright, dst_toc, dst_dedication,
+             dst_acks, dst_html, dst_ncx_toc]
     create_content_opf(dst_path, dst_html)
     create_archive(dst_path, files)

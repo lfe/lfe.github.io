@@ -28,6 +28,11 @@ class BookStructure(Organizer):
     ack.id = "acknowledgements"
     ack.filename = "acknowledgements.html"
     ack.mimetype = const.mimetype_html
+    # dedication
+    dedication = Organizer()
+    dedication.id = "dedication"
+    dedication.filename = "dedication.html"
+    dedication.mimetype = const.mimetype_html
     # embedded toc
     html_toc = Organizer()
     html_toc.id = "toc_1"
@@ -48,7 +53,8 @@ class BookStructure(Organizer):
     main.mimetype = const.mimetype_html
     # all together now...
     guide_components = [title, html_toc]
-    all_components = [cover, title, copyright, ack, html_toc, ncx_toc, main]
+    all_components = [cover, title, copyright, dedication, ack, html_toc,
+                      ncx_toc, main]
 
 
 struct = BookStructure()

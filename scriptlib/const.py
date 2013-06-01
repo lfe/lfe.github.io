@@ -110,6 +110,38 @@ title_page_html = """
   </body>
 </html>
 """
+dedication_page_html = """
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<html>
+  <head>
+    <title>%(title)s</title>
+  </head>
+  <body>
+    <div style="text-align: center">
+      <br/><br/>
+      <br/><br/>
+      <br/><br/>
+      <i>This work is dedicated to</i>
+      <br/><br/>
+      John McCarthy
+      <br/><br/>
+      <i>those that came before him:</i>
+      <br/><br/>
+      Leibniz, Frege, Peano, B. Russell, Wittgenstein, Church, von Neumann, and
+      Gödel
+      <br/><br/>
+      <i>those that came after him:</i>
+      <br/><br/>
+      S. Russell, Hart, Levin, Hewitt, Steele, Sussman, Armstrong, Virding, and
+      Williams
+      <br/><br/>
+      <i>and to all for whom the love of learning and adventure compells them
+      to explore and create.</i>
+      <br/><br/>
+    </div>
+  </body>
+</html>
+"""
 acknowledgements_page_html = """
 <html>
   <head>
@@ -120,11 +152,11 @@ acknowledgements_page_html = """
       <br/><br/>
       <h1>%(title)s</h1>
       <br/><br/>
-      <p style="font-size: 150%%">
+      <p>
         We would like to thank the following individuals who have contributed to
         the text of this book, listed in alphabetical order by first name:
       </p>
-      <p style="font-size: 150%%">%(contributors)s</p>
+      <p>%(contributors)s</p>
     </div>
   </body>
 </html>

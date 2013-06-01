@@ -5,13 +5,17 @@ total_guides: 3
 ---
 # 1 Introduction
 
-## 1.1 What is LFE?
+## 1.1 Lisp Flavored Erlang
 
-LFE is "Lisp Flavoured Erlang." It is a Lisp syntax front-end to the Erlang
+Lisp Flavored Erlang or LFE is a Lisp syntax front-end to the Erlang
 compiler. LFE is a Lisp-2, like Common Lisp, and comes with a REPL (shell).
 LFE coexists seamlessly with vanilla Erlang and OTP. As such, code written in
 LFE can freely be used together with modules written in vanilla Erlang and
 applications in Erlang/OTP.
+
+If you have ever been dissatisfied with the standard Erlang syntax, and you do
+not fear the elegance of parentheses (<a href="http://xkcd.com/297/">for a more
+civilized age</a>), you might want to spend some time writing code in LFE.
 
 ## 1.2 Getting Started
 
@@ -63,7 +67,7 @@ As such, you will not find the following:
 Here's what you *can* expect of LFE:
 
 * A proper Lisp-2, based on the features and limitations of the Erlang VM
-* Compatible with vanilla Erlang and OTP
+* Compatibility with vanilla Erlang and OTP
 * It runs on the standard Erlang VM
 
 Furthermore, as a result of Erlang's influence (and LFE's compatibility with

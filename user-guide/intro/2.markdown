@@ -20,29 +20,6 @@ currently reading :-)
 
 #### 1.5.1.1 Starting the REPL
 
-If you have LFE installed system-wide, then starting the shell can be done in
-the ways listed below.
-
-Using the ```lfe``` command. Be sure to change directory to where you have
-saved (or cloned) the LFE source code. Then:
-
-    $ ./bin/lfe
-
-You can also start the LFE REPL by passing options directly to ```erl```.
-Again, assuming that you have LFE installed system-wide, from any directory you
-may do this:
-
-    $ erl -user lfe_boot
-
-Also, if you happen to be running an Erlang shell already, you can start the
-LFE REPL with the following:
-{% highlight erlang %}
-14> lfe_shell:start().
-LFE Shell V5.9.3.1 (abort with ^G)
-<0.33.0>
-
->
-{% endhighlight %}
 
 If you *don't* have LFE installed system-wide, you need to tell it (Erlang,
 really) where the LFE ```.beam``` files are. Here are the three ways to start
@@ -67,6 +44,29 @@ LFE Shell V5.9.3.1 (abort with ^G)
 >
 {% endhighlight %}
 
+If you do have LFE installed system-wide, then starting the shell can be done in
+the ways listed below.
+
+Using the ```lfe``` command. Be sure to change directory to where you have
+saved (or cloned) the LFE source code. Then:
+
+    $ ./bin/lfe
+
+You can also start the LFE REPL by passing options directly to ```erl```.
+Again, assuming that you have LFE installed system-wide, from any directory you
+may do this:
+
+    $ erl -user lfe_boot
+
+Also, if you happen to be running an Erlang shell already, you can start the
+LFE REPL with the following:
+{% highlight erlang %}
+14> lfe_shell:start().
+LFE Shell V5.9.3.1 (abort with ^G)
+<0.33.0>
+
+>
+{% endhighlight %}
 
 #### 1.5.1.2 Running Commands
 

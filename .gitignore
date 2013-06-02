@@ -1,3 +1,4 @@
+*.beam
 _site
 .venv
 bin/kindlegen

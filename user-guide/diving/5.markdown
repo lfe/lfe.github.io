@@ -442,8 +442,8 @@ ok
 If a pattern is not matched in our example (which has no fallback pattern), an
 error is raised:
 {% highlight cl %}
-> (: func-pttrn safety-check 'oops '"Eccentrica Gallumbits ")
-exception error: #(case_clause #(oops "Eccentrica Gallumbits "))
+> (: func-pttrn safety-check 'oops '"Eccentrica Gallumbits")
+exception error: #(case_clause #(oops "Eccentrica Gallumbits"))
   in (func-pttrn safety-check 2)
 {% endhighlight %}
 
@@ -471,7 +471,7 @@ Usage is similar as well:
 > (funcall safety-check 'warn '"Arthur")
 There's a problem with Arthur.
 ok
-> (funcall safety-check 'oops '"Eccentrica Gallumbits ")
+> (funcall safety-check 'oops '"Eccentrica Gallumbits")
 exception error: function_clause
 
 >

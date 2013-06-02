@@ -167,10 +167,13 @@ has defined for
 <a href="http://www.lispworks.com/documentation/HyperSpec/Body/v__stst_.htm">*, **, ***</a>,
 and
 <a href="http://www.lispworks.com/documentation/HyperSpec/Body/v__.htm">-</a>.
+Additionally, LFE also provides the ```$ENV``` variable.
 
 * ```+/++/+++``` - The three previous expressions input.
 * ```*/**/***``` - The values of the previous 3 expressions.
 * ```-``` - The current expression input.
+* ```$ENV``` - The current environment (accessible in the REPL as well as in
+  macros).
 
 These probably warrant some examples.
 

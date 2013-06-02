@@ -5,9 +5,9 @@ total_guides: 5
 ---
 # 3 Lists and Simple Data
 
-## 3.4 Records
+## 3.5 Records
 
-### 3.4.1 Just Records
+### 3.5.1 Just Records
 
 Sometimes lists, tuples, property lists, or hashes are not quite what is
 needed. With tuples, you can't name keys (without awkward work-arounds), and
@@ -100,7 +100,7 @@ re-use the ```ford``` variable here).
 Also, note that there are also ```set-person-name``` and
 ```set-person-address```.
 
-### 3.4.2 Records and ETS
+### 3.5.2 Records and ETS
 
 Additional convenience functions for records are provided by LFE, but some of
 these will only make sense in the context of ETS (Erlang Term Storage), when

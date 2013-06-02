@@ -492,4 +492,4 @@ and
 where the ```guard``` in both cases is optional.
 
 You can read more about LFE comprehensions in
-<a href="/user-guide/data/2.html">section 3.2</a>
+<a href="/user-guide/data/2.html">section 3.3</a>

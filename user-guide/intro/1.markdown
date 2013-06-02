@@ -8,30 +8,57 @@ total_guides: 3
 
 ## 1.1 Lisp Flavored Erlang
 
+
+### 1.1.1 About
+
 Lisp Flavored Erlang or LFE is a Lisp syntax front-end to the Erlang
 compiler. LFE is a Lisp-2, like Common Lisp, and comes with a REPL (shell).
 LFE coexists seamlessly with vanilla Erlang and OTP. As such, code written in
 LFE can freely be used together with modules written in vanilla Erlang and
 applications in Erlang/OTP.
 
+
+### 1.1.2 Background
+
 This work started life as a beautification of what Robert Virding had already
 created when he originally documented LFE. There are a few exemplar open source
 projects which have produced extraordinary documentation: both highly
-informative as well as being exceedingly easy on the eyes.
+informative as well as being exceedingly easy on the eyes. We wanted LFE to
+aspire to those standards. In addition to helping with project adoption,
+creating an attractive and well-documented online resource for LFE makes it much
+nicer for the folks who already use the project.
+
+The Github Pages feature provided us a means whereby an appealing open source
+project site could be created easily. These efforts were rewarded almost
+immediately by visitors and users who began spreading the word, further
+catalyzing our commitment to producing an improved user experience.
 
 While attempting to add more verbose descriptions and enhance the prose around
 the original docs, there arose a strong desire to improve the organization of
 the topics covered as well. In this effort, we turned to the excellent Erlang
 books that have been published to date, and began drawing inspiration from
-these. It soon became clear that was was really needed was an LFE version of
-some combination of those excellent efforts. With that, the LFE User Guide was
+these. It soon became clear that what was really needed was an LFE version of
+some combination of those wonderful efforts. With that, the LFE User Guide was
 fully set upon its course.
+
+
+### 1.1.3 Motivation for the Uninitiated
 
 If you have ever found yourself greatly admiring the Erlang language but
 thirsting for an alternative to the standard syntax, and you do
 not fear the elegance of parentheses (<a href="http://xkcd.com/297/">for a more
 civilized age</a>), you might want to spend some time writing code in LFE. It
 could be just what you're looking for.
+
+LFE has borrowings from Common Lisp and Scheme, so should provide a familiar
+face for those who have spent time hacking on projects powered by SBCL, Allegro,
+LispWorks, Chicken Scheme, Gambit, or Racket.
+
+Similarly, those who have come to Lisp via the Java VM-powered Clojure will find
+much to love in the Erlang VM-powered LFE. LFE was released just one year after
+Clojure, but has 100% compatibility with the features in Erlang that inspired
+Clojure, some of which the Clojure community is still working on. You can
+get those without waiting when you use LFE!
 
 
 ## 1.2 Getting Started

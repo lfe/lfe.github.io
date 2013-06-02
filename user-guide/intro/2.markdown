@@ -294,7 +294,64 @@ There is, as you might have guessed, much more to that ellided output (for that
 particular example, nearly all the rest of it is macro definitions).
 
 Making use of ```$ENV``` can be very helpful when debugging include files,
-loading Erlang header files, or when creating macros.
+loading Erlang header files, or when creating macros. Furthermore, when spending
+a great deal of time in the REPL prototyping code for a project, it can be
+quite useful to refresh one's memory as to what functions and variables are
+currently available in ```$ENV```.
+
+Looking at the output for ```$ENV``` can be a bit overwhelming, however. As you
+might imagine, there is an easy answer to this: filter it! The following makes
+use of the Erlang ```lists``` module as well as patterns in an anonymous
+function, both of which will be covered in more detail later:
+{% highlight cl %}
+> (set filter-env
+    (lambda (env)
+      (: lists foreach
+        (match-lambda
+          (((tuple 'function func-name arity _))
+           (: io format '"function: ~p/~p~n" (list func-name arity)))
+          (((tuple 'macro macro-name _))
+           (: io format '"macro: ~p~n" (list macro-name)))
+          (((tuple 'variable var-name value))
+           (: io format '"variable: ~p~n" (list var-name)))
+          ((_)))
+        env)))
+#Fun<lfe_eval.21.53503600>
+{% endhighlight %}
+
+Now, as one hacks away in the REPL, ```slurp```ing away at various modules, getting a list of what's defined in the current environment is a piece of cake:
+{% highlight cl %}
+> (funcall filter-env $ENV)
+variable: 'my-var-4'
+variable: 'my-var-3'
+variable: 'my-var-2'
+variable: 'my-var-1'
+variable: filter
+function: 'bq-expand'/2
+macro: backquote
+macro: 'orelse'
+macro: 'andalso'
+macro: 'cond'
+macro: 'flet*'
+macro: 'let*'
+macro: 'list*'
+macro: '?'
+macro: ':'
+macro: '++'
+macro: cddr
+macro: cdar
+macro: cadr
+macro: caar
+variable: '***'
+variable: '**'
+variable: '*'
+variable: '-'
+variable: '+++'
+variable: '++'
+variable: '+'
+ok
+>
+{% endhighlight %}
 
 
 ### 1.5.4 Getting Out of Trouble

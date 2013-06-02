@@ -439,7 +439,46 @@ ok
 >
 {% endhighlight %}
 
-#### 2.5.3.4 Patterns in Comprehensions
+If a pattern is not matched in our example (which has no fallback pattern), an
+error is raised:
+{% highlight cl %}
+> (: func-pttrn safety-check 'oops '"Eccentrica Gallumbits")
+exception error: #(case_clause #(oops "Eccentrica Gallumbits"))
+  in (func-pttrn safety-check 2)
+{% endhighlight %}
+
+
+#### 2.5.3.4 Arguments to Anonymous Functions
+
+One can use patterns in arguments with anonymous functions similarly to how one
+does with named functions, demonstrated above. In LFE, this is done with
+```match-lambda```. Here's an example done in the REPL:
+{% highlight cl %}
+> (set safety-check
+    (match-lambda
+      (('ok msg)
+        (: io format '"~s seems good.~n" (list msg)))
+      (('warn msg)
+        (: io format '"There's a problem with ~s.~n" (list msg)))
+      (('crit msg)
+        (: io format '"Be careful of ~s.~n" (list msg)))))
+#Fun<lfe_eval.31.53503600>
+>
+{% endhighlight %}
+
+Usage is similar as well:
+{% highlight cl %}
+> (funcall safety-check 'warn '"Arthur")
+There's a problem with Arthur.
+ok
+> (funcall safety-check 'oops '"Eccentrica Gallumbits")
+exception error: function_clause
+
+>
+{% endhighlight %}
+
+
+#### 2.5.3.5 Patterns in Comprehensions
 
 List and binary comprehensions make use of patterns in a limited sense. They
 have the following general forms:
@@ -453,4 +492,4 @@ and
 where the ```guard``` in both cases is optional.
 
 You can read more about LFE comprehensions in
-<a href="/user-guide/data/2.html">section 3.2</a>
+<a href="/user-guide/data/2.html">section 3.3</a>

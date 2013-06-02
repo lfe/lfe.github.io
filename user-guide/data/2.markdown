@@ -5,7 +5,7 @@ total_guides: 5
 ---
 # 3 Lists and Simple Data
 
-## 3.2 Comprehensions
+## 3.3 Comprehensions
 
 In the section on lists, we gave an example of building a list using the
 ```map``` function:
@@ -26,7 +26,7 @@ offers another pattern, though: comprehensions.
 LFE supports Erlang comprehensions via two macros: ```lc``` for list
 comprehensions and ```bc``` for bitstring comprehensions.
 
-### 3.2.1 List Comprehensions
+### 3.3.1 List Comprehensions
 
 Let's take a look at an example and then discuss it. Here's a list
 comprehension version of our ```map```/```lambda``` combo above:
@@ -58,7 +58,7 @@ To a Lisper, the original is probably much more legible. However, in Erlang
 these is no question that the list comprehensions are shorter and easier to
 read than using anonymous functions.
 
-### 3.2.1 Bitstring Comprehensions
+### 3.3.1 Bitstring Comprehensions
 
 For binary data, we have something similar to the list comprehension. Here's
 what a bitstring comprehension looks like (adapted from the example given by

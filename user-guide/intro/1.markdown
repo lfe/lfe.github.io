@@ -5,6 +5,7 @@ total_guides: 3
 ---
 # 1 Introduction
 
+
 ## 1.1 Lisp Flavored Erlang
 
 Lisp Flavored Erlang or LFE is a Lisp syntax front-end to the Erlang
@@ -13,9 +14,25 @@ LFE coexists seamlessly with vanilla Erlang and OTP. As such, code written in
 LFE can freely be used together with modules written in vanilla Erlang and
 applications in Erlang/OTP.
 
-If you have ever been dissatisfied with the standard Erlang syntax, and you do
+This work started life as a beautification of what Robert Virding had already
+created when he originally documented LFE. There are a few exemplar open source
+projects which have produced extraordinary documentation: both highly
+informative as well as being exceedingly easy on the eyes.
+
+While attempting to add more verbose descriptions and enhance the prose around
+the original docs, there arose a strong desire to improve the organization of
+the topics covered as well. In this effort, we turned to the excellent Erlang
+books that have been published to date, and began drawing inspiration from
+these. It soon became clear that was was really needed was an LFE version of
+some combination of those excellent efforts. With that, the LFE User Guide was
+fully set upon its course.
+
+If you have ever found yourself greatly admiring the Erlang language but
+thirsting for an alternative to the standard syntax, and you do
 not fear the elegance of parentheses (<a href="http://xkcd.com/297/">for a more
-civilized age</a>), you might want to spend some time writing code in LFE.
+civilized age</a>), you might want to spend some time writing code in LFE. It
+could be just what you're looking for.
+
 
 ## 1.2 Getting Started
 
@@ -46,7 +63,9 @@ The LFE [Quick Start](/quick-start/1.html) is an important
 resource, as it covers dependencies, building LFE, installation, using the
 REPL, running scripts, and using modules/libraries (OTP and third-party).
 
+
 ## 1.3 More About LFE
+
 
 ### 1.3.1 What LFE Isn't
 
@@ -61,6 +80,7 @@ As such, you will not find the following:
 * A Scheme-like single namespace
 * CL packages or munged names faking packages
 * Access to Java libraries
+
 
 ### 1.3.2 What LFE Is!
 
@@ -80,6 +100,7 @@ it), the following hold:
 * LFE has a compiler/interpreter
 * functions with declared arity and fixed number of arguments
 * Lisp macros
+
 
 ## 1.4 What to Expect from this Guide
 

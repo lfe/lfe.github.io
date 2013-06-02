@@ -26,7 +26,7 @@ the ways listed below.
 Using the ```lfe``` command. Be sure to change directory to where you have
 saved (or cloned) the LFE source code. Then:
 
-    $ ./bin/lfe -pa ./ebin
+    $ ./bin/lfe
 
 You can also start the LFE REPL by passing options directly to ```erl```.
 Again, assuming that you have LFE installed system-wide, from any directory you

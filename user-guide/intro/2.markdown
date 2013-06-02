@@ -290,9 +290,11 @@ the definitions in that file:
 ...
 {% endhighlight %}
 
-There is, as you might have guessed, much more that is displayed, mostly macro
-definitions. This can come in very handy when debugging the loading of files,
-macros, etc.
+There is, as you might have guessed, much more to that ellided output (for that
+particular example, nearly all the rest of it is macro definitions).
+
+Making use of ```$ENV``` can be very helpful when debugging include files,
+loading Erlang header files, or when creating macros.
 
 
 ### 1.5.4 Getting Out of Trouble

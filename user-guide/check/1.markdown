@@ -1,7 +1,7 @@
 ---
 layout: user-guide
 guide: 1
-total_guides: 3
+total_guides: 4
 ---
 # 6 Checks, Errors, and Tests
 

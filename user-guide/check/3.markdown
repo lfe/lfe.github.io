@@ -1,7 +1,7 @@
 ---
 layout: user-guide
 guide: 3
-total_guides: 3
+total_guides: 4
 ---
 # 6 Checks, Errors, and Tests
 
@@ -22,23 +22,3 @@ total_guides: 3
 #### 6.3.5.2 Setup and Cleanup
 
 #### 6.3.5.3 Generating Tests
-
-## 6.4 TDD
-
-### 6.4.1 Creating an API and Writing Tests
-
-### 6.4.2 Making Tests Pass
-
-#### 6.4.2.1 Factoring Out Common Test Logic
-
-### 6.4.3 Testing the Server
-
-### 6.4.4 Testing the Client
-
-### 6.4.5 Cleaning Up After Tests
-
-### 6.4.6 Handling Logged Errors
-
-### 6.4.7 Resolving a Bug
-
-### 6.4.8 Code Coverage

@@ -1,7 +1,7 @@
 ---
 layout: user-guide
 guide: 2
-total_guides: 3
+total_guides: 4
 ---
 # 6 Checks, Errors, and Tests
 
@@ -17,4 +17,4 @@ examples will be using ```(catch ...)```.
 
 ### 6.2.1 A Simple Case
 
-
+TBD

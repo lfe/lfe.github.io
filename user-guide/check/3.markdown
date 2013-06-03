@@ -19,6 +19,8 @@ total_guides: 4
 
 #### 6.3.5.1 Erlang EUnit Assert Macros
 
-#### 6.3.5.2 Setup and Cleanup
+#### 6.3.5.2 Fixtures: Setup and Cleanup
 
 #### 6.3.5.3 Generating Tests
+
+### 6.3.6 Mocking with Meck

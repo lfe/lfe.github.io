@@ -5,7 +5,9 @@ total_guides: 4
 ---
 # 4 Functions and Modules
 
+
 ## 4.2 LFE-Specific Functions and Macros
+
 
 ### 4.2.1 Core Forms
 
@@ -19,9 +21,9 @@ total_guides: 4
 (binary seg ... )
 (lambda (arg ...) ...)
 (match-lambda
-  ((arg ... ) {{(when e ...)}} ...)
+  ((arg ... ) (when e ...) ...)
   ... )
-(let ((pat {{(when e ...)}} e)
+(let ((pat (when e ...) e)
       ...)
   ... )
 (let-function ((name lambda|match-lambda)
@@ -34,25 +36,25 @@ total_guides: 4
             ...)
   ...)
 (progn ... )
-(if test true-expr {{false-expr}})
+(if test true-expr false-expr)
 (case e
-  (pat {{(when e ...)}} ...)
+  (pat (when e ...) ...)
    ... ))
 (receive
-  (pat {{(when e ...)}} ... )
+  (pat (when e ...) ... )
   ...
   (after timeout ... ))
 (catch ... )
 (try
   e
-  {{(case ((pat {{(when e ...)}} ... )
-          ... ))}}
-  {{(catch
-     (((tuple type value ignore) {{(when e ...)}}
+  (case ((pat (when e ...) ... )
+          ... ))
+  (catch
+     (((tuple type value ignore) (when e ...)
 
       ... )
-     ... )}}
-  {{(after ... )}})
+     ... )
+  (after ... ))
 (funcall func arg ... )
 (call mod func arg ... )
 
@@ -60,12 +62,13 @@ total_guides: 4
 (define-macro name lambda|match-lambda)
 {% endhighlight %}
 
+
 ### 4.2.2 Macro Forms
 
 {% highlight cl %}
 (: mod func arg ... ) =>
         (call 'mod 'func arg ... )
-(? {{timeout {{default}} }})
+(? timeout default )
 
 (++ ... )
 (list* ...)
@@ -87,6 +90,7 @@ total_guides: 4
 (bc (qual ...) ...)
 (match-spec ...)
 {% endhighlight %}
+
 
 ### 4.2.3 Common Lisp Inspired Macros
 
@@ -117,6 +121,7 @@ total_guides: 4
 (defrecord name ...)
 {% endhighlight %}
 
+
 ### 4.2.4 Scheme Inspired Macros
 
 {% highlight cl %}
@@ -132,6 +137,7 @@ total_guides: 4
 (define-record name ...)
 {% endhighlight %}
 
+
 ### 4.2.5 Additional Lisp Functions
 
 {% highlight cl %}
@@ -145,7 +151,7 @@ total_guides: 4
         arguments before doing the arithmetic/comparisons operations.
 
 (acons key value list)
-(pairlis keys values {{list}})
+(pairlis keys values list)
 (assoc key list)
 (assoc-if test list)
 (assoc-if-not test list)
@@ -160,16 +166,16 @@ total_guides: 4
 (sublis alist tree)
         The standard substituition functions.
 
-(macroexpand-1 expr {{environment}})
+(macroexpand-1 expr environment)
         If Expr is a macro call, does one round of expansion,
         otherwise returns Expr.
 
-(macroexpand expr {{environment}})
+(macroexpand expr environment)
         Returns the expansion returned by calling macroexpand-1
         repeatedly, starting with Expr, until the result is no longer
         a macro call.
 
-(macroexpand-all expr {{environment}})
+(macroexpand-all expr environment)
         Returns the expansion from the expression where all macro
         calls have been expanded with macroexpand.
 
@@ -178,7 +184,7 @@ total_guides: 4
         will be expanded. Inside macros and in the shell the variable
         $ENV is bound to the current macro environment.
 
-(eval expr {{environment}})
+(eval expr environment)
         Evaluate the expression expr. Note that only the pre-defined
         lisp functions, erlang BIFs and exported functions can be
         called. Also no local variables can be accessed. To access

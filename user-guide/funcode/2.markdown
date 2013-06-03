@@ -9,10 +9,185 @@ total_guides: 4
 
 ### 4.2.1 Core Forms
 
+{% highlight cl %}
+(quote e)
+(cons head tail)
+(car e)
+(cdr e)
+(list e ... )
+(tuple e ... )
+(binary seg ... )
+(lambda (arg ...) ...)
+(match-lambda
+  ((arg ... ) {{(when e ...)}} ...)
+  ... )
+(let ((pat {{(when e ...)}} e)
+      ...)
+  ... )
+(let-function ((name lambda|match-lambda)
+               ... )
+  ... )
+(letrec-function ((name lambda|match-lambda)
+                  ... )
+  ... )
+(let-macro ((name lambda-match-lambda)
+            ...)
+  ...)
+(progn ... )
+(if test true-expr {{false-expr}})
+(case e
+  (pat {{(when e ...)}} ...)
+   ... ))
+(receive
+  (pat {{(when e ...)}} ... )
+  ...
+  (after timeout ... ))
+(catch ... )
+(try
+  e
+  {{(case ((pat {{(when e ...)}} ... )
+          ... ))}}
+  {{(catch
+     (((tuple type value ignore) {{(when e ...)}}
+
+      ... )
+     ... )}}
+  {{(after ... )}})
+(funcall func arg ... )
+(call mod func arg ... )
+
+(define-function name lambda|match-lambda)
+(define-macro name lambda|match-lambda)
+{% endhighlight %}
+
 ### 4.2.2 Macro Forms
+
+{% highlight cl %}
+(: mod func arg ... ) =>
+        (call 'mod 'func arg ... )
+(? {{timeout {{default}} }})
+
+(++ ... )
+(list* ...)
+(let* (...) ... )
+(flet ((name (arg ...) ...)
+       ...)
+  ...)
+(flet* (...) ... )
+(fletrec ((name (arg ...) ...)
+          ...)
+  ...)
+
+(cond ... )
+(andalso ... )
+(orelse ... )
+(fun func arity)
+(fun mod func arity)
+(lc (qual ...) ...)
+(bc (qual ...) ...)
+(match-spec ...)
+{% endhighlight %}
 
 ### 4.2.3 Common Lisp Inspired Macros
 
+{% highlight cl %}
+(defun name (arg ...) ...)
+(defun name
+  ((argpat ...) ...)
+  ...)
+
+(defmacro name (arg ...) ...)
+(defmacro name arg ...)
+(defmacro name
+  ((argpat ...) ...)
+  ...)
+
+(defsyntax name
+  (pat exp)
+  ...)
+
+(macrolet ((name (arg ...) ...)
+           ...)
+  ...)
+(syntaxlet ((name (pat exp) ...)
+            ...)
+  ...)
+
+(defmodule name ...)
+(defrecord name ...)
+{% endhighlight %}
+
 ### 4.2.4 Scheme Inspired Macros
 
+{% highlight cl %}
+(define (name arg ...) ...)
+(define name lambda|match-lambda)
+(define-syntax name
+  (syntax-rules (pat exp) ...)|(macro (pat body) ...))
+(let-syntax ((name ...)
+             ...)
+  ...)
+(begin ...)
+(define-module name ...)
+(define-record name ...)
+{% endhighlight %}
+
 ### 4.2.5 Additional Lisp Functions
+
+{% highlight cl %}
+(<arith_op> expr ...)
+(<comp_op> expr ...)
+        The standard arithmentic operators, + - * /, and comparison
+        operators, > >= < =< == /= =:= =/= , can take multiple
+        arguments the same as their standard lisp counterparts. This
+        is still experimental and implemented using macros. They do,
+        however, behave like normal functions and evaluate ALL their
+        arguments before doing the arithmetic/comparisons operations.
+
+(acons key value list)
+(pairlis keys values {{list}})
+(assoc key list)
+(assoc-if test list)
+(assoc-if-not test list)
+(rassoc value list)
+(rassoc-if test list)
+(rassoc-if-not test list)
+        The standard association list functions.
+
+(subst new old tree)
+(subst-if new test tree)
+(subst-if-not new test tree)
+(sublis alist tree)
+        The standard substituition functions.
+
+(macroexpand-1 expr {{environment}})
+        If Expr is a macro call, does one round of expansion,
+        otherwise returns Expr.
+
+(macroexpand expr {{environment}})
+        Returns the expansion returned by calling macroexpand-1
+        repeatedly, starting with Expr, until the result is no longer
+        a macro call.
+
+(macroexpand-all expr {{environment}})
+        Returns the expansion from the expression where all macro
+        calls have been expanded with macroexpand.
+
+        NOTE that when no explicit environment is given the
+        macroexpand functions then only the default built-in macros
+        will be expanded. Inside macros and in the shell the variable
+        $ENV is bound to the current macro environment.
+
+(eval expr {{environment}})
+        Evaluate the expression expr. Note that only the pre-defined
+        lisp functions, erlang BIFs and exported functions can be
+        called. Also no local variables can be accessed. To access
+        local variables the expr to be evaluated can be wrapped in a
+        let defining these.
+
+        For example if the data we wish to evaluate is in the variable
+        expr and it assumes there is a local variable "foo" which it
+        needs to access then we could evaluate it by calling:
+
+        (eval `(let ((foo ,foo)) ,expr))
+{% endhighlight %}

@@ -29,7 +29,7 @@ manner:
 
 where ```S``` is the successor function defined in the previous section.
 
-So here we have an identity function: any number that has zero added to it has
+First we have an identity function: any number that has zero added to it yields
 the result of the number itself.
 
 Secondly, a number, when added with the successor of another number is equal to
@@ -51,12 +51,13 @@ In LFE, we'd like to maintain symmetry with this. We could try to construct a
 function that had both definitions as pattern arguments, thus alleviating the
 need for two function definitions. However, to perfectly map the pseudo code
 to LFE, we'd have to put a function call in our pattern... and that's not
-possible. If, though, we do a little algebraic juggling, we can work around
-this. In our pseudo code we have two parameters: ```succ(n)``` and ```x```. If
-apply a predecessor function to ```succ(n)```, we'll just have ```n``` -- which
-would do nicely for a matched function argument in LFE. But we'll also need to
-apply this predecessor function to the ```n``` on the other side of the
-equation.
+possible.
+
+If, though, we do a little algebraic juggling, we can work around this. In our
+pseudo code we have two parameters: ```succ(n)``` and ```x```. If we apply a
+"predecessor" function to ```succ(n)```, we'll just have ```n``` -- which would
+do nicely for a matched function argument in LFE. But we'll also need to apply
+this predecessor function to the ```n``` on the other side of the equation.
 
 Let's create such a "predecessor" function:
 {% highlight cl %}
@@ -76,8 +77,11 @@ to define Peano's addition axiom:
 
 All of this may seem rather absurd, given what we do in every-day programming.
 Remember, though: the verbosity of these axioms and their derived definitions
-serves to explicitly show that no assumptions are being made and that all these
-operations can indeed be built upon basic principles.
+serves to explicitly show that no assumptions are being made. With a foundation
+of no assumption, we can be certain that each brick we lay on top of this sound
+(if possibly baroque) basis will be unshakable (baring the random proof by
+Gödel, of course).
+
 
 ### 5.5.2 Subtraction
 
@@ -97,6 +101,7 @@ pattern matching:
 Due to the manner in which we have defined our functions, the usual usage is
 reversed for our ```subtract``` function. The first operand is not the number
 that is being subtracted from, but rather the number that is being *subtracted*.
+
 We can see this in action if we put our definitions in a file called
 ```prf.lfe``` (named for "primitive recursive functions") and ```slurp``` it in
 the LFE REPL:

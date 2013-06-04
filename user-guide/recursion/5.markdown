@@ -5,6 +5,7 @@ total_guides: 7
 ---
 # 5 Recursion
 
+
 ## 5.8 The λ-Calculus
 
 Oh, yeah. We just went there: the λ-calculus.
@@ -33,6 +34,7 @@ context of positive integers. However, in the sections below, we will be
 leaving behind the comfort of the familiar. The λ-calculus does not concern
 itself with natural numbers per se; rather the ability to do something a given
 number of times.
+
 
 ### 5.8.1 A Quick Primer
 
@@ -251,6 +253,7 @@ given the fact that it just applied so many thousands of lambdas!
 How fortunate that we didn't have to type 10,000 `funcall`s (and the
 corresponding set of opening and closing parentheses 10,000 times).
 
+
 ### 5.8.3 Arithmetic
 
 {% highlight cl %}
@@ -274,6 +277,7 @@ corresponding set of opening and closing parentheses 10,000 times).
 {% highlight cl %}
 {% endhighlight %}
 
+
 ### 5.8.4 Logic
 
 {% highlight cl %}
@@ -281,3 +285,22 @@ corresponding set of opening and closing parentheses 10,000 times).
 
 {% highlight cl %}
 {% endhighlight %}
+
+
+### 5.8.5 Church Pairs
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+
+### 5.8.6 List Encoding
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+

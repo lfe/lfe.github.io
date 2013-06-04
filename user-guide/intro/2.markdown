@@ -322,7 +322,8 @@ function, both of which will be covered in more detail later:
 #Fun<lfe_eval.21.53503600>
 {% endhighlight %}
 
-Now, as one hacks away in the REPL, ```slurp```ing away at various modules, getting a list of what's defined in the current environment is a piece of cake:
+Now, as one hacks away in the REPL, ```slurp```ing away at various modules,
+getting a list of what's defined in the current environment is a piece of cake:
 {% highlight cl %}
 > (funcall filter-env $ENV)
 variable: 'my-var-4'

@@ -6,14 +6,65 @@ author: Duncan McGreggor, Robert Virding
 <a name="1_introduction"></a>
 # 1 Introduction
 
-<a name="11_what_is_lfe?"></a>
-## 1.1 What is LFE?
 
-LFE is "Lisp Flavoured Erlang." It is a Lisp syntax front-end to the Erlang
+<a name="11_lisp_flavored_erlang"></a>
+## 1.1 Lisp Flavored Erlang
+
+
+<a name="111_about"></a>
+### 1.1.1 About
+
+Lisp Flavored Erlang or LFE is a Lisp syntax front-end to the Erlang
 compiler. LFE is a Lisp-2, like Common Lisp, and comes with a REPL (shell).
 LFE coexists seamlessly with vanilla Erlang and OTP. As such, code written in
 LFE can freely be used together with modules written in vanilla Erlang and
 applications in Erlang/OTP.
+
+
+<a name="112_background"></a>
+### 1.1.2 Background
+
+This work started life as a beautification of what Robert Virding had already
+created when he originally documented LFE. There are a few exemplar open source
+projects which have produced extraordinary documentation: both highly
+informative as well as being exceedingly easy on the eyes. We wanted LFE to
+aspire to those standards. In addition to helping with project adoption,
+creating an attractive and well-documented online resource for LFE makes it much
+nicer for the folks who already use the project.
+
+The Github Pages feature provided us a means whereby an appealing open source
+project site could be created easily. These efforts were rewarded almost
+immediately by visitors and users who began spreading the word, further
+catalyzing our commitment to producing an improved user experience.
+
+While attempting to add more verbose descriptions and enhance the prose around
+the original docs, there arose a strong desire to improve the organization of
+the topics covered as well. In this effort, we turned to the excellent Erlang
+books that have been published to date, and began drawing inspiration from
+these. It soon became clear that what was really needed was an LFE version of
+some combination of those wonderful efforts. With that, the LFE User Guide was
+fully set upon its course.
+
+
+<a name="113_motivation_for_the_uninitiated"></a>
+### 1.1.3 Motivation for the Uninitiated
+
+If you have ever found yourself greatly admiring the Erlang language but
+thirsting for an alternative to the standard syntax, and you do
+not fear the elegance of parentheses (<a href="http://xkcd.com/297/">for a more
+civilized age</a>), you might want to spend some time writing code in LFE. It
+could be just what you're looking for.
+
+LFE has borrowings from Common Lisp and Scheme, so should provide a familiar
+face for those who have spent time hacking on projects powered by SBCL, Allegro,
+LispWorks, Chicken Scheme, Gambit, or Racket.
+
+Similarly, those who have come to Lisp via the Java VM-powered Clojure will find
+much to love in the Erlang VM-powered LFE. LFE was released just one year after
+Clojure, but has 100% compatibility with the features in Erlang that inspired
+Clojure, some of which the Clojure community is still working on. You can
+get those without waiting when you use LFE!
+
 
 <a name="12_getting_started"></a>
 ## 1.2 Getting Started
@@ -45,8 +96,10 @@ The LFE [Quick Start](/quick-start/1.html) is an important
 resource, as it covers dependencies, building LFE, installation, using the
 REPL, running scripts, and using modules/libraries (OTP and third-party).
 
+
 <a name="13_more_about_lfe"></a>
 ## 1.3 More About LFE
+
 
 <a name="131_what_lfe_isnt"></a>
 ### 1.3.1 What LFE Isn't
@@ -63,13 +116,14 @@ As such, you will not find the following:
 * CL packages or munged names faking packages
 * Access to Java libraries
 
+
 <a name="132_what_lfe_is!"></a>
 ### 1.3.2 What LFE Is!
 
 Here's what you *can* expect of LFE:
 
 * A proper Lisp-2, based on the features and limitations of the Erlang VM
-* Compatible with vanilla Erlang and OTP
+* Compatibility with vanilla Erlang and OTP
 * It runs on the standard Erlang VM
 
 Furthermore, as a result of Erlang's influence (and LFE's compatibility with
@@ -83,6 +137,7 @@ it), the following hold:
 * functions with declared arity and fixed number of arguments
 * Lisp macros
 
+
 <a name="14_what_to_expect_from_this_guide"></a>
 ## 1.4 What to Expect from this Guide
 
@@ -95,8 +150,10 @@ in-depth documents; in those cases, we provide links to that material. If your
 favorite topic is not covered above, let us know! We'll try to find a place for
 it :-)
 
+
 <a name="15_the_lfe_repl"></a>
 ## 1.5 The LFE REPL
+
 
 <a name="151_using_the_repl"></a>
 ### 1.5.1 Using the REPL
@@ -107,32 +164,10 @@ an introduction to using the LFE REPL. Regardless (and for your convenience),
 we also provide some information about the REPL in the document you are
 currently reading :-)
 
+
 <a name="1511_starting_the_repl"></a>
 #### 1.5.1.1 Starting the REPL
 
-If you have LFE installed system-wide, then starting the shell can be done in
-the ways listed below.
-
-Using the ```lfe``` command. Be sure to change directory to where you have
-saved (or cloned) the LFE source code. Then:
-
-    $ ./bin/lfe
-
-You can also start the LFE REPL by passing options directly to ```erl```.
-Again, assuming that you have LFE installed system-wide, from any directory you
-may do this:
-
-    $ erl -user lfe_boot
-
-Also, if you happen to be running an Erlang shell already, you can start the
-LFE REPL with the following:
-{% highlight erlang %}
-14> lfe_shell:start().
-LFE Shell V5.9.3.1 (abort with ^G)
-<0.33.0>
-
->
-{% endhighlight %}
 
 If you *don't* have LFE installed system-wide, you need to tell it (Erlang,
 really) where the LFE ```.beam``` files are. Here are the three ways to start
@@ -149,6 +184,30 @@ or:
     $ erl -pa /path/to/lfe/ebin
 
 followed by this from the Erlang shell:
+{% highlight erlang %}
+14> lfe_shell:start().
+LFE Shell V5.9.3.1 (abort with ^G)
+<0.33.0>
+
+>
+{% endhighlight %}
+
+If you do have LFE installed system-wide, then starting the shell can be done in
+the ways listed below.
+
+Using the ```lfe``` command. Be sure to change directory to where you have
+saved (or cloned) the LFE source code. Then:
+
+    $ ./bin/lfe
+
+You can also start the LFE REPL by passing options directly to ```erl```.
+Again, assuming that you have LFE installed system-wide, from any directory you
+may do this:
+
+    $ erl -user lfe_boot
+
+Also, if you happen to be running an Erlang shell already, you can start the
+LFE REPL with the following:
 {% highlight erlang %}
 14> lfe_shell:start().
 LFE Shell V5.9.3.1 (abort with ^G)
@@ -195,6 +254,7 @@ Or, if you want to get nuts:
 >
 {% endhighlight %}
 
+
 <a name="1513_quitting_the_repl"></a>
 #### 1.5.1.3 Quitting the REPL
 
@@ -215,6 +275,7 @@ ok
 >
 $
 {% endhighlight %}
+
 
 <a name="152_special_functions"></a>
 ### 1.5.2 Special Functions
@@ -248,6 +309,7 @@ These are listed below with information about their use.
   <a href="http://www.erlang.org/doc/man/c.html">Command Interface Module</a>
   can be reached in this way.
 
+
 <a name="153_special_variables"></a>
 ### 1.5.3 Special Variables
 
@@ -257,10 +319,13 @@ has defined for
 <a href="http://www.lispworks.com/documentation/HyperSpec/Body/v__stst_.htm">*, **, ***</a>,
 and
 <a href="http://www.lispworks.com/documentation/HyperSpec/Body/v__.htm">-</a>.
+Additionally, LFE also provides the ```$ENV``` variable.
 
 * ```+/++/+++``` - The three previous expressions input.
 * ```*/**/***``` - The values of the previous 3 expressions.
 * ```-``` - The current expression input.
+* ```$ENV``` - The current environment (accessible in the REPL as well as in
+  macros).
 
 These probably warrant some examples.
 
@@ -328,7 +393,9 @@ ok
 >
 {% endhighlight %}
 
-Finally, for the last one, one (the ```-``` variable):
+There's another, called the "dash" varibale. It is bound to the actual
+expression that is currently being evaluated. Here's an example of this being
+used:
 {% highlight cl %}
 > (: io format '"Evaluating the expression '~p' ...~n" (list -))
 Evaluating the expression '[':',io,format,
@@ -337,6 +404,110 @@ Evaluating the expression '[':',io,format,
 ok
 >
 {% endhighlight %}
+
+We've saved one of the more archane special variables to last: ```$ENV```.
+When you first start up a shell, the ```$ENV``` variable holds pristine state
+data:
+{% highlight cl %}
+> $ENV
+(#(variable *** ())
+ #(variable ** ())
+ #(variable * ())
+ #(variable - ())
+ #(variable +++ ())
+ #(variable ++ ())
+ #(variable + ()))
+>
+{% endhighlight %}
+
+We can define a few variables and then check them out with another display of
+the environment:
+{% highlight cl %}
+> $ENV
+(#(variable my-func #Fun<lfe_eval.10.53503600>)
+ #(variable asnwer 42)
+ #(variable *** 42)
+ #(variable
+...
+{% endhighlight %}
+
+If you ```slurp``` a file in the REPL, your environment will be updated with all
+the definitions in that file:
+{% highlight cl %}
+> (slurp '"examples/core-macros.lfe")
+#(ok -no-mod-)
+> $ENV
+(#(function
+   bq-expand
+   2
+   #(letrec
+     (lambda (exp n)
+...
+{% endhighlight %}
+
+There is, as you might have guessed, much more to that ellided output (for that
+particular example, nearly all the rest of it is macro definitions).
+
+Making use of ```$ENV``` can be very helpful when debugging include files,
+loading Erlang header files, or when creating macros. Furthermore, when spending
+a great deal of time in the REPL prototyping code for a project, it can be
+quite useful to refresh one's memory as to what functions and variables are
+currently available in ```$ENV```.
+
+Looking at the output for ```$ENV``` can be a bit overwhelming, however. As you
+might imagine, there is an easy answer to this: filter it! The following makes
+use of the Erlang ```lists``` module as well as patterns in an anonymous
+function, both of which will be covered in more detail later:
+{% highlight cl %}
+> (set filter-env
+    (lambda (env)
+      (: lists foreach
+        (match-lambda
+          (((tuple 'function func-name arity _))
+           (: io format '"function: ~p/~p~n" (list func-name arity)))
+          (((tuple 'macro macro-name _))
+           (: io format '"macro: ~p~n" (list macro-name)))
+          (((tuple 'variable var-name value))
+           (: io format '"variable: ~p~n" (list var-name)))
+          ((_)))
+        env)))
+#Fun<lfe_eval.21.53503600>
+{% endhighlight %}
+
+Now, as one hacks away in the REPL, ```slurp```ing away at various modules, getting a list of what's defined in the current environment is a piece of cake:
+{% highlight cl %}
+> (funcall filter-env $ENV)
+variable: 'my-var-4'
+variable: 'my-var-3'
+variable: 'my-var-2'
+variable: 'my-var-1'
+variable: filter
+function: 'bq-expand'/2
+macro: backquote
+macro: 'orelse'
+macro: 'andalso'
+macro: 'cond'
+macro: 'flet*'
+macro: 'let*'
+macro: 'list*'
+macro: '?'
+macro: ':'
+macro: '++'
+macro: cddr
+macro: cdar
+macro: cadr
+macro: caar
+variable: '***'
+variable: '**'
+variable: '*'
+variable: '-'
+variable: '+++'
+variable: '++'
+variable: '+'
+ok
+>
+{% endhighlight %}
+
 
 <a name="154_getting_out_of_trouble"></a>
 ### 1.5.4 Getting Out of Trouble
@@ -350,6 +521,7 @@ to crash, presenting you with something that looks like this:
 
 You don't have to quit and restart the REPL, if you don't want to! There are a
 couple of steps that you can take instead.
+
 
 <a name="1541_interrupting_a_shell_process"></a>
 #### 1.5.4.1 Interrupting a Shell Process
@@ -388,6 +560,7 @@ then connect to it again:
 
 Once we interrupted the job, our error messages were printed to the REPL and we
 were placed back at the LFE prompt.
+
 
 <a name="1542_starting_a_new_shell"></a>
 #### 1.5.4.2 Starting a New Shell
@@ -504,13 +677,17 @@ including them:
 <a name="1622_include-lib"></a>
 #### 1.6.2.2 ```include-lib```
 
+TBD
+
 {% highlight cl %}
 {% endhighlight %}
 <a name="2_diving_in"></a>
 # 2 Diving In
 
+
 <a name="21_numbers_and_operators"></a>
 ## 2.1 Numbers and Operators
+
 
 <a name="211_integers_and_floats"></a>
 ### 2.1.1 Integers and Floats
@@ -552,8 +729,9 @@ reverse, too:
 {% endhighlight %}
 Note that the first argument is the number you want to convert and the second
 is the base you want to use (see
-<a href="http://erldocs.com/R14B/erts/erlang.html?i=1&search=integer#integer_to_list/2">here</a>
+<a href="http://erldocs.com/R15B/erts/erlang.html#integer_to_list/2">here</a>
 for more details).
+
 
 <a name="212_arithmatic_operators"></a>
 ### 2.1.2 Arithmatic Operators
@@ -581,6 +759,7 @@ on them. The usual apply:
 (5 1)
 >
 {% endhighlight %}
+
 
 <a name="213_logical_operators"></a>
 ### 2.1.3 Logical Operators
@@ -622,6 +801,7 @@ false
 true
 >
 {% endhighlight %}
+
 
 <a name="214_boolean_operators"></a>
 ### 2.1.4 Boolean Operators
@@ -691,6 +871,7 @@ exception error: badarg
 
 >
 {% endhighlight %}
+
 
 <a name="215_bitwise_operators"></a>
 ### 2.1.5 Bitwise Operators
@@ -1477,8 +1658,48 @@ ok
 >
 {% endhighlight %}
 
-<a name="2534_patterns_in_comprehensions"></a>
-#### 2.5.3.4 Patterns in Comprehensions
+If a pattern is not matched in our example (which has no fallback pattern), an
+error is raised:
+{% highlight cl %}
+> (: func-pttrn safety-check 'oops '"Eccentrica Gallumbits")
+exception error: #(case_clause #(oops "Eccentrica Gallumbits"))
+  in (func-pttrn safety-check 2)
+{% endhighlight %}
+
+
+<a name="2534_arguments_to_anonymous_functions"></a>
+#### 2.5.3.4 Arguments to Anonymous Functions
+
+One can use patterns in arguments with anonymous functions similarly to how one
+does with named functions, demonstrated above. In LFE, this is done with
+```match-lambda```. Here's an example done in the REPL:
+{% highlight cl %}
+> (set safety-check
+    (match-lambda
+      (('ok msg)
+        (: io format '"~s seems good.~n" (list msg)))
+      (('warn msg)
+        (: io format '"There's a problem with ~s.~n" (list msg)))
+      (('crit msg)
+        (: io format '"Be careful of ~s.~n" (list msg)))))
+#Fun<lfe_eval.31.53503600>
+>
+{% endhighlight %}
+
+Usage is similar as well:
+{% highlight cl %}
+> (funcall safety-check 'warn '"Arthur")
+There's a problem with Arthur.
+ok
+> (funcall safety-check 'oops '"Eccentrica Gallumbits")
+exception error: function_clause
+
+>
+{% endhighlight %}
+
+
+<a name="2535_patterns_in_comprehensions"></a>
+#### 2.5.3.5 Patterns in Comprehensions
 
 List and binary comprehensions make use of patterns in a limited sense. They
 have the following general forms:
@@ -1492,7 +1713,7 @@ and
 where the ```guard``` in both cases is optional.
 
 You can read more about LFE comprehensions in
-<a href="/user-guide/data/2.html">section 3.2</a>
+<a href="/user-guide/data/2.html">section 3.3</a>
 <a name="3_lists_and_simple_data"></a>
 # 3 Lists and Simple Data
 
@@ -1725,8 +1946,8 @@ with the pattern in our ```set``` call:
 >
 {% endhighlight %}
 
-<a name="32_comprehensions"></a>
-## 3.2 Comprehensions
+<a name="33_comprehensions"></a>
+## 3.3 Comprehensions
 
 In the section on lists, we gave an example of building a list using the
 ```map``` function:
@@ -1747,8 +1968,8 @@ offers another pattern, though: comprehensions.
 LFE supports Erlang comprehensions via two macros: ```lc``` for list
 comprehensions and ```bc``` for bitstring comprehensions.
 
-<a name="321_list_comprehensions"></a>
-### 3.2.1 List Comprehensions
+<a name="331_list_comprehensions"></a>
+### 3.3.1 List Comprehensions
 
 Let's take a look at an example and then discuss it. Here's a list
 comprehension version of our ```map```/```lambda``` combo above:
@@ -1780,8 +2001,8 @@ To a Lisper, the original is probably much more legible. However, in Erlang
 these is no question that the list comprehensions are shorter and easier to
 read than using anonymous functions.
 
-<a name="321_bitstring_comprehensions"></a>
-### 3.2.1 Bitstring Comprehensions
+<a name="331_bitstring_comprehensions"></a>
+### 3.3.1 Bitstring Comprehensions
 
 For binary data, we have something similar to the list comprehension. Here's
 what a bitstring comprehension looks like (adapted from the example given by
@@ -1825,11 +2046,11 @@ and this:
 ((bnot x) (size 1))
 {% endhighlight %}
 
-<a name="33_property_lists_and_hashes"></a>
-## 3.3 Property Lists and Hashes
+<a name="34_property_lists_and_hashes"></a>
+## 3.4 Property Lists and Hashes
 
-<a name="331_property_lists"></a>
-### 3.3.1 Property Lists
+<a name="341_property_lists"></a>
+### 3.4.1 Property Lists
 
 Property lists are just lists whose entries are key/value tuples.
 Alternatively, an entry may be a single atom, in which case it implies a tuple
@@ -1874,15 +2095,15 @@ do this:
 There is more information about property lists on the
 <a href="http://www.erlang.org/doc/man/proplists.html">docs</a> page for them.
 
-<a name="332_hashes"></a>
-### 3.3.2 Hashes
+<a name="342_hashes"></a>
+### 3.4.2 Hashes
 
 There is no builtin "dictionary" or "hash" type in Erlang. However, there are
 some libraries that support data structures like these. There is also a concept
 of "records" which we will discuss in another section.
 
-<a name="3321_the_dictionary"></a>
-#### 3.3.2.1 The Dictionary
+<a name="3421_the_dictionary"></a>
+#### 3.4.2.1 The Dictionary
 
 The Erlang ```dict``` module implements a key/value dictionary part of which is
 an additional ```dict``` data type which supplements the built-in Erlang data
@@ -1972,8 +2193,8 @@ You can also build ```dict```s from a list of tuples:
 There are many more functions to explore in the
 <a href="http://www.erlang.org/doc/man/dict.html">dict docs</a>.
 
-<a name="3322_other_hash_tables"></a>
-#### 3.3.2.2 Other Hash Tables
+<a name="3422_other_hash_tables"></a>
+#### 3.4.2.2 Other Hash Tables
 
 OTP comes with the ```ets``` module which provides the ability to store very
 large quantities of data in an Erlang runtime system. The ```ets``` module
@@ -1988,11 +2209,11 @@ The documentation for this module is
 adding information on how to use this from LFE at a later point (likely a
 dedicated tutorial).
 
-<a name="34_records"></a>
-## 3.4 Records
+<a name="35_records"></a>
+## 3.5 Records
 
-<a name="341_just_records"></a>
-### 3.4.1 Just Records
+<a name="351_just_records"></a>
+### 3.5.1 Just Records
 
 Sometimes lists, tuples, property lists, or hashes are not quite what is
 needed. With tuples, you can't name keys (without awkward work-arounds), and
@@ -2085,8 +2306,8 @@ re-use the ```ford``` variable here).
 Also, note that there are also ```set-person-name``` and
 ```set-person-address```.
 
-<a name="342_records_and_ets"></a>
-### 3.4.2 Records and ETS
+<a name="352_records_and_ets"></a>
+### 3.5.2 Records and ETS
 
 Additional convenience functions for records are provided by LFE, but some of
 these will only make sense in the context of ETS (Erlang Term Storage), when
@@ -2153,8 +2374,8 @@ Here's what it looks like when multiple records are returned:
 This should be enough of an ETS taste to last until you get to the dedicated
 tutorial ;-)
 
-<a name="35_hrl_header_files"></a>
-## 3.5 ```.hrl``` Header Files
+<a name="36_hrl_header_files"></a>
+## 3.6 ```.hrl``` Header Files
 <a name="4_functions_and_modules"></a>
 # 4 Functions and Modules
 
@@ -2182,23 +2403,204 @@ tutorial ;-)
 <a name="4152_as_output"></a>
 #### 4.1.5.2 As Output
 
+
 <a name="42_lfe-specific_functions_and_macros"></a>
 ## 4.2 LFE-Specific Functions and Macros
+
 
 <a name="421_core_forms"></a>
 ### 4.2.1 Core Forms
 
+{% highlight cl %}
+(quote e)
+(cons head tail)
+(car e)
+(cdr e)
+(list e ... )
+(tuple e ... )
+(binary seg ... )
+(lambda (arg ...) ...)
+(match-lambda
+  ((arg ... ) (when e ...) ...)
+  ... )
+(let ((pat (when e ...) e)
+      ...)
+  ... )
+(let-function ((name lambda|match-lambda)
+               ... )
+  ... )
+(letrec-function ((name lambda|match-lambda)
+                  ... )
+  ... )
+(let-macro ((name lambda-match-lambda)
+            ...)
+  ...)
+(progn ... )
+(if test true-expr false-expr)
+(case e
+  (pat (when e ...) ...)
+   ... ))
+(receive
+  (pat (when e ...) ... )
+  ...
+  (after timeout ... ))
+(catch ... )
+(try
+  e
+  (case ((pat (when e ...) ... )
+          ... ))
+  (catch
+     (((tuple type value ignore) (when e ...)
+
+      ... )
+     ... )
+  (after ... ))
+(funcall func arg ... )
+(call mod func arg ... )
+
+(define-function name lambda|match-lambda)
+(define-macro name lambda|match-lambda)
+{% endhighlight %}
+
+
 <a name="422_macro_forms"></a>
 ### 4.2.2 Macro Forms
+
+{% highlight cl %}
+(: mod func arg ... ) =>
+        (call 'mod 'func arg ... )
+(? timeout default )
+
+(++ ... )
+(list* ...)
+(let* (...) ... )
+(flet ((name (arg ...) ...)
+       ...)
+  ...)
+(flet* (...) ... )
+(fletrec ((name (arg ...) ...)
+          ...)
+  ...)
+
+(cond ... )
+(andalso ... )
+(orelse ... )
+(fun func arity)
+(fun mod func arity)
+(lc (qual ...) ...)
+(bc (qual ...) ...)
+(match-spec ...)
+{% endhighlight %}
+
 
 <a name="423_common_lisp_inspired_macros"></a>
 ### 4.2.3 Common Lisp Inspired Macros
 
+{% highlight cl %}
+(defun name (arg ...) ...)
+(defun name
+  ((argpat ...) ...)
+  ...)
+
+(defmacro name (arg ...) ...)
+(defmacro name arg ...)
+(defmacro name
+  ((argpat ...) ...)
+  ...)
+
+(defsyntax name
+  (pat exp)
+  ...)
+
+(macrolet ((name (arg ...) ...)
+           ...)
+  ...)
+(syntaxlet ((name (pat exp) ...)
+            ...)
+  ...)
+
+(defmodule name ...)
+(defrecord name ...)
+{% endhighlight %}
+
+
 <a name="424_scheme_inspired_macros"></a>
 ### 4.2.4 Scheme Inspired Macros
 
+{% highlight cl %}
+(define (name arg ...) ...)
+(define name lambda|match-lambda)
+(define-syntax name
+  (syntax-rules (pat exp) ...)|(macro (pat body) ...))
+(let-syntax ((name ...)
+             ...)
+  ...)
+(begin ...)
+(define-module name ...)
+(define-record name ...)
+{% endhighlight %}
+
+
 <a name="425_additional_lisp_functions"></a>
 ### 4.2.5 Additional Lisp Functions
+
+{% highlight cl %}
+(<arith_op> expr ...)
+(<comp_op> expr ...)
+        The standard arithmentic operators, + - * /, and comparison
+        operators, > >= < =< == /= =:= =/= , can take multiple
+        arguments the same as their standard lisp counterparts. This
+        is still experimental and implemented using macros. They do,
+        however, behave like normal functions and evaluate ALL their
+        arguments before doing the arithmetic/comparisons operations.
+
+(acons key value list)
+(pairlis keys values list)
+(assoc key list)
+(assoc-if test list)
+(assoc-if-not test list)
+(rassoc value list)
+(rassoc-if test list)
+(rassoc-if-not test list)
+        The standard association list functions.
+
+(subst new old tree)
+(subst-if new test tree)
+(subst-if-not new test tree)
+(sublis alist tree)
+        The standard substituition functions.
+
+(macroexpand-1 expr environment)
+        If Expr is a macro call, does one round of expansion,
+        otherwise returns Expr.
+
+(macroexpand expr environment)
+        Returns the expansion returned by calling macroexpand-1
+        repeatedly, starting with Expr, until the result is no longer
+        a macro call.
+
+(macroexpand-all expr environment)
+        Returns the expansion from the expression where all macro
+        calls have been expanded with macroexpand.
+
+        NOTE that when no explicit environment is given the
+        macroexpand functions then only the default built-in macros
+        will be expanded. Inside macros and in the shell the variable
+        $ENV is bound to the current macro environment.
+
+(eval expr environment)
+        Evaluate the expression expr. Note that only the pre-defined
+        lisp functions, erlang BIFs and exported functions can be
+        called. Also no local variables can be accessed. To access
+        local variables the expr to be evaluated can be wrapped in a
+        let defining these.
+
+        For example if the data we wish to evaluate is in the variable
+        expr and it assumes there is a local variable "foo" which it
+        needs to access then we could evaluate it by calling:
+
+        (eval `(let ((foo ,foo)) ,expr))
+{% endhighlight %}
 
 <a name="43_modules"></a>
 ## 4.3 Modules
@@ -2350,12 +2752,13 @@ may be instructive or useful as a guideline.
 
 Sorry, couldn't resist.
 
+
 <a name="52_a_brief_history"></a>
 ## 5.2 A Brief History
 
 In functional languages, recursion plays an important role. For Erlang in
 particular, recursion is important because variables can't be changed. It is
-therefor often very useful to take advantage of recursion n order to work with
+therefor often very useful to take advantage of recursion in order to work with
 changing values (examples are given in the latter half of this chapter).
 
 However, recursion is interesting in and of itself. The roots of functional
@@ -2366,15 +2769,17 @@ particular.
 The Italian mathematician Giuseppe Peano seems to have been one of the first to
 have made prominent use of recursion when defining his axioms for the natural
 numbers. Furthermore, Peano gave Bertrand Russell a copy of his "Formulario"
-(in fact, he gave Russell all of his published works!).  This impacted Russell
-hugely and quite possibly influenced his efforts on "Principia Mathematica"
+(in fact, he gave Russell *all* of his published works!).  This impacted Russell
+hugely and quite possibly influenced his work on the "Principia Mathematica"
 which he coauthored several years later.
 
 It was from the Principia that Alonzo Church derived his lambda notation.  When
 Church's student, John McCarthy, created Lisp, he used both the lambda notation
 and the related concept of recursion in his new language.  (Interestingly
 enough, McCarthy and Dijkstra both advocated for the inclusions of recursion in
-ALGOL.)
+ALGOL.) From John McCarthy's work onward, the lambda and recursion have been our
+constant companions.
+
 
 <a name="53_a_preview"></a>
 ## 5.3 A Preview
@@ -2388,6 +2793,13 @@ they can be formulated in Lisp Flavored Erlang. We will cover the following:
 * The λ-Calculus
 * Practical Examples in Computing
 * Tail-Calls
+
+If you just want to jump to the practical examples, please do so! You should
+feel no guilt when enjoying LFE or reading about LFE :-) The other sections are
+provided simply because it is very rare to find a practical coverage of
+the foundations of recursion and the λ-Calculus. There may be readers out there
+who want to know this reasons and history behind the concepts studied; most of
+this chapter is for them.
 
 <a name="54_the_dedekind-peano_axioms"></a>
 ## 5.4 The Dedekind-Peano Axioms
@@ -2417,24 +2829,24 @@ mathematical rigor.
 
 Richard Dedekind addressed this with his method of cuts, but it was Giuseppe
 Peano that supplied us with the clearest, most easily described axioms defining
-the natural numbers and arithmetic. And in so doing, made effective use of
+the natural numbers and arithmetic, wherein he made effective use of
 recursion. His definitions can be easily found in text books and on the
 Internet; we will take a slightly unique approach, however, and cast them in
-LFE.
+terms of LFE.
 
 
 <a name="542_a_constant_and_equality"></a>
 ### 5.4.2 A Constant and Equality
 
 The first five Peano axioms deal with the constant (often written as "0") and
-the reflexive, symmetric, transitive and closed eqaulity relations. These don't
+the reflexive, symmetric, transitive and closed equality relations. These don't
 relate recursion directly, so we're going to skip them ;-)
 
 <a name="543_successor_function"></a>
 ### 5.4.3 Successor Function
 
 The concept of the "successor" in the Peano axioms is a primitive; it is taken
-as being true without having proved it. It is informally defined as being the
+as being true without having been proved. It is informally defined as being the
 next number following a given number "n".
 
 In LFE:
@@ -2444,7 +2856,7 @@ In LFE:
 {% endhighlight %}
 
 The things to keep in mind here are that 1) we haven't defined addition yet,
-and 2) you must not interpred "+" as addition in this context, rather as the
+and 2) you must not interpret "+" as addition in this context, rather as the
 operator that allows for succession to occur. In the world of the Peano axioms,
 "+" is only validly used with "n" and "1".
 
@@ -2461,10 +2873,11 @@ leave them to your own research and reading pleasure.
 <a name="55_primitive_recursive_functions"></a>
 ## 5.5 Primitive Recursive Functions
 
-In the previous section, we leaned about the primitive recursive funtion called
+In the previous section, we leaned about the primitive recursive function called
 the "successor", one that was used by Peano in his axioms. There are other
-primitive recursive funtions as well, and these are usually given as axioms
+primitive recursive functions as well, and these are usually given as axioms
 (i.e., without proof):
+
 * the "zero function"
 * the "projection function"
 * "identity function"
@@ -2475,20 +2888,45 @@ recursive functions.
 <a name="551_addition"></a>
 ### 5.5.1 Addition
 
-Often, one sees the primitive recursive function definition of addition done in
-the following manner:
+In the literature, the definition for Peano addition is done in the following
+manner:
 
-    add(0, x) = x
-    add(n + 1, x) = add(n, x) + 1
+    a + 0 = a,
+    a + S(b) = S(a + b)
 
-or:
+where ```S``` is the successor function defined in the previous section.
+
+First we have an identity function: any number that has zero added to it yields
+the result of the number itself.
+
+Secondly, a number, when added with the successor of another number is equal to
+the successor of the two numbers combined. Let's take a look at an example:
+
+* The number 0, when applied to the successor function yields 1 (```S(0) = 1```)
+* Therefore, ```a + S(0) = a + 1```
+* By Peano's definition of addition then, we have ```a + 1 = S(a + 0)```
+* Which then gives ```a + 1 = S(a)```
+
+In other words, the successor of ```a``` is ```a + 1```.
+
+These rules for addition are sometimes given in the following pseudo code:
 
     add(0, x) = x
     add(succ(n), x) = succ(add(n, x))
 
-In LFE, we'd like to maintain symmetry with this... however, patterns don't
-accept function calls (e.g., to ```(successor n)```). As such, we do a little
-juggling instead:
+In LFE, we'd like to maintain symmetry with this. We could try to construct a
+function that had both definitions as pattern arguments, thus alleviating the
+need for two function definitions. However, to perfectly map the pseudo code
+to LFE, we'd have to put a function call in our pattern... and that's not
+possible.
+
+If, though, we do a little algebraic juggling, we can work around this. In our
+pseudo code we have two parameters: ```succ(n)``` and ```x```. If we apply a
+"predecessor" function to ```succ(n)```, we'll just have ```n``` -- which would
+do nicely for a matched function argument in LFE. But we'll also need to apply
+this predecessor function to the ```n``` on the other side of the equation.
+
+Let's create such a "predecessor" function:
 {% highlight cl %}
 (defun predecessor
   ((0) 0)
@@ -2496,17 +2934,21 @@ juggling instead:
 {% endhighlight %}
 
 Now, we can recast the canonical form above using the workaround of the
-```predecessor``` primitive recursive function:
+```predecessor``` primitive recursive function, allowing us to use one function
+to define Peano's addition axiom:
 {% highlight cl %}
 (defun add
   ((0 x) x)
   ((n x) (successor (add (predecessor n) x))))
 {% endhighlight %}
 
-All of this may seem rather absurb, given what we do in every-day programming.
-Remember, though: the verbosity of these axioms and their derrived definitions
-serves to explicitly show that no assumptions are being made and that all these
-operations can indeed be built upon basic principles.
+All of this may seem rather absurd, given what we do in every-day programming.
+Remember, though: the verbosity of these axioms and their derived definitions
+serves to explicitly show that no assumptions are being made. With a foundation
+of no assumption, we can be certain that each brick we lay on top of this sound
+(if possibly baroque) basis will be unshakable (baring the random proof by
+Gödel, of course).
+
 
 <a name="552_subtraction"></a>
 ### 5.5.2 Subtraction
@@ -2524,7 +2966,13 @@ pattern matching:
   ((n x) (predecessor (subtract (predecessor n) x))))
 {% endhighlight %}
 
-Note that the usual usage is reversed for our ```subtract``` function:
+Due to the manner in which we have defined our functions, the usual usage is
+reversed for our ```subtract``` function. The first operand is not the number
+that is being subtracted from, but rather the number that is being *subtracted*.
+
+We can see this in action if we put our definitions in a file called
+```prf.lfe``` (named for "primitive recursive functions") and ```slurp``` it in
+the LFE REPL:
 {% highlight cl %}
 > (slurp '"prf.lfe")
 #(ok prf)
@@ -2549,16 +2997,35 @@ Again, using our pattern workaround:
   ((n x) (add x (multiply x (predecessor n)))))
 {% endhighlight %}
 
-<a name="56_total_recursive_functions"></a>
-## 5.6 Total Recursive Functions
 
-TBD
+<a name="56_partial_recursive_functions"></a>
+## 5.6 Partial Recursive Functions
 
-<a name="561_the_ackermann_function"></a>
-### 5.6.1 The Ackermann Function
+We've covered primitive recursive functions in the previous section; now we'll
+take a brief look at what are called "partial recursive functions". These are
+functions that provide an output for given input but which may not be defined
+for *every* possible input.
+
+Partial recursive functions are also referred to as "computable functions" and
+can be defined using Turing machines or the λ-calculus (among others). In fact,
+an equivalent definition of partial recursive function is actually a function
+that can be computed by a Turing machine.
+
+
+<a name="57_total_recursive_functions"></a>
+## 5.7 Total Recursive Functions
+
+As opposed to a partial recursive function, a *total* recursive function is one
+that is defined for all possible function inputs. Every primitive recursive
+function is total recursive. There are, however, total recursive functions that
+are *not* primitive recursive. The Ackermann function is one such.
+
+
+<a name="571_the_ackermann_function"></a>
+### 5.7.1 The Ackermann Function
 
 The Ackermann function is one of the simplest and earliest-discovered examples
-of a "total computable function" that is not primitive recursive. The variant
+of a total recursive function that is not primitive recursive. The variant
 of the function that we present below is the two-variable version developed by
 Rózsa Péter and Raphael Robinson (the original was more verbose and with three
 variables).
@@ -2570,6 +3037,8 @@ Here is the function in LFE
   ((m 0) (ackermann (- m 1) 1))
   ((m n) (ackermann (- m 1) (ackermann m (- n 1)))))
 {% endhighlight %}
+
+As we can see, this function quite clearly calls itself ;-)
 
 Here's some example usage:
 {% highlight cl %}
@@ -2594,8 +3063,8 @@ Here's some example usage:
 >
 {% endhighlight %}
 
-<a name="57_the_λ-calculus"></a>
-## 5.7 The λ-Calculus
+<a name="58_the_λ-calculus"></a>
+## 5.8 The λ-Calculus
 
 Oh, yeah. We just went there: the λ-calculus.
 
@@ -2612,14 +3081,20 @@ his disposal, he could define numbers and perform arithmetic upon them. This is
 known as "Church encoding". Using what we have defined above, we should be able
 to peer into this forest of lambdas and perhaps perceive some trees.
 
+Church, with his now-famous students Stephen Kleene and J. Barkley Rosser,
+established the λ-calculus as equivalent to a Turing machine for determining
+the computability of a given function. In particular, the Church-Turing Thesis
+states that the class of functions which are partial recursive functions has
+the same members as the class of functions which are computable functions.
+
 Previously, we examined natural numbers and operations such as addition in the
 context of positive integers. However, in the sections below, we will be
 leaving behind the comfort of the familiar. The λ-calculus does not concern
 itself with natural numbers per se; rather the ability to do something a given
 number of times.
 
-<a name="571_a_quick_primer"></a>
-### 5.7.1 A Quick Primer
+<a name="581_a_quick_primer"></a>
+### 5.8.1 A Quick Primer
 
 In the literature, you will see such things as:
 
@@ -2646,8 +3121,8 @@ As such, one says that `λx.x` is a function that takes one parameter, `x`, and
 produces one output, `x`. `λxy.y` takes two parameters, `x` and `y` and
 produces one output, `y`.
 
-<a name="572_church_encoding"></a>
-### 5.7.2 Church Encoding
+<a name="582_church_encoding"></a>
+### 5.8.2 Church Encoding
 
 Let's get our feet wet with figuring out how we can define the natural numbers
 under Church encoding, starting with `zero`. In the standard λ-calculus, this
@@ -2837,8 +3312,8 @@ given the fact that it just applied so many thousands of lambdas!
 How fortunate that we didn't have to type 10,000 `funcall`s (and the
 corresponding set of opening and closing parentheses 10,000 times).
 
-<a name="573_arithmetic"></a>
-### 5.7.3 Arithmetic
+<a name="583_arithmetic"></a>
+### 5.8.3 Arithmetic
 
 {% highlight cl %}
 {% endhighlight %}
@@ -2861,8 +3336,8 @@ corresponding set of opening and closing parentheses 10,000 times).
 {% highlight cl %}
 {% endhighlight %}
 
-<a name="574_logic"></a>
-### 5.7.4 Logic
+<a name="584_logic"></a>
+### 5.8.4 Logic
 
 {% highlight cl %}
 {% endhighlight %}
@@ -2870,18 +3345,8 @@ corresponding set of opening and closing parentheses 10,000 times).
 {% highlight cl %}
 {% endhighlight %}
 
-<a name="575_resources"></a>
-### 5.7.5 Resources
-
-The material for this section was taken from a collection of papers on the
-λ-calculus that we have provided here:
-
- * [http://goo.gl/aKXvp](http://goo.gl/aKXvp)
-
-Enjoy!
-
-<a name="58_practical_examples_in_computing"></a>
-## 5.8 Practical Examples in Computing
+<a name="59_practical_examples_in_computing"></a>
+## 5.9 Practical Examples in Computing
 
 {% highlight cl %}
 {% endhighlight %}
@@ -2889,20 +3354,8 @@ Enjoy!
 {% highlight cl %}
 {% endhighlight %}
 
-<a name="581_a_simple_example"></a>
-### 5.8.1 A Simple Example
-
-<a name="582_with_an_accumulator"></a>
-### 5.8.2 With an Accumulator
-
-<a name="583_with_return_values"></a>
-### 5.8.3 With Return Values
-
-<a name="584_with_lists"></a>
-### 5.8.4 With Lists
-
-<a name="59_tail_calls_in_lfe"></a>
-## 5.9 Tail Calls in LFE
+<a name="591_a_simple_example"></a>
+### 5.9.1 A Simple Example
 
 {% highlight cl %}
 {% endhighlight %}
@@ -2910,8 +3363,50 @@ Enjoy!
 {% highlight cl %}
 {% endhighlight %}
 
-<a name="591_tail_call_optimization"></a>
-### 5.9.1 Tail Call Optimization
+<a name="592_with_an_accumulator"></a>
+### 5.9.2 With an Accumulator
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+<a name="593_with_return_values"></a>
+### 5.9.3 With Return Values
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+<a name="594_with_lists"></a>
+### 5.9.4 With Lists
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+<a name="510_tail_calls_in_lfe"></a>
+## 5.10 Tail Calls in LFE
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+<a name="5101_tail_call_optimization"></a>
+### 5.10.1 Tail Call Optimization
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
 <a name="6_checks,_errors,_and_tests"></a>
 # 6 Checks, Errors, and Tests
 
@@ -2932,6 +3427,7 @@ examples will be using ```(catch ...)```.
 <a name="621_a_simple_case"></a>
 ### 6.2.1 A Simple Case
 
+TBD
 
 <a name="63_eunit"></a>
 ## 6.3 EUnit
@@ -2954,11 +3450,14 @@ examples will be using ```(catch ...)```.
 <a name="6351_erlang_eunit_assert_macros"></a>
 #### 6.3.5.1 Erlang EUnit Assert Macros
 
-<a name="6352_setup_and_cleanup"></a>
-#### 6.3.5.2 Setup and Cleanup
+<a name="6352_fixtures:_setup_and_cleanup"></a>
+#### 6.3.5.2 Fixtures: Setup and Cleanup
 
 <a name="6353_generating_tests"></a>
 #### 6.3.5.3 Generating Tests
+
+<a name="636_mocking_with_meck"></a>
+### 6.3.6 Mocking with Meck
 
 <a name="64_tdd"></a>
 ## 6.4 TDD

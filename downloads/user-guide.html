@@ -16,10 +16,29 @@
   <body>
   <a name='1_introduction' />
 <h1 id='1_introduction'>1 Introduction</h1>
-<a name='11_what_is_lfe?' />
-<h2 id='11_what_is_lfe'>1.1 What is LFE?</h2>
+<a name='11_lisp_flavored_erlang' />
+<h2 id='11_lisp_flavored_erlang'>1.1 Lisp Flavored Erlang</h2>
+<a name='111_about' />
+<h3 id='111_about'>1.1.1 About</h3>
 
-<p>LFE is &#8220;Lisp Flavoured Erlang.&#8221; It is a Lisp syntax front-end to the Erlang compiler. LFE is a Lisp-2, like Common Lisp, and comes with a REPL (shell). LFE coexists seamlessly with vanilla Erlang and OTP. As such, code written in LFE can freely be used together with modules written in vanilla Erlang and applications in Erlang/OTP.</p>
+<p>Lisp Flavored Erlang or LFE is a Lisp syntax front-end to the Erlang compiler. LFE is a Lisp-2, like Common Lisp, and comes with a REPL (shell). LFE coexists seamlessly with vanilla Erlang and OTP. As such, code written in LFE can freely be used together with modules written in vanilla Erlang and applications in Erlang/OTP.</p>
+<a name='112_background' />
+<h3 id='112_background'>1.1.2 Background</h3>
+
+<p>This work started life as a beautification of what Robert Virding had already created when he originally documented LFE. There are a few exemplar open source projects which have produced extraordinary documentation: both highly informative as well as being exceedingly easy on the eyes. We wanted LFE to aspire to those standards. In addition to helping with project adoption, creating an attractive and well-documented online resource for LFE makes it much nicer for the folks who already use the project.</p>
+
+<p>The Github Pages feature provided us a means whereby an appealing open source project site could be created easily. These efforts were rewarded almost immediately by visitors and users who began spreading the word, further catalyzing our commitment to producing an improved user experience.</p>
+
+<p>While attempting to add more verbose descriptions and enhance the prose around the original docs, there arose a strong desire to improve the organization of the topics covered as well. In this effort, we turned to the excellent Erlang books that have been published to date, and began drawing inspiration from these. It soon became clear that what was really needed was an LFE version of some combination of those wonderful efforts. With that, the LFE User Guide was fully set upon its course.</p>
+<a name='113_motivation_for_the_uninitiated' />
+<h3 id='113_motivation_for_the_uninitiated'>1.1.3 Motivation for the Uninitiated</h3>
+
+<p>If you have ever found yourself greatly admiring the Erlang language but thirsting for an alternative to the standard syntax, and you do not fear the elegance of parentheses (<a href='http://xkcd.com/297/'>for a more
+civilized age</a>), you might want to spend some time writing code in LFE. It could be just what you&#8217;re looking for.</p>
+
+<p>LFE has borrowings from Common Lisp and Scheme, so should provide a familiar face for those who have spent time hacking on projects powered by SBCL, Allegro, LispWorks, Chicken Scheme, Gambit, or Racket.</p>
+
+<p>Similarly, those who have come to Lisp via the Java VM-powered Clojure will find much to love in the Erlang VM-powered LFE. LFE was released just one year after Clojure, but has 100% compatibility with the features in Erlang that inspired Clojure, some of which the Clojure community is still working on. You can get those without waiting when you use LFE!</p>
 <a name='12_getting_started' />
 <h2 id='12_getting_started'>1.2 Getting Started</h2>
 
@@ -94,7 +113,7 @@
 <ul>
 <li>A proper Lisp-2, based on the features and limitations of the Erlang VM</li>
 
-<li>Compatible with vanilla Erlang and OTP</li>
+<li>Compatibility with vanilla Erlang and OTP</li>
 
 <li>It runs on the standard Erlang VM</li>
 </ul>
@@ -133,23 +152,6 @@
 <a name='1511_starting_the_repl' />
 <h4 id='1511_starting_the_repl'>1.5.1.1 Starting the REPL</h4>
 
-<p>If you have LFE installed system-wide, then starting the shell can be done in the ways listed below.</p>
-
-<p>Using the <code>lfe</code> command. Be sure to change directory to where you have saved (or cloned) the LFE source code. Then:</p>
-
-<pre><code>$ ./bin/lfe</code></pre>
-
-<p>You can also start the LFE REPL by passing options directly to <code>erl</code>. Again, assuming that you have LFE installed system-wide, from any directory you may do this:</p>
-
-<pre><code>$ erl -user lfe_boot</code></pre>
-
-<p>Also, if you happen to be running an Erlang shell already, you can start the LFE REPL with the following:</p>
-<div class='highlight'><pre><code class='erlang'><span class='mi'>14</span><span class='o'>&gt;</span> <span class='nn'>lfe_shell</span><span class='p'>:</span><span class='nf'>start</span><span class='p'>().</span>
-<span class='nv'>LFE</span> <span class='nv'>Shell</span> <span class='nv'>V5</span><span class='p'>.</span><span class='mi'>9</span><span class='p'>.</span><span class='mi'>3</span><span class='p'>.</span><span class='mi'>1</span> <span class='p'>(</span><span class='n'>abort</span> <span class='n'>with</span> <span class='err'>^</span><span class='nv'>G</span><span class='p'>)</span>
-<span class='o'>&lt;</span><span class='mi'>0</span><span class='p'>.</span><span class='mi'>33</span><span class='p'>.</span><span class='mi'>0</span><span class='o'>&gt;</span>
-
-<span class='o'>&gt;</span>
-</code></pre></div>
 <p>If you <em>don&#8217;t</em> have LFE installed system-wide, you need to tell it (Erlang, really) where the LFE <code>.beam</code> files are. Here are the three ways to start up LFE in this case:</p>
 
 <pre><code>$ ./bin/lfe -pa ./ebin</code></pre>
@@ -163,6 +165,23 @@
 <pre><code>$ erl -pa /path/to/lfe/ebin</code></pre>
 
 <p>followed by this from the Erlang shell:</p>
+<div class='highlight'><pre><code class='erlang'><span class='mi'>14</span><span class='o'>&gt;</span> <span class='nn'>lfe_shell</span><span class='p'>:</span><span class='nf'>start</span><span class='p'>().</span>
+<span class='nv'>LFE</span> <span class='nv'>Shell</span> <span class='nv'>V5</span><span class='p'>.</span><span class='mi'>9</span><span class='p'>.</span><span class='mi'>3</span><span class='p'>.</span><span class='mi'>1</span> <span class='p'>(</span><span class='n'>abort</span> <span class='n'>with</span> <span class='err'>^</span><span class='nv'>G</span><span class='p'>)</span>
+<span class='o'>&lt;</span><span class='mi'>0</span><span class='p'>.</span><span class='mi'>33</span><span class='p'>.</span><span class='mi'>0</span><span class='o'>&gt;</span>
+
+<span class='o'>&gt;</span>
+</code></pre></div>
+<p>If you do have LFE installed system-wide, then starting the shell can be done in the ways listed below.</p>
+
+<p>Using the <code>lfe</code> command. Be sure to change directory to where you have saved (or cloned) the LFE source code. Then:</p>
+
+<pre><code>$ ./bin/lfe</code></pre>
+
+<p>You can also start the LFE REPL by passing options directly to <code>erl</code>. Again, assuming that you have LFE installed system-wide, from any directory you may do this:</p>
+
+<pre><code>$ erl -user lfe_boot</code></pre>
+
+<p>Also, if you happen to be running an Erlang shell already, you can start the LFE REPL with the following:</p>
 <div class='highlight'><pre><code class='erlang'><span class='mi'>14</span><span class='o'>&gt;</span> <span class='nn'>lfe_shell</span><span class='p'>:</span><span class='nf'>start</span><span class='p'>().</span>
 <span class='nv'>LFE</span> <span class='nv'>Shell</span> <span class='nv'>V5</span><span class='p'>.</span><span class='mi'>9</span><span class='p'>.</span><span class='mi'>3</span><span class='p'>.</span><span class='mi'>1</span> <span class='p'>(</span><span class='n'>abort</span> <span class='n'>with</span> <span class='err'>^</span><span class='nv'>G</span><span class='p'>)</span>
 <span class='o'>&lt;</span><span class='mi'>0</span><span class='p'>.</span><span class='mi'>33</span><span class='p'>.</span><span class='mi'>0</span><span class='o'>&gt;</span>
@@ -250,7 +269,7 @@
 <a name='153_special_variables' />
 <h3 id='153_special_variables'>1.5.3 Special Variables</h3>
 
-<p>LFE also provides some convenience variables similar to what Lisp has defined for <a href='http://www.lispworks.com/documentation/HyperSpec/Body/v_pl_plp.htm'> +, ++, +++</a>, <a href='http://www.lispworks.com/documentation/HyperSpec/Body/v__stst_.htm'>*, **, ***</a>, and <a href='http://www.lispworks.com/documentation/HyperSpec/Body/v__.htm'>-</a>.</p>
+<p>LFE also provides some convenience variables similar to what Lisp has defined for <a href='http://www.lispworks.com/documentation/HyperSpec/Body/v_pl_plp.htm'> +, ++, +++</a>, <a href='http://www.lispworks.com/documentation/HyperSpec/Body/v__stst_.htm'>*, **, ***</a>, and <a href='http://www.lispworks.com/documentation/HyperSpec/Body/v__.htm'>-</a>. Additionally, LFE also provides the <code>$ENV</code> variable.</p>
 
 <ul>
 <li><code>+/++/+++</code> - The three previous expressions input.</li>
@@ -258,6 +277,8 @@
 <li><code>*/**/***</code> - The values of the previous 3 expressions.</li>
 
 <li><code>-</code> - The current expression input.</li>
+
+<li><code>$ENV</code> - The current environment (accessible in the REPL as well as in macros).</li>
 </ul>
 
 <p>These probably warrant some examples.</p>
@@ -314,11 +335,92 @@
 <span class='nv'>ok</span>
 <span class='nb'>&gt;</span>
 </code></pre></div>
-<p>Finally, for the last one, one (the <code>-</code> variable):</p>
+<p>There&#8217;s another, called the &#8220;dash&#8221; varibale. It is bound to the actual expression that is currently being evaluated. Here&#8217;s an example of this being used:</p>
 <div class='highlight'><pre><code class='cl'><span class='nb'>&gt;</span> <span class='p'>(</span><span class='err'>:</span> <span class='nv'>io</span> <span class='nb'>format</span> <span class='o'>&#39;</span><span class='s'>&quot;Evaluating the expression &#39;~p&#39; ...~n&quot;</span> <span class='p'>(</span><span class='nb'>list</span> <span class='nb'>-</span><span class='p'>))</span>
 <span class='nv'>Evaluating</span> <span class='k'>the</span> <span class='nv'>expression</span> <span class='ss'>&#39;[</span><span class='o'>&#39;</span><span class='err'>:</span><span class='ss'>&#39;,io,format,</span>
                             <span class='nv'>[quote,</span><span class='s'>&quot;Evaluating the expression &#39;~p&#39; ...~n&quot;</span><span class='nv'>],</span>
                             <span class='nv'>[list,</span><span class='ss'>&#39;-&#39;]]</span><span class='o'>&#39;</span> <span class='o'>...</span>
+<span class='nv'>ok</span>
+<span class='nb'>&gt;</span>
+</code></pre></div>
+<p>We&#8217;ve saved one of the more archane special variables to last: <code>$ENV</code>. When you first start up a shell, the <code>$ENV</code> variable holds pristine state data:</p>
+<div class='highlight'><pre><code class='cl'><span class='nb'>&gt;</span> <span class='nv'>$ENV</span>
+<span class='p'>(</span><span class='o'>#(</span><span class='nv'>variable</span> <span class='vg'>***</span> <span class='p'>())</span>
+ <span class='o'>#(</span><span class='nv'>variable</span> <span class='nv'>**</span> <span class='p'>())</span>
+ <span class='o'>#(</span><span class='nv'>variable</span> <span class='nb'>*</span> <span class='p'>())</span>
+ <span class='o'>#(</span><span class='nv'>variable</span> <span class='nb'>-</span> <span class='p'>())</span>
+ <span class='o'>#(</span><span class='nv'>variable</span> <span class='nv'>+++</span> <span class='p'>())</span>
+ <span class='o'>#(</span><span class='nv'>variable</span> <span class='nv'>++</span> <span class='p'>())</span>
+ <span class='o'>#(</span><span class='nv'>variable</span> <span class='nb'>+</span> <span class='p'>()))</span>
+<span class='nb'>&gt;</span>
+</code></pre></div>
+<p>We can define a few variables and then check them out with another display of the environment:</p>
+<div class='highlight'><pre><code class='cl'><span class='nb'>&gt;</span> <span class='nv'>$ENV</span>
+<span class='p'>(</span><span class='o'>#(</span><span class='nv'>variable</span> <span class='nv'>my-func</span> <span class='err'>#</span><span class='nv'>Fun&lt;lfe_eval.10.53503600&gt;</span><span class='p'>)</span>
+ <span class='o'>#(</span><span class='nv'>variable</span> <span class='nv'>asnwer</span> <span class='mi'>42</span><span class='p'>)</span>
+ <span class='o'>#(</span><span class='nv'>variable</span> <span class='vg'>***</span> <span class='mi'>42</span><span class='p'>)</span>
+ <span class='o'>#(</span><span class='nv'>variable</span>
+<span class='o'>...</span>
+</code></pre></div>
+<p>If you <code>slurp</code> a file in the REPL, your environment will be updated with all the definitions in that file:</p>
+<div class='highlight'><pre><code class='cl'><span class='nb'>&gt;</span> <span class='p'>(</span><span class='nv'>slurp</span> <span class='o'>&#39;</span><span class='s'>&quot;examples/core-macros.lfe&quot;</span><span class='p'>)</span>
+<span class='o'>#(</span><span class='nv'>ok</span> <span class='nv'>-no-mod-</span><span class='p'>)</span>
+<span class='nb'>&gt;</span> <span class='nv'>$ENV</span>
+<span class='p'>(</span><span class='o'>#(</span><span class='k'>function</span>
+   <span class='nv'>bq-expand</span>
+   <span class='mi'>2</span>
+   <span class='o'>#(</span><span class='nv'>letrec</span>
+     <span class='p'>(</span><span class='k'>lambda</span> <span class='p'>(</span><span class='nb'>exp</span> <span class='nv'>n</span><span class='p'>)</span>
+<span class='o'>...</span>
+</code></pre></div>
+<p>There is, as you might have guessed, much more to that ellided output (for that particular example, nearly all the rest of it is macro definitions).</p>
+
+<p>Making use of <code>$ENV</code> can be very helpful when debugging include files, loading Erlang header files, or when creating macros. Furthermore, when spending a great deal of time in the REPL prototyping code for a project, it can be quite useful to refresh one&#8217;s memory as to what functions and variables are currently available in <code>$ENV</code>.</p>
+
+<p>Looking at the output for <code>$ENV</code> can be a bit overwhelming, however. As you might imagine, there is an easy answer to this: filter it! The following makes use of the Erlang <code>lists</code> module as well as patterns in an anonymous function, both of which will be covered in more detail later:</p>
+<div class='highlight'><pre><code class='cl'><span class='nb'>&gt;</span> <span class='p'>(</span><span class='nb'>set</span> <span class='nv'>filter-env</span>
+    <span class='p'>(</span><span class='k'>lambda</span> <span class='p'>(</span><span class='nv'>env</span><span class='p'>)</span>
+      <span class='p'>(</span><span class='err'>:</span> <span class='nv'>lists</span> <span class='nv'>foreach</span>
+        <span class='p'>(</span><span class='nv'>match-lambda</span>
+          <span class='p'>(((</span><span class='nv'>tuple</span> <span class='ss'>&#39;function</span> <span class='nv'>func-name</span> <span class='nv'>arity</span> <span class='nv'>_</span><span class='p'>))</span>
+           <span class='p'>(</span><span class='err'>:</span> <span class='nv'>io</span> <span class='nb'>format</span> <span class='o'>&#39;</span><span class='s'>&quot;function: ~p/~p~n&quot;</span> <span class='p'>(</span><span class='nb'>list</span> <span class='nv'>func-name</span> <span class='nv'>arity</span><span class='p'>)))</span>
+          <span class='p'>(((</span><span class='nv'>tuple</span> <span class='ss'>&#39;macro</span> <span class='nv'>macro-name</span> <span class='nv'>_</span><span class='p'>))</span>
+           <span class='p'>(</span><span class='err'>:</span> <span class='nv'>io</span> <span class='nb'>format</span> <span class='o'>&#39;</span><span class='s'>&quot;macro: ~p~n&quot;</span> <span class='p'>(</span><span class='nb'>list</span> <span class='nv'>macro-name</span><span class='p'>)))</span>
+          <span class='p'>(((</span><span class='nv'>tuple</span> <span class='ss'>&#39;variable</span> <span class='nv'>var-name</span> <span class='nv'>value</span><span class='p'>))</span>
+           <span class='p'>(</span><span class='err'>:</span> <span class='nv'>io</span> <span class='nb'>format</span> <span class='o'>&#39;</span><span class='s'>&quot;variable: ~p~n&quot;</span> <span class='p'>(</span><span class='nb'>list</span> <span class='nv'>var-name</span><span class='p'>)))</span>
+          <span class='p'>((</span><span class='nv'>_</span><span class='p'>)))</span>
+        <span class='nv'>env</span><span class='p'>)))</span>
+<span class='err'>#</span><span class='nv'>Fun&lt;lfe_eval.21.53503600&gt;</span>
+</code></pre></div>
+<p>Now, as one hacks away in the REPL, <code>slurp</code>ing away at various modules, getting a list of what&#8217;s defined in the current environment is a piece of cake:</p>
+<div class='highlight'><pre><code class='cl'><span class='nb'>&gt;</span> <span class='p'>(</span><span class='nb'>funcall</span> <span class='nv'>filter-env</span> <span class='nv'>$ENV</span><span class='p'>)</span>
+<span class='nv'>variable:</span> <span class='ss'>&#39;my-var-4</span><span class='o'>&#39;</span>
+<span class='nv'>variable:</span> <span class='ss'>&#39;my-var-3</span><span class='o'>&#39;</span>
+<span class='nv'>variable:</span> <span class='ss'>&#39;my-var-2</span><span class='o'>&#39;</span>
+<span class='nv'>variable:</span> <span class='ss'>&#39;my-var-1</span><span class='o'>&#39;</span>
+<span class='nv'>variable:</span> <span class='nv'>filter</span>
+<span class='nv'>function:</span> <span class='ss'>&#39;bq-expand&#39;/2</span>
+<span class='nv'>macro:</span> <span class='nv'>backquote</span>
+<span class='nv'>macro:</span> <span class='ss'>&#39;orelse</span><span class='o'>&#39;</span>
+<span class='nv'>macro:</span> <span class='ss'>&#39;andalso</span><span class='o'>&#39;</span>
+<span class='nv'>macro:</span> <span class='ss'>&#39;cond</span><span class='o'>&#39;</span>
+<span class='nv'>macro:</span> <span class='ss'>&#39;flet*</span><span class='o'>&#39;</span>
+<span class='nv'>macro:</span> <span class='ss'>&#39;let*</span><span class='o'>&#39;</span>
+<span class='nv'>macro:</span> <span class='ss'>&#39;list*</span><span class='o'>&#39;</span>
+<span class='nv'>macro:</span> <span class='ss'>&#39;?</span><span class='o'>&#39;</span>
+<span class='nv'>macro:</span> <span class='o'>&#39;</span><span class='err'>:</span><span class='o'>&#39;</span>
+<span class='nv'>macro:</span> <span class='ss'>&#39;++</span><span class='o'>&#39;</span>
+<span class='nv'>macro:</span> <span class='nb'>cddr</span>
+<span class='nv'>macro:</span> <span class='nb'>cdar</span>
+<span class='nv'>macro:</span> <span class='nb'>cadr</span>
+<span class='nv'>macro:</span> <span class='nb'>caar</span>
+<span class='nv'>variable:</span> <span class='ss'>&#39;***</span><span class='o'>&#39;</span>
+<span class='nv'>variable:</span> <span class='ss'>&#39;**</span><span class='o'>&#39;</span>
+<span class='nv'>variable:</span> <span class='ss'>&#39;*</span><span class='o'>&#39;</span>
+<span class='nv'>variable:</span> <span class='ss'>&#39;-</span><span class='o'>&#39;</span>
+<span class='nv'>variable:</span> <span class='ss'>&#39;+++</span><span class='o'>&#39;</span>
+<span class='nv'>variable:</span> <span class='ss'>&#39;++</span><span class='o'>&#39;</span>
+<span class='nv'>variable:</span> <span class='ss'>&#39;+</span><span class='o'>&#39;</span>
 <span class='nv'>ok</span>
 <span class='nb'>&gt;</span>
 </code></pre></div><a name='154_getting_out_of_trouble' />
@@ -441,6 +543,8 @@ LFE Shell V5.9.3.1 (abort with ^G)
     <span class='p'>(</span><span class='nb'>*</span> <span class='p'>(</span><span class='vg'>*base-cool-factor*</span><span class='p'>)</span> <span class='p'>(</span><span class='vg'>*earth-adjustment*</span><span class='p'>)</span> <span class='nv'>arthur-cool-factor</span><span class='p'>)))</span>
 </code></pre></div><a name='1622_include-lib' />
 <h4 id='1622_'>1.6.2.2 <code>include-lib</code></h4>
+
+<p>TBD</p>
 <div class='highlight'><pre><code class='cl'>
 </code></pre></div><a name='2_diving_in' />
 <h1 id='2_diving_in'>2 Diving In</h1>
@@ -475,7 +579,7 @@ LFE Shell V5.9.3.1 (abort with ^G)
 <div class='highlight'><pre><code class='cl'><span class='nb'>&gt;</span> <span class='p'>(</span><span class='err'>:</span> <span class='nv'>erlang</span> <span class='nv'>integer_to_list</span> <span class='mi'>123</span> <span class='mi'>2</span><span class='p'>)</span>
 <span class='s'>&quot;1111011&quot;</span>
 </code></pre></div>
-<p>Note that the first argument is the number you want to convert and the second is the base you want to use (see <a href='http://erldocs.com/R14B/erts/erlang.html?i=1&search=integer#integer_to_list/2'>here</a> for more details).</p>
+<p>Note that the first argument is the number you want to convert and the second is the base you want to use (see <a href='http://erldocs.com/R15B/erts/erlang.html#integer_to_list/2'>here</a> for more details).</p>
 <a name='212_arithmatic_operators' />
 <h3 id='212_arithmatic_operators'>2.1.2 Arithmatic Operators</h3>
 
@@ -1128,8 +1232,36 @@ LFE Shell V5.9.3.1 (abort with ^G)
 <span class='nv'>Be</span> <span class='nv'>careful</span> <span class='nv'>of</span> <span class='nv'>Zaphod.</span>
 <span class='nv'>ok</span>
 <span class='nb'>&gt;</span>
-</code></pre></div><a name='2534_patterns_in_comprehensions' />
-<h4 id='2534_patterns_in_comprehensions'>2.5.3.4 Patterns in Comprehensions</h4>
+</code></pre></div>
+<p>If a pattern is not matched in our example (which has no fallback pattern), an error is raised:</p>
+<div class='highlight'><pre><code class='cl'><span class='nb'>&gt;</span> <span class='p'>(</span><span class='err'>:</span> <span class='nv'>func-pttrn</span> <span class='nv'>safety-check</span> <span class='ss'>&#39;oops</span> <span class='o'>&#39;</span><span class='s'>&quot;Eccentrica Gallumbits&quot;</span><span class='p'>)</span>
+<span class='nv'>exception</span> <span class='nv'>error:</span> <span class='o'>#(</span><span class='nv'>case_clause</span> <span class='o'>#(</span><span class='nv'>oops</span> <span class='s'>&quot;Eccentrica Gallumbits&quot;</span><span class='p'>))</span>
+  <span class='nv'>in</span> <span class='p'>(</span><span class='nv'>func-pttrn</span> <span class='nv'>safety-check</span> <span class='mi'>2</span><span class='p'>)</span>
+</code></pre></div><a name='2534_arguments_to_anonymous_functions' />
+<h4 id='2534_arguments_to_anonymous_functions'>2.5.3.4 Arguments to Anonymous Functions</h4>
+
+<p>One can use patterns in arguments with anonymous functions similarly to how one does with named functions, demonstrated above. In LFE, this is done with <code>match-lambda</code>. Here&#8217;s an example done in the REPL:</p>
+<div class='highlight'><pre><code class='cl'><span class='nb'>&gt;</span> <span class='p'>(</span><span class='nb'>set</span> <span class='nv'>safety-check</span>
+    <span class='p'>(</span><span class='nv'>match-lambda</span>
+      <span class='p'>((</span><span class='ss'>&#39;ok</span> <span class='nv'>msg</span><span class='p'>)</span>
+        <span class='p'>(</span><span class='err'>:</span> <span class='nv'>io</span> <span class='nb'>format</span> <span class='o'>&#39;</span><span class='s'>&quot;~s seems good.~n&quot;</span> <span class='p'>(</span><span class='nb'>list</span> <span class='nv'>msg</span><span class='p'>)))</span>
+      <span class='p'>((</span><span class='ss'>&#39;warn</span> <span class='nv'>msg</span><span class='p'>)</span>
+        <span class='p'>(</span><span class='err'>:</span> <span class='nv'>io</span> <span class='nb'>format</span> <span class='o'>&#39;</span><span class='s'>&quot;There&#39;s a problem with ~s.~n&quot;</span> <span class='p'>(</span><span class='nb'>list</span> <span class='nv'>msg</span><span class='p'>)))</span>
+      <span class='p'>((</span><span class='ss'>&#39;crit</span> <span class='nv'>msg</span><span class='p'>)</span>
+        <span class='p'>(</span><span class='err'>:</span> <span class='nv'>io</span> <span class='nb'>format</span> <span class='o'>&#39;</span><span class='s'>&quot;Be careful of ~s.~n&quot;</span> <span class='p'>(</span><span class='nb'>list</span> <span class='nv'>msg</span><span class='p'>)))))</span>
+<span class='err'>#</span><span class='nv'>Fun&lt;lfe_eval.31.53503600&gt;</span>
+<span class='nb'>&gt;</span>
+</code></pre></div>
+<p>Usage is similar as well:</p>
+<div class='highlight'><pre><code class='cl'><span class='nb'>&gt;</span> <span class='p'>(</span><span class='nb'>funcall</span> <span class='nv'>safety-check</span> <span class='ss'>&#39;warn</span> <span class='o'>&#39;</span><span class='s'>&quot;Arthur&quot;</span><span class='p'>)</span>
+<span class='nv'>There</span><span class='ss'>&#39;s</span> <span class='nv'>a</span> <span class='nv'>problem</span> <span class='nv'>with</span> <span class='nv'>Arthur.</span>
+<span class='nv'>ok</span>
+<span class='nb'>&gt;</span> <span class='p'>(</span><span class='nb'>funcall</span> <span class='nv'>safety-check</span> <span class='ss'>&#39;oops</span> <span class='o'>&#39;</span><span class='s'>&quot;Eccentrica Gallumbits&quot;</span><span class='p'>)</span>
+<span class='nv'>exception</span> <span class='nv'>error:</span> <span class='nv'>function_clause</span>
+
+<span class='nb'>&gt;</span>
+</code></pre></div><a name='2535_patterns_in_comprehensions' />
+<h4 id='2535_patterns_in_comprehensions'>2.5.3.5 Patterns in Comprehensions</h4>
 
 <p>List and binary comprehensions make use of patterns in a limited sense. They have the following general forms:</p>
 <div class='highlight'><pre><code class='cl'><span class='p'>(</span><span class='nv'>&lt;-</span> <span class='nv'>pat</span> <span class='nv'>guard</span> <span class='nv'>list-expr</span><span class='p'>)</span>
@@ -1139,7 +1271,7 @@ LFE Shell V5.9.3.1 (abort with ^G)
 </code></pre></div>
 <p>where the <code>guard</code> in both cases is optional.</p>
 
-<p>You can read more about LFE comprehensions in <a href='/user-guide/data/2.html'>section 3.2</a> <a name='3_lists_and_simple_data' /></p>
+<p>You can read more about LFE comprehensions in <a href='/user-guide/data/2.html'>section 3.3</a> <a name='3_lists_and_simple_data' /></p>
 
 <h1 id='3_lists_and_simple_data'>3 Lists and Simple Data</h1>
 <a name='31_lists' />
@@ -1314,8 +1446,8 @@ dedicated to handling lists</a> that we can take advantage of:</p>
 <span class='nb'>&gt;</span> <span class='nv'>val2</span>
 <span class='p'>(</span><span class='s'>&quot;Ravenous Bugblatter Beast of Traal&quot;</span> <span class='s'>&quot;small piece of fairy cake&quot;</span><span class='p'>)</span>
 <span class='nb'>&gt;</span>
-</code></pre></div><a name='32_comprehensions' />
-<h2 id='32_comprehensions'>3.2 Comprehensions</h2>
+</code></pre></div><a name='33_comprehensions' />
+<h2 id='33_comprehensions'>3.3 Comprehensions</h2>
 
 <p>In the section on lists, we gave an example of building a list using the <code>map</code> function:</p>
 <div class='highlight'><pre><code class='cl'><span class='nb'>&gt;</span> <span class='p'>(</span><span class='err'>:</span> <span class='nv'>lists</span> <span class='nb'>map</span>
@@ -1329,8 +1461,8 @@ dedicated to handling lists</a> that we can take advantage of:</p>
 <p>This sort of approach should be familiar to many programmers, even those who aren&#8217;t adepts at functional programming. This is a well-known pattern. Erlang offers another pattern, though: comprehensions.</p>
 
 <p>LFE supports Erlang comprehensions via two macros: <code>lc</code> for list comprehensions and <code>bc</code> for bitstring comprehensions.</p>
-<a name='321_list_comprehensions' />
-<h3 id='321_list_comprehensions'>3.2.1 List Comprehensions</h3>
+<a name='331_list_comprehensions' />
+<h3 id='331_list_comprehensions'>3.3.1 List Comprehensions</h3>
 
 <p>Let&#8217;s take a look at an example and then discuss it. Here&#8217;s a list comprehension version of our <code>map</code>/<code>lambda</code> combo above:</p>
 <div class='highlight'><pre><code class='cl'><span class='nb'>&gt;</span> <span class='p'>(</span><span class='nv'>lc</span>
@@ -1350,8 +1482,8 @@ dedicated to handling lists</a> that we can take advantage of:</p>
 <p>As we can see, the LFE syntax is not as concise as the native Erlang syntax, though it is pretty close. Our original example is 62 characters long; the LFE list comprehension is 49 characters long; the Erlang version is 41 characters.</p>
 
 <p>To a Lisper, the original is probably much more legible. However, in Erlang these is no question that the list comprehensions are shorter and easier to read than using anonymous functions.</p>
-<a name='321_bitstring_comprehensions' />
-<h3 id='321_bitstring_comprehensions'>3.2.1 Bitstring Comprehensions</h3>
+<a name='331_bitstring_comprehensions' />
+<h3 id='331_bitstring_comprehensions'>3.3.1 Bitstring Comprehensions</h3>
 
 <p>For binary data, we have something similar to the list comprehension. Here&#8217;s what a bitstring comprehension looks like (adapted from the example given by Francesco Cesarini and Simon Thompson in their book, &#8220;Erlang Programming&#8221;):</p>
 <div class='highlight'><pre><code class='cl'><span class='nb'>&gt;</span> <span class='p'>(</span><span class='nv'>bc</span>
@@ -1378,10 +1510,10 @@ dedicated to handling lists</a> that we can take advantage of:</p>
 </code></pre></div>
 <p>and this:</p>
 <div class='highlight'><pre><code class='cl'><span class='p'>((</span><span class='nv'>bnot</span> <span class='nv'>x</span><span class='p'>)</span> <span class='p'>(</span><span class='nv'>size</span> <span class='mi'>1</span><span class='p'>))</span>
-</code></pre></div><a name='33_property_lists_and_hashes' />
-<h2 id='33_property_lists_and_hashes'>3.3 Property Lists and Hashes</h2>
-<a name='331_property_lists' />
-<h3 id='331_property_lists'>3.3.1 Property Lists</h3>
+</code></pre></div><a name='34_property_lists_and_hashes' />
+<h2 id='34_property_lists_and_hashes'>3.4 Property Lists and Hashes</h2>
+<a name='341_property_lists' />
+<h3 id='341_property_lists'>3.4.1 Property Lists</h3>
 
 <p>Property lists are just lists whose entries are key/value tuples. Alternatively, an entry may be a single atom, in which case it implies a tuple with the atom as the key and <code>true</code> as the value.</p>
 
@@ -1413,12 +1545,12 @@ dedicated to handling lists</a> that we can take advantage of:</p>
 <span class='nb'>&gt;</span>
 </code></pre></div>
 <p>There is more information about property lists on the <a href='http://www.erlang.org/doc/man/proplists.html'>docs</a> page for them.</p>
-<a name='332_hashes' />
-<h3 id='332_hashes'>3.3.2 Hashes</h3>
+<a name='342_hashes' />
+<h3 id='342_hashes'>3.4.2 Hashes</h3>
 
 <p>There is no builtin &#8220;dictionary&#8221; or &#8220;hash&#8221; type in Erlang. However, there are some libraries that support data structures like these. There is also a concept of &#8220;records&#8221; which we will discuss in another section.</p>
-<a name='3321_the_dictionary' />
-<h4 id='3321_the_dictionary'>3.3.2.1 The Dictionary</h4>
+<a name='3421_the_dictionary' />
+<h4 id='3421_the_dictionary'>3.4.2.1 The Dictionary</h4>
 
 <p>The Erlang <code>dict</code> module implements a key/value dictionary part of which is an additional <code>dict</code> data type which supplements the built-in Erlang data types.</p>
 
@@ -1483,8 +1615,8 @@ dedicated to handling lists</a> that we can take advantage of:</p>
 <span class='nb'>&gt;</span>
 </code></pre></div>
 <p>There are many more functions to explore in the <a href='http://www.erlang.org/doc/man/dict.html'>dict docs</a>.</p>
-<a name='3322_other_hash_tables' />
-<h4 id='3322_other_hash_tables'>3.3.2.2 Other Hash Tables</h4>
+<a name='3422_other_hash_tables' />
+<h4 id='3422_other_hash_tables'>3.4.2.2 Other Hash Tables</h4>
 
 <p>OTP comes with the <code>ets</code> module which provides the ability to store very large quantities of data in an Erlang runtime system. The <code>ets</code> module supports hash tables of the following types:</p>
 
@@ -1499,10 +1631,10 @@ dedicated to handling lists</a> that we can take advantage of:</p>
 </ul>
 
 <p>The documentation for this module is <a href='http://www.erlang.org/doc/man/ets.html'>here</a>, though we will be adding information on how to use this from LFE at a later point (likely a dedicated tutorial).</p>
-<a name='34_records' />
-<h2 id='34_records'>3.4 Records</h2>
-<a name='341_just_records' />
-<h3 id='341_just_records'>3.4.1 Just Records</h3>
+<a name='35_records' />
+<h2 id='35_records'>3.5 Records</h2>
+<a name='351_just_records' />
+<h3 id='351_just_records'>3.5.1 Just Records</h3>
 
 <p>Sometimes lists, tuples, property lists, or hashes are not quite what is needed. With tuples, you can&#8217;t name keys (without awkward work-arounds), and this makes working with large tuples rather cumbersome. Records are one way around this.</p>
 
@@ -1567,8 +1699,8 @@ dedicated to handling lists</a> that we can take advantage of:</p>
 <p>Just as we saw with the <code>dict</code> examples, <code>set-person-age</code> doesn&#8217;t modify the data in-place, but rather returns a new record. If we want to use that data in the future, we&#8217;ll need to assign it to a variable (sensibly, we re-use the <code>ford</code> variable here).</p>
 
 <p>Also, note that there are also <code>set-person-name</code> and <code>set-person-address</code>.</p>
-<a name='342_records_and_ets' />
-<h3 id='342_records_and_ets'>3.4.2 Records and ETS</h3>
+<a name='352_records_and_ets' />
+<h3 id='352_records_and_ets'>3.5.2 Records and ETS</h3>
 
 <p>Additional convenience functions for records are provided by LFE, but some of these will only make sense in the context of ETS (Erlang Term Storage), when when the ability to store large amounts of data in memory becomes important. We will be discussing this in detail later, but this section provides a quick preview.</p>
 
@@ -1614,8 +1746,8 @@ dedicated to handling lists</a> that we can take advantage of:</p>
 <span class='nb'>&gt;</span>
 </code></pre></div>
 <p>This should be enough of an ETS taste to last until you get to the dedicated tutorial ;-)</p>
-<a name='35_hrl_header_files' />
-<h2 id='35__header_files'>3.5 <code>.hrl</code> Header Files</h2>
+<a name='36_hrl_header_files' />
+<h2 id='36__header_files'>3.6 <code>.hrl</code> Header Files</h2>
 <a name='4_functions_and_modules' />
 <h1 id='4_functions_and_modules'>4 Functions and Modules</h1>
 <a name='41_functions' />
@@ -1638,15 +1770,175 @@ dedicated to handling lists</a> that we can take advantage of:</p>
 <h2 id='42_lfespecific_functions_and_macros'>4.2 LFE-Specific Functions and Macros</h2>
 <a name='421_core_forms' />
 <h3 id='421_core_forms'>4.2.1 Core Forms</h3>
-<a name='422_macro_forms' />
+<div class='highlight'><pre><code class='cl'><span class='p'>(</span><span class='k'>quote</span> <span class='nv'>e</span><span class='p'>)</span>
+<span class='p'>(</span><span class='nb'>cons</span> <span class='nv'>head</span> <span class='nv'>tail</span><span class='p'>)</span>
+<span class='p'>(</span><span class='nb'>car</span> <span class='nv'>e</span><span class='p'>)</span>
+<span class='p'>(</span><span class='nb'>cdr</span> <span class='nv'>e</span><span class='p'>)</span>
+<span class='p'>(</span><span class='nb'>list</span> <span class='nv'>e</span> <span class='o'>...</span> <span class='p'>)</span>
+<span class='p'>(</span><span class='nv'>tuple</span> <span class='nv'>e</span> <span class='o'>...</span> <span class='p'>)</span>
+<span class='p'>(</span><span class='nv'>binary</span> <span class='nv'>seg</span> <span class='o'>...</span> <span class='p'>)</span>
+<span class='p'>(</span><span class='k'>lambda</span> <span class='p'>(</span><span class='nv'>arg</span> <span class='o'>...</span><span class='p'>)</span> <span class='o'>...</span><span class='p'>)</span>
+<span class='p'>(</span><span class='nv'>match-lambda</span>
+  <span class='p'>((</span><span class='nv'>arg</span> <span class='o'>...</span> <span class='p'>)</span> <span class='p'>(</span><span class='nb'>when</span> <span class='nv'>e</span> <span class='o'>...</span><span class='p'>)</span> <span class='o'>...</span><span class='p'>)</span>
+  <span class='o'>...</span> <span class='p'>)</span>
+<span class='p'>(</span><span class='k'>let</span> <span class='p'>((</span><span class='nv'>pat</span> <span class='p'>(</span><span class='nb'>when</span> <span class='nv'>e</span> <span class='o'>...</span><span class='p'>)</span> <span class='nv'>e</span><span class='p'>)</span>
+      <span class='o'>...</span><span class='p'>)</span>
+  <span class='o'>...</span> <span class='p'>)</span>
+<span class='p'>(</span><span class='nv'>let-function</span> <span class='p'>((</span><span class='nv'>name</span> <span class='k'>lambda</span><span class='nv'>|match-lambda)</span>
+<span class='nv'>               ... )</span>
+<span class='nv'>  ... )</span>
+<span class='nv'>(letrec-function ((name lambda|match-lambda</span><span class='p'>)</span>
+                  <span class='o'>...</span> <span class='p'>)</span>
+  <span class='o'>...</span> <span class='p'>)</span>
+<span class='p'>(</span><span class='nv'>let-macro</span> <span class='p'>((</span><span class='nv'>name</span> <span class='nv'>lambda-match-lambda</span><span class='p'>)</span>
+            <span class='o'>...</span><span class='p'>)</span>
+  <span class='o'>...</span><span class='p'>)</span>
+<span class='p'>(</span><span class='k'>progn</span> <span class='o'>...</span> <span class='p'>)</span>
+<span class='p'>(</span><span class='k'>if</span> <span class='nv'>test</span> <span class='nv'>true-expr</span> <span class='nv'>false-expr</span><span class='p'>)</span>
+<span class='p'>(</span><span class='nb'>case</span> <span class='nv'>e</span>
+  <span class='p'>(</span><span class='nv'>pat</span> <span class='p'>(</span><span class='nb'>when</span> <span class='nv'>e</span> <span class='o'>...</span><span class='p'>)</span> <span class='o'>...</span><span class='p'>)</span>
+   <span class='o'>...</span> <span class='p'>))</span>
+<span class='p'>(</span><span class='nv'>receive</span>
+  <span class='p'>(</span><span class='nv'>pat</span> <span class='p'>(</span><span class='nb'>when</span> <span class='nv'>e</span> <span class='o'>...</span><span class='p'>)</span> <span class='o'>...</span> <span class='p'>)</span>
+  <span class='o'>...</span>
+  <span class='p'>(</span><span class='nv'>after</span> <span class='nv'>timeout</span> <span class='o'>...</span> <span class='p'>))</span>
+<span class='p'>(</span><span class='k'>catch</span> <span class='o'>...</span> <span class='p'>)</span>
+<span class='p'>(</span><span class='nv'>try</span>
+  <span class='nv'>e</span>
+  <span class='p'>(</span><span class='nb'>case</span> <span class='p'>((</span><span class='nv'>pat</span> <span class='p'>(</span><span class='nb'>when</span> <span class='nv'>e</span> <span class='o'>...</span><span class='p'>)</span> <span class='o'>...</span> <span class='p'>)</span>
+          <span class='o'>...</span> <span class='p'>))</span>
+  <span class='p'>(</span><span class='k'>catch</span>
+     <span class='p'>(((</span><span class='nv'>tuple</span> <span class='k'>type</span> <span class='nv'>value</span> <span class='k'>ignore</span><span class='p'>)</span> <span class='p'>(</span><span class='nb'>when</span> <span class='nv'>e</span> <span class='o'>...</span><span class='p'>)</span>
+
+      <span class='o'>...</span> <span class='p'>)</span>
+     <span class='o'>...</span> <span class='p'>)</span>
+  <span class='p'>(</span><span class='nv'>after</span> <span class='o'>...</span> <span class='p'>))</span>
+<span class='p'>(</span><span class='nb'>funcall</span> <span class='nv'>func</span> <span class='nv'>arg</span> <span class='o'>...</span> <span class='p'>)</span>
+<span class='p'>(</span><span class='nv'>call</span> <span class='nb'>mod</span> <span class='nv'>func</span> <span class='nv'>arg</span> <span class='o'>...</span> <span class='p'>)</span>
+
+<span class='p'>(</span><span class='nv'>define-function</span> <span class='nv'>name</span> <span class='k'>lambda</span><span class='nv'>|match-lambda)</span>
+<span class='nv'>(define-macro name lambda|match-lambda</span><span class='p'>)</span>
+</code></pre></div><a name='422_macro_forms' />
 <h3 id='422_macro_forms'>4.2.2 Macro Forms</h3>
-<a name='423_common_lisp_inspired_macros' />
+<div class='highlight'><pre><code class='cl'><span class='p'>(</span><span class='err'>:</span> <span class='nb'>mod</span> <span class='nv'>func</span> <span class='nv'>arg</span> <span class='o'>...</span> <span class='p'>)</span> <span class='nv'>=&gt;</span>
+        <span class='p'>(</span><span class='nv'>call</span> <span class='ss'>&#39;mod</span> <span class='ss'>&#39;func</span> <span class='nv'>arg</span> <span class='o'>...</span> <span class='p'>)</span>
+<span class='p'>(</span><span class='nv'>?</span> <span class='nv'>timeout</span> <span class='nv'>default</span> <span class='p'>)</span>
+
+<span class='p'>(</span><span class='nv'>++</span> <span class='o'>...</span> <span class='p'>)</span>
+<span class='p'>(</span><span class='nb'>list*</span> <span class='o'>...</span><span class='p'>)</span>
+<span class='p'>(</span><span class='k'>let*</span> <span class='p'>(</span><span class='o'>...</span><span class='p'>)</span> <span class='o'>...</span> <span class='p'>)</span>
+<span class='p'>(</span><span class='k'>flet</span> <span class='p'>((</span><span class='nv'>name</span> <span class='p'>(</span><span class='nv'>arg</span> <span class='o'>...</span><span class='p'>)</span> <span class='o'>...</span><span class='p'>)</span>
+       <span class='o'>...</span><span class='p'>)</span>
+  <span class='o'>...</span><span class='p'>)</span>
+<span class='p'>(</span><span class='nv'>flet*</span> <span class='p'>(</span><span class='o'>...</span><span class='p'>)</span> <span class='o'>...</span> <span class='p'>)</span>
+<span class='p'>(</span><span class='nv'>fletrec</span> <span class='p'>((</span><span class='nv'>name</span> <span class='p'>(</span><span class='nv'>arg</span> <span class='o'>...</span><span class='p'>)</span> <span class='o'>...</span><span class='p'>)</span>
+          <span class='o'>...</span><span class='p'>)</span>
+  <span class='o'>...</span><span class='p'>)</span>
+
+<span class='p'>(</span><span class='nb'>cond</span> <span class='o'>...</span> <span class='p'>)</span>
+<span class='p'>(</span><span class='nv'>andalso</span> <span class='o'>...</span> <span class='p'>)</span>
+<span class='p'>(</span><span class='nv'>orelse</span> <span class='o'>...</span> <span class='p'>)</span>
+<span class='p'>(</span><span class='nv'>fun</span> <span class='nv'>func</span> <span class='nv'>arity</span><span class='p'>)</span>
+<span class='p'>(</span><span class='nv'>fun</span> <span class='nb'>mod</span> <span class='nv'>func</span> <span class='nv'>arity</span><span class='p'>)</span>
+<span class='p'>(</span><span class='nv'>lc</span> <span class='p'>(</span><span class='nv'>qual</span> <span class='o'>...</span><span class='p'>)</span> <span class='o'>...</span><span class='p'>)</span>
+<span class='p'>(</span><span class='nv'>bc</span> <span class='p'>(</span><span class='nv'>qual</span> <span class='o'>...</span><span class='p'>)</span> <span class='o'>...</span><span class='p'>)</span>
+<span class='p'>(</span><span class='nv'>match-spec</span> <span class='o'>...</span><span class='p'>)</span>
+</code></pre></div><a name='423_common_lisp_inspired_macros' />
 <h3 id='423_common_lisp_inspired_macros'>4.2.3 Common Lisp Inspired Macros</h3>
-<a name='424_scheme_inspired_macros' />
+<div class='highlight'><pre><code class='cl'><span class='p'>(</span><span class='nb'>defun</span> <span class='nv'>name</span> <span class='p'>(</span><span class='nv'>arg</span> <span class='o'>...</span><span class='p'>)</span> <span class='o'>...</span><span class='p'>)</span>
+<span class='p'>(</span><span class='nb'>defun</span> <span class='nv'>name</span>
+  <span class='p'>((</span><span class='nv'>argpat</span> <span class='o'>...</span><span class='p'>)</span> <span class='o'>...</span><span class='p'>)</span>
+  <span class='o'>...</span><span class='p'>)</span>
+
+<span class='p'>(</span><span class='nb'>defmacro</span> <span class='nv'>name</span> <span class='p'>(</span><span class='nv'>arg</span> <span class='o'>...</span><span class='p'>)</span> <span class='o'>...</span><span class='p'>)</span>
+<span class='p'>(</span><span class='nb'>defmacro</span> <span class='nv'>name</span> <span class='nv'>arg</span> <span class='o'>...</span><span class='p'>)</span>
+<span class='p'>(</span><span class='nb'>defmacro</span> <span class='nv'>name</span>
+  <span class='p'>((</span><span class='nv'>argpat</span> <span class='o'>...</span><span class='p'>)</span> <span class='o'>...</span><span class='p'>)</span>
+  <span class='o'>...</span><span class='p'>)</span>
+
+<span class='p'>(</span><span class='nv'>defsyntax</span> <span class='nv'>name</span>
+  <span class='p'>(</span><span class='nv'>pat</span> <span class='nb'>exp</span><span class='p'>)</span>
+  <span class='o'>...</span><span class='p'>)</span>
+
+<span class='p'>(</span><span class='k'>macrolet</span> <span class='p'>((</span><span class='nv'>name</span> <span class='p'>(</span><span class='nv'>arg</span> <span class='o'>...</span><span class='p'>)</span> <span class='o'>...</span><span class='p'>)</span>
+           <span class='o'>...</span><span class='p'>)</span>
+  <span class='o'>...</span><span class='p'>)</span>
+<span class='p'>(</span><span class='nv'>syntaxlet</span> <span class='p'>((</span><span class='nv'>name</span> <span class='p'>(</span><span class='nv'>pat</span> <span class='nb'>exp</span><span class='p'>)</span> <span class='o'>...</span><span class='p'>)</span>
+            <span class='o'>...</span><span class='p'>)</span>
+  <span class='o'>...</span><span class='p'>)</span>
+
+<span class='p'>(</span><span class='nv'>defmodule</span> <span class='nv'>name</span> <span class='o'>...</span><span class='p'>)</span>
+<span class='p'>(</span><span class='nv'>defrecord</span> <span class='nv'>name</span> <span class='o'>...</span><span class='p'>)</span>
+</code></pre></div><a name='424_scheme_inspired_macros' />
 <h3 id='424_scheme_inspired_macros'>4.2.4 Scheme Inspired Macros</h3>
-<a name='425_additional_lisp_functions' />
+<div class='highlight'><pre><code class='cl'><span class='p'>(</span><span class='nv'>define</span> <span class='p'>(</span><span class='nv'>name</span> <span class='nv'>arg</span> <span class='o'>...</span><span class='p'>)</span> <span class='o'>...</span><span class='p'>)</span>
+<span class='p'>(</span><span class='nv'>define</span> <span class='nv'>name</span> <span class='k'>lambda</span><span class='nv'>|match-lambda)</span>
+<span class='nv'>(define-syntax name</span>
+<span class='nv'>  (syntax-rules (pat exp) ...)|</span><span class='p'>(</span><span class='nv'>macro</span> <span class='p'>(</span><span class='nv'>pat</span> <span class='nv'>body</span><span class='p'>)</span> <span class='o'>...</span><span class='p'>))</span>
+<span class='p'>(</span><span class='nv'>let-syntax</span> <span class='p'>((</span><span class='nv'>name</span> <span class='o'>...</span><span class='p'>)</span>
+             <span class='o'>...</span><span class='p'>)</span>
+  <span class='o'>...</span><span class='p'>)</span>
+<span class='p'>(</span><span class='nv'>begin</span> <span class='o'>...</span><span class='p'>)</span>
+<span class='p'>(</span><span class='nv'>define-module</span> <span class='nv'>name</span> <span class='o'>...</span><span class='p'>)</span>
+<span class='p'>(</span><span class='nv'>define-record</span> <span class='nv'>name</span> <span class='o'>...</span><span class='p'>)</span>
+</code></pre></div><a name='425_additional_lisp_functions' />
 <h3 id='425_additional_lisp_functions'>4.2.5 Additional Lisp Functions</h3>
-<a name='43_modules' />
+<div class='highlight'><pre><code class='cl'><span class='p'>(</span><span class='nv'>&lt;arith_op&gt;</span> <span class='nv'>expr</span> <span class='o'>...</span><span class='p'>)</span>
+<span class='p'>(</span><span class='nv'>&lt;comp_op&gt;</span> <span class='nv'>expr</span> <span class='o'>...</span><span class='p'>)</span>
+        <span class='nv'>The</span> <span class='nv'>standard</span> <span class='nv'>arithmentic</span> <span class='nv'>operators,</span> <span class='nb'>+</span> <span class='nb'>-</span> <span class='nb'>*</span> <span class='nv'>/,</span> <span class='nb'>and</span> <span class='nv'>comparison</span>
+        <span class='nv'>operators,</span> <span class='nb'>&gt;</span> <span class='nb'>&gt;=</span> <span class='nb'>&lt;</span> <span class='nv'>=&lt;</span> <span class='nv'>==</span> <span class='nb'>/=</span> <span class='nv'>=:=</span> <span class='nv'>=/=</span> <span class='o'>,</span> <span class='nv'>can</span> <span class='nv'>take</span> <span class='nv'>multiple</span>
+        <span class='nv'>arguments</span> <span class='k'>the</span> <span class='nv'>same</span> <span class='nv'>as</span> <span class='nv'>their</span> <span class='nv'>standard</span> <span class='nv'>lisp</span> <span class='nv'>counterparts.</span> <span class='nv'>This</span>
+        <span class='nv'>is</span> <span class='nv'>still</span> <span class='nv'>experimental</span> <span class='nb'>and</span> <span class='nv'>implemented</span> <span class='nv'>using</span> <span class='nv'>macros.</span> <span class='nv'>They</span> <span class='nv'>do,</span>
+        <span class='nv'>however,</span> <span class='nv'>behave</span> <span class='nv'>like</span> <span class='nv'>normal</span> <span class='nv'>functions</span> <span class='nb'>and</span> <span class='nv'>evaluate</span> <span class='nv'>ALL</span> <span class='nv'>their</span>
+        <span class='nv'>arguments</span> <span class='nv'>before</span> <span class='nv'>doing</span> <span class='k'>the</span> <span class='nv'>arithmetic/comparisons</span> <span class='nv'>operations.</span>
+
+<span class='p'>(</span><span class='nb'>acons</span> <span class='nv'>key</span> <span class='nv'>value</span> <span class='nb'>list</span><span class='p'>)</span>
+<span class='p'>(</span><span class='nb'>pairlis</span> <span class='nv'>keys</span> <span class='nb'>values</span> <span class='nb'>list</span><span class='p'>)</span>
+<span class='p'>(</span><span class='nb'>assoc</span> <span class='nv'>key</span> <span class='nb'>list</span><span class='p'>)</span>
+<span class='p'>(</span><span class='nb'>assoc-if</span> <span class='nv'>test</span> <span class='nb'>list</span><span class='p'>)</span>
+<span class='p'>(</span><span class='nb'>assoc-if-not</span> <span class='nv'>test</span> <span class='nb'>list</span><span class='p'>)</span>
+<span class='p'>(</span><span class='nb'>rassoc</span> <span class='nv'>value</span> <span class='nb'>list</span><span class='p'>)</span>
+<span class='p'>(</span><span class='nb'>rassoc-if</span> <span class='nv'>test</span> <span class='nb'>list</span><span class='p'>)</span>
+<span class='p'>(</span><span class='nb'>rassoc-if-not</span> <span class='nv'>test</span> <span class='nb'>list</span><span class='p'>)</span>
+        <span class='nv'>The</span> <span class='nv'>standard</span> <span class='nv'>association</span> <span class='nb'>list</span> <span class='nv'>functions.</span>
+
+<span class='p'>(</span><span class='nb'>subst</span> <span class='nv'>new</span> <span class='nv'>old</span> <span class='nv'>tree</span><span class='p'>)</span>
+<span class='p'>(</span><span class='nb'>subst-if</span> <span class='nv'>new</span> <span class='nv'>test</span> <span class='nv'>tree</span><span class='p'>)</span>
+<span class='p'>(</span><span class='nb'>subst-if-not</span> <span class='nv'>new</span> <span class='nv'>test</span> <span class='nv'>tree</span><span class='p'>)</span>
+<span class='p'>(</span><span class='nb'>sublis</span> <span class='nv'>alist</span> <span class='nv'>tree</span><span class='p'>)</span>
+        <span class='nv'>The</span> <span class='nv'>standard</span> <span class='nv'>substituition</span> <span class='nv'>functions.</span>
+
+<span class='p'>(</span><span class='nb'>macroexpand-1</span> <span class='nv'>expr</span> <span class='nv'>environment</span><span class='p'>)</span>
+        <span class='nv'>If</span> <span class='nv'>Expr</span> <span class='nv'>is</span> <span class='nv'>a</span> <span class='nv'>macro</span> <span class='nv'>call,</span> <span class='nv'>does</span> <span class='nv'>one</span> <span class='nb'>round</span> <span class='nv'>of</span> <span class='nv'>expansion,</span>
+        <span class='nv'>otherwise</span> <span class='nv'>returns</span> <span class='nv'>Expr.</span>
+
+<span class='p'>(</span><span class='nb'>macroexpand</span> <span class='nv'>expr</span> <span class='nv'>environment</span><span class='p'>)</span>
+        <span class='nv'>Returns</span> <span class='k'>the</span> <span class='nv'>expansion</span> <span class='nv'>returned</span> <span class='nv'>by</span> <span class='nv'>calling</span> <span class='nb'>macroexpand-1</span>
+        <span class='nv'>repeatedly,</span> <span class='nv'>starting</span> <span class='nv'>with</span> <span class='nv'>Expr,</span> <span class='nv'>until</span> <span class='k'>the</span> <span class='nv'>result</span> <span class='nv'>is</span> <span class='nv'>no</span> <span class='nv'>longer</span>
+        <span class='nv'>a</span> <span class='nv'>macro</span> <span class='nv'>call.</span>
+
+<span class='p'>(</span><span class='nv'>macroexpand-all</span> <span class='nv'>expr</span> <span class='nv'>environment</span><span class='p'>)</span>
+        <span class='nv'>Returns</span> <span class='k'>the</span> <span class='nv'>expansion</span> <span class='nv'>from</span> <span class='k'>the</span> <span class='nv'>expression</span> <span class='nv'>where</span> <span class='nv'>all</span> <span class='nv'>macro</span>
+        <span class='nv'>calls</span> <span class='nv'>have</span> <span class='nv'>been</span> <span class='nv'>expanded</span> <span class='nv'>with</span> <span class='nv'>macroexpand.</span>
+
+        <span class='nv'>NOTE</span> <span class='nv'>that</span> <span class='nb'>when</span> <span class='nv'>no</span> <span class='nv'>explicit</span> <span class='nv'>environment</span> <span class='nv'>is</span> <span class='nv'>given</span> <span class='k'>the</span>
+        <span class='nb'>macroexpand</span> <span class='nv'>functions</span> <span class='nv'>then</span> <span class='nv'>only</span> <span class='k'>the</span> <span class='nv'>default</span> <span class='nv'>built-in</span> <span class='nv'>macros</span>
+        <span class='nv'>will</span> <span class='nv'>be</span> <span class='nv'>expanded.</span> <span class='nv'>Inside</span> <span class='nv'>macros</span> <span class='nb'>and</span> <span class='nv'>in</span> <span class='k'>the</span> <span class='nv'>shell</span> <span class='k'>the</span> <span class='nv'>variable</span>
+        <span class='nv'>$ENV</span> <span class='nv'>is</span> <span class='nv'>bound</span> <span class='nv'>to</span> <span class='k'>the</span> <span class='nv'>current</span> <span class='nv'>macro</span> <span class='nv'>environment.</span>
+
+<span class='p'>(</span><span class='nb'>eval</span> <span class='nv'>expr</span> <span class='nv'>environment</span><span class='p'>)</span>
+        <span class='nv'>Evaluate</span> <span class='k'>the</span> <span class='nv'>expression</span> <span class='nv'>expr.</span> <span class='nv'>Note</span> <span class='nv'>that</span> <span class='nv'>only</span> <span class='k'>the</span> <span class='nv'>pre-defined</span>
+        <span class='nv'>lisp</span> <span class='nv'>functions,</span> <span class='nv'>erlang</span> <span class='nv'>BIFs</span> <span class='nb'>and</span> <span class='nv'>exported</span> <span class='nv'>functions</span> <span class='nv'>can</span> <span class='nv'>be</span>
+        <span class='nv'>called.</span> <span class='nv'>Also</span> <span class='nv'>no</span> <span class='nv'>local</span> <span class='nv'>variables</span> <span class='nv'>can</span> <span class='nv'>be</span> <span class='nv'>accessed.</span> <span class='nv'>To</span> <span class='nv'>access</span>
+        <span class='nv'>local</span> <span class='nv'>variables</span> <span class='k'>the</span> <span class='nv'>expr</span> <span class='nv'>to</span> <span class='nv'>be</span> <span class='nv'>evaluated</span> <span class='nv'>can</span> <span class='nv'>be</span> <span class='nv'>wrapped</span> <span class='nv'>in</span> <span class='nv'>a</span>
+        <span class='k'>let</span> <span class='nv'>defining</span> <span class='nv'>these.</span>
+
+        <span class='nv'>For</span> <span class='nv'>example</span> <span class='k'>if</span> <span class='k'>the</span> <span class='nv'>data</span> <span class='nv'>we</span> <span class='nv'>wish</span> <span class='nv'>to</span> <span class='nv'>evaluate</span> <span class='nv'>is</span> <span class='nv'>in</span> <span class='k'>the</span> <span class='nv'>variable</span>
+        <span class='nv'>expr</span> <span class='nb'>and</span> <span class='nv'>it</span> <span class='nv'>assumes</span> <span class='nv'>there</span> <span class='nv'>is</span> <span class='nv'>a</span> <span class='nv'>local</span> <span class='nv'>variable</span> <span class='s'>&quot;foo&quot;</span> <span class='nv'>which</span> <span class='nv'>it</span>
+        <span class='nv'>needs</span> <span class='nv'>to</span> <span class='nv'>access</span> <span class='nv'>then</span> <span class='nv'>we</span> <span class='nv'>could</span> <span class='nv'>evaluate</span> <span class='nv'>it</span> <span class='nv'>by</span> <span class='nv'>calling:</span>
+
+        <span class='p'>(</span><span class='nb'>eval</span> <span class='o'>`</span><span class='p'>(</span><span class='k'>let</span> <span class='p'>((</span><span class='nv'>foo</span> <span class='o'>,</span><span class='nv'>foo</span><span class='p'>))</span> <span class='o'>,</span><span class='nv'>expr</span><span class='p'>))</span>
+</code></pre></div><a name='43_modules' />
 <h2 id='43_modules'>4.3 Modules</h2>
 <a name='431_what_modules_do' />
 <h3 id='431_what_modules_do'>4.3.1 What Modules Do</h3>
@@ -1743,13 +2035,13 @@ dedicated to handling lists</a> that we can take advantage of:</p>
 <a name='52_a_brief_history' />
 <h2 id='52_a_brief_history'>5.2 A Brief History</h2>
 
-<p>In functional languages, recursion plays an important role. For Erlang in particular, recursion is important because variables can&#8217;t be changed. It is therefor often very useful to take advantage of recursion n order to work with changing values (examples are given in the latter half of this chapter).</p>
+<p>In functional languages, recursion plays an important role. For Erlang in particular, recursion is important because variables can&#8217;t be changed. It is therefor often very useful to take advantage of recursion in order to work with changing values (examples are given in the latter half of this chapter).</p>
 
 <p>However, recursion is interesting in and of itself. The roots of functional programming languages such as Lisp, ML, Erlang, Haskell and others, can be traced to the concept of recursion in general and the λ-calculus in particular.</p>
 
-<p>The Italian mathematician Giuseppe Peano seems to have been one of the first to have made prominent use of recursion when defining his axioms for the natural numbers. Furthermore, Peano gave Bertrand Russell a copy of his &#8220;Formulario&#8221; (in fact, he gave Russell all of his published works!). This impacted Russell hugely and quite possibly influenced his efforts on &#8220;Principia Mathematica&#8221; which he coauthored several years later.</p>
+<p>The Italian mathematician Giuseppe Peano seems to have been one of the first to have made prominent use of recursion when defining his axioms for the natural numbers. Furthermore, Peano gave Bertrand Russell a copy of his &#8220;Formulario&#8221; (in fact, he gave Russell <em>all</em> of his published works!). This impacted Russell hugely and quite possibly influenced his work on the &#8220;Principia Mathematica&#8221; which he coauthored several years later.</p>
 
-<p>It was from the Principia that Alonzo Church derived his lambda notation. When Church&#8217;s student, John McCarthy, created Lisp, he used both the lambda notation and the related concept of recursion in his new language. (Interestingly enough, McCarthy and Dijkstra both advocated for the inclusions of recursion in ALGOL.)</p>
+<p>It was from the Principia that Alonzo Church derived his lambda notation. When Church&#8217;s student, John McCarthy, created Lisp, he used both the lambda notation and the related concept of recursion in his new language. (Interestingly enough, McCarthy and Dijkstra both advocated for the inclusions of recursion in ALGOL.) From John McCarthy&#8217;s work onward, the lambda and recursion have been our constant companions.</p>
 <a name='53_a_preview' />
 <h2 id='53_a_preview'>5.3 A Preview</h2>
 
@@ -1768,6 +2060,8 @@ dedicated to handling lists</a> that we can take advantage of:</p>
 
 <li>Tail-Calls</li>
 </ul>
+
+<p>If you just want to jump to the practical examples, please do so! You should feel no guilt when enjoying LFE or reading about LFE :-) The other sections are provided simply because it is very rare to find a practical coverage of the foundations of recursion and the λ-Calculus. There may be readers out there who want to know this reasons and history behind the concepts studied; most of this chapter is for them.</p>
 <a name='54_the_dedekind-peano_axioms' />
 <h2 id='54_the_dedekindpeano_axioms'>5.4 The Dedekind-Peano Axioms</h2>
 
@@ -1779,21 +2073,21 @@ dedicated to handling lists</a> that we can take advantage of:</p>
 
 <p>One of the big problems facing mathematicians and one that also prevented the clarification of the foundations, was this: a thorough, precise, and consistent definition of the natural numbers as well as operations that could be performed on them (e.g., addition, multiplication, etc.). There was a long-accepted intuitive understanding, however, this was insufficient for complete mathematical rigor.</p>
 
-<p>Richard Dedekind addressed this with his method of cuts, but it was Giuseppe Peano that supplied us with the clearest, most easily described axioms defining the natural numbers and arithmetic. And in so doing, made effective use of recursion. His definitions can be easily found in text books and on the Internet; we will take a slightly unique approach, however, and cast them in LFE.</p>
+<p>Richard Dedekind addressed this with his method of cuts, but it was Giuseppe Peano that supplied us with the clearest, most easily described axioms defining the natural numbers and arithmetic, wherein he made effective use of recursion. His definitions can be easily found in text books and on the Internet; we will take a slightly unique approach, however, and cast them in terms of LFE.</p>
 <a name='542_a_constant_and_equality' />
 <h3 id='542_a_constant_and_equality'>5.4.2 A Constant and Equality</h3>
 
-<p>The first five Peano axioms deal with the constant (often written as &#8220;0&#8221;) and the reflexive, symmetric, transitive and closed eqaulity relations. These don&#8217;t relate recursion directly, so we&#8217;re going to skip them ;-)</p>
+<p>The first five Peano axioms deal with the constant (often written as &#8220;0&#8221;) and the reflexive, symmetric, transitive and closed equality relations. These don&#8217;t relate recursion directly, so we&#8217;re going to skip them ;-)</p>
 <a name='543_successor_function' />
 <h3 id='543_successor_function'>5.4.3 Successor Function</h3>
 
-<p>The concept of the &#8220;successor&#8221; in the Peano axioms is a primitive; it is taken as being true without having proved it. It is informally defined as being the next number following a given number &#8220;n&#8221;.</p>
+<p>The concept of the &#8220;successor&#8221; in the Peano axioms is a primitive; it is taken as being true without having been proved. It is informally defined as being the next number following a given number &#8220;n&#8221;.</p>
 
 <p>In LFE:</p>
 <div class='highlight'><pre><code class='cl'><span class='p'>(</span><span class='nb'>defun</span> <span class='nv'>successor</span> <span class='p'>(</span><span class='nv'>n</span><span class='p'>)</span>
   <span class='p'>(</span><span class='nb'>+</span> <span class='nv'>n</span> <span class='mi'>1</span><span class='p'>))</span>
 </code></pre></div>
-<p>The things to keep in mind here are that 1) we haven&#8217;t defined addition yet, and 2) you must not interpred &#8221;+&#8221; as addition in this context, rather as the operator that allows for succession to occur. In the world of the Peano axioms, &#8221;+&#8221; is only validly used with &#8220;n&#8221; and &#8220;1&#8221;.</p>
+<p>The things to keep in mind here are that 1) we haven&#8217;t defined addition yet, and 2) you must not interpret &#8221;+&#8221; as addition in this context, rather as the operator that allows for succession to occur. In the world of the Peano axioms, &#8221;+&#8221; is only validly used with &#8220;n&#8221; and &#8220;1&#8221;.</p>
 
 <p>This function is defined as being &#8220;basic primitive recursive&#8221;. The basic primitive recursives are defined by axioms; the term was coined by Rózsa Péter.</p>
 <a name='544_the_remaining_axioms' />
@@ -1803,7 +2097,7 @@ dedicated to handling lists</a> that we can take advantage of:</p>
 <a name='55_primitive_recursive_functions' />
 <h2 id='55_primitive_recursive_functions'>5.5 Primitive Recursive Functions</h2>
 
-<p>In the previous section, we leaned about the primitive recursive funtion called the &#8220;successor&#8221;, one that was used by Peano in his axioms. There are other primitive recursive funtions as well, and these are usually given as axioms (i.e., without proof):</p>
+<p>In the previous section, we leaned about the primitive recursive function called the &#8220;successor&#8221;, one that was used by Peano in his axioms. There are other primitive recursive functions as well, and these are usually given as axioms (i.e., without proof):</p>
 
 <ul>
 <li>the &#8220;zero function&#8221;</li>
@@ -1817,27 +2111,49 @@ dedicated to handling lists</a> that we can take advantage of:</p>
 <a name='551_addition' />
 <h3 id='551_addition'>5.5.1 Addition</h3>
 
-<p>Often, one sees the primitive recursive function definition of addition done in the following manner:</p>
+<p>In the literature, the definition for Peano addition is done in the following manner:</p>
 
-<pre><code>add(0, x) = x
-add(n + 1, x) = add(n, x) + 1</code></pre>
+<pre><code>a + 0 = a,
+a + S(b) = S(a + b)</code></pre>
 
-<p>or:</p>
+<p>where <code>S</code> is the successor function defined in the previous section.</p>
+
+<p>First we have an identity function: any number that has zero added to it yields the result of the number itself.</p>
+
+<p>Secondly, a number, when added with the successor of another number is equal to the successor of the two numbers combined. Let&#8217;s take a look at an example:</p>
+
+<ul>
+<li>The number 0, when applied to the successor function yields 1 (<code>S(0) = 1</code>)</li>
+
+<li>Therefore, <code>a + S(0) = a + 1</code></li>
+
+<li>By Peano&#8217;s definition of addition then, we have <code>a + 1 = S(a + 0)</code></li>
+
+<li>Which then gives <code>a + 1 = S(a)</code></li>
+</ul>
+
+<p>In other words, the successor of <code>a</code> is <code>a + 1</code>.</p>
+
+<p>These rules for addition are sometimes given in the following pseudo code:</p>
 
 <pre><code>add(0, x) = x
 add(succ(n), x) = succ(add(n, x))</code></pre>
 
-<p>In LFE, we&#8217;d like to maintain symmetry with this&#8230; however, patterns don&#8217;t accept function calls (e.g., to <code>(successor n)</code>). As such, we do a little juggling instead:</p>
+<p>In LFE, we&#8217;d like to maintain symmetry with this. We could try to construct a function that had both definitions as pattern arguments, thus alleviating the need for two function definitions. However, to perfectly map the pseudo code to LFE, we&#8217;d have to put a function call in our pattern&#8230; and that&#8217;s not possible.</p>
+
+<p>If, though, we do a little algebraic juggling, we can work around this. In our pseudo code we have two parameters: <code>succ(n)</code> and <code>x</code>. If we apply a &#8220;predecessor&#8221; function to <code>succ(n)</code>, we&#8217;ll just have <code>n</code> &#8211; which would do nicely for a matched function argument in LFE. But we&#8217;ll also need to apply this predecessor function to the <code>n</code> on the other side of the equation.</p>
+
+<p>Let&#8217;s create such a &#8220;predecessor&#8221; function:</p>
 <div class='highlight'><pre><code class='cl'><span class='p'>(</span><span class='nb'>defun</span> <span class='nv'>predecessor</span>
   <span class='p'>((</span><span class='mi'>0</span><span class='p'>)</span> <span class='mi'>0</span><span class='p'>)</span>
   <span class='p'>((</span><span class='nv'>n</span><span class='p'>)</span> <span class='p'>(</span><span class='nb'>-</span> <span class='nv'>n</span> <span class='mi'>1</span><span class='p'>)))</span>
 </code></pre></div>
-<p>Now, we can recast the canonical form above using the workaround of the <code>predecessor</code> primitive recursive function:</p>
+<p>Now, we can recast the canonical form above using the workaround of the <code>predecessor</code> primitive recursive function, allowing us to use one function to define Peano&#8217;s addition axiom:</p>
 <div class='highlight'><pre><code class='cl'><span class='p'>(</span><span class='nb'>defun</span> <span class='nv'>add</span>
   <span class='p'>((</span><span class='mi'>0</span> <span class='nv'>x</span><span class='p'>)</span> <span class='nv'>x</span><span class='p'>)</span>
   <span class='p'>((</span><span class='nv'>n</span> <span class='nv'>x</span><span class='p'>)</span> <span class='p'>(</span><span class='nv'>successor</span> <span class='p'>(</span><span class='nv'>add</span> <span class='p'>(</span><span class='nv'>predecessor</span> <span class='nv'>n</span><span class='p'>)</span> <span class='nv'>x</span><span class='p'>))))</span>
 </code></pre></div>
-<p>All of this may seem rather absurb, given what we do in every-day programming. Remember, though: the verbosity of these axioms and their derrived definitions serves to explicitly show that no assumptions are being made and that all these operations can indeed be built upon basic principles.</p>
+<p>All of this may seem rather absurd, given what we do in every-day programming. Remember, though: the verbosity of these axioms and their derived definitions serves to explicitly show that no assumptions are being made. With a foundation of no assumption, we can be certain that each brick we lay on top of this sound (if possibly baroque) basis will be unshakable (baring the random proof by Gödel, of course).</p>
 <a name='552_subtraction' />
 <h3 id='552_subtraction'>5.5.2 Subtraction</h3>
 
@@ -1851,7 +2167,9 @@ sub(pred(n), x) = pred(sub(n, x))</code></pre>
   <span class='p'>((</span><span class='mi'>0</span> <span class='nv'>x</span><span class='p'>)</span> <span class='nv'>x</span><span class='p'>)</span>
   <span class='p'>((</span><span class='nv'>n</span> <span class='nv'>x</span><span class='p'>)</span> <span class='p'>(</span><span class='nv'>predecessor</span> <span class='p'>(</span><span class='nv'>subtract</span> <span class='p'>(</span><span class='nv'>predecessor</span> <span class='nv'>n</span><span class='p'>)</span> <span class='nv'>x</span><span class='p'>))))</span>
 </code></pre></div>
-<p>Note that the usual usage is reversed for our <code>subtract</code> function:</p>
+<p>Due to the manner in which we have defined our functions, the usual usage is reversed for our <code>subtract</code> function. The first operand is not the number that is being subtracted from, but rather the number that is being <em>subtracted</em>.</p>
+
+<p>We can see this in action if we put our definitions in a file called <code>prf.lfe</code> (named for &#8220;primitive recursive functions&#8221;) and <code>slurp</code> it in the LFE REPL:</p>
 <div class='highlight'><pre><code class='cl'><span class='nb'>&gt;</span> <span class='p'>(</span><span class='nv'>slurp</span> <span class='o'>&#39;</span><span class='s'>&quot;prf.lfe&quot;</span><span class='p'>)</span>
 <span class='o'>#(</span><span class='nv'>ok</span> <span class='nv'>prf</span><span class='p'>)</span>
 <span class='nb'>&gt;</span> <span class='p'>(</span><span class='nv'>subtract</span> <span class='mi'>1</span> <span class='mi'>100</span><span class='p'>)</span>
@@ -1869,14 +2187,20 @@ mult(succ(n), x) = x + (x * n)</code></pre>
 <div class='highlight'><pre><code class='cl'><span class='p'>(</span><span class='nb'>defun</span> <span class='nv'>multiply</span>
   <span class='p'>((</span><span class='mi'>0</span> <span class='nv'>x</span><span class='p'>)</span> <span class='mi'>0</span><span class='p'>)</span>
   <span class='p'>((</span><span class='nv'>n</span> <span class='nv'>x</span><span class='p'>)</span> <span class='p'>(</span><span class='nv'>add</span> <span class='nv'>x</span> <span class='p'>(</span><span class='nv'>multiply</span> <span class='nv'>x</span> <span class='p'>(</span><span class='nv'>predecessor</span> <span class='nv'>n</span><span class='p'>)))))</span>
-</code></pre></div><a name='56_total_recursive_functions' />
-<h2 id='56_total_recursive_functions'>5.6 Total Recursive Functions</h2>
+</code></pre></div><a name='56_partial_recursive_functions' />
+<h2 id='56_partial_recursive_functions'>5.6 Partial Recursive Functions</h2>
 
-<p>TBD</p>
-<a name='561_the_ackermann_function' />
-<h3 id='561_the_ackermann_function'>5.6.1 The Ackermann Function</h3>
+<p>We&#8217;ve covered primitive recursive functions in the previous section; now we&#8217;ll take a brief look at what are called &#8220;partial recursive functions&#8221;. These are functions that provide an output for given input but which may not be defined for <em>every</em> possible input.</p>
 
-<p>The Ackermann function is one of the simplest and earliest-discovered examples of a &#8220;total computable function&#8221; that is not primitive recursive. The variant of the function that we present below is the two-variable version developed by Rózsa Péter and Raphael Robinson (the original was more verbose and with three variables).</p>
+<p>Partial recursive functions are also referred to as &#8220;computable functions&#8221; and can be defined using Turing machines or the λ-calculus (among others). In fact, an equivalent definition of partial recursive function is actually a function that can be computed by a Turing machine.</p>
+<a name='57_total_recursive_functions' />
+<h2 id='57_total_recursive_functions'>5.7 Total Recursive Functions</h2>
+
+<p>As opposed to a partial recursive function, a <em>total</em> recursive function is one that is defined for all possible function inputs. Every primitive recursive function is total recursive. There are, however, total recursive functions that are <em>not</em> primitive recursive. The Ackermann function is one such.</p>
+<a name='571_the_ackermann_function' />
+<h3 id='571_the_ackermann_function'>5.7.1 The Ackermann Function</h3>
+
+<p>The Ackermann function is one of the simplest and earliest-discovered examples of a total recursive function that is not primitive recursive. The variant of the function that we present below is the two-variable version developed by Rózsa Péter and Raphael Robinson (the original was more verbose and with three variables).</p>
 
 <p>Here is the function in LFE</p>
 <div class='highlight'><pre><code class='cl'><span class='p'>(</span><span class='nb'>defun</span> <span class='nv'>ackermann</span>
@@ -1884,6 +2208,8 @@ mult(succ(n), x) = x + (x * n)</code></pre>
   <span class='p'>((</span><span class='nv'>m</span> <span class='mi'>0</span><span class='p'>)</span> <span class='p'>(</span><span class='nv'>ackermann</span> <span class='p'>(</span><span class='nb'>-</span> <span class='nv'>m</span> <span class='mi'>1</span><span class='p'>)</span> <span class='mi'>1</span><span class='p'>))</span>
   <span class='p'>((</span><span class='nv'>m</span> <span class='nv'>n</span><span class='p'>)</span> <span class='p'>(</span><span class='nv'>ackermann</span> <span class='p'>(</span><span class='nb'>-</span> <span class='nv'>m</span> <span class='mi'>1</span><span class='p'>)</span> <span class='p'>(</span><span class='nv'>ackermann</span> <span class='nv'>m</span> <span class='p'>(</span><span class='nb'>-</span> <span class='nv'>n</span> <span class='mi'>1</span><span class='p'>)))))</span>
 </code></pre></div>
+<p>As we can see, this function quite clearly calls itself ;-)</p>
+
 <p>Here&#8217;s some example usage:</p>
 <div class='highlight'><pre><code class='cl'><span class='nb'>&gt;</span> <span class='p'>(</span><span class='nv'>c</span> <span class='o'>&#39;</span><span class='s'>&quot;prf&quot;</span><span class='p'>)</span>
 <span class='o'>#(</span><span class='nv'>module</span> <span class='nv'>prf</span><span class='p'>)</span>
@@ -1904,8 +2230,8 @@ mult(succ(n), x) = x + (x * n)</code></pre>
 <span class='nb'>&gt;</span> <span class='p'>(</span><span class='err'>:</span> <span class='nv'>prf</span> <span class='nv'>ackermann</span> <span class='mi'>4</span> <span class='mi'>1</span><span class='p'>)</span>
 <span class='mi'>65533</span>
 <span class='nb'>&gt;</span>
-</code></pre></div><a name='57_the_λ-calculus' />
-<h2 id='57_the_calculus'>5.7 The λ-Calculus</h2>
+</code></pre></div><a name='58_the_λ-calculus' />
+<h2 id='58_the_calculus'>5.8 The λ-Calculus</h2>
 
 <p>Oh, yeah. We just went there: the λ-calculus.</p>
 
@@ -1915,9 +2241,11 @@ mult(succ(n), x) = x + (x * n)</code></pre>
 
 <p>Church realized when creating the λ-calculus that with only a lambda at his disposal, he could define numbers and perform arithmetic upon them. This is known as &#8220;Church encoding&#8221;. Using what we have defined above, we should be able to peer into this forest of lambdas and perhaps perceive some trees.</p>
 
+<p>Church, with his now-famous students Stephen Kleene and J. Barkley Rosser, established the λ-calculus as equivalent to a Turing machine for determining the computability of a given function. In particular, the Church-Turing Thesis states that the class of functions which are partial recursive functions has the same members as the class of functions which are computable functions.</p>
+
 <p>Previously, we examined natural numbers and operations such as addition in the context of positive integers. However, in the sections below, we will be leaving behind the comfort of the familiar. The λ-calculus does not concern itself with natural numbers per se; rather the ability to do something a given number of times.</p>
-<a name='571_a_quick_primer' />
-<h3 id='571_a_quick_primer'>5.7.1 A Quick Primer</h3>
+<a name='581_a_quick_primer' />
+<h3 id='581_a_quick_primer'>5.8.1 A Quick Primer</h3>
 
 <p>In the literature, you will see such things as:</p>
 
@@ -1942,8 +2270,8 @@ mult(succ(n), x) = x + (x * n)</code></pre>
 </ul>
 
 <p>As such, one says that <code>λx.x</code> is a function that takes one parameter, <code>x</code>, and produces one output, <code>x</code>. <code>λxy.y</code> takes two parameters, <code>x</code> and <code>y</code> and produces one output, <code>y</code>.</p>
-<a name='572_church_encoding' />
-<h3 id='572_church_encoding'>5.7.2 Church Encoding</h3>
+<a name='582_church_encoding' />
+<h3 id='582_church_encoding'>5.8.2 Church Encoding</h3>
 
 <p>Let&#8217;s get our feet wet with figuring out how we can define the natural numbers under Church encoding, starting with <code>zero</code>. In the standard λ-calculus, this is done in the following manner:</p>
 
@@ -2064,8 +2392,8 @@ mult(succ(n), x) = x + (x * n)</code></pre>
 <p>That last one caused a little lag in the LFE REPL, but still quite impressive given the fact that it just applied so many thousands of lambdas!</p>
 
 <p>How fortunate that we didn&#8217;t have to type 10,000 <code>funcall</code>s (and the corresponding set of opening and closing parentheses 10,000 times).</p>
-<a name='573_arithmetic' />
-<h3 id='573_arithmetic'>5.7.3 Arithmetic</h3>
+<a name='583_arithmetic' />
+<h3 id='583_arithmetic'>5.8.3 Arithmetic</h3>
 <div class='highlight'><pre><code class='cl'>
 </code></pre></div><div class='highlight'><pre><code class='cl'>
 </code></pre></div><div class='highlight'><pre><code class='cl'>
@@ -2073,39 +2401,39 @@ mult(succ(n), x) = x + (x * n)</code></pre>
 </code></pre></div><div class='highlight'><pre><code class='cl'>
 </code></pre></div><div class='highlight'><pre><code class='cl'>
 </code></pre></div><div class='highlight'><pre><code class='cl'>
-</code></pre></div><a name='574_logic' />
-<h3 id='574_logic'>5.7.4 Logic</h3>
+</code></pre></div><a name='584_logic' />
+<h3 id='584_logic'>5.8.4 Logic</h3>
 <div class='highlight'><pre><code class='cl'>
 </code></pre></div><div class='highlight'><pre><code class='cl'>
-</code></pre></div><a name='575_resources' />
-<h3 id='575_resources'>5.7.5 Resources</h3>
-
-<p>The material for this section was taken from a collection of papers on the λ-calculus that we have provided here:</p>
-
-<ul>
-<li><a href='http://goo.gl/aKXvp'>http://goo.gl/aKXvp</a></li>
-</ul>
-
-<p>Enjoy!</p>
-<a name='58_practical_examples_in_computing' />
-<h2 id='58_practical_examples_in_computing'>5.8 Practical Examples in Computing</h2>
+</code></pre></div><a name='59_practical_examples_in_computing' />
+<h2 id='59_practical_examples_in_computing'>5.9 Practical Examples in Computing</h2>
 <div class='highlight'><pre><code class='cl'>
 </code></pre></div><div class='highlight'><pre><code class='cl'>
-</code></pre></div><a name='581_a_simple_example' />
-<h3 id='581_a_simple_example'>5.8.1 A Simple Example</h3>
-<a name='582_with_an_accumulator' />
-<h3 id='582_with_an_accumulator'>5.8.2 With an Accumulator</h3>
-<a name='583_with_return_values' />
-<h3 id='583_with_return_values'>5.8.3 With Return Values</h3>
-<a name='584_with_lists' />
-<h3 id='584_with_lists'>5.8.4 With Lists</h3>
-<a name='59_tail_calls_in_lfe' />
-<h2 id='59_tail_calls_in_lfe'>5.9 Tail Calls in LFE</h2>
+</code></pre></div><a name='591_a_simple_example' />
+<h3 id='591_a_simple_example'>5.9.1 A Simple Example</h3>
 <div class='highlight'><pre><code class='cl'>
 </code></pre></div><div class='highlight'><pre><code class='cl'>
-</code></pre></div><a name='591_tail_call_optimization' />
-<h3 id='591_tail_call_optimization'>5.9.1 Tail Call Optimization</h3>
-<a name='6_checks,_errors,_and_tests' />
+</code></pre></div><a name='592_with_an_accumulator' />
+<h3 id='592_with_an_accumulator'>5.9.2 With an Accumulator</h3>
+<div class='highlight'><pre><code class='cl'>
+</code></pre></div><div class='highlight'><pre><code class='cl'>
+</code></pre></div><a name='593_with_return_values' />
+<h3 id='593_with_return_values'>5.9.3 With Return Values</h3>
+<div class='highlight'><pre><code class='cl'>
+</code></pre></div><div class='highlight'><pre><code class='cl'>
+</code></pre></div><a name='594_with_lists' />
+<h3 id='594_with_lists'>5.9.4 With Lists</h3>
+<div class='highlight'><pre><code class='cl'>
+</code></pre></div><div class='highlight'><pre><code class='cl'>
+</code></pre></div><a name='510_tail_calls_in_lfe' />
+<h2 id='510_tail_calls_in_lfe'>5.10 Tail Calls in LFE</h2>
+<div class='highlight'><pre><code class='cl'>
+</code></pre></div><div class='highlight'><pre><code class='cl'>
+</code></pre></div><a name='5101_tail_call_optimization' />
+<h3 id='5101_tail_call_optimization'>5.10.1 Tail Call Optimization</h3>
+<div class='highlight'><pre><code class='cl'>
+</code></pre></div><div class='highlight'><pre><code class='cl'>
+</code></pre></div><a name='6_checks,_errors,_and_tests' />
 <h1 id='6_checks_errors_and_tests'>6 Checks, Errors, and Tests</h1>
 <a name='61_guards' />
 <h2 id='61_guards'>6.1 Guards</h2>
@@ -2117,6 +2445,8 @@ mult(succ(n), x) = x + (x * n)</code></pre>
 <p>Note that <code>(try ... )</code> doesn&#8217;t need to have a <code>(catch ...)</code>, however, since we will be exploring exception handling in this section, all of our examples will be using <code>(catch ...)</code>.</p>
 <a name='621_a_simple_case' />
 <h3 id='621_a_simple_case'>6.2.1 A Simple Case</h3>
+
+<p>TBD</p>
 <a name='63_eunit' />
 <h2 id='63_eunit'>6.3 EUnit</h2>
 <a name='631_the_face_of_a_unit_test' />
@@ -2131,10 +2461,12 @@ mult(succ(n), x) = x + (x * n)</code></pre>
 <h3 id='635_a_unit_test_in_detail'>6.3.5 A Unit Test in Detail</h3>
 <a name='6351_erlang_eunit_assert_macros' />
 <h4 id='6351_erlang_eunit_assert_macros'>6.3.5.1 Erlang EUnit Assert Macros</h4>
-<a name='6352_setup_and_cleanup' />
-<h4 id='6352_setup_and_cleanup'>6.3.5.2 Setup and Cleanup</h4>
+<a name='6352_fixtures:_setup_and_cleanup' />
+<h4 id='6352_fixtures_setup_and_cleanup'>6.3.5.2 Fixtures: Setup and Cleanup</h4>
 <a name='6353_generating_tests' />
 <h4 id='6353_generating_tests'>6.3.5.3 Generating Tests</h4>
+<a name='636_mocking_with_meck' />
+<h3 id='636_mocking_with_meck'>6.3.6 Mocking with Meck</h3>
 <a name='64_tdd' />
 <h2 id='64_tdd'>6.4 TDD</h2>
 <a name='641_creating_an_api_and_writing_tests' />

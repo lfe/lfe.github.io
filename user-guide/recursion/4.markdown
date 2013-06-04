@@ -5,14 +5,32 @@ total_guides: 7
 ---
 # 5 Recursion
 
-## 5.6 Total Recursive Functions
 
-TBD
+## 5.6 Partial Recursive Functions
 
-### 5.6.1 The Ackermann Function
+We've covered primitive recursive functions in the previous section; now we'll
+take a brief look at what are called "partial recursive functions". These are
+functions that provide an output for given input but which may not be defined
+for *every* possible input.
+
+Partial recursive functions are also referred to as "computable functions" and
+can be defined using Turing machines or the λ-calculus (among others). In fact,
+an equivalent definition of partial recursive function is actually a function
+that can be computed by a Turing machine.
+
+
+## 5.7 Total Recursive Functions
+
+As opposed to a partial recursive function, a *total* recursive function is one
+that is defined for all possible function inputs. Every primitive recursive
+function is total recursive. There are, however, total recursive functions that
+are *not* primitive recursive. The Ackermann function is one such.
+
+
+### 5.7.1 The Ackermann Function
 
 The Ackermann function is one of the simplest and earliest-discovered examples
-of a "total computable function" that is not primitive recursive. The variant
+of a total recursive function that is not primitive recursive. The variant
 of the function that we present below is the two-variable version developed by
 Rózsa Péter and Raphael Robinson (the original was more verbose and with three
 variables).
@@ -24,6 +42,8 @@ Here is the function in LFE
   ((m 0) (ackermann (- m 1) 1))
   ((m n) (ackermann (- m 1) (ackermann m (- n 1)))))
 {% endhighlight %}
+
+As we can see, this function quite clearly calls itself ;-)
 
 Here's some example usage:
 {% highlight cl %}

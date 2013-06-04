@@ -5,7 +5,7 @@ total_guides: 7
 ---
 # 5 Recursion
 
-## 5.8 Practical Examples in Computing
+## 5.9 Practical Examples in Computing
 
 {% highlight cl %}
 {% endhighlight %}
@@ -13,10 +13,10 @@ total_guides: 7
 {% highlight cl %}
 {% endhighlight %}
 
-### 5.8.1 A Simple Example
+### 5.9.1 A Simple Example
 
-### 5.8.2 With an Accumulator
+### 5.9.2 With an Accumulator
 
-### 5.8.3 With Return Values
+### 5.9.3 With Return Values
 
 ### 5.8.4 With Lists

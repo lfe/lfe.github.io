@@ -5,7 +5,7 @@ total_guides: 7
 ---
 # 5 Recursion
 
-## 5.9 Tail Calls in LFE
+## 5.10 Tail Calls in LFE
 
 {% highlight cl %}
 {% endhighlight %}
@@ -13,4 +13,4 @@ total_guides: 7
 {% highlight cl %}
 {% endhighlight %}
 
-### 5.9.1 Tail Call Optimization
+### 5.10.1 Tail Call Optimization

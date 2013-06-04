@@ -15,8 +15,32 @@ total_guides: 7
 
 ### 5.9.1 A Simple Example
 
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
 ### 5.9.2 With an Accumulator
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
 
 ### 5.9.3 With Return Values
 
-### 5.8.4 With Lists
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+### 5.9.4 With Lists
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}

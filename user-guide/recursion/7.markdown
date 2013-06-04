@@ -14,3 +14,9 @@ total_guides: 7
 {% endhighlight %}
 
 ### 5.10.1 Tail Call Optimization
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}

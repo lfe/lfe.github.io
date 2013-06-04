@@ -7,10 +7,11 @@ total_guides: 7
 
 ## 5.5 Primitive Recursive Functions
 
-In the previous section, we leaned about the primitive recursive funtion called
+In the previous section, we leaned about the primitive recursive function called
 the "successor", one that was used by Peano in his axioms. There are other
-primitive recursive funtions as well, and these are usually given as axioms
+primitive recursive functions as well, and these are usually given as axioms
 (i.e., without proof):
+
 * the "zero function"
 * the "projection function"
 * "identity function"
@@ -20,20 +21,44 @@ recursive functions.
 
 ### 5.5.1 Addition
 
-Often, one sees the primitive recursive function definition of addition done in
-the following manner:
+In the literature, the definition for Peano addition is done in the following
+manner:
 
-    add(0, x) = x
-    add(n + 1, x) = add(n, x) + 1
+    a + 0 = a,
+    a + S(b) = S(a + b)
 
-or:
+where ```S``` is the successor function defined in the previous section.
+
+So here we have an identity function: any number that has zero added to it has
+the result of the number itself.
+
+Secondly, a number, when added with the successor of another number is equal to
+the successor of the two numbers combined. Let's take a look at an example:
+
+* The number 0, when applied to the successor function yields 1 (```S(0) = 1```)
+* Therefore, ```a + S(0) = a + 1```
+* By Peano's definition of addition then, we have ```a + 1 = S(a + 0)```
+* Which then gives ```a + 1 = S(a)```
+
+In other words, the successor of ```a``` is ```a + 1```.
+
+These rules for addition are sometimes given in the following pseudo code:
 
     add(0, x) = x
     add(succ(n), x) = succ(add(n, x))
 
-In LFE, we'd like to maintain symmetry with this... however, patterns don't
-accept function calls (e.g., to ```(successor n)```). As such, we do a little
-juggling instead:
+In LFE, we'd like to maintain symmetry with this. We could try to construct a
+function that had both definitions as pattern arguments, thus alleviating the
+need for two function definitions. However, to perfectly map the pseudo code
+to LFE, we'd have to put a function call in our pattern... and that's not
+possible. If, though, we do a little algebraic juggling, we can work around
+this. In our pseudo code we have two parameters: ```succ(n)``` and ```x```. If
+apply a predecessor function to ```succ(n)```, we'll just have ```n``` -- which
+would do nicely for a matched function argument in LFE. But we'll also need to
+apply this predecessor function to the ```n``` on the other side of the
+equation.
+
+Let's create such a "predecessor" function:
 {% highlight cl %}
 (defun predecessor
   ((0) 0)
@@ -41,15 +66,16 @@ juggling instead:
 {% endhighlight %}
 
 Now, we can recast the canonical form above using the workaround of the
-```predecessor``` primitive recursive function:
+```predecessor``` primitive recursive function, allowing us to use one function
+to define Peano's addition axiom:
 {% highlight cl %}
 (defun add
   ((0 x) x)
   ((n x) (successor (add (predecessor n) x))))
 {% endhighlight %}
 
-All of this may seem rather absurb, given what we do in every-day programming.
-Remember, though: the verbosity of these axioms and their derrived definitions
+All of this may seem rather absurd, given what we do in every-day programming.
+Remember, though: the verbosity of these axioms and their derived definitions
 serves to explicitly show that no assumptions are being made and that all these
 operations can indeed be built upon basic principles.
 
@@ -68,7 +94,12 @@ pattern matching:
   ((n x) (predecessor (subtract (predecessor n) x))))
 {% endhighlight %}
 
-Note that the usual usage is reversed for our ```subtract``` function:
+Due to the manner in which we have defined our functions, the usual usage is
+reversed for our ```subtract``` function. The first operand is not the number
+that is being subtracted from, but rather the number that is being *subtracted*.
+We can see this in action if we put our definitions in a file called
+```prf.lfe``` (named for "primitive recursive functions") and ```slurp``` it in
+the LFE REPL:
 {% highlight cl %}
 > (slurp '"prf.lfe")
 #(ok prf)

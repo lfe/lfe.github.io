@@ -256,7 +256,40 @@ corresponding set of opening and closing parentheses 10,000 times).
 
 ### 5.8.3 Arithmetic
 
+We looked at basic arithmetic when we were exploring Peano's axioms. Now we're
+going to do arithmetic at a whole new level, with church encoding.
+
+In the previous section, we defined a Church successor function in the following
+manner:
+
+    λn.λs.λx. s (n s x)
+
+Then we translated that into LFE:
 {% highlight cl %}
+(defun church-successor (n)
+  (lambda (s)
+    (lambda (x)
+      (funcall s
+        (funcall
+          (funcall n s) x)))))
+{% endhighlight %}
+
+We bring this up now because an addition function will make use of it. Here is
+addition as defined in the λ-calculus:
+
+    λm.λn.λs.λx. m s (n s x)
+
+We can express this in English with the following: given a Church numeral
+`m` and another Church numeral `n`, 
+
+Here's how we would implement it in LFE:
+{% highlight cl %}
+(defun add (m n)
+  (lambda (s)
+    (lambda (x)
+      (funcall m s
+        (funcall
+          (funcall n s) x)))))
 {% endhighlight %}
 
 {% highlight cl %}

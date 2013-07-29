@@ -654,7 +654,7 @@ Then, in the following two files I could easily use those constants by
 including them:
 {% highlight cl %}
 (defmodule zaphod
-  (export all)
+  (export all))
 
 (include-file "include/consts.lfe")
 
@@ -665,7 +665,7 @@ including them:
 
 {% highlight cl %}
 (defmodule arthur
-  (export all)
+  (export all))
 
 (include-file "include/consts.lfe")
 

@@ -1,7 +1,7 @@
 ---
 layout: user-guide
 guide: 2
-total_guides: 3
+total_guides: 4
 ---
 # 1 Introduction
 

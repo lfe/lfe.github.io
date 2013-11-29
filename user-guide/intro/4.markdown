@@ -1,0 +1,29 @@
+---
+layout: user-guide
+guide: 4
+total_guides: 4
+---
+# 1 Introduction
+
+## 1.7 Setting up a Development Environment
+
+The last thing we need to do before you're off and running is to discuss a
+good standard process for setting up a development environment. There are
+several key aspects to this:
+
+* Intent
+  * exploring LFE and LFE examples
+  * creating an LFE library
+  * creating an LFE service/daemon/application
+  * hacking on LFE itself
+* Tools
+  * kerl
+  * rebar
+  * testing
+  * IDEs
+
+This section takes a pragmatic approach of getting started as quickly as
+possible, so we will not cover these in great detail. However, we will
+provide useful links and additional references so that you can explore at your
+own leisure.
+

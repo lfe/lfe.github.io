@@ -27,12 +27,12 @@ $ chmod a+x /usr/local/bin/rebar
 Make sure everything's working as expected:
 
 ```bash
-$ $ rebar h
+$ rebar h
 ```
 
 This will give you output like the following:
 
-```
+```text
 Usage: rebar [-h] [-c] [-v <verbose>] [-V] [-f] [-D <defines>] [-j <jobs>]
              [-C <config>] [-p] [var=value,...] <command,...>
 
@@ -41,8 +41,8 @@ Usage: rebar [-h] [-c] [-v <verbose>] [-V] [-f] [-D <defines>] [-j <jobs>]
   -v, --verbose     Verbosity level (-v, -vv, -vvv, --verbose 3). Default: 0
   -V, --version     Show version information
   -f, --force       Force
-  -D            Define compiler macro
-  -j, --jobs        Number of concurrent workers a command may use. Default: 3
+  -D                Define compiler macro
+  -j, --jobs        Num concurrent workers a command may use. Default: 3
   -C, --config      Rebar config file to use
   -p, --profile     Profile this run of rebar
   var=value     rebar global variables (e.g. force=1)

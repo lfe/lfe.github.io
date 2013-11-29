@@ -6,3 +6,6 @@ total_guides: 6
 # 9 Development & Deployment
 
 ## 9.4 Creating Applications & Services
+
+This section will make use of the following example project on github:
+* <a href="https://github.com/lfe/lfe-service-example">https://github.com/lfe/lfe-service-example</a>

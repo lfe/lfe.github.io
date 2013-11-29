@@ -18,3 +18,7 @@ to create application nor supervisor files.
 We're making a rather arbitrary distinction here (between "library" projects and
 "service" projects, and one with undoubtedly many blurry lines. Regardless, it
 may be instructive or useful as a guideline.
+
+This section will make use of the following example project on github:
+* <a href="https://github.com/lfe/lfe-library-example">https://github.com/lfe/lfe-library-example</a>
+

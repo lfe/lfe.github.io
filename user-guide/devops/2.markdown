@@ -76,8 +76,9 @@ So many choices! Time to play >:-)
 ### 9.2.3 Installing an Erlang
 
 We've see what releases are available. To install one, we need to:
-#. Choose a release, and
-#. Come up with a name for out installation of it.
+
+1. Choose a release, and
+1. Come up with a name for out installation of it.
 
 We're going to install the almost-venerable ``R15B03`` as our primary Erlang:
 

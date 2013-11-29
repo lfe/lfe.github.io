@@ -1,8 +1,8 @@
 ---
 layout: user-guide
-guide: 3
+guide: 1
 total_guides: 3
 ---
 # 9 Additional Topics
 
-## 9.3 Writing for Multi-Core
+## 9.1 Scripting

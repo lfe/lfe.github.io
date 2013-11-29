@@ -119,8 +119,10 @@ useful:
 ```bash
 $ kerl list installations
 ```
+
 Which will give you this:
-```
+
+```text
 erlang-15b03 /opt/erlang
 erlang-R16B /opt/erlang
 ```
@@ -134,6 +136,7 @@ $ which erl
 That should have returned nothing.
 
 Let's try these out now:
+
 ```bash
 $ . /opt/erlang/R15B03/activate
 $ erl -eval 'erlang:display(erlang:system_info(otp_release)), halt().'  -noshell

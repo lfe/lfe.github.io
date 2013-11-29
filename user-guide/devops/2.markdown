@@ -145,6 +145,7 @@ $ kerl_deactivate
 $ . /opt/erlang/R16B/activate
 $ erl -eval 'erlang:display(erlang:system_info(otp_release)), halt().'  -noshell
 "R16B"
+```
 
 We're all set!
 

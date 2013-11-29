@@ -5,6 +5,7 @@ total_guides: 4
 ---
 # 1 Introduction
 
+
 ## 1.7 Setting up a Development Environment
 
 The last thing we need to do before you're off and running is to discuss a
@@ -27,4 +28,110 @@ possible, so we will not cover these in great detail. However, we will
 provide useful links and additional references so that you can explore at your
 own leisure.
 
-### 1.7.1 
+
+### 1.7.1 Starting from Scratch
+
+In the <a href="/quick-start/1.html">LFE Quick Start</a>,
+you saw how to get up and running, and
+we're going to repeat some of that here. However, we do this for the sake of
+completeness and having all the information in one easy-to-access reference.
+
+
+### 1.7.2 Dependencies
+
+**kerl**
+
+First and foremost, you're going to need Erlang. In the course of your
+experiments with LFE, you may want to try out different versions of Erlang, so
+we'll start off right: using
+<a href="https://github.com/spawngrid/kerl">kerl</a>. We have
+<a href="/user-guide/devops/2.html">another section</a>
+dedicated entirely to kerl, so we'll skip the details, refer tou to that page,
+and assume that you've followed those instructions for getting it set up.
+
+
+**rebar**
+
+No matter what your intent with LFE, you're going to need ``rebar`` :-)
+The installation instructions are giving in the section
+<a href="/user-guide/devops/1.html">dedicated to rebar</a>.
+Be sure you follow those and have a working rebar installation. Though you can
+build LFE without it, creating projects will be very cumbersome unless you have
+it installed and are using it.
+
+
+### 1.7.3 Getting and Building LFE
+
+```bash
+$ git clone git://github.com/rvirding/lfe.git
+$ cd ./lfe
+$ rebar compile
+```
+
+
+### 1.7.4 Installing LFE
+
+We don't actually recommend installing LFE system-wide. When using ``rebar``,
+you can set LFE as a dependency and it will be automatically downloaded for
+your project (and anyone who is using your project).
+
+However, if for some reason you *do* want to install LFE system-wide, here's how
+you do it (from the working LFE directory):
+
+```bash
+$ export ERL_LIBS=/usr/local/lib/erlang/lib
+$ make install
+```
+
+
+### 1.7.5 A Test Drive with the REPL
+
+With LFE built, you're ready to play :-) Try this out:
+
+```bash
+$ ./bin/lfe -pa ./ebin
+```
+
+This will put you in the REPL, and from there you can Lisp it up:
+
+```common-lisp
+> (* 6 7)
+42
+> (cons 6 7)
+(6 . 7)
+> (cons (list 6 7) (list 40 2))
+((6 7) 40 2)
+>
+```
+
+
+### 1.7.6 Running Some Examples
+
+While in the REPL, you can run some examples by ``slurp``ing them in:
+
+```common-lisp
+> (slurp '"./examples/internal-state.lfe")
+#(ok internal-state)
+> (set account (new-account '"Alice" 100.00 0.06))
+#Fun<lfe_eval.10.6046715>
+> (name account)
+"Alice"
+> (balance account)
+100.0
+>
+```
+
+And another one:
+
+```common-lisp
+> (slurp '"./examples/church.lfe")
+#(ok church)
+> (church->int1 (three))
+3
+>
+```
+
+To quit out of the REPL, hit ``^g`` and then ``q<ENTER>``.
+
+
+### 1.7.7 An Example IDE: Sublime Text 2

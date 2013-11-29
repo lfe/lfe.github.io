@@ -1,7 +1,7 @@
 ---
 layout: user-guide
 guide: 3
-total_guides: 4
+total_guides: 3
 ---
 # 4 Functions and Modules
 
@@ -57,3 +57,7 @@ total_guides: 4
 {% highlight cl %}
 {% endhighlight %}
 
+### 4.3.5 Projects
+
+To see how modules are organized into projects, be sure to read the chapter on
+<a href="/user-guide/devops/1.html">Development and Deployments</a>.

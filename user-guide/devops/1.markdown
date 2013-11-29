@@ -6,3 +6,59 @@ total_guides: 6
 # 9 Development & Deployment
 
 ## 9.1 Creating Projects with Rebar
+
+In this section we'll be exploring how rebar can be used to manage LFE projects.
+
+This section will make use of two example projects on github:
+* <a href="https://github.com/lfe/lfe-library-example">https://github.com/lfe/lfe-library-example</a>
+* <a href="https://github.com/lfe/lfe-service-example">https://github.com/lfe/lfe-service-example</a>
+
+### 9.1.1 Collections of Modules
+
+The first question we should probably address is this: How are we defining a
+project?
+
+An LFE project is a set of modules developed and distributed to accomplish a
+particular goal. The project should have a rebar configuration file, a source
+directory with `.lfe` files in it, possibly an include directory, andn ideally
+unit tests in a `test` directory.
+
+### 9.1.2 Project Structure
+
+Let's expand upon the project definition given above, focusing on the directory
+structure of a prototypical project and some of the files one might find in an
+LFE project.
+
+{% highlight text %}
+├── ebin
+│   └── libexample.app
+├── src
+│   └── libexample.lfe
+├── Makefile
+├── README.md
+└── rebar.config
+{% endhighlight %}
+
+This is from a sample project whose purpose is to provide a library for use by
+other LFE (or Erlang!) projects. More on that below.
+
+Rebar supports LFE files. All that it needs is the standard `rebar.config` and
+an `.app` file in the `ebin` directory. With these, Rebar will be able to
+download the project dependencies and compile the `*.lfe` files in `src` to the
+`ebin` directory as `*.beam` files.
+
+### 9.1.3 Dependencies
+
+Dependencies are handled very nicely with Rebar: just add a git repo in your
+`rebar.config` file like so:
+
+{% highlight erlang %}
+{deps, [
+    {lfe, ".*", {git, "git://github.com/rvirding/lfe.git", "develop"}}
+  ]}.
+{% endhighlight %}
+
+Any dependencies listed here will be downloaded with the `rebar get-deps`
+command. Once downloaded, issuing the `rebar compile` command will not only
+compile your project's `src/*` files into its `ebin` directory, but will compile
+all dependency project source code as well.

@@ -5,4 +5,152 @@ total_guides: 6
 ---
 # 9 Development & Deployment
 
+
 ## 9.2 Working with Kerl
+
+These instructions were adopted from the
+<a href="https://github.com/spawngrid/kerl">kerl README</a>.
+There's more good stuff on that page.
+
+
+### 9.2.1 Installation
+
+Installation is a piece of cake:
+
+```bash
+$ curl -O https://raw.github.com/spawngrid/kerl/master/kerl
+$ mv kerl /usr/local/bin/
+$ chmod a+x /usr/local/bin/kerl
+```
+
+### 9.2.2 Poking Around
+
+The first thing you're going to want to do is see what kerl can do:
+```bash
+$ kerl
+```
+Which gives:
+```
+kerl: build and install Erlang/OTP
+usage: /usr/local/bin/kerl <command> [options ...]
+
+  <command>       Command to be executed
+
+Valid commands are:
+  build    Build specified release or git repository
+  install  Install the specified release at the given location
+  deploy   Deploy the specified installation to the given host and location
+  update   Update the list of available releases from erlang.org
+  list     List releases, builds and installations
+  delete   Delete builds and installations
+  active   Print the path of the active installation
+  status   Print available builds and installations
+  prompt   Print a string suitable for insertion in prompt
+  cleanup  Remove compilation artifacts (use after installation)
+```
+
+Let's see what releases are available:
+```bash
+$ kerl list releases
+```
+This will give you output like the following:
+```
+R10B-0 R10B-10 R10B-1a R10B-2 R10B-3 R10B-4 R10B-5 R10B-6 R10B-7 R10B-8 R10B-9
+R11B-0 R11B-1 R11B-2 R11B-3 R11B-4 R11B-5 R12B-0 R12B-1 R12B-2 R12B-3 R12B-4
+R12B-5 R13A R13B R13B01 R13B02-1 R13B02 R13B03 R13B04 R14A R14B R14B01 R14B02
+R14B03 R14B04 R15B R15B01 R15B02 R15B02_with_MSVCR100_installer_fix R15B03-1
+R15B03 R16A_RELEASE_CANDIDATE R16B
+Run "/usr/local/bin/kerl update releases" to update this list from erlang.org
+```
+
+So many choices! Time to play >:-)
+
+
+### 9.2.3 Installing an Erlang
+
+We've see what releases are available. To install one, we need to:
+#. Choose a release, and
+#. Come up with a name for out installation of it.
+
+We're going to install the almost-venerable ``R15B03`` as our primary Erlang:
+
+```bash
+$ kerl build R15B03 erlang-15b03
+```
+
+The next part will take a few minutes...
+
+Note that kerl supports passing options to the build so you can enable/disable
+various features. For more details, see the
+<a href="https://github.com/spawngrid/kerl">github README</a> for kerl.
+
+Once that's done, it's time to actually install it. Here, we use the name we
+we chose when we built our particular Erlang. In this case, ``erlang-15b03``:
+
+```bash
+$ kerl install erlang-15b03 /opt/erlang/R15B03
+```
+
+IF you leave off the path, kerl will install Erlang in your current directory.
+
+Before we going into the details on using a kerl-based Erlang, let's install
+another version.
+
+
+### 9.2.4 Running Multiple Erlang Versions
+
+I also want to develop against ``R16B``, so let's get that built too:
+
+```bash
+$ kerl build R16B erlang-R16B
+$ kerl install erlang-R16B /opt/erlang/R16B
+```
+
+Now that we have more than one Erlang installed, the next command will be
+useful:
+
+```bash
+$ kerl list installations
+```
+Which will give you this:
+```
+erlang-15b03 /opt/erlang
+erlang-R16B /opt/erlang
+```
+
+Check check:
+
+```bash
+$ which erl
+```
+
+That should have returned nothing.
+
+Let's try these out now:
+```bash
+$ . /opt/erlang/R15B03/activate
+$ erl -eval 'erlang:display(erlang:system_info(otp_release)), halt().'  -noshell
+"R15B03"
+$ kerl_deactivate
+$ . /opt/erlang/R16B/activate
+$ erl -eval 'erlang:display(erlang:system_info(otp_release)), halt().'  -noshell
+"R16B"
+
+We're all set!
+
+
+### 9.2.5 Deleting Erlang Versions
+
+If for any reason you should want to remove a kerl installation of Erlang,
+you will need to do the following:
+
+```bash
+$ kerl delete installation /opt/erlang/old-or-bad-version
+```
+
+You can do something similar for builds:
+```bash
+$ kerl delete build my-old-build
+```
+
+

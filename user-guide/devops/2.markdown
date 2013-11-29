@@ -86,28 +86,29 @@ We're going to install the almost-venerable ``R15B03`` as our primary Erlang:
 $ kerl build R15B03 erlang-15b03
 ```
 
-The next part will take a few minutes...
+This will take a few minutes... time for a bio break.
 
 Note that kerl supports passing options to the build so you can enable/disable
 various features. For more details, see the
 <a href="https://github.com/spawngrid/kerl">github README</a> for kerl.
 
 Once that's done, it's time to actually install it. Here, we use the name we
-we chose when we built our particular Erlang. In this case, ``erlang-15b03``:
+chose when we built our particular Erlang. In this case, ``erlang-15b03``:
 
 ```bash
 $ kerl install erlang-15b03 /opt/erlang/R15B03
 ```
 
-IF you leave off the path, kerl will install Erlang in your current directory.
+Careful: if you leave off the path, kerl will install Erlang in your current
+directory.
 
-Before we going into the details on using a kerl-based Erlang, let's install
+Before we go into the details on using a kerl-based Erlang, let's install
 another version.
 
 
 ### 9.2.4 Running Multiple Erlang Versions
 
-I also want to develop against ``R16B``, so let's get that built too:
+Let's say we also want to develop against ``R16B``; let's set that up too:
 
 ```bash
 $ kerl build R16B erlang-R16B
@@ -121,20 +122,21 @@ useful:
 $ kerl list installations
 ```
 
-Which will give you this:
+Which will give you:
 
 ```text
 erlang-15b03 /opt/erlang
 erlang-R16B /opt/erlang
 ```
 
-Check check:
+Now for a sanity check:
 
 ```bash
 $ which erl
 ```
 
-That should have returned nothing.
+If you don't have any other Erlangs installed, that should have returned
+nothing.
 
 Let's try these out now:
 
@@ -161,6 +163,7 @@ $ kerl delete installation /opt/erlang/old-or-bad-version
 ```
 
 You can do something similar for builds:
+
 ```bash
 $ kerl delete build my-old-build
 ```

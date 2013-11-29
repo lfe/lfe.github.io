@@ -27,3 +27,4 @@ possible, so we will not cover these in great detail. However, we will
 provide useful links and additional references so that you can explore at your
 own leisure.
 
+### 1.7.1 

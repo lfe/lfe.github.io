@@ -82,6 +82,8 @@ you will enjoy the relative succinctness of the following usages:
 >
 {% endhighlight %}
 
+
+
 Let's make some changes to our data:
 {% highlight cl %}
 > (set ford

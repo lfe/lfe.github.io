@@ -162,8 +162,7 @@ To use LFE effectively with Sublime, we recommend the following plugins:
 * LFE (pending pull request in Package Control repo...)
 
 * Theme - Vim Blackboard (for those who like dark editors and a classic terminal
-  syntax highlight look; this is also pending a pull request in Package Control
-  repo...)
+  syntax highlight look)
 
 Instructions for installing Package Control are
 <a href="https://sublime.wbond.net/installation#st2">here</a>.

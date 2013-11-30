@@ -138,3 +138,41 @@ To quit out of the REPL, hit ``^g`` and then ``q<ENTER>``.
 
 
 ### 1.7.7 An Example IDE: Sublime Text 2
+
+As we are sure is obvious, you can use any text editor you want with LFE. If
+you're a Lisper, Emacs might be a natural choice. Vim, quite honestly, can work
+just as well.
+
+For this example, though, we will be using Sublime Text 2 as the example editor.
+
+Also, our definition of "IDE" is text editor + REPL + terminal. So there you
+have it.
+
+To use LFE effectively with Sublime, we recommend the following plugins:
+ * Package Control
+ * Bracket Highlighter
+ * Lisp Indent
+ * Trailing Spaces
+ * LFE
+ * Theme - Vim Blackboard (for those who like dark editors and a classic terminal
+   syntax highlight look)
+
+Instructions for installing Package Control are here:
+ * https://sublime.wbond.net/installation#st2
+
+After the restart, you're ready to go. For each package you want to install, do
+the following:
+ 1. Go to Sublime Text 2 -> Preferences -> Package Control
+ 1. Type "Package Control: Install Package"
+ 1. Wait for the text entry box to display (available packages are loading)
+ 1. Enter the name of the package you want to install and hit <ENTER>
+
+After you have done that for each packge, you will need to restart. Each package
+will then have its own entry under
+Sublime Text 2 -> Preferences -> Package Settings
+where you can copy the default settings and paste them into your own ("User")
+settings, modifying as you see fit.
+
+To configure the dark theme, you'll want to visit see the
+<a href="https://github.com/oubiwann/vim-blackboard-sublime-theme/blob/master/README.md">project README</a>. The LFE plugin doesn't need any configuration. Once you restart
+Sublime, it should recognize your LFE files by the file extension.

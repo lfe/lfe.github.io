@@ -157,10 +157,11 @@ To use LFE effectively with Sublime, we recommend the following plugins:
 
 * Trailing Spaces
 
-* LFE
+* LFE (pending pull request in Package Control repo...)
 
 * Theme - Vim Blackboard (for those who like dark editors and a classic terminal
-  syntax highlight look)
+  syntax highlight look; this is also pending a pull request in Package Control
+  repo...)
 
 Instructions for installing Package Control are here:
 

@@ -139,15 +139,14 @@ To quit out of the REPL, hit ``^g`` and then ``q<ENTER>``.
 
 ### 1.7.7 An Example IDE: Sublime Text 2
 
+First off: our definition of "IDE" is text editor + REPL + terminal. So there
+you have it.
+
 As we are sure is obvious, you can use any text editor you want with LFE. If
 you're a Lisper, Emacs might be a natural choice. Vim, quite honestly, can work
 just as well.
 
 For this example, though, we will be using Sublime Text 2 as the example editor.
-
-Also, our definition of "IDE" is text editor + REPL + terminal. So there you
-have it.
-
 To use LFE effectively with Sublime, we recommend the following plugins:
 
 * Package Control
@@ -164,7 +163,8 @@ To use LFE effectively with Sublime, we recommend the following plugins:
   syntax highlight look)
 
 Instructions for installing Package Control are here:
- * https://sublime.wbond.net/installation#st2
+
+* https://sublime.wbond.net/installation#st2
 
 After the restart, you're ready to go. For each package you want to install, do
 the following:

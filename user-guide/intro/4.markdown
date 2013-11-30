@@ -165,9 +165,8 @@ To use LFE effectively with Sublime, we recommend the following plugins:
   syntax highlight look; this is also pending a pull request in Package Control
   repo...)
 
-Instructions for installing Package Control are here:
-
-* https://sublime.wbond.net/installation#st2
+Instructions for installing Package Control are
+<a href="https://sublime.wbond.net/installation#st2">here</a>.
 
 After the restart, you're ready to go. For each package you want to install, do
 the following:

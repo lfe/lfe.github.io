@@ -176,7 +176,7 @@ the following:
 
 1. Wait for the text entry box to display (available packages are loading)
 
-1. Enter the name of the package you want to install and hit <ENTER>
+1. Enter the name of the package you want to install and hit ``<ENTER>``
 
 After you have done that for each packge, you will need to restart. Many of the
 packages will then have their own entries under

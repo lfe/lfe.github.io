@@ -63,13 +63,15 @@ cumbersome unless you have it installed and are using it.
 
 ### 1.7.3 Getting and Building LFE
 
-This is short and sweet:
+With the dependencies install, getting and building is short and sweet:
 
 ```bash
 $ git clone git://github.com/rvirding/lfe.git
 $ cd ./lfe
 $ rebar compile
 ```
+
+That should take nor more than 5-10 seconds to build.
 
 
 ### 1.7.4 Installing LFE

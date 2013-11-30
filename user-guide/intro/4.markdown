@@ -177,15 +177,17 @@ the following:
 
 1. Enter the name of the package you want to install and hit <ENTER>
 
-After you have done that for each packge, you will need to restart. Each package
-will then have its own entry under
+After you have done that for each packge, you will need to restart. Many of the
+packages will then have their own entries under
 Sublime Text 2 -> Preferences -> Package Settings
 where you can copy the default settings and paste them into your own ("User")
 settings, modifying as you see fit.
 
 To configure the dark theme, you'll want to visit see the
-<a href="https://github.com/oubiwann/vim-blackboard-sublime-theme/blob/master/README.md">project README</a>. The LFE plugin doesn't need any configuration. Once you restart
-Sublime, it should recognize your LFE files by the file extension.
+<a href="https://github.com/oubiwann/vim-blackboard-sublime-theme/blob/master/README.md">project README</a>.
+
+The LFE plugin doesn't need any configuration. Once you restart Sublime, it
+should recognize your LFE files by the file extension.
 
 For the Lispindent plugin you will need to add some configuration. Go to
 Sublime Text 2 -> Preferences -> Package Settings -> Lispindent and click on

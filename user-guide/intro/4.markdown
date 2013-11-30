@@ -149,23 +149,25 @@ Also, our definition of "IDE" is text editor + REPL + terminal. So there you
 have it.
 
 To use LFE effectively with Sublime, we recommend the following plugins:
- * Package Control
- * Bracket Highlighter
- * Lisp Indent
- * Trailing Spaces
- * LFE
- * Theme - Vim Blackboard (for those who like dark editors and a classic terminal
-   syntax highlight look)
+
+* Package Control
+* Bracket Highlighter
+* Lisp Indent
+* Trailing Spaces
+* LFE
+* Theme - Vim Blackboard (for those who like dark editors and a classic terminal
+  syntax highlight look)
 
 Instructions for installing Package Control are here:
  * https://sublime.wbond.net/installation#st2
 
 After the restart, you're ready to go. For each package you want to install, do
 the following:
- 1. Go to Sublime Text 2 -> Preferences -> Package Control
- 1. Type "Package Control: Install Package"
- 1. Wait for the text entry box to display (available packages are loading)
- 1. Enter the name of the package you want to install and hit <ENTER>
+
+1. Go to Sublime Text 2 -> Preferences -> Package Control
+1. Type "Package Control: Install Package"
+1. Wait for the text entry box to display (available packages are loading)
+1. Enter the name of the package you want to install and hit <ENTER>
 
 After you have done that for each packge, you will need to restart. Each package
 will then have its own entry under

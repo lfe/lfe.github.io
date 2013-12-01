@@ -225,3 +225,70 @@ Sublime Text 2 -> Preferences -> Package Settings -> Lispindent and click on
 }
 
 ```
+
+Your text editor is now ready to rock out some LFE!
+
+
+### 1.7.8 A Quick Note on Writing Tests
+
+We've covered getting LFE running, using the REPL, and operating your text
+editor in an LFE-friendly manner. The next of the essentils we need to look at
+is unit tests. This will be covered in much more detail in the
+<a href="http://lfe.github.io/user-guide/check/4.html">TDD section</a>
+of the Checks and Testing chapter.
+
+For now, though, let's give you a quick test.. and some caveats. In fact, let's
+do the caveats first.
+
+Ideally, LFE would use ``eunit``, like it does with most other libraries.
+Unfortunately, there are some quirky edge cases in LFE's Erlang macro handling
+that prevent correct usage of ``eunit``. As such, an
+<a href="https://github.com/oubiwann/lfeunit">interim solution</a> was created.
+Once the <a href="https://github.com/rvirding/lfe/issues/42">macro issue</a>
+in LFE is addressed for eunit (and progress is being made!), we will be
+able to abandon lfeunit (or make it a thin wrapper).
+
+A quick and dirty intro to using lfeunit follows:
+
+1. Create a ``test`` directory in your project, if one doesn't already exist.
+
+1. Create a ``<module-name>_tests.lfe`` file.
+
+1. Ensure that your module name matches in the file:
+
+   ```common-lisp
+   (defmodule <module-name>_tests ...)
+   ```
+
+1. Update the import statement to include the unit test functions you need,
+   e.g.:
+
+   ```common-lisp
+   (import
+     ...
+     (from lfeunit
+      (assert 1)
+      (assert-not 1)
+      (assert-equal 2)
+      (assert-not-equal 2)
+      (assert-exception 3)
+      (assert-error 2)
+      (assert-throw 2)
+      (assert-exit 2))
+      ...)
+   ```
+
+1. Create test functions of the form ``<some-name>_test``, with some asserts
+   added, e.g.:
+
+   ```common-lisp
+   (defun my-function_test ()
+     (assert-true 42 (my-function 1 2 3)))
+   ```
+
+1. Run ``make check`` to verify your tests. Do this for every commit.
+
+### 1.7.9 Toolchain
+
+
+

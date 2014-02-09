@@ -53,7 +53,7 @@ The power of Erlang's pattern matching is available in Lisp form:
 {% endhighlight %}
 
 For more information, see the
-<a href="/user-guide/1.html">User Guide</a> as well as the
+<a href="/user-guide/intro/1.html">User Guide</a> as well as the
 <a href="/tutorials/patterns/1.html">tutorial on pattern matching</a>.
 
 #### Macros

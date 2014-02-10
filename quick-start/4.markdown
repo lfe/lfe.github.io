@@ -7,7 +7,7 @@ total_guides: 4
 
 ## 4 Behind the Scenes
 
-<img src="https://raw.github.com/lfe/lfe.github.io/master/images/smash.jpg"
+<img src="https://raw.github.com/lfe/lfe.github.io/master/images/doubles.jpg"
      style="float: right; padding-left: 1em;">
 
 ### 4.1 Using make

@@ -5,135 +5,230 @@ total_guides: 4
 ---
 # Quick Start
 
-## 2 Executing Code
+## 2 Your First LFE Project
 
-Once you've got LFE built, you want to play with it, right? Let's take a look
-at the REPL (interactive shell) first.
+<img src="https://raw.github.com/lfe/lfe.github.io/master/images/barf.jpg"
+     style="float: right;">
+A project? Already?! It sounds daunting, but it's just one command :-) Head
+over to your favorite workspace in an open terminal and do this:
 
-### 2.1 The REPL
+```bash
+$ lfetool new library my-test-lib
+```
 
-To start the REPL, simply run the ```lfe``` script and tell ```erl``` (which is
-being run in the script) which additional code paths it should look for (in this
-case, the compiled LFE code):
+As you watch it crank away, read on to find out what i's doing:
 
-    $ ./bin/lfe -pa ./ebin
+* ``lfetool`` created a skeleton project (of the "library" type)
+* ``rebar`` is downloaded all the dependencies listed in the new
+  ``rebar.config`` file that was created for your project
+* All the downloaded dependendencies were then compiled
+* A failing test case was created for you, and the test suite was run,
+  revealing this error (TDD!)
 
-This assumes that you are still in the ```lfe``` directory where you build LFE.
-Running that command will dump you into the LFE REPL, looking something like
-this:
+#### 2.1 Tests First!
 
-    Erlang R15B03 (erts-5.9.3.1) [source] [64-bit] [smp:8:8] [async-threads:0] ...
+First things first: let's get that failing unit test passing.
 
-    LFE Shell V5.9.3.1 (abort with ^G)
-    >
+Here's the output we saw:
 
-Note that you can also start the the LFE shell manually from an existing Erlang
-shell (as we did earlier in this guide) or you can pass parameters to ```erl```
-to start it up:
+```erlang
+**error:{assertEqual_failed,[{module,'my-test-lib_tests'},
+                     {line,11},
+                     {expression,"(: my-test-lib my-adder 2 2)"},
+                     {expected,4},
+                     {value,5}]}
+```
 
-    $ erl -pa ebin -s lfe_boot -noshell -noinput
+We can see that our test expected 4 but it got 5.
 
-Now try doing some basic operations:
+Before we go further, be sure you are in your project directory:
 
-{% highlight cl %}
-> (+ 1 2 3)
-6
-> (cons 1 2)
-(1 . 2)
-> (cons (list 1 2) (list 3 4))
-((1 2) 3 4)
+```bash
+$ cd my-test-lib
+```
+
+Let's look at the test by opening up ``test/my-test-lib_tests.lfe``.
+
+Well, things there look good -- we should get 4 when 2 and 2 are added.
+
+Let's take a look at the source module: ``src/my-test-lib.lfe``. Ah-ha! a
+bug :-) There's an extra operation that's being done which we don't want.
+
+To fix it, change this line:
+
+```cl
+  (+ x (+ y 1)))
+```
+
+to this:
+
+```cl
+  (+ x y))
+```
+
+Now re-run the unit tests:
+
+```bash
+$ make check-no-deps
+```
+
+And you should get a passing test:
+
+```bash
+==> my-test-lib (eunit)
+======================== EUnit ========================
+my-test-lib_tests: my-adder_test (module 'my-test-lib_tests')...[0.031 s] ok
+=======================================================
+  Test passed.
+```
+
+We'll talk about the ``make`` targets in a bit, but our target above run the
+unit tests without recompiling all the deps; just our project files and
+our unit tests.
+
+
+#### 2.2 Project Inventory
+
+Okay, we've got our tests passing and our project looks healthy. But what does
+it have in it?
+
+* a README file in ReStructured Text
+* a ``Makefile``
+* the ``rebar.config`` file we mentioned about (this has all your project
+  dependencies in it)
+* a ``package.exs`` file for uploading your project to http://expm.co
+* the ``src`` directory which holds your project code, and
+* the ``test`` directory which holds the tests
+
+There are some other things there (e.g., the deps directory created by ``rebar``
+and the ``ebin`` directory that's created when everything is compiled), but
+we're just going to focus on our stuff for now.
+
+
+#### 2.3 Show me LFE!
+
+Sure thing :-) Just do this from your new LFE project directory:
+
+```bash
+make shell-no-deps
+```
+
+This should give you something that looks like this:
+
+```cl
+Erlang R16B (erts-5.10.1) [source] [smp:8:8] [async-threads:10] [hipe] ...
+
+LFE Shell V5.10.1 (abort with ^G)
 >
-{% endhighlight %}
+```
 
-Next, let's operate on some variables:
+We're not going to spend a lot of time in the REPL right now, but feel free to
+take it for a spin :-)
 
-{% highlight cl %}
-> (let ((x 123456789)) x)
-123456789
-> (let ((x 123456789)) (* x x))
-15241578750190521
-> (let ((x 123456789)) (* x x x x))
-232305722798259244150093798251441
->
-{% endhighlight %}
+```cl
+> (+ 1 2 3 4 5 6)
+21
+> (* 2 (+ 1 2 3 4 5 6))
+42
+> (: lists foldl (lambda (n acc) (+ n acc)) 0 (: lists seq 1 6))
+21
+```
 
-Looking good!
+Enough fancy stuff! What about code? What does a project look like?
 
-### 2.2 Running Scripts
+Well, you've already seen one! Let's print it here for your viewing pleasure,
+though. Here's the starter project you have, with just the one module:
 
-Okay, so now that you can run things in the REPL, you want to run them as a
-script, yes? Here's how.
+```cl
+(defmodule my-test-lib
+  (export all))
 
-Let's create a temporary subdirectory to play in without fear of messing up our
-LFE directory:
+(defun my-adder (x y)
+  (+ x (+ y 1)))
+```
 
-    $ mkdir tmp
-    $ cd tmp
+It has a corresponding test module:
 
-Then, in that directory, let's create the following file and save it as
-```hello.lfe```:
+```cl
+(defmodule my-test-lib_tests
+  (export all)
+  (import
+    (from lfeunit-util
+      (check-failed-assert 2)
+      (check-wrong-assert-exception 2))))
 
-{% highlight cl %}
-(defmodule hello
-  (export (start 0)))
+(include-lib "deps/lfeunit/include/lfeunit-macros.lfe")
 
-(defun start ()
-  (: io format '"Lfe says 'Hello, World!'~n"))
-{% endhighlight %}
+(deftest my-adder
+  (is-equal 4 (: my-test-lib my-adder 2 2)))
+```
 
-To compile that script and then run it, we can do this:
+Almost couldn't be simpler.
 
-    $ ../bin/lfec hello.lfe
-    $ ../bin/lfe -s hello start -s erlang halt
+Here's something a little more involved you may enjoy, from the examples in the
+LFE source code:
 
-Or, if we want to use Erlang directly, we could do this:
+```cl
+(defmodule messenger-back
+ (export (print-result 0) (send-message 2)))
 
-    $ erl -pa ../ebin -s lfe_comp file hello -s erlang halt
-    $ erl -pa ../ebin -s hello start -s erlang halt
+(defun print-result ()
+  (receive
+    ((tuple pid msg)
+      (: io format '"Received message: '~s'~n" (list msg))
+      (: io format '"Sending message to process ~p ...~n" (list pid))
+      (! pid (tuple msg))
+      (print-result))))
 
-Or, we could compile it and run it in the same command:
+(defun send-message (calling-pid msg)
+  (let ((spawned-pid (spawn 'messenger-back 'print-result ())))
+    (! spawned-pid (tuple calling-pid msg))))
+```
 
-    $ erl -pa ../ebin -s lfe_comp file hello -s hello start -s erlang halt
+That bit of code demonstrates one of Erlang's core features in lovely Lisp
+syntax :-) (For those that don't read Erlang yet, when loaded into the REPL,
+that example shows some bidirectional message passing between the LFE shell
+and a spawned process.)
 
-Note that this is the command line equivalent of the following:
+If you'd like to learn more about using the LFE REPL, be sure to read the
+<a href="http://lfe.github.io/user-guide/intro/2.html">REPL Section</a> of the
+User Guide.
 
-    $ erl -pa ../ebin
-    1> lfe_comp:file(hello).
-    {ok,hello}
-    2> hello:start().
-    Lfe says 'Hello, World!'
-    ok
-    3>
 
-### 2.3 Running Scripts from the REPL
+#### 2.2.1 Using make
 
-You can also use your new ```hello.lfe``` script in the REPL itself. There are
-two ways you can do this, using ```slurp``` or compiling the file. If you use
-```slurp```, all the functions are pulled into the shell namespace, and you
-won't have to reference the module name.  Again, assuming that you are in
-```lfe/tmp```:
-{% highlight cl %}
-$ ../bin/lfe -pa ../ebin
-> (slurp '"hello.lfe")
-#(ok hello)
-> (start)
-Lfe says 'Hello, World!'
-ok
->
-{% endhighlight %}
+We promised to come back to ``make``, so here we are.
 
-If you choose to compile your module instead, you will use it like so:
-{% highlight cl %}
-$ ../bin/lfe -pa ../ebin
-> (c '"hello")
-#(module hello)
-> (: hello start)
-Lfe says 'Hello, World!'
-ok
->
-{% endhighlight %}
+Eventually, the ``Makefile`` will be replaced with a combination of ``rebar``
+scripts and updates to ``lfetool``, but for now it's what we've got.
 
-Note that in the second example, you need to reference the module.
+There are some convenient targets available for you in the ``Makefile``:
 
-For more information on the LFE shell, be sure to see the "REPL" section of the
-User Guide Introduction.
+* ``upload`` - when you're project's ready for release, this will push it up to
+  <a href="http://expm.com/">expm.co</a> for you
+* ``compile`` - rebuilds all your ``.beam``s, including the dependencies
+* ``install`` - should you wish to instlal your project system-wide (we recommend
+  against it), you could use this target to do it
+* ``check`` - run your unit tests after recompiling all ``*.beam``s
+* ``shell`` - start up the LFE REPL after recompiling all ``*.beam``s
+* ``get-deps`` - not only does this target get your deps initially, but subsequent
+  runs of it will perform ``git pull``s for the repos cloned in your ``deps``
+  dir, ensuring you have the latest code for everything
+
+If you do not need to recompile dependencies, you can skip the deps with the
+following targets:
+
+* ``compile-no-deps``
+* ``shell-no-deps``
+* ``check-no-deps``
+
+There are others, and you can learn more about how to manage LFE projects by
+reading the ``Makefile``.
+
+One thing to keep in mind for future reference: if you add new deps to your
+``rebar.confg`` file, you'll need to update the ``ERL_LIBS`` in your
+``Makefile`` to include them.
+
+Read more about setting up a development environment
+<a href="http://lfe.github.io/user-guide/intro/4.html">here</a>.
+

@@ -110,6 +110,10 @@ If you'd like to learn more about using the LFE REPL, be sure to read the
 <a href="http://lfe.github.io/user-guide/intro/2.html">REPL Section</a> of the
 User Guide.
 
+If you want to step through a tutorial on Erlang's light-weight threds (per the
+example code above), you'll want to read
+<a href="http://lfe.github.io/tutorials/processes/1.html">this tutorial</a>.
+
 
 ### Next Stop
 

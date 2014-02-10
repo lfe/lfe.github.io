@@ -71,5 +71,5 @@ install it using your favorite package manager.
 ### Next Stop
 
 Ready for some LFE? Next you'll learn how to create a new LFE project with
-just one command...
+just one command ...
 

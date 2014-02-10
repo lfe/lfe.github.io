@@ -27,6 +27,7 @@ As you watch the output crank away, read on to find out what it's doing:
   test case has been run in the test suite and the error has been revealed
   (TDD!)
 
+
 ### 2.1 Tests First!
 
 First things first: let's get that failing unit test passing.
@@ -110,4 +111,5 @@ we're just going to focus on our stuff for now.
 
 ### Next Stop
 
-TBD
+You can taste it, can't you? That LFE flavor coming your way? Yup, you're right.
+You're going to be looking at LFE code next ...

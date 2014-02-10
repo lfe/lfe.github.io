@@ -110,4 +110,7 @@ User Guide.
 
 ### Next Stop
 
-TBD
+We did promise a bit more information, so we're going to do that next and then
+wrap up the quick start and point you in the direction of your next LFE
+adventure ...
+

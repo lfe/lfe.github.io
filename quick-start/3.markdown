@@ -1,13 +1,22 @@
 ---
 layout: quick-start
 guide: 3
-total_guides: 6
+total_guides: 4
 ---
 # Quick Start
 
-## 3 Using Libraries
+## 3 Hitting the Code
 
-### 2.3 Show me LFE!
+<img src="https://raw.github.com/lfe/lfe.github.io/master/images/smash.jpg"
+     style="float: right; padding-left: 1em;">
+It may not seem like it, but we're off to a pretty fast start. If you had to
+everything we done, manually, you'd have given up by now. Seriously.
+
+Time to put the brakes, on, though, 'cause you're gonna want to see this next
+part in slow motion.
+
+
+### 3.1 REPL Me Up!
 
 Sure thing :-) Just do this from your new LFE project directory:
 
@@ -15,7 +24,7 @@ Sure thing :-) Just do this from your new LFE project directory:
 make shell-no-deps
 ```
 
-This should give you something that looks like this:
+This should give you something that looks like the following:
 
 ```cl
 Erlang R16B (erts-5.10.1) [source] [smp:8:8] [async-threads:10] [hipe] ...
@@ -37,6 +46,8 @@ take it for a spin :-)
 ```
 
 Enough fancy stuff! What about code? What does a project look like?
+
+### 3.2 Sample Code
 
 Well, you've already seen one! Let's print it here for your viewing pleasure,
 though. Here's the starter project you have, with just the one module:
@@ -95,44 +106,6 @@ and a spawned process.)
 If you'd like to learn more about using the LFE REPL, be sure to read the
 <a href="http://lfe.github.io/user-guide/intro/2.html">REPL Section</a> of the
 User Guide.
-
-
-### 2.4 Using make
-
-We promised to come back to ``make``, so here we are.
-
-Eventually, the ``Makefile`` will be replaced with a combination of ``rebar``
-scripts and updates to ``lfetool``, but for now it's what we've got.
-
-There are some convenient targets available for you in the ``Makefile``:
-
-* ``upload`` - when you're project's ready for release, this will push it up to
-  <a href="http://expm.com/">expm.co</a> for you
-* ``compile`` - rebuilds all your ``.beam``s, including the dependencies
-* ``install`` - should you wish to instlal your project system-wide (we recommend
-  against it), you could use this target to do it
-* ``check`` - run your unit tests after recompiling all ``*.beam``s
-* ``shell`` - start up the LFE REPL after recompiling all ``*.beam``s
-* ``get-deps`` - not only does this target get your deps initially, but subsequent
-  runs of it will perform ``git pull``s for the repos cloned in your ``deps``
-  dir, ensuring you have the latest code for everything
-
-If you do not need to recompile dependencies, you can skip the deps with the
-following targets:
-
-* ``compile-no-deps``
-* ``shell-no-deps``
-* ``check-no-deps``
-
-There are others, and you can learn more about how to manage LFE projects by
-reading the ``Makefile``.
-
-One thing to keep in mind for future reference: if you add new deps to your
-``rebar.confg`` file, you'll need to update the ``ERL_LIBS`` in your
-``Makefile`` to include them.
-
-Read more about setting up a development environment
-<a href="http://lfe.github.io/user-guide/intro/4.html">here</a>.
 
 
 ### Next Stop

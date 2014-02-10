@@ -1,7 +1,7 @@
 ---
 layout: quick-start
 guide: 1
-total_guides: 6
+total_guides: 4
 ---
 # Quick Start
 

@@ -1,14 +1,14 @@
 ---
 layout: quick-start
 guide: 2
-total_guides: 6
+total_guides: 4
 ---
 # Quick Start
 
 ## 2 Your First LFE Project
 
 <img src="https://raw.github.com/lfe/lfe.github.io/master/images/barf.jpg"
-     style="float: left; padding-left: 1em;">
+     style="float: left; padding-right: 1em;">
 A project? Already?! It sounds daunting, but it's just one command :-)
 
 Head over to your favorite workspace in an open terminal and do this:

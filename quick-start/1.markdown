@@ -5,6 +5,9 @@ total_guides: 4
 ---
 # Quick Start
 
+<img src="https://raw.github.com/lfe/lfe.github.io/master/images/plaid.jpg">
+<br />
+
 ## 1 Going Plaid
 
 This guide will give you what you need in order to jump into LFE at ludicrous
@@ -13,7 +16,7 @@ something that's going to give you time to see the stars, checkout the
 <a href="http://lfe.github.io/user-guide/intro/1.html">User Guide</a>.
 
 
-### 1.1 ``lfetool``
+### 1.1 lfetool
 
 For a quick introduction to LFE, ``lfetool`` has everything you need. The
 Quick Start guide will use it almost exclusively -- all in the interst of
@@ -62,224 +65,8 @@ You will also need to <a href="http://git-scm.com/downloads">download git</a> or
 install it using your favorite package manager.
 
 
-### 1.3 Your First LFE Project
+### Next Stop
 
-A project? Already?! It sounds daunting, but it's just one command :-) Head
-over to your favorite workspace in an open terminal and do this:
-
-```bash
-$ lfetool new library my-test-lib
-```
-
-As you watch it crank away, read on to find out what i's doing:
-
-* ``lfetool`` created a skeleton project (of the "library" type)
-* ``rebar`` is downloaded all the dependencies listed in the new
-  ``rebar.config`` file that was created for your project
-* All the downloaded dependendencies were then compiled
-* A failing test case was created for you, and the test suite was run,
-  revealing this error (TDD!)
-
-#### 1.3.1 Tests First!
-
-First things first: let's get that failing unit test passing.
-
-Here's the output we saw:
-
-```erlang
-**error:{assertEqual_failed,[{module,'my-test-lib_tests'},
-                     {line,11},
-                     {expression,"(: my-test-lib my-adder 2 2)"},
-                     {expected,4},
-                     {value,5}]}
-```
-
-We can see that our test expected 4 but it got 5.
-
-Before we go further, be sure you are in your project directory:
-
-```bash
-$ cd my-test-lib
-```
-
-Let's look at the test by opening up ``test/my-test-lib_tests.lfe``.
-
-Well, things there look good -- we should get 4 when 2 and 2 are added.
-
-Let's take a look at the source module: ``src/my-test-lib.lfe``. Ah-ha! a
-bug :-) There's an extra operation that's being done which we don't want.
-
-To fix it, change this line:
-
-```cl
-  (+ x (+ y 1)))
-```
-
-to this:
-
-```cl
-  (+ x y))
-```
-
-Now re-run the unit tests:
-
-```bash
-$ make check-no-deps
-```
-
-And you should get a passing test:
-
-```bash
-==> my-test-lib (eunit)
-======================== EUnit ========================
-my-test-lib_tests: my-adder_test (module 'my-test-lib_tests')...[0.031 s] ok
-=======================================================
-  Test passed.
-```
-
-We'll talk about the ``make`` targets in a bit, but our target above run the
-unit tests without recompiling all the deps; just our project files and
-our unit tests.
-
-
-#### 1.3.2 Project Inventory
-
-Okay, we've got our tests passing and our project looks healthy. But what does
-it have in it?
-
-* a README file in ReStructured Text
-* a ``Makefile``
-* the ``rebar.config`` file we mentioned about (this has all your project
-  dependencies in it)
-* a ``package.exs`` file for uploading your project to http://expm.co
-* the ``src`` directory which holds your project code, and
-* the ``test`` directory which holds the tests
-
-There are some other things there (e.g., the deps directory created by ``rebar``
-and the ``ebin`` directory that's created when everything is compiled), but
-we're just going to focus on our stuff for now.
-
-
-#### 1.3.3 Show me LFE!
-
-Sure thing :-) Just do this from your new LFE project directory:
-
-```bash
-make shell-no-deps
-```
-
-This should give you something that looks like this:
-
-```cl
-Erlang R16B (erts-5.10.1) [source] [smp:8:8] [async-threads:10] [hipe] ...
-
-LFE Shell V5.10.1 (abort with ^G)
->
-```
-
-We're not going to spend a lot of time in the REPL right now, but feel free to
-take it for a spin :-)
-
-```cl
-> (+ 1 2 3 4 5 6)
-21
-> (* 2 (+ 1 2 3 4 5 6))
-42
-> (: lists foldl (lambda (n acc) (+ n acc)) 0 (: lists seq 1 6))
-21
-```
-
-Enough fancy stuff! What about code? What does a project look like?
-
-Well, you've already seen one! Let's print it here for your viewing pleasure,
-though. Here's the starter project you have, with just the one module:
-
-```cl
-(defmodule my-test-lib
-  (export all))
-
-(defun my-adder (x y)
-  (+ x (+ y 1)))
-```
-
-It has a corresponding test module:
-
-```cl
-(defmodule my-test-lib_tests
-  (export all)
-  (import
-    (from lfeunit-util
-      (check-failed-assert 2)
-      (check-wrong-assert-exception 2))))
-
-(include-lib "deps/lfeunit/include/lfeunit-macros.lfe")
-
-(deftest my-adder
-  (is-equal 4 (: my-test-lib my-adder 2 2)))
-```
-
-Almost couldn't be simpler.
-
-Here's something a little more involved you may enjoy, from the examples in the
-LFE source code:
-
-```cl
-(defmodule messenger-back
- (export (print-result 0) (send-message 2)))
-
-(defun print-result ()
-  (receive
-    ((tuple pid msg)
-      (: io format '"Received message: '~s'~n" (list msg))
-      (: io format '"Sending message to process ~p ...~n" (list pid))
-      (! pid (tuple msg))
-      (print-result))))
-
-(defun send-message (calling-pid msg)
-  (let ((spawned-pid (spawn 'messenger-back 'print-result ())))
-    (! spawned-pid (tuple calling-pid msg))))
-```
-
-That bit of code demonstrates one of Erlang's core features in lovely Lisp
-syntax :-) (For those that don't read Erlang yet, when loaded into the REPL,
-that example shows some bidirectional message passing between the LFE shell
-and a spawned process.)
-
-
-#### 1.1.1 Using ```make```
-
-We promised to come back to ``make``, so here we are.
-
-Eventually, the ``Makefile`` will be replaced with a combination of ``rebar``
-scripts and updates to ``lfetool``, but for now it's what we've got.
-
-There are some convenient targets available for you in the ``Makefile``:
-
-* ``upload`` - when you're project's ready for release, this will push it up to
-  <a href="http://expm.com/">expm.co</a> for you
-* ``compile`` - rebuilds all your ``.beam``s, including the dependencies
-* ``install`` - should you wish to instlal your project system-wide (we recommend
-  against it), you could use this target to do it
-* ``check`` - run your unit tests after recompiling all ``*.beam``s
-* ``shell`` - start up the LFE REPL after recompiling all ``*.beam``s
-* ``get-deps`` - not only does this target get your deps initially, but subsequent
-  runs of it will perform ``git pull``s for the repos cloned in your ``deps``
-  dir, ensuring you have the latest code for everything
-
-If you do not need to recompile dependencies, you can skip the deps with the
-following targets:
-
-* ``compile-no-deps``
-* ``shell-no-deps``
-* ``check-no-deps``
-
-There are others, and you can learn more about how to manage LFE projects by
-reading the ``Makefile``.
-
-One thing to keep in mind for future reference: if you add new deps to your
-``rebar.confg`` file, you'll need to update the ``ERL_LIBS`` in your
-``Makefile`` to include them.
-
-Read more about setting up a development environment
-<a href="http://lfe.github.io/user-guide/intro/4.html">here</a>.
+Ready for some LFE? Next you'll learn how to create a new LFE project with
+just one command...
 

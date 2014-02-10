@@ -7,20 +7,20 @@ total_guides: 4
 
 ## 1 Going Plaid
 
-This guide give you what you need in order to jump into LFE at ludicrous speed.
-For a more gradual introduction (with a bit more Erlang), for something that's
-going to give you time to see the stars, checkout the
+This guide will give you what you need in order to jump into LFE at ludicrous
+speed. For a more gradual introduction (with a bit more Erlang) and for
+something that's going to give you time to see the stars, checkout the
 <a href="http://lfe.github.io/user-guide/intro/1.html">User Guide</a>.
 
 
 ### 1.1 ``lfetool``
 
-For a quick-start, ``lfetool`` has everything you need. This guide will use it
-almost exclusively, in the interst of sending you a week and a half into the
-future. Where appropriate, we will point you to other resources that provide
-more details.
+For a quick introduction to LFE, ``lfetool`` has everything you need. The
+Quick Start guide will use it almost exclusively -- all in the interst of
+sending you a week and a half into the future. Where appropriate, we will
+point you to other resources that provide more details.
 
-Let's get started: go ahead and install ``lfetool``:
+Let's get started: install ``lfetool``!
 
 ```bash
 $ curl -o ./lfetool https://raw.github.com/lfe/lfetool/master/lfetool
@@ -34,7 +34,7 @@ $ chown $USER /usr/local/bin/lfetool
 ```
 
 That way you'll be able to use the ``update`` command to get the latest version
-in the future.
+of ``lfetool`` in the future.
 
 
 ### 1.2 Other Dependencies
@@ -47,8 +47,9 @@ download page</a> or from the
 <a href="https://www.erlang-solutions.com/downloads/download-erlang-otp">Erlang
 Solutions page</a> (supports many more package types).
 
-Peronally, we prefer to manage our Erlang builds and installations with
-<a href="">kerl</a>. This allows for multiple versions of Erlang to be installed
+Personally, we prefer to manage our Erlang builds and installations with
+<a href="https://github.com/spawngrid/kerl">kerl</a>.
+This allows for multiple versions of Erlang to be installed
 on your system simultaneously. For more information about using ``kerl`` in LFE
 projects, be sure to visit the "kerl" section of the
 <a href="http://lfe.github.io/user-guide/intro/4.html">User Guide</a>.
@@ -57,20 +58,21 @@ You will be using ```rebar``` to build LFE under the covers as well as managing
 dependencies for your projects, so go ahead and get that set up:
 <a href="https://github.com/basho/rebar">get rebar</a>.
 
-You will need to <a href="http://git-scm.com/downloads">download git</a> or
+You will also need to <a href="http://git-scm.com/downloads">download git</a> or
 install it using your favorite package manager.
 
 
 ### 1.3 Your First LFE Project
 
-It sounds daunting, but it's just one command :-) Head over to your favorite
-workspace in an open terminal and do this:
+A project? Already?! It sounds daunting, but it's just one command :-) Head
+over to your favorite workspace in an open terminal and do this:
 
 ```bash
 $ lfetool new library my-test-lib
 ```
 
 As you watch it crank away, read on to find out what i's doing:
+
 * ``lfetool`` created a skeleton project (of the "library" type)
 * ``rebar`` is downloaded all the dependencies listed in the new
   ``rebar.config`` file that was created for your project
@@ -94,6 +96,8 @@ Here's the output we saw:
 
 We can see that our test expected 4 but it got 5.
 
+Before we go further, be sure you are in your project directory:
+
 ```bash
 $ cd my-test-lib
 ```
@@ -106,6 +110,7 @@ Let's take a look at the source module: ``src/my-test-lib.lfe``. Ah-ha! a
 bug :-) There's an extra operation that's being done which we don't want.
 
 To fix it, change this line:
+
 ```cl
   (+ x (+ y 1)))
 ```
@@ -116,11 +121,13 @@ to this:
 ```
 
 Now re-run the unit tests:
+
 ```bash
 $ make check-no-deps
 ```
 
 And you should get a passing test:
+
 ```bash
 ==> my-test-lib (eunit)
 ======================== EUnit ========================

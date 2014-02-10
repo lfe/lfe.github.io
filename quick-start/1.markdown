@@ -116,6 +116,7 @@ To fix it, change this line:
 ```
 
 to this:
+
 ```cl
   (+ x y))
 ```
@@ -170,7 +171,7 @@ make shell-no-deps
 This should give you something that looks like this:
 
 ```cl
-Erlang R16B (erts-5.10.1) [source] [smp:8:8] [async-threads:10] [hipe] [kernel-poll:false]
+Erlang R16B (erts-5.10.1) [source] [smp:8:8] [async-threads:10] [hipe] ...
 
 LFE Shell V5.10.1 (abort with ^G)
 >
@@ -188,7 +189,7 @@ take it for a spin :-)
 21
 ```
 
-Enough fancy stuff for now, what about code? What does a project look like?
+Enough fancy stuff! What about code? What does a project look like?
 
 Well, you've already seen one! Let's print it here for your viewing pleasure,
 though. Here's the starter project you have, with just the one module:
@@ -196,7 +197,6 @@ though. Here's the starter project you have, with just the one module:
 ```cl
 (defmodule my-test-lib
   (export all))
-
 
 (defun my-adder (x y)
   (+ x (+ y 1)))
@@ -214,14 +214,13 @@ It has a corresponding test module:
 
 (include-lib "deps/lfeunit/include/lfeunit-macros.lfe")
 
-
 (deftest my-adder
   (is-equal 4 (: my-test-lib my-adder 2 2)))
 ```
 
-Almost cound't be simpler.
+Almost couldn't be simpler.
 
-Here's something a little more involved you may enjoy, fro the examples in the
+Here's something a little more involved you may enjoy, from the examples in the
 LFE source code:
 
 ```cl
@@ -243,36 +242,36 @@ LFE source code:
 
 That bit of code demonstrates one of Erlang's core features in lovely Lisp
 syntax :-) (For those that don't read Erlang yet, when loaded into the REPL,
-that example demonstrates bidirectional message passing between the LFE shell
+that example shows some bidirectional message passing between the LFE shell
 and a spawned process.)
 
 
 #### 1.1.1 Using ```make```
 
-Okay, we promised to come back to ``make``, so here we are.
+We promised to come back to ``make``, so here we are.
 
 Eventually, the ``Makefile`` will be replaced with a combination of ``rebar``
 scripts and updates to ``lfetool``, but for now it's what we've got.
 
 There are some convenient targets available for you in the ``Makefile``:
 
-* upload - when you're project's ready for release, this will push it up to
+* ``upload`` - when you're project's ready for release, this will push it up to
   <a href="http://expm.com/">expm.co</a> for you
-* compile - rebuilds all your ``.beam``s, including the dependencies
-* install - should you wish to instlal your project system-wide (we recommend
+* ``compile`` - rebuilds all your ``.beam``s, including the dependencies
+* ``install`` - should you wish to instlal your project system-wide (we recommend
   against it), you could use this target to do it
-* check - run your unit tests after recompiling all ``*.beam``s
-* shell - start up the LFE REPL after recompiling all ``*.beam``s
-* get-deps - not only does this target get your deps initially, but subsequent
+* ``check`` - run your unit tests after recompiling all ``*.beam``s
+* ``shell`` - start up the LFE REPL after recompiling all ``*.beam``s
+* ``get-deps`` - not only does this target get your deps initially, but subsequent
   runs of it will perform ``git pull``s for the repos cloned in your ``deps``
   dir, ensuring you have the latest code for everything
 
 If you do not need to recompile dependencies, you can skip the deps with the
 following targets:
 
-* compile-no-deps - only project ``.beam``s get recompiled
-* shell-no-deps
-* check-no-deps
+* ``compile-no-deps``
+* ``shell-no-deps``
+* ``check-no-deps``
 
 There are others, and you can learn more about how to manage LFE projects by
 reading the ``Makefile``.

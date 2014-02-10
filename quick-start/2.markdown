@@ -97,16 +97,43 @@ it have in it?
 
 * a README file in ReStructured Text
 * a ``Makefile``
-* the ``rebar.config`` file we mentioned about (this has all your project
+* the ``rebar.config`` file we mentioned earlier (this has all your project
   dependencies in it)
-* a ``package.exs`` file for uploading your project to http://expm.co
+* a ``package.exs`` file for uploading your project to
+  <a href="http://expm.co">expm.co</a>
 * the ``src`` directory which holds your project code, and
 * the ``test`` directory which holds the tests
 
-There are some other things there (e.g., the deps directory created by ``rebar``
-and the ``ebin`` directory that's created when everything is compiled), but
-we're just going to focus on our stuff for now.
+There are some other things there (e.g., the ``deps`` directory created by ``rebar``
+and the ``ebin`` directory that's created when everything is compiled).
 
+
+### 2.3 Repo Ready to Go
+
+``lfetool`` also did one more thing for you: ``init``ed the project in git
+and added all the files:
+
+```bash
+$ git status
+# On branch master
+#
+# Initial commit
+#
+# Changes to be committed:
+#   (use "git rm --cached <file>..." to unstage)
+#
+#   new file:   .gitignore
+#   new file:   Makefile
+#   new file:   README.rst
+#   new file:   package.exs
+#   new file:   rebar.config
+#   new file:   src/my-test-lib.app.src
+#   new file:   src/my-test-lib.lfe
+#   new file:   test/my-test-lib_tests.lfe
+#
+```
+All you need to do it ``git commit -a && git push --all`` to wherever you want
+to put your project :-)
 
 
 ### Next Stop

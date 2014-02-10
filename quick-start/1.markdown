@@ -10,7 +10,9 @@ total_guides: 4
 <img src="https://raw.github.com/lfe/lfe.github.io/master/images/plaid.jpg"
      style="float: right;">
 This guide will give you what you need in order to jump into LFE at ludicrous
-speed. For a more gradual introduction (with a bit more Erlang) and for
+speed.
+
+For a more gradual introduction (with a bit more Erlang) and for
 something that's going to give you time to see the stars, checkout the
 <a href="http://lfe.github.io/user-guide/intro/1.html">User Guide</a>.
 
@@ -19,8 +21,10 @@ something that's going to give you time to see the stars, checkout the
 
 For a quick introduction to LFE, ``lfetool`` has everything you need. The
 Quick Start guide will use it almost exclusively -- all in the interst of
-sending you a week and a half into the future. Where appropriate, we will
-point you to other resources that provide more details.
+sending you a week and a half into the future.
+
+Where appropriate, we will point you to other resources that provide more
+details.
 
 Let's get started: install ``lfetool``!
 

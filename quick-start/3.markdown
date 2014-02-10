@@ -10,7 +10,7 @@ total_guides: 4
 <img src="https://raw.github.com/lfe/lfe.github.io/master/images/smash.jpg"
      style="float: right; padding-left: 1em;">
 It may not seem like it, but we're off to a pretty fast start. If you had to
-everything we done, manually, you'd have given up by now. Seriously.
+do everything we've done, manually, you'd have given up by now. Seriously.
 
 Time to put the brakes, on, though, 'cause you're gonna want to see this next
 part in slow motion.

@@ -30,7 +30,7 @@ There are some convenient targets available for you in the ``Makefile``:
   runs of it will perform ``git pull``s for the repos cloned in your ``deps``
   dir, ensuring you have the latest code for everything
 
-If you do not need to recompile dependencies (and ost of the time, you don't),
+If you do not need to recompile dependencies (and most of the time, you don't),
 you can skip the deps with the following targets:
 
 * ``compile-no-deps``

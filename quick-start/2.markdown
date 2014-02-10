@@ -8,24 +8,26 @@ total_guides: 4
 ## 2 Your First LFE Project
 
 <img src="https://raw.github.com/lfe/lfe.github.io/master/images/barf.jpg"
-     style="float: right;">
-A project? Already?! It sounds daunting, but it's just one command :-) Head
-over to your favorite workspace in an open terminal and do this:
+     style="float: left;">
+A project? Already?! It sounds daunting, but it's just one command :-)
+
+Head over to your favorite workspace in an open terminal and do this:
 
 ```bash
 $ lfetool new library my-test-lib
 ```
 
-As you watch it crank away, read on to find out what i's doing:
+As you watch the output crank away, read on to find out what it's doing:
 
 * ``lfetool`` created a skeleton project (of the "library" type)
-* ``rebar`` is downloaded all the dependencies listed in the new
+* ``rebar`` downloaded all the dependencies listed in the new
   ``rebar.config`` file that was created for your project
 * All the downloaded dependendencies were then compiled
-* A failing test case was created for you, and the test suite was run,
-  revealing this error (TDD!)
+* During the first step, a failing test case was created for you; now, that
+  test case has been run in the test suite and the error has been revealed
+  (TDD!)
 
-#### 2.1 Tests First!
+### 2.1 Tests First!
 
 First things first: let's get that failing unit test passing.
 
@@ -87,7 +89,7 @@ unit tests without recompiling all the deps; just our project files and
 our unit tests.
 
 
-#### 2.2 Project Inventory
+### 2.2 Project Inventory
 
 Okay, we've got our tests passing and our project looks healthy. But what does
 it have in it?
@@ -105,7 +107,7 @@ and the ``ebin`` directory that's created when everything is compiled), but
 we're just going to focus on our stuff for now.
 
 
-#### 2.3 Show me LFE!
+### 2.3 Show me LFE!
 
 Sure thing :-) Just do this from your new LFE project directory:
 
@@ -195,7 +197,7 @@ If you'd like to learn more about using the LFE REPL, be sure to read the
 User Guide.
 
 
-#### 2.2.1 Using make
+### 2.4 Using make
 
 We promised to come back to ``make``, so here we are.
 
@@ -232,3 +234,6 @@ One thing to keep in mind for future reference: if you add new deps to your
 Read more about setting up a development environment
 <a href="http://lfe.github.io/user-guide/intro/4.html">here</a>.
 
+### Next Stop
+
+TBD

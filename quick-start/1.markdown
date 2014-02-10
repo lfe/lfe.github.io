@@ -5,11 +5,10 @@ total_guides: 4
 ---
 # Quick Start
 
-<img src="https://raw.github.com/lfe/lfe.github.io/master/images/plaid.jpg">
-<br />
-
 ## 1 Going Plaid
 
+<img src="https://raw.github.com/lfe/lfe.github.io/master/images/plaid.jpg"
+     style="float: right;">
 This guide will give you what you need in order to jump into LFE at ludicrous
 speed. For a more gradual introduction (with a bit more Erlang) and for
 something that's going to give you time to see the stars, checkout the

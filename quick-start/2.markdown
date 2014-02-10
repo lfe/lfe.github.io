@@ -1,14 +1,14 @@
 ---
 layout: quick-start
 guide: 2
-total_guides: 4
+total_guides: 6
 ---
 # Quick Start
 
 ## 2 Your First LFE Project
 
 <img src="https://raw.github.com/lfe/lfe.github.io/master/images/barf.jpg"
-     style="float: left;">
+     style="float: left; padding-left: 1em;">
 A project? Already?! It sounds daunting, but it's just one command :-)
 
 Head over to your favorite workspace in an open terminal and do this:
@@ -107,132 +107,6 @@ and the ``ebin`` directory that's created when everything is compiled), but
 we're just going to focus on our stuff for now.
 
 
-### 2.3 Show me LFE!
-
-Sure thing :-) Just do this from your new LFE project directory:
-
-```bash
-make shell-no-deps
-```
-
-This should give you something that looks like this:
-
-```cl
-Erlang R16B (erts-5.10.1) [source] [smp:8:8] [async-threads:10] [hipe] ...
-
-LFE Shell V5.10.1 (abort with ^G)
->
-```
-
-We're not going to spend a lot of time in the REPL right now, but feel free to
-take it for a spin :-)
-
-```cl
-> (+ 1 2 3 4 5 6)
-21
-> (* 2 (+ 1 2 3 4 5 6))
-42
-> (: lists foldl (lambda (n acc) (+ n acc)) 0 (: lists seq 1 6))
-21
-```
-
-Enough fancy stuff! What about code? What does a project look like?
-
-Well, you've already seen one! Let's print it here for your viewing pleasure,
-though. Here's the starter project you have, with just the one module:
-
-```cl
-(defmodule my-test-lib
-  (export all))
-
-(defun my-adder (x y)
-  (+ x (+ y 1)))
-```
-
-It has a corresponding test module:
-
-```cl
-(defmodule my-test-lib_tests
-  (export all)
-  (import
-    (from lfeunit-util
-      (check-failed-assert 2)
-      (check-wrong-assert-exception 2))))
-
-(include-lib "deps/lfeunit/include/lfeunit-macros.lfe")
-
-(deftest my-adder
-  (is-equal 4 (: my-test-lib my-adder 2 2)))
-```
-
-Almost couldn't be simpler.
-
-Here's something a little more involved you may enjoy, from the examples in the
-LFE source code:
-
-```cl
-(defmodule messenger-back
- (export (print-result 0) (send-message 2)))
-
-(defun print-result ()
-  (receive
-    ((tuple pid msg)
-      (: io format '"Received message: '~s'~n" (list msg))
-      (: io format '"Sending message to process ~p ...~n" (list pid))
-      (! pid (tuple msg))
-      (print-result))))
-
-(defun send-message (calling-pid msg)
-  (let ((spawned-pid (spawn 'messenger-back 'print-result ())))
-    (! spawned-pid (tuple calling-pid msg))))
-```
-
-That bit of code demonstrates one of Erlang's core features in lovely Lisp
-syntax :-) (For those that don't read Erlang yet, when loaded into the REPL,
-that example shows some bidirectional message passing between the LFE shell
-and a spawned process.)
-
-If you'd like to learn more about using the LFE REPL, be sure to read the
-<a href="http://lfe.github.io/user-guide/intro/2.html">REPL Section</a> of the
-User Guide.
-
-
-### 2.4 Using make
-
-We promised to come back to ``make``, so here we are.
-
-Eventually, the ``Makefile`` will be replaced with a combination of ``rebar``
-scripts and updates to ``lfetool``, but for now it's what we've got.
-
-There are some convenient targets available for you in the ``Makefile``:
-
-* ``upload`` - when you're project's ready for release, this will push it up to
-  <a href="http://expm.com/">expm.co</a> for you
-* ``compile`` - rebuilds all your ``.beam``s, including the dependencies
-* ``install`` - should you wish to instlal your project system-wide (we recommend
-  against it), you could use this target to do it
-* ``check`` - run your unit tests after recompiling all ``*.beam``s
-* ``shell`` - start up the LFE REPL after recompiling all ``*.beam``s
-* ``get-deps`` - not only does this target get your deps initially, but subsequent
-  runs of it will perform ``git pull``s for the repos cloned in your ``deps``
-  dir, ensuring you have the latest code for everything
-
-If you do not need to recompile dependencies, you can skip the deps with the
-following targets:
-
-* ``compile-no-deps``
-* ``shell-no-deps``
-* ``check-no-deps``
-
-There are others, and you can learn more about how to manage LFE projects by
-reading the ``Makefile``.
-
-One thing to keep in mind for future reference: if you add new deps to your
-``rebar.confg`` file, you'll need to update the ``ERL_LIBS`` in your
-``Makefile`` to include them.
-
-Read more about setting up a development environment
-<a href="http://lfe.github.io/user-guide/intro/4.html">here</a>.
 
 ### Next Stop
 

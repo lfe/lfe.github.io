@@ -1,71 +1,140 @@
 ---
 layout: quick-start
 guide: 3
-total_guides: 4
+total_guides: 6
 ---
 # Quick Start
 
 ## 3 Using Libraries
 
-### 3.1 OTP Modules
+### 2.3 Show me LFE!
 
-Taking advantage of the
-<a href="http://erldocs.com/R15B/index.html?i=734#stdlib">Erlang stdlib</a> is
-straightforward. All you need to do is prepend the call with a ```:``` and
-adjust to use the LFE syntax vs. the Erlang syntax.
+Sure thing :-) Just do this from your new LFE project directory:
 
-In fact, we've already seen an example of this in Section 2
-when we called ```(: io format ...)``` as part of a "Hello World."
+```bash
+make shell-no-deps
+```
 
-Here's an example ```base64``` usage from the Erlang ```stdlib```:
+This should give you something that looks like this:
 
-{% highlight cl %}
-> (: base64 encode_to_string '"Space is big. Really big.")
-"U3BhY2UgaXMgYmlnLiBSZWFsbHkgYmlnLg=="
-> (: base64 decode_to_string '"QW5kIHNvIHRoZSBVbml2ZXJzZSBlbmRlZC4=")
-"And so the Universe ended."
-{% endhighlight %}
+```cl
+Erlang R16B (erts-5.10.1) [source] [smp:8:8] [async-threads:10] [hipe] ...
 
-### 3.2 Processes in LFE
+LFE Shell V5.10.1 (abort with ^G)
+>
+```
 
-One of the first things that people want to do with LFE is examine the message
-passing syntax so that they can compare it with vanilla Erlang. Here's a small
-example of what this looks like in LFE:
+We're not going to spend a lot of time in the REPL right now, but feel free to
+take it for a spin :-)
 
-{% highlight cl %}
+```cl
+> (+ 1 2 3 4 5 6)
+21
+> (* 2 (+ 1 2 3 4 5 6))
+42
+> (: lists foldl (lambda (n acc) (+ n acc)) 0 (: lists seq 1 6))
+21
+```
+
+Enough fancy stuff! What about code? What does a project look like?
+
+Well, you've already seen one! Let's print it here for your viewing pleasure,
+though. Here's the starter project you have, with just the one module:
+
+```cl
+(defmodule my-test-lib
+  (export all))
+
+(defun my-adder (x y)
+  (+ x (+ y 1)))
+```
+
+It has a corresponding test module:
+
+```cl
+(defmodule my-test-lib_tests
+  (export all)
+  (import
+    (from lfeunit-util
+      (check-failed-assert 2)
+      (check-wrong-assert-exception 2))))
+
+(include-lib "deps/lfeunit/include/lfeunit-macros.lfe")
+
+(deftest my-adder
+  (is-equal 4 (: my-test-lib my-adder 2 2)))
+```
+
+Almost couldn't be simpler.
+
+Here's something a little more involved you may enjoy, from the examples in the
+LFE source code:
+
+```cl
+(defmodule messenger-back
+ (export (print-result 0) (send-message 2)))
+
 (defun print-result ()
   (receive
-    (msg
+    ((tuple pid msg)
       (: io format '"Received message: '~s'~n" (list msg))
+      (: io format '"Sending message to process ~p ...~n" (list pid))
+      (! pid (tuple msg))
       (print-result))))
-{% endhighlight %}
 
-If that was saved in a module called ```messenger```, then one could utilize it
-thusly:
-{% highlight cl %}
-> (set pid (spawn 'messenger 'print-result ()))
-<0.34.0>
-> (! pid '"Ford is missing.")
-"Ford is missing."
-Received message: 'Ford is missing.'
-{% endhighlight %}
+(defun send-message (calling-pid msg)
+  (let ((spawned-pid (spawn 'messenger-back 'print-result ())))
+    (! spawned-pid (tuple calling-pid msg))))
+```
 
-For  more information on working with processes in LFE, be sure to view the
-<a href="/tutorials/processes/1.html">tutorial</a>.
+That bit of code demonstrates one of Erlang's core features in lovely Lisp
+syntax :-) (For those that don't read Erlang yet, when loaded into the REPL,
+that example shows some bidirectional message passing between the LFE shell
+and a spawned process.)
 
-Related to this, you can find details and discussion around OTP and creating
-your own servers in the
-<a href="/tutorials/otp-servers/1.html">OTP Servers tutorial</a>.
+If you'd like to learn more about using the LFE REPL, be sure to read the
+<a href="http://lfe.github.io/user-guide/intro/2.html">REPL Section</a> of the
+User Guide.
 
-### 3.3 Third-Party Libraries
 
-Finally, accessing code that is written in third-party libraries is exactly the
-same. Simply use the modules they have provided. If you started the LFE REPL
-pointing to your third-party libraries with a ```-pa``` (path) option, then all
-you have to do is this:
+### 2.4 Using make
 
-{% highlight cl %}
-> (: your-module some-function '"some parameter")
-{% endhighlight %}
+We promised to come back to ``make``, so here we are.
 
-That's it!
+Eventually, the ``Makefile`` will be replaced with a combination of ``rebar``
+scripts and updates to ``lfetool``, but for now it's what we've got.
+
+There are some convenient targets available for you in the ``Makefile``:
+
+* ``upload`` - when you're project's ready for release, this will push it up to
+  <a href="http://expm.com/">expm.co</a> for you
+* ``compile`` - rebuilds all your ``.beam``s, including the dependencies
+* ``install`` - should you wish to instlal your project system-wide (we recommend
+  against it), you could use this target to do it
+* ``check`` - run your unit tests after recompiling all ``*.beam``s
+* ``shell`` - start up the LFE REPL after recompiling all ``*.beam``s
+* ``get-deps`` - not only does this target get your deps initially, but subsequent
+  runs of it will perform ``git pull``s for the repos cloned in your ``deps``
+  dir, ensuring you have the latest code for everything
+
+If you do not need to recompile dependencies, you can skip the deps with the
+following targets:
+
+* ``compile-no-deps``
+* ``shell-no-deps``
+* ``check-no-deps``
+
+There are others, and you can learn more about how to manage LFE projects by
+reading the ``Makefile``.
+
+One thing to keep in mind for future reference: if you add new deps to your
+``rebar.confg`` file, you'll need to update the ``ERL_LIBS`` in your
+``Makefile`` to include them.
+
+Read more about setting up a development environment
+<a href="http://lfe.github.io/user-guide/intro/4.html">here</a>.
+
+
+### Next Stop
+
+TBD

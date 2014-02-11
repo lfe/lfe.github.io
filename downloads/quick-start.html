@@ -14,218 +14,479 @@
     <base href="http://lfe.github.io/" />
   </head>
   <body>
-  <a name='quick_start' />
-<h1 id='quick_start'>Quick Start</h1>
-<a name='1_getting_set_up' />
-<h2 id='1_getting_set_up'>1 Getting Set Up</h2>
-<a name='11_dependencies' />
-<h3 id='11_dependencies'>1.1 Dependencies</h3>
+  <p><a name="quick_start"></a></p>
 
-<p>First and foremost, you will need Erlang installed. On Mac OS X, this is as easy as executing <code>brew install erlang</code> or on Ubuntu <code>apt-get install
-erlang</code>. You can also install Erlang from the various pre-built packages provided on the <a href='http://www.erlang.org/download.html'>official Erlang
-download page</a> or from the <a href='https://www.erlang-solutions.com/downloads/download-erlang-otp'>Erlang
+<h1>Quick Start</h1>
+
+<p><a name="1_going_plaid"></a></p>
+
+<h2>1 Going Plaid</h2>
+
+<p>This guide give you what you need in order to jump into LFE at ludicrous speed.
+For a more gradual introduction (with a bit more Erlang), for something that&#39;s
+going to give you time to see the stars, checkout the
+<a href="http://lfe.github.io/user-guide/intro/1.html">User Guide</a>.</p>
+
+<p><a name="11_lfetool"></a></p>
+
+<h3>1.1 <code>lfetool</code></h3>
+
+<p>For a quick-start, <code>lfetool</code> has everything you need. This guide will use it
+almost exclusively, in the interst of sending you a week and a half into the
+future. Where appropriate, we will point you to other resources that provide
+more details.</p>
+
+<p>Let&#39;s get started: go ahead and install <code>lfetool</code>:</p>
+<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="nv">$ </span>curl -o ./lfetool https://raw.github.com/lfe/lfetool/master/lfetool
+<span class="nv">$ </span>bash lfetool install /usr/local/bin
+</code></pre></div>
+<p>If you need <code>sudo</code> to put the script there, be sure to set the ownership:</p>
+<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="nv">$ </span>chown <span class="nv">$USER</span> /usr/local/bin/lfetool
+</code></pre></div>
+<p>That way you&#39;ll be able to use the <code>update</code> command to get the latest version
+in the future.</p>
+
+<p><a name="12_other_dependencies"></a></p>
+
+<h3>1.2 Other Dependencies</h3>
+
+<p>First and foremost, you will need Erlang installed. On Mac OS X, this is as
+easy as executing <code>brew install erlang</code> or on Ubuntu <code>apt-get install
+erlang</code>. You can also install Erlang from the various pre-built packages
+provided on the <a href="http://www.erlang.org/download.html">official Erlang
+download page</a> or from the
+<a href="https://www.erlang-solutions.com/downloads/download-erlang-otp">Erlang
 Solutions page</a> (supports many more package types).</p>
 
-<p>If you will be using <code>rebar</code> to build LFE, you&#8217;ll need to <a href='https://github.com/basho/rebar'>get that</a> too.</p>
+<p>Peronally, we prefer to manage our Erlang builds and installations with
+<a href="">kerl</a>. This allows for multiple versions of Erlang to be installed
+on your system simultaneously. For more information about using <code>kerl</code> in LFE
+projects, be sure to visit the &quot;kerl&quot; section of the
+<a href="http://lfe.github.io/user-guide/intro/4.html">User Guide</a>.</p>
 
-<p>You will need to <a href='http://git-scm.com/downloads'>download git</a> or install it using your favorite package manager.</p>
+<p>You will be using <code>rebar</code> to build LFE under the covers as well as managing
+dependencies for your projects, so go ahead and get that set up:
+<a href="https://github.com/basho/rebar">get rebar</a>.</p>
 
-<p>Next, you will need to download LFE itself:</p>
+<p>You will need to <a href="http://git-scm.com/downloads">download git</a> or
+install it using your favorite package manager.</p>
 
-<pre><code>$ git clone git://github.com/rvirding/lfe.git</code></pre>
-<a name='12_building' />
-<h3 id='12_building'>1.2 Building</h3>
+<p><a name="13_your_first_lfe_project"></a></p>
 
-<p>With the dependencies installed, we&#8217;re now ready to build LFE.</p>
-<a name='121_using_make' />
-<h4 id='121_using_'>1.2.1 Using <code>make</code></h4>
+<h3>1.3 Your First LFE Project</h3>
 
-<pre><code>$ cd ./lfe
-$ erlc -o src src/lfe_scan.xrl
-$ make</code></pre>
+<p>It sounds daunting, but it&#39;s just one command :-) Head over to your favorite
+workspace in an open terminal and do this:</p>
+<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="nv">$ </span>lfetool new library my-test-lib
+</code></pre></div>
+<p>As you watch it crank away, read on to find out what i&#39;s doing:
+* <code>lfetool</code> created a skeleton project (of the &quot;library&quot; type)
+* <code>rebar</code> is downloaded all the dependencies listed in the new
+  <code>rebar.config</code> file that was created for your project
+* All the downloaded dependendencies were then compiled
+* A failing test case was created for you, and the test suite was run,
+  revealing this error (TDD!)</p>
 
-<p>Ordinarily, only the <code>make</code> command would be necessary. However, there&#8217;s currently <a href='https://github.com/rvirding/lfe/issues/14'>an issue</a> with the <code>Makefile</code> that temporarily requires that first step.</p>
-<a name='122_using_rebar' />
-<h4 id='122_using_'>1.2.2 Using <code>rebar</code></h4>
+<p><a name="131_tests_first!"></a></p>
 
-<p>Alternatively, one may use <code>rebar</code> to build LFE:</p>
+<h4>1.3.1 Tests First!</h4>
 
-<pre><code>$ cd ./lfe
-$ rebar compile</code></pre>
-<a name='13_installing' />
-<h3 id='13_installing'>1.3 Installing</h3>
+<p>First things first: let&#39;s get that failing unit test passing.</p>
 
-<p>On non-development systems, or any system where you don&#8217;t want to run LFE from a git checkout, installing system-wide is the preferred way to use LFE. If you set your <code>$ERL_LIBS</code> environment variable, LFE will install there. Here&#8217;s how one might do this on a Mac OS X system with Erlang installed by <a href='http://mxcl.github.com/homebrew/'>Homebrew</a>:</p>
+<p>Here&#39;s the output we saw:</p>
+<div class="highlight"><pre><code class="erlang language-erlang" data-lang="erlang"><span class="o">**</span><span class="nn">error</span><span class="p">:{</span><span class="n">assertEqual_failed</span><span class="p">,[{</span><span class="n">module</span><span class="p">,</span><span class="n">&#39;my-test-lib_tests&#39;</span><span class="p">},</span>
+                     <span class="p">{</span><span class="n">line</span><span class="p">,</span><span class="mi">11</span><span class="p">},</span>
+                     <span class="p">{</span><span class="n">expression</span><span class="p">,</span><span class="s">&quot;(: my-test-lib my-adder 2 2)&quot;</span><span class="p">},</span>
+                     <span class="p">{</span><span class="n">expected</span><span class="p">,</span><span class="mi">4</span><span class="p">},</span>
+                     <span class="p">{</span><span class="n">value</span><span class="p">,</span><span class="mi">5</span><span class="p">}]}</span>
+</code></pre></div>
+<p>We can see that our test expected 4 but it got 5.</p>
+<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">cd </span>my-test-lib
+</code></pre></div>
+<p>Let&#39;s look at the test by opening up <code>test/my-test-lib_tests.lfe</code>.</p>
 
-<pre><code>$ export ERL_LIBS=/usr/local/lib/erlang/lib
-$ make install</code></pre>
+<p>Well, things there look good -- we should get 4 when 2 and 2 are added.</p>
 
-<p>You can then check that everything is where you expect:</p>
+<p>Let&#39;s take a look at the source module: <code>src/my-test-lib.lfe</code>. Ah-ha! a
+bug :-) There&#39;s an extra operation that&#39;s being done which we don&#39;t want.</p>
 
-<pre><code>$ ls -1 $ERL_LIBS|grep lfe
-lfe-0.7</code></pre>
+<p>To fix it, change this line:
+<code>cl
+  (+ x (+ y 1)))
+</code></p>
 
-<p>Now you can use LFE from anywhere:</p>
-<div class='highlight'><pre><code class='erlang'><span class='sc'>$ </span><span class='n'>erl</span>
-<span class='nv'>Erlang</span> <span class='nv'>R15B03</span> <span class='p'>(</span><span class='n'>erts</span><span class='o'>-</span><span class='mi'>5</span><span class='p'>.</span><span class='mi'>9</span><span class='p'>.</span><span class='mi'>3</span><span class='p'>.</span><span class='mi'>1</span><span class='p'>)</span> <span class='p'>[</span><span class='n'>source</span><span class='p'>]</span> <span class='p'>[</span><span class='mi'>64</span><span class='o'>-</span><span class='n'>bit</span><span class='p'>]</span> <span class='p'>[</span><span class='nn'>smp</span><span class='p'>:</span><span class='mi'>8</span><span class='p'>:</span><span class='mi'>8</span><span class='p'>]</span> <span class='p'>[</span><span class='n'>async</span><span class='o'>-</span><span class='nn'>threads</span><span class='p'>:</span><span class='mi'>0</span><span class='p'>]</span>
-<span class='p'>[</span><span class='n'>hipe</span><span class='p'>]</span> <span class='p'>[</span><span class='n'>kernel</span><span class='o'>-</span><span class='nn'>poll</span><span class='p'>:</span><span class='n'>false</span><span class='p'>]</span> <span class='p'>[</span><span class='n'>dtrace</span><span class='p'>]</span>
+<p>to this:
+<code>cl
+  (+ x y))
+</code></p>
 
-<span class='nv'>Eshell</span> <span class='nv'>V5</span><span class='p'>.</span><span class='mi'>9</span><span class='p'>.</span><span class='mi'>3</span><span class='p'>.</span><span class='mi'>1</span>  <span class='p'>(</span><span class='n'>abort</span> <span class='n'>with</span> <span class='err'>^</span><span class='nv'>G</span><span class='p'>)</span>
-<span class='mi'>1</span><span class='o'>&gt;</span> <span class='nn'>lfe_shell</span><span class='p'>:</span><span class='nf'>start</span><span class='p'>().</span>
-<span class='nv'>LFE</span> <span class='nv'>Shell</span> <span class='nv'>V5</span><span class='p'>.</span><span class='mi'>9</span><span class='p'>.</span><span class='mi'>3</span><span class='p'>.</span><span class='mi'>1</span> <span class='p'>(</span><span class='n'>abort</span> <span class='n'>with</span> <span class='err'>^</span><span class='nv'>G</span><span class='p'>)</span>
-<span class='o'>&lt;</span><span class='mi'>0</span><span class='p'>.</span><span class='mi'>33</span><span class='p'>.</span><span class='mi'>0</span><span class='o'>&gt;</span>
-<span class='o'>&gt;</span>
-</code></pre></div><a name='2_executing_code' />
-<h2 id='2_executing_code'>2 Executing Code</h2>
+<p>Now re-run the unit tests:
+<code>bash
+$ make check-no-deps
+</code></p>
 
-<p>Once you&#8217;ve got LFE built, you want to play with it, right? Let&#8217;s take a look at the REPL (interactive shell) first.</p>
-<a name='21_the_repl' />
-<h3 id='21_the_repl'>2.1 The REPL</h3>
+<p>And you should get a passing test:
+```bash
+==&gt; my-test-lib (eunit)
+======================== EUnit ========================</p>
 
-<p>To start the REPL, simply run the <code>lfe</code> script and tell <code>erl</code> (which is being run in the script) which additional code paths it should look for (in this case, the compiled LFE code):</p>
+<h1>my-test-lib<em>tests: my-adder</em>test (module &#39;my-test-lib_tests&#39;)...[0.031 s] ok</h1>
 
-<pre><code>$ ./bin/lfe -pa ./ebin</code></pre>
+<p>Test passed.
+```</p>
 
-<p>This assumes that you are still in the <code>lfe</code> directory where you build LFE. Running that command will dump you into the LFE REPL, looking something like this:</p>
+<p>We&#39;ll talk about the <code>make</code> targets in a bit, but our target above run the
+unit tests without recompiling all the deps; just our project files and
+our unit tests.</p>
 
-<pre><code>Erlang R15B03 (erts-5.9.3.1) [source] [64-bit] [smp:8:8] [async-threads:0] ...
+<p><a name="132_project_inventory"></a></p>
+
+<h4>1.3.2 Project Inventory</h4>
+
+<p>Okay, we&#39;ve got our tests passing and our project looks healthy. But what does
+it have in it?</p>
+
+<ul>
+<li>a README file in ReStructured Text</li>
+<li>a <code>Makefile</code></li>
+<li>the <code>rebar.config</code> file we mentioned about (this has all your project
+dependencies in it)</li>
+<li>a <code>package.exs</code> file for uploading your project to http://expm.co</li>
+<li>the <code>src</code> directory which holds your project code, and</li>
+<li>the <code>test</code> directory which holds the tests</li>
+</ul>
+
+<p>There are some other things there (e.g., the deps directory created by <code>rebar</code>
+and the <code>ebin</code> directory that&#39;s created when everything is compiled), but
+we&#39;re just going to focus on our stuff for now.</p>
+
+<p><a name="133_show_me_lfe!"></a></p>
+
+<h4>1.3.3 Show me LFE!</h4>
+
+<p>Sure thing :-) Just do this from your new LFE project directory:</p>
+<div class="highlight"><pre><code class="bash language-bash" data-lang="bash">make shell-no-deps
+</code></pre></div>
+<p>This should give you something that looks like this:</p>
+<div class="highlight"><pre><code class="cl language-cl" data-lang="cl"><span class="nv">Erlang</span> <span class="nv">R16B</span> <span class="p">(</span><span class="nv">erts-5.10.1</span><span class="p">)</span> <span class="nv">[source]</span> <span class="nv">[smp:8:8]</span> <span class="nv">[async-threads:10]</span> <span class="nv">[hipe]</span> <span class="nv">[kernel-poll:false]</span>
+
+<span class="nv">LFE</span> <span class="nv">Shell</span> <span class="nv">V5.10.1</span> <span class="p">(</span><span class="nb">abort</span> <span class="nv">with</span> <span class="nv">^G</span><span class="p">)</span>
+<span class="nb">&gt;</span>
+</code></pre></div>
+<p>We&#39;re not going to spend a lot of time in the REPL right now, but feel free to
+take it for a spin :-)</p>
+<div class="highlight"><pre><code class="cl language-cl" data-lang="cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">)</span>
+<span class="mi">21</span>
+<span class="nb">&gt;</span> <span class="p">(</span><span class="nb">*</span> <span class="mi">2</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">))</span>
+<span class="mi">42</span>
+<span class="nb">&gt;</span> <span class="p">(</span><span class="err">:</span> <span class="nv">lists</span> <span class="nv">foldl</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="nv">n</span> <span class="nv">acc</span><span class="p">)</span> <span class="p">(</span><span class="nb">+</span> <span class="nv">n</span> <span class="nv">acc</span><span class="p">))</span> <span class="mi">0</span> <span class="p">(</span><span class="err">:</span> <span class="nv">lists</span> <span class="nv">seq</span> <span class="mi">1</span> <span class="mi">6</span><span class="p">))</span>
+<span class="mi">21</span>
+</code></pre></div>
+<p>Enough fancy stuff for now, what about code? What does a project look like?</p>
+
+<p>Well, you&#39;ve already seen one! Let&#39;s print it here for your viewing pleasure,
+though. Here&#39;s the starter project you have, with just the one module:</p>
+<div class="highlight"><pre><code class="cl language-cl" data-lang="cl"><span class="p">(</span><span class="nv">defmodule</span> <span class="nv">my-test-lib</span>
+  <span class="p">(</span><span class="nb">export</span> <span class="nv">all</span><span class="p">))</span>
+
+
+<span class="p">(</span><span class="nb">defun</span> <span class="nv">my-adder</span> <span class="p">(</span><span class="nv">x</span> <span class="nv">y</span><span class="p">)</span>
+  <span class="p">(</span><span class="nb">+</span> <span class="nv">x</span> <span class="p">(</span><span class="nb">+</span> <span class="nv">y</span> <span class="mi">1</span><span class="p">)))</span>
+</code></pre></div>
+<p>It has a corresponding test module:</p>
+<div class="highlight"><pre><code class="cl language-cl" data-lang="cl"><span class="p">(</span><span class="nv">defmodule</span> <span class="nv">my-test-lib_tests</span>
+  <span class="p">(</span><span class="nb">export</span> <span class="nv">all</span><span class="p">)</span>
+  <span class="p">(</span><span class="nb">import</span>
+    <span class="p">(</span><span class="nv">from</span> <span class="nv">lfeunit-util</span>
+      <span class="p">(</span><span class="nv">check-failed-assert</span> <span class="mi">2</span><span class="p">)</span>
+      <span class="p">(</span><span class="nv">check-wrong-assert-exception</span> <span class="mi">2</span><span class="p">))))</span>
+
+<span class="p">(</span><span class="nv">include-lib</span> <span class="s">&quot;deps/lfeunit/include/lfeunit-macros.lfe&quot;</span><span class="p">)</span>
+
+
+<span class="p">(</span><span class="nv">deftest</span> <span class="nv">my-adder</span>
+  <span class="p">(</span><span class="nv">is-equal</span> <span class="mi">4</span> <span class="p">(</span><span class="err">:</span> <span class="nv">my-test-lib</span> <span class="nv">my-adder</span> <span class="mi">2</span> <span class="mi">2</span><span class="p">)))</span>
+</code></pre></div>
+<p>Almost cound&#39;t be simpler.</p>
+
+<p>Here&#39;s something a little more involved you may enjoy, fro the examples in the
+LFE source code:</p>
+<div class="highlight"><pre><code class="cl language-cl" data-lang="cl"><span class="p">(</span><span class="nv">defmodule</span> <span class="nv">messenger-back</span>
+ <span class="p">(</span><span class="nb">export</span> <span class="p">(</span><span class="nv">print-result</span> <span class="mi">0</span><span class="p">)</span> <span class="p">(</span><span class="nv">send-message</span> <span class="mi">2</span><span class="p">)))</span>
+
+<span class="p">(</span><span class="nb">defun</span> <span class="nv">print-result</span> <span class="p">()</span>
+  <span class="p">(</span><span class="nv">receive</span>
+    <span class="p">((</span><span class="nv">tuple</span> <span class="nv">pid</span> <span class="nv">msg</span><span class="p">)</span>
+      <span class="p">(</span><span class="err">:</span> <span class="nv">io</span> <span class="nb">format</span> <span class="o">&#39;</span><span class="s">&quot;Received message: &#39;~s&#39;~n&quot;</span> <span class="p">(</span><span class="nb">list</span> <span class="nv">msg</span><span class="p">))</span>
+      <span class="p">(</span><span class="err">:</span> <span class="nv">io</span> <span class="nb">format</span> <span class="o">&#39;</span><span class="s">&quot;Sending message to process ~p ...~n&quot;</span> <span class="p">(</span><span class="nb">list</span> <span class="nv">pid</span><span class="p">))</span>
+      <span class="p">(</span><span class="nv">!</span> <span class="nv">pid</span> <span class="p">(</span><span class="nv">tuple</span> <span class="nv">msg</span><span class="p">))</span>
+      <span class="p">(</span><span class="nv">print-result</span><span class="p">))))</span>
+
+<span class="p">(</span><span class="nb">defun</span> <span class="nv">send-message</span> <span class="p">(</span><span class="nv">calling-pid</span> <span class="nv">msg</span><span class="p">)</span>
+  <span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">spawned-pid</span> <span class="p">(</span><span class="nv">spawn</span> <span class="ss">&#39;messenger-back</span> <span class="ss">&#39;print-result</span> <span class="p">())))</span>
+    <span class="p">(</span><span class="nv">!</span> <span class="nv">spawned-pid</span> <span class="p">(</span><span class="nv">tuple</span> <span class="nv">calling-pid</span> <span class="nv">msg</span><span class="p">))))</span>
+</code></pre></div>
+<p>That bit of code demonstrates one of Erlang&#39;s core features in lovely Lisp
+syntax :-) (For those that don&#39;t read Erlang yet, when loaded into the REPL,
+that example demonstrates bidirectional message passing between the LFE shell
+and a spawned process.)</p>
+
+<p><a name="111_using_make"></a></p>
+
+<h4>1.1.1 Using <code>make</code></h4>
+
+<p>Okay, we promised to come back to <code>make</code>, so here we are.</p>
+
+<p>Eventually, the <code>Makefile</code> will be replaced with a combination of <code>rebar</code>
+scripts and updates to <code>lfetool</code>, but for now it&#39;s what we&#39;ve got.</p>
+
+<p>There are some convenient targets available for you in the <code>Makefile</code>:</p>
+
+<ul>
+<li>upload - when you&#39;re project&#39;s ready for release, this will push it up to
+<a href="http://expm.com/">expm.co</a> for you</li>
+<li>compile - rebuilds all your <code>.beam</code>s, including the dependencies</li>
+<li>install - should you wish to instlal your project system-wide (we recommend
+against it), you could use this target to do it</li>
+<li>check - run your unit tests after recompiling all <code>*.beam</code>s</li>
+<li>shell - start up the LFE REPL after recompiling all <code>*.beam</code>s</li>
+<li>get-deps - not only does this target get your deps initially, but subsequent
+runs of it will perform <code>git pull</code>s for the repos cloned in your <code>deps</code>
+dir, ensuring you have the latest code for everything</li>
+</ul>
+
+<p>If you do not need to recompile dependencies, you can skip the deps with the
+following targets:</p>
+
+<ul>
+<li>compile-no-deps - only project <code>.beam</code>s get recompiled</li>
+<li>shell-no-deps</li>
+<li>check-no-deps</li>
+</ul>
+
+<p>There are others, and you can learn more about how to manage LFE projects by
+reading the <code>Makefile</code>.</p>
+
+<p>One thing to keep in mind for future reference: if you add new deps to your
+<code>rebar.confg</code> file, you&#39;ll need to update the <code>ERL_LIBS</code> in your
+<code>Makefile</code> to include them.</p>
+
+<p>Read more about setting up a development environment
+<a href="http://lfe.github.io/user-guide/intro/4.html">here</a>.</p>
+
+<p><a name="2_executing_code"></a></p>
+
+<h2>2 Executing Code</h2>
+
+<p>Once you&#39;ve got LFE built, you want to play with it, right? Let&#39;s take a look
+at the REPL (interactive shell) first.</p>
+
+<p><a name="21_the_repl"></a></p>
+
+<h3>2.1 The REPL</h3>
+
+<p>To start the REPL, simply run the <code>lfe</code> script and tell <code>erl</code> (which is
+being run in the script) which additional code paths it should look for (in this
+case, the compiled LFE code):</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">$ ./bin/lfe -pa ./ebin
+</code></pre></div>
+<p>This assumes that you are still in the <code>lfe</code> directory where you build LFE.
+Running that command will dump you into the LFE REPL, looking something like
+this:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">Erlang R15B03 (erts-5.9.3.1) [source] [64-bit] [smp:8:8] [async-threads:0] ...
 
 LFE Shell V5.9.3.1 (abort with ^G)
-&gt;</code></pre>
-
-<p>Note that you can also start the the LFE shell manually from an existing Erlang shell (as we did earlier in this guide) or you can pass parameters to <code>erl</code> to start it up:</p>
-
-<pre><code>$ erl -pa ebin -s lfe_boot -noshell -noinput</code></pre>
-
+&gt;
+</code></pre></div>
+<p>Note that you can also start the the LFE shell manually from an existing Erlang
+shell (as we did earlier in this guide) or you can pass parameters to <code>erl</code>
+to start it up:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">$ erl -pa ebin -s lfe_boot -noshell -noinput
+</code></pre></div>
 <p>Now try doing some basic operations:</p>
-<div class='highlight'><pre><code class='cl'><span class='nb'>&gt;</span> <span class='p'>(</span><span class='nb'>+</span> <span class='mi'>1</span> <span class='mi'>2</span> <span class='mi'>3</span><span class='p'>)</span>
-<span class='mi'>6</span>
-<span class='nb'>&gt;</span> <span class='p'>(</span><span class='nb'>cons</span> <span class='mi'>1</span> <span class='mi'>2</span><span class='p'>)</span>
-<span class='p'>(</span><span class='mi'>1</span> <span class='o'>.</span> <span class='mi'>2</span><span class='p'>)</span>
-<span class='nb'>&gt;</span> <span class='p'>(</span><span class='nb'>cons</span> <span class='p'>(</span><span class='nb'>list</span> <span class='mi'>1</span> <span class='mi'>2</span><span class='p'>)</span> <span class='p'>(</span><span class='nb'>list</span> <span class='mi'>3</span> <span class='mi'>4</span><span class='p'>))</span>
-<span class='p'>((</span><span class='mi'>1</span> <span class='mi'>2</span><span class='p'>)</span> <span class='mi'>3</span> <span class='mi'>4</span><span class='p'>)</span>
-<span class='nb'>&gt;</span>
+
+<div class="highlight"><pre><code class="cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span>
+<span class="mi">6</span>
+<span class="nb">&gt;</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">1</span> <span class="mi">2</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">1</span> <span class="o">.</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">&gt;</span> <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="nb">list</span> <span class="mi">1</span> <span class="mi">2</span><span class="p">)</span> <span class="p">(</span><span class="nb">list</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">))</span>
+<span class="p">((</span><span class="mi">1</span> <span class="mi">2</span><span class="p">)</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">)</span>
+<span class="nb">&gt;</span>
 </code></pre></div>
-<p>Next, let&#8217;s operate on some variables:</p>
-<div class='highlight'><pre><code class='cl'><span class='nb'>&gt;</span> <span class='p'>(</span><span class='k'>let</span> <span class='p'>((</span><span class='nv'>x</span> <span class='mi'>123456789</span><span class='p'>))</span> <span class='nv'>x</span><span class='p'>)</span>
-<span class='mi'>123456789</span>
-<span class='nb'>&gt;</span> <span class='p'>(</span><span class='k'>let</span> <span class='p'>((</span><span class='nv'>x</span> <span class='mi'>123456789</span><span class='p'>))</span> <span class='p'>(</span><span class='nb'>*</span> <span class='nv'>x</span> <span class='nv'>x</span><span class='p'>))</span>
-<span class='mi'>15241578750190521</span>
-<span class='nb'>&gt;</span> <span class='p'>(</span><span class='k'>let</span> <span class='p'>((</span><span class='nv'>x</span> <span class='mi'>123456789</span><span class='p'>))</span> <span class='p'>(</span><span class='nb'>*</span> <span class='nv'>x</span> <span class='nv'>x</span> <span class='nv'>x</span> <span class='nv'>x</span><span class='p'>))</span>
-<span class='mi'>232305722798259244150093798251441</span>
-<span class='nb'>&gt;</span>
+
+<p>Next, let&#39;s operate on some variables:</p>
+
+<div class="highlight"><pre><code class="cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">x</span> <span class="mi">123456789</span><span class="p">))</span> <span class="nv">x</span><span class="p">)</span>
+<span class="mi">123456789</span>
+<span class="nb">&gt;</span> <span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">x</span> <span class="mi">123456789</span><span class="p">))</span> <span class="p">(</span><span class="nb">*</span> <span class="nv">x</span> <span class="nv">x</span><span class="p">))</span>
+<span class="mi">15241578750190521</span>
+<span class="nb">&gt;</span> <span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">x</span> <span class="mi">123456789</span><span class="p">))</span> <span class="p">(</span><span class="nb">*</span> <span class="nv">x</span> <span class="nv">x</span> <span class="nv">x</span> <span class="nv">x</span><span class="p">))</span>
+<span class="mi">232305722798259244150093798251441</span>
+<span class="nb">&gt;</span>
 </code></pre></div>
+
 <p>Looking good!</p>
-<a name='22_running_scripts' />
-<h3 id='22_running_scripts'>2.2 Running Scripts</h3>
 
-<p>Okay, so now that you can run things in the REPL, you want to run them as a script, yes? Here&#8217;s how.</p>
+<p><a name="22_running_scripts"></a></p>
 
-<p>Let&#8217;s create a temporary subdirectory to play in without fear of messing up our LFE directory:</p>
+<h3>2.2 Running Scripts</h3>
 
-<pre><code>$ mkdir tmp
-$ cd tmp</code></pre>
+<p>Okay, so now that you can run things in the REPL, you want to run them as a
+script, yes? Here&#39;s how.</p>
 
-<p>Then, in that directory, let&#8217;s create the following file and save it as <code>hello.lfe</code>:</p>
-<div class='highlight'><pre><code class='cl'><span class='p'>(</span><span class='nv'>defmodule</span> <span class='nv'>hello</span>
-  <span class='p'>(</span><span class='nb'>export</span> <span class='p'>(</span><span class='nv'>start</span> <span class='mi'>0</span><span class='p'>)))</span>
-
-<span class='p'>(</span><span class='nb'>defun</span> <span class='nv'>start</span> <span class='p'>()</span>
-  <span class='p'>(</span><span class='err'>:</span> <span class='nv'>io</span> <span class='nb'>format</span> <span class='o'>&#39;</span><span class='s'>&quot;Lfe says &#39;Hello, World!&#39;~n&quot;</span><span class='p'>))</span>
+<p>Let&#39;s create a temporary subdirectory to play in without fear of messing up our
+LFE directory:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">$ mkdir tmp
+$ cd tmp
 </code></pre></div>
+<p>Then, in that directory, let&#39;s create the following file and save it as
+<code>hello.lfe</code>:</p>
+
+<div class="highlight"><pre><code class="cl"><span class="p">(</span><span class="nv">defmodule</span> <span class="nv">hello</span>
+  <span class="p">(</span><span class="nb">export</span> <span class="p">(</span><span class="nv">start</span> <span class="mi">0</span><span class="p">)))</span>
+
+<span class="p">(</span><span class="nb">defun</span> <span class="nv">start</span> <span class="p">()</span>
+  <span class="p">(</span><span class="err">:</span> <span class="nv">io</span> <span class="nb">format</span> <span class="o">&#39;</span><span class="s">&quot;Lfe says &#39;Hello, World!&#39;~n&quot;</span><span class="p">))</span>
+</code></pre></div>
+
 <p>To compile that script and then run it, we can do this:</p>
-
-<pre><code>$ ../bin/lfec hello.lfe
-$ ../bin/lfe -s hello start -s erlang halt</code></pre>
-
+<div class="highlight"><pre><code class="text language-text" data-lang="text">$ ../bin/lfec hello.lfe
+$ ../bin/lfe -s hello start -s erlang halt
+</code></pre></div>
 <p>Or, if we want to use Erlang directly, we could do this:</p>
-
-<pre><code>$ erl -pa ../ebin -s lfe_comp file hello -s erlang halt
-$ erl -pa ../ebin -s hello start -s erlang halt</code></pre>
-
+<div class="highlight"><pre><code class="text language-text" data-lang="text">$ erl -pa ../ebin -s lfe_comp file hello -s erlang halt
+$ erl -pa ../ebin -s hello start -s erlang halt
+</code></pre></div>
 <p>Or, we could compile it and run it in the same command:</p>
-
-<pre><code>$ erl -pa ../ebin -s lfe_comp file hello -s hello start -s erlang halt</code></pre>
-
+<div class="highlight"><pre><code class="text language-text" data-lang="text">$ erl -pa ../ebin -s lfe_comp file hello -s hello start -s erlang halt
+</code></pre></div>
 <p>Note that this is the command line equivalent of the following:</p>
-
-<pre><code>$ erl -pa ../ebin
+<div class="highlight"><pre><code class="text language-text" data-lang="text">$ erl -pa ../ebin
 1&gt; lfe_comp:file(hello).
 {ok,hello}
 2&gt; hello:start().
 Lfe says &#39;Hello, World!&#39;
 ok
-3&gt;</code></pre>
-<a name='23_running_scripts_from_the_repl' />
-<h3 id='23_running_scripts_from_the_repl'>2.3 Running Scripts from the REPL</h3>
+3&gt;
+</code></pre></div>
+<p><a name="23_running_scripts_from_the_repl"></a></p>
 
-<p>You can also use your new <code>hello.lfe</code> script in the REPL itself. There are two ways you can do this, using <code>slurp</code> or compiling the file. If you use <code>slurp</code>, all the functions are pulled into the shell namespace, and you won&#8217;t have to reference the module name. Again, assuming that you are in <code>lfe/tmp</code>:</p>
-<div class='highlight'><pre><code class='cl'><span class='nv'>$</span> <span class='o'>..</span><span class='nv'>/bin/lfe</span> <span class='nv'>-pa</span> <span class='o'>..</span><span class='nv'>/ebin</span>
-<span class='nb'>&gt;</span> <span class='p'>(</span><span class='nv'>slurp</span> <span class='o'>&#39;</span><span class='s'>&quot;hello.lfe&quot;</span><span class='p'>)</span>
-<span class='o'>#(</span><span class='nv'>ok</span> <span class='nv'>hello</span><span class='p'>)</span>
-<span class='nb'>&gt;</span> <span class='p'>(</span><span class='nv'>start</span><span class='p'>)</span>
-<span class='nv'>Lfe</span> <span class='nv'>says</span> <span class='ss'>&#39;Hello,</span> <span class='nv'>World!</span><span class='o'>&#39;</span>
-<span class='nv'>ok</span>
-<span class='nb'>&gt;</span>
+<h3>2.3 Running Scripts from the REPL</h3>
+
+<p>You can also use your new <code>hello.lfe</code> script in the REPL itself. There are
+two ways you can do this, using <code>slurp</code> or compiling the file. If you use
+<code>slurp</code>, all the functions are pulled into the shell namespace, and you
+won&#39;t have to reference the module name.  Again, assuming that you are in
+<code>lfe/tmp</code>:</p>
+
+<div class="highlight"><pre><code class="cl"><span class="nv">$</span> <span class="o">..</span><span class="nv">/bin/lfe</span> <span class="nv">-pa</span> <span class="o">..</span><span class="nv">/ebin</span>
+<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">slurp</span> <span class="o">&#39;</span><span class="s">&quot;hello.lfe&quot;</span><span class="p">)</span>
+<span class="o">#(</span><span class="nv">ok</span> <span class="nv">hello</span><span class="p">)</span>
+<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">start</span><span class="p">)</span>
+<span class="nv">Lfe</span> <span class="nv">says</span> <span class="ss">&#39;Hello,</span> <span class="nv">World!</span><span class="o">&#39;</span>
+<span class="nv">ok</span>
+<span class="nb">&gt;</span>
 </code></pre></div>
+
 <p>If you choose to compile your module instead, you will use it like so:</p>
-<div class='highlight'><pre><code class='cl'><span class='nv'>$</span> <span class='o'>..</span><span class='nv'>/bin/lfe</span> <span class='nv'>-pa</span> <span class='o'>..</span><span class='nv'>/ebin</span>
-<span class='nb'>&gt;</span> <span class='p'>(</span><span class='nv'>c</span> <span class='o'>&#39;</span><span class='s'>&quot;hello&quot;</span><span class='p'>)</span>
-<span class='o'>#(</span><span class='nv'>module</span> <span class='nv'>hello</span><span class='p'>)</span>
-<span class='nb'>&gt;</span> <span class='p'>(</span><span class='err'>:</span> <span class='nv'>hello</span> <span class='nv'>start</span><span class='p'>)</span>
-<span class='nv'>Lfe</span> <span class='nv'>says</span> <span class='ss'>&#39;Hello,</span> <span class='nv'>World!</span><span class='o'>&#39;</span>
-<span class='nv'>ok</span>
-<span class='nb'>&gt;</span>
+
+<div class="highlight"><pre><code class="cl"><span class="nv">$</span> <span class="o">..</span><span class="nv">/bin/lfe</span> <span class="nv">-pa</span> <span class="o">..</span><span class="nv">/ebin</span>
+<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">c</span> <span class="o">&#39;</span><span class="s">&quot;hello&quot;</span><span class="p">)</span>
+<span class="o">#(</span><span class="nv">module</span> <span class="nv">hello</span><span class="p">)</span>
+<span class="nb">&gt;</span> <span class="p">(</span><span class="err">:</span> <span class="nv">hello</span> <span class="nv">start</span><span class="p">)</span>
+<span class="nv">Lfe</span> <span class="nv">says</span> <span class="ss">&#39;Hello,</span> <span class="nv">World!</span><span class="o">&#39;</span>
+<span class="nv">ok</span>
+<span class="nb">&gt;</span>
 </code></pre></div>
+
 <p>Note that in the second example, you need to reference the module.</p>
 
-<p>For more information on the LFE shell, be sure to see the &#8220;REPL&#8221; section of the User Guide Introduction.</p>
-<a name='3_using_libraries' />
-<h2 id='3_using_libraries'>3 Using Libraries</h2>
-<a name='31_otp_modules' />
-<h3 id='31_otp_modules'>3.1 OTP Modules</h3>
+<p>For more information on the LFE shell, be sure to see the &quot;REPL&quot; section of the
+User Guide Introduction.</p>
 
-<p>Taking advantage of the <a href='http://erldocs.com/R15B/index.html?i=734#stdlib'>Erlang stdlib</a> is straightforward. All you need to do is prepend the call with a <code>:</code> and adjust to use the LFE syntax vs. the Erlang syntax.</p>
+<p><a name="3_using_libraries"></a></p>
 
-<p>In fact, we&#8217;ve already seen an example of this in Section 2 when we called <code>(: io format ...)</code> as part of a &#8220;Hello World.&#8221;</p>
+<h2>3 Using Libraries</h2>
 
-<p>Here&#8217;s an example <code>base64</code> usage from the Erlang <code>stdlib</code>:</p>
-<div class='highlight'><pre><code class='cl'><span class='nb'>&gt;</span> <span class='p'>(</span><span class='err'>:</span> <span class='nv'>base64</span> <span class='nv'>encode_to_string</span> <span class='o'>&#39;</span><span class='s'>&quot;Space is big. Really big.&quot;</span><span class='p'>)</span>
-<span class='s'>&quot;U3BhY2UgaXMgYmlnLiBSZWFsbHkgYmlnLg==&quot;</span>
-<span class='nb'>&gt;</span> <span class='p'>(</span><span class='err'>:</span> <span class='nv'>base64</span> <span class='nv'>decode_to_string</span> <span class='o'>&#39;</span><span class='s'>&quot;QW5kIHNvIHRoZSBVbml2ZXJzZSBlbmRlZC4=&quot;</span><span class='p'>)</span>
-<span class='s'>&quot;And so the Universe ended.&quot;</span>
-</code></pre></div><a name='32_processes_in_lfe' />
-<h3 id='32_processes_in_lfe'>3.2 Processes in LFE</h3>
+<p><a name="31_otp_modules"></a></p>
 
-<p>One of the first things that people want to do with LFE is examine the message passing syntax so that they can compare it with vanilla Erlang. Here&#8217;s a small example of what this looks like in LFE:</p>
-<div class='highlight'><pre><code class='cl'><span class='p'>(</span><span class='nb'>defun</span> <span class='nv'>print-result</span> <span class='p'>()</span>
-  <span class='p'>(</span><span class='nv'>receive</span>
-    <span class='p'>(</span><span class='nv'>msg</span>
-      <span class='p'>(</span><span class='err'>:</span> <span class='nv'>io</span> <span class='nb'>format</span> <span class='o'>&#39;</span><span class='s'>&quot;Received message: &#39;~s&#39;~n&quot;</span> <span class='p'>(</span><span class='nb'>list</span> <span class='nv'>msg</span><span class='p'>))</span>
-      <span class='p'>(</span><span class='nv'>print-result</span><span class='p'>))))</span>
+<h3>3.1 OTP Modules</h3>
+
+<p>Taking advantage of the
+<a href="http://erldocs.com/R15B/index.html?i=734#stdlib">Erlang stdlib</a> is
+straightforward. All you need to do is prepend the call with a <code>:</code> and
+adjust to use the LFE syntax vs. the Erlang syntax.</p>
+
+<p>In fact, we&#39;ve already seen an example of this in Section 2
+when we called <code>(: io format ...)</code> as part of a &quot;Hello World.&quot;</p>
+
+<p>Here&#39;s an example <code>base64</code> usage from the Erlang <code>stdlib</code>:</p>
+
+<div class="highlight"><pre><code class="cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="err">:</span> <span class="nv">base64</span> <span class="nv">encode_to_string</span> <span class="o">&#39;</span><span class="s">&quot;Space is big. Really big.&quot;</span><span class="p">)</span>
+<span class="s">&quot;U3BhY2UgaXMgYmlnLiBSZWFsbHkgYmlnLg==&quot;</span>
+<span class="nb">&gt;</span> <span class="p">(</span><span class="err">:</span> <span class="nv">base64</span> <span class="nv">decode_to_string</span> <span class="o">&#39;</span><span class="s">&quot;QW5kIHNvIHRoZSBVbml2ZXJzZSBlbmRlZC4=&quot;</span><span class="p">)</span>
+<span class="s">&quot;And so the Universe ended.&quot;</span>
 </code></pre></div>
-<p>If that was saved in a module called <code>messenger</code>, then one could utilize it thusly:</p>
-<div class='highlight'><pre><code class='cl'><span class='nb'>&gt;</span> <span class='p'>(</span><span class='nb'>set</span> <span class='nv'>pid</span> <span class='p'>(</span><span class='nv'>spawn</span> <span class='ss'>&#39;messenger</span> <span class='ss'>&#39;print-result</span> <span class='p'>()))</span>
-<span class='nv'>&lt;0.34.0&gt;</span>
-<span class='nb'>&gt;</span> <span class='p'>(</span><span class='nv'>!</span> <span class='nv'>pid</span> <span class='o'>&#39;</span><span class='s'>&quot;Ford is missing.&quot;</span><span class='p'>)</span>
-<span class='s'>&quot;Ford is missing.&quot;</span>
-<span class='nv'>Received</span> <span class='nv'>message:</span> <span class='ss'>&#39;Ford</span> <span class='nv'>is</span> <span class='nv'>missing.</span><span class='o'>&#39;</span>
+
+<p><a name="32_processes_in_lfe"></a></p>
+
+<h3>3.2 Processes in LFE</h3>
+
+<p>One of the first things that people want to do with LFE is examine the message
+passing syntax so that they can compare it with vanilla Erlang. Here&#39;s a small
+example of what this looks like in LFE:</p>
+
+<div class="highlight"><pre><code class="cl"><span class="p">(</span><span class="nb">defun</span> <span class="nv">print-result</span> <span class="p">()</span>
+  <span class="p">(</span><span class="nv">receive</span>
+    <span class="p">(</span><span class="nv">msg</span>
+      <span class="p">(</span><span class="err">:</span> <span class="nv">io</span> <span class="nb">format</span> <span class="o">&#39;</span><span class="s">&quot;Received message: &#39;~s&#39;~n&quot;</span> <span class="p">(</span><span class="nb">list</span> <span class="nv">msg</span><span class="p">))</span>
+      <span class="p">(</span><span class="nv">print-result</span><span class="p">))))</span>
 </code></pre></div>
-<p>For more information on working with processes in LFE, be sure to view the <a href='/tutorials/processes/1.html'>tutorial</a>.</p>
 
-<p>Related to this, you can find details and discussion around OTP and creating your own servers in the <a href='/tutorials/otp-servers/1.html'>OTP Servers tutorial</a>.</p>
-<a name='33_third-party_libraries' />
-<h3 id='33_thirdparty_libraries'>3.3 Third-Party Libraries</h3>
+<p>If that was saved in a module called <code>messenger</code>, then one could utilize it
+thusly:</p>
 
-<p>Finally, accessing code that is written in third-party libraries is exactly the same. Simply use the modules they have provided. If you started the LFE REPL pointing to your third-party libraries with a <code>-pa</code> (path) option, then all you have to do is this:</p>
-<div class='highlight'><pre><code class='cl'><span class='nb'>&gt;</span> <span class='p'>(</span><span class='err'>:</span> <span class='nv'>your-module</span> <span class='nv'>some-function</span> <span class='o'>&#39;</span><span class='s'>&quot;some parameter&quot;</span><span class='p'>)</span>
+<div class="highlight"><pre><code class="cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nb">set</span> <span class="nv">pid</span> <span class="p">(</span><span class="nv">spawn</span> <span class="ss">&#39;messenger</span> <span class="ss">&#39;print-result</span> <span class="p">()))</span>
+<span class="nv">&lt;0.34.0&gt;</span>
+<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">!</span> <span class="nv">pid</span> <span class="o">&#39;</span><span class="s">&quot;Ford is missing.&quot;</span><span class="p">)</span>
+<span class="s">&quot;Ford is missing.&quot;</span>
+<span class="nv">Received</span> <span class="nv">message:</span> <span class="ss">&#39;Ford</span> <span class="nv">is</span> <span class="nv">missing.</span><span class="o">&#39;</span>
 </code></pre></div>
-<p>That&#8217;s it!</p>
-<a name='4_next_steps' />
-<h2 id='4_next_steps'>4 Next Steps</h2>
 
-<p>This has been a quick overview of what LFE has to offer, so you might enjoy reading the <a href='/user-guide/intro/1.html'>User Guide</a> next. You can see all our docs at a glance by visiting the <a href='/docs.html'>Docs</a> page.</p>
+<p>For  more information on working with processes in LFE, be sure to view the
+<a href="/tutorials/processes/1.html">tutorial</a>.</p>
 
-<p>If at any time you would like to provide feedback about the documentation on this site, feel free to <a href='https://github.com/lfe/lfe.github.io/issues'>create an issue</a>. Be sure to give a full description so that we can best help you!</p>
+<p>Related to this, you can find details and discussion around OTP and creating
+your own servers in the
+<a href="/tutorials/otp-servers/1.html">OTP Servers tutorial</a>.</p>
+
+<p><a name="33_third-party_libraries"></a></p>
+
+<h3>3.3 Third-Party Libraries</h3>
+
+<p>Finally, accessing code that is written in third-party libraries is exactly the
+same. Simply use the modules they have provided. If you started the LFE REPL
+pointing to your third-party libraries with a <code>-pa</code> (path) option, then all
+you have to do is this:</p>
+
+<div class="highlight"><pre><code class="cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="err">:</span> <span class="nv">your-module</span> <span class="nv">some-function</span> <span class="o">&#39;</span><span class="s">&quot;some parameter&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>That&#39;s it!</p>
+
+<p><a name="4_next_steps"></a></p>
+
+<h2>4 Next Steps</h2>
+
+<p>This has been a quick overview of what LFE has to offer, so you might enjoy
+reading the <a href="/user-guide/intro/1.html">User Guide</a>
+next. You can see all our docs at a glance by visiting the
+<a href="/docs.html">Docs</a> page.</p>
+
+<p>If at any time you would like to provide feedback about the documentation on
+this site, feel free to
+<a href="https://github.com/lfe/lfe.github.io/issues">create an issue</a>. Be
+sure to give a full description so that we can best help you!</p>
+
   </body>
 </html>

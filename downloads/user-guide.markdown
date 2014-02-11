@@ -474,7 +474,8 @@ function, both of which will be covered in more detail later:
 #Fun<lfe_eval.21.53503600>
 {% endhighlight %}
 
-Now, as one hacks away in the REPL, ```slurp```ing away at various modules, getting a list of what's defined in the current environment is a piece of cake:
+Now, as one hacks away in the REPL, ```slurp```ing away at various modules,
+getting a list of what's defined in the current environment is a piece of cake:
 {% highlight cl %}
 > (funcall filter-env $ENV)
 variable: 'my-var-4'
@@ -681,6 +682,315 @@ TBD
 
 {% highlight cl %}
 {% endhighlight %}
+
+
+<a name="17_setting_up_a_development_environment"></a>
+## 1.7 Setting up a Development Environment
+
+The last thing we need to do before you're off and running is to discuss a
+good standard process for setting up a development environment. There are
+several key aspects to this:
+
+* Intent
+  * exploring LFE and LFE examples
+  * creating an LFE library
+  * creating an LFE service/daemon/application
+  * hacking on LFE itself
+* Tools
+  * kerl
+  * rebar
+  * testing
+  * IDEs
+
+This section takes a pragmatic approach of getting started as quickly as
+possible, so we will not cover these in great detail. However, we will
+provide useful links and additional references so that you can explore at your
+own leisure.
+
+
+<a name="171_starting_from_scratch"></a>
+### 1.7.1 Starting from Scratch
+
+In the <a href="/quick-start/1.html">LFE Quick Start</a>,
+you saw how to get up and running, and
+we're going to repeat some of that here. However, we do this for the sake of
+completeness and having all the information in one easy-to-access reference.
+
+
+<a name="172_dependencies"></a>
+### 1.7.2 Dependencies
+
+**kerl**
+
+First and foremost, you're going to need Erlang. In the course of your
+experiments with LFE, you may want to try out different versions of Erlang, so
+we'll start off right: using
+<a href="https://github.com/spawngrid/kerl">kerl</a>. We have
+<a href="/user-guide/devops/2.html">another section</a>
+dedicated entirely to kerl, so we'll skip the details, refer tou to that page,
+and assume that you've followed those instructions for getting it set up.
+
+
+**rebar**
+
+No matter what your intent with LFE, you're going to need ``rebar`` :-)
+The installation instructions are given in the first few sub-sections of the
+section
+<a href="/user-guide/devops/1.html">dedicated to rebar</a>.
+Be sure you follow those, and you will have a working rebar installation.
+Though you can build LFE without ``rebar``, creating projects will be very
+cumbersome unless you have it installed and are using it.
+
+
+<a name="173_getting_and_building_lfe"></a>
+### 1.7.3 Getting and Building LFE
+
+With the dependencies install, getting and building is short and sweet:
+
+```bash
+$ git clone git://github.com/rvirding/lfe.git
+$ cd ./lfe
+$ rebar compile
+```
+
+That should take nor more than 5-10 seconds to build.
+
+
+<a name="174_installing_lfe"></a>
+### 1.7.4 Installing LFE
+
+We don't actually recommend installing LFE system-wide. When using ``rebar``,
+you can set LFE as a dependency and it will be automatically downloaded for
+your project (and for anyone who has your project as a dependency).
+
+However, if for some reason you *do* want to install LFE system-wide, here's how
+you do it (from the working LFE directory):
+
+```bash
+$ export ERL_LIBS=/usr/local/lib/erlang/lib
+$ make install
+```
+
+
+<a name="175_a_test_drive_with_the_repl"></a>
+### 1.7.5 A Test Drive with the REPL
+
+With LFE built, you're ready to play :-) Try this out:
+
+```bash
+$ ./bin/lfe -pa ./ebin
+```
+
+This will put you in the REPL, and from there you can Lisp it up:
+
+```common-lisp
+> (* 6 7)
+42
+> (cons 6 7)
+(6 . 7)
+> (cons (list 6 7) (list 40 2))
+((6 7) 40 2)
+>
+```
+
+
+<a name="176_running_some_examples"></a>
+### 1.7.6 Running Some Examples
+
+While in the REPL, you can run some examples by ``slurp``ing them in:
+
+```common-lisp
+> (slurp '"./examples/internal-state.lfe")
+#(ok internal-state)
+> (set account (new-account '"Alice" 100.00 0.06))
+#Fun<lfe_eval.10.6046715>
+> (name account)
+"Alice"
+> (balance account)
+100.0
+>
+```
+
+And another one:
+
+```common-lisp
+> (slurp '"./examples/church.lfe")
+#(ok church)
+> (church->int1 (three))
+3
+>
+```
+
+To quit out of the REPL, hit ``^g`` and then ``q<ENTER>``.
+
+
+<a name="177_an_example_ide:_sublime_text_2"></a>
+### 1.7.7 An Example IDE: Sublime Text 2
+
+First off: our definition of "IDE" is text editor + REPL + terminal. So there
+you have it.
+
+As we are sure is obvious, you can use any text editor you want with LFE. If
+you're a Lisper, Emacs might be a natural choice. Vim, quite honestly, can work
+just as well.
+
+For this example, though, we will be using Sublime Text 2 as the example editor.
+To use LFE effectively with Sublime, we recommend the following plugins:
+
+* Package Control
+
+* Bracket Highlighter
+
+* Lisp Indent
+
+* Trailing Spaces
+
+* LFE
+
+* Theme - Vim Blackboard (for those who like dark editors and a classic terminal
+  syntax highlight look)
+
+Instructions for installing Package Control are
+<a href="https://sublime.wbond.net/installation#st2">here</a>.
+
+After the restart, you're ready to go. For each package you want to install, do
+the following:
+
+1. Go to Sublime Text 2 -> Preferences -> Package Control
+
+1. Type "Package Control: Install Package"
+
+1. Wait for the text entry box to display (available packages are loading)
+
+1. Enter the name of the package you want to install and hit ``<ENTER>``
+
+After you have done that for each packge, you will need to restart. Many of the
+packages will then have their own entries under
+Sublime Text 2 -> Preferences -> Package Settings
+where you can copy the default settings and paste them into your own ("User")
+settings, modifying as you see fit.
+
+To configure the dark theme, you'll want to visit see the
+<a href="https://github.com/oubiwann/vim-blackboard-sublime-theme/blob/master/README.md">project README</a>.
+
+The LFE plugin doesn't need any configuration. Once you restart Sublime, it
+should recognize your LFE files by the file extension.
+
+For the Lispindent plugin you will need to add some configuration. Go to
+Sublime Text 2 -> Preferences -> Package Settings -> Lispindent and click on
+"Settings - User". In the new file that pops up, paste the following:
+
+```javascript
+{
+    "languages": {
+        "LFE": {
+            "detect": ".*\\.(lfe)$",
+            "syntax": "LFE.tmLanguage",
+            "default_indent": "function",
+            "regex":
+            ["(ns|fn|def[^\\s]*|bound-fn|if|if-not|case|condp|when|while|",
+             "when-not|when-first|do|future|comment|doto|locking|proxy|",
+             "with-open|with-precision|with-local-vars|reify|deftype|",
+             "defrecord|defprotocol|extend|extend-protocol|extend-type|",
+             "try|catch|finally|let|letfn|binding|loop|for|doseq|dotimes|",
+             "when-let|if-let|defstruct|struct-map|assoc|defmethod|testing|",
+             "deftest|use-fixtures|handler-case|handle|dotrace|deftrace|",
+             "begin|case|delay|do|define|lambda|let|let\\*|letrec|",
+             "let-values|let\\*-values|sequence|let-syntax|letrec-syntax|",
+             "syntax-rules|syntax-case|call-with-input-file|",
+             "with-input-from-file|with-input-from-port|",
+             "call-with-output-file|with-output-to-file|",
+             "with-output-to-port|call-with-values|dynamic-wind|catch|",
+             "defvar|defclass|defconstant|defcustom|defparameter|defconst|",
+             "define-condition|define-modify-macro|defsetf|defun|",
+             "defgeneric|define-setf-method|define-self-expander|",
+             "defmacro|defsubst|deftype|defmethod|defpackage|defstruct|",
+             "dolist|dotimes|lambda|let|let\\*|prog1|prog2|unless|when)$"]
+        }
+    }
+}
+
+```
+
+Your text editor is now ready to rock out some LFE!
+
+
+<a name="178_a_quick_note_on_writing_tests"></a>
+### 1.7.8 A Quick Note on Writing Tests
+
+We've covered getting LFE running, using the REPL, and operating your text
+editor in an LFE-friendly manner. The next of the essentils we need to look at
+is unit tests. This will be covered in much more detail in the
+<a href="http://lfe.github.io/user-guide/check/4.html">TDD section</a>
+of the Checks and Testing chapter.
+
+For now, though, let's give you a quick overview... and some caveats. In fact,
+let's do the caveats first.
+
+Ideally, LFE would use ``eunit``, like it does with most other libraries.
+Unfortunately, there are some quirky edge cases in LFE's Erlang macro handling
+that prevent correct usage of ``eunit``. As such, an
+<a href="https://github.com/oubiwann/lfeunit">interim solution</a> was created.
+Once the <a href="https://github.com/rvirding/lfe/issues/42">macro issue</a>
+in LFE is addressed for eunit (and progress is being made!), we will be
+able to abandon lfeunit (or make it a thin wrapper).
+
+A quick and dirty intro to using lfeunit follows:
+
+1. Create a ``test`` directory in your project, if one doesn't already exist.
+
+1. Create a ``<module-name>_tests.lfe`` file.
+
+1. Ensure that your module name matches in the file:
+
+   ```common-lisp
+   (defmodule <module-name>_tests ...)
+   ```
+
+1. Update the import statement to include the unit test functions you need,
+   e.g.:
+
+   ```common-lisp
+   (import
+     ...
+     (from lfeunit
+      (assert 1)
+      (assert-not 1)
+      (assert-equal 2)
+      (assert-not-equal 2)
+      (assert-exception 3)
+      (assert-error 2)
+      (assert-throw 2)
+      (assert-exit 2))
+      ...)
+   ```
+
+1. Create test functions of the form ``<some-name>_test``, with some asserts
+   added, e.g.:
+
+   ```common-lisp
+   (defun my-function_test ()
+     (assert-true 42 (my-function 1 2 3)))
+   ```
+
+1. Run ``make check`` to verify your tests. Do this for every commit.
+
+
+<a name="179_toolchain"></a>
+### 1.7.9 Toolchain
+
+The primary tool used for LFE development is ``rebar``. This can do everything
+from dependency management and compiling to running your unit tests and
+releasing your software.
+
+There are a handful of ``rebar`` plugins that can make your life easier which
+do such things as
+
+* 
+
+* 
+
+* 
 <a name="2_diving_in"></a>
 # 2 Diving In
 
@@ -2288,6 +2598,8 @@ you will enjoy the relative succinctness of the following usages:
 >
 {% endhighlight %}
 
+
+
 Let's make some changes to our data:
 {% highlight cl %}
 > (set ford
@@ -2659,91 +2971,11 @@ tutorial ;-)
 {% highlight cl %}
 {% endhighlight %}
 
-<a name="44_projects_with_rebar"></a>
-## 4.4 Projects with Rebar
+<a name="435_projects"></a>
+### 4.3.5 Projects
 
-In this section we'll be exploring how rebar can be used to manage LFE projects.
-
-This section will make use of two example projects on github:
-* <a href="https://github.com/lfe/lfe-library-example">https://github.com/lfe/lfe-library-example</a>
-* <a href="https://github.com/lfe/lfe-service-example">https://github.com/lfe/lfe-service-example</a>
-
-<a name="441_collections_of_modules"></a>
-### 4.4.1 Collections of Modules
-
-The first question we should probably address is this: How are we defining a
-project?
-
-An LFE project is a set of modules developed and distributed to accomplish a
-particular goal. The project should have a rebar configuration file, a source
-directory with `.lfe` files in it, possibly an include directory, andn ideally
-unit tests in a `test` directory.
-
-<a name="442_project_structure"></a>
-### 4.4.2 Project Structure
-
-Let's expand upon the project definition given above, focusing on the directory
-structure of a prototypical project and some of the files one might find in an
-LFE project.
-
-{% highlight text %}
-├── ebin
-│   └── libexample.app
-├── src
-│   └── libexample.lfe
-├── Makefile
-├── README.md
-└── rebar.config
-{% endhighlight %}
-
-This is from a sample project whose purpose is to provide a library for use by
-other LFE (or Erlang!) projects. More on that below.
-
-Rebar supports LFE files. All that it needs is the standard `rebar.config` and
-an `.app` file in the `ebin` directory. With these, Rebar will be able to
-download the project dependencies and compile the `*.lfe` files in `src` to the
-`ebin` directory as `*.beam` files.
-
-<a name="443_dependencies"></a>
-### 4.4.3 Dependencies
-
-Dependencies are handled very nicely with Rebar: just add a git repo in your
-`rebar.config` file like so:
-
-{% highlight erlang %}
-{deps, [
-    {lfe, ".*", {git, "git://github.com/rvirding/lfe.git", "develop"}}
-  ]}.
-{% endhighlight %}
-
-Any dependencies listed here will be downloaded with the `rebar get-deps`
-command. Once downloaded, issuing the `rebar compile` command will not only
-compile your project's `src/*` files into its `ebin` directory, but will compile
-all dependency project source code as well.
-
-<a name="444_defining_a_library_project"></a>
-### 4.4.4 Defining a Library Project
-
-We've seen the directory structure above for a library project. We're defining
-a "library" project as one that doesn't start up any services as part of its
-basic operations. Instead, it provides code that other projects make use of.
-
-In particular, in a library project, you do not need to define `mod` in your
-`ebin/libname.app` file. Similarly, in your `src` directory, you do not need
-to create application nor supervisor files.
-
-We're making a rather arbitrary distinction here (between "library" projects and
-"service" projects, and one with undoubtedly many blurry lines. Regardless, it
-may be instructive or useful as a guideline.
-
-<a name="445_defining_a_service_project"></a>
-### 4.4.5 Defining a Service Project
-
-<a name="446_distributing_a_project"></a>
-### 4.4.6 Distributing A Project
-
-<a name="447_installing_projects"></a>
-### 4.4.7 Installing Projects
+To see how modules are organized into projects, be sure to read the chapter on
+<a href="/user-guide/devops/1.html">Development and Deployments</a>.
 <a name="5_recursion"></a>
 # 5 Recursion
 
@@ -3063,6 +3295,7 @@ Here's some example usage:
 >
 {% endhighlight %}
 
+
 <a name="58_the_λ-calculus"></a>
 ## 5.8 The λ-Calculus
 
@@ -3092,6 +3325,7 @@ context of positive integers. However, in the sections below, we will be
 leaving behind the comfort of the familiar. The λ-calculus does not concern
 itself with natural numbers per se; rather the ability to do something a given
 number of times.
+
 
 <a name="581_a_quick_primer"></a>
 ### 5.8.1 A Quick Primer
@@ -3312,10 +3546,44 @@ given the fact that it just applied so many thousands of lambdas!
 How fortunate that we didn't have to type 10,000 `funcall`s (and the
 corresponding set of opening and closing parentheses 10,000 times).
 
+
 <a name="583_arithmetic"></a>
 ### 5.8.3 Arithmetic
 
+We looked at basic arithmetic when we were exploring Peano's axioms. Now we're
+going to do arithmetic at a whole new level, with church encoding.
+
+In the previous section, we defined a Church successor function in the following
+manner:
+
+    λn.λs.λx. s (n s x)
+
+Then we translated that into LFE:
 {% highlight cl %}
+(defun church-successor (n)
+  (lambda (s)
+    (lambda (x)
+      (funcall s
+        (funcall
+          (funcall n s) x)))))
+{% endhighlight %}
+
+We bring this up now because an addition function will make use of it. Here is
+addition as defined in the λ-calculus:
+
+    λm.λn.λs.λx. m s (n s x)
+
+We can express this in English with the following: given a Church numeral
+`m` and another Church numeral `n`, 
+
+Here's how we would implement it in LFE:
+{% highlight cl %}
+(defun add (m n)
+  (lambda (s)
+    (lambda (x)
+      (funcall m s
+        (funcall
+          (funcall n s) x)))))
 {% endhighlight %}
 
 {% highlight cl %}
@@ -3335,9 +3603,30 @@ corresponding set of opening and closing parentheses 10,000 times).
 
 {% highlight cl %}
 {% endhighlight %}
+
 
 <a name="584_logic"></a>
 ### 5.8.4 Logic
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+
+<a name="585_church_pairs"></a>
+### 5.8.5 Church Pairs
+
+{% highlight cl %}
+{% endhighlight %}
+
+{% highlight cl %}
+{% endhighlight %}
+
+
+<a name="586_list_encoding"></a>
+### 5.8.6 List Encoding
 
 {% highlight cl %}
 {% endhighlight %}
@@ -3488,15 +3777,14 @@ TBD
 
 <a name="648_code_coverage"></a>
 ### 6.4.8 Code Coverage
-<a name="7_processes_and_servers"></a>
-# 7 Processes and Servers
-<a name="8_external_data"></a>
-# 8 External Data
-<a name="9_additional_topics"></a>
-# 9 Additional Topics
+<a name="10_additional_topics"></a>
+# 10 Additional Topics
 
-<a name="91_macros"></a>
-## 9.1 Macros
+<a name="101_scripting"></a>
+## 10.1 Scripting
 
-<a name="92_writing_for_multi-core"></a>
-## 9.2 Writing for Multi-Core
+<a name="102_macros"></a>
+## 10.2 Macros
+
+<a name="103_writing_for_multi-core"></a>
+## 10.3 Writing for Multi-Core

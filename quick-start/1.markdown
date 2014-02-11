@@ -33,6 +33,10 @@ $ curl -o ./lfetool https://raw.github.com/lfe/lfetool/master/lfetool
 $ bash lfetool install /usr/local/bin
 ```
 
+Note that this does require the most recent release of Erlang right now (r16).
+(We are working towards full support for r15 and will update this Quick Start
+when that has landed.)
+
 If you need ``sudo`` to put the script there, be sure to set the ownership:
 
 ```bash

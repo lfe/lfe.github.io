@@ -60,7 +60,7 @@ though. Here's the starter project you have, with just the one module:
   (export all))
 
 (defun my-adder (x y)
-  (+ x (+ y 1)))
+  (+ x y))
 ```
 
 It has a corresponding test module:

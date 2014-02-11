@@ -1,0 +1,75 @@
+---
+layout: processes-tutorial
+guide: 1
+total_guides: 4
+---
+# Tutorial: Mnesia
+
+## 1 Introduction
+
+### 1.1 Credit
+
+This tutorial is adapted from the
+<a href="http://www.erlang.org/doc/apps/mnesia/Mnesia_chap1.html">Mnesia
+Book</a> on the Erlang docs site.
+
+### 1.2 About Mnesia
+
+Mnesia is a distributed Database Management System, appropriate for
+telecommunications applications and other Erlang applications which require
+continuous operation and soft real-time properties.
+
+Mnesia is designed with requirements like the following in mind:
+
+* Fast real-time key/value lookup
+* Complicated non real-time queries mainly for operation and maintenance
+* Distributed data due to distributed applications
+* High fault tolerance
+* Dynamic re-configuration
+* Complex objects
+
+Due to its focus on telecommunications applications, Mnesia combines many
+concepts found in traditional databases, such as transactions and queries with
+concepts such as very fast real-time operations, configurable degree of fault
+tolerance (by means of replication) and the ability to reconfigure the system
+without stopping or suspending it.
+
+Mnesia is also interesting due to its tight coupling to the programming
+language Erlang/LFE, thus almost turning Erlang/LFE into a database programming
+language.
+
+### 1.3 Add-on Applications
+
+The following add-ons can be used in conjunction with Mnesia to produce
+specialized functions which enhance the operational ability of Mnesia:
+
+* QLC has the ability to optimize the query compiler for the Mnesia Database
+  Management System, essentially making the DBMS more efficient.
+* QLC, can be used as a database programming language for Mnesia. It includes a
+  notation called "list comprehensions" and can be used to make complex
+  database queries over a set of tables.
+* Mnesia Session is an interface for the Mnesia Database Management System
+* Mnesia Session enables access to the Mnesia DBMS from foreign programming
+  languages (i.e. other languages than Erlang/LFE).
+
+### 1.4 When to Use Mnesia
+
+Use Mnesia with the following types of applications:
+
+* Applications that need to replicate data.
+* Applications that perform complicated searches on data.
+* Applications that need to use atomic transactions to update several records
+  simultaneously.
+* Applications that use soft real-time characteristics.
+
+On the other hand, Mnesia may not be appropriate with the following types of
+applications:
+
+* Programs that process plain text or binary data files
+* Applications that merely need a look-up dictionary which can be stored to
+  disc can utilize the standard library module dets, which is a disc based
+  version of the module ets.
+* Applications which need disc logging facilities can utilize the module
+  disc_log by preference.
+* Not suitable for hard real time systems.
+

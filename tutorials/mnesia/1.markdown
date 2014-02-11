@@ -1,7 +1,7 @@
 ---
-layout: processes-tutorial
+layout: mnesia-tutorial
 guide: 1
-total_guides: 4
+total_guides: 5
 ---
 # Tutorial: Mnesia
 
@@ -9,7 +9,7 @@ total_guides: 4
 
 ### 1.1 Credit
 
-This tutorial is adapted from the
+This tutorial is adapted (massively copied) from the
 <a href="http://www.erlang.org/doc/apps/mnesia/Mnesia_chap1.html">Mnesia
 Book</a> on the Erlang docs site.
 

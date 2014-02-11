@@ -17,6 +17,10 @@ Head over to your favorite workspace in an open terminal and do this:
 $ lfetool new library my-test-lib
 ```
 
+Note that this does require the most recent release of Erlang right now (r16).
+(We are working towards full support for r15 and will update this Quick Start
+when that has landed.)
+
 As you watch the output crank away, read on to find out what it's doing:
 
 * ``lfetool`` created a skeleton project (of the "library" type)

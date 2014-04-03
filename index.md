@@ -40,7 +40,7 @@ of the highlights:
 * Interop with Java via JInterface and Erjang
 
 
-## Build Projects with LFE
+### Build Projects with LFE
 
 LFE installation isn't recommended. Instead, one should:
 
@@ -75,7 +75,7 @@ so like this:
 ```
 
 
-## REPL
+### REPL
 
 If you have used ``lfetool`` to set up your project, you can simply do this to
 start a REPL:
@@ -114,7 +114,7 @@ manually, you will need to either tack them on with additional ``-pa``
 parameters or you'll want to define ``ERL_LIBS``.
 
 
-## Usage
+### Usage
 
 Here's a quick taste:
 

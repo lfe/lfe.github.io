@@ -8,6 +8,7 @@ layout: home
 temperature of perfect hotness. New to LFE? Check out our
 <a href="/quick-start/1.html">Quick Start</a> guide!
 
+
 ### What Is This?
 
 You are at the home page of LFE --
@@ -22,104 +23,103 @@ LFE coexists seamlessly with vanilla Erlang and OTP. As such, code written in
 LFE can freely be used together with modules written in vanilla Erlang and
 applications in Erlang/OTP.
 
-### Features
 
-Below are a selection of code samples representing features available in LFE.
-There's much more to see, though -- so don't forget to visit the
-<a href="/docs.html">Docs</a> page!
+### LFE Features
 
-#### Records
+We have a <a href="/features.html">Features page</a>, but here are some
+of the highlights:
+* Homoiconicity
+* Lisp macros
+* Actor model
+* Async
+* High concurrency
+* Pattern matching
+* Functional programming language
+* 100% interop with Erlang/OTP
+* Interop with Java via JInterface and Erjang
 
-Records are very simple in LFE. They are created with the ```defrecord``` form
+
+## Build Projects with LFE
+
+LFE installation isn't recommended. Instead, one should:
+
+* Use <a href="https://github.com/lfe/lfetool">lfetool</a> to create projects
+  (which will automatically have LFE as a dependency when it creates skeleton
+  libraries, OTP apps, etc.)
+
+or
+
+* Use LFE directly in a working dir, e.g.:
+
+```shell
+
+    $ git clone https://github.com/rvirding/lfe.git
+    $ cd lfe
+    $ git checkout develop
+    $ make compile
+```
+
+If you really *do* want to install LFE (master branch) system-wide, you can do
+so like this:
+
+```shell
+
+    $ lfetool install lfe
+```
+
+
+## REPL
+
+If you have used ``lfetool`` to set up your project, you can simply do this to
+start a REPL:
+
+```shell
+    $ lfetool repl lfe
+    Erlang R16B03-1 (erts-5.10.4) [source] [64-bit] [smp:8:8] ...
+
+    LFE Shell V5.10.4 (abort with ^G)
+    >
+```
+
+If you want to compile your source code before you start the repl, you can use
+this command:
+
+```shell
+  $ make shell
+```
+
+Both of those commands will set ``ERL_LIBS`` to the dirs of all your declared
+and downloaded dependencies.
+
+If you're running LFE from a git clone working dir, you can start the REPL
 like so:
 
-{% highlight cl %}
-(defrecord person
-  name
-  address
-  age)
-{% endhighlight %}
+```shell
+    $ ./bin/lfe -pa ./ebin
+    Erlang R16B03-1 (erts-5.10.4) [source] [64-bit] [smp:8:8] ...
 
-For more information, see the
-<a href="/tutorials/records/1.html">tutorial on LFE records</a>.
+    LFE Shell V5.10.4 (abort with ^G)
+    >
+```
 
-#### Pattern Matching
 
-The power of Erlang's pattern matching is available in Lisp form:
+## Usage
 
-{% highlight cl %}
-(let (((tuple name place age) #("Ford Prefect" "Betelgeuse Seven" 234)))
-  (list name place age))
-{% endhighlight %}
+Here's a quick taste:
 
-For more information, see the
-<a href="/user-guide/1.html">User Guide</a> as well as the
-<a href="/tutorials/patterns/1.html">tutorial on pattern matching</a>.
+* start up an LFE REPL as demonstrated above
+* then, do something like this:
 
-#### Macros
+```cl
+    > (* 2 (+ 1 2 3 4 5 6))
+    42
+    > (lists:foldl (lambda (n acc) (+ n acc)) 0 (lists:seq 1 6))
+    42
+```
 
-Here are a couple example LFE macros:
-
-{% highlight cl %}
-(defmacro caar (x) `(car (car ,x)))
-{% endhighlight %}
-
-{% highlight cl %}
-(defmacro list*
-  ((list e) e)
-  ((cons e es) `(cons ,e (list* . ,es)))
-  (() ()))
-{% endhighlight %}
-
-Note that the functionality represented by the LFE code above was implemented
-internally in Erlang, not in LFE itself.
-
-### More Shiny!
-
-For those that can't wait, here's an example client/server in action:
-
-{% highlight cl %}
-(defmodule ping_pong
-  (export (start_link 0) (ping 0))
-  (export (init 1) (handle_call 3) (handle_cast 2)
-          (handle_info 2) (terminate 2) (code_change 3))
-  (behaviour gen_server)) ;Just indicates intent
-
-(defun start_link ()
-  (: gen_server start_link
-    (tuple 'local 'ping_pong) 'ping_pong (list) (list)))
-
-;; Client API
-(defun ping ()
-  (: gen_server call 'ping_pong 'ping))
-
-;; Gen_server callbacks
-(defrecord state (pings 0))
-
-(defun init (args)
-  (tuple 'ok (make-state pings 0)))
-
-(defun handle_call (req from state)
-  (let* ((new-count (+ (state-pings state) 1))
-         (new-state (set-state-pings state new-count)))
-    (tuple 'reply
-           (tuple 'pong new-count)
-           new-state)))
-
-(defun handle_cast (msg state)
-  (tuple 'noreply state))
-
-(defun handle_info (info state)
-  (tuple 'noreply state))
-
-(defun terminate (reason state)
-  'ok)
-
-(defun code_change (old-vers state extra)
-  (tuple 'ok state))
-{% endhighlight %}
 
 ### Cool! How do I start?
+
 LFE documentation is maintained in the source code in the
 <a href="https://github.com/rvirding/lfe/tree/master/doc">doc directory</a>.
 There is also a <a href="https://github.com/rvirding/lfe/wiki">wiki</a> with
@@ -141,3 +141,5 @@ directory of the project repo. Each sample provides functioning code that
 shows how to use LFE in larger contexts.
 
 Enjoy!
+
+

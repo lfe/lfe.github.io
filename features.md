@@ -46,6 +46,9 @@ layout: common
 * A younger cousin to Clojure (released in 2008) that far fewer programmers
   know about
 * Actor model
+* Lisp!
+* Create your own compilers
+* DSLs galore
 * Metaprogramming
 * FP
 * Heavily inspired by Common Lisp and Scheme

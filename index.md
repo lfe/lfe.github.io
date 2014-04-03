@@ -19,15 +19,16 @@ like Common Lisp, and comes with a
 <a href="http://en.wikipedia.org/wiki/REPL">REPL</a> (shell) for use with
 interactive coding.
 
-LFE coexists seamlessly with vanilla Erlang and OTP. As such, code written in
-LFE can freely be used together with modules written in vanilla Erlang and
-applications in Erlang/OTP.
+LFE coexists seamlessly with Core Erlang and OTP. As such, code written in
+LFE can freely be used together with modules written in other BEAM languages
+such as Erlang and Elixir.
 
 
 ### LFE Features
 
 We have a <a href="/features.html">Features page</a>, but here are some
 of the highlights:
+
 * Homoiconicity
 * Lisp macros
 * Actor model
@@ -44,8 +45,14 @@ of the highlights:
 LFE installation isn't recommended. Instead, one should:
 
 * Use <a href="https://github.com/lfe/lfetool">lfetool</a> to create projects
-  (which will automatically have LFE as a dependency when it creates skeleton
-  libraries, OTP apps, etc.)
+  (which will automatically set up LFE as a dependency when it creates skeleton
+  libraries, OTP apps, etc.):
+
+```shell
+  $ lfetool new library my-lib
+  $ ls -al my-lib/deps/lfe
+  ...
+```
 
 or
 
@@ -102,6 +109,10 @@ like so:
     >
 ```
 
+Note that if you want access to your dependencies and have started the REPL
+manually, you will need to either tack them on with additional ``-pa``
+parameters or you'll want to define ``ERL_LIBS``.
+
 
 ## Usage
 
@@ -110,7 +121,7 @@ Here's a quick taste:
 * start up an LFE REPL as demonstrated above
 * then, do something like this:
 
-```cl
+```lfe
     > (* 2 (+ 1 2 3 4 5 6))
     42
     > (lists:foldl (lambda (n acc) (+ n acc)) 0 (lists:seq 1 6))

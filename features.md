@@ -62,3 +62,4 @@ layout: common
 * You can blast it in the face with a shotgun and it keeps on coming
 * C10k what?
 * Utterly terrifying
+* 19 billion dollars

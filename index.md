@@ -21,7 +21,7 @@ written in LFE can freely be used together with modules written in other BEAM
 languages such as Erlang and Elixir.
 
 
-### LFE Features
+## LFE Features
 
 We have a <a href="/features.html">Features page</a>, but here are some
 of the highlights:
@@ -36,6 +36,8 @@ of the highlights:
 * 100% interop with Erlang/OTP
 * Interop with Java via JInterface and Erjang
 
+
+## Overview
 
 ### Build Projects with LFE
 

@@ -8,10 +8,7 @@ layout: home
 temperature of perfect hotness. New to LFE? Check out our
 <a href="/quick-start/1.html">Quick Start</a> guide!
 
-
-### What Is This?
-
-You are at the home page of LFE --
+LFE --
 <a href="https://github.com/rvirding/lfe/">Lisp Flavoured Erlang</a>
 -- a Lisp syntax front-end to the Erlang compiler. LFE is a
 <a href="http://en.wikipedia.org/wiki/Lisp-1_vs._Lisp-2#The_function_namespace">Lisp-2</a>,
@@ -19,9 +16,9 @@ like Common Lisp, and comes with a
 <a href="http://en.wikipedia.org/wiki/REPL">REPL</a> (shell) for use with
 interactive coding.
 
-LFE coexists seamlessly with Core Erlang and OTP. As such, code written in
-LFE can freely be used together with modules written in other BEAM languages
-such as Erlang and Elixir.
+LFE-based projects coexist seamlessly with Core Erlang and OTP. As such, code
+written in LFE can freely be used together with modules written in other BEAM
+languages such as Erlang and Elixir.
 
 
 ### LFE Features
@@ -103,10 +100,6 @@ like so:
 
 ```bash
     $ ./bin/lfe -pa ./ebin
-    Erlang R16B03-1 (erts-5.10.4) [source] [64-bit] [smp:8:8] ...
-
-    LFE Shell V5.10.4 (abort with ^G)
-    >
 ```
 
 Note that if you want access to your dependencies and have started the REPL

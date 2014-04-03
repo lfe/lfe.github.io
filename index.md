@@ -81,10 +81,6 @@ start a REPL:
 
 ```bash
     $ lfetool repl lfe
-    Erlang R16B03-1 (erts-5.10.4) [source] [64-bit] [smp:8:8] ...
-
-    LFE Shell V5.10.4 (abort with ^G)
-    >
 ```
 
 If you want to compile your source code before you start the repl, you can use
@@ -124,7 +120,7 @@ Here's a quick taste:
 ```
 
 
-### Cool! How do I start?
+## Cool! How do I start?
 
 LFE documentation is maintained in the source code in the
 <a href="https://github.com/rvirding/lfe/tree/master/doc">doc directory</a>.

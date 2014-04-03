@@ -62,7 +62,7 @@ struct = BookStructure()
 
 class BookConfig(Organizer):
     cover = "images/logos/LispFlavoredErlang-large-cover.jpg"
-    publication_year = "2013"
+    publication_year = "2014"
 
 
 quick_start = BookConfig()
@@ -72,7 +72,7 @@ quick_start.authors = ["Duncan McGreggor"]
 quick_start.name = "quick-start"
 quick_start.filename = "%s.html" % quick_start.name
 quick_start.html_file = "downloads/%s" % quick_start.filename
-quick_start.md_file = "downloads/%s.markdown" % quick_start.name
+quick_start.md_file = "downloads/%s.md" % quick_start.name
 quick_start.mobi_file = "downloads/%s.mobi" % quick_start.name
 quick_start.chapters = [
     "quick-start"
@@ -86,7 +86,7 @@ user_guide.authors = ["Duncan McGreggor", "Robert Virding"]
 user_guide.name = "user-guide"
 user_guide.filename = "%s.html" % user_guide.name
 user_guide.html_file = "downloads/%s" % user_guide.filename
-user_guide.md_file = "downloads/%s.markdown" % user_guide.name
+user_guide.md_file = "downloads/%s.md" % user_guide.name
 user_guide.mobi_file = "downloads/%s.mobi" % user_guide.name
 user_guide.chapters = [
     "user-guide/intro",
@@ -95,8 +95,8 @@ user_guide.chapters = [
     "user-guide/funcode",
     "user-guide/recursion",
     "user-guide/check",
-    "user-guide/1.markdown",
-    "user-guide/2.markdown",
+    "user-guide/1.md",
+    "user-guide/2.md",
     "user-guide/extra",
     ]
 
@@ -108,7 +108,7 @@ processes_tutorial.authors = ["Duncan McGreggor"]
 processes_tutorial.name = "processes-tutorial"
 processes_tutorial.filename = "%s.html" % processes_tutorial.name
 processes_tutorial.html_file = "downloads/%s" % processes_tutorial.filename
-processes_tutorial.md_file = "downloads/%s.markdown" % processes_tutorial.name
+processes_tutorial.md_file = "downloads/%s.md" % processes_tutorial.name
 processes_tutorial.mobi_file = "downloads/%s.mobi" % processes_tutorial.name
 processes_tutorial.chapters = [
     "tutorials/processes"

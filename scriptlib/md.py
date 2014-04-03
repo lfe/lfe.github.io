@@ -20,7 +20,7 @@ def write_file(filename, data):
 
 def scan_dir(path):
     markdowns = []
-    for filename in glob.glob("%s/*.markdown" % path):
+    for filename in glob.glob("%s/*.md" % path):
         markdowns.append(read_file(filename))
     return markdowns
 

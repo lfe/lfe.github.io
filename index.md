@@ -48,7 +48,7 @@ LFE installation isn't recommended. Instead, one should:
   (which will automatically set up LFE as a dependency when it creates skeleton
   libraries, OTP apps, etc.):
 
-```shell
+```bash
   $ lfetool new library my-lib
   $ ls -al my-lib/deps/lfe
   ...
@@ -58,7 +58,7 @@ or
 
 * Use LFE directly in a working dir, e.g.:
 
-```shell
+```bash
 
     $ git clone https://github.com/rvirding/lfe.git
     $ cd lfe
@@ -69,7 +69,7 @@ or
 If you really *do* want to install LFE (master branch) system-wide, you can do
 so like this:
 
-```shell
+```bash
 
     $ lfetool install lfe
 ```
@@ -80,7 +80,7 @@ so like this:
 If you have used ``lfetool`` to set up your project, you can simply do this to
 start a REPL:
 
-```shell
+```bash
     $ lfetool repl lfe
     Erlang R16B03-1 (erts-5.10.4) [source] [64-bit] [smp:8:8] ...
 
@@ -91,7 +91,7 @@ start a REPL:
 If you want to compile your source code before you start the repl, you can use
 this command:
 
-```shell
+```bash
   $ make shell
 ```
 
@@ -101,7 +101,7 @@ and downloaded dependencies.
 If you're running LFE from a git clone working dir, you can start the REPL
 like so:
 
-```shell
+```bash
     $ ./bin/lfe -pa ./ebin
     Erlang R16B03-1 (erts-5.10.4) [source] [64-bit] [smp:8:8] ...
 
@@ -121,7 +121,7 @@ Here's a quick taste:
 * start up an LFE REPL as demonstrated above
 * then, do something like this:
 
-```lfe
+```cl
     > (* 2 (+ 1 2 3 4 5 6))
     42
     > (lists:foldl (lambda (n acc) (+ n acc)) 0 (lists:seq 1 6))

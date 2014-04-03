@@ -48,8 +48,8 @@ LFE installation isn't recommended. Instead, one should:
   libraries, OTP apps, etc.):
 
 ```bash
-  $ lfetool new library my-lib
-  $ ls -al my-lib/deps/lfe
+    $ lfetool new library my-lib
+    $ ls -al my-lib/deps/lfe
   ...
 ```
 
@@ -87,7 +87,7 @@ If you want to compile your source code before you start the repl, you can use
 this command:
 
 ```bash
-  $ make shell
+    $ make shell
 ```
 
 Both of those commands will set ``ERL_LIBS`` to the dirs of all your declared

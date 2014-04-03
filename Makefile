@@ -20,15 +20,19 @@ $(JEKYLL):
 	sudo gem install jekyll
 	sudo gem install jekyll-tagging
 
+redcarpet:
+	#sudo gem update --system
+	sudo gem install -v 2.3.0 redcarpet
+
 $(WKPDF):
 	sudo gem install wkpdf
 
 python-deps:
 	. $(ACT) && pip install pygments
 	. $(ACT) && pip install markdown
-	. $(ACT) && pip install pil
+	. $(ACT) && pip install --allow-external pil
 
-doc-deps: $(VENV) $(JEKYLL) $(WKPDF) python-deps
+doc-deps: $(VENV) $(JEKYLL) $(WKPDF) python-deps redcarpet
 
 md: doc-deps
 	@echo

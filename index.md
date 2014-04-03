@@ -39,7 +39,7 @@ of the highlights:
 
 ## Overview
 
-### Build Projects with LFE
+### Build Projects with LFE... or Install it
 
 LFE installation isn't recommended. Instead, one should:
 

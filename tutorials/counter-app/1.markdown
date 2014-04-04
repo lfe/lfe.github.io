@@ -11,7 +11,9 @@ This example application is inspired by [this blog post](http://www.tbray.org/on
 
 This tutorial will demonstrate how to create the same application in LFE...
 
-### Define our module.
+## 1 The Set Up
+
+### Define Our Module
 
 Naturally we need a module so lets sort that out first.
 
@@ -23,7 +25,7 @@ Naturally we need a module so lets sort that out first.
             (counter 0))) ;; Runs our actual counter loop
 {% endhighlight %}
 
-### Define our functions.
+### Define Our Functions
 
 Now we can start to define the functionality that will make up our module. Lets start with ```new```.. Keeping to Erlang and LFE design principles we want to keep our counters in their own processes, so when this is called just spin up a new counter and hand back the ```pid``` to the caller.
 {% highlight cl %}
@@ -52,7 +54,9 @@ Having a running process that we can send an increment instruction to is all wel
 
 This function takes care of the steps required to talk to our running counter process and the provide a message back to the caller. First we send a message to the given counter process, asking for it's current count value, and then we wait for a response before responding with the result.
 
-### Define the counter process.
+## 2 Thinking About Counting
+
+### Define the Counter Process
 
 Now that we have our communication methods in place we should set about defining the operations of counter process. This is the actual running loop that will manage the counter variable and respond to requests. Because we've already defined how we need to interact with this process, the construction is quite straight forward:
 
@@ -79,7 +83,7 @@ Now for our ```counter-loop``` function!
 
 Pretty simple. Our initial value is passed in and the process waits to receive a message telling it to either increment the counter or return the current value.
 
-### Testing it out.
+### Testing It Out
 
 Lets take it out for a spin:
 
@@ -100,7 +104,7 @@ Lets take it out for a spin:
 
 Success! We create a new counter process and store the pid in ```foo```, then we ask for the current value, which is zero because we haven't incremented it yet. Increment the value a couple of times and ask for the current value which is now two! Yay.
 
-### Touch up
+### Touch Up
 
 Of course there are some things missing from this example, although creating a module to only hold a counter variable is slightly excessive (but not always!). Our counter process has no way to handle a malformed message, lets fix that.
 
@@ -121,7 +125,9 @@ We simply extend our receive patterns to include a wildcard that responds with t
 
 That will probably do for now, feel free to give your counter another whirl in the shell to make sure everything still works, but the end result should look something similar to this:
 
-### We're using a Lisp !
+## 3 Thinking About Lisp
+
+### We're Using a Lisp!
 
 Now the example we've created is nearly a one for one replication of the original Erlang version from the blog post. How about we starting playing with some more 'Lispy' functionality to see if we can't spice things up a bit. Disclaimer: These may not necessarily be improvements, more to demonstrate that simply writing Erlang code in Lisp isn't enough, there is so much more than can be done!
 

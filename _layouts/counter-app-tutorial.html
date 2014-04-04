@@ -1,0 +1,29 @@
+---
+section: counter-app-tutorial
+---
+
+{% include top.html %}
+
+<div id="sidebar-primary" class="sidebar">
+  <div class="widget">
+    <h3 class="widget-title">Tutorial Sections</h3>
+    <ol>
+      <li><a class="spec" href="/tutorials/counter-app/1.html">The Set Up</a></li>
+      <li><a class="spec" href="/tutorials/counter-app/2.html">Getting Started</a></li>
+      <li><a class="spec" href="/tutorials/counter-app/3.html">Structure</a></li>
+      <li><a class="spec" href="/tutorials/counter-app/4.html">Content</a></li>
+      <li><a class="spec" href="/tutorials/counter-app/5.html">Querying</a></li>
+    </ol>
+  </div>
+</div>
+
+<div id="content">
+  <article>
+    {{ content }}
+  </article>
+
+{% include pager.html %}
+
+</div><!-- #content -->
+
+{% include bottom.html %}

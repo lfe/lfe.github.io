@@ -115,7 +115,7 @@ Here's a quick taste:
 ```cl
     > (* 2 (+ 1 2 3 4 5 6))
     42
-    > (lists:foldl (lambda (n acc) (+ n acc)) 0 (lists:seq 1 6))
+    > (* 2 (lists:foldl (lambda (n acc) (+ n acc)) 0 (lists:seq 1 6)))
     42
 ```
 

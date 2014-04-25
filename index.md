@@ -130,6 +130,10 @@ Here's an implementation of the famous Ring test for LFE:
     (roundtrip 2)))
 
 (defun main (args)
+  "Call with the following:
+     $ lfec ring.lfe
+     $ lfe -smp disable -noshell -run ring main 503 50000000
+  "
   (apply
     #'start-ring/2
     (lists:map #'list_to_integer/1 args)))

@@ -151,7 +151,7 @@ to this:
 Now re-run the unit tests:
 
 ```bash
-$ make check-no-deps
+$ make check-unit
 ```
 
 And you should get a passing test:
@@ -251,9 +251,6 @@ Sure thing :-) Just do this from your new LFE project directory:
 ```bash
 make shell-no-deps
 ```
-
-(There's that ``-no-deps`` thing again... don't worry, we're going to tell
-you about it.)
 
 This should give you something that looks like the following:
 
@@ -381,7 +378,7 @@ you can skip the deps with the following targets:
 
 * ``compile-no-deps``
 * ``shell-no-deps``
-* ``check-no-deps``
+* ``check-unit``
 
 There are other interesting ``make`` targets tucked in the ``Makefile``, and
 you can learn more about how to manage LFE projects by checking them out.

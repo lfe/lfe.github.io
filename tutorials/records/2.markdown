@@ -1,0 +1,65 @@
+---
+layout: records-tutorial
+guide: 2
+total_guides: 3
+---
+# Tutorial: LFE Records
+
+## 2 Extracting Record Data
+
+Defining a record will create access functions/macros for creation and accessing
+fields. The make, match and set forms takes optional argument pairs
+field-name value to get non-default values. E.g. for
+
+{% highlight cl %}
+
+(defrecord person
+  (name '"")
+  (address '"")
+  age)
+
+{% endhighlight %}
+
+The following functions are available
+
+{% highlight cl %}
+
+   (make-person {{field value}} ... )
+   (match-person {{field value}} ... )
+   (is-person r)
+   (emp-person {{field value}} ... )
+   (set-person r {{field value}} ... )
+   (person-name r)
+   (person-name)
+   (set-person-name r name)
+   (person-age r)
+   (person-age)
+   (set-person-age r age)
+   (person-address r)
+   (set-person-address r address)
+
+{% endhighlight %}
+
+Taking our example from [Creating a Record](/tutorials/records/1), we
+again define a _person_ record, but this time we expose a function to
+print the information on a _person_.
+
+{% highlight cl %}
+(defmodule person
+  (export (print-data 0)))
+
+(defrecord person
+  name
+  address
+  age)
+
+(defun print-data ()
+  (let ((ford (make-person name '"Ford Prefect"
+                           address '"Betelgeuse Seven"
+                           age 234)))
+    (: io format '"~p~n" (list ford))
+    (: io format '"~p~n" (list (person-name ford)))
+    (: io format '"~p~n" (list (person-address ford)))
+    (: io format '"~p~n" (list (person-age ford)))))
+    
+{% endhighlight %}

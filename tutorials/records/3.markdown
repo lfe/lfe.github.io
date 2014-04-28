@@ -1,0 +1,63 @@
+---
+layout: records-tutorial
+guide: 3
+total_guides: 3
+---
+# Tutorial: LFE Records
+
+## 3 Querying Records
+
+Below is a brief explanation of the workings of the generated
+functions associated with any given record definition.
+
+{% highlight cl %}
+(make-person name '"Robert" age 54)
+{% endhighlight %}
+
+Will create a new person record with the name field set to "Robert",
+the age field set to 54 and the address field set to the default "".
+
+{% highlight cl %}
+(match-person name name age 55)
+{% endhighlight %}
+
+Will match a person with age 55 and bind the variable name to the name
+field of the record. Can use any variable name here.
+
+{% highlight cl %}
+(is-person john)
+{% endhighlight %}
+
+Test if john is a person record.
+
+{% highlight cl %}
+(emp-person age '$1)
+{% endhighlight %}
+
+Create an Ets Match Pattern for record person where the age field is
+set to $1 and all other fields are set to '_.
+
+{% highlight cl %}
+(person-address john)
+{% endhighlight %}
+
+Return the address field of the person record john.
+
+{% highlight cl %}
+(person-address)
+{% endhighlight %}
+
+Return the index of the address field of a person record.
+
+{% highlight cl %}
+(set-person-address john '"back street")
+{% endhighlight %}
+
+Sets the address field of the person record john to "back street".
+
+{% highlight cl %}
+(set-person john age 35 address '"front street")
+{% endhighlight %}
+
+In the person record john set the age field to 35 and the address
+field to "front street".

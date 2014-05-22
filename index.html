@@ -7,7 +7,9 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>TWILLI | Air</title>
+    <title>(lisp (flavored (erlang)))</title>
+
+    <link rel="shortcut icon" href="assets/images/other_images/favicon.ico" />
 
     <!-- Bootstrap core CSS -->
     <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -20,6 +22,10 @@
 
     <!-- Custom styles for this template -->
     <link href="assets/css/styles.css" rel="stylesheet">
+    <!-- Custom styles for the LFE site -->
+    <link href="assets/css/custom.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="assets/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -32,84 +38,110 @@
 
     <div class="background-image-overlay"></div>
 
-    <div id="outer-background-container" data-default-background-img="assets/images/other_images/bg5.jpg" style="background-image:url(assets/images/other_images/bg5.jpg);"></div>
-    <!-- end: #outer-background-container -->    
+    <div id="outer-background-container" data-default-background-img="assets/images/other_images/ring-example-lfe-8.55-lfe.jpg" style="background-image:url(assets/images/other_images/ring-example-lfe-8.55-lfe.jpg);"></div>
+    <!-- end: #outer-background-container -->
 
     <!-- Outer Container -->
     <div id="outer-container">
 
       <!-- Left Sidebar -->
       <section id="left-sidebar">
-        
+
         <div class="logo">
-          <a href="#intro" class="link-scroll"><img src="assets/images/other_images/logo.png" alt="Twilli Air"></a>
+          <a href="#home" class="link-scroll"><img src="assets/images/other_images/logo.png" alt="Twilli Air"></a>
         </div><!-- .logo -->
 
         <!-- Menu Icon for smaller viewports -->
         <div id="mobile-menu-icon" class="visible-xs" onClick="toggle_main_menu();"><span class="glyphicon glyphicon-th"></span></div>
 
         <ul id="main-menu">
-          <li id="menu-item-text" class="menu-item scroll"><a href="#text">Text</a></li>
-          <li id="menu-item-carousel" class="menu-item scroll"><a href="#carousel">Carousel</a></li>
-          <li id="menu-item-grid" class="menu-item scroll"><a href="#grid">Grid</a></li>
-          <li id="menu-item-featured" class="menu-item scroll"><a href="#featured">Featured</a></li>
-          <li id="menu-item-contact" class="menu-item scroll"><a href="#contact">Contact</a></li>
+          <li id="menu-item-home" class="menu-item scroll"><a href="#home">Home</a></li>
+          <li id="menu-item-lfe" class="menu-item scroll"><a href="#lfe">LFE</a></li>
+          <li id="menu-item-features" class="menu-item scroll"><a href="#features">Features</a></li>
+          <li id="menu-item-resources" class="menu-item scroll"><a href="#resources">Resources</a></li>
+          <li id="menu-item-projects" class="menu-item scroll"><a href="#projects">Projects</a></li>
+          <li id="menu-item-community" class="menu-item scroll"><a href="#community">Community</a></li>
+          <li class="menu-item scroll"><a href="http://docs.lfe.io/">Documentation</a></li>
+          <li class="menu-item scroll"><a href="http://docs.lfe.io/blog">Blog</a></li>
+          <li class="menu-item scroll"><a href="https://github.com/rvirding/lfe/">Code</a></li>
         </ul><!-- #main-menu -->
 
       </section><!-- #left-sidebar -->
       <!-- end: Left Sidebar -->
 
       <section id="main-content" class="clearfix">
-        
-        <article id="intro" class="section-wrapper clearfix" data-custom-background-img="assets/images/other_images/bg5.jpg">
+
+        <article id="home" class="section-wrapper clearfix" data-custom-background-img="assets/images/other_images/principia-mathematica-inverted.jpg">
           <div class="content-wrapper clearfix">
             <div class="col-sm-10 col-md-9 pull-right">
 
                 <section class="feature-text">
-                  <h1>Lorem ipsum dolor sit amet, consectetur adipiscing elit</h1>
-                  <p>Etiam at ligula sit amet arcu laoreet consequat. Duis dictum lorem metus, vitae dapibus risus imperdiet nec. Suspendisse molestie lorem odio, sit amet. </p>
-                  <p><a href="#text" class="link-scroll btn btn-outline-inverse btn-lg">find out more</a></p>
+                  <h1>Lisp Flavored Erlang</h1>
+                  <h5>These are your father's parentheses</h5>
+                  <p>Elegant weapons, for a more ... civilized age</p>
+                  <p><a href="#lfe" class="link-scroll btn btn-outline-inverse btn-lg">(taste the flavor)</a></p>
                 </section>
 
             </div><!-- .col-sm-10 -->
           </div><!-- .content-wrapper -->
         </article><!-- .section-wrapper -->
 
-        <article id="text" class="section-wrapper clearfix" data-custom-background-img="assets/images/other_images/bg1.jpg">
+        <article id="lfe" class="section-wrapper clearfix" data-custom-background-img="assets/images/other_images/mccarthy-lisp-bkgrnd-lfe.jpg">
           <div class="content-wrapper clearfix">
             <div class="col-sm-10 col-md-9 pull-right">
 
-                <h1 class="section-title">Text Content</h1>
+                <h1 class="section-title">LFE</h1>
+                <h4 class="section-title">Origins</h4>
+                <p>
+                  LFE has many origins, depending upon whether you're looking at
+                  <a href="http://www-formal.stanford.edu/jmc/history/lisp/lisp.html">Lisp</a> (and
+                  <a href="http://www.csee.umbc.edu/courses/331/resources/papers/Evolution-of-Lisp.pdf">here</a>),
+                  <a href="http://www.erlang.org/course/history.html">Erlang</a>, or
+                  <a href="https://groups.google.com/forum/#!topic/erlang-questions/rf43UofUvvQ">LFE-proper</a>.
+                  The LFE community of contributors embraces all of these and more.
+                </p>
+                <h4>A Modern Taste</h4>
+                <p>
+                  To get a sense of what all of these have evolved to in the case of LFE, click the magical code button below. Additionally, the "Resources"
+                  section provides links to project code that can give you a better sense of our flavor.
+                </p>
+                <p><a href="" onclick="populate_and_open_modal(event, 'lfe-ring-benchmark');" class="btn btn-outline-inverse btn-sm">see code example</a></p>
+                <h4>Behind the Scenes at LFE.io</h4>
+                <p>
+                  You will notice that this site has interesting background images; though blurred, you might be able to discern the original source...
+                </p>
+                <p>
+                  We have the 1910 edition of Whitehead and Russell's Principia Mathematica, John McCarthy sipping from an LFE mug; a PDP-11;
+                  a Tektronix terminal displaying an LFE ring benchmark; a data center;
+                  a Raspberry Pi cluster. All of these relate to LFE either via a Lisp heritage or current work being done in the LFE, Erlang, or Lisp
+                  communities.
+                </p>
+                <p>
+                  They are our past and our future ... all are interconnected.
+                </p>
 
-                <p class="feature-paragraph"><img data-img-src="assets/images/other_images/transp-image5b.png" class="lazy pull-right" alt="Lorem Ipsum">Etiam at ligula sit amet arcu laoreet consequat. Duis dictum lorem metus, vitae dapibus risus imperdiet nec. <a href="#carousel">Suspendisse molestie lorem odio</a>, sit amet. Laoreet consequat. Duis dictum lorem metus, vitae dapibus.</p>
-                <h4>Duis dictum lorem metus</h4>
-                <p>Suspendisse molestie lorem odio, sit amet. Duis dictum lorem metus, vitae dapibus risus imperdiet nec. Suspendisse molestie lorem odio. Etiam scelerisque lacus tempor, rhoncus diam vel, gravida felis. Fusce tristique sem et leo. Pellentesque sed malesuada turpis. Quisque eget lacus sit amet dui.</p>
-                <p><a href="" onclick="populate_and_open_modal(event, 'modal-content-1');" class="btn btn-outline-inverse btn-sm">read more</a></p>
-                
-                <div class="content-to-populate-in-modal" id="modal-content-1">
-                  <h1>Lorem Ipsum</h1>
-                  <p><img data-img-src="assets/images/other_images/transp-image4.png" class="lazy rounded_border hover_effect pull-right" alt="Lorem Ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in urna vel ante mollis tincidunt. Donec nec magna condimentum tortor laoreet lobortis. Nunc accumsan sapien eu tortor fringilla, et condimentum metus pellentesque. Maecenas rhoncus tortor nec mi congue aliquet. Integer eu turpis scelerisque, iaculis magna non, tempor sem. Quisque consectetur nisi eu felis euismod, sit amet faucibus justo molestie. Ut pretium sapien dui, id facilisis metus interdum pharetra.</p>
-                  <p>Etiam scelerisque lacus tempor, rhoncus diam vel, gravida felis. Fusce tristique sem et leo aliquam vulputate. Ut eget orci in sapien commodo fringilla. Ut luctus faucibus viverra. Quisque ut ante eget libero rutrum imperdiet. Morbi in diam bibendum, venenatis arcu sed, consequat libero. Nulla imperdiet, ipsum et adipiscing pulvinar, nibh metus porta mauris, et vestibulum dolor sapien sit amet justo. In dignissim leo nec erat faucibus volutpat.</p>
-                  <h3>Duis dictum lorem metus, vitae dapibus</h3>
-                  <p><img data-img-src="assets/images/other_images/transp-image3.png" class="lazy rounded_border hover_effect pull-left" alt="Lorem Ipsum">Sed auctor urna mi, sed fringilla felis vulputate nec. Cras eu nibh id quam pretium convallis. Donec ante enim, placerat nec sagittis sit amet, tempor in velit. Maecenas ultricies commodo lacus id porta. Suspendisse eros elit, lacinia vitae erat vitae, egestas accumsan nunc. Maecenas dictum odio ipsum, non volutpat erat consequat tempor. Pellentesque sed malesuada turpis. Quisque eget lacus sit amet dui feugiat molestie sit amet eget purus. Morbi eget neque nec lectus tempus sagittis nec at ante. </p>
-                  <p>Etiam scelerisque lacus tempor, rhoncus diam vel, gravida felis. Fusce tristique sem et leo aliquam vulputate. Ut eget orci in sapien commodo fringilla. Ut luctus faucibus viverra. Quisque ut ante eget libero rutrum imperdiet. Morbi in diam bibendum, venenatis arcu sed, consequat libero. Nulla imperdiet, ipsum et adipiscing pulvinar, nibh metus porta mauris, et vestibulum dolor sapien sit amet justo. In dignissim leo nec erat faucibus volutpat.</p>
+                <div class="content-to-populate-in-modal" id="lfe-ring-benchmark">
+                  <h3>The Ring Benchmark in LFE</h3>
+                  <div class="code-block">
+                    <script src="https://gist.github.com/oubiwann/b76771bcb8687b856681.js"></script>
+                  </div>
                 </div><!-- #modal-content-1 -->
 
             </div><!-- .col-sm-10 -->
           </div><!-- .content-wrapper -->
         </article><!-- .section-wrapper -->
 
-        <article id="carousel" class="section-wrapper clearfix" data-custom-background-img="assets/images/other_images/bg6.jpg">
+        <article id="features" class="section-wrapper clearfix" data-custom-background-img="assets/images/other_images/pdp-11-70-lfe.jpg">
           <div class="content-wrapper clearfix">
 
               <div id="features-carousel" class="carousel slide with-title-indicators max-height" data-height-percent="70" data-ride="carousel">
-                
+
                 <!-- Indicators - slide navigation -->
                 <ol class="carousel-indicators title-indicators">
-                  <li data-target="#features-carousel" data-slide-to="0" class="active">Lorem Ipsum</li>
-                  <li data-target="#features-carousel" data-slide-to="1">Suspendisse</li>
-                  <li data-target="#features-carousel" data-slide-to="2">Maecenas</li>
-                  <li data-target="#features-carousel" data-slide-to="3">Scelerisque</li>
+                  <li data-target="#features-carousel" data-slide-to="0" class="active">Erlang VM</li>
+                  <li data-target="#features-carousel" data-slide-to="1">Utterly Terrifying</li>
+                  <li data-target="#features-carousel" data-slide-to="2">Alien Technology</li>
+                  <li data-target="#features-carousel" data-slide-to="3">Language Lab</li>
                 </ol>
 
                 <!-- Wrapper for slides -->
@@ -117,67 +149,66 @@
 
                   <div class="item active">
                     <div class="carousel-text-content">
-                      <img src="assets/images/other_images/transp-image1.png" class="icon" alt="Lorem Ipsum">
-                      <h2 class="title">Lorem Ipsum</h2>
-                      <p>Suspendisse molestie lorem odio, sit amet. Duis dictum lorem metus, vitae dapibus risus imperdiet nec. Suspendisse molestie lorem odio.</p>
-                      <p><a href="" onclick="populate_and_open_modal(event, 'modal-content-2');" class="btn btn-outline-inverse btn-sm">read more</a></p>
-
-                      <div class="content-to-populate-in-modal" id="modal-content-2">
-                        <h1>Lorem Ipsum</h1>
-                        <p><img data-img-src="assets/images/other_images/transp-image1.png" class="lazy rounded_border hover_effect pull-left" alt="Lorem Ipsum">Etiam at ligula sit amet arcu laoreet consequat. Duis dictum lorem metus, vitae dapibus risus imperdiet nec. <a href="#">Suspendisse molestie lorem odio</a>, sit amet. </p>
-                        <p>Laoreet consequat. Duis dictum lorem metus, vitae dapibus risus imperdiet nec. Suspendisse molestie lorem odio, sit amet.</p>
-                        <p>Suspendisse molestie lorem odio, sit amet. Duis dictum lorem metus, vitae dapibus risus imperdiet nec. Suspendisse molestie lorem odio test.</p>
-                      </div><!-- #modal-content-2 -->
+                      <span class="icon glyphicon"><i class="fa fa-smile-o fa-2x"></i></span>
+                      <h2 class="title">Erlang VM</h2>
+                      <ul class="bullet-list">
+                        <li>No global data</li>
+                        <li>No mutable data</li>
+                        <li>Pattern matching and guards</li>
+                        <li>Compiler and interpreter</li>
+                        <li>Hot upgrading of deployed code</li>
+                        <li>The Banarama of languages</li>
+                      </ul>
+                      <p><a href="http://docs.lfe.io/features.html" class="btn btn-outline-inverse btn-sm">read more</a></p>
                     </div>
                   </div><!-- .item -->
 
                   <div class="item">
                     <div class="carousel-text-content">
-                      <img src="assets/images/other_images/transp-image6.png" class="icon" alt="Lorem Ipsum">
-                      <h2 class="title">Suspendisse molestie</h2>
-                      <p>Etiam at ligula sit amet arcu laoreet consequat. Duis dictum lorem metus, vitae dapibus risus imperdiet nec. Duis dictum lorem metus.</p>
-                      <p><a href="" onclick="populate_and_open_modal(event, 'modal-content-3');" class="btn btn-outline-inverse btn-sm">read more</a></p>
-
-                      <div class="content-to-populate-in-modal" id="modal-content-3">
-                        <h1>Suspendisse molestie</h1>
-                        <p><img data-img-src="assets/images/other_images/transp-image6.png" class="lazy rounded_border hover_effect pull-left" alt="Lorem Ipsum">Etiam at ligula sit amet arcu laoreet consequat. Duis dictum lorem metus, vitae dapibus risus imperdiet nec. <a href="#">Suspendisse molestie lorem odio</a>, sit amet. </p>
-                        <p>Laoreet consequat. Duis dictum lorem metus, vitae dapibus risus imperdiet nec. Suspendisse molestie lorem odio, sit amet.</p>
-                        <p>Suspendisse molestie lorem odio, sit amet. Duis dictum lorem metus, vitae dapibus risus imperdiet nec. Suspendisse molestie lorem odio test.</p>
-                      </div><!-- #modal-content-3 -->
+                      <span class="icon glyphicon"><i class="fa fa-exclamation-triangle fa-2x"></i></span>
+                      <h2 class="title">Utterly Terrifying</h2>
+                      <ul class="bullet-list">
+                        <li>Fault-tolerant</li>
+                        <li>Massively scalable</li>
+                        <li>Concurrent</li>
+                        <li>Soft real-time</li>
+                        <li>Open. Telecom. Platform.</li>
+                      </ul>
+                      <p><a href="http://docs.lfe.io/features.html" class="btn btn-outline-inverse btn-sm">read more</a></p>
                     </div>
                   </div><!-- .item -->
 
                   <div class="item">
                     <div class="carousel-text-content">
-                      <img src="assets/images/other_images/transp-image7.png" class="icon" alt="Lorem Ipsum">
-                      <h2 class="title">Maecenas id dolor</h2>
-                      <p>Fusce erat augue, fermentum sit amet congue a, ullamcorper ac enim. Maecenas id dolor imperdiet, mollis felis ut, pellentesque ante. Sed id congue arcu. Nulla eget commodo sem. Suspendisse suscipit, sem ac.</p>
-                      <p><a href="" onclick="populate_and_open_modal(event, 'modal-content-4');" class="btn btn-outline-inverse btn-sm">read more</a></p>
-
-                      <div class="content-to-populate-in-modal" id="modal-content-4">
-                        <h1>Maecenas id dolor</h1>
-                        <p><img data-img-src="assets/images/other_images/transp-image7.png" class="lazy rounded_border hover_effect pull-left" alt="Lorem Ipsum">Etiam at ligula sit amet arcu laoreet consequat. Duis dictum lorem metus, vitae dapibus risus imperdiet nec. <a href="#">Suspendisse molestie lorem odio</a>, sit amet. </p>
-                        <p>Laoreet consequat. Duis dictum lorem metus, vitae dapibus risus imperdiet nec. Suspendisse molestie lorem odio, sit amet.</p>
-                        <p>Suspendisse molestie lorem odio, sit amet. Duis dictum lorem metus, vitae dapibus risus imperdiet nec. Suspendisse molestie lorem odio test.</p>
-                      </div><!-- #modal-content-4 -->
+                      <span class="icon glyphicon"><i class="fa large-icon fa-2x"><img src="assets/images/other_images/lisplogo-alien-tech.png"/></i></span>
+                      <h2 class="title">Alien Technology</h2>
+                      <ul class="bullet-list">
+                        <li>Functions and variables with separate namespaces (LFE is a Lisp-2)</li>
+                        <li>Low-hygiene Macros</li>
+                        <li>Homoiconicity</li>
+                        <li>In-REPL Function and macro definitions</li>
+                        <li>Easy borrowing from decades of alien software libraries</li>
+                      </ul>
+                      <p><a href="http://docs.lfe.io/features.html" class="btn btn-outline-inverse btn-sm">read more</a></p>
                     </div>
                   </div><!-- .item -->
 
                   <div class="item">
                     <div class="carousel-text-content">
-                      <img src="assets/images/other_images/transp-image4.png" class="icon" alt="Lorem Ipsum">
-                      <h2 class="title">Sed scelerisque</h2>
-                      <p>Aenean a est fringilla, malesuada eros vel, condimentum augue. Sed lorem sapien, vestibulum quis nisl volutpat, fermentum adipiscing massa. Cras ac faucibus nisl. Proin ac convallis sapien. </p>
-                      <p><a href="" onclick="populate_and_open_modal(event, 'modal-content-5');" class="btn btn-outline-inverse btn-sm">read more</a></p>
-
-                      <div class="content-to-populate-in-modal" id="modal-content-5">
-                        <h1>Sed scelerisque</h1>
-                        <p><img data-img-src="assets/images/other_images/transp-image4.png" class="lazy rounded_border hover_effect pull-left" alt="Lorem Ipsum">Etiam at ligula sit amet arcu laoreet consequat. Duis dictum lorem metus, vitae dapibus risus imperdiet nec. <a href="#">Suspendisse molestie lorem odio</a>, sit amet. </p>
-                        <p>Laoreet consequat. Duis dictum lorem metus, vitae dapibus risus imperdiet nec. Suspendisse molestie lorem odio, sit amet.</p>
-                        <p>Suspendisse molestie lorem odio, sit amet. Duis dictum lorem metus, vitae dapibus risus imperdiet nec. Suspendisse molestie lorem odio test.</p>
-                      </div><!-- #modal-content-5 -->
+                      <span class="icon glyphicon"><i class="fa fa-gears fa-2x"></i></span>
+                      <h2 class="title">Language Lab</h2>
+                      <p>All the benefits and powers of a Lisp combined with the efficiency of the Actor Model and Erlang's light-weight processes.</p>
+                      <ul class="bullet-list">
+                        <li>Experiment with creating distributed systems.</li>
+                        <li>Easily write your own compilers.</li>
+                        <li>Create DSLs on-demand.</li>
+                        <li>Take advantage of 1000s of cores without having to change your code.</li>
+                      </ul>
+                      <p><a href="http://docs.lfe.io/features.html" class="btn btn-outline-inverse btn-sm">read more</a></p>
                     </div>
                   </div><!-- .item -->
+
+
 
                 </div><!-- .carousel-inner -->
 
@@ -190,22 +221,26 @@
           </div><!-- .content-wrapper -->
         </article><!-- .section-wrapper -->
 
-        <article id="grid" class="section-wrapper clearfix" data-custom-background-img="assets/images/other_images/bg2.jpg">
+        <article id="resources" class="section-wrapper clearfix" data-custom-background-img="assets/images/other_images/Tektronix_4002A_System_Closed_Chassis-LFE-background.jpg">
           <div class="content-wrapper clearfix">
             <div class="col-sm-11 col-md-10 pull-right">
 
-                <h1 class="section-title">Grid</h1>
-                
+                <h1 class="section-title">Resources</h1>
+
                 <!-- grid -->
                 <section class="grid row clearfix clearfix-for-2cols">
 
                   <!-- grid item -->
                   <div class="grid-item col-md-6">
                     <div class="item-content clearfix">
-                      <span class="icon glyphicon glyphicon-stats"></span>
+                      <span class="icon glyphicon"><i class="fa fa-video-camera fa-2x"></i></span>
                       <div class="text-content">
-                        <h5>Lorem ipsum dolor sit amet</h5>
-                        <p>Nullam ac rhoncus sapien, non gravida purus. Aliquam adipiscing eros non elit imperdiet congue. Integer ultricies.</p>
+                        <h5>Presentations</h5>
+                        <p>Over the years there have been several <a href="http://docs.lfe.io/presentations.html">LFE presentations</a>
+                        given at conference and meetups. We have gathered them together
+                        <a href="http://docs.lfe.io/presentations.html">here</a>
+                        for your convenience and viewing pleasure.
+                        </p>
                       </div>
                     </div><!-- end: .item-content -->
                   </div><!-- end: .grid-item -->
@@ -213,10 +248,14 @@
                   <!-- grid item -->
                   <div class="grid-item col-md-6">
                     <div class="item-content clearfix">
-                      <span class="icon glyphicon glyphicon-record"></span>
+                      <span class="icon glyphicon"><i class="fa fa-download fa-2x"></i></span>
                       <div class="text-content">
-                        <h5>Aliquam adipiscing eros non elit</h5>
-                        <p>Nullam ac rhoncus sapien, non gravida purus. Alinon elit imperdiet congue. Integer ultricies sed ligula eget tempus.</p>
+                        <h5>Download</h5>
+                        <ul>
+                          <li>The latest LFE stable release [&nbsp;<a href="https://github.com/rvirding/lfe/archive/master.zip">zip</a>&nbsp;|&nbsp;<a href="https://github.com/rvirding/lfe/archive/master.tar.gz">tar</a>&nbsp;]</li>
+                          <li>LFE development release [&nbsp;<a href="https://github.com/rvirding/lfe/archive/develop.zip">zip</a>&nbsp;|&nbsp;<a href="https://github.com/rvirding/lfe/archive/develop.tar.gz">tar</a>&nbsp;]</li>
+                          <li><a href="https://github.com/rvirding/lfe">Source</a> on Gihub </li>
+                        </ul>
                       </div>
                     </div><!-- end: .item-content -->
                   </div><!-- end: .grid-item -->
@@ -224,10 +263,10 @@
                   <!-- grid item -->
                   <div class="grid-item col-md-6">
                     <div class="item-content clearfix">
-                      <span class="icon glyphicon glyphicon-lock"></span>
+                      <span class="icon glyphicon"><i class="fa fa-rocket fa-2x"></i></span>
                       <div class="text-content">
-                        <h5>Integer ultricies sed ligula</h5>
-                        <p>Aliquam adipiscing eros non elit imperdiet congue. Integer ultricies sed ligula ligula eget.</p>
+                        <h5>Quick Start</h5>
+                        <p>Want to take LFE for a quick moonshot? <a href="http://docs.lfe.io/quick-start/1.html">Get started</a> now!</p>
                       </div>
                     </div><!-- end: .item-content -->
                   </div><!-- end: .grid-item -->
@@ -235,10 +274,11 @@
                   <!-- grid item -->
                   <div class="grid-item col-md-6">
                     <div class="item-content clearfix">
-                      <span class="icon glyphicon glyphicon-file"></span>
+                      <span class="icon glyphicon"><i class="fa fa-github fa-2x"></i></span>
                       <div class="text-content">
-                        <h5>Lorem ipsum dolor sit amet</h5>
-                        <p>Nullam ac rhoncus. Aliquam adipiscing eros non elit imperdiet congue. Integer ultricies sed ligula eget tempus.</p>
+                        <h5>LFE Github Org</h5>
+                        <p>Did you know there is a Github org <a href="https://github.com/lfe">dedicated to LFE</a>? You can find most LFE projects
+                        in the world either here as their main repo, or a forked mirror.</p>
                       </div>
                     </div><!-- end: .item-content -->
                   </div><!-- end: .grid-item -->
@@ -249,150 +289,114 @@
           </div><!-- .content-wrapper -->
         </article><!-- .section-wrapper -->
 
-        <article id="featured" class="section-wrapper clearfix" data-custom-background-img="assets/images/other_images/bg3.jpg">
+        <article id="projects" class="section-wrapper clearfix" data-custom-background-img="assets/images/other_images/data-center-interior-lfe.jpg">
           <div class="content-wrapper clearfix">
             <div class="col-sm-11 pull-right">
 
-                <h1 class="section-title">Featured</h1>
-              
+                <h1 class="section-title">Projects</h1>
+                <p>Here is a sampling of some of the projects in the LFE community.</p>
                 <!-- feature columns -->
                 <section class="feature-columns row clearfix">
 
                   <!-- feature 1 -->
                   <article class="feature-col col-md-4">
-                    <a href="" onclick="populate_and_open_modal(event, 'modal-content-6');" class="thumbnail linked">
+                    <a href="https://github.com/rvirding/lfe" class="thumbnail linked">
                       <div class="image-container">
-                        <img data-img-src="assets/images/other_images/project-3.jpg" class="lazy item-thumbnail" alt="Lorem Ipsum">
+                        <img data-img-src="assets/images/other_images/LispFlavoredErlang-small-square.png" class="lazy" alt="lfe">
                       </div>
                       <div class="caption">
-                        <h5>Image Carousel</h5>
-                        <p>This feature contains an image carousel when you open popup.</p>
+                        <p>LFE project repo on Github. It's the reason we're here.</p>
                       </div><!-- .caption -->
                     </a><!-- .thumbnail -->
-
-                    <div class="content-to-populate-in-modal" id="modal-content-6">
-                      <h1>Sed scelerisque</h1>
-                      <p>Nullam ac rhoncus. Aliquam adipiscing eros non elit imperdiet congue. Etiam at ligula sit amet arcu laoreet consequat.<br/></p>
-
-                      <!-- image slider inside popup -->
-                      <div id="unique-id-for-image-slider" class="owl-carousel popup-image-gallery">
-                        <!-- slide -->
-                        <div>
-                          <!-- caption is optional. To remove it, remove the <h6> below -->
-                          <h6 class="caption">Caption for Image 1</h6>
-                          <img class="lazyOwl" data-src="assets/images/other_images/bg1.jpg">
-                        </div>
-                        <!-- slide -->
-                        <div>
-                          <h6 class="caption">Caption for Image 2</h6>
-                          <img class="lazyOwl" data-src="assets/images/other_images/bg2.jpg">
-                        </div>
-                        <!-- slide -->
-                        <div>
-                          <h6 class="caption">Caption for Image 3</h6>
-                          <img class="lazyOwl" data-src="assets/images/other_images/bg3.jpg">
-                        </div>
-                      </div>
-                    </div><!-- #modal-content-6 -->
                   </article>
 
                   <!-- feature 2 -->
                   <article class="feature-col col-md-4">
-                    <a href="" onclick="populate_and_open_modal(event, 'modal-content-7');" class="thumbnail linked">
+                    <a href="https://github.com/lfe/lfetool" class="thumbnail linked">
                       <div class="image-container">
-                        <img data-img-src="assets/images/other_images/project-2.jpg" class="lazy item-thumbnail" alt="Lorem Ipsum">
+                        <img data-img-src="assets/images/other_images/lfetool-logo-white.png" class="lazy" alt="lfetool">
                       </div>
                       <div class="caption">
-                        <h5>Nullam ac rhoncus</h5>
-                        <p>Nullam ac rhoncus. Aliquam adipiscing eros non elit imperdiet congue. Integer ultricies.</p>
+                        <p>lfetool
+                        has everything you need to easily create LFE-based projects and integrate with such tools as kerl, rebar, and relx.</p>
                       </div><!-- .caption -->
                     </a><!-- .thumbnail -->
-
-                    <div class="content-to-populate-in-modal" id="modal-content-7">
-                      <img data-img-src="assets/images/other_images/top-image2.jpg" class="lazy full-width" alt="Lorem Ipsum">
-                      <h1>Sed scelerisque</h1>
-                      <p>Nullam ac rhoncus. Aliquam adipiscing eros non elit imperdiet congue. Etiam at ligula sit amet arcu laoreet consequat. Duis dictum lorem metus, vitae dapibus risus imperdiet nec. Suspendisse molestie lorem odio</a>, sit amet. </p>
-                      <p>Laoreet consequat. Duis dictum lorem metus, vitae dapibus risus imperdiet nec. Suspendisse molestie lorem odio, sit amet.</p>
-                      <p>Suspendisse molestie lorem odio, sit amet. Duis dictum lorem metus, vitae dapibus risus imperdiet nec. Suspendisse molestie lorem odio test.</p>
-                    </div><!-- #modal-content-7 -->
                   </article>
 
-                  <!-- feature 3 -->
                   <article class="feature-col col-md-4">
-                    <a href="" onclick="populate_and_open_modal(event, 'modal-content-8');" class="thumbnail linked">
+                    <a href="https://github.com/lfe/exemplar" class="thumbnail linked">
                       <div class="image-container">
-                        <img data-img-src="assets/images/other_images/project-4.jpg" class="lazy item-thumbnail" alt="Lorem Ipsum">
+                        <img data-img-src="assets/images/other_images/juggernaut.jpg" class="lazy" alt="exemplar">
                       </div>
                       <div class="caption">
-                        <h5>Aliquam adipiscing</h5>
-                        <p>Nullam ac rhoncus. Aliquam adipiscing eros non elit imperdiet.</p>
+                        <p>HTML as S-Expressions for LFE projects.</p>
                       </div><!-- .caption -->
                     </a><!-- .thumbnail -->
-
-                    <div class="content-to-populate-in-modal" id="modal-content-8">
-                      <img data-img-src="assets/images/other_images/top-image3.jpg" class="lazy full-width" alt="Lorem Ipsum">
-                      <h1>Sed scelerisque</h1>
-                      <p>Nullam ac rhoncus. Aliquam adipiscing eros non elit imperdiet congue. Etiam at ligula sit amet arcu laoreet consequat. Duis dictum lorem metus, vitae dapibus risus imperdiet nec. Suspendisse molestie lorem odio</a>, sit amet. </p>
-                      <p>Laoreet consequat. Duis dictum lorem metus, vitae dapibus risus imperdiet nec. Suspendisse molestie lorem odio, sit amet.</p>
-                      <p>Suspendisse molestie lorem odio, sit amet. Duis dictum lorem metus, vitae dapibus risus imperdiet nec. Suspendisse molestie lorem odio test.</p>
-                    </div><!-- #modal-content-8 -->
-
                   </article>
 
                 </section><!-- end: .feature-columns -->
 
+                <!-- feature columns -->
+                <section class="feature-columns row clearfix">
+                  <article class="feature-col col-md-4">
+                    <a href="https://github.com/lfe/jlfe" class="thumbnail linked">
+                      <div class="image-container">
+                        <img data-img-src="assets/images/other_images/DukeOfferingLFE-square-tiny.png" class="lazy" alt="jlfe">
+                      </div>
+                      <div class="caption">
+                        <p>LFE + Java: Erlang is starting to peek into Clojure's backyard (work in progress).</p>
+                      </div><!-- .caption -->
+                    </a><!-- .thumbnail -->
+                  </article>
+
+                  <article class="feature-col col-md-4">
+                    <a href="https://github.com/lfe/lfebot" class="thumbnail linked">
+                      <div class="image-container">
+                        <img data-img-src="assets/images/other_images/LiffyBot-small-3.png" class="lazy" alt="LiffyBot">
+                      </div>
+                      <div class="caption">
+                        <p>Let LiffyBot run <em>your</em> IRC channel (work in progress).</p>
+                      </div><!-- .caption -->
+                    </a><!-- .thumbnail -->
+                  </article>
+
+                  <article class="feature-col col-md-4">
+                    <a href="https://github.com/lfe/lfest" class="thumbnail linked">
+                      <div class="image-container">
+                        <img data-img-src="assets/images/other_images/lfest.jpg" class="lazy" alt="lfest">
+                      </div>
+                      <div class="caption">
+                        <p>lfest provides Compojure-like routing for RESTful services and web apps built on LFE and YAWS.</p>
+                      </div><!-- .caption -->
+                    </a><!-- .thumbnail -->
+                  </article>
+                </section><!-- end: .feature-columns -->
               <!-- End: Section content to edit -->
 
             </div><!-- .col-sm-10 -->
           </div><!-- .content-wrapper -->
         </article><!-- .section-wrapper -->
 
-        <article id="contact" class="section-wrapper clearfix" data-custom-background-img="assets/images/other_images/bg4.jpg">
+        <article id="community" class="section-wrapper clearfix" data-custom-background-img="assets/images/other_images/Raspberry_Pi_Supercomputer-LFE.jpg">
           <div class="content-wrapper clearfix">
-            
-              <h1 class="section-title">Contact</h1>
-              
-                <!-- CONTACT DETAILS -->
-                <div class="contact-details col-sm-5 col-md-3">
-                  <p>123A,<br/>Molestie Lorem Avenue,<br/>Aliquam<br/>AAA0010</p>
-                  <p>Tel: (+20) 21 301 524</p>
-                  <p><a href="mailto:info@loremipsum.com">info@loremipsum.com</a></p>
-                </div>
-                <!-- END: CONTACT DETAILS -->
+            <div class="col-sm-10 col-md-9 pull-right">
 
-                <!-- CONTACT FORM -->
-                <div class="col-sm-7 col-md-9">
-                  <!-- IMPORTANT: change the email address at the top of the assets/php/mail.php file to the email address that you want this form to send to -->
-                  <form class="form-style validate-form clearfix" action="assets/php/mail.php" method="POST" role="form">
+                <h1 class="section-title">Community</h1>
 
-                    <!-- form left col -->
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <input type="text" class="text-field form-control validate-field required" data-validation-type="string" id="form-name" placeholder="Full Name" name="name">
-                      </div>  
-                      <div class="form-group">
-                        <input type="email" class="text-field form-control validate-field required" data-validation-type="email" id="form-email" placeholder="Email Address" name="email">
-                      </div>
-                      <div class="form-group">
-                        <input type="tel" class="text-field form-control validate-field phone" data-validation-type="phone" id="form-contact-number" placeholder="Contact Number" name="contact_number">
-                      </div>                 
-                    </div><!-- end: form left col -->
+                <p class="feature-paragraph"><span class="icon glyphicon lazy pull-right"><i class="fa fa-users fa-4x"></i></span>
+                  LFE has a small but growing community consisting of language developers, hackers, and general enthusiasts with a
+                  wide variety of experience and backgrounds. At any given point on the mail list or IRC channel, you may find yourself
+                  converersing with Clojurists, Erlangers, Haskellers, Javaheads, Lispers, OCamlers, Pythonistas, Rubyists, Schemers, etc.
+                </p>
+                <p>
+                  The unifying element?
+                </p>
+                <p>
+                  A deep appreciation of the Erlang VM and a perverse love of parentheses.
+                </p>
+                <p><a href="http://docs.lfe.io/community.html" class="btn btn-outline-inverse btn-sm">how to connect</a></p>
 
-                    <!-- form right col -->
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <textarea placeholder="Message..." class="form-control validate-field required" name="message"></textarea>
-                      </div> 
-                      <div class="form-group">
-                        <img src="assets/images/theme_images/loader-form.GIF" class="form-loader">
-                        <button type="submit" class="btn btn-sm btn-outline-inverse">Submit</button>
-                      </div> 
-                      <div class="form-group form-general-error-container"></div>           
-                    </div><!-- end: form right col -->
-
-                  </form>
-                </div><!-- end: CONTACT FORM -->
-
+            </div><!-- .col-sm-10 -->
           </div><!-- .content-wrapper -->
         </article><!-- .section-wrapper -->
 
@@ -405,15 +409,15 @@
         <div id="go-to-top" onclick="scroll_to_top();"><span class="icon glyphicon glyphicon-chevron-up"></span></div>
 
         <ul class="social-icons">
-          <li><a href="#" target="_blank" title="Facebook"><img src="assets/images/theme_images/social_icons/facebook.png" alt="Facebook"></a></li>
-          <li><a href="#" target="_blank" title="Twitter"><img src="assets/images/theme_images/social_icons/twitter.png" alt="Twitter"></a></li>
-          <li><a href="#" target="_blank" title="Google+"><img src="assets/images/theme_images/social_icons/googleplus.png" alt="Google+"></a></li>
+          <li><a href="http://webchat.freenode.net/?channels=erlang-lisp" target="_blank" title="IRC" style="color: #fff; font-size: 130%;">#</a></li>
+          <li><a href="https://twitter.com/ErlangLisp" target="_blank" title="Twitter"><img src="assets/images/theme_images/social_icons/twitter.png" alt="Twitter"></a></li>
+          <li><a href="https://plus.google.com/u/1/communities/103919485468949397234" target="_blank" title="Google+"><img src="assets/images/theme_images/social_icons/googleplus.png" alt="Google+"></a></li>
         </ul>
 
         <!-- copyright text -->
-        <div class="footer-text-line">&copy; 2014 Twilli | Air</div>
+        <div class="footer-text-line">&copy; 2014-2038 LFElluminati | Alien Alliance</div>
       </section>
-      <!-- end: Footer -->      
+      <!-- end: Footer -->
 
     </div><!-- #outer-container -->
     <!-- end: Outer Container -->
@@ -428,7 +432,7 @@
           </div><!-- .modal-body -->
         </div><!-- .modal-content -->
       </div><!-- .modal-dialog -->
-    </div><!-- .modal -->    
+    </div><!-- .modal -->
 
     <!-- Javascripts
     ================================================== -->
@@ -449,8 +453,8 @@
     $(document).ready(function(){
       jQuery("#outer-background-container").backstretch("assets/images/other_images/bg5.jpg");
     });
-    </script> 
-    <![endif]-->  
+    </script>
+    <![endif]-->
 
     <!-- detect mobile browsers -->
     <script src="assets/js/detectmobilebrowser.js"></script>
@@ -465,7 +469,145 @@
     <!-- IE9 form fields placeholder fix -->
     <!--[if lt IE 9]>
     <script>contact_form_IE9_placeholder_fix();</script>
-    <![endif]-->  
+    <![endif]-->
 
   </body>
+<style type='text/css'>
+.gist {
+  font-size: 70%;
+  color: green;
+  background-color: #111
+}
+
+.gist-highlight {
+  border-left: 3ex solid #eee;
+  position: relative;
+  font-size: 90%;
+}
+
+.gist-file {
+  border: none !important;
+}
+
+.gist-meta {
+  border: 1px solid #D2d2d2 !important;
+  -moz-border-radius-bottomleft: 5px;
+  -webkit-border-bottom-left-radius: 5px;
+  -moz-border-radius-bottomright: 5px;
+  -webkit-border-bottom-right-radius: 5px;
+}
+
+.gist-data {
+  border: 1px solid #D2d2d2 !important;
+  border-bottom: none !important;
+  -moz-border-radius-topleft: 5px;
+  -webkit-border-top-left-radius: 5px;
+  -moz-border-radius-topright: 5px;
+  -webkit-border-top-right-radius: 5px;
+}
+
+.gist-highlight pre {
+    counter-reset: linenumbers;
+}
+
+.gist-highlight pre div:before {
+    color: #aaa;
+    content: counter(linenumbers);
+    counter-increment: linenumbers;
+    left: -3ex;
+    position: absolute;
+    text-align: right;
+    width: 2.5ex;
+}
+
+.gist .gist-file .gist-data {
+  background-color: #111;
+}
+
+.gist-data {
+  border: 1px solid #222 !important;
+}
+
+.gist .gist-file .gist-data .line-numbers {
+  background-color:#222;
+  color:DarkRed;
+  border-right:1px solid transparent;
+}
+
+.gist .gist-file .gist-meta {
+  background-color:transparent;
+}
+
+.gist-meta {
+  border: 1px solid transparent !important;
+  background-image: none !important;
+  text-shadow: none !important;
+  background-color: #222 !important;
+  color: #aaa;
+}
+
+.gist-syntax  { background: #111; }
+.gist-syntax .c { color: cyan; font-style: italic } /* Comment */
+.gist-syntax .err { color: #ffff00; font-weight: bold; background-color: transparent; } /* Error */
+.gist-syntax .k { color: orange; font-weight: bold } /* Keyword */
+.gist-syntax .o { color: #ffcc00; font-weight: bold } /* Operator */
+.gist-syntax .cm { color: cyan; font-style: italic } /* Comment.Multiline */
+.gist-syntax .cp { color: cyan; font-weight: bold } /* Comment.Preproc */
+.gist-syntax .c1 { color: cyan; font-style: italic } /* Comment.Single */
+.gist-syntax .cs { color: cyan; font-weight: bold; font-style: italic } /* Comment.Special */
+.gist-syntax .gd { color: #0f0; background-color: #ffdddd } /* Generic.Deleted */
+.gist-syntax .gd .x { color: #0f0; background-color: #ffaaaa } /* Generic.Deleted.Specific */
+.gist-syntax .ge { color: #0f0; font-style: italic } /* Generic.Emph */
+.gist-syntax .gr { color: #aa0000 } /* Generic.Error */
+.gist-syntax .gh { color: #999999 } /* Generic.Heading */
+.gist-syntax .gi { color: #0f0; background-color: #ddffdd } /* Generic.Inserted */
+.gist-syntax .gi .x { color: #0f0; background-color: #aaffaa } /* Generic.Inserted.Specific */
+.gist-syntax .go { color: #888888 } /* Generic.Output */
+.gist-syntax .gp { color: #555555 } /* Generic.Prompt */
+.gist-syntax .gs { font-weight: bold } /* Generic.Strong */
+.gist-syntax .gu { color: #aaaaaa } /* Generic.Subheading */
+.gist-syntax .gt { color: #aa0000 } /* Generic.Traceback */
+.gist-syntax .kc { color: lime; font-weight: bold } /* Keyword.Constant */
+.gist-syntax .kd { color: lime; font-weight: bold } /* Keyword.Declaration */
+.gist-syntax .kn { color: orange; font-weight: bold } /* Keyword.??? */
+.gist-syntax .kp { color: lime; font-weight: bold } /* Keyword.Pseudo */
+.gist-syntax .kr { color: lime; font-weight: bold } /* Keyword.Reserved */
+.gist-syntax .kt { color: #445588; font-weight: bold } /* Keyword.Type */
+.gist-syntax .m { color: red } /* Literal.Number */
+.gist-syntax .s { color: LightCoral } /* Literal.String */
+.gist-syntax .na { color: #008080 } /* Name.Attribute */
+.gist-syntax .nb { color: yellow } /* Name.Builtin */
+.gist-syntax .nc { color: #96b1ff; font-weight: bold } /* Name.Class */
+.gist-syntax .no { color: #008080 } /* Name.Constant */
+.gist-syntax .ni { color: #800080 } /* Name.Entity */
+.gist-syntax .ne { color: #d57663; font-weight: bold } /* Name.Exception */
+.gist-syntax .nf { color: #00c8ff; font-weight: bold } /* Name.Function */
+.gist-syntax .nn { color: #0d8316 } /* Name.Namespace */
+.gist-syntax .nt { color: #000080 } /* Name.Tag */
+.gist-syntax .nv { color: green; font-weight: normal;} /* Name.Variable */
+.gist-syntax .ow { color: #ffcc00; font-weight: bold } /* Operator.Word */
+.gist-syntax .p { color: DarkOliveGreen; } /* Parens */
+.gist-syntax .w { color: #bbbbbb } /* Text.Whitespace */
+.gist-syntax .mf { color: red } /* Literal.Number.Float */
+.gist-syntax .mh { color: red } /* Literal.Number.Hex */
+.gist-syntax .mi { color: red } /* Literal.Number.Integer */
+.gist-syntax .mo { color: red } /* Literal.Number.Oct */
+.gist-syntax .sb { color: LightCoral } /* Literal.String.Backtick */
+.gist-syntax .sc { color: LightCoral } /* Literal.String.Char */
+.gist-syntax .sd { color: LightCoral } /* Literal.String.Doc */
+.gist-syntax .s2 { color: LightCoral } /* Literal.String.Double */
+.gist-syntax .se { color: LightCoral } /* Literal.String.Escape */
+.gist-syntax .sh { color: LightCoral } /* Literal.String.Heredoc */
+.gist-syntax .si { color: LightCoral } /* Literal.String.Interpol */
+.gist-syntax .sx { color: LightCoral } /* Literal.String.Other */
+.gist-syntax .sr { color: LightCoral } /* Literal.String.Regex */
+.gist-syntax .s1 { color: LightCoral } /* Literal.String.Single */
+.gist-syntax .ss { color: LightCoral } /* Literal.String.Symbol */
+.gist-syntax .bp { color: #999999 } /* Name.Builtin.Pseudo */
+.gist-syntax .vc { color: #008080 } /* Name.Variable.Class */
+.gist-syntax .vg { color: #008080 } /* Name.Variable.Global */
+.gist-syntax .vi { color: #008080 } /* Name.Variable.Instance */
+.gist-syntax .il { color: #009999 } /* Literal.Number.Integer.Long */
+
+</style>
 </html>

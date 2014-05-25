@@ -1,6 +1,6 @@
 # lfe.io
 
-**Repository for the main LFE Language site**
+*Repository for the main LFE Language site*
 
 ## lfe.io
 

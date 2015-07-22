@@ -52,10 +52,13 @@
 
 (defun print-help (pid)
   (let ((cfg-data (httpd:info pid)))
-    (lfe_io:format (++ "Running the development web server as ~p with the "
-                       "~nfollowing configuration:~n~n~p~n~nView the site by "
-                       "loading the following in your browser:~n~n"
-                       "    http://~s:~p/~n~nTo stop the server, type ^c^c.~n")
+    (lfe_io:format (++ "~nYou are running the development web server as ~p with "
+                       "~nthe following configuration:~n~n~p~n~nView the site "
+                       "by loading the following in your browser:~n~n"
+                       "    http://~s:~p/~n~nIn a separate terminal window, you "
+                       "can connect to this node by~nexecuting 'make connect' "
+                       "from the same directory.~n~n"
+                       "To stop the server, type ^c^c.~n")
                    `(,(node)
                      ,cfg-data
                      ,(proplists:get_value 'server_name cfg-data)

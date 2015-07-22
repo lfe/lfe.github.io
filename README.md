@@ -24,4 +24,5 @@ to your liking:
 $ PORT=5099 make run
 ```
 
-This assumes that ``lfetool`` has installed lfe in ``~/.lfe/lfe``.
+This ``make`` target assumes that ``lfetool`` has been installed lfe in
+``~/.lfe/lfe``.

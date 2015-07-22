@@ -56,6 +56,15 @@ p {
         }
     }
 
+.lisp-cycles {
+  padding-right: 0px !important;
+  margin-right: 0px !important;
+}
+
+.lisp-cycles img {
+  border: solid white 10px;
+}
+
 /* -------------- BUTTONS ----------------- */
 
 .btn {

@@ -18,4 +18,4 @@ If you would like to run the site locally, you may do so with this command:
 $ make run
 ```
 
-This assumes that ``lfetool`` has installed lfe in ``~/.lfe``.
+This assumes that ``lfetool`` has installed lfe in ``~/.lfe/lfe``.

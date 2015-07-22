@@ -31,7 +31,8 @@
                         #(ipfamily inet)
                         ;; administrative properties
                         #(mime_types (#("html" "text/html")
-                                      #("css" "text/css")))
+                                      #("css" "text/css")
+                                      #("js" "application/javascript")))
                         ;; URL aliasing properties
                         #(directory_index ("index.html"))
                         ;; log properties

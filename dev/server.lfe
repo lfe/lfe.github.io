@@ -2,6 +2,16 @@
 ;; -*- mode: lfe -*-
 ;;! -smp enable -sname devserver
 
+(defun main
+  ((`(,base-path))
+    (inets:start 'permanent)
+    (case (start-httpd base-path)
+      (`#(ok ,pid)
+       (print-help pid)
+       (wait))
+      (start-error
+       (lfe_io:format "~p~n" `(,start-error))))))
+
 (defun start-httpd (base-path)
   (inets:start 'httpd `(;; mandatory
                         #(port 4000)
@@ -32,15 +42,6 @@
     (lfe_io:format "To stop the server, type ^c.~n~n" '())
     'ok))
 
-(defun run ()
+(defun wait ()
   (receive (_ "")))
 
-(defun main
-  ((`(,base-path))
-    (inets:start 'permanent)
-    (case (start-httpd base-path)
-      (`#(ok ,pid)
-       (print-help pid)
-       (run))
-      (start-error
-       (lfe_io:format "~p~n" `(,start-error))))))

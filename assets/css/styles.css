@@ -62,7 +62,8 @@ p {
 }
 
 .lisp-cycles img {
-  border: solid white 10px;
+  border: solid white 20px;
+  border-radius: 5px;
 }
 
 /* -------------- BUTTONS ----------------- */

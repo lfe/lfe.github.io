@@ -2,8 +2,6 @@
 
 *Repository for the main LFE (Lisp Flavoured Erlang) Language site*
 
-## lfe.io
-
 Visit <a href="http://lfe.io/">lfe.io</a>!
 
 ## Contributing

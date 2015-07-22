@@ -8,7 +8,7 @@
   `(;; mandatory
     #(port ,port)
     #(server_name "localhost")
-    #(server_root ,(filename:join base-path "dev"))
+    #(server_root ,(filename:join base-path (log-dir)))
     #(document_root ,base-path)
     ;; communication properties
     #(bind_address any)

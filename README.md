@@ -10,6 +10,8 @@ Feel free to <a href="https://github.com/lfe/lfe.github.io/issues/new">open a ti
 or fork the site and submit a
 <a href="https://github.com/lfe/lfe.github.io/pulls">pull request</a>.
 
+## Dev Server
+
 If you would like to run the site locally, you may do so with this command:
 
 ```bash
@@ -26,3 +28,10 @@ $ PORT=5099 make dev
 
 This ``make`` target assumes that ``lfetool`` has cloned the lfe repository
 (and compiled it) to ``~/.lfe/lfe``.
+
+You can also connect to your running server in another terminal using the
+following ``make`` target:
+
+```bash
+$ make connect
+```

@@ -18,8 +18,7 @@
                           #(ipfamily inet)
                           ;; administrative properties
                           #(mime_types (#("html" "text/html")
-                                        #("css" "text/css")
-                                        ))
+                                        #("css" "text/css")))
                           ;; log properties
                           #(error_log "logs/error_log")
                           #(transfer_log "logs/access_log")

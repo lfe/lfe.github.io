@@ -18,16 +18,19 @@ If you would like to run the site locally, you may do so with this command:
 $ make dev
 ```
 
-This will start the site on a local dev server running on port 4000. If you
-want to run on a different port, simply set the ``PORT`` environment variable
-to your liking:
+This will start the site on a local dev server running on port 4000. HTTP log
+files will be available in ``./dev``.
+
+If you want to run on a different port, simply set the ``PORT`` environment
+variable to your liking:
 
 ```bash
 $ PORT=5099 make dev
 ```
 
 This ``make`` target assumes that ``lfetool`` has cloned the lfe repository
-(and compiled it) to ``~/.lfe/lfe``.
+(and compiled it) to ``~/.lfe/lfe``. If your ``lfe`` executable is elsewhere,
+simply export the ``LFE_BIN_DIR`` to point to its location.
 
 You can also connect to your running server in another terminal using the
 following ``make`` target:

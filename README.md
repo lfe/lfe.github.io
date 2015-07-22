@@ -29,8 +29,8 @@ $ PORT=5099 make dev
 ```
 
 This ``make`` target assumes that ``lfetool`` has cloned the lfe repository
-(and compiled it) to ``~/.lfe/lfe``. If your ``lfe`` executable is elsewhere,
-simply export the ``LFE_BIN_DIR`` to point to its location.
+(and compiled it) to ``~/.lfe/lfe``. If your ``lfe`` executable is in a location
+other than ``~/.lfe/lfe/bin``, simply export the ``LFE_BIN_DIR`` to point to it.
 
 You can also connect to your running server in another terminal using the
 following ``make`` target:

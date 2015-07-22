@@ -13,7 +13,7 @@ or fork the site and submit a
 If you would like to run the site locally, you may do so with this command:
 
 ```bash
-$ make run
+$ make dev
 ```
 
 This will start the site on a local dev server running on port 4000. If you
@@ -21,7 +21,7 @@ want to run on a different port, simply set the ``PORT`` environment variable
 to your liking:
 
 ```bash
-$ PORT=5099 make run
+$ PORT=5099 make dev
 ```
 
 This ``make`` target assumes that ``lfetool`` has cloned the lfe repository

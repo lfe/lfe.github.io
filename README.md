@@ -18,4 +18,12 @@ If you would like to run the site locally, you may do so with this command:
 $ make run
 ```
 
+This will start the site on a local dev server running on port 4000. If you'd
+like to run on a different port, simply set the ``PORT`` environment variable
+to your liking:
+
+```bash
+$ PORT=5099 make run
+```
+
 This assumes that ``lfetool`` has installed lfe in ``~/.lfe/lfe``.

@@ -2,19 +2,26 @@
 ;; -*- mode: lfe -*-
 ;;! -smp enable -sname devserver
 
+(defun default-port () "4000")
+
 (defun main
   ((`(,base-path))
-    (inets:start 'permanent)
-    (case (start-httpd base-path)
-      (`#(ok ,pid)
-       (print-help pid)
-       (wait))
-      (start-error
-       (lfe_io:format "~p~n" `(,start-error))))))
+   (main base-path (default-port)))
+  ((`(,base-path ,port))
+   (main base-path (list_to_integer port))))
 
-(defun start-httpd (base-path)
+(defun main (base-path port)
+  (inets:start 'permanent)
+  (case (start-httpd base-path port)
+    (`#(ok ,pid)
+     (print-help pid)
+     (wait))
+    (start-error
+     (lfe_io:format "~p~n" `(,start-error)))))
+
+(defun start-httpd (base-path port)
   (inets:start 'httpd `(;; mandatory
-                        #(port 4000)
+                        #(port ,port)
                         #(server_name "localhost")
                         #(server_root ,(filename:join base-path "dev"))
                         #(document_root ,base-path)
@@ -39,7 +46,7 @@
     (lfe_io:format "View the site by loading the following in your browser:~n~n" '())
     (lfe_io:format "    http://~s:~p/~n~n" `(,(proplists:get_value 'server_name cfg-data)
                                              ,(proplists:get_value 'port cfg-data)))
-    (lfe_io:format "To stop the server, type ^c.~n~n" '())
+    (lfe_io:format "To stop the server, type ^c.~n" '())
     'ok))
 
 (defun wait ()

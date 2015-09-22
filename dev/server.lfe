@@ -1,4 +1,13 @@
 #!/usr/bin/env lfe
+;;;; This script runs a local web server serving up ./ as the document root. A
+;;;; script was used to do this due to the following:
+;;;;  * this project has no source code other than static HTML
+;;;;  * we did not want to add modules which would then need a compile stage
+;;;;  * we wanted to be able to bring up the server with a single command
+;;;;    and display help to stdout about usage, once it was up
+;;;;  * we wanted to closely match the user/dev experience that others might
+;;;;    be familar with from working with such projects as Jekyll, etc.
+;;;;
 
 ;;; Configuration ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 

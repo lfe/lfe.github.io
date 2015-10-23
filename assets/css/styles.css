@@ -66,6 +66,12 @@ p {
   border-radius: 5px;
 }
 
+@media (max-width: 768px) {
+  div.lisp-cycles {
+    display: none;
+  }
+}
+
 /* -------------- BUTTONS ----------------- */
 
 .btn {
@@ -687,6 +693,24 @@ h6 {
     padding-left:25%;
 }
 
+    @media (max-width: 768px) {
+        #main-content .grid .grid-item .item-content {
+            text-align: center;
+        }
+
+        #main-content .grid ul {
+            list-style-position: inside;
+        }
+
+        #main-content .grid .icon.glyphicon {
+            display: inline;
+            float: none;
+        }
+
+        #main-content .grid .text-content {
+            padding-left: 0;
+        }
+    }
     @media (min-width: 768px) {
         #main-content .grid > li,
         #main-content .grid .grid-item {

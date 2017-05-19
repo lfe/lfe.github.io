@@ -357,6 +357,10 @@ p {
     color:#fff;
 }
 
+#footer .sponsor {
+    padding-bottom: 2em;
+}
+
 /* Social Icons */
 #footer .social-icons {
     display:block;

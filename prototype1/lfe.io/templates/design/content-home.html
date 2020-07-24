@@ -1,0 +1,287 @@
+<main role="main" class="flex-shrink-0">
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron lfe-masthead">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="/images/LFE-logo-abbr-6.2.png" />
+                </div>
+                <div class="col-md-4 tagline">
+                    <em>"{{page.extra.sitetagline}}"</em>
+                </div>
+                <div class="col-md-4 download">
+                    <i class="fas fa-download"></i>
+                </div>
+            </div>
+
+            <ul class="nav nav-pills" id="pills-tab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link active" id="pills-{{ page.extra.excerpt1_id }}-tab" data-toggle="pill"
+                        href="#pills-{{ page.extra.excerpt1_id }}" role="tab"
+                        aria-controls="pills-{{ page.extra.excerpt1_id }}"
+                        aria-selected="true">{{ page.extra.excerpt1_name }}</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="pills-{{ page.extra.excerpt2_id }}-tab" data-toggle="pill"
+                        href="#pills-{{ page.extra.excerpt2_id }}" role="tab"
+                        aria-controls="pills-{{ page.extra.excerpt2_id }}"
+                        aria-selected="false">{{ page.extra.excerpt2_name }}</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="pills-{{ page.extra.excerpt3_id }}-tab" data-toggle="pill"
+                        href="#pills-{{ page.extra.excerpt3_id }}" role="tab"
+                        aria-controls="pills-{{ page.extra.excerpt3_id }}"
+                        aria-selected="false">{{ page.extra.excerpt3_name }}</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="pills-{{ page.extra.excerpt4_id }}-tab" data-toggle="pill"
+                        href="#pills-{{ page.extra.excerpt4_id }}" role="tab"
+                        aria-controls="pills-{{ page.extra.excerpt4_id }}"
+                        aria-selected="false">{{ page.extra.excerpt4_name }}</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="pills-{{ page.extra.excerpt5_id }}-tab" data-toggle="pill"
+                        href="#pills-{{ page.extra.excerpt5_id }}" role="tab"
+                        aria-controls="pills-{{ page.extra.excerpt5_id }}"
+                        aria-selected="false">{{ page.extra.excerpt5_name }}</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="pills-{{ page.extra.excerpt6_id }}-tab" data-toggle="pill"
+                        href="#pills-{{ page.extra.excerpt6_id }}" role="tab"
+                        aria-controls="pills-{{ page.extra.excerpt6_id }}"
+                        aria-selected="false">{{ page.extra.excerpt6_name }}</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="pills-{{ page.extra.excerpt7_id }}-tab" data-toggle="pill"
+                        href="#pills-{{ page.extra.excerpt7_id }}" role="tab"
+                        aria-controls="pills-{{ page.extra.excerpt7_id }}"
+                        aria-selected="false">{{ page.extra.excerpt7_name }}</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="pills-{{ page.extra.excerpt8_id }}-tab" data-toggle="pill"
+                        href="#pills-{{ page.extra.excerpt8_id }}" role="tab"
+                        aria-controls="pills-{{ page.extra.excerpt8_id }}"
+                        aria-selected="false">{{ page.extra.excerpt8_name }}</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane active show" id="pills-{{ page.extra.excerpt1_id }}" role="tabpanel"
+                    aria-labelledby="pills-{{ page.extra.excerpt1_id }}-tab">
+
+                    <div class="row">
+                        <div class="col-md-7 code-sample">
+                            <img src="/images/repl.png">
+                        </div>
+
+                        <div class="col-md-5 code-description">
+                            {{ page.extra.excerpt1_desc | markdown(inline=true) | safe }}
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="pills-{{ page.extra.excerpt2_id }}" role="tabpanel"
+                    aria-labelledby="pills-{{ page.extra.excerpt2_id }}-tab">
+
+                    <div class="row">
+                        <div class="col-md-7 code-sample">
+                            {{ page.extra.excerpt2_code | markdown(inline=true) | safe }}
+                        </div>
+
+                        <div class="col-md-5 code-description">
+                            {{ page.extra.excerpt2_desc | markdown(inline=true) | safe }}
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="pills-{{ page.extra.excerpt3_id }}" role="tabpanel"
+                    aria-labelledby="pills-{{ page.extra.excerpt3_id }}-tab">
+
+                    <div class="row">
+                        <div class="col-md-7 code-sample">
+                            {{ page.extra.excerpt3_code | markdown(inline=true) | safe }}
+                        </div>
+
+                        <div class="col-md-5 code-description">
+                            {{ page.extra.excerpt3_desc | markdown(inline=true) | safe }}
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="pills-{{ page.extra.excerpt4_id }}" role="tabpanel"
+                    aria-labelledby="pills-{{ page.extra.excerpt4_id }}-tab">
+
+                    <div class="row">
+                        <div class="col-md-7 code-sample">
+                            {{ page.extra.excerpt4_code | markdown(inline=true) | safe }}
+                        </div>
+
+                        <div class="col-md-5 code-description">
+                            {{ page.extra.excerpt4_desc | markdown(inline=true) | safe }}
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="pills-{{ page.extra.excerpt5_id }}" role="tabpanel"
+                    aria-labelledby="pills-{{ page.extra.excerpt5_id }}-tab">
+
+                    <div class="row">
+                        <div class="col-md-7 code-sample">
+                            {{ page.extra.excerpt5_code | markdown(inline=true) | safe }}
+                        </div>
+
+                        <div class="col-md-5 code-description">
+                            {{ page.extra.excerpt5_desc | markdown(inline=true) | safe }}
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="pills-{{ page.extra.excerpt6_id }}" role="tabpanel"
+                    aria-labelledby="pills-{{ page.extra.excerpt6_id }}-tab">
+
+                    <div class="row">
+                        <div class="col-md-7 code-sample">
+                            {{ page.extra.excerpt6_code | markdown(inline=true) | safe }}
+                        </div>
+
+                        <div class="col-md-5 code-description">
+                            {{ page.extra.excerpt6_desc | markdown(inline=true) | safe }}
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="pills-{{ page.extra.excerpt7_id }}" role="tabpanel"
+                    aria-labelledby="pills-{{ page.extra.excerpt7_id }}-tab">
+
+                    <div class="row">
+                        <div class="col-md-7 code-sample">
+                            {{ page.extra.excerpt7_code | markdown(inline=true) | safe }}
+                        </div>
+
+                        <div class="col-md-5 code-description">
+                            {{ page.extra.excerpt7_desc | markdown(inline=true) | safe }}
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="pills-{{ page.extra.excerpt8_id }}" role="tabpanel"
+                    aria-labelledby="pills-{{ page.extra.excerpt8_id }}-tab">
+
+                    <div class="row">
+                        <div class="col-md-7 code-sample">
+                            {{ page.extra.excerpt8_code | markdown(inline=true) | safe }}
+                        </div>
+
+                        <div class="col-md-5 code-description">
+                            {{ page.extra.excerpt8_desc | markdown(inline=true) | safe }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="lfe-summary">LFE is not a casual Lisp. It's a Lisp for those who want to build distributed
+                applications like the Erlang software that powers 40% of the world's telecommunications.
+
+                <a class="btn btn-primary btn-sm" href="#" role="button">Learn more &raquo;</a></p>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Example row of columns -->
+        <div class="row">
+            <div class="col-md-3">
+                <h2>Heading</h2>
+                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo,
+                    tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem
+                    malesuada magna mollis euismod. Donec sed odio dui. </p>
+                <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+            </div>
+            <div class="col-md-3">
+                <h2>Heading</h2>
+                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo,
+                    tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem
+                    malesuada magna mollis euismod. Donec sed odio dui. </p>
+                <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+            </div>
+            <div class="col-md-3">
+                <h2>Heading</h2>
+                <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum
+                    id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor
+                    mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+                <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+            </div>
+            <div class="col-md-3">
+                <h2>Heading</h2>
+                <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum
+                    id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor
+                    mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+                <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Heading</h2>
+                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo,
+                    tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem
+                    malesuada magna mollis euismod. Donec sed odio dui. </p>
+                <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+            </div>
+            <div class="col-md-6">
+                <h2>Heading</h2>
+                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo,
+                    tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem
+                    malesuada magna mollis euismod. Donec sed odio dui. </p>
+                <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Heading</h2>
+                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus
+                    commodo,
+                    tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta
+                    sem
+                    malesuada magna mollis euismod. Donec sed odio dui. </p>
+                <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+            </div>
+            <div class="col-md-6">
+                <h2>Heading</h2>
+                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus
+                    commodo,
+                    tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta
+                    sem
+                    malesuada magna mollis euismod. Donec sed odio dui. </p>
+                <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+            </div>
+        </div>
+
+        <hr>
+
+    </div> <!-- /container -->
+    <div class="container">
+        <div class="jumbotron call-out-1">
+            <div class="col-sm-12 mx-auto">
+                <h1>End of page call out 1</h1>
+                <p>This example is a quick exercise to illustrate how the navbar and its contents work. Some navbars
+                    extend the width of the viewport, others are confined within a <code>.container</code>. For
+                    positioning of navbars, checkout the <a href="/docs/4.5/examples/navbar-static/">top</a> and <a
+                        href="/docs/4.5/examples/navbar-fixed/">fixed top</a> examples.</p>
+                <a class="btn btn-primary" href="/docs/4.5/components/navbar/" role="button">View navbar docs
+                    &raquo;</a>
+                </p>
+            </div>
+        </div>
+    </div> <!-- /container -->
+
+    <div class="container">
+        <div class="jumbotron call-out-2">
+            <div class="col-sm-12 mx-auto">
+                <h1>Give yourself to the Lisp side of the Force!</h1>
+
+                <p><a href="http://xkcd.com/297/">
+                        <img src="/images/xkcd-lisp-cycles.png" />
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div> <!-- /container -->
+
+</main>

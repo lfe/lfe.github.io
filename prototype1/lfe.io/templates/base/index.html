@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    {% block meta %}
+    {% include "base/meta.html" %}
+    {% endblock head %}
+
+    {% block favicon %}
+    {% include "base/favicon.html" %}
+    {% endblock favicon %}
+
+    {% block js %}
+    {% include "base/js.html" %}
+    {% endblock js %}
+
+    {% block css %}
+    {% include "base/css.html" %}
+    {% endblock css %}
+
+    <!-- Custom styles for this template -->
+    {% block cssoverrides %}
+    {% endblock cssoverrides %}
+</head>
+
+<body>
+
+    {% block head %}
+    {% include "base/head.html" %}
+    {% endblock head %}
+
+    {% block main %}
+    {% endblock main %}
+
+    {% block foot %}
+    {% include "base/foot.html" %}
+    {% endblock foot %}
+
+    {% block endscripts %}
+    {% include "base/end-scripts.html" %}
+    {% endblock endscripts %}
+
+</body>
+
+</html>

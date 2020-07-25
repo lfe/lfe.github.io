@@ -2,6 +2,7 @@
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron lfe-masthead">
         <div class="container">
+
             <div class="row">
                 <div class="col-md-4">
                     <img src="/images/LFE-logo-abbr-6.2.png" />
@@ -14,272 +15,173 @@
                 </div>
             </div>
 
+            {% set excerpt_section = page.extra.excerpts %}
+            {% set excerpts = [
+                excerpt_section.repl,
+                excerpt_section.simple_types,
+                excerpt_section.compound_types,
+                excerpt_section.records,
+                excerpt_section.funcs,
+                excerpt_section.macros,
+                excerpt_section.erlang_interop,
+                excerpt_section.otp] %}
             <ul class="nav nav-pills" id="pills-tab" role="tablist">
+                {% for excerpt in excerpts %}
+                {% if loop.index == 1 %}{% set active = "active" %}
+                {% else %}{% set active = "" %}
+                {% endif %}
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link active" id="pills-{{ page.extra.excerpt1_id }}-tab" data-toggle="pill"
-                        href="#pills-{{ page.extra.excerpt1_id }}" role="tab"
-                        aria-controls="pills-{{ page.extra.excerpt1_id }}"
-                        aria-selected="true">{{ page.extra.excerpt1_name }}</a>
+                    <a class="nav-link {{ active }}" id="pills-{{ excerpt.id }}-tab" data-toggle="pill"
+                        href="#pills-{{ excerpt.id }}" role="tab" aria-controls="pills-{{ excerpt.id }}"
+                        aria-selected="true">{{ excerpt.name }}</a>
                 </li>
-                <li class="nav-item" role="presentation">
-                    <a class="nav-link" id="pills-{{ page.extra.excerpt2_id }}-tab" data-toggle="pill"
-                        href="#pills-{{ page.extra.excerpt2_id }}" role="tab"
-                        aria-controls="pills-{{ page.extra.excerpt2_id }}"
-                        aria-selected="false">{{ page.extra.excerpt2_name }}</a>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <a class="nav-link" id="pills-{{ page.extra.excerpt3_id }}-tab" data-toggle="pill"
-                        href="#pills-{{ page.extra.excerpt3_id }}" role="tab"
-                        aria-controls="pills-{{ page.extra.excerpt3_id }}"
-                        aria-selected="false">{{ page.extra.excerpt3_name }}</a>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <a class="nav-link" id="pills-{{ page.extra.excerpt4_id }}-tab" data-toggle="pill"
-                        href="#pills-{{ page.extra.excerpt4_id }}" role="tab"
-                        aria-controls="pills-{{ page.extra.excerpt4_id }}"
-                        aria-selected="false">{{ page.extra.excerpt4_name }}</a>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <a class="nav-link" id="pills-{{ page.extra.excerpt5_id }}-tab" data-toggle="pill"
-                        href="#pills-{{ page.extra.excerpt5_id }}" role="tab"
-                        aria-controls="pills-{{ page.extra.excerpt5_id }}"
-                        aria-selected="false">{{ page.extra.excerpt5_name }}</a>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <a class="nav-link" id="pills-{{ page.extra.excerpt6_id }}-tab" data-toggle="pill"
-                        href="#pills-{{ page.extra.excerpt6_id }}" role="tab"
-                        aria-controls="pills-{{ page.extra.excerpt6_id }}"
-                        aria-selected="false">{{ page.extra.excerpt6_name }}</a>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <a class="nav-link" id="pills-{{ page.extra.excerpt7_id }}-tab" data-toggle="pill"
-                        href="#pills-{{ page.extra.excerpt7_id }}" role="tab"
-                        aria-controls="pills-{{ page.extra.excerpt7_id }}"
-                        aria-selected="false">{{ page.extra.excerpt7_name }}</a>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <a class="nav-link" id="pills-{{ page.extra.excerpt8_id }}-tab" data-toggle="pill"
-                        href="#pills-{{ page.extra.excerpt8_id }}" role="tab"
-                        aria-controls="pills-{{ page.extra.excerpt8_id }}"
-                        aria-selected="false">{{ page.extra.excerpt8_name }}</a>
-                </li>
+                {% endfor %}
             </ul>
             <div class="tab-content" id="pills-tabContent">
-                <div class="tab-pane active show" id="pills-{{ page.extra.excerpt1_id }}" role="tabpanel"
-                    aria-labelledby="pills-{{ page.extra.excerpt1_id }}-tab">
+                {% for excerpt in excerpts %}
+                {% if loop.index == 1 %}{% set show = "show" %}{% set active = "active" %}
+                {% else %}{% set show = "" %}{% set active = "" %}
+                {% endif %}
+                <div class="tab-pane {{ active }} {{ show }}" id="pills-{{ excerpt.id }}" role="tabpanel"
+                    aria-labelledby="pills-{{ excerpt.id }}-tab">
 
                     <div class="row">
                         <div class="col-md-7 code-sample">
-                            <img src="/images/repl.png">
+                            {{ excerpt.code | markdown(inline=true) | safe }}
                         </div>
 
                         <div class="col-md-5 code-description">
-                            {{ page.extra.excerpt1_desc | markdown(inline=true) | safe }}
+                            {{ excerpt.desc | markdown(inline=true) | safe }}
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane" id="pills-{{ page.extra.excerpt2_id }}" role="tabpanel"
-                    aria-labelledby="pills-{{ page.extra.excerpt2_id }}-tab">
-
-                    <div class="row">
-                        <div class="col-md-7 code-sample">
-                            {{ page.extra.excerpt2_code | markdown(inline=true) | safe }}
-                        </div>
-
-                        <div class="col-md-5 code-description">
-                            {{ page.extra.excerpt2_desc | markdown(inline=true) | safe }}
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane" id="pills-{{ page.extra.excerpt3_id }}" role="tabpanel"
-                    aria-labelledby="pills-{{ page.extra.excerpt3_id }}-tab">
-
-                    <div class="row">
-                        <div class="col-md-7 code-sample">
-                            {{ page.extra.excerpt3_code | markdown(inline=true) | safe }}
-                        </div>
-
-                        <div class="col-md-5 code-description">
-                            {{ page.extra.excerpt3_desc | markdown(inline=true) | safe }}
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane" id="pills-{{ page.extra.excerpt4_id }}" role="tabpanel"
-                    aria-labelledby="pills-{{ page.extra.excerpt4_id }}-tab">
-
-                    <div class="row">
-                        <div class="col-md-7 code-sample">
-                            {{ page.extra.excerpt4_code | markdown(inline=true) | safe }}
-                        </div>
-
-                        <div class="col-md-5 code-description">
-                            {{ page.extra.excerpt4_desc | markdown(inline=true) | safe }}
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane" id="pills-{{ page.extra.excerpt5_id }}" role="tabpanel"
-                    aria-labelledby="pills-{{ page.extra.excerpt5_id }}-tab">
-
-                    <div class="row">
-                        <div class="col-md-7 code-sample">
-                            {{ page.extra.excerpt5_code | markdown(inline=true) | safe }}
-                        </div>
-
-                        <div class="col-md-5 code-description">
-                            {{ page.extra.excerpt5_desc | markdown(inline=true) | safe }}
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane" id="pills-{{ page.extra.excerpt6_id }}" role="tabpanel"
-                    aria-labelledby="pills-{{ page.extra.excerpt6_id }}-tab">
-
-                    <div class="row">
-                        <div class="col-md-7 code-sample">
-                            {{ page.extra.excerpt6_code | markdown(inline=true) | safe }}
-                        </div>
-
-                        <div class="col-md-5 code-description">
-                            {{ page.extra.excerpt6_desc | markdown(inline=true) | safe }}
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane" id="pills-{{ page.extra.excerpt7_id }}" role="tabpanel"
-                    aria-labelledby="pills-{{ page.extra.excerpt7_id }}-tab">
-
-                    <div class="row">
-                        <div class="col-md-7 code-sample">
-                            {{ page.extra.excerpt7_code | markdown(inline=true) | safe }}
-                        </div>
-
-                        <div class="col-md-5 code-description">
-                            {{ page.extra.excerpt7_desc | markdown(inline=true) | safe }}
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane" id="pills-{{ page.extra.excerpt8_id }}" role="tabpanel"
-                    aria-labelledby="pills-{{ page.extra.excerpt8_id }}-tab">
-
-                    <div class="row">
-                        <div class="col-md-7 code-sample">
-                            {{ page.extra.excerpt8_code | markdown(inline=true) | safe }}
-                        </div>
-
-                        <div class="col-md-5 code-description">
-                            {{ page.extra.excerpt8_desc | markdown(inline=true) | safe }}
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
 
-            <p class="lfe-summary">LFE is not a casual Lisp. It's a Lisp for those who want to build distributed
-                applications like the Erlang software that powers 40% of the world's telecommunications.
-
-                <a class="btn btn-primary btn-sm" href="#" role="button">Learn more &raquo;</a></p>
+            <p class="lfe-summary">
+                {{ page.extra.summary.content | markdown(inline=true) | safe }}
+                <a class="btn btn-primary btn-sm" href="{{ page.extra.summary.link_url }}"
+                    role="button">{{ page.extra.summary.link_text }} &raquo;</a></p>
         </div>
     </div>
 
-    <div class="container">
-        <!-- Example row of columns -->
+    <!-- Features Section -->
+
+    <div class="container features">
+        {% set features_section = page.extra.features %}
+        {% set features = [
+            features_section.lisp,
+            features_section.erlang,
+            features_section.otp,
+            features_section.lab] %}
+        <h1 class="features section title">{{ features_section.title | markdown(inline=true) | safe }}</h1>
         <div class="row">
+            {% for feature in features %}
             <div class="col-md-3">
-                <h2>Heading</h2>
-                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo,
-                    tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem
-                    malesuada magna mollis euismod. Donec sed odio dui. </p>
-                <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+                <h2>{{ feature.title | markdown(inline=true) | safe }}</h2>
+                <p>{{ feature.content | markdown(inline=true) | safe }}</p>
+                <div class="container button-container">
+                    <p>
+                        <a class="btn btn-secondary" href="{{ feature.link_url }}" role="button">{{ feature.link_text }}
+                            &raquo;</a>
+                    </p>
+                </div>
             </div>
-            <div class="col-md-3">
-                <h2>Heading</h2>
-                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo,
-                    tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem
-                    malesuada magna mollis euismod. Donec sed odio dui. </p>
-                <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-            </div>
-            <div class="col-md-3">
-                <h2>Heading</h2>
-                <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum
-                    id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor
-                    mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-                <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-            </div>
-            <div class="col-md-3">
-                <h2>Heading</h2>
-                <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum
-                    id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor
-                    mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-                <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-            </div>
+            {% endfor %}
         </div>
+    </div>
 
-        <hr>
+    <!-- What You Can Build Section -->
+
+    <div class="container buildit">
+        {% set buildit_section = page.extra.buildit %}
+        {% set builds = [
+                buildit_section.scripts,
+                buildit_section.libraries,
+                buildit_section.apps,
+                buildit_section.releases] %}
+        <h1 class="buildit section title">{{ buildit_section.title | markdown(inline=true) | safe }}</h1>
+        <div class="row">
+            {% for build in builds %}
+            <div class="col-md-3">
+                <h2>{{ build.title | markdown(inline=true) | safe }}</h2>
+                <p>{{ build.content | markdown(inline=true) | safe }}</p>
+                <div class="container button-container">
+                    <p>
+                        <a class="btn btn-secondary" href="{{ build.link_url }}" role="button">{{ build.link_text }}
+                            &raquo;</a>
+                    </p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Books Section -->
+
+    <div class="container books">
+        {% set books_section = page.extra.books %}
+        {% set books = [
+            books_section.quick_start,
+            books_section.casting_spels,
+            books_section.lfe_tutorial] %}
+        <h1 class="books section title">{{ books_section.title | markdown(inline=true) | safe }}</h1>
 
         <div class="row">
-            <div class="col-md-6">
-                <h2>Heading</h2>
-                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo,
-                    tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem
-                    malesuada magna mollis euismod. Donec sed odio dui. </p>
-                <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+            {% for book in books %}
+            <div class="col-md-4 book">
+                <h2>{{ book.title | markdown(inline=true) | safe }}</h2>
+                <p>{{ book.content | markdown(inline=true) | safe }} </p>
+                <p><a class="btn btn-secondary" href="{{ book.link_url }}" role="button">{{ book.link_text }}
+                        &raquo;</a></p>
             </div>
-            <div class="col-md-6">
-                <h2>Heading</h2>
-                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo,
-                    tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem
-                    malesuada magna mollis euismod. Donec sed odio dui. </p>
-                <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-            </div>
+            {% endfor %}
         </div>
+    </div>
 
-        <hr>
+    <!-- Videos Section -->
+
+    <div class="container videos">
+        {% set videos_section = page.extra.videos %}
+        {% set videos = [
+            videos_section.efsf2017,
+            videos_section.ecu2016,
+            videos_section.efsf2014] %}
+        <h1 class="books section title">{{ videos_section.title | markdown(inline=true) | safe }}</h1>
 
         <div class="row">
-            <div class="col-md-6">
-                <h2>Heading</h2>
-                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus
-                    commodo,
-                    tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta
-                    sem
-                    malesuada magna mollis euismod. Donec sed odio dui. </p>
-                <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+            {% for video in videos %}
+            <div class="col-md-4 video">
+                <h2>{{ video.title | markdown(inline=true) | safe }}</h2>
+                <p>{{ video.content | markdown(inline=true) | safe }} </p>
+                <p><a class="btn btn-secondary" href="{{ video.link_url }}" role="button">{{ video.link_text }}
+                        &raquo;</a></p>
             </div>
-            <div class="col-md-6">
-                <h2>Heading</h2>
-                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus
-                    commodo,
-                    tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta
-                    sem
-                    malesuada magna mollis euismod. Donec sed odio dui. </p>
-                <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-            </div>
+            {% endfor %}
         </div>
-
-        <hr>
+    </div>
 
     </div> <!-- /container -->
-    <div class="container">
+
+    <div class="container callout">
+        {% set callout1 = page.extra.callout1 %}
         <div class="jumbotron call-out-1">
             <div class="col-sm-12 mx-auto">
-                <h1>End of page call out 1</h1>
-                <p>This example is a quick exercise to illustrate how the navbar and its contents work. Some navbars
-                    extend the width of the viewport, others are confined within a <code>.container</code>. For
-                    positioning of navbars, checkout the <a href="/docs/4.5/examples/navbar-static/">top</a> and <a
-                        href="/docs/4.5/examples/navbar-fixed/">fixed top</a> examples.</p>
-                <a class="btn btn-primary" href="/docs/4.5/components/navbar/" role="button">View navbar docs
-                    &raquo;</a>
-                </p>
+                <h1>{{ callout1.title | markdown(inline=true) | safe }}</h1>
+                <p>{{ callout1.content | markdown(inline=true) | safe }}</p>
             </div>
         </div>
-    </div> <!-- /container -->
+    </div>
 
-    <div class="container">
+    <div class="container callout">
+        {% set callout2 = page.extra.callout2 %}
         <div class="jumbotron call-out-2">
             <div class="col-sm-12 mx-auto">
-                <h1>Give yourself to the Lisp side of the Force!</h1>
+                <h1>{{ callout2.title | markdown(inline=true) | safe }}</h1>
 
-                <p><a href="http://xkcd.com/297/">
-                        <img src="/images/xkcd-lisp-cycles.png" />
-                    </a>
-                </p>
+                <div class="dark-border-wrap">
+                    {{ callout2.content | markdown(inline=true) | safe }}
+                </div>
             </div>
         </div>
     </div> <!-- /container -->

@@ -1,3 +1,4 @@
 *.xcf
 dev/logs
 .DS_Store
+public

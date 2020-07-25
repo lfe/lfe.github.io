@@ -17,10 +17,6 @@ template = "design/layout-home.html"
 #### To make this easier to read, the variables have been grouped with
 #### their sections via comment dividers below.
 
-###   Title Section   #########################################
-
-sitetagline = "MACLISP and supervision trees are all that anyone needs."
-
 ###   Quotes   ################################################
 
 quotes = '''
@@ -45,6 +41,19 @@ No global data.
 Runs efficiently on the BEAM.
 Seamless Erlang interop, including the ecosystem of Erlang libraries.
 '''
+
+###   Title Section   #########################################
+
+logo_image = "/images/LFE-logo-abbr-6.2.png"
+sitetagline = "MACLISP and supervision trees are all that anyone needs."
+
+###   Download Section   ######################################
+
+[extra.download]
+
+repository = "https://github.com/rvirding/lfe"
+stable_version = "1.2.1"
+unstable_version = "1.3"
 
 ###   Code Excerpts   #########################################
 
@@ -478,6 +487,41 @@ content = '''
 '''
 link_text = "Read Now"
 link_url = "http://lfe.io/rebar3-quick-start/"
+
+[extra.books.rebar3]
+
+title = "`rebar3_lfe` Command Reference"
+content = '''
+[img-src]: https://lfe-rebar3.github.io/current/images/cover.jpg
+[img-link]: https://lfe-rebar3.github.io/
+[![rebar3_lfe command reference][img-src]][img-link]
+'''
+link_text = "Read Now"
+link_url = "https://lfe-rebar3.github.io/"
+
+[extra.books.unknown]
+
+title = ""
+content = '''
+[img-src]: https://lfe-rebar3.github.io/current/images/cover.jpg
+[img-link]: https://lfe-rebar3.github.io/
+[![rebar3_lfe command reference][img-src]][img-link]
+'''
+link_text = "Read Now"
+link_url = "https://lfe-rebar3.github.io/"
+
+[extra.books.sicp]
+
+title = "SICP, The LFE Edition"
+content = '''
+[img-src]: https://raw.githubusercontent.com/lfe/sicp/master/cover.jpg
+[img-link]: https://lfe.gitbooks.io/sicp/content/
+[![rebar3_lfe command reference][img-src]][img-link]
+'''
+link_text = "Read Now"
+link_url = "https://lfe.gitbooks.io/sicp/content/"
+
+
 
 ###   Select Videos Section   #################################
 

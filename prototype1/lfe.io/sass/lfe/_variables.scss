@@ -322,6 +322,17 @@ div.container.videos div div.video p a img {
     height: 200px;
 }
 
+div.container.books .book-group,
+div.container.videos .book-video {
+    margin-block-end: 2em;
+}
+
+h2 code,
+h2 code {
+    color: #000;
+    font-weight: lighter;
+}
+
 // --- End-of-page call-outs ----------------------------------
 
 div.container.callout {

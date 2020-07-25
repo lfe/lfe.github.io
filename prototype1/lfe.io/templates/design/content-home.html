@@ -5,7 +5,7 @@
 
             <div class="row">
                 <div class="col-md-4">
-                    <img src="/images/LFE-logo-abbr-6.2.png" />
+                    <img src="{{ page.extra.logo_image }}" />
                 </div>
                 <div class="col-md-4 tagline">
                     <em>"{{page.extra.sitetagline}}"</em>
@@ -19,16 +19,19 @@
                             </div>
                             <div class="col-6 dl-both-container">
                                 <div class="row">
+                                    {% set repo = page.extra.download.repository %}
+                                    {% set stable = page.extra.download.stable_version %}
+                                    {% set unstable = page.extra.download.unstable_version %}
                                     <div class="col-12 dl-stable-container">
-                                        <a href="https://github.com/rvirding/lfe/archive/1.2.1.zip">
+                                        <a href="{{ repo }}/archive/{{ stable }}.zip">
                                             <button type="button"
-                                                class="btn btn-success btn-sm dl-unstable">Stable&nbsp;(1.2.1)</button>
+                                                class="btn btn-success btn-sm dl-unstable">Stable&nbsp;({{ stable }})</button>
                                         </a>
                                     </div>
                                     <div class="col-12 dl-unstable-container">
-                                        <a href="https://github.com/rvirding/lfe/archive/1.3.zip">
+                                        <a href="{{ repo }}/archive/{{ unstable }}.zip">
                                             <button type="button"
-                                                class="btn btn-warning btn-sm dl-unstable">Unstable&nbsp;(1.3)</button>
+                                                class="btn btn-warning btn-sm dl-unstable">Unstable&nbsp;({{ unstable }})</button>
                                         </a>
                                     </div>
                                 </div>
@@ -145,20 +148,38 @@
 
     <div class="container books">
         {% set books_section = page.extra.books %}
-        {% set books = [
+        <h1 class="books section title">{{ books_section.title | markdown(inline=true) | safe }}</h1>
+        {% set book_group1 = [
             books_section.quick_start,
             books_section.casting_spels,
             books_section.lfe_tutorial] %}
-        <h1 class="books section title">{{ books_section.title | markdown(inline=true) | safe }}</h1>
 
-        <div class="row">
-            {% for book in books %}
+        <div class="row book-group">
+            {% for book in book_group1 %}
             <div class="col-md-4 book">
                 <h2>{{ book.title | markdown(inline=true) | safe }}</h2>
                 <p>{{ book.content | markdown(inline=true) | safe }} </p>
                 <p><a class="btn btn-secondary" href="{{ book.link_url }}" role="button">{{ book.link_text }}
                         &raquo;</a></p>
             </div>
+            {% endfor %}
+        </div>
+        {% set book_group2 = [
+            books_section.rebar3,
+            books_section.unknown,
+            books_section.sicp] %}
+        <div class="row book-group">
+            {% for book in book_group2 %}
+
+            <div class="col-md-4 book">
+                {% if book.title != "" %}
+                <h2>{{ book.title | markdown(inline=true) | safe }}</h2>
+                <p>{{ book.content | markdown(inline=true) | safe }} </p>
+                <p><a class="btn btn-secondary" href="{{ book.link_url }}" role="button">{{ book.link_text }}
+                        &raquo;</a></p>
+                {% endif %}
+            </div>
+
             {% endfor %}
         </div>
     </div>

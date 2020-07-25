@@ -28,6 +28,9 @@ $light-back-a: lighten($theme-col-17-a, 0%);
 $mid-grey: rgb(127, 127, 127);
 $light-grey: #aaa;
 
+$orange: #FF8F00;
+$orange-dark: #E46D12;
+
 body {
     background-color: $theme-page-background;
 }
@@ -151,7 +154,7 @@ a {
     color: $primary-upper;
 }
 
-// --- Home page headline -------------------------------------
+// --- Home page masthead -------------------------------------
 
 .jumbotron.lfe-masthead {
     padding-top: 1em;
@@ -169,8 +172,40 @@ a {
 
 .lfe-masthead .download {
     color: #ccc;
+}
+
+.lfe-masthead .download .dl-icon-container,
+.lfe-masthead .download .dl-stable-container,
+.lfe-masthead .download .dl-unstable-container {
+    padding: 0;
+    margin: 0;
+}
+
+.lfe-masthead .download .dl-both-container {
+    padding-left: 0;
+    margin-left: 0;
+}
+
+.lfe-masthead .download .row {
+    float: right;
     text-align: right;
-    vertical-align: bottom;
+}
+
+.lfe-masthead .download button {
+    width: 80%;
+}
+
+.lfe-masthead .download .dl-unstable-container button {
+    background-color: $orange;
+    border-color: $orange;
+}
+
+.lfe-masthead .download .dl-unstable-container button:hover,
+.lfe-masthead .download .dl-unstable-container button:focus,
+.lfe-masthead .download .dl-unstable-container button:active,
+.lfe-masthead .download .dl-unstable-container button.active {
+    background-color: $orange-dark;
+    border-color: $orange-dark;
 }
 
 // --- Home page code examples --------------------------------

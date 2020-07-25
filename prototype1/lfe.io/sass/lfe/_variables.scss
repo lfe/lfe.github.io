@@ -65,16 +65,21 @@ $top-nav-bg-lower: $theme-col-7;
 #lfe-main-nav .nav-item.spacer {
     border: none;
     text-align: right;
-    width: 60px;
+    width: 30px;
     padding-right: 0;
 }
 
 #lfe-main-nav .nav-item.spacer {
-    width: 40px;
+    width: 10px;
 }
 
-.lfe.main #search {
+#lfe-main-nav.collapse.navbar-collapse form input#search {
     padding: 0;
+    font-size: 9pt;
+}
+
+#lfe-main-nav.collapse.navbar-collapse form button {
+    margin-left: 2px;
 }
 
 // --- Home page bg -------------------------------------------

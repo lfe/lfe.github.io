@@ -4,6 +4,8 @@
 <head>
     {% block meta %}
     {% include "base/meta.html" %}
+    <title>LFE : {% block pagetitle %}{{ page.title }}{% endblock pagetitle %}</title>
+    <meta name="description" content="{% block pagedescription %}{{ page.description }}{% endblock pagedescription %}">
     {% endblock head %}
 
     {% block favicon %}
@@ -24,7 +26,6 @@
 </head>
 
 <body>
-
     {% block head %}
     {% include "base/head.html" %}
     {% endblock head %}
@@ -39,7 +40,6 @@
     {% block endscripts %}
     {% include "base/end-scripts.html" %}
     {% endblock endscripts %}
-
 </body>
 
 </html>

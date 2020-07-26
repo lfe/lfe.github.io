@@ -1,6 +1,5 @@
 +++
-title = "Site Design : Layout : Home"
-template = "design/layout-home.html"
+title = "Lisp Flavoured Erlang"
 in_search_index = true
 
 [extra]
@@ -585,4 +584,4 @@ content = '''
 
 +++
 
-Layout for the home page.
+This content is unused.

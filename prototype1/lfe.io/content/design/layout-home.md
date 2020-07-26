@@ -492,36 +492,34 @@ link_url = "http://lfe.io/books/rebar3-quick-start/"
 
 title = "`rebar3_lfe` Command Reference"
 content = '''
-[img-src]: https://lfe-rebar3.github.io/current/images/cover.jpg
-[img-link]: https://lfe-rebar3.github.io/
+[img-src]: https://lfe.io/reference/lfe-rebar3/current/images/cover.jpg
+[img-link]: https://lfe.io/reference/lfe-rebar3/
 [![rebar3_lfe command reference][img-src]][img-link]
 '''
 link_text = "Read Now"
-link_url = "https://lfe-rebar3.github.io/"
+link_url = "https://lfe.io/reference/lfe-rebar3/"
 
 [extra.books.unknown]
 
 title = ""
 content = '''
-[img-src]: https://lfe-rebar3.github.io/current/images/cover.jpg
-[img-link]: https://lfe-rebar3.github.io/
-[![rebar3_lfe command reference][img-src]][img-link]
+[img-src]:
+[img-link]:
+[![XXX][img-src]][img-link]
 '''
 link_text = "Read Now"
-link_url = "https://lfe-rebar3.github.io/"
+link_url = ""
 
 [extra.books.sicp]
 
-title = "SICP, The LFE Edition"
+title = "SICP<br/>The LFE Edition"
 content = '''
-[img-src]: https://raw.githubusercontent.com/lfe/sicp/master/cover.jpg
-[img-link]: https://lfe.gitbooks.io/sicp/content/
-[![rebar3_lfe command reference][img-src]][img-link]
+[img-src]: http://lfe.io/books/sicp/images/cover.jpg
+[img-link]: http://lfe.io/books/sicp/
+[![sicp][img-src]][img-link]
 '''
 link_text = "Read Now"
-link_url = "https://lfe.gitbooks.io/sicp/content/"
-
-
+link_url = "http://lfe.io/books/sicp/"
 
 ###   Select Videos Section   #################################
 

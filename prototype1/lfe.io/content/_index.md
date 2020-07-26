@@ -459,34 +459,34 @@ title = "Books"
 
 title = "The LFE Tutorial"
 content = '''
-[img-src]: http://lfe.io/books/tutorial/images/cover.jpg
-[img-link]: http://lfe.io/books/tutorial/
+[img-src]: https://lfe.io/books/tutorial/images/cover.jpg
+[img-link]: https://lfe.io/books/tutorial/
 [![lfe-tutorial][img-src]][img-link]
 '''
 link_text = "Read Now"
-link_url = "http://lfe.io/books/tutorial/"
+link_url = "https://lfe.io/books/tutorial/"
 
 [extra.books.casting_spels]
 
 title = "Casting SPELs in LFE"
 content = '''
-[img-src]: http://lfe.io/books/casting-spels/images/cover.jpg
-[img-link]: http://lfe.io/books/casting-spels/
+[img-src]: https://lfe.io/books/casting-spels/images/cover.jpg
+[img-link]: https://lfe.io/books/casting-spels/
 [![casting-spels][img-src]][img-link]
 '''
 link_text = "Read Now"
-link_url = "http://lfe.io/books/casting-spels/"
+link_url = "https://lfe.io/books/casting-spels/"
 
 [extra.books.quick_start]
 
 title = "LFE Quick-Start"
 content = '''
-[img-src]: http://lfe.io/books/rebar3-quick-start/images/cover.jpg
-[img-link]: http://lfe.io/books/rebar3-quick-start/
+[img-src]: https://lfe.io/books/rebar3-quick-start/images/cover.jpg
+[img-link]: https://lfe.io/books/rebar3-quick-start/
 [![casting-spels][img-src]][img-link]
 '''
 link_text = "Read Now"
-link_url = "http://lfe.io/books/rebar3-quick-start/"
+link_url = "https://lfe.io/books/rebar3-quick-start/"
 
 [extra.books.rebar3]
 
@@ -514,12 +514,12 @@ link_url = ""
 
 title = "SICP<br/>The LFE Edition"
 content = '''
-[img-src]: http://lfe.io/books/sicp/images/cover.jpg
-[img-link]: http://lfe.io/books/sicp/
+[img-src]: https://lfe.io/books/sicp/images/cover.jpg
+[img-link]: https://lfe.io/books/sicp/
 [![sicp][img-src]][img-link]
 '''
 link_text = "Read Now"
-link_url = "http://lfe.io/books/sicp/"
+link_url = "https://lfe.io/books/sicp/"
 
 ###   Select Videos Section   #################################
 
@@ -584,4 +584,4 @@ content = '''
 
 +++
 
-This content is unused.
+The home page for LFE.

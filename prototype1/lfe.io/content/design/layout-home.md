@@ -4,7 +4,7 @@ template = "design/layout-home.html"
 
 [extra]
 
-#### Important! 
+#### Important!
 ####
 #### The LFE landing page is a complex arrangment of various widgets
 #### which each need to pull their data from specific variables defined
@@ -23,8 +23,8 @@ quotes = '''
 LFE is a proper Lisp, 100% compatible with Core Erlang and able to take full
 advantage of OTP.
 
-Light-weight, massive concurrency. 
-Fault tolerance. 
+Light-weight, massive concurrency.
+Fault tolerance.
 Continuous operation with no downtime.
 Full distributed systems.
 Asynchronous communication.
@@ -86,7 +86,7 @@ code = '''
 '''
 desc = '''
 LFE comes with a powerful REPL, supporting interactive development
-(including writing macros!) as well as running scripts or even evaluating 
+(including writing macros!) as well as running scripts or even evaluating
 arbitrary LFE code via the command line.
 '''
 
@@ -133,7 +133,7 @@ lfe> #("element 1" 2 elem-3)
 
 ;; Maps
 lfe> #m(key1 "value 1"
-        "key 2" value-2) 
+        "key 2" value-2)
 #M("key 2" value-2 key1 "value 1")
 
 
@@ -184,7 +184,7 @@ code = '''
 lfe> (defun ackermann
        ((0 n) (+ n 1))
        ((m 0) (ackermann (- m 1) 1))
-       ((m n) (ackermann (- m 1) 
+       ((m n) (ackermann (- m 1)
                          (ackermann m (- n 1)))))
 
 ;; Call the function
@@ -197,7 +197,7 @@ lfe> (funcall #'ackermann/2 3 4))
 ```
 '''
 desc = '''
-As well as supporting the standard Lisp syntax for `defun`, 
+As well as supporting the standard Lisp syntax for `defun`,
 LFE functions support pattern matching in arguments, allowing you to create
 concise, expressive, and elegent code.
 '''
@@ -227,7 +227,7 @@ lfe> (mean 1 2 3 4 5 6 42 108)
 desc = '''
 LFE macros are unhygenic, but with scoped variables. There is no `gensym` in
 LFE due to this being unsafe in long-lived, distributed code (LFE supports
-sharing code with remote nodes). With the excetion of running in the REPL, 
+sharing code with remote nodes). With the excetion of running in the REPL,
 macros are only compile-time.
 '''
 
@@ -237,8 +237,8 @@ name = "Erlang Interop"
 id = "erl"
 code = '''
 ```lisp
-lfe> (lists:reverse 
-       (erlang:integer_to_list 
+lfe> (lists:reverse
+       (erlang:integer_to_list
           (lists:foldl #'*/2 1 '(1 2 3 4))))
 "42"
 
@@ -459,34 +459,34 @@ title = "Books"
 
 title = "The LFE Tutorial"
 content = '''
-[img-src]: http://lfe.io/tutorial/images/cover.jpg
-[img-link]: http://lfe.io/tutorial/
+[img-src]: http://lfe.io/books/tutorial/images/cover.jpg
+[img-link]: http://lfe.io/books/tutorial/
 [![lfe-tutorial][img-src]][img-link]
 '''
 link_text = "Read Now"
-link_url = "http://lfe.io/tutorial/"
+link_url = "http://lfe.io/books/tutorial/"
 
 [extra.books.casting_spels]
 
 title = "Casting SPELs in LFE"
 content = '''
-[img-src]: http://lfe.io/casting-spels/images/cover.jpg
-[img-link]: http://lfe.io/casting-spels/
+[img-src]: http://lfe.io/books/casting-spels/images/cover.jpg
+[img-link]: http://lfe.io/books/casting-spels/
 [![casting-spels][img-src]][img-link]
 '''
 link_text = "Read Now"
-link_url = "http://lfe.io/casting-spels/"
+link_url = "http://lfe.io/books/casting-spels/"
 
 [extra.books.quick_start]
 
 title = "LFE Quick-Start"
 content = '''
-[img-src]: http://lfe.io/rebar3-quick-start/images/cover.jpg
-[img-link]: http://lfe.io/rebar3-quick-start/
+[img-src]: http://lfe.io/books/rebar3-quick-start/images/cover.jpg
+[img-link]: http://lfe.io/books/rebar3-quick-start/
 [![casting-spels][img-src]][img-link]
 '''
 link_text = "Read Now"
-link_url = "http://lfe.io/rebar3-quick-start/"
+link_url = "http://lfe.io/books/rebar3-quick-start/"
 
 [extra.books.rebar3]
 

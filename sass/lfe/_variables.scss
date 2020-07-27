@@ -21,6 +21,8 @@ $theme-col-17: rgb(94, 140, 94); // tabbed nav, top border
 $theme-col-17-a: rgba(94, 140, 94, 0.5);
 
 $theme-bright-gold: rgb(246, 206, 68);
+$theme-medium-gold: darken($theme-bright-gold, 10%);
+$theme-dark-gold: darken($theme-bright-gold, 30%);
 $theme-page-background: #ECE5C9;
 
 $light-back: lighten($theme-col-17, 20%);
@@ -49,7 +51,7 @@ $top-nav-bg-lower: $theme-col-7;
 
 .lfe-main {
     background-image: linear-gradient($top-nav-bg-upper 30%, $top-nav-bg-lower 95%);
-    border-top: 3px solid darken($theme-bright-gold, 30%);
+    border-top: 3px solid $theme-dark-gold;
     border-bottom: 1px solid $theme-col-3;
     padding-top: 0;
     padding-bottom: 0;
@@ -63,6 +65,11 @@ $top-nav-bg-lower: $theme-col-7;
     border-top: 1px solid $theme-col-4;
     text-align: center;
 }
+
+.lfe-main .navbar-brand img {
+    height: 26px;
+}
+
 
 #lfe-main-nav .nav-item.social,
 #lfe-main-nav .nav-item.spacer {
@@ -93,10 +100,9 @@ $dark-bg-lower: $theme-col-9;
 .lfe-masthead {
     background-image: linear-gradient($dark-bg-upper 30%, $dark-bg-lower 95%);
     border-radius: 0px;
-    border-bottom: 2px solid $theme-col-5;
+    // border-bottom: 2px solid $theme-col-5;
+    border-bottom: 2px solid $theme-medium-gold;
 }
-
-.container.features {}
 
 // --- Buttons ------------------------------------------------
 
@@ -156,18 +162,30 @@ a {
     color: $primary-upper;
 }
 
+a:link,
+a:hover,
+a:focus {
+    color: darken($primary-upper, 15%);
+}
+
 // --- Home page masthead -------------------------------------
+
+.navbar.lfe-main .container .navbar-brand img {
+    height: 26px;
+}
 
 .jumbotron.lfe-masthead {
     padding-top: 1em;
 }
 
 .lfe-masthead .tagline,
+.lfe-masthead .page-title,
 .lfe-masthead .download {
     font-size: x-large;
 }
 
-.lfe-masthead .tagline {
+.lfe-masthead .tagline,
+.lfe-masthead .page-title {
     color: $theme-bright-gold;
     text-align: center;
 }
@@ -233,7 +251,6 @@ $code-light: #7fdbca;
     color: #fff;
     font-size: 10pt;
     line-height: 1em !important;
-    // margin-left: 1em;
 }
 
 .lfe-masthead .code-description {
@@ -242,7 +259,6 @@ $code-light: #7fdbca;
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 14pt;
     color: #ccc;
-    // line-height: 1.1em !important;
     padding-top: 0.5em;
 }
 
@@ -382,6 +398,57 @@ div.jumbotron.call-out-2 div>div>a img {
     border-width: 3px;
     border-color: #000;
     border-style: solid;
+}
+
+// --- Standard pages -----------------------------------------
+
+.lfe-masthead .page-title {
+    text-align: left;
+}
+
+.lfe-masthead .page-description h2 {
+    color: $theme-bright-gold;
+    font-size: 16pt;
+    font-weight: 100;
+    text-align: left;
+    padding-top: 1em;
+}
+
+.page-content {
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        color: $green-section-title;
+        text-align: left !important;
+    }
+
+    padding-bottom: 2em;
+    margin-bottom: 2em;
+}
+
+.page-content h1 {
+    border-bottom: 1px solid $green-section-title;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.page-content h2 {
+    font-size: 1.8rem;
+    margin-top: 0.8em;
+    margin-bottom: 0.8em;
+}
+
+.page-content p,
+.page-content ul {
+    font-size: 14pt;
+}
+
+.page-content p a {
+    font-weight: 500;
 }
 
 // --- Footer -------------------------------------------------

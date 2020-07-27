@@ -6,7 +6,7 @@
     {% include "base/meta.html" %}
     <title>LFE : {% block pagetitle %}{{ page.title }}{% endblock pagetitle %}</title>
     <meta name="description" content="{% block pagedescription %}{{ page.description }}{% endblock pagedescription %}">
-    {% endblock head %}
+    {% endblock meta %}
 
     {% block favicon %}
     {% include "base/favicon.html" %}
@@ -27,7 +27,21 @@
 
 <body>
     {% block head %}
-    {% include "base/head.html" %}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark lfe-main">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <img src="/images/LFE-logo-color-separated-6-square-x64.png" />
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#lfe-main-nav"
+                aria-controls="lfe-main-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            {% include "base/head-menu.html" %}
+        </div>
+    </nav>
+    {% include "base/head-menu.html" %}
+    {% block navbar_brand %}
+    {% endblock navbar_brand %}
     {% endblock head %}
 
     {% block main %}

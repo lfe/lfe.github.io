@@ -15,26 +15,14 @@ or fork the site and submit a
 If you would like to run the site locally, you may do so with this command:
 
 ```bash
-$ make dev
+$ zola serve
 ```
 
-This will start the site on a local dev server running on port 4000. HTTP log
-files will be available in ``./dev``.
+This will start the site on a local dev server running on port 1111.
 
-If you want to run on a different port, simply set the ``PORT`` environment
-variable to your liking:
-
-```bash
-$ PORT=5099 make dev
-```
-
-This ``make`` target assumes that ``lfetool`` has cloned the lfe repository
-(and compiled it) to ``~/.lfe/lfe``. If your ``lfe`` executable is in a location
-other than ``~/.lfe/lfe/bin``, simply export the ``LFE_BIN_DIR`` to point to it.
-
-You can also connect to your running server in another terminal using the
-following ``make`` target:
+If you want to run on a different port, simply set the `zola` port option to
+your liking:
 
 ```bash
-$ make connect
+$ zola serve -p 5099
 ```

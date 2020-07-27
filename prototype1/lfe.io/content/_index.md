@@ -296,7 +296,8 @@ languages.
 
 content = '''
 LFE is not a casual Lisp. It's a Lisp for those who want to build distributed
-                applications -- like the Erlang software that powers 40% of the world's telecommunications.
+applications -- like the Erlang software that powers 40% of the world's 
+telecommunications.
 '''
 link_text = "Learn More"
 link_url = "#"
@@ -397,37 +398,58 @@ title = "Build It with LFE"
 
 title = "Scripts"
 content = '''
-`main` scripts, `lfescript`s, escripts
+In addition to all the heavy-duty power that LFE gets for free, by virtue of
+the Erlang VM, you can also create small, easy-to-write one-off
+`main` scripts, `lfescript`s, and even escripts -- either as a single file
+or with additional modules to help organize those larger scripts.
+<br/>
+<br/>
 '''
 link_text = "Learn More"
-link_url = "#"
+link_url = "https://lfe.io/reference/lfe-rebar3/current/command-ref/projects/main.html"
 
 [extra.buildit.libraries]
 
 title = "Stand-alone Libraries"
 content = '''
-TBD
+Building libraries for use by LFE applications (and even Erlang or other BEAM
+language applications!) is the [bread and butter](https://github.com/lfex) of
+LFE hackers. The Erlang/BEAM ecosystem is fully accessible to LFE applications,
+but you also have the freedom to do more in LFE.
 '''
 link_text = "Learn More"
-link_url = "#"
+link_url = "https://lfe.io/reference/lfe-rebar3/current/command-ref/projects/lib.html"
 
 [extra.buildit.apps]
 
 title = "OTP Applications"
 content = '''
-TBD
+You can take advantage of OTP with LFE in mere seconds, creating fault-tolerant
+applications with built-in process monitoring and supervision trees, so you
+`gen_server`s (and all the other `behaviour`s, too) never go down.
+<br/>
+<br/>
+<br/>
+<br/>
 '''
 link_text = "Learn More"
-link_url = "#"
+link_url = "https://lfe.io/reference/lfe-rebar3/current/command-ref/projects/app.html"
 
 [extra.buildit.releases]
 
 title = "OTP Releases"
 content = '''
-TBD
+When your LFE prototype is ready for the big-time, you can run it with all the
+[sophisticated machinery](https://adoptingerlang.org/docs/production/releases/)
+ of an OTP release. In fact, you don't have to wait:
+start your prototype as a realease, with zero pain and all of the benefit.
+<br/>
+<br/>
+<br/>
+<br/>
 '''
 link_text = "Learn More"
-link_url = "#"
+link_url = "https://lfe.io/reference/lfe-rebar3/current/command-ref/projects/release.html"
 
 ###   News Section   ##########################################
 

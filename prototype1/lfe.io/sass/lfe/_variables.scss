@@ -93,8 +93,10 @@ $dark-bg-lower: $theme-col-9;
 .lfe-masthead {
     background-image: linear-gradient($dark-bg-upper 30%, $dark-bg-lower 95%);
     border-radius: 0px;
+    border-bottom: 2px solid $theme-col-5;
 }
 
+.container.features {}
 
 // --- Buttons ------------------------------------------------
 
@@ -395,6 +397,7 @@ $subfooter-color: $light-grey;
 .footer {
     color: $footer-color;
     background-color: $footer-background;
+    border-top: 1px solid $theme-col-17;
 }
 
 .footer>.container {

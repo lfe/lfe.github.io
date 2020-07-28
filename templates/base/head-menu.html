@@ -1,13 +1,29 @@
 <div class="collapse navbar-collapse" id="lfe-main-nav">
+    {% set current_page = "/" ~ current_path %}
+    {% set selected = "" %}
     <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-            <a class="nav-link" href="/learn">Learn</a>
+            {% set href = "/learn/" %}
+            {% if current_page == href %}{% set selected = "selected" %}{% endif %}
+            <a class="nav-link {{ selected }}" href="{{ href }}">Learn</a>
+            {% set selected = "" %}
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/use">Use</a>
+            {% set href = "/use/" %}
+            {% if current_page == href %}{% set selected = "selected" %}{% endif %}
+            <a class="nav-link {{ selected }}" href="{{ href }}">Use</a>
+            {% set selected = "" %}
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/community">Community</a>
+            {% set href = "/community/" %}
+            {% if current_page == href %}{% set selected = "selected" %}{% endif %}
+            <a class="nav-link {{ selected }}" href="{{ href }}">Community</a>
+            {% set selected = "" %}
+        </li>
+        <li class="nav-item">
+            {% set href = "/about/" %}
+            {% if current_page == href %}{% set selected = "selected" %}{% endif %}
+            <a class="nav-link {{ selected }}" href="{{ href }}">About</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="http://blog.lfe.io/">Blog</a>

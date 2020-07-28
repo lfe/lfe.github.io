@@ -392,7 +392,9 @@ link_url = "#"
 
 [extra.buildit]
 
-title = "Build It with LFE"
+title = '''
+<i class="fas fa-cogs fa-1x"></i> Build It with LFE
+'''
 
 [extra.buildit.scripts]
 
@@ -604,6 +606,17 @@ content = '''
 [![call-out content][img-src]][img-link]
 '''
 
+###   Sponsors Section   ###############################
+
+[extra.sponsors]
+title = "A special thanks to our sponsor:"
+
+[extra.sponsors.billo]
+content = '''
+[img-src]: http://billo.systems/images/footer-logo.png
+[img-link]: http://billo.systems
+[![sponsor][img-src]][img-link]
+'''
 +++
 
 The home page for LFE.

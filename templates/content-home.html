@@ -231,4 +231,11 @@
         </div>
     </div> <!-- /container -->
 
+    <div class="container sponsors">
+        {{ section.extra.sponsors.title | markdown(inline=true) | safe }}
+        <br />
+        <br />
+        {{ section.extra.sponsors.billo.content | markdown(inline=true) | safe }}
+    </div> <!-- /container -->
+
 </main>

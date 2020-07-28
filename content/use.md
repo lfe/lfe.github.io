@@ -3,9 +3,74 @@ title = "Use"
 in_search_index = true
 
 [extra]
-long_title = "Using <br/> LFE"
-long_description = ""
+long_title = "Using LFE"
+long_description = "LFE may be used as a shell, for scripting; as a development tool via its REPL; as a library; and as a full programming language in its own right, with a compiler that generates `.beam` files for use by the Erlang VM. This page aims to bring to your fingertips the resources you will need most in your daily use of LFE in one or more of these."
 
 +++
 
-Content TBD
+# [LFE](#lfe)
+
+## [The REPL](#the-repl)
+
+As you get to know LFE, you'll find that you'll do a lot of your prototyping in the REPL. There are three primary ways you can do this:
+
+1. With Erlang and `rebar3` installed, running `rebar3 lfe repl` in a project directory will start up the LFE REPL and provide access to all your project modules, include files, and dependencies.
+1. If you `git clone`d the LFE repo to a machine, then running `make` and then `./bin/lfe` will start up the LFE REPL.
+1. Lastly, you can run the LFE REPL with only docker on your machine via `docker run -it lfex/lfe` (no Erlang, no `rebar3` necessary); for many people, this is the quickly, most pain-free way of trying out LFE.
+
+In all of the above, once you are in the REPL, you have access to the `(help)` function which will print out some help text for running a bunch of top-level commands. Also, you may start typing a function call (e.g., `(lists:`) and then double-tap `<TAB>` to provide a list of availale functions from the given module. Very often this obviates a need to look up the function you want to call!
+
+## [Reference](#reference)
+
+When `(help)` and tab-completion aren't enough, it's time to break out the books. The core LFE reference is your friend:
+
+* [The LFE Guide](https://github.com/rvirding/lfe/blob/develop/doc/src/lfe_guide.7.md) (man page source)
+* [The data types in LFE](https://github.com/rvirding/lfe/blob/develop/doc/src/lfe_types.7.md)
+* [REPL functions, variables, and environment](https://github.com/rvirding/lfe/blob/develop/doc/src/lfe.1.md)
+* [LFE formatting](https://github.com/rvirding/lfe/blob/develop/doc/src/lfe_io.3.md)
+* [Common Lisp compatibility](https://github.com/rvirding/lfe/blob/develop/doc/src/lfe_cl.3.md)
+* [Clojure compatibility](https://github.com/rvirding/lfe/blob/develop/doc/src/lfe_clj.3.md)
+
+If you want to remind yourself on all that the LFE plugin can do:
+* [rebar3_lfe Command Reference](https://lfe.io/reference/lfe-rebar3/)
+
+More information on Docker usage is available here:
+* [https://hub.docker.com/r/lfex/lfe](https://hub.docker.com/r/lfex/lfe)
+
+## [docs.lfe.io](#docs-lfe-io)
+
+The docs site for LFE is quite old and almost entirely out of date, but it's linked here since it still has some jewels that haven't been ported elsewhere:
+* [docs.lfe.io](htt[://docs.lfe.io])
+
+There is a newer version of the docs site whose development has been stalled. Though not currently of much use, it's available here:
+* [docs.lfe.io/dev/](http://docs.lfe.io/dev/index.html)
+
+# [Erlang](#erlang)
+
+[Erlang Run-Time System Application (ERTS) Reference Manual](http://erlang.org/doc/apps/erts/index.html) - As an LFE programmer, this is one of the most powerful reference resources you can have at your fingertips. Once you get to the point to where you are ready to build production-ready applications, this will be a constant companion. In particular:
+
+* The [erlang](http://erlang.org/doc/man/erlang.html) module
+* The [application](http://erlang.org/doc/man/application.html) module
+* The [supervisor](http://erlang.org/doc/man/supervisor.html) module
+* The [gen_server](http://erlang.org/doc/man/gen_server.html), [gen_event](http://erlang.org/doc/man/gen_event.html), and [gen_statem](http://erlang.org/doc/man/gen_statem.html) modules
+* The [lists](http://erlang.org/doc/man/lists.html), [maps](http://erlang.org/doc/man/maps.html), and [proplists](http://erlang.org/doc/man/proplists.html) modules
+* And many, many others ...
+
+If you will be interfacing with other languages, then these resources will be of particular use:
+
+* The [Ports and Port Drivers](https://erlang.org/doc/reference_manual/ports.html) reference and the [Erlang Interop/Ports User Guide](http://erlang.org/doc/tutorial/c_port.html)
+* The [Jinterface package](http://erlang.org/doc/apps/jinterface/jinterface_users_guide.html) and the [jinterface Reference Manual](http://erlang.org/doc/apps/jinterface/index.html)
+
+# [rebar3](#rebar3)
+
+One of the things you might find yourself needing is specialized `rebar3` plugins for your various LFE projects. You may write these in either Erlang or LFE (or, in fact, any BEAM language that has a `rebar3` compiler). There are a ton of good resources on the rebar3 project site, including:
+* [Getting Started](https://www.rebar3.org/docs/getting-started)
+* [Configuration](https://www.rebar3.org/docs/configuration)
+* [Using Plugins](https://www.rebar3.org/docs/using-available-plugins)
+* [Writing Plugins](https://www.rebar3.org/docs/plugins)
+
+The source for the LFE `rebar3` plugin is written in Erlang and viewable here:
+* [https://github.com/lfe-rebar3/rebar3_lfe](https://github.com/lfe-rebar3/rebar3_lfe)
+
+If you want to see examples of `rebar3` plugins written in LFE itself, be sure to checkout some of the other projects in that Github org:
+* [https://github.com/lfe-rebar3](https://github.com/lfe-rebar3)

@@ -57,7 +57,21 @@ $top-nav-bg-lower: $theme-col-7;
     padding-bottom: 0;
 }
 
-.lfe.main .navbar-brand,
+.lfe-main .selected {
+    background-image: linear-gradient($top-nav-bg-sel-upper 30%, $top-nav-bg-sel-lower 95%);
+}
+
+.lfe-main ul .nav-item .selected {
+    color: $theme-dark-gold;
+
+}
+
+.lfe-main ul .nav-item a::hover.selected {
+    color: lighten($theme-dark-gold, 5%) !important;
+
+}
+
+
 #lfe-main-nav .nav-item {
     width: 100px;
     border-right: 1px solid $theme-col-3;
@@ -400,6 +414,12 @@ div.jumbotron.call-out-2 div>div>a img {
     border-style: solid;
 }
 
+.sponsors {
+    text-align: center;
+    padding-bottom: 2em;
+    margin-bottom: 2em;
+}
+
 // --- Standard pages -----------------------------------------
 
 .lfe-masthead .page-title {
@@ -443,12 +463,22 @@ div.jumbotron.call-out-2 div>div>a img {
 }
 
 .page-content p,
-.page-content ul {
+.page-content ul,
+.page-content ol {
     font-size: 14pt;
 }
 
 .page-content p a {
     font-weight: 500;
+}
+
+.page-content blockquote p,
+.page-content blockquote ul,
+.page-content blockquote ol {
+    font-weight: 100 !important;
+    color: #333;
+    font-style: italic;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 // --- Footer -------------------------------------------------
@@ -482,7 +512,7 @@ $subfooter-color: $light-grey;
 }
 
 .sub-footer {
-    color: $subfooter-color;
+    color: darken($theme-dark-gold, 5%);
     font-size: 10pt;
     text-align: center;
     background-image: linear-gradient($top-nav-bg-lower 30%, $top-nav-bg-upper 95%);

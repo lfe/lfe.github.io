@@ -52,7 +52,11 @@ $(PUBLISH_DIR)/README.md:
 	@echo 'Published at [lfe.io/](https://lfe.io/)' >> $(PUBLISH_DIR)/README.md
 	@cd $(PUBLISH_DIR) && git add README.md
 
-publish: clean build $(PUBLISH_DIR)/README.md
+$(PUBLISH_DIR)/CNAME:
+	@echo " >> Copying CNAME File ..."
+	@cp CNAME $(PUBLISH_DIR)/
+
+publish: clean build $(PUBLISH_DIR)/README.md $(PUBLISH_DIR)/CNAME
 	@echo " >> Publishing site ..."
 	-@cd $(PUBLISH_DIR) && \
 	git add * && \

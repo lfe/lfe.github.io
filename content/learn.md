@@ -24,21 +24,21 @@ long_description = "Learning LFE must be taken in two tracks: learning the synta
 
 LFE on [Rosetta Code](https://rosettacode.org/wiki/Category:LFE) - If those examples aren't enough for you, there are 99 others to choose from on Rosetta Code!
 
-[Structure and Interpretation of Computer Programs](https://lfe.io/books/sicp/) - The LFE edition of SICP is still a work in progress, but two chapters have been completed and offer an excellent introduction to core concepts in computer programming, or a refresher for those wishing to get back in the game. This text in its original form was used as the basis for the computer science introdocutory courses taught at MIT for over a decade (from the early 1980s into the 90s). SICP is widely regarded as one of the most important texts for programming, clearly explaining core principals of the art and science, and helping to shape the minds of the first few generations of early Internet innovators. The _LFE Edition_  converts the Lips-1 of the original (Scheme) into the Lisp-2+ varient of LFE.
+[Structure and Interpretation of Computer Programs](https://lfe.io/books/sicp/) - The LFE edition of SICP is still a work in progress, but two chapters have been completed and offer an excellent introduction to core concepts in computer programming, or a refresher for those wishing to get back in the game. This text in its original form was used as the basis for the computer science introductory courses taught at MIT for over a decade (from the early 1980s into the 90s). SICP is widely regarded as one of the most important texts for programming, clearly explaining core principals of the art and science, and helping to shape the minds of the first few generations of early Internet innovators. The _LFE Edition_  converts the Lips-1 of the original (Scheme) into the Lisp-2+ variant of LFE.
 
 ## [More LFE](#more-lfe)
 
 Once you've learned the syntax and the underlying principles of the Erlang VM, you're going to want to actually _use_ this beautiful Lisp! Be sure to check out our [reference materials, how-tows, etc.](/use).
 
-[The community](/community) will be an invaluable resource in your journing of learning, to be sure to stop in whatever medium makes you happy, say "hi" and ask us lots of questions!
+[The community](/community) will be an invaluable resource in your journey of learning, to be sure to stop in whatever medium makes you happy, say "hi" and ask us lots of questions!
 
 # [Erlang](#erlang)
 
-There are some phenomenal materials available for a self-paced Erlang/OTP education. Some of the classics are given below. For those with bigger budgets, remember that formal training is also an option! (In fact, there are not only classses offered for Erlang, but also LFE ...)
+There are some phenomenal materials available for a self-paced Erlang/OTP education. Some of the classics are given below. For those with bigger budgets, remember that formal training is also an option! (In fact, there are not only classes offered for Erlang, but also LFE ...)
 
 ## [The Language](#the-language)
 
-[Learn You Some Erlang for Great Good!](https://learnyousomeerlang.com/) - Probably one of the best (and _definitely_ the most fun) books available for learning Erlang. (Also avialable [in print](https://nostarch.com/erlang).)
+[Learn You Some Erlang for Great Good!](https://learnyousomeerlang.com/) - Probably one of the best (and _definitely_ the most fun) books available for learning Erlang. (Also available [in print](https://nostarch.com/erlang).)
 
 ## [OTP](#otp)
 

@@ -11,12 +11,12 @@ sitetagline = "MACLISP and supervision trees are all that anyone needs."
 
 #### Important!
 ####
-#### The LFE landing page is a complex arrangment of various widgets
+#### The LFE landing page is a complex arrangement of various widgets
 #### which each need to pull their data from specific variables defined
 #### in this [extra] section of the Zola config.
 ####
 #### Due to this wild variety on the home page, the actual Markdown
-#### contentn for this file isn't used; it's the metadata that fills
+#### content for this file isn't used; it's the metadata that fills
 #### all the home page widgets.
 ####
 #### To make this easier to read, the variables have been grouped with
@@ -140,7 +140,7 @@ lfe> #m(key1 "value 1"
 ```
 '''
 desc = '''
-In LFE lists are like they are in a Lisp (except they aslo include
+In LFE lists are like they are in a Lisp (except they also include
 strings). Additionally, LFE has tuples (Lisp vectors) and maps
 (Lisp has tables). LFE has property lists, dicts, and ordered dicts
 from Erlang, supported via additional libraries.
@@ -199,7 +199,7 @@ lfe> (funcall #'ackermann/2 3 4))
 desc = '''
 As well as supporting the standard Lisp syntax for `defun`,
 LFE functions support pattern matching in arguments, allowing you to create
-concise, expressive, and elegent code.
+concise, expressive, and elegant code.
 '''
 
 [extra.excerpts.macros]
@@ -227,7 +227,7 @@ lfe> (mean 1 2 3 4 5 6 42 108)
 desc = '''
 LFE macros are unhygenic, but with scoped variables. There is no `gensym` in
 LFE due to this being unsafe in long-lived, distributed code (LFE supports
-sharing code with remote nodes). With the excetion of running in the REPL,
+sharing code with remote nodes). With the exception of running in the REPL,
 macros are only compile-time.
 '''
 
@@ -256,9 +256,9 @@ lfe> (supervisor:which_children 'kernel_sup)
 desc = '''
 Here we have two examples of directly calling Erlang functions
 from LFE. First, we're "folding" (a.k.a "reducing") over a list
-of items, mutliplying them by the accumulated value, and then further
+of items, multiplying them by the accumulated value, and then further
 transforming using other Erlang functions. Then we are calling an
-Erlang fucntion to get information about a particular superversion tree.
+Erlang function to get information about a particular supervision tree.
 '''
 
 [extra.excerpts.otp]
@@ -339,7 +339,7 @@ title = '''
 Alien Technology
 '''
 content = '''
-It is an established fact that John McCarthy shared alien tech with the world in 1958 when he introducted us to Lisp. We continue that great tradition.
+It is an established fact that John McCarthy shared alien tech with the world in 1958 when he introduced us to Lisp. We continue that great tradition.
 * Functions and variables with separate namespaces (LFE is a Lisp-2)
 * Low-hygiene Macros
 * Homoiconicity
@@ -403,7 +403,7 @@ content = '''
 In addition to all the heavy-duty power that LFE gets for free, by virtue of
 the Erlang VM, you can also create small, easy-to-write one-off
 `main` scripts, `lfescript`s, and even escripts -- either as a single file
-or with additional modules to help organize those larger scripts.
+or with additional modules to help organise those larger scripts.
 <br/>
 <br/>
 '''
@@ -444,7 +444,7 @@ content = '''
 When your LFE prototype is ready for the big-time, you can run it with all the
 [sophisticated machinery](https://adoptingerlang.org/docs/production/releases/)
  of an OTP release. In fact, you don't have to wait:
-start your prototype as a realease, with zero pain and all of the benefit.
+start your prototype as a release, with zero pain and all of the benefit.
 <br/>
 <br/>
 <br/>

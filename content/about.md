@@ -13,7 +13,7 @@ LFE is a Lisp-2+ written for the Erlang VM, providing 100% compatibility with Co
 
 # [A Short History](#history)
 
-While it is well-known the Robert Virding released the very first version of it in 2008, there was a little more initial whimsey associated with the decision to write the LFE programming language:
+While it is well-known the Robert Virding released the very first version of it in 2008, there was a little more initial whimsy associated with the decision to write the LFE programming language:
 
 > <i class="fas fa-quote-left fa-2x"></i> The earliest work is actually from 2007 but this was toying with parsing and implementing a lisp and was more a preamble to LFE. The real work with LFE didn't start until 2008. The earliest LFE files I can find are from March 2008. Originally I wasn't using GitHub, or any other VCS for that matter, and just kept the separate versions as copies of the directory tree.
 >

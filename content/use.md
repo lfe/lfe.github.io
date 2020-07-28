@@ -18,7 +18,7 @@ As you get to know LFE, you'll find that you'll do a lot of your prototyping in 
 1. If you `git clone`d the LFE repo to a machine, then running `make` and then `./bin/lfe` will start up the LFE REPL.
 1. Lastly, you can run the LFE REPL with only docker on your machine via `docker run -it lfex/lfe` (no Erlang, no `rebar3` necessary); for many people, this is the quickly, most pain-free way of trying out LFE.
 
-In all of the above, once you are in the REPL, you have access to the `(help)` function which will print out some help text for running a bunch of top-level commands. Also, you may start typing a function call (e.g., `(lists:`) and then double-tap `<TAB>` to provide a list of availale functions from the given module. Very often this obviates a need to look up the function you want to call!
+In all of the above, once you are in the REPL, you have access to the `(help)` function which will print out some help text for running a bunch of top-level commands. Also, you may start typing a function call (e.g., `(lists:`) and then double-tap `<TAB>` to provide a list of available functions from the given module. Very often this obviates a need to look up the function you want to call!
 
 ## [Reference](#reference)
 
@@ -59,11 +59,11 @@ There is a newer version of the docs site whose development has been stalled. Th
 If you will be interfacing with other languages, then these resources will be of particular use:
 
 * The [Ports and Port Drivers](https://erlang.org/doc/reference_manual/ports.html) reference and the [Erlang Interop/Ports User Guide](http://erlang.org/doc/tutorial/c_port.html)
-* The [Jinterface package](http://erlang.org/doc/apps/jinterface/jinterface_users_guide.html) and the [jinterface Reference Manual](http://erlang.org/doc/apps/jinterface/index.html)
+* The [Jinterface package](http://erlang.org/doc/apps/jinterface/jinterface_users_guide.html) and the [Jinterface Reference Manual](http://erlang.org/doc/apps/jinterface/index.html)
 
 # [rebar3](#rebar3)
 
-One of the things you might find yourself needing is specialized `rebar3` plugins for your various LFE projects. You may write these in either Erlang or LFE (or, in fact, any BEAM language that has a `rebar3` compiler). There are a ton of good resources on the rebar3 project site, including:
+One of the things you might find yourself needing is specialised `rebar3` plugins for your various LFE projects. You may write these in either Erlang or LFE (or, in fact, any BEAM language that has a `rebar3` compiler). There are a ton of good resources on the rebar3 project site, including:
 * [Getting Started](https://www.rebar3.org/docs/getting-started)
 * [Configuration](https://www.rebar3.org/docs/configuration)
 * [Using Plugins](https://www.rebar3.org/docs/using-available-plugins)

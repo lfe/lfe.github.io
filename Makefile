@@ -20,9 +20,10 @@ build:
 ifndef GEN
 	$(error $(BINARY_ERROR))
 endif
-	$(MAKE) backup-submodule-git
+	@echo " >> Building site ..."
+	@$(MAKE) backup-submodule-git
 	@$(GEN) build -o $(PUBLISH_DIR)
-	$(MAKE) restore-submodule-git
+	@$(MAKE) restore-submodule-git
 
 serve:
 	@$(GEN) serve -o $(PUBLISH_DIR) -p $(PORT)
@@ -30,24 +31,29 @@ serve:
 run: serve
 
 clean:
+	@echo " >> Removing files from site dir ..."
 	@rm -rf $(PUBLISH_DIR)/*
 
 site-init:
 	@git submodule update --init --recursive
 
 backup-submodule-git:
+	@echo " >> Backup-up site's git dir ..."
 	@mkdir -p $(TMP_GIT_DIR)/
 	@mv -v $(PUBLISH_DIR)/.git $(TMP_GIT_DIR)/
 
 restore-submodule-git:
+	@echo " >> Restoring site's git dir ..."
 	@mv -v $(TMP_GIT_DIR)/.git $(PUBLISH_DIR)/
 
 $(PUBLISH_DIR)/README.md:
-	@echo '# Content for the LFE site > $(PUBLISH_DIR)/README.md
+	@echo " >> Creating static site's README ..."
+	@echo '# Content for the LFE site' > $(PUBLISH_DIR)/README.md
 	@echo 'Published at [lfe.io/](https://lfe.io/)' >> $(PUBLISH_DIR)/README.md
 	@cd $(PUBLISH_DIR) && git add README.md
 
 publish: clean build $(PUBLISH_DIR)/README.md
+	@echo " >> Publishing site ..."
 	-@cd $(PUBLISH_DIR) && \
 	git add * && \
 	git commit -am "Regenerated site content." > /dev/null && \
@@ -57,8 +63,6 @@ publish: clean build $(PUBLISH_DIR)/README.md
 	git commit -am "Updated submodule for recently generated site content." && \
 	git submodule update && \
 	git push origin $(BUILDER_BRANCH)
-
-build-publish: build publish
 
 spell-check:
 	@for FILE in `find . -name "*.md"`; do \

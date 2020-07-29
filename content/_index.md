@@ -226,9 +226,9 @@ code = '''
 ```lisp
 ;; LFE and Erlang do not support n-arity functions, but
 ;; you can write a Lisp macro to get around that :-)
-(defmacro mean args
-  `(/ (lists:sum ,args)
-      ,(length args)))
+lfe> (defmacro mean args
+       `(/ (lists:sum ,args)
+           ,(length args)))
 
 ;; Use the macro with different numbers of arguments:
 lfe> (mean 1)

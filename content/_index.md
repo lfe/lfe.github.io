@@ -335,7 +335,7 @@ title = '''
 Core Erlang Foundation
 '''
 content = '''
-All the benefits of Erlang with non of the Prolog:
+All the benefits of Erlang with none of the Prolog:
 * No global data
 * No mutable data
 * Pattern matching and guards

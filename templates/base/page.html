@@ -4,6 +4,9 @@
 <head>
     {% block meta %}
     {% include "base/meta.html" %}
+    <meta name="twitter:title" content="(LFE:{% block twittertitle %}{{ page.title }}{% endblock twittertitle %})" />
+    <meta name="twitter:description"
+        content="{% block twitterdescription %}{{ page.description }}{% endblock twitterdescription %}" />
     <title>(LFE:{% block pagetitle %}{{ page.title }}{% endblock pagetitle %})</title>
     <meta name="description" content="{% block pagedescription %}{{ page.description }}{% endblock pagedescription %}">
     {% endblock meta %}

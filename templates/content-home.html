@@ -107,12 +107,6 @@
             <div class="col-md-3">
                 <h2>{{ feature.title | markdown(inline=true) | safe }}</h2>
                 <p>{{ feature.content | markdown(inline=true) | safe }}</p>
-                <div class="container button-container">
-                    <p>
-                        <a class="btn btn-secondary" href="{{ feature.link_url }}" role="button">{{ feature.link_text }}
-                            &raquo;</a>
-                    </p>
-                </div>
             </div>
             {% endfor %}
         </div>

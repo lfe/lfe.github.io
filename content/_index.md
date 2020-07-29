@@ -7,7 +7,7 @@ in_search_index = true
 ###   Title Section   #########################################
 
 logo_image = "/images/LFE-logo-abbr-6.2.png"
-sitetagline = "MACLISP and supervision trees are all that anyone needs."
+sitetagline = "Fifty Shades of Distributed, Syntax-Free Message-Passing."
 
 #### Important!
 ####
@@ -45,6 +45,22 @@ No global data.
 
 Runs efficiently on the BEAM.
 Seamless Erlang interop, including the ecosystem of Erlang libraries.
+
+We're Syntactically and Semantically Chaotic.
+
+LFE: Fifty Shades of Distributed, Syntax-Free Message-Passing.
+
+Curly braces go home!
+
+MACLISP and supervision trees are all that anyone needs.
+
+Come for the Lisp, stay for the Erlang/OTP.
+
+Come for the fault-tolerance and high-availability. Stay for the fault-tolerance and high-availability.
+
+LFE is _way_ cooler than FOCAL.
+What's "FOCAL"?
+See?!
 '''
 
 ###   Download Section   ######################################
@@ -287,7 +303,7 @@ desc = '''
 OTP is what you use when you need to create industrial grade applications
 and services; there's nothing quite like it in the programming world. As
 such, it has inspired countless imitations in a great many other programming
-languages.
+languages. In LFE, you get to use the real deal.
 '''
 
 ###   Summary   ###############################################
@@ -613,7 +629,7 @@ title = "A special thanks to our sponsor:"
 
 [extra.sponsors.billo]
 content = '''
-[img-src]: http://billo.systems/images/footer-logo.png
+[img-src]: /images/billo-logo.png
 [img-link]: http://billo.systems
 [![sponsor][img-src]][img-link]
 '''

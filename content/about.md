@@ -9,7 +9,7 @@ long_description = "A small bit of background on the programming language."
 
 # [The Language](#the-language)
 
-LFE is a Lisp-2+ written for the Erlang VM, providing 100% compatibility with Core Erlang. It is a proper Lisp with a REPL, macros, pattern matching, and seamless interoperability with Erlang and the BEAM ecosystem of libraries. It not only has been used in stable production applications since 2015, it has also been employed by start-ups as their differentiating tech. LFE is flexible enough to be your go-to scripting solution to the preferred syntax for massively scalable, soft-real time services.
+LFE is a Lisp-2+ written for the Erlang VM, providing 100% compatibility with Core Erlang. It is a proper, functional dialect of Lisp with a REPL and macros, as well as features inherited from Erlang, such as pattern pattern matching. Importantly, LFE boasts seamless interoperability with Erlang and the BEAM ecosystem of libraries. It not only has been used in stable production applications since 2015, it has also been employed by start-ups as their differentiating tech. LFE is flexible enough to be everything from your go-to scripting solution to your preferred syntax for massively scalable, soft-real time services.
 
 # [A Short History](#history)
 

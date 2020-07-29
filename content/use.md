@@ -16,15 +16,15 @@ As you get to know LFE, you'll find that you'll do a lot of your prototyping in 
 
 1. With Erlang and `rebar3` installed, running `rebar3 lfe repl` in a project directory will start up the LFE REPL and provide access to all your project modules, include files, and dependencies.
 1. If you `git clone`d the LFE repo to a machine, then running `make` and then `./bin/lfe` will start up the LFE REPL.
-1. Lastly, you can run the LFE REPL with only docker on your machine via `docker run -it lfex/lfe` (no Erlang, no `rebar3` necessary); for many people, this is the quickly, most pain-free way of trying out LFE.
+1. Lastly, you can run the LFE REPL with only docker on your machine via `docker run -it lfex/lfe` (no Erlang, no `rebar3` necessary); for many people, this is the quickest, most pain-free way of trying out LFE.
 
-In all of the above, once you are in the REPL, you have access to the `(help)` function which will print out some help text for running a bunch of top-level commands. Also, you may start typing a function call (e.g., `(lists:`) and then double-tap `<TAB>` to provide a list of available functions from the given module. Very often this obviates a need to look up the function you want to call!
+In all of the above, once you are in the REPL, you have access to the `(help)` function which will print out some help text for running a bunch of top-level commands. Also, you may start typing a function call (e.g., `(lists:`) and then double-tap `<TAB>` to provide a list of available functions from the given module. Very often this obviates any need to look up the function you want to call!
 
 ## [Reference](#reference)
 
-When `(help)` and tab-completion aren't enough, it's time to break out the books. The core LFE reference is your friend:
+When `(help)` and tab-completion aren't enough, it's time to break out the books. The core LFE reference set (man page source files in Markdown format) is your friend:
 
-* [The LFE Guide](https://github.com/rvirding/lfe/blob/develop/doc/src/lfe_guide.7.md) (man page source)
+* [The LFE Guide](https://github.com/rvirding/lfe/blob/develop/doc/src/lfe_guide.7.md)
 * [The data types in LFE](https://github.com/rvirding/lfe/blob/develop/doc/src/lfe_types.7.md)
 * [REPL functions, variables, and environment](https://github.com/rvirding/lfe/blob/develop/doc/src/lfe.1.md)
 * [LFE formatting](https://github.com/rvirding/lfe/blob/develop/doc/src/lfe_io.3.md)

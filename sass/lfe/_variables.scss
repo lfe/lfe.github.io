@@ -62,15 +62,13 @@ $top-nav-bg-lower: $theme-col-7;
 }
 
 .lfe-main ul .nav-item .selected {
-    color: $theme-dark-gold;
-
+    color: $theme-dark-gold !important;
 }
 
-.lfe-main ul .nav-item a::hover.selected {
+.lfe-main ul .nav-item a:hover.selected {
     color: lighten($theme-dark-gold, 5%) !important;
 
 }
-
 
 #lfe-main-nav .nav-item {
     width: 100px;
@@ -79,11 +77,6 @@ $top-nav-bg-lower: $theme-col-7;
     border-top: 1px solid $theme-col-4;
     text-align: center;
 }
-
-.lfe-main .navbar-brand img {
-    height: 26px;
-}
-
 
 #lfe-main-nav .nav-item.social,
 #lfe-main-nav .nav-item.spacer {
@@ -134,8 +127,26 @@ $tabbed-nav-upper-border: $theme-col-17;
 $tabbed-nav-lower-border: $theme-col-11;
 
 .btn-primary,
-.nav-pills {
+.nav.lang-examples {
     background-image: linear-gradient($primary-upper 30%, $primary-lower 95%);
+}
+
+.nav.lang-examples,
+.nav.lang-examples a {
+    color: #aaa !important;
+}
+
+.nav.lang-examples {
+    border-width: 2px !important;
+    border-top: $tabbed-nav-upper-border;
+    border-bottom: $tabbed-nav-lower-border;
+    border-right: $tabbed-nav-upper-border;
+    border-left: $tabbed-nav-lower-border;
+}
+
+.nav.lang-examples .nav-link.active,
+.nav.lang-examples .show>.nav-link {
+    color: $theme-bright-gold !important;
 }
 
 .btn-primary {
@@ -145,29 +156,30 @@ $tabbed-nav-lower-border: $theme-col-11;
     border-left: $primary-lower-border;
 }
 
-.nav-pills {
-    border-width: 2px !important;
-    border-top: $tabbed-nav-upper-border;
-    border-bottom: $tabbed-nav-lower-border;
-    border-right: $tabbed-nav-upper-border;
-    border-left: $tabbed-nav-lower-border;
-}
-
 .nav-link.active {
     background-image: linear-gradient($primary-upper 30%, $primary-lower 95%);
 }
 
-.nav-pills .nav-link.active,
-.nav-pills .show>.nav-link {
-    color: $theme-bright-gold;
-}
-
 .nav-item a {
-    color: #ccc;
+    color: #aaa !important;
 }
 
+.btn-primary,
+.btn-secondary {
+    color: #ccc !important;
+}
+
+.btn-primary:active,
+.btn-secondary:active {
+    color: #ccc !important;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-secondary:hover,
+.btn-secondary:focus,
 .nav-item a:hover {
-    color: #fff;
+    color: #ddd !important;
 }
 
 // --- Links --------------------------------------------------
@@ -182,9 +194,20 @@ a:focus {
     color: darken($primary-upper, 15%);
 }
 
+// --- Code ---------------------------------------------------
+
+code {
+    font-family: 'Courier New', Courier, monospace;
+}
+
 // --- Home page masthead -------------------------------------
 
-.navbar.lfe-main .container .navbar-brand img {
+.lfe-main .navbar-brand,
+.lfe-main .navbar-brand a {
+    color: $theme-dark-gold;
+}
+
+.lfe-main .navbar-brand img {
     height: 26px;
 }
 
@@ -276,13 +299,15 @@ $code-light: #7fdbca;
     padding-top: 0.5em;
 }
 
+.lfe-masthead .page-description code,
 .lfe-masthead .code-description code {
-    font-family: 'Courier New', Courier, monospace;
     font-size: 14pt;
     color: $code-light;
 }
 
-
+.lfe-masthead .page-description code {
+    padding-right: 5px;
+}
 
 // --- Home page code examples lead-out -----------------------
 
@@ -479,6 +504,10 @@ div.jumbotron.call-out-2 div>div>a img {
     color: #333;
     font-style: italic;
     font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.page-content code {
+    font-size: 14pt;
 }
 
 // --- Footer -------------------------------------------------

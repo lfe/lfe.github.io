@@ -4,6 +4,8 @@ template = "design/layout-home.html"
 in_search_index = true
 
 [extra]
+long_title = "Site Design : Layout : Home"
+long_description = "The website for LFE, the Erlang community's own Lisp."
 
 ###   Title Section   #########################################
 

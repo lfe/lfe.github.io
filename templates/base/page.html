@@ -7,6 +7,10 @@
     <meta name="twitter:title" content="(LFE:{% block twittertitle %}{{ page.title }}{% endblock twittertitle %})" />
     <meta name="twitter:description"
         content="{% block twitterdescription %}{{ page.description }}{% endblock twitterdescription %}" />
+    <meta property="og:url" content="{{ current_url }}" />
+    <meta property="og:title" content="(LFE:{% block ogtitle %}{{ page.title }}{% endblock ogtitle %})" />
+    <meta property="og:description"
+        content="{% block ogdescription %}{{ page.description }}{% endblock ogdescription %}" />
     <title>(LFE:{% block pagetitle %}{{ page.title }}{% endblock pagetitle %})</title>
     <meta name="description" content="{% block pagedescription %}{{ page.description }}{% endblock pagedescription %}">
     {% endblock meta %}

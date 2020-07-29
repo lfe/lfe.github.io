@@ -26,7 +26,9 @@ endif
 	@$(MAKE) restore-submodule-git
 
 serve:
-	@$(GEN) serve -o $(PUBLISH_DIR) -p $(PORT)
+	@bash -c "trap \"$(MAKE) serve-cleanup\" EXIT; $(GEN) serve -o $(PUBLISH_DIR) -p $(PORT)"
+
+serve-cleanup: site-init build
 
 run: serve
 
@@ -36,6 +38,7 @@ clean:
 
 site-init:
 	@git submodule update --init --recursive
+	@cd $(PUBLISH_DIR) && git checkout master
 
 backup-submodule-git:
 	@echo " >> Backup-up site's git dir ..."

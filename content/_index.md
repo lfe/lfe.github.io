@@ -47,6 +47,11 @@ No global data.
 Runs efficiently on the BEAM.
 Seamless Erlang interop, including the ecosystem of Erlang libraries.
 
+"It is because of you, mother*@#$%, that we are not all using Lisp"
+"I'm sorry, what was that last part again? Did you just say 'Lisp'?"
+
+Taking the Syntax out of Distributed Systems Programming
+
 We're Syntactically and Semantically Chaotic.
 
 LFE: Fifty Shades of Distributed, Syntax-Free Message-Passing.

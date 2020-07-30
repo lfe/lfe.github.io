@@ -8,7 +8,7 @@
         content="(LFE:{% block twittertitle %}{{ page.extra.long_title }}{% endblock twittertitle %})" />
     <meta name="twitter:description"
         content="{% block twitterdescription %}{{ page.extra.long_description }}{% endblock twitterdescription %}" />
-    <meta property="og:url" content="{{ current_url }}" />
+    <meta property="og:url" content="{{ current_url | safe }}" />
     <meta property="og:title" content="(LFE:{% block ogtitle %}{{ page.extra.long_title }}{% endblock ogtitle %})" />
     <meta property="og:description"
         content="{% block ogdescription %}{{ page.extra.long_description }}{% endblock ogdescription %}" />

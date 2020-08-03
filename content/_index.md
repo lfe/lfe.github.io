@@ -52,13 +52,15 @@ Seamless Erlang interop, including the ecosystem of Erlang libraries.
 
 Taking the Syntax out of Distributed Systems Programming
 
-We're Syntactically and Semantically Chaotic.
-
-LFE: Fifty Shades of Distributed, Syntax-Free Message-Passing.
+We're Syntactically and Semantically Chaotic
 
 Curly braces go home!
 
+LFE: Where even a distributed Prolog dare not go.
+
 MACLISP and supervision trees are all that anyone needs.
+
+LFE: Fifty Shades of Distributed, Syntax-Free Message-Passing.
 
 Come for the Lisp, stay for the Erlang/OTP.
 
@@ -318,7 +320,7 @@ languages. In LFE, you get to use the real deal.
 
 content = '''
 LFE is not a casual Lisp. It's a Lisp for those who want to build distributed
-applications -- like the Erlang software that powers 40% of the world's 
+applications -- like the Erlang software that powers 40% of the world's
 telecommunications.
 '''
 link_text = "Learn More"

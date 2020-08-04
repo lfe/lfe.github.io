@@ -20,7 +20,7 @@ long_description = "The LFE community is small but passionate; we are firm belie
 
 * <i class="fas fa-envelope fa-1x"></i> The [LFE mail list](http://groups.google.com/group/lisp-flavoured-erlang) (Google group)
 * <i class="fas fa-hashtag fa-1x"></i> The `#erlang-lisp` channel on [Freenode](https://webchat.freenode.net/) (you'll need to [register your nick](https://freenode.net/kb/answer/registration))
-* <i class="fas fa-blog fa-1x"></i> The [LFE Blog](http://blog.lfe.io)
+* <i class="fas fa-blog fa-1x"></i> The [LFE Blog](https://blog.lfe.io)
 * <i class="fab fa-wikipedia-w fa-1x"></i> [LFE on Wikipedia](https://en.wikipedia.org/wiki/LFE_(programming_language))
 
 # [Videos](#videos)

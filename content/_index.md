@@ -547,13 +547,13 @@ content = '''
 link_text = "Read Now"
 link_url = "https://lfe.io/reference/lfe-rebar3/"
 
-[extra.books.unknown]
+[extra.books.styleguide]
 
-title = ""
+title = "The LFE<br/>Style Guide"
 content = '''
-[img-src]:
-[img-link]:
-[![XXX][img-src]][img-link]
+[img-src]: https://lfe.io/books/style-guide/images/cover.jpg
+[img-link]: https://lfe.io/books/style-guide/
+[![The LFE Style Guide][img-src]][img-link]
 '''
 link_text = "Read Now"
 link_url = ""

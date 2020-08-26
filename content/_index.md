@@ -62,6 +62,8 @@ MACLISP and supervision trees are all that anyone needs.
 
 LFE: Fifty Shades of Distributed, Syntax-Free Message-Passing.
 
+Where even a distributed Prolog dare not go.
+
 Come for the Lisp, stay for the Erlang/OTP.
 
 Come for the fault-tolerance and high-availability. Stay for the fault-tolerance and high-availability.

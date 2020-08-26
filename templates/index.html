@@ -3,3 +3,24 @@
 {% block main %}
 {% include "content-home.html" %}
 {% endblock main %}
+
+{% block extrascripts %}
+<script src="/js/biwascheme.js">
+  ;; Project: https://github.com/biwascheme/biwascheme
+  ;; Docs: https://www.biwascheme.org/index.html
+  (let* ([quotes (list "\"A proper Lisp.\""
+                       "\"I'm sorry, what was that last part again? Did you just say 'Lisp'?\""
+                       "\"Taking the syntax out of distributed systems programming.\""
+                       "\"Syntactically and semantically chaotic.\""
+                       "\"Where even a distributed Prolog dare not go.\""
+                       "\"MACLISP and supervision trees are all that anyone needs.\""
+                       "\"Fifty shades of distributed, syntax-free message-passing.\""
+                       "\"Come for the fault-tolerance and high-availability. Stay for the fault-tolerance and high-availability.\"")]
+          [num-quotes (length quotes)])
+    (define get-quote (lambda ()
+      (list-ref quotes (random-integer num-quotes))))
+    (define set-quote (lambda ()
+      (set-content! "#lfe-tagline" (get-quote))))
+    (set-timer! set-quote 60))
+</script>
+{% endblock extrascripts %}

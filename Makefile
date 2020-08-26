@@ -64,12 +64,11 @@ publish: clean build $(PUBLISH_DIR)/README.md $(PUBLISH_DIR)/CNAME
 	-@cd $(PUBLISH_DIR) && \
 	git add * && \
 	git commit -am "Regenerated site content." > /dev/null && \
-	git push origin $(PUBLISH_BRANCH) && \
-	cd -  && \
-	git add $(PUBLISH_DIR) && \
+	git push origin $(PUBLISH_BRANCH)
+	-@git add $(PUBLISH_DIR) && \
 	git commit -am "Updated submodule for recently generated site content." && \
-	git submodule update && \
-	git push origin $(BUILDER_BRANCH)
+	git submodule update
+	-@git push origin $(BUILDER_BRANCH)
 
 spell-check:
 	@for FILE in `find . -name "*.md"`; do \

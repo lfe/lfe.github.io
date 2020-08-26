@@ -8,7 +8,7 @@ in_search_index = true
 ###   Title Section   #########################################
 
 logo_image = "/images/LFE-logo-abbr-6.2.png"
-sitetagline = "Fifty Shades of Distributed, Syntax-Free Message-Passing."
+sitetagline = "Taking the syntax out of distributed systems programming"
 
 #### Important!
 ####
@@ -61,8 +61,6 @@ LFE: Where even a distributed Prolog dare not go.
 MACLISP and supervision trees are all that anyone needs.
 
 LFE: Fifty Shades of Distributed, Syntax-Free Message-Passing.
-
-Where even a distributed Prolog dare not go.
 
 Come for the Lisp, stay for the Erlang/OTP.
 

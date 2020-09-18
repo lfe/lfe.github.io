@@ -324,7 +324,7 @@ applications -- like the Erlang software that powers 40% of the world's
 telecommunications.
 '''
 link_text = "Learn More"
-link_url = "#"
+link_url = "/about"
 
 ###   Why LFE? Section   ######################################
 

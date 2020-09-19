@@ -106,7 +106,7 @@ lfe>
 ```
 '''
 code = '''
-![repl image](/images/repl.png)
+![repl image mobile](/images/repl.png)
 '''
 desc = '''
 LFE comes with a powerful REPL, supporting interactive development
@@ -627,7 +627,7 @@ title = "Give yourself to the Lisp-side of the Force!"
 content = '''
 [img-src]: /images/xkcd-lisp-cycles.png
 [img-link]: http://xkcd.com/297/
-[![call-out content][img-src]][img-link]
+[![call-out content mobile][img-src]][img-link]
 '''
 
 ###   Sponsors Section   ###############################

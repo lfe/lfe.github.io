@@ -263,7 +263,7 @@ code = '''
 ```lisp
 lfe> (lists:reverse
        (erlang:integer_to_list
-          (lists:foldl #'*/2 1 '(1 2 3 4))))
+         (lists:foldl #'*/2 1 '(1 2 3 4))))
 "42"
 
 lfe> (supervisor:which_children 'kernel_sup)
@@ -294,17 +294,17 @@ code = '''
 (defmodule server
   (behaviour gen_server)
   (export
-    (start_link 0)
-    (stop 0)
-    ...))
+   (start_link 0)
+   (stop 0)
+   ...))
 
 (defun handle_call
   (('amount _caller state-data)
-    `#(reply ,state-data ,state-data))
+   `#(reply ,state-data ,state-data))
   (('stop _caller state-data)
-    `#(stop shutdown ok state-data))
+   `#(stop shutdown ok state-data))
   ((message _caller state-data)
-    `#(reply ,(unknown-command) ,state-data)))
+   `#(reply ,(unknown-command) ,state-data)))
 ```
 '''
 desc = '''

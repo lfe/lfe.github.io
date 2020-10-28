@@ -1,0 +1,23 @@
+{% extends "base/page.html" %}
+
+{% block main %}
+<main role="main" class="flex-shrink-0 plan-page">
+    <div class="jumbotron lfe-masthead">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 page-title">
+                    <h1>{{ page.extra.long_title | markdown(inline=true) | safe }}</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 page-description">
+                    <h2>{{ page.extra.long_description | markdown(inline=true) | safe }}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container page-content plan-page-content">
+        {{ page.content | safe }}
+    </div>
+</main>
+{% endblock main %}

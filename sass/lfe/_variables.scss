@@ -33,6 +33,8 @@ $light-grey: #aaa;
 $orange: #FF8F00;
 $orange-dark: #E46D12;
 
+$monospace: 'Courier New', Courier, monospace;
+
 body {
     background-color: $theme-page-background;
 }
@@ -197,7 +199,7 @@ a:focus {
 // --- Code ---------------------------------------------------
 
 code {
-    font-family: 'Courier New', Courier, monospace;
+    font-family: $monospace;
 }
 
 // --- Home page masthead -------------------------------------
@@ -471,8 +473,8 @@ div.jumbotron.call-out-2 div>div>a img {
         text-align: left !important;
     }
 
-    padding-bottom: 2em;
-    margin-bottom: 2em;
+    padding-bottom: 4em;
+    margin-bottom: 0;
 }
 
 .page-content h1 {
@@ -508,6 +510,13 @@ div.jumbotron.call-out-2 div>div>a img {
 
 .page-content code {
     font-size: 14pt;
+}
+
+.plan-page, .plan-page-content {
+    background-color: #22301e;
+    color: #69da61;
+    font-family: $monospace;
+    font-size: 10pt !important;
 }
 
 // --- Footer -------------------------------------------------

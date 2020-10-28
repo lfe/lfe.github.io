@@ -21,5 +21,5 @@ long_description = "How to add your .plan"
 [//]: ---Named-Links---
 
 [fork]: https://github.com/lfe/lfe.github.io/fork
-[plan-dir]: https://github.com/lfe/lfe.github.io/tree/builder/content/plan
-[plan-index]: https://github.com/lfe/lfe.github.io/blob/builder/content/plan/_index.md
+[plan-dir]: https://github.com/lfe/lfe.github.io/tree/builder/content/.plan
+[plan-index]: https://github.com/lfe/lfe.github.io/blob/builder/content/.plan/_index.md

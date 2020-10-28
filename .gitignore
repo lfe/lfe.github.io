@@ -2,3 +2,13 @@
 dev/logs
 .DS_Store
 public
+*.sw[po]
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+

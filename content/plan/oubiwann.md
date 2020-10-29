@@ -29,6 +29,7 @@ long_description = "oubiwann"
 * Pull more of the ~100 examples I wrote on Rosetta Code into the [LFE examples dir][lfe-examples-dir]
 * Or the [LFE examples repo][lfe-examples-repo]
 * Update the Nova LFE example once routes support for Nova has landed in [lanes][lanes]
+* Update the [10,000 things][lao-tzi] demo
 
 ## Tooling
 
@@ -54,7 +55,20 @@ long_description = "oubiwann"
 * Update YAWS examples in the lfex Docker files/images
 * Get YAWS working with [lanes][lanes] (the web router successor to lfest)
 * Land Cowboy support in lanes
+* Implement gopher [client and server][goldy]
 * Resume work on lmug projects
+
+## Databases
+
+* Finish the [Mnesia tutorial][]
+* Add more functions to the Redis library, [ledis][]
+
+## AI
+
+* Pick up the GP tutorials again
+* Implement Eliza bot in LFE
+* Do more general planner work
+
 
 # Old .plan File
 
@@ -156,3 +170,5 @@ long_description = "oubiwann"
 [lanes]: https://github.com/lfex/lanes
 [undertone]: https://github.com/lfex/undertone
 [lfe-mush]: https://github.com/hexagram30/mush/issues
+[goldy]: https://github.com/oubiwann/goldy
+[lao-tzi]: https://github.com/oubiwann/laotzi-demo

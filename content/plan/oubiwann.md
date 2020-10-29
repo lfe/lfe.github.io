@@ -16,13 +16,16 @@ long_description = "oubiwann"
 * More command line options and config support
 * Headless REPL
 
-## Documentation
+## Documentation and Content
 
 * The LFE Chinual
 * Rebar3 LFE plugin reference updates
 * More howto and OTP blog posts
 * Work with Robert to finish LFE tutorial
 * Add a new chapter to _Casting SPELs in LFE_ for OTP releases and writing your own syntax
+* Continue to move old docs into new, useful home
+* Decommission old docs site (lots of redirect work)
+* Migrate old blog content to the same content generator used by lfe.io
 
 ## Examples
 

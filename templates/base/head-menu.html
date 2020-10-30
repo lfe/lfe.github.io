@@ -1,3 +1,7 @@
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#lfe-main-nav"
+        aria-controls="lfe-main-nav" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+</button>
 <div class="collapse navbar-collapse" id="lfe-main-nav">
     {% set current_page = "/" ~ current_path %}
     {% set selected = "" %}
@@ -24,9 +28,13 @@
             {% set href = "/about/" %}
             {% if current_page == href %}{% set selected = "selected" %}{% endif %}
             <a class="nav-link {{ selected }}" href="{{ href }}">About</a>
+            {% set selected = "" %}
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="https://blog.lfe.io/">Blog</a>
+            {% set href = "/blog/" %}
+            {% if current_page == href %}{% set selected = "selected" %}{% endif %}
+            <a class="nav-link {{ selected }}" href="{{ href }}">Blog</a>
+            {% set selected = "" %}
         </li>
     </ul>
     <ul class="navbar-nav">
@@ -50,7 +58,7 @@
         <div class="search-results" style="display: none;">
             <div class="search-results__items"></div>
         </div>
-        <button type="button" class="btn btn-warning btn-sm">Go!</button>
+        <button type="button" class="btn btn-warning btn-sm"><i class="fas fa-search"></i></button>
     </form>
 
 </div>

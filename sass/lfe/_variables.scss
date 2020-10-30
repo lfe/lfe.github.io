@@ -515,10 +515,47 @@ div.jumbotron.call-out-2 div>div>a img {
 .plan-page, .plan-page-content {
     background-color: #22301e;
     color: #69da61;
-    font-family: $monospace;
-    font-size: 10pt !important;
 }
 
+.blog-page {
+    min-height: 826px;
+}
+
+.blog-page .lfe-masthead {
+    margin-bottom: 0;
+}
+
+.blog-page, .blog-page-content {
+    background-image: url("/images/lfe-blog-background.png");
+}
+
+.blog-page-content img.blog-splash {
+    float: left;
+    padding: 0;
+}
+
+.blog-page-content {
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        color: $theme-bright-gold;
+        text-align: left !important;
+    }
+
+    padding-bottom: 4em;
+    margin-bottom: 0;
+}
+
+.blog-page-content .blog-tagline {
+    color: $theme-bright-gold;
+    font-size: 18pt;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
 // --- Footer -------------------------------------------------
 
 $footer-color: #333;

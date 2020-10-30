@@ -36,13 +36,9 @@
 <body>
     {% block head %}
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark lfe-main">
-        <div class="container">
-            <a class="navbar-brand" href="/">LFE</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#lfe-main-nav"
-                aria-controls="lfe-main-nav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            {% include "base/head-menu.html" %}
+        <div class="container">s
+          {% include "base/head-brand-section.html" %}
+          {% include "base/head-menu.html" %}
         </div>
     </nav>
     {% endblock head %}

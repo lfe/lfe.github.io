@@ -41,6 +41,7 @@
 
     
     
+    
 
     
     <!-- Bootstrap core CSS -->
@@ -49,27 +50,26 @@
 <link href="/lfe.css" rel="stylesheet">
 <link href="/fontawesome-solid.css" rel="stylesheet">
 <link href="/fontawesome-brands.css" rel="stylesheet">
+<link href="/css/highlight.css" rel="stylesheet">
 <link href="/css/common.css" rel="stylesheet">
 
     
 
     <!-- Custom styles for this template -->
     
-<link href="/css/highlight.css" rel="stylesheet">
-
+    
 </head>
 
 <body>
     
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark lfe-main">
-        <div class="container">s
-          <a class="navbar-brand" href="/">LFE</a>
-
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#lfe-main-nav"
-        aria-controls="lfe-main-nav" aria-expanded="false" aria-label="Toggle navigation">
-  <span class="navbar-toggler-icon"></span>
-</button>
-<div class="collapse navbar-collapse" id="lfe-main-nav">
+        <div class="container">
+            <a class="navbar-brand" href="/">LFE</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#lfe-main-nav"
+                aria-controls="lfe-main-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="lfe-main-nav">
     
     
     <ul class="navbar-nav mr-auto">
@@ -95,22 +95,9 @@
             
             
             <a class="nav-link " href="&#x2F;about&#x2F;">About</a>
-            
         </li>
-        <li class="nav-item dropdown">
-            
-            
-            
-            <a class="nav-link dropdown-toggle " href="#" id="navbar-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Blog</a>
-            <div class="dropdown-menu blog-nav-dropdown" aria-labelledby="navbar-dropdown">
-              <a class="dropdown-item" href="&#x2F;blog&#x2F;">Latest Posts</a>
-              <a class="dropdown-item-divider" href="#"><hr class="blog-dropdown-divider"/></a>
-              <a class="dropdown-item" href="&#x2F;blog&#x2F;posts">Archives</a>
-              <a class="dropdown-item" href="&#x2F;blog&#x2F;categories">Categories</a>
-              <a class="dropdown-item" href="&#x2F;blog&#x2F;tags">Tags</a>
-              <a class="dropdown-item" href="&#x2F;blog&#x2F;authors">Authors</a>
-            </div>
-            
+        <li class="nav-item">
+            <a class="nav-link" href="https://blog.lfe.io/">Blog</a>
         </li>
     </ul>
     <ul class="navbar-nav">
@@ -134,7 +121,7 @@
         <div class="search-results" style="display: none;">
             <div class="search-results__items"></div>
         </div>
-        <button type="button" class="btn btn-warning btn-sm"><i class="fas fa-search"></i></button>
+        <button type="button" class="btn btn-warning btn-sm">Go!</button>
     </form>
 
 </div>
@@ -780,7 +767,7 @@ start your prototype as a release, with zero pain and all of the benefit.
                 <h1><img src="/images/slack-logo.png" alt="slack logo" /> Join us on Slack!</h1>
                 <p>To request an invite for the LFE Slack workspace, follow this link:</p>
 <ul>
-<li><a href="https://lfe-slack.herokuapp.com/">https://lfe-slack.herokuapp.com/</a></li>
+<li><a href="https://erlef.org/slack-invite/lfe">https://erlef.org/slack-invite/lfe</a></li>
 </ul>
 </p>
             </div>
@@ -873,7 +860,10 @@ start your prototype as a release, with zero pain and all of the benefit.
 <script type="text/javascript" src="/js/bootstrap.bundle.min.js"></script>
 <script type="text/javascript" src="/js/search.js"></script>
 <script type="text/javascript" src="/js/app.js"></script>
-
+<script type="text/javascript" src="/js/highlight.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-38274766-3"></script>
 <script>
@@ -894,6 +884,7 @@ start your prototype as a release, with zero pain and all of the benefit.
   ;; Project: https://github.com/biwascheme/biwascheme
   ;; Docs: https://www.biwascheme.org/index.html
   (let* ([quotes (list "\"A proper Lisp.\""
+                       "\"LFE combines the best of both Lisp and Erlang, at the SAME time!\""
                        "\"I'm sorry, what was that last part again? Did you just say 'Lisp'?\""
                        "\"Taking the syntax out of distributed systems programming.\""
                        "\"Syntactically and semantically chaotic.\""
@@ -908,12 +899,6 @@ start your prototype as a release, with zero pain and all of the benefit.
     (define set-quote (lambda ()
       (set-content! "#lfe-tagline" (get-quote))))
     (set-timer! set-quote 60))
-</script>
-
-<script type="text/javascript" src="/js/highlight.js"></script>
-
-<script>
-    hljs.initHighlightingOnLoad();
 </script>
 
 </body>

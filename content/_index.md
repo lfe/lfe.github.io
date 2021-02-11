@@ -617,7 +617,7 @@ content = '''
 
 To request an invite for the LFE Slack workspace, follow this link:
 
-* [https://lfe-slack.herokuapp.com/](https://lfe-slack.herokuapp.com/)
+* [https://erlef.org/slack-invite/lfe](https://erlef.org/slack-invite/lfe)
 '''
 
 ###   Final Callout-2 Section   ###############################

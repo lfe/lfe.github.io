@@ -19,7 +19,7 @@ long_description = "The LFE community is small but passionate; we are firm belie
 # [Traditional Media](#traditional-media)
 
 * <i class="fas fa-envelope fa-1x"></i> The [LFE mail list](http://groups.google.com/group/lisp-flavoured-erlang) (Google group)
-* <i class="fas fa-hashtag fa-1x"></i> The `#erlang-lisp` channel on [Libera.chat](https://web.libera.chat/) (you'll need to [register your nick](https://libera.chat/guides/registration)
+* <i class="fas fa-hashtag fa-1x"></i> The `#erlang-lisp` channel on [Libera.chat](https://web.libera.chat/) (you'll need to [register your nick](https://libera.chat/guides/registration))
 * <i class="fas fa-blog fa-1x"></i> The [LFE Blog](https://blog.lfe.io)
 * <i class="fab fa-wikipedia-w fa-1x"></i> [LFE on Wikipedia](https://en.wikipedia.org/wiki/LFE_(programming_language))
 

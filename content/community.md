@@ -9,10 +9,10 @@ long_description = "The LFE community is small but passionate; we are firm belie
 
 # [Social Media](#social-media)
 
-* <i class="fa-brands fa-mastodon"></i> [LFE](https://fosstodon.org/web/@lfe) on Mastodon
+* <i class="fab fa-mastodon"></i> [LFE](https://fosstodon.org/web/@lfe) on Mastodon
 * <i class="fab fa-twitter fa-1x"></i> [ErlangLisp](https://twitter.com/ErlangLisp)
-  * An [LFE list](https://twitter.com/i/lists/187981555) maintained by [@rvirding](https://twitter.com/rvirding)
-  * A [Lisp list](https://twitter.com/i/lists/102271198) maintained by [@ErlangLisp](https://twitter.com/ErlangLisp)
+  * A Twitter [LFE list](https://twitter.com/i/lists/187981555) maintained by [@rvirding](https://twitter.com/rvirding)
+  * A Twitter [Lisp list](https://twitter.com/i/lists/102271198) maintained by [@ErlangLisp](https://twitter.com/ErlangLisp)
 * <i class="fab fa-linkedin fa-1x"></i> [LFE](https://www.linkedin.com/groups/5175516/)
 * <i class="fab fa-slack fa-1x"></i> Dedicated [LFE Slack workspace](https://lfe.slack.com/) (get an invite [here](https://erlef.org/slack-invite/lfe))
 * <i class="fab fa-slack fa-1x"></i> There's also an LFE channel on the official [Erlang Slack workspace](https://erlanger.slack.com) (get an invite [here](https://erlef.org/slack-invite/erlanger))

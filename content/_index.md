@@ -76,8 +76,8 @@ See?!
 [extra.download]
 
 repository = "https://github.com/rvirding/lfe"
-stable_version = "1.2.1"
-unstable_version = "1.3"
+stable_version = "1.3"
+unstable_version = "2.0.1"
 
 ###   Code Excerpts   #########################################
 

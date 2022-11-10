@@ -25,13 +25,15 @@
                                     <div class="col-12 dl-stable-container">
                                         <a href="{{ repo }}/archive/{{ stable }}.zip">
                                             <button type="button"
-                                                class="btn btn-success btn-sm dl-unstable">Stable&nbsp;({{ stable }})</button>
+                                                class="btn btn-success btn-sm dl-unstable">Current&nbsp;({{ stable
+                                                }})</button>
                                         </a>
                                     </div>
                                     <div class="col-12 dl-unstable-container">
                                         <a href="{{ repo }}/archive/{{ unstable }}.zip">
                                             <button type="button"
-                                                class="btn btn-warning btn-sm dl-unstable">Unstable&nbsp;({{ unstable }})</button>
+                                                class="btn btn-warning btn-sm dl-unstable">Previous&nbsp;({{ unstable
+                                                }})</button>
                                         </a>
                                     </div>
                                 </div>
@@ -44,14 +46,14 @@
 
             {% set excerpt_section = section.extra.excerpts %}
             {% set excerpts = [
-                excerpt_section.repl,
-                excerpt_section.simple_types,
-                excerpt_section.compound_types,
-                excerpt_section.records,
-                excerpt_section.funcs,
-                excerpt_section.macros,
-                excerpt_section.erlang_interop,
-                excerpt_section.otp] %}
+            excerpt_section.repl,
+            excerpt_section.simple_types,
+            excerpt_section.compound_types,
+            excerpt_section.records,
+            excerpt_section.funcs,
+            excerpt_section.macros,
+            excerpt_section.erlang_interop,
+            excerpt_section.otp] %}
             <ul class="nav nav-pills lang-examples" id="pills-tab" role="tablist">
                 {% for excerpt in excerpts %}
                 {% if loop.index == 1 %}{% set active = "active" %}
@@ -87,8 +89,9 @@
 
             <p class="lfe-summary">
                 {{ section.extra.summary.content | markdown(inline=true) | safe }}
-                <a class="btn btn-primary btn-sm" href="{{ section.extra.summary.link_url }}"
-                    role="button">{{ section.extra.summary.link_text }} &raquo;</a></p>
+                <a class="btn btn-primary btn-sm" href="{{ section.extra.summary.link_url }}" role="button">{{
+                    section.extra.summary.link_text }} &raquo;</a>
+            </p>
         </div>
     </div>
 
@@ -97,10 +100,10 @@
     <div class="container features">
         {% set features_section = section.extra.features %}
         {% set features = [
-            features_section.lisp,
-            features_section.erlang,
-            features_section.otp,
-            features_section.lab] %}
+        features_section.lisp,
+        features_section.erlang,
+        features_section.otp,
+        features_section.lab] %}
         <h1 class="features section title">{{ features_section.title | markdown(inline=true) | safe }}</h1>
         <div class="row">
             {% for feature in features %}
@@ -117,10 +120,10 @@
     <div class="container buildit">
         {% set buildit_section = section.extra.buildit %}
         {% set builds = [
-                buildit_section.scripts,
-                buildit_section.libraries,
-                buildit_section.apps,
-                buildit_section.releases] %}
+        buildit_section.scripts,
+        buildit_section.libraries,
+        buildit_section.apps,
+        buildit_section.releases] %}
         <h1 class="buildit section title">{{ buildit_section.title | markdown(inline=true) | safe }}</h1>
         <div class="row">
             {% for build in builds %}
@@ -144,9 +147,9 @@
         {% set books_section = section.extra.books %}
         <h1 class="books section title">{{ books_section.title | markdown(inline=true) | safe }}</h1>
         {% set book_group1 = [
-            books_section.quick_start,
-            books_section.casting_spels,
-            books_section.lfe_tutorial] %}
+        books_section.quick_start,
+        books_section.casting_spels,
+        books_section.lfe_tutorial] %}
 
         <div class="row book-group">
             {% for book in book_group1 %}
@@ -159,9 +162,9 @@
             {% endfor %}
         </div>
         {% set book_group2 = [
-            books_section.rebar3,
-            books_section.styleguide,
-            books_section.sicp] %}
+        books_section.rebar3,
+        books_section.styleguide,
+        books_section.sicp] %}
         <div class="row book-group">
             {% for book in book_group2 %}
 
@@ -183,9 +186,9 @@
     <div class="container videos">
         {% set videos_section = section.extra.videos %}
         {% set videos = [
-            videos_section.efsf2017,
-            videos_section.ecu2016,
-            videos_section.efsf2014] %}
+        videos_section.efsf2017,
+        videos_section.ecu2016,
+        videos_section.efsf2014] %}
         <h1 class="books section title">{{ videos_section.title | markdown(inline=true) | safe }}</h1>
 
         <div class="row">

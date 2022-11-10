@@ -9,6 +9,7 @@ long_description = "The LFE community is small but passionate; we are firm belie
 
 # [Social Media](#social-media)
 
+* <i class="fa-brands fa-mastodon"></i> [LFE](https://fosstodon.org/web/@lfe)
 * <i class="fab fa-twitter fa-1x"></i> [ErlangLisp](https://twitter.com/ErlangLisp)
   * An [LFE list](https://twitter.com/i/lists/187981555) maintained by [@rvirding](https://twitter.com/rvirding)
   * A [Lisp list](https://twitter.com/i/lists/102271198) maintained by [@ErlangLisp](https://twitter.com/ErlangLisp)

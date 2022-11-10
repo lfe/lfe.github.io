@@ -24,7 +24,7 @@ long_description = "The LFE community is small but passionate; we are firm belie
 * <i class="fas fa-blog fa-1x"></i> The [LFE Blog](https://blog.lfe.io)
 * <i class="fab fa-wikipedia-w fa-1x"></i> [LFE on Wikipedia](https://en.wikipedia.org/wiki/LFE_(programming_language))
 
-# [Videos](#videos)
+# Videos
 
 * <i class="fab fa-youtube fa-1x"></i> [LFE YouTube channel](https://www.youtube.com/channel/UCagyRA_kj8wCrfd-PLd5MaA/playlists)
 * <i class="fab fa-youtube fa-1x"></i> Old [LFE YouTube channel](https://www.youtube.com/channel/UCrHLs2pNgg6DMsJXOiiBLcg/playlists)

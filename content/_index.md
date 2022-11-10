@@ -2,6 +2,7 @@
 title = "Lisp Flavoured Erlang"
 description = "The website for LFE, the Erlang community's own Lisp."
 in_search_index = true
+insert_anchor_links = "heading"
 
 [extra]
 

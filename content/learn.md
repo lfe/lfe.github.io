@@ -12,7 +12,7 @@ long_description = "Learning LFE must be taken in two tracks: learning the synta
 
 ## [Quick Start Guides](#quick-start-guides)
 
-[Quick Start with rebar3](https://lfe.io/books/rebar3-quick-start/) - This will get you up and running with LFE, requiring _only_ that you have a modern Erlang installed (version 19+) and `rebar3`.
+[Quick Start with rebar3](https://lfe.io/books/rebar3-quick-start/) - This will get you up and running with LFE, requiring _only_ that you have a modern Erlang installed (version 21+) and `rebar3`.
 
 ## [In-Depth](#in-depth)
 
@@ -47,6 +47,7 @@ There are some phenomenal materials available for a self-paced Erlang/OTP educat
 [Erlang and OTP in Action](https://www.manning.com/books/erlang-and-otp-in-action) - This book is another fantastic resource, building up an OTP application piece at a time as you move through the chapters.
 
 ## [In Production](#in-production)
+
 Once you've learned how to write Erlang/LFE/OTP applications, is time to get them into production, and you'll find the following invaluable references for that:
 
 * [Adopting Erlang](https://adoptingerlang.org/) - _"Adopting Erlang is an ongoing effort to gather all the resources that will help you use Erlang in a business. The booksite is divided in three sections focusing particularly on Erlang/OTP’s higher level concepts in the current open source ecosystem, how to use it in production (while setting up a pipeline for continuous development and delivery), and how to build a team when you’re starting from scratch."_

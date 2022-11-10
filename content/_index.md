@@ -556,7 +556,7 @@ content = '''
 [![The LFE Style Guide][img-src]][img-link]
 '''
 link_text = "Read Now"
-link_url = ""
+link_url = "https://lfe.io/books/style-guide/"
 
 [extra.books.sicp]
 

@@ -11,40 +11,41 @@ long_description = "yurrriq"
 [![dot-plan-screenshot][screenie-src]][screenie-link]
 
 ### Blogging
+
 * Re: [simple_cache][] from [Erlang and OTP in Action][] (ported to LFE)
 * Re: Property-based testing with [PropEr][] and [PropL][]
-  - How it helped with [Lodox][]
+  * How it helped with [Lodox][]
 
 ### Community
+
 * Add more exercises to [xLFE][]
-  - Get more contributors
-  - Spread the word somehow
-  - Get more people [on track][xLFE stats]
+  * Get more contributors
+  * Spread the word somehow
+  * Get more people [on track][xLFE stats]
 * Once [Lodox][] gets (more) stable, generate documentation for projects like:
-  - [exemplar][]
-  - [clj][] (as part of LFE proper)
-  - [ltest][]
+  * [exemplar][]
+  * [clj][] (as part of LFE proper)
+  * [ltest][]
 * Help ensure common lfex projects are using rebar3 and modern .travis.yml
 * Modernize the Clojure code in [lfecljapp][]
-* Help [oubiwann](#oubiwann) et al. write/edit documentation as needed
+* Help [oubiwann](/plan/oubiwann) et al. write/edit documentation as needed
 
 ### Tools
+
 * Some [Clojure mappings][clj] like [`condp`][]
 * [Lodox][]: Documentation generator like [Codox][] for LFE
 * [PropL][]: LFE wrapper for [PropEr][]
-  - Consider adding support in [ltest][]
-  - Make shell "property-tests" "behaviour as in ltest
+  * Consider adding support in [ltest][]
+  * Make shell "property-tests" "behaviour as in ltest
 * Further improvements to [Emacs integration][]
 * [lfedn][]: lfe <-> edn
-  - Polish and maybe use it in [lfecljapp][]
+  * Polish and maybe use it in [lfecljapp][]
 * Clean up [pynchon][]
-  - Document it
-  - Come up with some practical examples
-
+  * Document it
+  * Come up with some practical examples
 
 [//]: ---Named-Links---
 
-[yurrriq]: https://github.com/yurrriq
 [clj]: https://github.com/lfex/clj/issues
 [`condp`]: https://github.com/lfex/clj/pull/19
 [PropEr]: http://proper.softlab.ntua.gr

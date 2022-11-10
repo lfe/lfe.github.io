@@ -12,5 +12,8 @@ highlight_code = true
 build_search_index = true
 default_language = "en"
 
+[link_checker]
+internal_level = "warn"
+
 [extra]
 # Put all your custom config variables here

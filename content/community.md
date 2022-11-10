@@ -7,7 +7,7 @@ long_title = "Community Resources"
 long_description = "The LFE community is small but passionate; we are firm believers in the Erlang VM and OTP, usually as a result of having suffered greatly in their absence and knowing incredible strengths. Most of all, though, we have a deep appreciation for the aesthetics, usefulness, and raw power of LISP. This is where you will find us."
 +++
 
-# [Social Media](#social-media)
+# Social Media
 
 * <i class="fab fa-mastodon"></i> [LFE](https://fosstodon.org/web/@lfe) on Mastodon
 * <i class="fab fa-slack fa-1x"></i> Dedicated [LFE Slack workspace](https://lfe.slack.com/) (get an invite [here](https://erlef.org/slack-invite/lfe))
@@ -17,7 +17,7 @@ long_description = "The LFE community is small but passionate; we are firm belie
   * A Twitter [LFE list](https://twitter.com/i/lists/187981555) maintained by [@rvirding](https://twitter.com/rvirding)
   * A Twitter [Lisp list](https://twitter.com/i/lists/102271198) maintained by [@ErlangLisp](https://twitter.com/ErlangLisp)
 
-# [Traditional Media](#traditional-media)
+# Traditional Media
 
 * <i class="fas fa-envelope fa-1x"></i> The [LFE mail list](http://groups.google.com/group/lisp-flavoured-erlang) (Google group)
 * <i class="fas fa-hashtag fa-1x"></i> The `#erlang-lisp` channel on [Libera.chat](https://web.libera.chat/) (you'll need to [register your nick](https://libera.chat/guides/registration))
@@ -29,7 +29,7 @@ long_description = "The LFE community is small but passionate; we are firm belie
 * <i class="fab fa-youtube fa-1x"></i> [LFE YouTube channel](https://www.youtube.com/channel/UCagyRA_kj8wCrfd-PLd5MaA/playlists)
 * <i class="fab fa-youtube fa-1x"></i> Old [LFE YouTube channel](https://www.youtube.com/channel/UCrHLs2pNgg6DMsJXOiiBLcg/playlists)
 
-# [Repos, Code, & Container Images](#code-and-images)
+# Repos, Code, & Container Images
 
 * <i class="fab fa-github fa-1x"></i> The [official LFE code repository](https://github.com/rvirding/lfe)
 * <i class="fab fa-github fa-1x"></i> The [lfe Github org](https://github.com/lfe) (docs, site, repo mirror, additional Docker support)

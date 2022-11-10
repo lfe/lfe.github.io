@@ -10,7 +10,6 @@ long_description = "rvirding"
 
 [![dot-plan-screenshot][screenie-src]][screenie-link]
 
-
 * New macro handling and compiled macros
 * Hack on [Flavors][]
 * Hack on LFE Machine
@@ -19,8 +18,7 @@ long_description = "rvirding"
 
 [//]: ---Named-Links---
 
-[rvirding]: https://github.com/rvirding
 [Flavors]: https://github.com/rvirding/flavors
-[LFE]: https://github.com/rvirding/lfe
+[LFE]: https://github.com/lfe/lfe
 [screenie-src]: /images/lfe-dotplan-screen.png
 [screenie-link]: https://tools.ietf.org/rfc/rfc742.txt

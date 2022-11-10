@@ -31,7 +31,7 @@ long_description = "The LFE community is small but passionate; we are firm belie
 
 # Repos, Code, & Container Images
 
-* <i class="fab fa-github fa-1x"></i> The [official LFE code repository](https://github.com/rvirding/lfe)
+* <i class="fab fa-github fa-1x"></i> The [official LFE code repository](https://github.com/lfe/lfe)
 * <i class="fab fa-github fa-1x"></i> The [lfe Github org](https://github.com/lfe) (docs, site, repo mirror, additional Docker support)
 * <i class="fab fa-github fa-1x"></i> The [lfex Github org](https://github.com/lfex) (LFE community libraries)
 * <i class="fab fa-github fa-1x"></i> The [lfe-rebar3 Github org](https://github.com/lfe-rebar3) (LFE rebar3 plugins)

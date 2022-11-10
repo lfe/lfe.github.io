@@ -20,7 +20,7 @@ long_description = "Learning LFE must be taken in two tracks: learning the synta
 
 [Casting SPELs in LFE](https://lfe.io/books/casting-spels/) - The famous "Casting SPELs in Lisp" translated into LFE, but taking things further than the original with state management via `defrecord`, creating a custom game server, and then dipping the toes into OTP with a conversion of the custom game server to a `gen_server`.
 
-[LFE Examples](https://github.com/rvirding/lfe/tree/develop/examples) - For those that learn by watching and playing, the `./examples` directory in the LFE repo may be quite useful.
+[LFE Examples](https://github.com/lfe/lfe/tree/develop/examples) - For those that learn by watching and playing, the `./examples` directory in the LFE repo may be quite useful.
 
 LFE on [Rosetta Code](https://rosettacode.org/wiki/Category:LFE) - If those examples aren't enough for you, there are 99 others to choose from on Rosetta Code!
 

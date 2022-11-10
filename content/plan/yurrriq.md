@@ -54,7 +54,7 @@ long_description = "yurrriq"
 [Codox]: https://github.com/weavejester/codox
 [simple_cache]: https://github.com/yurrriq/simple_cache
 [Erlang and OTP in Action]: https://www.manning.com/books/erlang-and-otp-in-action
-[Emacs integration]: https://github.com/rvirding/lfe/tree/develop/emacs
+[Emacs integration]: https://github.com/lfe/lfe/tree/develop/emacs
 [xLFE]: http://exercism.io/languages/lfe
 [xLFE stats]: http://exercism.io/stats/lfe
 [exemplar]: https://github.com/lfex/exemplar

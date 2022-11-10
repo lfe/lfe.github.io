@@ -37,7 +37,7 @@ long_description = "oubiwann"
 ## Tooling
 
 * Continue working through `rebar3_lfe` [feature tickets, etc.][rebar3-lfe-tickets]
-* 
+*
 
 ## Games
 
@@ -72,7 +72,6 @@ long_description = "oubiwann"
 * Implement Eliza bot in LFE
 * Do more general planner work
 
-
 # Old .plan File
 
 ### Web
@@ -86,9 +85,9 @@ long_description = "oubiwann"
 ### Books and Docs
 
 * Updates to Getting Started Guides:
-  - walk through them with a recent LFE and ensure everything works as
+  * walk through them with a recent LFE and ensure everything works as
     advertised
-  - add information for non-Debian/Mac OS X systems (people have been having
+  * add information for non-Debian/Mac OS X systems (people have been having
     problems running through the guides on Red Hat-based systems)
 * Create install guide(s) for LFE (in particular, Red Hat-based, Windows, *BSD)
 * Get more writing done on LFE book
@@ -96,7 +95,7 @@ long_description = "oubiwann"
 * Continue converting the PyGTK tutorial to an [LFE GTK tutorial][] book for building
   GUI apps
 * Finish [LFE Hyperpolyglot][]
-  - Also: update layout to use Bootstrap for beter mobile experience
+  * Also: update layout to use Bootstrap for beter mobile experience
 * Continue work on [try.lfe.io][]
 
 ### Tools
@@ -110,18 +109,18 @@ long_description = "oubiwann"
 * [Lasp][] & LFE Code/Blog Post
 * Continue work on [wrapping OTP behaviours with LFE macros][]
 * Update the LFE [distributed/parallel python][] project
-  - use latest [ErlPort][] code from [@hdima][]
-  - update to use rebar3
-  - fixes for community member usage
+  * use latest [ErlPort][] code from [@hdima][]
+  * update to use rebar3
+  * fixes for community member usage
 * Continue exploring McCarthy and Gabriels QLISP for para
 
 ### GUI
 
 * Finish GTK LFE example
-  - update it to use the new [ℓGTK][] library
+  * update it to use the new [ℓGTK][] library
 * Build out [ℓGTK][]
-  - continue wrapping GTK functions
-  - add ``gen_server`` or ``gen_event`` to help track object state
+  * continue wrapping GTK functions
+  * add ``gen_server`` or ``gen_event`` to help track object state
 * Convert nascent Clojure Twitter Linux client ([meep][]) to LFE + [ℓGTK][]
 
 ### Databases
@@ -134,14 +133,12 @@ long_description = "oubiwann"
 
 * Pick up GP tutorial again
 * Continue exploring porting the award-winning [SHOP2][] Common Lisp planner to LFE
-  - get latest code from University of Maryland: https://github.com/oubiwann/shop2/issues/1
-  - update github SHOP2 repo with UMD's latest
+  * get latest code from University of Maryland: <https://github.com/oubiwann/shop2/issues/1>
+  * update github SHOP2 repo with UMD's latest
 * Continue working through code in [Handbook of Neuroevolution Through Erlang][] and adapting to LFE
-
 
 [//]: ---Named-Links---
 
-[oubiwann]: https://github.com/oubiwann
 [@hdima]: https://github.com/hdima
 [Lasp]: https://github.com/lasp-lang/lasp
 [LFE + YAWS + WebSockets]: https://github.com/oubiwann/docker-lfe-yaws-websocket-app
@@ -167,7 +164,7 @@ long_description = "oubiwann"
 [screenie-src]: /images/lfe-dotplan-screen.png
 [screenie-link]: https://tools.ietf.org/rfc/rfc742.txt
 [tv]: https://github.com/lfe-machine/tv
-[lfe-examples-dir]: https://github.com/rvirding/lfe/tree/develop/examples
+[lfe-examples-dir]: https://github.com/lfe/lfe/tree/develop/examples
 [lfe-examples-repo]: https://github.com/lfe/examples/
 [rebar3-lfe-tickets]: https://github.com/lfe-rebar3/rebar3_lfe/issues
 [lanes]: https://github.com/lfex/lanes

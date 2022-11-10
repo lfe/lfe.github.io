@@ -54,7 +54,7 @@ Seamless Erlang interop, including the ecosystem of Erlang libraries.
 
 [extra.download]
 
-repository = "https://github.com/rvirding/lfe"
+repository = "https://github.com/lfe/lfe"
 stable_version = "1.2.1"
 unstable_version = "1.3"
 
@@ -75,7 +75,7 @@ Erlang/OTP 23 [erts-11.0] [source] [64-bit] [smp:16:16] [ds:16:16:10] [async...
   |`-.._/_\\_.-':    |   Type (help) for usage info.
   |         g |_ \   |
   |        n    | |  |   Docs: http://docs.lfe.io/
-  |       a    / /   |   Source: http://github.com/rvirding/lfe
+  |       a    / /   |   Source: http://github.com/lfe/lfe
    \     l    |_/    |
     \   r     /      |   LFE v1.3-dev (abort with ^G)
      `-E___.-'

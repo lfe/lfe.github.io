@@ -24,12 +24,12 @@ In all of the above, once you are in the REPL, you have access to the `(help)` f
 
 When `(help)` and tab-completion aren't enough, it's time to break out the books. The core LFE reference set (man page source files in Markdown format) is your friend:
 
-* [The LFE Guide](https://github.com/rvirding/lfe/blob/develop/doc/src/lfe_guide.7.md)
-* [The data types in LFE](https://github.com/rvirding/lfe/blob/develop/doc/src/lfe_types.7.md)
-* [REPL functions, variables, and environment](https://github.com/rvirding/lfe/blob/develop/doc/src/lfe.1.md)
-* [LFE formatting](https://github.com/rvirding/lfe/blob/develop/doc/src/lfe_io.3.md)
-* [Common Lisp compatibility](https://github.com/rvirding/lfe/blob/develop/doc/src/lfe_cl.3.md)
-* [Clojure compatibility](https://github.com/rvirding/lfe/blob/develop/doc/src/lfe_clj.3.md)
+* [The LFE Guide](https://github.com/lfe/lfe/blob/develop/doc/src/lfe_guide.7.md)
+* [The data types in LFE](https://github.com/lfe/lfe/blob/develop/doc/src/lfe_types.7.md)
+* [REPL functions, variables, and environment](https://github.com/lfe/lfe/blob/develop/doc/src/lfe.1.md)
+* [LFE formatting](https://github.com/lfe/lfe/blob/develop/doc/src/lfe_io.3.md)
+* [Common Lisp compatibility](https://github.com/lfe/lfe/blob/develop/doc/src/lfe_cl.3.md)
+* [Clojure compatibility](https://github.com/lfe/lfe/blob/develop/doc/src/lfe_clj.3.md)
 
 If you want to remind yourself on all that the LFE plugin can do:
 

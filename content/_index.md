@@ -77,8 +77,8 @@ See?!
 [extra.download]
 
 repository = "https://github.com/lfe/lfe"
-stable_version = "1.3"
-unstable_version = "2.0.1"
+stable_version = "2.0.1"
+unstable_version = "2.1.0"
 
 ###   Code Excerpts   #########################################
 
@@ -99,7 +99,7 @@ Erlang/OTP 25 [erts-13.1.1] [source] [64-bit] [smp:16:16] [ds:16:16:10] [async..
   |        n    | |  |   Docs: http://docs.lfe.io/
   |       a    / /   |   Source: http://github.com/lfe/lfe
    \     l    |_/    |
-    \   r     /      |   LFE v2.0.1 (abort with ^G)
+    \   r     /      |   LFE v2.1.0 (abort with ^G)
      `-E___.-'
 
 lfe>

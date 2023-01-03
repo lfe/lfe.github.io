@@ -43,11 +43,11 @@ More information on Docker usage is available here:
 
 The docs site for LFE is quite old and almost entirely out of date, but it's linked here since it still has some jewels that haven't been ported elsewhere:
 
-* [docs.lfe.io](htt[://docs.lfe.io])
+* [docs.lfe.io](https://docs.lfe.io)
 
 There is a newer version of the docs site whose development has been stalled. Though not currently of much use, it's available here:
 
-* [docs.lfe.io/dev/](http://docs.lfe.io/dev/index.html)
+* [docs.lfe.io/dev/](https://docs.lfe.io/dev/index.html)
 
 # Erlang
 
@@ -71,8 +71,8 @@ One of the things you might find yourself needing is specialised `rebar3` plugin
 
 * [Getting Started](https://www.rebar3.org/docs/getting-started)
 * [Configuration](https://www.rebar3.org/docs/configuration)
-* [Using Plugins](https://www.rebar3.org/docs/using-available-plugins)
-* [Writing Plugins](https://www.rebar3.org/docs/plugins)
+* [Using Plugins](https://rebar3.org/docs/configuration/plugins/)
+* [Writing Plugins](https://rebar3.org/docs/tutorials/building_plugins/)
 
 The source for the LFE `rebar3` plugin is written in Erlang and viewable here:
 

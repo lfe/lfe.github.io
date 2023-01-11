@@ -59,16 +59,25 @@ $(PUBLISH_DIR)/CNAME:
 	@echo " >> Copying CNAME File ..."
 	@cp CNAME $(PUBLISH_DIR)/
 
-publish: clean build $(PUBLISH_DIR)/README.md $(PUBLISH_DIR)/CNAME
+publish: clean build $(PUBLISH_DIR)/README.md $(PUBLISH_DIR)/CNAME publish-start update-content update-publish-dir
+	@echo " >> Pushing branches ..."
+	git push origin $(PUBLISH_BRANCH)
+	-@git push origin $(BUILDER_BRANCH)
+
+publish-start:
 	@echo " >> Publishing site ..."
+
+update-content:
+	@echo " >> Updating source content ..."
 	-@cd $(PUBLISH_DIR) && \
 	git add * && \
 	git commit -am "Regenerated site content." > /dev/null && \
-	git push origin $(PUBLISH_BRANCH)
+
+update-publish-dir:
+	@echo " >> Updating generated content ..."
 	-@git add $(PUBLISH_DIR) && \
 	git commit -am "Updated submodule for recently generated site content." && \
 	git submodule update
-	-@git push origin $(BUILDER_BRANCH)
 
 spell-check:
 	@for FILE in `find . -name "*.md"`; do \

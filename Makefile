@@ -74,7 +74,7 @@ update-content:
 	@echo " >> Updating source content ..."
 	-@cd $(PUBLISH_DIR) && \
 	git add * && \
-	git commit -am "Regenerated site content." > /dev/null && \
+	git commit -am "Regenerated site content." > /dev/null
 
 update-publish-dir:
 	@echo " >> Updating generated content ..."

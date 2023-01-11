@@ -61,7 +61,9 @@ $(PUBLISH_DIR)/CNAME:
 
 publish: clean build $(PUBLISH_DIR)/README.md $(PUBLISH_DIR)/CNAME publish-start update-content update-publish-dir
 	@echo " >> Pushing branches ..."
+	git pull origin $(PUBLISH_BRANCH) --rebase
 	git push origin $(PUBLISH_BRANCH)
+	git pull origin $(BUILDER_BRANCH) --rebase
 	-@git push origin $(BUILDER_BRANCH)
 
 publish-start:

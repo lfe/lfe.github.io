@@ -1,7 +1,7 @@
 BIN = zola
 GEN := $(shell which $(BIN) 2> /dev/null)
 PUBLISH_DIR = site
-PUBLISH_BRANCH = master
+PUBLISH_BRANCH = main
 BUILDER_BRANCH = builder
 TMP_GIT_DIR = /tmp/lfe-io-site-git
 PORT = 5099
@@ -38,7 +38,7 @@ clean:
 
 site-init:
 	@git submodule update --init --recursive
-	@cd $(PUBLISH_DIR) && git checkout master
+	@cd $(PUBLISH_DIR) && git checkout $(PUBLISH_BRANCH)
 
 backup-submodule-git:
 	@echo " >> Backup-up site's git dir ..."

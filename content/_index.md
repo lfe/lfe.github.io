@@ -78,7 +78,7 @@ See?!
 
 repository = "https://github.com/lfe/lfe"
 stable_version = "2.0.1"
-unstable_version = "2.1.0"
+unstable_version = "2.1.1"
 
 ###   Code Excerpts   #########################################
 

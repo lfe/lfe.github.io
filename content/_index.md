@@ -613,12 +613,12 @@ link_url = "https://www.youtube.com/watch?v=AcehOqbwhPk"
 ###   Final Callout-1 Section   ###############################
 
 [extra.callout1]
-title = "![slack logo](/images/slack-logo.png) Join us on Slack!"
+title = "![discord logo](/images/discord-logo.png) Join us on Discord!"
 content = '''
 
-To request an invite for the LFE Slack workspace, follow this link:
+To join the LFE conversations on Discord:
 
-* [https://erlef.org/slack-invite/lfe](https://erlef.org/slack-invite/lfe)
+* [https://discord.gg/Uf3PszVHtF](https://discord.gg/Uf3PszVHtF)
 '''
 
 ###   Final Callout-2 Section   ###############################

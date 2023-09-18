@@ -39,8 +39,8 @@ $(PUBLISH_DIR)/CNAME:
 
 publish: clean build $(PUBLISH_DIR)/CNAME
 	@echo " >> Publishing site ..."
-	@git commit -am "Updated content" && \
-	git push origin $(BRANCH)
+	@git commit -am "Updated content"
+	@git push origin $(BRANCH)
 
 spell-check:
 	@for FILE in `find . -name "*.md"`; do \

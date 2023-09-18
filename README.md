@@ -10,7 +10,7 @@ Feel free to <a href="https://github.com/lfe/lfe.github.io/issues/new">open a ti
 or fork the site and submit a
 <a href="https://github.com/lfe/lfe.github.io/pulls">pull request</a>.
 
-Note that the entire site content is driven with Markdown files -- _including_ the metadata sections of those files!
+Note that the entire site content is driven with Markdown files -- *including* the metadata sections of those files!
 
 The front page's content is in TOML variables between the `+++` metadata markers in `./content/_index.md`.
 
@@ -29,7 +29,7 @@ The templating language used by zola and which drives the layout/design of the L
 If you would like to run the site locally, you may do so with this command:
 
 ```bash
-$ zola serve
+zola serve
 ```
 
 This will start the site on a local dev server running on port 1111.
@@ -38,5 +38,19 @@ If you want to run on a different port, simply set the `zola` port option to
 your liking:
 
 ```bash
-$ zola serve -p 5099
+zola serve -p 5099
+```
+
+## Publishing
+
+To re-deploy the site with changes made to the above-mentioned files, simply do the following:
+
+```shell
+make publish
+```
+
+You may want to check the spelling first, though:
+
+```shell
+make spell-check
 ```

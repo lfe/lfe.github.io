@@ -1,8 +1,7 @@
 BIN = zola
 GEN := $(shell which $(BIN) 2> /dev/null)
 PUBLISH_DIR = site
-PUBLISH_BRANCH = main
-BUILDER_BRANCH = builder
+BRANCH = builder
 TMP_GIT_DIR = /tmp/lfe-io-site-git
 PORT = 5099
 
@@ -32,7 +31,7 @@ run: serve
 
 clean:
 	@echo " >> Removing files from site dir ..."
-	@rm -rf $(PUBLISH_DIR)/*
+	@rm -rf $(PUBLISH_DIR)
 
 $(PUBLISH_DIR)/CNAME:
 	@echo " >> Copying CNAME File ..."
@@ -41,7 +40,7 @@ $(PUBLISH_DIR)/CNAME:
 publish: clean build $(PUBLISH_DIR)/CNAME
 	@echo " >> Publishing site ..."
 	@git commit -am "Updated content" && \
-	git push origin $(BUILDER_BRANCH)
+	git push origin $(BRANCH)
 
 spell-check:
 	@for FILE in `find . -name "*.md"`; do \

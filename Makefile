@@ -6,19 +6,28 @@ DOCKER_TAG=zola$(ZOLA_VERS)-node$(NODE_VERS)-alpine$(ALPINE_VERS)
 PWD = $(shell pwd)
 UID = $(shell id -u)
 GID = $(shell id -g)
+MOUNT_DIR = /app
+
 PUBLISH_DIR = site
 BRANCH = main
 TMP_GIT_DIR = /tmp/lfe-io-site-git
 PORT = 5099
 
+#############################################################################
+###   SITE   ################################################################
+#############################################################################
 
 build: docker-build clean
 	@echo " >> Building site ..."
-	docker run -u "$(UID):$(GID)" -v $(PWD):/app --workdir /app lfe:$(DOCKER_TAG) \
+	docker run \
+	-u "$(UID):$(GID)" -v $(PWD):$(MOUNT_DIR) --workdir $(MOUNT_DIR) lfe:$(DOCKER_TAG) \
 	build -o $(PUBLISH_DIR)
 
 serve: docker-build
-	@docker run -p 8080:8080 -u "$(UID):$(GID)" -v $(PWD):/app --workdir /app lfe:$(DOCKER_TAG) \
+	@echo " >> Running site ..."
+	@docker run \
+	-p 8080:8080 -p 1024:1024 \
+	-u "$(UID):$(GID)" -v $(PWD):$(MOUNT_DIR) --workdir $(MOUNT_DIR) lfe:$(DOCKER_TAG) \
 	serve --interface 0.0.0.0 --port 8080 --base-url localhost
 
 run: serve
@@ -35,6 +44,10 @@ publish: build $(PUBLISH_DIR)/CNAME
 	@echo " >> Publishing site ..."
 	@git commit -am "Updated content"
 	@git push origin $(BRANCH)
+
+#############################################################################
+###   SPELLING   ############################################################
+#############################################################################
 
 spell-check:
 	@for FILE in `find . -name "*.md"`; do \
@@ -72,8 +85,20 @@ spell-suggest:
 	fi; \
 	done
 
+#############################################################################
+###   DOCKER   ##############################################################
+#############################################################################
+
 docker-build:
 	docker build -t lfe:$(DOCKER_TAG) .
 
 docker-shell:
-	docker run -it lfe:$(DOCKER_TAG) --entrypoint bash
+	docker run -it \
+	--entrypoint ash \
+	lfe:$(DOCKER_TAG)
+
+docker-tailwind-init:
+	docker run -it \
+	-v $(PWD):$(MOUNT_DIR) --workdir $(MOUNT_DIR) \
+	--entrypoint /usr/local/bin/npx \
+	lfe:$(DOCKER_TAG) tailwindcss init

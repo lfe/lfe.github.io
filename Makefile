@@ -21,9 +21,7 @@ ifndef GEN
 	$(error $(BINARY_ERROR))
 endif
 	@echo " >> Building site ..."
-	@$(MAKE) backup-submodule-git
 	@$(GEN) build -o $(PUBLISH_DIR)
-	@$(MAKE) restore-submodule-git
 
 serve:
 	@bash -c "trap \"$(MAKE) serve-cleanup\" EXIT; $(GEN) serve -o $(PUBLISH_DIR) -p $(PORT)"
@@ -36,21 +34,11 @@ clean:
 	@echo " >> Removing files from site dir ..."
 	@rm -rf $(PUBLISH_DIR)/*
 
-site-init:
-	@git submodule update --init --recursive
-	@cd $(PUBLISH_DIR) && git checkout $(PUBLISH_BRANCH)
-
-$(PUBLISH_DIR)/README.md:
-	@echo " >> Creating static site's README ..."
-	@echo '# Content for the LFE site' > $(PUBLISH_DIR)/README.md
-	@echo 'Published at [lfe.io/](https://lfe.io/)' >> $(PUBLISH_DIR)/README.md
-	@cd $(PUBLISH_DIR) && git add README.md
-
 $(PUBLISH_DIR)/CNAME:
 	@echo " >> Copying CNAME File ..."
 	@cp CNAME $(PUBLISH_DIR)/
 
-publish: clean build $(PUBLISH_DIR)/README.md $(PUBLISH_DIR)/CNAME
+publish: clean build $(PUBLISH_DIR)/CNAME
 	@echo " >> Publishing site ..."
 	@git commit -am "Updated content" && \
 	git push origin $(BUILDER_BRANCH)

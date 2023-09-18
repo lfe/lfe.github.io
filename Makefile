@@ -1,7 +1,7 @@
 BIN = zola
 GEN := $(shell which $(BIN) 2> /dev/null)
 PUBLISH_DIR = site
-BRANCH = builder
+BRANCH = main
 TMP_GIT_DIR = /tmp/lfe-io-site-git
 PORT = 5099
 

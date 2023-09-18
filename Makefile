@@ -11,19 +11,24 @@ PORT = 5099
 ###   DOCKER   ##############################################################
 #############################################################################
 
-ZOLA_VERS=0.16
-NODE_VERS=20
-ALPINE_VERS=3.17
-DOCKER_TAG=zola$(ZOLA_VERS)-node$(NODE_VERS)-alpine$(ALPINE_VERS)
+ZOLA_VERS = 0.16
+NODE_VERS = 20
+ALPINE_VERS = 3.17
+DOCKER_TAG = zola$(ZOLA_VERS)-node$(NODE_VERS)-alpine$(ALPINE_VERS)
+DOCKER_ORG = lfex
+DOCKER_FQN = $(DOCKER_ORG):$(DOCKER_TAG)
 MOUNT_DIR = /app
 
 docker-build:
-	docker build -t lfe:$(DOCKER_TAG) .
+	docker build -t $(DOCKER_FQN) .
 
 docker-shell:
 	docker run -it \
 	--entrypoint ash \
-	lfe:$(DOCKER_TAG)
+	$(DOCKER_FQN)
+
+docker-publish: docker-build
+	docker push $(DOCKER_FQN)
 
 #############################################################################
 ###   SITE   ################################################################
@@ -32,14 +37,14 @@ docker-shell:
 build: docker-build tailwind-build clean
 	@echo " >> Building site ..."
 	docker run \
-	-u "$(UID):$(GID)" -v $(PWD):$(MOUNT_DIR) --workdir $(MOUNT_DIR) lfe:$(DOCKER_TAG) \
+	-u "$(UID):$(GID)" -v $(PWD):$(MOUNT_DIR) --workdir $(MOUNT_DIR) $(DOCKER_FQN) \
 	build -o $(PUBLISH_DIR)
 
 serve: docker-build
 	@echo " >> Running site ..."
 	@docker run \
 	-p 8080:8080 -p 1024:1024 \
-	-u "$(UID):$(GID)" -v $(PWD):$(MOUNT_DIR) --workdir $(MOUNT_DIR) lfe:$(DOCKER_TAG) \
+	-u "$(UID):$(GID)" -v $(PWD):$(MOUNT_DIR) --workdir $(MOUNT_DIR) $(DOCKER_FQN) \
 	serve --interface 0.0.0.0 --port 8080 --base-url localhost
 
 run: serve
@@ -118,12 +123,12 @@ tailwind.config.js:
 	docker run -it \
 	-v $(PWD):$(MOUNT_DIR) --workdir $(MOUNT_DIR) \
 	--entrypoint npx \
-	lfe:$(DOCKER_TAG) \
+	$(DOCKER_FQN) \
 	tailwindcss init
 
 tailwind-build:
 	docker run -it \
 	-v $(PWD):$(MOUNT_DIR) --workdir $(MOUNT_DIR) \
 	--entrypoint npx \
-	lfe:$(DOCKER_TAG) \
+	$(DOCKER_FQN) \
 	tailwindcss -i $(TAILWIND_INPUT) -o $(TAILWIND_OUTPUT)

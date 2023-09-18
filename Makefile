@@ -40,15 +40,6 @@ site-init:
 	@git submodule update --init --recursive
 	@cd $(PUBLISH_DIR) && git checkout $(PUBLISH_BRANCH)
 
-backup-submodule-git:
-	@echo " >> Backup-up site's git dir ..."
-	@mkdir -p $(TMP_GIT_DIR)/
-	@mv -v $(PUBLISH_DIR)/.git $(TMP_GIT_DIR)/
-
-restore-submodule-git:
-	@echo " >> Restoring site's git dir ..."
-	@mv -v $(TMP_GIT_DIR)/.git $(PUBLISH_DIR)/
-
 $(PUBLISH_DIR)/README.md:
 	@echo " >> Creating static site's README ..."
 	@echo '# Content for the LFE site' > $(PUBLISH_DIR)/README.md
@@ -59,28 +50,10 @@ $(PUBLISH_DIR)/CNAME:
 	@echo " >> Copying CNAME File ..."
 	@cp CNAME $(PUBLISH_DIR)/
 
-publish: clean build $(PUBLISH_DIR)/README.md $(PUBLISH_DIR)/CNAME publish-start update-content update-publish-dir
-	@echo " >> Pushing branches ..."
-	cd $(PUBLISH_DIR) && \
-	git pull origin $(PUBLISH_BRANCH) --rebase && \
-	git push origin $(PUBLISH_BRANCH)
-	git pull origin $(BUILDER_BRANCH) --rebase
-	-@git push origin $(BUILDER_BRANCH)
-
-publish-start:
+publish: clean build $(PUBLISH_DIR)/README.md $(PUBLISH_DIR)/CNAME
 	@echo " >> Publishing site ..."
-
-update-content:
-	@echo " >> Updating source content ..."
-	-@cd $(PUBLISH_DIR) && \
-	git add * && \
-	git commit -am "Regenerated site content." > /dev/null
-
-update-publish-dir:
-	@echo " >> Updating generated content ..."
-	-@git add $(PUBLISH_DIR) && \
-	git commit -am "Updated submodule for recently generated site content." && \
-	git submodule update
+	@git commit -am "Updated content" && \
+	git push origin $(BUILDER_BRANCH)
 
 spell-check:
 	@for FILE in `find . -name "*.md"`; do \

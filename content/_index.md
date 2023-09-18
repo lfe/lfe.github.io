@@ -77,8 +77,9 @@ See?!
 [extra.download]
 
 repository = "https://github.com/lfe/lfe"
-stable_version = "2.0.1"
-unstable_version = "2.1.2"
+prior_release = "2.0.1"
+current_release = "2.1.2"
+pre_release = "refs/heads/develop"
 
 ###   Code Excerpts   #########################################
 

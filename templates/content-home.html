@@ -20,8 +20,9 @@
                             <div class="col-6 dl-both-container">
                                 <div class="row">
                                     {% set repo = section.extra.download.repository %}
-                                    {% set stable = section.extra.download.stable_version %}
-                                    {% set unstable = section.extra.download.unstable_version %}
+                                    {% set stable = section.extra.download.prior_release %}
+                                    {% set unstable = section.extra.download.current_release %}
+                                    {% set pre_release = section.extra.download.pre_release %}
                                     <div class="col-12 dl-stable-container">
                                         <a href="{{ repo }}/archive/{{ stable }}.zip">
                                             <button type="button"

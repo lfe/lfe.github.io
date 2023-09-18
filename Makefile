@@ -1,31 +1,25 @@
-BIN = zola
-GEN := $(shell which $(BIN) 2> /dev/null)
+ZOLA_VERS=0.16
+NODE_VERS=20
+ALPINE_VERS=3.17
+DOCKER_TAG=zola$(ZOLA_VERS)-node$(NODE_VERS)-alpine$(ALPINE_VERS)
+
+PWD = $(shell pwd)
+UID = $(shell id -u)
+GID = $(shell id -g)
 PUBLISH_DIR = site
 BRANCH = main
 TMP_GIT_DIR = /tmp/lfe-io-site-git
 PORT = 5099
 
-define BINARY_ERROR
 
-No $(BIN) found in Path.
-
-Install $(BIN):
-
-	$ brew install $(BIN)
-
-endef
-
-build:
-ifndef GEN
-	$(error $(BINARY_ERROR))
-endif
+build: docker-build clean
 	@echo " >> Building site ..."
-	@$(GEN) build -o $(PUBLISH_DIR)
+	docker run -u "$(UID):$(GID)" -v $(PWD):/app --workdir /app lfe:$(DOCKER_TAG) \
+	build -o $(PUBLISH_DIR)
 
-serve:
-	@bash -c "trap \"$(MAKE) serve-cleanup\" EXIT; $(GEN) serve -o $(PUBLISH_DIR) -p $(PORT)"
-
-serve-cleanup: site-init build
+serve: docker-build
+	@docker run -p 8080:8080 -u "$(UID):$(GID)" -v $(PWD):/app --workdir /app lfe:$(DOCKER_TAG) \
+	serve --interface 0.0.0.0 --port 8080 --base-url localhost
 
 run: serve
 
@@ -37,7 +31,7 @@ $(PUBLISH_DIR)/CNAME:
 	@echo " >> Copying CNAME File ..."
 	@cp CNAME $(PUBLISH_DIR)/
 
-publish: clean build $(PUBLISH_DIR)/CNAME
+publish: build $(PUBLISH_DIR)/CNAME
 	@echo " >> Publishing site ..."
 	@git commit -am "Updated content"
 	@git push origin $(BRANCH)
@@ -77,3 +71,9 @@ spell-suggest:
 	echo; \
 	fi; \
 	done
+
+docker-build:
+	docker build -t lfe:$(DOCKER_TAG) .
+
+docker-shell:
+	docker run -it lfe:$(DOCKER_TAG) --entrypoint bash

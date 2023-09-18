@@ -1,12 +1,6 @@
-ZOLA_VERS=0.16
-NODE_VERS=20
-ALPINE_VERS=3.17
-DOCKER_TAG=zola$(ZOLA_VERS)-node$(NODE_VERS)-alpine$(ALPINE_VERS)
-
 PWD = $(shell pwd)
 UID = $(shell id -u)
 GID = $(shell id -g)
-MOUNT_DIR = /app
 
 PUBLISH_DIR = site
 BRANCH = main
@@ -14,10 +8,28 @@ TMP_GIT_DIR = /tmp/lfe-io-site-git
 PORT = 5099
 
 #############################################################################
+###   DOCKER   ##############################################################
+#############################################################################
+
+ZOLA_VERS=0.16
+NODE_VERS=20
+ALPINE_VERS=3.17
+DOCKER_TAG=zola$(ZOLA_VERS)-node$(NODE_VERS)-alpine$(ALPINE_VERS)
+MOUNT_DIR = /app
+
+docker-build:
+	docker build -t lfe:$(DOCKER_TAG) .
+
+docker-shell:
+	docker run -it \
+	--entrypoint ash \
+	lfe:$(DOCKER_TAG)
+
+#############################################################################
 ###   SITE   ################################################################
 #############################################################################
 
-build: docker-build clean
+build: docker-build tailwind-build clean
 	@echo " >> Building site ..."
 	docker run \
 	-u "$(UID):$(GID)" -v $(PWD):$(MOUNT_DIR) --workdir $(MOUNT_DIR) lfe:$(DOCKER_TAG) \
@@ -86,19 +98,32 @@ spell-suggest:
 	done
 
 #############################################################################
-###   DOCKER   ##############################################################
+###   TAILWIND   ############################################################
 #############################################################################
 
-docker-build:
-	docker build -t lfe:$(DOCKER_TAG) .
+TAILWIND_BASE = styles
+TAILWIND_INPUT = $(TAILWIND_BASE)/site.css
+TAILWIND_OUTPUT = static/css/site.css
 
-docker-shell:
-	docker run -it \
-	--entrypoint ash \
-	lfe:$(DOCKER_TAG)
+tailwind-setup: tailwind.config.js $(TAILWIND_BASE)/components
 
-docker-tailwind-init:
+$(TAILWIND_BASE)/components:
+	mkdir -p $(TAILWIND_BASE) && \
+	cd $(TAILWIND_BASE) && \
+	git clone git@github.com:merakiui/merakiui.git && \
+	mv merakiui/components merakiui/assets . && \
+	rm -rf merakiui
+
+tailwind.config.js:
 	docker run -it \
 	-v $(PWD):$(MOUNT_DIR) --workdir $(MOUNT_DIR) \
-	--entrypoint /usr/local/bin/npx \
-	lfe:$(DOCKER_TAG) tailwindcss init
+	--entrypoint npx \
+	lfe:$(DOCKER_TAG) \
+	tailwindcss init
+
+tailwind-build:
+	docker run -it \
+	-v $(PWD):$(MOUNT_DIR) --workdir $(MOUNT_DIR) \
+	--entrypoint npx \
+	lfe:$(DOCKER_TAG) \
+	tailwindcss -i $(TAILWIND_INPUT) -o $(TAILWIND_OUTPUT)

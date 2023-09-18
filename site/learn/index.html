@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    
+        <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="LFE Maintainers">
+    <meta name="generator" content="Zola">
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:image" content="https://lfe.io/images/twitter-card.jpg" />
+    <meta property="og:image" content="https://lfe.io/images/twitter-card.jpg" />
+    <meta property="og:type" content="website" />
+
+    <meta name="twitter:title"
+        content="(LFE:Resources for Learning LFE)" />
+    <meta name="twitter:description"
+        content="Learning LFE must be taken in two tracks: learning the syntax particular to a Lisp on the Erlang VM, with all its support for pattern matching, Erlang-style arities, etc., and then learning the ins-and-outs of BEAM languages and OTP. This two-pronged approach is the path to success." />
+    <meta property="og:url" content="https://lfe.io/learn/" />
+    <meta property="og:title" content="(LFE:Resources for Learning LFE)" />
+    <meta property="og:description"
+        content="Learning LFE must be taken in two tracks: learning the syntax particular to a Lisp on the Erlang VM, with all its support for pattern matching, Erlang-style arities, etc., and then learning the ins-and-outs of BEAM languages and OTP. This two-pronged approach is the path to success." />
+    <title>(LFE:Learn)</title>
+    <meta name="description"
+        content="Learning LFE must be taken in two tracks: learning the syntax particular to a Lisp on the Erlang VM, with all its support for pattern matching, Erlang-style arities, etc., and then learning the ins-and-outs of BEAM languages and OTP. This two-pronged approach is the path to success.">
+    
+
+    
+        <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#ffc40d">
+    <meta name="msapplication-config" content="/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+
+    
+
+    
+    
+    
+
+    
+    <!-- Bootstrap core CSS -->
+<link href="/bootstrap.css" rel="stylesheet">
+<link href="/fontawesome.css" rel="stylesheet">
+<link href="/lfe.css" rel="stylesheet">
+<link href="/fontawesome-solid.css" rel="stylesheet">
+<link href="/fontawesome-brands.css" rel="stylesheet">
+<link href="/css/highlight.css" rel="stylesheet">
+<link href="/css/common.css" rel="stylesheet">
+
+    
+
+    <!-- Custom styles for this template -->
+    
+    
+</head>
+
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark lfe-main">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <img src="/images/LFE-logo-color-separated-6-square-x64.png" />
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#lfe-main-nav"
+                aria-controls="lfe-main-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="lfe-main-nav">
+    
+    
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+            
+            
+            <a class="nav-link " href="&#x2F;learn&#x2F;">Learn</a>
+            
+        </li>
+        <li class="nav-item">
+            
+            
+            <a class="nav-link " href="&#x2F;use&#x2F;">Use</a>
+            
+        </li>
+        <li class="nav-item">
+            
+            
+            <a class="nav-link " href="&#x2F;community&#x2F;">Community</a>
+            
+        </li>
+        <li class="nav-item">
+            
+            
+            <a class="nav-link " href="&#x2F;about&#x2F;">About</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="https://blog.lfe.io/">Blog</a>
+        </li>
+    </ul>
+    <ul class="navbar-nav">
+        <li class="nav-item social">
+            <a class="nav-link" href="https://github.com/lfe/lfe">
+                <i class="fab fa-github"></i>
+            </a>
+        </li>
+        <li class="nav-item social">
+            <a class="nav-link" href="https://fosstodon.org/web/@lfe">
+                <i class="fab fa-mastodon"></i>
+            </a>
+        </li>
+        <li class="nav-item spacer">
+            <a class="nav-link" href="#">
+            </a>
+        </li>
+    </ul>
+    <form class="form-inline my-2 my-md-0">
+        <input id="search" type="search" class="form-control" placeholder="Search" aria-label="Search">
+        <div class="search-results" style="display: none;">
+            <div class="search-results__items"></div>
+        </div>
+        <button type="button" class="btn btn-warning btn-sm">Go!</button>
+    </form>
+
+</div>
+
+        </div>
+    </nav>
+    <div class="collapse navbar-collapse" id="lfe-main-nav">
+    
+    
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+            
+            
+            <a class="nav-link " href="&#x2F;learn&#x2F;">Learn</a>
+            
+        </li>
+        <li class="nav-item">
+            
+            
+            <a class="nav-link " href="&#x2F;use&#x2F;">Use</a>
+            
+        </li>
+        <li class="nav-item">
+            
+            
+            <a class="nav-link " href="&#x2F;community&#x2F;">Community</a>
+            
+        </li>
+        <li class="nav-item">
+            
+            
+            <a class="nav-link " href="&#x2F;about&#x2F;">About</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="https://blog.lfe.io/">Blog</a>
+        </li>
+    </ul>
+    <ul class="navbar-nav">
+        <li class="nav-item social">
+            <a class="nav-link" href="https://github.com/lfe/lfe">
+                <i class="fab fa-github"></i>
+            </a>
+        </li>
+        <li class="nav-item social">
+            <a class="nav-link" href="https://fosstodon.org/web/@lfe">
+                <i class="fab fa-mastodon"></i>
+            </a>
+        </li>
+        <li class="nav-item spacer">
+            <a class="nav-link" href="#">
+            </a>
+        </li>
+    </ul>
+    <form class="form-inline my-2 my-md-0">
+        <input id="search" type="search" class="form-control" placeholder="Search" aria-label="Search">
+        <div class="search-results" style="display: none;">
+            <div class="search-results__items"></div>
+        </div>
+        <button type="button" class="btn btn-warning btn-sm">Go!</button>
+    </form>
+
+</div>
+
+    
+    
+    
+
+    
+<main role="main" class="flex-shrink-0">
+    <div class="jumbotron lfe-masthead">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 page-title">
+                    <h1>Resources for Learning LFE</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 page-description">
+                    <h2>Learning LFE must be taken in two tracks: learning the syntax particular to a Lisp on the Erlang VM, with all its support for pattern matching, Erlang-style arities, etc., and then learning the ins-and-outs of BEAM languages and OTP. This two-pronged approach is the path to success.</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container page-content">
+        <h1 id="lfe"><a class="zola-anchor" href="#lfe" aria-label="Anchor link for: lfe">LFE</a></h1>
+<h2 id="quick-start-guides"><a class="zola-anchor" href="#quick-start-guides" aria-label="Anchor link for: quick-start-guides"><a href="https://lfe.io/learn/#quick-start-guides">Quick Start Guides</a></a></h2>
+<p><a href="https://lfe.io/books/rebar3-quick-start/">Quick Start with rebar3</a> - This will get you up and running with LFE, requiring <em>only</em> that you have a modern Erlang installed (version 21+) and <code>rebar3</code>.</p>
+<h2 id="in-depth"><a class="zola-anchor" href="#in-depth" aria-label="Anchor link for: in-depth">In-Depth</a></h2>
+<p><a href="https://lfe.io/books/tutorial/">The LFE Tutorial</a> - The Erlang &quot;Getting Started&quot; translated into LFE!</p>
+<p><a href="https://lfe.io/books/casting-spels/">Casting SPELs in LFE</a> - The famous &quot;Casting SPELs in Lisp&quot; translated into LFE, but taking things further than the original with state management via <code>defrecord</code>, creating a custom game server, and then dipping the toes into OTP with a conversion of the custom game server to a <code>gen_server</code>.</p>
+<p><a href="https://github.com/lfe/lfe/tree/develop/examples">LFE Examples</a> - For those that learn by watching and playing, the <code>./examples</code> directory in the LFE repo may be quite useful.</p>
+<p>LFE on <a href="https://rosettacode.org/wiki/Category:LFE">Rosetta Code</a> - If those examples aren't enough for you, there are 99 others to choose from on Rosetta Code!</p>
+<p><a href="https://lfe.io/books/sicp/">Structure and Interpretation of Computer Programs</a> - The LFE edition of SICP is still a work in progress, but two chapters have been completed and offer an excellent introduction to core concepts in computer programming, or a refresher for those wishing to get back in the game. This text in its original form was used as the basis for the computer science introductory courses taught at MIT for over a decade (from the early 1980s into the 90s). SICP is widely regarded as one of the most important texts for programming, clearly explaining core principals of the art and science, and helping to shape the minds of the first few generations of early Internet innovators. The <em>LFE Edition</em>  converts the Lips-1 of the original (Scheme) into the Lisp-2+ variant of LFE.</p>
+<h2 id="more-lfe"><a class="zola-anchor" href="#more-lfe" aria-label="Anchor link for: more-lfe">More LFE</a></h2>
+<p>Once you've learned the syntax and the underlying principles of the Erlang VM, you're going to want to actually <em>use</em> this beautiful Lisp! Be sure to check out our <a href="/use">reference materials, how-tows, etc.</a>.</p>
+<p><a href="/community">The community</a> will be an invaluable resource in your journey of learning, to be sure to stop in whatever medium makes you happy, say &quot;hi&quot; and ask us lots of questions!</p>
+<h1 id="erlang"><a class="zola-anchor" href="#erlang" aria-label="Anchor link for: erlang">Erlang</a></h1>
+<p>There are some phenomenal materials available for a self-paced Erlang/OTP education. Some of the classics are given below. For those with bigger budgets, remember that formal training is also an option! (In fact, there are not only classes offered for Erlang, but also LFE ...)</p>
+<h2 id="the-language"><a class="zola-anchor" href="#the-language" aria-label="Anchor link for: the-language">The Language</a></h2>
+<p><a href="https://learnyousomeerlang.com/">Learn You Some Erlang for Great Good!</a> - Probably one of the best (and <em>definitely</em> the most fun) books available for learning Erlang. (Also available <a href="https://nostarch.com/erlang">in print</a>.)</p>
+<h2 id="otp"><a class="zola-anchor" href="#otp" aria-label="Anchor link for: otp">OTP</a></h2>
+<p><a href="https://www.oreilly.com/library/view/designing-for-scalability/9781449361556/">Designing for Scalability with Erlang/OTP</a> - The thinking person's OTP book: where to go when you really want to understand OTP.</p>
+<p><a href="https://www.manning.com/books/erlang-and-otp-in-action">Erlang and OTP in Action</a> - This book is another fantastic resource, building up an OTP application piece at a time as you move through the chapters.</p>
+<h2 id="in-production"><a class="zola-anchor" href="#in-production" aria-label="Anchor link for: in-production">In Production</a></h2>
+<p>Once you've learned how to write Erlang/LFE/OTP applications, is time to get them into production, and you'll find the following invaluable references for that:</p>
+<ul>
+<li><a href="https://adoptingerlang.org/">Adopting Erlang</a> - <em>&quot;Adopting Erlang is an ongoing effort to gather all the resources that will help you use Erlang in a business. The booksite is divided in three sections focusing particularly on Erlang/OTP’s higher level concepts in the current open source ecosystem, how to use it in production (while setting up a pipeline for continuous development and delivery), and how to build a team when you’re starting from scratch.&quot;</em></li>
+<li><a href="https://erlang-in-anger.com/">Stuff Goes Bad - Erlang in Anger</a> - <em>&quot;This book intends to be a little guide about how to be the Erlang medic in a time of war. It is first and foremost a collection of tips and tricks to help understand where failures come from, and a dictionary of different code snippets and practices that helped developers debug production systems that were built in Erlang.&quot;</em></li>
+</ul>
+<h1 id="lisp-arcana"><a class="zola-anchor" href="#lisp-arcana" aria-label="Anchor link for: lisp-arcana">Lisp Arcana</a></h1>
+<p>In the event that you want to dive deeper into the world of Lisp itself, there are several excellent texts to explore.</p>
+<h2 id="lisp-internals"><a class="zola-anchor" href="#lisp-internals" aria-label="Anchor link for: lisp-internals">Lisp Internals</a></h2>
+<ul>
+<li>
+<p><a href="https://www.cambridge.org/core/books/lisp-in-small-pieces/66FD2BE3EDDDC68CA87D652C82CF849E">Lisp in Small Pieces</a> - <em>&quot;This is a comprehensive account of the semantics and the implementation of the whole Lisp family of languages, namely Lisp, Scheme and related dialects. It describes 11 interpreters and 2 compilers, including very recent techniques of interpretation and compilation.&quot;</em></p>
+</li>
+<li>
+<p><a href="https://letoverlambda.com/">Let Over Lambda—50 Years of Lisp</a> - <em>&quot;Starting with the fundamentals, it describes the most advanced features of the most advanced language: COMMON LISP. The point of this book is to expose you to ideas that you might otherwise never be exposed to. This book is about macros, that is programs that write programs. Macros are what make lisp the greatest programming language in the world. When used properly, macros enable amazing feats of abstraction, programmer productivity, and code efficiency and security that are unheard of elsewhere. Macros let you do things you simply cannot do in other languages.&quot;</em></p>
+</li>
+</ul>
+<h2 id="lisp-reference"><a class="zola-anchor" href="#lisp-reference" aria-label="Anchor link for: lisp-reference">Lisp Reference</a></h2>
+<ul>
+<li>
+<p><a href="http://www.lispworks.com/documentation/HyperSpec/Front/Contents.htm">Common Lisp HyperSpec</a> - This is the definitive reference manual for the Common Lisp standard. The LFE core contributors have made nearly constant reference (and deference) to this document in the course of implementing features in LFE.</p>
+</li>
+<li>
+<p><a href="http://www.softwarepreservation.org/projects/LISP/MIT/Moon-MACLISP_Reference_Manual-Apr_08_1974.pdf">The Moonual</a> - This is a bit of computing history that not many are aware of: the manual for <a href="https://en.wikipedia.org/wiki/Maclisp">MACLISP</a> written by David Moon. This is of interest to LFE developers due to the influence it has had upon the design and development of LFE. LFE actually derives most of it Lisp nature due to the experiences Robert Virding had as a physics PhD student who programmed in MACLISP on university machines. Even since then, we have constantly referenced the Moonual, almost as much as the Common Lisp HyperSpec (and in some cases, more!). It is of particular interest that the MAC project at MIT not only gave birth to MACLISP, but also <a href="https://en.wikipedia.org/wiki/Macsyma">MACSYMA</a> (originally written in MACLISP, since ported to Common Lisp) which significantly influenced the development of Mathematica.</p>
+</li>
+</ul>
+
+    </div>
+</main>
+
+
+
+    
+    <footer class="footer mt-auto py-3">
+    <div class="container py-5 main-footer">
+        <div class="row">
+            <div class="col-6 col-md">
+                <h5>Learn</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a class="text-muted" href="/learn/#lfe">LFE</a></li>
+                    <li><a class="text-muted" href="/learn/#erlang">Erlang</a></li>
+                    <li><a class="text-muted" href="/learn/#otp">OTP</a></li>
+                    <li><a class="text-muted" href="/learn/#lisp-arcana">Lisp</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-md">
+                <h5>Use</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a class="text-muted" href="/use#the-repl">The REPL</a></li>
+                    <li><a class="text-muted" href="/use/#reference">LFE Reference Materials</a></li>
+                    <li><a class="text-muted" href="/use/#erlang">Key Erlang Modules</a></li>
+                    <li><a class="text-muted" href="http://docs.lfe.io">docs.lfe.io</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-md footer-logo">
+                <img src="/images/LFE-logo-darker-greys-6-square-x32.png" />
+            </div>
+            <div class="col-6 col-md right-side">
+                <h5>Community</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a class="text-muted" href="/community/#social-media">Social Media</a></li>
+                    <li><a class="text-muted" href="/community/#traditional-media">Traditional Media</a></li>
+                    <li><a class="text-muted" href="/community/#videos">Videos</a></li>
+                    <li><a class="text-muted" href="/community/#repos-code-container-images">Code & Container Images</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-6 col-md right-side">
+                <h5>About</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a class="text-muted" href="/about/#the-language">The Language</a></li>
+                    <li><a class="text-muted" href="/about/#a-short-history">A Short History</a></li>
+                    <li><a class="text-muted" href="/about/#its-creator">Its Creator</a></li>
+                    <li><a class="text-muted" href="https://github.com/lfe/lfe/graphs/contributors">Core
+                            Contributors</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+<section class="mt-auto py-3 sub-footer">
+    <div class="container">
+        <span>&copy; 2014-2038 LFElluminati | Alien Alliance</span>
+    </div>
+</section>
+
+    
+
+    
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script type="text/javascript" src="/elasticlunr.min.js"></script>
+<script type="text/javascript" src="/search_index.en.js"></script>
+<script type="text/javascript" src="/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript" src="/js/search.js"></script>
+<script type="text/javascript" src="/js/app.js"></script>
+<script type="text/javascript" src="/js/highlight.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-38274766-3"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-38274766-3');
+</script>
+
+    
+
+    
+    
+</body>
+
+</html>

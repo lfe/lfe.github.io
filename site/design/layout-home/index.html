@@ -1,0 +1,939 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    
+        <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="LFE Maintainers">
+    <meta name="generator" content="Zola">
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:image" content="https://lfe.io/images/twitter-card.jpg" />
+    <meta property="og:image" content="https://lfe.io/images/twitter-card.jpg" />
+    <meta property="og:type" content="website" />
+
+    <meta name="twitter:title"
+        content="(LFE:Site Design : Layout : Home)" />
+    <meta name="twitter:description"
+        content="The website for LFE, the Erlang community&#x27;s own Lisp." />
+    <meta property="og:url" content="https://lfe.io/design/layout-home/" />
+    <meta property="og:title" content="(LFE:Site Design : Layout : Home)" />
+    <meta property="og:description"
+        content="The website for LFE, the Erlang community&#x27;s own Lisp." />
+    <title>(LFE:Site Design : Layout : Home)</title>
+    <meta name="description"
+        content="The website for LFE, the Erlang community&#x27;s own Lisp.">
+    
+
+    
+        <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#ffc40d">
+    <meta name="msapplication-config" content="/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+
+    
+
+    
+    
+    
+
+    
+    <!-- Bootstrap core CSS -->
+<link href="/bootstrap.css" rel="stylesheet">
+<link href="/fontawesome.css" rel="stylesheet">
+<link href="/lfe.css" rel="stylesheet">
+<link href="/fontawesome-solid.css" rel="stylesheet">
+<link href="/fontawesome-brands.css" rel="stylesheet">
+<link href="/css/highlight.css" rel="stylesheet">
+<link href="/css/common.css" rel="stylesheet">
+
+    
+
+    <!-- Custom styles for this template -->
+    
+    
+</head>
+
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark lfe-main">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <img src="/images/LFE-logo-color-separated-6-square-x64.png" />
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#lfe-main-nav"
+                aria-controls="lfe-main-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="lfe-main-nav">
+    
+    
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+            
+            
+            <a class="nav-link " href="&#x2F;learn&#x2F;">Learn</a>
+            
+        </li>
+        <li class="nav-item">
+            
+            
+            <a class="nav-link " href="&#x2F;use&#x2F;">Use</a>
+            
+        </li>
+        <li class="nav-item">
+            
+            
+            <a class="nav-link " href="&#x2F;community&#x2F;">Community</a>
+            
+        </li>
+        <li class="nav-item">
+            
+            
+            <a class="nav-link " href="&#x2F;about&#x2F;">About</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="https://blog.lfe.io/">Blog</a>
+        </li>
+    </ul>
+    <ul class="navbar-nav">
+        <li class="nav-item social">
+            <a class="nav-link" href="https://github.com/lfe/lfe">
+                <i class="fab fa-github"></i>
+            </a>
+        </li>
+        <li class="nav-item social">
+            <a class="nav-link" href="https://fosstodon.org/web/@lfe">
+                <i class="fab fa-mastodon"></i>
+            </a>
+        </li>
+        <li class="nav-item spacer">
+            <a class="nav-link" href="#">
+            </a>
+        </li>
+    </ul>
+    <form class="form-inline my-2 my-md-0">
+        <input id="search" type="search" class="form-control" placeholder="Search" aria-label="Search">
+        <div class="search-results" style="display: none;">
+            <div class="search-results__items"></div>
+        </div>
+        <button type="button" class="btn btn-warning btn-sm">Go!</button>
+    </form>
+
+</div>
+
+        </div>
+    </nav>
+    <div class="collapse navbar-collapse" id="lfe-main-nav">
+    
+    
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+            
+            
+            <a class="nav-link " href="&#x2F;learn&#x2F;">Learn</a>
+            
+        </li>
+        <li class="nav-item">
+            
+            
+            <a class="nav-link " href="&#x2F;use&#x2F;">Use</a>
+            
+        </li>
+        <li class="nav-item">
+            
+            
+            <a class="nav-link " href="&#x2F;community&#x2F;">Community</a>
+            
+        </li>
+        <li class="nav-item">
+            
+            
+            <a class="nav-link " href="&#x2F;about&#x2F;">About</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="https://blog.lfe.io/">Blog</a>
+        </li>
+    </ul>
+    <ul class="navbar-nav">
+        <li class="nav-item social">
+            <a class="nav-link" href="https://github.com/lfe/lfe">
+                <i class="fab fa-github"></i>
+            </a>
+        </li>
+        <li class="nav-item social">
+            <a class="nav-link" href="https://fosstodon.org/web/@lfe">
+                <i class="fab fa-mastodon"></i>
+            </a>
+        </li>
+        <li class="nav-item spacer">
+            <a class="nav-link" href="#">
+            </a>
+        </li>
+    </ul>
+    <form class="form-inline my-2 my-md-0">
+        <input id="search" type="search" class="form-control" placeholder="Search" aria-label="Search">
+        <div class="search-results" style="display: none;">
+            <div class="search-results__items"></div>
+        </div>
+        <button type="button" class="btn btn-warning btn-sm">Go!</button>
+    </form>
+
+</div>
+
+    
+    
+    
+
+    
+<main role="main" class="flex-shrink-0">
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron lfe-masthead">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="&#x2F;images&#x2F;LFE-logo-abbr-6.2.png" />
+                </div>
+                <div class="col-md-4 tagline">
+                    <em>"MACLISP and supervision trees are all that anyone needs."</em>
+                </div>
+
+                <div class="col-md-4 download">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-6 dl-icon-container">
+                                <i class="fas fa-download fa-3x"></i>
+                            </div>
+                            <div class="col-6 dl-both-container">
+                                <div class="row">
+                                    
+                                    
+                                    
+                                    <div class="col-12 dl-stable-container">
+                                        <a href="https:&#x2F;&#x2F;github.com&#x2F;lfe&#x2F;lfe/archive/1.2.1.zip">
+                                            <button type="button"
+                                                class="btn btn-success btn-sm dl-unstable">Stable&nbsp;(1.2.1)</button>
+                                        </a>
+                                    </div>
+                                    <div class="col-12 dl-unstable-container">
+                                        <a href="https:&#x2F;&#x2F;github.com&#x2F;lfe&#x2F;lfe/archive/1.3.zip">
+                                            <button type="button"
+                                                class="btn btn-warning btn-sm dl-unstable">Unstable&nbsp;(1.3)</button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            
+            
+            <ul class="nav nav-pills" id="pills-tab" role="tablist">
+                
+                
+                
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link active" id="pills-repl-tab" data-toggle="pill"
+                        href="#pills-repl" role="tab" aria-controls="pills-repl"
+                        aria-selected="true">REPL</a>
+                </li>
+                
+                
+                
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link " id="pills-core-types-tab" data-toggle="pill"
+                        href="#pills-core-types" role="tab" aria-controls="pills-core-types"
+                        aria-selected="true">Simple Types</a>
+                </li>
+                
+                
+                
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link " id="pills-data-struct-tab" data-toggle="pill"
+                        href="#pills-data-struct" role="tab" aria-controls="pills-data-struct"
+                        aria-selected="true">Compound Types</a>
+                </li>
+                
+                
+                
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link " id="pills-records-tab" data-toggle="pill"
+                        href="#pills-records" role="tab" aria-controls="pills-records"
+                        aria-selected="true">Records</a>
+                </li>
+                
+                
+                
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link " id="pills-funcs-tab" data-toggle="pill"
+                        href="#pills-funcs" role="tab" aria-controls="pills-funcs"
+                        aria-selected="true">Functions</a>
+                </li>
+                
+                
+                
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link " id="pills-macros-tab" data-toggle="pill"
+                        href="#pills-macros" role="tab" aria-controls="pills-macros"
+                        aria-selected="true">Macros</a>
+                </li>
+                
+                
+                
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link " id="pills-erl-tab" data-toggle="pill"
+                        href="#pills-erl" role="tab" aria-controls="pills-erl"
+                        aria-selected="true">Erlang Interop</a>
+                </li>
+                
+                
+                
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link " id="pills-otp-tab" data-toggle="pill"
+                        href="#pills-otp" role="tab" aria-controls="pills-otp"
+                        aria-selected="true">OTP</a>
+                </li>
+                
+            </ul>
+            <div class="tab-content" id="pills-tabContent">
+                
+                
+                
+                <div class="tab-pane active show" id="pills-repl" role="tabpanel"
+                    aria-labelledby="pills-repl-tab">
+
+                    <div class="row">
+                        <div class="col-md-7 code-sample">
+                            <img src="/images/repl.png" alt="repl image" />
+                        </div>
+
+                        <div class="col-md-5 code-description">
+                            LFE comes with a powerful REPL, supporting interactive development
+(including writing macros!) as well as running scripts or even evaluating
+arbitrary LFE code via the command line.
+                        </div>
+                    </div>
+                </div>
+                
+                
+                
+                <div class="tab-pane  " id="pills-core-types" role="tabpanel"
+                    aria-labelledby="pills-core-types-tab">
+
+                    <div class="row">
+                        <div class="col-md-7 code-sample">
+                            <pre data-lang="lisp" class="language-lisp "><code class="language-lisp" data-lang="lisp">lfe&gt; (== 42 #b101010)
+true
+
+lfe&gt; (integer_to_list 42 2)
+&quot;101010&quot;
+
+lfe&gt; #\a
+97
+
+lfe&gt; &quot;regular string&quot;
+&quot;regular string&quot;
+
+lfe&gt; #&quot;binary string&quot;
+#&quot;binary string&quot;
+</code></pre>
+
+                        </div>
+
+                        <div class="col-md-5 code-description">
+                            Note that in LFE and Erlang a string is really just a list of integers;
+there is no &quot;string&quot; type. There is, however, an &quot;atom&quot; type in LFE; this would be analogous to the Lisp symbol. For example, <code>'my-atom</code>, or if the atom has spaces in it, <code>'|my atom|</code>.
+                        </div>
+                    </div>
+                </div>
+                
+                
+                
+                <div class="tab-pane  " id="pills-data-struct" role="tabpanel"
+                    aria-labelledby="pills-data-struct-tab">
+
+                    <div class="row">
+                        <div class="col-md-7 code-sample">
+                            <pre data-lang="lisp" class="language-lisp "><code class="language-lisp" data-lang="lisp">;; Lists
+lfe&gt; &#x27;(a b c 1 2 5)
+(a b c 1 2 5)
+
+;; Tuples
+lfe&gt; #(&quot;element 1&quot; 2 elem-3)
+#(&quot;element 1&quot; 2 elem-3)
+
+;; Maps
+lfe&gt; #m(key1 &quot;value 1&quot;
+        &quot;key 2&quot; value-2)
+#M(&quot;key 2&quot; value-2 key1 &quot;value 1&quot;)
+
+
+</code></pre>
+
+                        </div>
+
+                        <div class="col-md-5 code-description">
+                            In LFE lists are like they are in a Lisp (except they also include
+strings). Additionally, LFE has tuples (Lisp vectors) and maps
+(Lisp has tables). LFE has property lists, dicts, and ordered dicts
+from Erlang, supported via additional libraries.
+                        </div>
+                    </div>
+                </div>
+                
+                
+                
+                <div class="tab-pane  " id="pills-records" role="tabpanel"
+                    aria-labelledby="pills-records-tab">
+
+                    <div class="row">
+                        <div class="col-md-7 code-sample">
+                            <pre data-lang="lisp" class="language-lisp "><code class="language-lisp" data-lang="lisp">;; Defining a record automatically generates a set of
+;; useful functions for that particular record.
+lfe&gt; (defrecord person
+       name
+       address
+       age)
+set-person-age
+
+;; Use the generated record constructor:
+lfe&gt; (make-person name &quot;Ford Prefect&quot;
+                       address &quot;Betelgeuse Seven&quot;
+                       age 234))
+#(person &quot;Ford Prefect&quot; &quot;Betelgeuse Seven&quot; 234)
+
+</code></pre>
+
+                        </div>
+
+                        <div class="col-md-5 code-description">
+                            Like all data in LFE, records can be pattern-matched. Pattern matching
+on record field names and data in function arguments is an extremely powerful
+capability provided to developers.
+                        </div>
+                    </div>
+                </div>
+                
+                
+                
+                <div class="tab-pane  " id="pills-funcs" role="tabpanel"
+                    aria-labelledby="pills-funcs-tab">
+
+                    <div class="row">
+                        <div class="col-md-7 code-sample">
+                            <pre data-lang="lisp" class="language-lisp "><code class="language-lisp" data-lang="lisp">;; A recursive function with pattern matching:
+lfe&gt; (defun ackermann
+       ((0 n) (+ n 1))
+       ((m 0) (ackermann (- m 1) 1))
+       ((m n) (ackermann (- m 1)
+                         (ackermann m (- n 1)))))
+
+;; Call the function
+lfe&gt; (ackermann 3 4)
+125
+
+;; Apply the function
+lfe&gt; (funcall #&#x27;ackermann&#x2F;2 3 4))
+125
+</code></pre>
+
+                        </div>
+
+                        <div class="col-md-5 code-description">
+                            As well as supporting the standard Lisp syntax for <code>defun</code>,
+LFE functions support pattern matching in arguments, allowing you to create
+concise, expressive, and elegant code.
+                        </div>
+                    </div>
+                </div>
+                
+                
+                
+                <div class="tab-pane  " id="pills-macros" role="tabpanel"
+                    aria-labelledby="pills-macros-tab">
+
+                    <div class="row">
+                        <div class="col-md-7 code-sample">
+                            <pre data-lang="lisp" class="language-lisp "><code class="language-lisp" data-lang="lisp">;; LFE and Erlang do not support n-arity functions, but
+;; you can write a Lisp macro to get around that :-)
+(defmacro mean args
+  `(&#x2F; (lists:sum ,args)
+      ,(length args)))
+
+;; Use the macro with different numbers of arguments:
+lfe&gt; (mean 1)
+1.0
+lfe&gt; (mean 1 2)
+1.5
+lfe&gt; (mean 1 2 3 4 5 6 42 108)
+21.375
+
+</code></pre>
+
+                        </div>
+
+                        <div class="col-md-5 code-description">
+                            LFE macros are unhygenic, but with scoped variables. There is no <code>gensym</code> in
+LFE due to this being unsafe in long-lived, distributed code (LFE supports
+sharing code with remote nodes). With the exception of running in the REPL,
+macros are only compile-time.
+                        </div>
+                    </div>
+                </div>
+                
+                
+                
+                <div class="tab-pane  " id="pills-erl" role="tabpanel"
+                    aria-labelledby="pills-erl-tab">
+
+                    <div class="row">
+                        <div class="col-md-7 code-sample">
+                            <pre data-lang="lisp" class="language-lisp "><code class="language-lisp" data-lang="lisp">lfe&gt; (lists:reverse
+       (erlang:integer_to_list
+          (lists:foldl #&#x27;*&#x2F;2 1 &#x27;(1 2 3 4))))
+&quot;42&quot;
+
+lfe&gt; (supervisor:which_children &#x27;kernel_sup)
+(#(logger_sup #Pid&lt;0.70.0&gt; supervisor (logger_sup))
+ #(kernel_safe_sup #Pid&lt;0.69.0&gt; supervisor (kernel))
+ #(kernel_refc #Pid&lt;0.68.0&gt; worker (kernel_refc))
+ #(kernel_config #Pid&lt;0.67.0&gt; worker (kernel_config))
+ #(user #Pid&lt;0.63.0&gt; supervisor (user_sup))
+ #(standard_error #Pid&lt;0.61.0&gt; supervisor (standard_error))
+ #(erl_signal_server #Pid&lt;0.60.0&gt; worker dynamic)
+ ...)
+</code></pre>
+
+                        </div>
+
+                        <div class="col-md-5 code-description">
+                            Here we have two examples of directly calling Erlang functions
+from LFE. First, we're &quot;folding&quot; (a.k.a &quot;reducing&quot;) over a list
+of items, multiplying them by the accumulated value, and then further
+transforming using other Erlang functions. Then we are calling an
+Erlang function to get information about a particular supervision tree.
+                        </div>
+                    </div>
+                </div>
+                
+                
+                
+                <div class="tab-pane  " id="pills-otp" role="tabpanel"
+                    aria-labelledby="pills-otp-tab">
+
+                    <div class="row">
+                        <div class="col-md-7 code-sample">
+                            <pre data-lang="lisp" class="language-lisp "><code class="language-lisp" data-lang="lisp">(defmodule server
+  (behaviour gen_server)
+  (export
+    (start_link 0)
+    (stop 0)
+    ...))
+
+(defun handle_call
+  ((&#x27;amount _caller state-data)
+    `#(reply ,state-data ,state-data))
+  ((&#x27;stop _caller state-data)
+    `#(stop shutdown ok state-data))
+  ((message _caller state-data)
+    `#(reply ,(unknown-command) ,state-data)))
+</code></pre>
+
+                        </div>
+
+                        <div class="col-md-5 code-description">
+                            OTP is what you use when you need to create industrial grade applications
+and services; there's nothing quite like it in the programming world. As
+such, it has inspired countless imitations in a great many other programming
+languages.
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+
+            <p class="lfe-summary">
+                LFE is not a casual Lisp. It's a Lisp for those who want to build distributed
+applications -- like the Erlang software that powers 40% of the world's telecommunications.
+                <a class="btn btn-primary btn-sm" href="#"
+                    role="button">Learn More &raquo;</a></p>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+
+    <div class="container features">
+        
+        
+        <h1 class="features section title">LFE Features</h1>
+        <div class="row">
+            
+            <div class="col-md-3">
+                <h2><img src="/images/lisplogo-alien-tech-grey.png" alt="lisp alien logo" /></p>
+<p>Alien Technology</h2>
+                <p>It is an established fact that John McCarthy shared alien tech with the world in 1958 when he introduced us to Lisp. We continue that great tradition.</p>
+<ul>
+<li>Functions and variables with separate namespaces (LFE is a Lisp-2)</li>
+<li>Low-hygiene Macros</li>
+<li>Homoiconicity</li>
+<li>In-REPL Function and macro definitions
+<br/><br/></li>
+</ul>
+</p>
+                <div class="container button-container">
+                    <p>
+                        <a class="btn btn-secondary" href="#" role="button">Learn More
+                            &raquo;</a>
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-md-3">
+                <h2><i class="fas fa-smile fa-2x"></i></p>
+<p>Core Erlang Foundation</h2>
+                <p>All the benefits of Erlang with none of the Prolog:</p>
+<ul>
+<li>No global data</li>
+<li>No mutable data</li>
+<li>Pattern matching and guards</li>
+<li>Compiler and interpreter</li>
+<li>Hot upgrading of deployed code</li>
+<li>The <a href="https://www.youtube.com/watch?v=rRbY3TMUcgQ">Banarama of languages</a>
+<br/><br/><br/></li>
+</ul>
+</p>
+                <div class="container button-container">
+                    <p>
+                        <a class="btn btn-secondary" href="#" role="button">Learn More
+                            &raquo;</a>
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-md-3">
+                <h2><i class="fas fa-pastafarianism fa-2x"></i></p>
+<p><a href="https://www.youtube.com/watch?v=rRbY3TMUcgQ">Utterly Terrifying</a></h2>
+                <p>The ability to generate distributed applications and full releases in mere minutes:</p>
+<ul>
+<li>Fault-tolerant</li>
+<li>Massively scalable</li>
+<li>Extreme Concurrency</li>
+<li>Soft real-time</li>
+<li>Open. Telecom. Platform.
+<br/><br/><br/><br/><br/><br/></li>
+</ul>
+</p>
+                <div class="container button-container">
+                    <p>
+                        <a class="btn btn-secondary" href="#" role="button">Learn More
+                            &raquo;</a>
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-md-3">
+                <h2><i class="fas fa-flask fa-2x"></i></p>
+<p>Language Lab</h2>
+                <p>The mad-scientist powers of a Lisp combined with the efficiency of the Actor Model and Erlang's light-weight processes.</p>
+<ul>
+<li>Experiment with creating distributed systems in new ways.</li>
+<li>Create DSLs on-demand.</li>
+<li>Take advantage of 1000s of cores without having to change your code.</li>
+<li>Easily write your own compilers.</li>
+</ul>
+</p>
+                <div class="container button-container">
+                    <p>
+                        <a class="btn btn-secondary" href="#" role="button">Learn More
+                            &raquo;</a>
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- What You Can Build Section -->
+
+    <div class="container buildit">
+        
+        
+        <h1 class="buildit section title">Build It with LFE</h1>
+        <div class="row">
+            
+            <div class="col-md-3">
+                <h2>Scripts</h2>
+                <p><code>main</code> scripts, <code>lfescript</code>s, escripts</p>
+                <div class="container button-container">
+                    <p>
+                        <a class="btn btn-secondary" href="#" role="button">Learn More
+                            &raquo;</a>
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-md-3">
+                <h2>Stand-alone Libraries</h2>
+                <p>TBD</p>
+                <div class="container button-container">
+                    <p>
+                        <a class="btn btn-secondary" href="#" role="button">Learn More
+                            &raquo;</a>
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-md-3">
+                <h2>OTP Applications</h2>
+                <p>TBD</p>
+                <div class="container button-container">
+                    <p>
+                        <a class="btn btn-secondary" href="#" role="button">Learn More
+                            &raquo;</a>
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-md-3">
+                <h2>OTP Releases</h2>
+                <p>TBD</p>
+                <div class="container button-container">
+                    <p>
+                        <a class="btn btn-secondary" href="#" role="button">Learn More
+                            &raquo;</a>
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- Books Section -->
+
+    <div class="container books">
+        
+        <h1 class="books section title">Books</h1>
+        
+
+        <div class="row book-group">
+            
+            <div class="col-md-4 book">
+                <h2>LFE Quick-Start</h2>
+                <p><a href="http://lfe.io/books/rebar3-quick-start/"><img src="http://lfe.io/books/rebar3-quick-start/images/cover.jpg" alt="casting-spels" /></a> </p>
+                <p><a class="btn btn-secondary" href="http:&#x2F;&#x2F;lfe.io&#x2F;books&#x2F;rebar3-quick-start&#x2F;" role="button">Read Now
+                        &raquo;</a></p>
+            </div>
+            
+            <div class="col-md-4 book">
+                <h2>Casting SPELs in LFE</h2>
+                <p><a href="http://lfe.io/books/casting-spels/"><img src="http://lfe.io/books/casting-spels/images/cover.jpg" alt="casting-spels" /></a> </p>
+                <p><a class="btn btn-secondary" href="http:&#x2F;&#x2F;lfe.io&#x2F;books&#x2F;casting-spels&#x2F;" role="button">Read Now
+                        &raquo;</a></p>
+            </div>
+            
+            <div class="col-md-4 book">
+                <h2>The LFE Tutorial</h2>
+                <p><a href="http://lfe.io/books/tutorial/"><img src="http://lfe.io/books/tutorial/images/cover.jpg" alt="lfe-tutorial" /></a> </p>
+                <p><a class="btn btn-secondary" href="http:&#x2F;&#x2F;lfe.io&#x2F;books&#x2F;tutorial&#x2F;" role="button">Read Now
+                        &raquo;</a></p>
+            </div>
+            
+        </div>
+        
+        <div class="row book-group">
+            
+
+            <div class="col-md-4 book">
+                
+                <h2><code>rebar3_lfe</code> Command Reference</h2>
+                <p><a href="https://lfe.io/reference/lfe-rebar3/"><img src="https://lfe.io/reference/lfe-rebar3/current/images/cover.jpg" alt="rebar3_lfe command reference" /></a> </p>
+                <p><a class="btn btn-secondary" href="https:&#x2F;&#x2F;lfe.io&#x2F;reference&#x2F;lfe-rebar3&#x2F;" role="button">Read Now
+                        &raquo;</a></p>
+                
+            </div>
+
+            
+
+            <div class="col-md-4 book">
+                
+            </div>
+
+            
+
+            <div class="col-md-4 book">
+                
+                <h2>SICP<br/>The LFE Edition</h2>
+                <p><a href="http://lfe.io/books/sicp/"><img src="http://lfe.io/books/sicp/images/cover.jpg" alt="sicp" /></a> </p>
+                <p><a class="btn btn-secondary" href="http:&#x2F;&#x2F;lfe.io&#x2F;books&#x2F;sicp&#x2F;" role="button">Read Now
+                        &raquo;</a></p>
+                
+            </div>
+
+            
+        </div>
+    </div>
+
+    <!-- Videos Section -->
+
+    <div class="container videos">
+        
+        
+        <h1 class="books section title">Videos</h1>
+
+        <div class="row">
+            
+            <div class="col-md-4 video">
+                <h2>Erlang Factory 2017<br/>Lisp Machine Flavors for <br/>LFE on OTP<br/>Robert Virding</h2>
+                <p><a href="https://www.youtube.com/watch?v=AcehOqbwhPk"><img src="/images/EFSF-2017-LFE.png" alt="LFE EFSF 2017" /></a> </p>
+                <p><a class="btn btn-secondary" href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=AcehOqbwhPk" role="button">Watch Now
+                        &raquo;</a></p>
+            </div>
+            
+            <div class="col-md-4 video">
+                <h2>EUC 2016 Stockholm<br/>LFE: A Real Lisp in the Erlang Ecosystem<br/>Robert Virding</h2>
+                <p><a href="https://www.youtube.com/watch?v=x2ysisqgd2g"><img src="/images/EUC-2016-LFE.png" alt="LFE EUC 2016" /></a> </p>
+                <p><a class="btn btn-secondary" href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=x2ysisqgd2g" role="button">Watch Now
+                        &raquo;</a></p>
+            </div>
+            
+            <div class="col-md-4 video">
+                <h2>Erlang Factory 2014<br/>LFE from 0 to 120kph...<br/>in 45 Minutes<br/>Duncan McGreggor</h2>
+                <p><a href="https://www.youtube.com/watch?v=Dgbm3BRmzuI"><img src="/images/EFSF-2014-LFE.png" alt="LFE EFSF 2014" /></a> </p>
+                <p><a class="btn btn-secondary" href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=Dgbm3BRmzuI" role="button">Watch Now
+                        &raquo;</a></p>
+            </div>
+            
+        </div>
+    </div>
+
+    </div> <!-- /container -->
+
+    <div class="container callout">
+        
+        <div class="jumbotron call-out-1">
+            <div class="col-sm-12 mx-auto">
+                <h1><img src="/images/slack-logo.png" alt="slack logo" /> Join us on Slack!</h1>
+                <p>To request an invite for the LFE Slack workspace, follow this link:</p>
+<ul>
+<li><a href="https://lfe-slack.herokuapp.com/">https://lfe-slack.herokuapp.com/</a></li>
+</ul>
+</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container callout">
+        
+        <div class="jumbotron call-out-2">
+            <div class="col-sm-12 mx-auto">
+                <h1>Give yourself to the Lisp-side of the Force!</h1>
+
+                <div class="dark-border-wrap">
+                    <a href="http://xkcd.com/297/"><img src="/images/xkcd-lisp-cycles.png" alt="call-out content" /></a>
+                </div>
+            </div>
+        </div>
+    </div> <!-- /container -->
+
+</main>
+
+
+
+    
+    <footer class="footer mt-auto py-3">
+    <div class="container py-5 main-footer">
+        <div class="row">
+            <div class="col-6 col-md">
+                <h5>Learn</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a class="text-muted" href="/learn/#lfe">LFE</a></li>
+                    <li><a class="text-muted" href="/learn/#erlang">Erlang</a></li>
+                    <li><a class="text-muted" href="/learn/#otp">OTP</a></li>
+                    <li><a class="text-muted" href="/learn/#lisp-arcana">Lisp</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-md">
+                <h5>Use</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a class="text-muted" href="/use#the-repl">The REPL</a></li>
+                    <li><a class="text-muted" href="/use/#reference">LFE Reference Materials</a></li>
+                    <li><a class="text-muted" href="/use/#erlang">Key Erlang Modules</a></li>
+                    <li><a class="text-muted" href="http://docs.lfe.io">docs.lfe.io</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-md footer-logo">
+                <img src="/images/LFE-logo-darker-greys-6-square-x32.png" />
+            </div>
+            <div class="col-6 col-md right-side">
+                <h5>Community</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a class="text-muted" href="/community/#social-media">Social Media</a></li>
+                    <li><a class="text-muted" href="/community/#traditional-media">Traditional Media</a></li>
+                    <li><a class="text-muted" href="/community/#videos">Videos</a></li>
+                    <li><a class="text-muted" href="/community/#repos-code-container-images">Code & Container Images</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-6 col-md right-side">
+                <h5>About</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a class="text-muted" href="/about/#the-language">The Language</a></li>
+                    <li><a class="text-muted" href="/about/#a-short-history">A Short History</a></li>
+                    <li><a class="text-muted" href="/about/#its-creator">Its Creator</a></li>
+                    <li><a class="text-muted" href="https://github.com/lfe/lfe/graphs/contributors">Core
+                            Contributors</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+<section class="mt-auto py-3 sub-footer">
+    <div class="container">
+        <span>&copy; 2014-2038 LFElluminati | Alien Alliance</span>
+    </div>
+</section>
+
+    
+
+    
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script type="text/javascript" src="/elasticlunr.min.js"></script>
+<script type="text/javascript" src="/search_index.en.js"></script>
+<script type="text/javascript" src="/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript" src="/js/search.js"></script>
+<script type="text/javascript" src="/js/app.js"></script>
+<script type="text/javascript" src="/js/highlight.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-38274766-3"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-38274766-3');
+</script>
+
+    
+
+    
+    
+</body>
+
+</html>

@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    
+        <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="LFE Maintainers">
+    <meta name="generator" content="Zola">
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:image" content="https://lfe.io/images/twitter-card.jpg" />
+    <meta property="og:image" content="https://lfe.io/images/twitter-card.jpg" />
+    <meta property="og:type" content="website" />
+
+    <meta name="twitter:title"
+        content="(LFE:Using LFE)" />
+    <meta name="twitter:description"
+        content="LFE may be used as a shell, for scripting; as a development tool via its REPL; as a library; and as a full programming language in its own right, with a compiler that generates `.beam` files for use by the Erlang VM. This page aims to bring to your fingertips the resources you will need most in your daily use of LFE in one or more of these." />
+    <meta property="og:url" content="https://lfe.io/use/" />
+    <meta property="og:title" content="(LFE:Using LFE)" />
+    <meta property="og:description"
+        content="LFE may be used as a shell, for scripting; as a development tool via its REPL; as a library; and as a full programming language in its own right, with a compiler that generates `.beam` files for use by the Erlang VM. This page aims to bring to your fingertips the resources you will need most in your daily use of LFE in one or more of these." />
+    <title>(LFE:Use)</title>
+    <meta name="description"
+        content="LFE may be used as a shell, for scripting; as a development tool via its REPL; as a library; and as a full programming language in its own right, with a compiler that generates `.beam` files for use by the Erlang VM. This page aims to bring to your fingertips the resources you will need most in your daily use of LFE in one or more of these.">
+    
+
+    
+        <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#ffc40d">
+    <meta name="msapplication-config" content="/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+
+    
+
+    
+    
+    
+
+    
+    <!-- Bootstrap core CSS -->
+<link href="/bootstrap.css" rel="stylesheet">
+<link href="/fontawesome.css" rel="stylesheet">
+<link href="/lfe.css" rel="stylesheet">
+<link href="/fontawesome-solid.css" rel="stylesheet">
+<link href="/fontawesome-brands.css" rel="stylesheet">
+<link href="/css/highlight.css" rel="stylesheet">
+<link href="/css/common.css" rel="stylesheet">
+
+    
+
+    <!-- Custom styles for this template -->
+    
+    
+</head>
+
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark lfe-main">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <img src="/images/LFE-logo-color-separated-6-square-x64.png" />
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#lfe-main-nav"
+                aria-controls="lfe-main-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="lfe-main-nav">
+    
+    
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+            
+            
+            <a class="nav-link " href="&#x2F;learn&#x2F;">Learn</a>
+            
+        </li>
+        <li class="nav-item">
+            
+            
+            <a class="nav-link " href="&#x2F;use&#x2F;">Use</a>
+            
+        </li>
+        <li class="nav-item">
+            
+            
+            <a class="nav-link " href="&#x2F;community&#x2F;">Community</a>
+            
+        </li>
+        <li class="nav-item">
+            
+            
+            <a class="nav-link " href="&#x2F;about&#x2F;">About</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="https://blog.lfe.io/">Blog</a>
+        </li>
+    </ul>
+    <ul class="navbar-nav">
+        <li class="nav-item social">
+            <a class="nav-link" href="https://github.com/lfe/lfe">
+                <i class="fab fa-github"></i>
+            </a>
+        </li>
+        <li class="nav-item social">
+            <a class="nav-link" href="https://fosstodon.org/web/@lfe">
+                <i class="fab fa-mastodon"></i>
+            </a>
+        </li>
+        <li class="nav-item spacer">
+            <a class="nav-link" href="#">
+            </a>
+        </li>
+    </ul>
+    <form class="form-inline my-2 my-md-0">
+        <input id="search" type="search" class="form-control" placeholder="Search" aria-label="Search">
+        <div class="search-results" style="display: none;">
+            <div class="search-results__items"></div>
+        </div>
+        <button type="button" class="btn btn-warning btn-sm">Go!</button>
+    </form>
+
+</div>
+
+        </div>
+    </nav>
+    <div class="collapse navbar-collapse" id="lfe-main-nav">
+    
+    
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+            
+            
+            <a class="nav-link " href="&#x2F;learn&#x2F;">Learn</a>
+            
+        </li>
+        <li class="nav-item">
+            
+            
+            <a class="nav-link " href="&#x2F;use&#x2F;">Use</a>
+            
+        </li>
+        <li class="nav-item">
+            
+            
+            <a class="nav-link " href="&#x2F;community&#x2F;">Community</a>
+            
+        </li>
+        <li class="nav-item">
+            
+            
+            <a class="nav-link " href="&#x2F;about&#x2F;">About</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="https://blog.lfe.io/">Blog</a>
+        </li>
+    </ul>
+    <ul class="navbar-nav">
+        <li class="nav-item social">
+            <a class="nav-link" href="https://github.com/lfe/lfe">
+                <i class="fab fa-github"></i>
+            </a>
+        </li>
+        <li class="nav-item social">
+            <a class="nav-link" href="https://fosstodon.org/web/@lfe">
+                <i class="fab fa-mastodon"></i>
+            </a>
+        </li>
+        <li class="nav-item spacer">
+            <a class="nav-link" href="#">
+            </a>
+        </li>
+    </ul>
+    <form class="form-inline my-2 my-md-0">
+        <input id="search" type="search" class="form-control" placeholder="Search" aria-label="Search">
+        <div class="search-results" style="display: none;">
+            <div class="search-results__items"></div>
+        </div>
+        <button type="button" class="btn btn-warning btn-sm">Go!</button>
+    </form>
+
+</div>
+
+    
+    
+    
+
+    
+<main role="main" class="flex-shrink-0">
+    <div class="jumbotron lfe-masthead">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 page-title">
+                    <h1>Using LFE</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 page-description">
+                    <h2>LFE may be used as a shell, for scripting; as a development tool via its REPL; as a library; and as a full programming language in its own right, with a compiler that generates <code>.beam</code> files for use by the Erlang VM. This page aims to bring to your fingertips the resources you will need most in your daily use of LFE in one or more of these.</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container page-content">
+        <h1 id="lfe"><a class="zola-anchor" href="#lfe" aria-label="Anchor link for: lfe">LFE</a></h1>
+<h2 id="the-repl"><a class="zola-anchor" href="#the-repl" aria-label="Anchor link for: the-repl">The REPL</a></h2>
+<p>As you get to know LFE, you'll find that you'll do a lot of your prototyping in the REPL. There are three primary ways you can do this:</p>
+<ol>
+<li>With Erlang and <code>rebar3</code> installed, running <code>rebar3 lfe repl</code> in a project directory will start up the LFE REPL and provide access to all your project modules, include files, and dependencies.</li>
+<li>If you <code>git clone</code>d the LFE repo to a machine, then running <code>make</code> and then <code>./bin/lfe</code> will start up the LFE REPL.</li>
+<li>Lastly, you can run the LFE REPL with only docker on your machine via <code>docker run -it lfex/lfe</code> (no Erlang, no <code>rebar3</code> necessary); for many people, this is the quickest, most pain-free way of trying out LFE.</li>
+</ol>
+<p>In all of the above, once you are in the REPL, you have access to the <code>(help)</code> function which will print out some help text for running a bunch of top-level commands. Also, you may start typing a function call (e.g., <code>(lists:</code>) and then double-tap <code>&lt;TAB&gt;</code> to provide a list of available functions from the given module. Very often this obviates any need to look up the function you want to call!</p>
+<h2 id="reference"><a class="zola-anchor" href="#reference" aria-label="Anchor link for: reference">Reference</a></h2>
+<p>When <code>(help)</code> and tab-completion aren't enough, it's time to break out the books. The core LFE reference set (man page source files in Markdown format) is your friend:</p>
+<ul>
+<li><a href="https://github.com/lfe/lfe/blob/develop/doc/src/lfe_guide.7.md">The LFE Guide</a></li>
+<li><a href="https://github.com/lfe/lfe/blob/develop/doc/src/lfe_types.7.md">The data types in LFE</a></li>
+<li><a href="https://github.com/lfe/lfe/blob/develop/doc/src/lfe.1.md">REPL functions, variables, and environment</a></li>
+<li><a href="https://github.com/lfe/lfe/blob/develop/doc/src/lfe_io.3.md">LFE formatting</a></li>
+<li><a href="https://github.com/lfe/lfe/blob/develop/doc/src/lfe_cl.3.md">Common Lisp compatibility</a></li>
+<li><a href="https://github.com/lfe/lfe/blob/develop/doc/src/lfe_clj.3.md">Clojure compatibility</a></li>
+</ul>
+<p>If you want to remind yourself on all that the LFE plugin can do:</p>
+<ul>
+<li><a href="https://lfe.io/reference/lfe-rebar3/">rebar3_lfe Command Reference</a></li>
+</ul>
+<p>More information on Docker usage is available here:</p>
+<ul>
+<li><a href="https://hub.docker.com/r/lfex/lfe">https://hub.docker.com/r/lfex/lfe</a></li>
+</ul>
+<h2 id="docs-lfe-io"><a class="zola-anchor" href="#docs-lfe-io" aria-label="Anchor link for: docs-lfe-io">docs.lfe.io</a></h2>
+<p>The docs site for LFE is quite old and almost entirely out of date, but it's linked here since it still has some jewels that haven't been ported elsewhere:</p>
+<ul>
+<li><a href="https://docs.lfe.io">docs.lfe.io</a></li>
+</ul>
+<p>There is a newer version of the docs site whose development has been stalled. Though not currently of much use, it's available here:</p>
+<ul>
+<li><a href="https://docs.lfe.io/dev/index.html">docs.lfe.io/dev/</a></li>
+</ul>
+<h1 id="erlang"><a class="zola-anchor" href="#erlang" aria-label="Anchor link for: erlang">Erlang</a></h1>
+<p><a href="http://erlang.org/doc/apps/erts/index.html">Erlang Run-Time System Application (ERTS) Reference Manual</a> - As an LFE programmer, this is one of the most powerful reference resources you can have at your fingertips. Once you get to the point to where you are ready to build production-ready applications, this will be a constant companion. In particular:</p>
+<ul>
+<li>The <a href="http://erlang.org/doc/man/erlang.html">erlang</a> module</li>
+<li>The <a href="http://erlang.org/doc/man/application.html">application</a> module</li>
+<li>The <a href="http://erlang.org/doc/man/supervisor.html">supervisor</a> module</li>
+<li>The <a href="http://erlang.org/doc/man/gen_server.html">gen_server</a>, <a href="http://erlang.org/doc/man/gen_event.html">gen_event</a>, and <a href="http://erlang.org/doc/man/gen_statem.html">gen_statem</a> modules</li>
+<li>The <a href="http://erlang.org/doc/man/lists.html">lists</a>, <a href="http://erlang.org/doc/man/maps.html">maps</a>, and <a href="http://erlang.org/doc/man/proplists.html">proplists</a> modules</li>
+<li>And many, many others ...</li>
+</ul>
+<p>If you will be interfacing with other languages, then these resources will be of particular use:</p>
+<ul>
+<li>The <a href="https://erlang.org/doc/reference_manual/ports.html">Ports and Port Drivers</a> reference and the <a href="http://erlang.org/doc/tutorial/c_port.html">Erlang Interop/Ports User Guide</a></li>
+<li>The <a href="http://erlang.org/doc/apps/jinterface/jinterface_users_guide.html">Jinterface package</a> and the <a href="http://erlang.org/doc/apps/jinterface/index.html">Jinterface Reference Manual</a></li>
+</ul>
+<h1 id="rebar3"><a class="zola-anchor" href="#rebar3" aria-label="Anchor link for: rebar3">rebar3</a></h1>
+<p>One of the things you might find yourself needing is specialised <code>rebar3</code> plugins for your various LFE projects. You may write these in either Erlang or LFE (or, in fact, any BEAM language that has a <code>rebar3</code> compiler). There are a ton of good resources on the rebar3 project site, including:</p>
+<ul>
+<li><a href="https://www.rebar3.org/docs/getting-started">Getting Started</a></li>
+<li><a href="https://www.rebar3.org/docs/configuration">Configuration</a></li>
+<li><a href="https://rebar3.org/docs/configuration/plugins/">Using Plugins</a></li>
+<li><a href="https://rebar3.org/docs/tutorials/building_plugins/">Writing Plugins</a></li>
+</ul>
+<p>The source for the LFE <code>rebar3</code> plugin is written in Erlang and viewable here:</p>
+<ul>
+<li><a href="https://github.com/lfe-rebar3/rebar3_lfe">https://github.com/lfe-rebar3/rebar3_lfe</a></li>
+</ul>
+<p>If you want to see examples of <code>rebar3</code> plugins written in LFE itself, be sure to checkout some of the other projects in that Github org:</p>
+<ul>
+<li><a href="https://github.com/lfe-rebar3">https://github.com/lfe-rebar3</a></li>
+</ul>
+
+    </div>
+</main>
+
+
+
+    
+    <footer class="footer mt-auto py-3">
+    <div class="container py-5 main-footer">
+        <div class="row">
+            <div class="col-6 col-md">
+                <h5>Learn</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a class="text-muted" href="/learn/#lfe">LFE</a></li>
+                    <li><a class="text-muted" href="/learn/#erlang">Erlang</a></li>
+                    <li><a class="text-muted" href="/learn/#otp">OTP</a></li>
+                    <li><a class="text-muted" href="/learn/#lisp-arcana">Lisp</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-md">
+                <h5>Use</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a class="text-muted" href="/use#the-repl">The REPL</a></li>
+                    <li><a class="text-muted" href="/use/#reference">LFE Reference Materials</a></li>
+                    <li><a class="text-muted" href="/use/#erlang">Key Erlang Modules</a></li>
+                    <li><a class="text-muted" href="http://docs.lfe.io">docs.lfe.io</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-md footer-logo">
+                <img src="/images/LFE-logo-darker-greys-6-square-x32.png" />
+            </div>
+            <div class="col-6 col-md right-side">
+                <h5>Community</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a class="text-muted" href="/community/#social-media">Social Media</a></li>
+                    <li><a class="text-muted" href="/community/#traditional-media">Traditional Media</a></li>
+                    <li><a class="text-muted" href="/community/#videos">Videos</a></li>
+                    <li><a class="text-muted" href="/community/#repos-code-container-images">Code & Container Images</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-6 col-md right-side">
+                <h5>About</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a class="text-muted" href="/about/#the-language">The Language</a></li>
+                    <li><a class="text-muted" href="/about/#a-short-history">A Short History</a></li>
+                    <li><a class="text-muted" href="/about/#its-creator">Its Creator</a></li>
+                    <li><a class="text-muted" href="https://github.com/lfe/lfe/graphs/contributors">Core
+                            Contributors</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+<section class="mt-auto py-3 sub-footer">
+    <div class="container">
+        <span>&copy; 2014-2038 LFElluminati | Alien Alliance</span>
+    </div>
+</section>
+
+    
+
+    
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script type="text/javascript" src="/elasticlunr.min.js"></script>
+<script type="text/javascript" src="/search_index.en.js"></script>
+<script type="text/javascript" src="/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript" src="/js/search.js"></script>
+<script type="text/javascript" src="/js/app.js"></script>
+<script type="text/javascript" src="/js/highlight.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-38274766-3"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-38274766-3');
+</script>
+
+    
+
+    
+    
+</body>
+
+</html>

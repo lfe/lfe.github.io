@@ -111,15 +111,14 @@ spell-suggest:
 TAILWIND_BASE = styles
 TAILWIND_INPUT = $(TAILWIND_BASE)/site.css
 TAILWIND_OUTPUT = static/css/site.css
+JS_OUTPUT = static/js/
 
-tailwind-setup: tailwind.config.js $(TAILWIND_BASE)/components
+tailwind-setup: tailwind.config.js $(JS_OUTPUT)/preline.js
 
-$(TAILWIND_BASE)/components:
-	mkdir -p $(TAILWIND_BASE) && \
-	cd $(TAILWIND_BASE) && \
-	git clone git@github.com:merakiui/merakiui.git && \
-	mv merakiui/components merakiui/assets . && \
-	rm -rf merakiui
+$(JS_OUTPUT)/preline.js:
+	ID=$$(docker create $(DOCKER_FQN)) && \
+	docker cp $$ID:/node_modules/preline/dist/preline.js $(TAILWIND_BASE)/ && \
+	docker rm -v $$ID
 
 tailwind.config.js:
 	docker run -it \
@@ -134,3 +133,4 @@ tailwind-build:
 	--entrypoint npx \
 	$(DOCKER_FQN) \
 	tailwindcss -i $(TAILWIND_INPUT) -o $(TAILWIND_OUTPUT) --minify
+	cp $(TAILWIND_BASE)/*.js $(JS_OUTPUT)

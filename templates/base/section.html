@@ -33,11 +33,13 @@
     {% endblock cssoverrides %}
 </head>
 
-<body>
+<body class="dark:bg-slate-900 min-h-[75rem]">
+    <header class="sticky top-0 inset-x-0 flex flex-wrap sm:justify-start sm:flex-nowrap z-50 w-full bg-white border-b border-gray-200 text-sm py-3 sm:py-0 dark:bg-gray-800 dark:border-gray-700">
     {% block head %}
     {% include "base/head-menu.html" %}
     {% endblock head %}
-
+    </header>
+    
     {% block main %}
     {% endblock main %}
 

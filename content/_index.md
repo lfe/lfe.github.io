@@ -635,12 +635,12 @@ content = '''
 ###   Sponsors Section   ###############################
 
 [extra.sponsors]
-title = "A special thanks to our sponsor:"
+title = "A special thanks to our sponsors:"
 
-[extra.sponsors.billo]
+[extra.sponsors.tbd]
 content = '''
-[img-src]: /images/billo-logo.png
-[img-link]: http://billo.systems
+[img-src]: /images/sponsor-logo.png
+[img-link]: http://sponsor.url
 [![sponsor][img-src]][img-link]
 '''
 +++

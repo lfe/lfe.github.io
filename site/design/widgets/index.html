@@ -45,14 +45,13 @@
     
 
     
-    <!-- Bootstrap core CSS -->
-<link href="/bootstrap.css" rel="stylesheet">
+    <!-- Core CSS -->
 <link href="/fontawesome.css" rel="stylesheet">
-<link href="/lfe.css" rel="stylesheet">
 <link href="/fontawesome-solid.css" rel="stylesheet">
 <link href="/fontawesome-brands.css" rel="stylesheet">
 <link href="/css/highlight.css" rel="stylesheet">
 <link href="/css/common.css" rel="stylesheet">
+<link href="/css/site.css" rel="stylesheet">
 
     
 
@@ -64,7 +63,7 @@
 
 <body>
     
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark lfe-main">
+    <nav x-data="{ isOpen: false }" class="relative bg-white shadow dark:bg-gray-800">
         <div class="container">
             <a class="navbar-brand" href="/">
                 <img src="/images/LFE-logo-color-separated-6-square-x64.png" />
@@ -125,7 +124,7 @@
         <div class="search-results" style="display: none;">
             <div class="search-results__items"></div>
         </div>
-        <button type="button" class="btn btn-warning btn-sm">Go!</button>
+        <button type="button" class="bg-orange p-2 rounded">Go!</button>
     </form>
 
 </div>
@@ -184,7 +183,7 @@
         <div class="search-results" style="display: none;">
             <div class="search-results__items"></div>
         </div>
-        <button type="button" class="btn btn-warning btn-sm">Go!</button>
+        <button type="button" class="bg-orange p-2 rounded">Go!</button>
     </form>
 
 </div>

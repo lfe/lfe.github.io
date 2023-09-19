@@ -34,11 +34,13 @@ docker-publish: docker-build
 ###   SITE   ################################################################
 #############################################################################
 
-build: docker-build tailwind-build clean
+zola-build: clean
 	@echo " >> Building site ..."
 	docker run \
 	-u "$(UID):$(GID)" -v $(PWD):$(MOUNT_DIR) --workdir $(MOUNT_DIR) $(DOCKER_FQN) \
 	build -o $(PUBLISH_DIR)
+
+build: zola-build docker-build tailwind-build
 
 serve: docker-build
 	@echo " >> Running site ..."
@@ -131,4 +133,4 @@ tailwind-build:
 	-v $(PWD):$(MOUNT_DIR) --workdir $(MOUNT_DIR) \
 	--entrypoint npx \
 	$(DOCKER_FQN) \
-	tailwindcss -i $(TAILWIND_INPUT) -o $(TAILWIND_OUTPUT)
+	tailwindcss -i $(TAILWIND_INPUT) -o $(TAILWIND_OUTPUT) --minify

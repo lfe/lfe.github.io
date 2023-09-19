@@ -1,12 +1,9 @@
-<main role="main" class="flex-shrink-0">
+<main role="main" id="app" class="relative flex flex-col min-h-screen bg-white dark:bg-gray-950 font-roboto">
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron lfe-masthead">
         <div class="container">
 
             <div class="row">
-                <div class="col-md-3">
-                    <img src="{{ section.extra.logo_image }}" />
-                </div>
                 <div class="col-md-6 tagline">
                     <em id="lfe-tagline">"{{section.extra.sitetagline}}"</em>
                 </div>
@@ -229,11 +226,12 @@
         </div>
     </div> <!-- /container -->
 
+    <!--
     <div class="container sponsors">
         {{ section.extra.sponsors.title | markdown(inline=true) | safe }}
         <br />
         <br />
         {{ section.extra.sponsors.billo.content | markdown(inline=true) | safe }}
     </div> <!-- /container -->
-
+    
 </main>

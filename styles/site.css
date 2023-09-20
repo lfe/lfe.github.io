@@ -1,3 +1,117 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    body {
+        @apply dark:bg-slate-900 min-h-[75rem];
+    }
+    
+    header.top-nav {
+        @apply sticky top-0 inset-x-0 flex flex-wrap sm:justify-start sm:flex-nowrap z-50 w-full text-sm py-3 sm:py-0 bg-slate-400 dark:bg-slate-900 dark:border-gray-700;
+        border-top: 3px solid #9a7907 !important;
+        border-bottom: 1px solid black !important;
+    }
+
+    nav.top-nav {
+        @apply relative max-w-[80rem] w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-8;
+    }
+
+    nav.top-nav a {
+        @apply text-gray-700 hover:text-gray-600;
+    }
+    
+    main {
+        @apply relative flex flex-col min-h-screen bg-white bg-slate-100 dark:bg-slate-800;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        @apply block font-bold text-gray-700 dark:text-gray-200 pt-6 pb-3;
+    }
+
+    h1 {
+        @apply text-2xl sm:text-3xl;
+    }
+
+    h2 {
+        @apply text-xl sm:text-2xl text-gray-600 dark:text-gray-300;
+    }
+
+    h3 {
+        @apply text-lg sm:text-xl text-gray-500 dark:text-gray-400;
+    }
+
+    h4 {
+        @apply text-base sm:text-lg;
+    }
+
+    h5 {
+        @apply text-sm sm:text-base text-gray-600 dark:text-gray-300;
+    }
+
+    h6 {
+        @apply text-xs sm:text-sm text-gray-500 dark:text-gray-400;
+    }
+
+    p, li {
+        @apply mt-2 text-base text-gray-800 dark:text-gray-400;
+    }
+
+    ul {
+        @apply list-disc list-inside;
+    }
+
+    ol {
+        @apply list-decimal list-inside;
+    }
+
+    p a, li a {
+        @apply underline;
+    }
+    
+    .masthead-container {
+        @apply max-w-[100%] bg-slate-300 dark:bg-slate-700;
+        border-bottom: 1px solid #9a7907 !important;
+    }
+
+    .masthead-section {
+        @apply max-w-[80rem] mx-auto py-10 px-4 sm:px-6 lg:px-8 pt-8 pb-8;
+    }
+
+    .masthead-section h2 {
+        @apply font-thin text-xl;
+    }
+    
+    .content-section {
+        @apply max-w-[80rem] mx-auto py-10 px-4 sm:px-6 lg:px-8;
+    }
+
+    .content-section blockquote {
+        @apply p-8;
+    }
+    
+    footer {
+        @apply bg-slate-400 dark:bg-slate-950 border-t border-t-slate-700;
+    }
+
+    footer h3 {
+        @apply text-gray-700 uppercase dark:text-gray-400;
+    }
+    
+    footer p {
+        @apply mt-2 text-gray-500 dark:text-gray-400;
+    }
+
+    footer p.copyright {
+        @apply text-sm text-gray-700 dark:text-gray-400;
+    }
+    
+    footer a {
+        @apply block mt-2 text-sm text-gray-700 dark:text-gray-400 hover:underline;
+    }
+
+    footer a.social {
+        @apply mx-2 text-gray-600 hover:text-gray-500 transition-colors duration-300 transform dark:text-gray-600 dark:hover:text-gray-500
+    }
+
+}

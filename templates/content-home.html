@@ -1,4 +1,4 @@
-<main role="main" id="app" class="relative flex flex-col min-h-screen bg-white dark:bg-gray-950 font-roboto">
+<main id="content" role="main">
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron lfe-masthead">
         <div class="container">
@@ -6,39 +6,6 @@
             <div class="row">
                 <div class="col-md-6 tagline">
                     <em id="lfe-tagline">"{{section.extra.sitetagline}}"</em>
-                </div>
-
-                <div class="col-md-3 download">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-6 dl-icon-container">
-                                <i class="fas fa-download fa-3x"></i>
-                            </div>
-                            <div class="col-6 dl-both-container">
-                                <div class="row">
-                                    {% set repo = section.extra.download.repository %}
-                                    {% set stable = section.extra.download.prior_release %}
-                                    {% set unstable = section.extra.download.current_release %}
-                                    {% set pre_release = section.extra.download.pre_release %}
-                                    <div class="col-12 dl-stable-container">
-                                        <a href="{{ repo }}/archive/{{ stable }}.zip">
-                                            <button type="button"
-                                                class="btn btn-success btn-sm dl-unstable">Previous&nbsp;({{ stable
-                                                }})</button>
-                                        </a>
-                                    </div>
-                                    <div class="col-12 dl-unstable-container">
-                                        <a href="{{ repo }}/archive/{{ unstable }}.zip">
-                                            <button type="button"
-                                                class="btn btn-warning btn-sm dl-unstable">Current&nbsp;({{ unstable
-                                                }})</button>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
             </div>
 

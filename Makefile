@@ -42,7 +42,7 @@ zola-build: clean
 
 build: zola-build docker-build tailwind-build
 
-serve: docker-build
+serve: tailwind-build docker-build
 	@echo " >> Running site ..."
 	@docker run \
 	-p 8080:8080 -p 1024:1024 \

@@ -1,19 +1,12 @@
-<main role="main" id="app" class="relative flex flex-col min-h-screen bg-white dark:bg-gray-950 font-roboto">
-    <div class="jumbotron lfe-masthead">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 page-title">
-                    <h1>{{ page.extra.long_title | markdown(inline=true) | safe }}</h1>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 page-description">
-                    <h2>{{ page.extra.long_description | markdown(inline=true) | safe }}</h2>
-                </div>
-            </div>
-        </div>
+<main id="content" role="main">
+  <div class="masthead-container">
+    <div class="masthead-section">
+      <h1>{{ page.extra.long_title | markdown(inline=true) | safe }}</h1>
+      <h2>{{ page.extra.long_description | markdown(inline=true) | safe }}</h2>
     </div>
-    <div class="container page-content">
-        {{ page.content | safe }}
-    </div>
+  </div>
+  
+  <div class="content-section">
+    {{ page.content | safe }}
+  </div>
 </main>

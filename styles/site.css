@@ -8,7 +8,7 @@
     }
     
     header.top-nav {
-        @apply sticky top-0 inset-x-0 flex flex-wrap sm:justify-start sm:flex-nowrap z-50 w-full text-sm py-3 sm:py-0 bg-slate-400 dark:bg-slate-900 dark:border-gray-700;
+        @apply sticky top-0 inset-x-0 flex flex-wrap sm:justify-start sm:flex-nowrap z-50 w-full text-sm py-3 sm:py-0 bg-gradient-to-b from-slate-400 to-slate-500 dark:bg-gradient-to-b dark:from-slate-800 dark:to-slate-900 dark:border-gray-700;
         border-top: 3px solid #9a7907 !important;
         border-bottom: 1px solid black !important;
     }
@@ -70,7 +70,7 @@
     }
     
     .masthead-container {
-        @apply max-w-[100%] bg-slate-300 dark:bg-slate-700;
+        @apply max-w-[100%] bg-gradient-to-b from-slate-300 to-slate-200 dark:bg-gradient-to-b dark:from-slate-700 dark:to-slate-600;
         border-bottom: 1px solid #9a7907 !important;
     }
 
@@ -78,10 +78,19 @@
         @apply max-w-[80rem] mx-auto py-10 px-4 sm:px-6 lg:px-8 pt-8 pb-8;
     }
 
+    .masthead-section .tagline {
+        @apply block text-2xl pb-6;
+        color: #9a7907;
+    }
+    
     .masthead-section h2 {
         @apply font-thin text-xl;
     }
-    
+
+    .masthead-section pre {
+        @apply text-xs;
+    }
+
     .content-section {
         @apply max-w-[80rem] mx-auto py-10 px-4 sm:px-6 lg:px-8;
     }

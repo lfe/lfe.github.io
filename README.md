@@ -6,9 +6,7 @@ Visit <a href="http://lfe.io/">lfe.io</a>!
 
 ## Contributing
 
-Feel free to <a href="https://github.com/lfe/lfe.github.io/issues/new">open a ticket</a>
-or fork the site and submit a
-<a href="https://github.com/lfe/lfe.github.io/pulls">pull request</a>.
+Feel free to [open a ticket](https://github.com/lfe/lfe.github.io/issues/new) or fork the site and submit a [pull request](https://github.com/lfe/lfe.github.io/pulls).
 
 Note that the entire site content is driven with Markdown files -- *including* the metadata sections of those files!
 

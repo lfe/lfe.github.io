@@ -18,9 +18,7 @@ Find out what's going on for the developers in the community
 * [oubiwann](/plan/oubiwann)
 * [yurrriq](/plan/yurrriq)
 
-
 Wnat to share what you're working on? <a class="btn btn-primary btn-sm" href="how-to-add" role="button">Add your .plan!</a>
-
 
 [//]: ---Named-Links---
 

@@ -122,7 +122,7 @@
       </a>
 
       <div class="hs-dropdown [--strategy:static] sm:[--strategy:fixed] [--adaptive:none] sm:[--trigger:hover] sm:py-4">
-        <button type="button" class="flex items-center w-full text-gray-500 hover:text-gray-400 font-medium dark:text-gray-400 dark:hover:text-gray-500 ">
+        <button type="button" class="flex items-center w-full text-gray-700 hover:text-gray-600 font-medium dark:text-gray-400 dark:hover:text-gray-500 ">
           Download
           <svg class="ml-2 w-2.5 h-2.5 text-gray-600" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M2 5L8.16086 10.6869C8.35239 10.8637 8.64761 10.8637 8.83914 10.6869L15 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
@@ -208,8 +208,7 @@
   </div>
   
   <div class="content-section">
-    <h1 id="lfe"><a class="zola-anchor" href="#lfe" aria-label="Anchor link for: lfe">LFE</a></h1>
-<h2 id="the-repl"><a class="zola-anchor" href="#the-repl" aria-label="Anchor link for: the-repl">The REPL</a></h2>
+    <h2 id="the-repl"><a class="zola-anchor" href="#the-repl" aria-label="Anchor link for: the-repl">The REPL</a></h2>
 <p>As you get to know LFE, you'll find that you'll do a lot of your prototyping in the REPL. There are three primary ways you can do this:</p>
 <ol>
 <li>With Erlang and <code>rebar3</code> installed, running <code>rebar3 lfe repl</code> in a project directory will start up the LFE REPL and provide access to all your project modules, include files, and dependencies.</li>
@@ -244,7 +243,7 @@
 <ul>
 <li><a href="https://docs.lfe.io/dev/index.html">docs.lfe.io/dev/</a></li>
 </ul>
-<h1 id="erlang"><a class="zola-anchor" href="#erlang" aria-label="Anchor link for: erlang">Erlang</a></h1>
+<h2 id="erlang"><a class="zola-anchor" href="#erlang" aria-label="Anchor link for: erlang">Erlang</a></h2>
 <p><a href="http://erlang.org/doc/apps/erts/index.html">Erlang Run-Time System Application (ERTS) Reference Manual</a> - As an LFE programmer, this is one of the most powerful reference resources you can have at your fingertips. Once you get to the point to where you are ready to build production-ready applications, this will be a constant companion. In particular:</p>
 <ul>
 <li>The <a href="http://erlang.org/doc/man/erlang.html">erlang</a> module</li>
@@ -259,7 +258,7 @@
 <li>The <a href="https://erlang.org/doc/reference_manual/ports.html">Ports and Port Drivers</a> reference and the <a href="http://erlang.org/doc/tutorial/c_port.html">Erlang Interop/Ports User Guide</a></li>
 <li>The <a href="http://erlang.org/doc/apps/jinterface/jinterface_users_guide.html">Jinterface package</a> and the <a href="http://erlang.org/doc/apps/jinterface/index.html">Jinterface Reference Manual</a></li>
 </ul>
-<h1 id="rebar3"><a class="zola-anchor" href="#rebar3" aria-label="Anchor link for: rebar3">rebar3</a></h1>
+<h2 id="rebar3"><a class="zola-anchor" href="#rebar3" aria-label="Anchor link for: rebar3">rebar3</a></h2>
 <p>One of the things you might find yourself needing is specialised <code>rebar3</code> plugins for your various LFE projects. You may write these in either Erlang or LFE (or, in fact, any BEAM language that has a <code>rebar3</code> compiler). There are a ton of good resources on the rebar3 project site, including:</p>
 <ul>
 <li><a href="https://www.rebar3.org/docs/getting-started">Getting Started</a></li>
@@ -282,23 +281,23 @@
 
 
     
-    <footer class="bg-white dark:bg-gray-900">
+    <footer>
   <div class="container p-6 mx-auto">
     <div class="lg:flex">
       <div class="w-full -mx-6 lg:w-2/5">
         <div class="px-6">
 
-          <p class="max-w-sm mt-2 text-gray-500 dark:text-gray-400">Sponsored by</p>
+          <p class="italic text-gray-500">Sponsored by</p>
           <a href="http://billo.systems">
             <img class="w-auto h-14" src="/images/billo-logo.png" alt="">
           </a>
 
           <div class="flex mt-6 -mx-2">
-            <a href="https://github.com/lfe/lfe" class="mx-2 text-gray-600 transition-colors duration-300 transform dark:text-gray-300 hover:text-gray-500 dark:hover:text-gray-300" aria-label="Github">
+            <a href="https://github.com/lfe/lfe" class="social" aria-label="Github">
               <i class="fab fa-github fa-lg"></i>
             </a>
 
-            <a href="https://fosstodon.org/web/@lfe" class="mx-2 text-gray-600 transition-colors duration-300 transform dark:text-gray-300 hover:text-gray-500 dark:hover:text-gray-300" aria-label="Mastodon">
+            <a href="https://fosstodon.org/web/@lfe" class="social" aria-label="Mastodon">
               <i class="fab fa-mastodon fa-lg"></i>
             </a>
           </div>
@@ -308,35 +307,35 @@
       <div class="mt-6 lg:mt-0 lg:flex-1">
         <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           <div>
-            <h3 class="text-gray-700 uppercase dark:text-white">Learn</h3>
-            <a href="#" class="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">LFE</a>
-            <a href="#" class="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">Erlang</a>
-            <a href="#" class="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">OTP</a>
-            <a href="#" class="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">Lisp</a>
+            <h3>Learn</h3>
+            <a href="#">LFE</a>
+            <a href="#">Erlang</a>
+            <a href="#">OTP</a>
+            <a href="#">Lisp</a>
           </div>
 
           <div>
-            <h3 class="text-gray-700 uppercase dark:text-white">Use</h3>
-            <a href="#" class="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">The REPL</a>
-            <a href="#" class="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">LFE Reference Materials</a>
-            <a href="#" class="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">Key Erlang Modules</a>
-            <a href="#" class="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">docs.lfe.io</a>
+            <h3>Use</h3>
+            <a href="#">The REPL</a>
+            <a href="#">LFE Reference Materials</a>
+            <a href="#">Key Erlang Modules</a>
+            <a href="#">docs.lfe.io</a>
           </div>
 
           <div>
-            <h3 class="text-gray-700 uppercase dark:text-white">Community</h3>
-            <a href="#" class="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">Social Media</a>
-            <a href="#" class="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">Traditional Media</a>
-            <a href="#" class="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">Videos</a>
-            <a href="#" class="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">Code & Container Images</a>
+            <h3>Community</h3>
+            <a href="#">Social Media</a>
+            <a href="#">Traditional Media</a>
+            <a href="#">Videos</a>
+            <a href="#">Code & Container Images</a>
           </div>
 
           <div>
-            <h3 class="text-gray-700 uppercase dark:text-white">About</h3>
-            <a href="#" class="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">The Language</a>
-            <a href="#" class="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">A Short History</a>
-            <a href="#" class="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">Its Creator</a>
-            <a href="#" class="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">Core Contributors</a>
+            <h3>About</h3>
+            <a href="#">The Language</a>
+            <a href="#">A Short History</a>
+            <a href="#">Its Creator</a>
+            <a href="#">Core Contributors</a>
           </div>
 
           
@@ -344,10 +343,10 @@
       </div>
     </div>
 
-    <hr class="h-px my-6 bg-gray-200 border-none dark:bg-gray-700">
+    <hr class="h-px my-6 bg-gray-500 border-none dark:bg-gray-700">
 
-    <div>
-      <p class="text-center text-gray-500 dark:text-gray-400">© 2014-2038 LFElluminati | Alien Alliance</p>
+    <div class="flex w-full justify-center">
+      <p class="copyright">© 2014-2038 LFElluminati | Alien Alliance</p>
     </div>
   </div>
 </footer>

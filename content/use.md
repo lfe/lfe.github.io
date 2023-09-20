@@ -8,8 +8,6 @@ long_description = "LFE may be used as a shell, for scripting; as a development 
 
 +++
 
-# LFE
-
 ## The REPL
 
 As you get to know LFE, you'll find that you'll do a lot of your prototyping in the REPL. There are three primary ways you can do this:
@@ -49,7 +47,7 @@ There is a newer version of the docs site whose development has been stalled. Th
 
 * [docs.lfe.io/dev/](https://docs.lfe.io/dev/index.html)
 
-# Erlang
+## Erlang
 
 [Erlang Run-Time System Application (ERTS) Reference Manual](http://erlang.org/doc/apps/erts/index.html) - As an LFE programmer, this is one of the most powerful reference resources you can have at your fingertips. Once you get to the point to where you are ready to build production-ready applications, this will be a constant companion. In particular:
 
@@ -65,7 +63,7 @@ If you will be interfacing with other languages, then these resources will be of
 * The [Ports and Port Drivers](https://erlang.org/doc/reference_manual/ports.html) reference and the [Erlang Interop/Ports User Guide](http://erlang.org/doc/tutorial/c_port.html)
 * The [Jinterface package](http://erlang.org/doc/apps/jinterface/jinterface_users_guide.html) and the [Jinterface Reference Manual](http://erlang.org/doc/apps/jinterface/index.html)
 
-# rebar3
+## rebar3
 
 One of the things you might find yourself needing is specialised `rebar3` plugins for your various LFE projects. You may write these in either Erlang or LFE (or, in fact, any BEAM language that has a `rebar3` compiler). There are a ton of good resources on the rebar3 project site, including:
 

@@ -6,7 +6,7 @@
     body {
         @apply dark:bg-slate-900 min-h-[75rem];
     }
-    
+
     header.top-nav {
         @apply sticky top-0 inset-x-0 flex flex-wrap sm:justify-start sm:flex-nowrap z-50 w-full text-sm py-3 sm:py-0 bg-gradient-to-b from-slate-400 to-slate-500 dark:bg-gradient-to-b dark:from-slate-800 dark:to-slate-900 dark:border-gray-700;
         border-top: 3px solid #9a7907 !important;
@@ -20,12 +20,17 @@
     nav.top-nav a {
         @apply text-gray-700 hover:text-gray-600;
     }
-    
+
     main {
         @apply relative flex flex-col min-h-screen bg-white bg-slate-100 dark:bg-slate-800;
     }
 
-    h1, h2, h3, h4, h5, h6 {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
         @apply block font-bold text-gray-700 dark:text-gray-200 pt-6 pb-3;
     }
 
@@ -53,7 +58,28 @@
         @apply text-xs sm:text-sm text-gray-500 dark:text-gray-400;
     }
 
-    p, li {
+    main .content-section.home h1 {
+        @apply pb-8;
+    }
+
+    main .content-section.home ul {
+        @apply pb-2;
+    }
+
+    main .content-section.home p {
+        @apply pt-2 pb-4;
+    }
+
+    main .content-section.home div.buildit-card {
+        @apply pt-0 mt-0;
+    }
+
+    main .content-section.home div.buildit-card button {
+        @apply mt-0;
+    }
+
+    p,
+    li {
         @apply mt-2 text-base text-gray-800 dark:text-gray-400;
     }
 
@@ -65,10 +91,11 @@
         @apply list-decimal list-inside;
     }
 
-    p a, li a {
+    p a,
+    li a {
         @apply underline;
     }
-    
+
     .masthead-container {
         @apply max-w-[100%] bg-gradient-to-b from-slate-300 to-slate-200 dark:bg-gradient-to-b dark:from-slate-700 dark:to-slate-600;
         border-bottom: 1px solid #9a7907 !important;
@@ -82,7 +109,7 @@
         @apply block text-2xl pb-6;
         color: #9a7907;
     }
-    
+
     .masthead-section h2 {
         @apply font-thin text-xl;
     }
@@ -98,7 +125,7 @@
     .content-section blockquote {
         @apply p-8;
     }
-    
+
     footer {
         @apply bg-slate-400 dark:bg-slate-950 border-t border-t-slate-700;
     }
@@ -106,7 +133,7 @@
     footer h3 {
         @apply text-gray-700 uppercase dark:text-gray-400;
     }
-    
+
     footer p {
         @apply mt-2 text-gray-500 dark:text-gray-400;
     }
@@ -114,7 +141,7 @@
     footer p.copyright {
         @apply text-sm text-gray-700 dark:text-gray-400;
     }
-    
+
     footer a {
         @apply block mt-2 text-sm text-gray-700 dark:text-gray-400 hover:underline;
     }

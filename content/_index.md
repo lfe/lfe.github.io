@@ -583,18 +583,13 @@ link_url = "https://www.youtube.com/watch?v=AcehOqbwhPk"
 ###   Final Callout-1 Section   ###############################
 
 [extra.callout1]
-title = "![discord logo](/images/discord-logo.png) Join us on Discord!"
-content = '''
-
-To join the LFE conversations on Discord:
-
-* [https://discord.gg/Uf3PszVHtF](https://discord.gg/Uf3PszVHtF)
-'''
+title = "![discord logo](/images/discord-logo.png) Join us on<br/>Discord!"
+content = "https://discord.gg/Uf3PszVHtF"
 
 ###   Final Callout-2 Section   ###############################
 
 [extra.callout2]
-title = "Give yourself to the Lisp-side of the Force!"
+title = "Give yourself to the <span class='text-blue-600'>Lisp</span> side of the Force!"
 content = '''
 [img-src]: /images/xkcd-lisp-cycles.png
 [img-link]: http://xkcd.com/297/

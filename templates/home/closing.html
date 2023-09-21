@@ -1,9 +1,9 @@
 <!-- Hero -->
-<div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
+<div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 closing-callout">
   {% set callout1 = section.extra.callout1 %}
   {% set callout2 = section.extra.callout2 %}
 
-  <div class="grid grid-cols-3 grid-flow-col gap-4 p-6 rounded-md dark:bg-slate-600 text-center">
+  <div class="grid grid-cols-3 grid-flow-col gap-4 p-6 rounded-md bg-slate-300 dark:bg-slate-600 text-center">
     <div class="grid flex justify-center">
       <div class="text-center mx-auto p-0">
         <h1>
@@ -20,14 +20,14 @@
         </p>
       </div>
     </div>
-    
+
     <div class="grid col-span-2 flex justify-center">
       <div class="m-6 p-6 rounded-md dark:bg-white">
         {{ callout2.content | markdown(inline=true) | safe }}
       </div>
     </div>
 
-    
+
   </div>
 </div>
 

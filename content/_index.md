@@ -473,14 +473,20 @@ TBD
 [extra.books]
 
 title = "Books"
+content = ""
+link_text = "View all books"
+link_url = "https://lfe.io/books/"
 
 [extra.books.lfe_tutorial]
 
 title = "The LFE Tutorial"
-content = '''
+authors = "Robert Virding & Duncan McGreggor"
+cover = '''
 [img-src]: https://lfe.io/books/tutorial/images/cover.jpg
 [img-link]: https://lfe.io/books/tutorial/
 [![lfe-tutorial][img-src]][img-link]
+'''
+description = '''An LFE version of the classic 'Erlang Tutorial'
 '''
 link_text = "Read Now"
 link_url = "https://lfe.io/books/tutorial/"
@@ -488,10 +494,13 @@ link_url = "https://lfe.io/books/tutorial/"
 [extra.books.casting_spels]
 
 title = "Casting SPELs in LFE"
-content = '''
+authors = "Duncan McGreggor & Conrad Barski"
+cover = '''
 [img-src]: https://lfe.io/books/casting-spels/images/cover.jpg
 [img-link]: https://lfe.io/books/casting-spels/
 [![casting-spels][img-src]][img-link]
+'''
+description = '''Build a text-based adventure game in LFE!
 '''
 link_text = "Read Now"
 link_url = "https://lfe.io/books/casting-spels/"
@@ -499,10 +508,13 @@ link_url = "https://lfe.io/books/casting-spels/"
 [extra.books.quick_start]
 
 title = "LFE Quick-Start"
-content = '''
+authors = "Duncan McGreggor"
+cover = '''
 [img-src]: https://lfe.io/books/rebar3-quick-start/images/cover.jpg
 [img-link]: https://lfe.io/books/rebar3-quick-start/
 [![casting-spels][img-src]][img-link]
+'''
+description = '''Get started with LFE using the `rebar3_lfe` project tooling plugin
 '''
 link_text = "Read Now"
 link_url = "https://lfe.io/books/rebar3-quick-start/"
@@ -510,45 +522,72 @@ link_url = "https://lfe.io/books/rebar3-quick-start/"
 [extra.books.rebar3]
 
 title = "`rebar3_lfe` Command Reference"
-content = '''
+authors = "Duncan McGreggor"
+cover = '''
 [img-src]: https://lfe.io/reference/lfe-rebar3/current/images/cover.jpg
 [img-link]: https://lfe.io/reference/lfe-rebar3/
 [![rebar3_lfe command reference][img-src]][img-link]
+'''
+description = '''A helpful source of information for those who would like to take more advantage of the features provided by the `rebar3_lfe` plugin.
 '''
 link_text = "Read Now"
 link_url = "https://lfe.io/reference/lfe-rebar3/"
 
 [extra.books.styleguide]
 
-title = "The LFE<br/>Style Guide"
-content = '''
+title = "The LFE Style Guide"
+authors = "Duncan McGreggor"
+cover = '''
 [img-src]: https://lfe.io/books/style-guide/images/cover.jpg
 [img-link]: https://lfe.io/books/style-guide/
 [![The LFE Style Guide][img-src]][img-link]
+'''
+description = '''Guidelines assembled from the Erlang and Lisp communities
 '''
 link_text = "Read Now"
 link_url = "https://lfe.io/books/style-guide/"
 
 [extra.books.sicp]
 
-title = "SICP<br/>The LFE Edition"
-content = '''
+title = "SICP: The LFE Edition"
+authors = "Gerald Sussman, Harold Abelson, & Duncan McGreggor"
+cover = '''
 [img-src]: https://lfe.io/books/sicp/images/cover.jpg
 [img-link]: https://lfe.io/books/sicp/
 [![sicp][img-src]][img-link]
 '''
+description = '''An LFE 'port' of the classic Scheme text<br/><br/>Note that, while the first section of the book is complete, the remaining sections have not been completed
+'''
 link_text = "Read Now"
 link_url = "https://lfe.io/books/sicp/"
+
+[extra.books.chineual]
+
+title = "LFE Chineual"
+authors = "Duncan McGreggor & Robert Virding"
+cover = '''
+[img-src]: https://cnbbooks.github.io/lfe-manual/current/images/cover.jpg
+[img-link]: https://cnbbooks.github.io/lfe-manual/current/
+[![sicp][img-src]][img-link]
+'''
+description = '''A work in progress, this book aims to eventually be the complete manual for LFE
+'''
+link_text = "Read Now"
+link_url = "https://cnbbooks.github.io/lfe-manual/current/"
 
 ###   Select Videos Section   #################################
 
 [extra.videos]
 
 title = "Videos"
+content = ""
 
 [extra.videos.ecu2016]
 
-title = "EUC 2016 Stockholm<br/>LFE: A Real Lisp in the Erlang Ecosystem<br/>Robert Virding"
+service_name = "YouTube"
+venue = "EUC 2016 Stockholm"
+title = "LFE: A Real Lisp in the Erlang Ecosystem"
+speaker = "Robert Virding"
 content = '''
 [img-src]: /images/EUC-2016-LFE.png
 [img-link]: https://www.youtube.com/watch?v=x2ysisqgd2g
@@ -556,10 +595,15 @@ content = '''
 '''
 link_text = "Watch Now"
 link_url = "https://www.youtube.com/watch?v=x2ysisqgd2g"
+channel_text = "Visit Channel"
+channel_url = "https://www.youtube.com/@ErlangSolutions"
 
 [extra.videos.efsf2014]
 
-title = "Erlang Factory 2014<br/>LFE from 0 to 120kph...<br/>in 45 Minutes<br/>Duncan McGreggor"
+service_name = "YouTube"
+venue = "Erlang Factory 2014"
+title = "LFE from 0 to 120kph...<br/>in 45 Minutes"
+speaker = "Duncan McGreggor"
 content = '''
 [img-src]: /images/EFSF-2014-LFE.png
 [img-link]: https://www.youtube.com/watch?v=Dgbm3BRmzuI
@@ -567,10 +611,15 @@ content = '''
 '''
 link_text = "Watch Now"
 link_url = "https://www.youtube.com/watch?v=Dgbm3BRmzuI"
+channel_text = "Visit Channel"
+channel_url = "https://www.youtube.com/@ErlangSolutions"
 
 [extra.videos.efsf2017]
 
-title = "Erlang Factory 2017<br/>Lisp Machine Flavors for <br/>LFE on OTP<br/>Robert Virding"
+service_name = "YouTube"
+venue = "Erlang Factory 2017"
+title = "Lisp Machine Flavors for LFE on OTP"
+speaker = "Robert Virding"
 content = '''
 [img-src]: /images/EFSF-2017-LFE.png
 [img-link]: https://www.youtube.com/watch?v=AcehOqbwhPk
@@ -578,7 +627,8 @@ content = '''
 '''
 link_text = "Watch Now"
 link_url = "https://www.youtube.com/watch?v=AcehOqbwhPk"
-
+channel_text = "Visit Channel"
+channel_url = "https://www.youtube.com/@ErlangSolutions"
 
 ###   Final Callout-1 Section   ###############################
 

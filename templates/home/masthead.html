@@ -1,0 +1,92 @@
+<div class="masthead-container">
+  <div class="masthead-section">
+
+    <em id="lfe-tagline" class="tagline">"{{section.extra.sitetagline}}"</em>
+
+    <div class="flex justify-center">
+      <div id="ctc-component-1-tab-1" class="max-w-[60rem]" role="tabpanel"
+        aria-labelledby="ctc-component-1-tab-1-item">
+        <div class="border rounded-xl shadow-sm p-0 bg-gradient-to-b from-slate-600 to-slate-800 border-gray-700">
+
+          {% set excerpt_section = section.extra.excerpts %}
+          {% set excerpts = [
+          excerpt_section.repl,
+          excerpt_section.simple_types,
+          excerpt_section.compound_types,
+          excerpt_section.records,
+          excerpt_section.funcs,
+          excerpt_section.macros,
+          excerpt_section.erlang_interop,
+          excerpt_section.otp] %}
+
+          <!-- tabs -->
+          <div class="border-b border-gray-200 border-gray-700">
+            <nav class="-mb-0.5 flex justify-center space-x-6" aria-label="Tabs" role="tablist">
+
+              {% for excerpt in excerpts %}
+              {% if loop.index == 1 %}{% set active = "active" %}
+              {% else %}{% set active = "" %}
+              {% endif %}
+
+              <button type="button"
+                class="hs-tab-active:font-semibold hs-tab-active:border-yellow-600 hs-tab-active:text-yellow-600 py-4 px-1 inline-flex items-center gap-2 border-b-[3px] border-transparent text-sm whitespace-nowrap text-gray-800 hover:text-yellow-600 {{ active }}"
+                id="horizontal-alignment-item-{{ excerpt.id }}" data-hs-tab="#horizontal-alignment-{{ excerpt.id }}"
+                aria-controls="horizontal-alignment-{{ excerpt.id }}" role="tab">
+                {{ excerpt.name }}
+              </button>
+
+              {% endfor %}
+            </nav>
+          </div>
+
+          <!-- tabbed content -->
+          <div class="mt-0 bg-slate-800">
+
+            {% for excerpt in excerpts %}
+            {% if loop.index == 1 %}{% set hidden = "" %}{% set active = "active" %}
+            {% else %}{% set hidden = "hidden" %}{% set active = "" %}
+            {% endif %}
+
+            <div id="horizontal-alignment-{{ excerpt.id }}" class="{{ hidden }}" role="tabpanel"
+              aria-labelledby="horizontal-alignment-item-{{ excerpt.id }}">
+              <div class="grid grid-cols-3 gap-4">
+                <div class="col-span-2">
+                  {{ excerpt.code | markdown(inline=true) | safe }}
+                </div>
+                <div class="pr-2">
+                  <p class="text-gray-500 dark:text-gray-400">
+                    {{ excerpt.desc | markdown(inline=true) | safe }}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {% endfor %}
+
+          </div>
+        </div>
+
+      </div>
+    </div> <!-- center justification wrapper -->
+
+    <div class="max-w-[70rem] grid grid-cols-2 gap-4">
+      <div>
+        &nbsp;
+      </div>
+      <div>
+        <h2 class="lfe-summary">
+          {{ section.extra.summary.content | markdown(inline=true) | safe }}
+          <a href="/learn">
+            <button type="button"
+              class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-yellow-500 text-slate-700 hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">
+              {{ section.extra.summary.link_text }} &raquo;
+            </button>
+          </a>
+        </h2>
+      </div>
+    </div>
+
+
+
+  </div>
+</div>

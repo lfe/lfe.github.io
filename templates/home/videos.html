@@ -1,0 +1,19 @@
+<div class="container videos">
+  {% set videos_section = section.extra.videos %}
+  {% set videos = [
+  videos_section.efsf2017,
+  videos_section.ecu2016,
+  videos_section.efsf2014] %}
+  <h1 class="books section title">{{ videos_section.title | markdown(inline=true) | safe }}</h1>
+
+  <div class="row">
+    {% for video in videos %}
+    <div class="col-md-4 video">
+      <h2>{{ video.title | markdown(inline=true) | safe }}</h2>
+      <p>{{ video.content | markdown(inline=true) | safe }} </p>
+      <p><a class="btn btn-secondary" href="{{ video.link_url }}" role="button">{{ video.link_text }}
+          &raquo;</a></p>
+    </div>
+    {% endfor %}
+  </div>
+</div>

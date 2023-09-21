@@ -330,68 +330,56 @@ title = "LFE Features"
 
 [extra.features.erlang]
 
-title = '''
-<i class="fas fa-smile fa-2x"></i>
-
-Core Erlang Foundation
-'''
+title = "Core Erlang Foundation"
+icon = "<i class='fas fa-smile fa-2x'></i>"
 content = '''
-All the benefits of Erlang with none of the Prolog:
+All the benefits of Erlang with none of the Prolog.
+
 * No global data
 * No mutable data
 * Pattern matching and guards
 * Compiler and interpreter
 * Hot upgrading of deployed code
 * The [Banarama of languages](https://www.youtube.com/watch?v=rRbY3TMUcgQ)
-<br/><br/><br/>
 '''
 link_text = "Learn More"
 link_url = "#"
 
 [extra.features.lisp]
 
-title = '''
-![lisp alien logo](/images/lisplogo-alien-tech-grey.png)
-
-Alien Technology
-'''
+title = "Alien Technology"
+icon = "![lisp alien logo](/images/lisplogo-alien-tech-grey.png)"
 content = '''
 It is an established fact that John McCarthy shared alien tech with the world in 1958 when he introduced us to Lisp. We continue that great tradition.
+
 * Functions and variables with separate namespaces (LFE is a Lisp-2)
 * Low-hygiene Macros
 * Homoiconicity
 * In-REPL Function and macro definitions
-<br/><br/>
 '''
 link_text = "Learn More"
 link_url = "#"
 
 [extra.features.otp]
 
-title = '''
-<i class="fas fa-pastafarianism fa-2x"></i>
-
-[Utterly Terrifying](https://www.youtube.com/watch?v=rRbY3TMUcgQ)
-'''
+title = "[Utterly Terrifying](https://www.youtube.com/watch?v=rRbY3TMUcgQ)"
+icon = "<i class='fas fa-pastafarianism fa-2x'></i>"
 content = '''
-The ability to generate distributed applications and full releases in mere minutes:
+The ability to generate distributed applications and full releases in mere minutes.
+
 * Fault-tolerant
 * Massively scalable
 * Extreme Concurrency
 * Soft real-time
 * Open. Telecom. Platform.
-<br/><br/><br/><br/><br/><br/>
 '''
 link_text = "Learn More"
 link_url = "#"
 
 [extra.features.lab]
 
-title = '''
-<i class="fas fa-flask fa-2x"></i>
-
-Language Lab
-'''
+title = "Language Lab"
+icon = "<i class='fas fa-flask fa-2x'></i>"
 content = '''
 The mad-scientist powers of a Lisp combined with the efficiency of the Actor Model and Erlang's light-weight processes.
 
@@ -409,8 +397,8 @@ link_url = "#"
 
 [extra.buildit]
 
-title = '''
-<i class="fas fa-cogs fa-1x"></i> Build It with LFE
+title = '<i class="fas fa-cogs fa-1x"></i> Build It with LFE'
+content = '''
 '''
 
 [extra.buildit.scripts]
@@ -421,8 +409,6 @@ In addition to all the heavy-duty power that LFE gets for free, by virtue of
 the Erlang VM, you can also create small, easy-to-write one-off
 `main` scripts, `lfescript`s, and even escripts -- either as a single file
 or with additional modules to help organise those larger scripts.
-<br/>
-<br/>
 '''
 link_text = "Learn More"
 link_url = "https://lfe.io/reference/lfe-rebar3/current/command-ref/projects/main.html"
@@ -446,10 +432,6 @@ content = '''
 You can take advantage of OTP with LFE in mere seconds, creating fault-tolerant
 applications with built-in process monitoring and supervision trees, so you
 `gen_server`s (and all the other `behaviour`s, too) never go down.
-<br/>
-<br/>
-<br/>
-<br/>
 '''
 link_text = "Learn More"
 link_url = "https://lfe.io/reference/lfe-rebar3/current/command-ref/projects/app.html"
@@ -462,10 +444,6 @@ When your LFE prototype is ready for the big-time, you can run it with all the
 [sophisticated machinery](https://adoptingerlang.org/docs/production/releases/)
  of an OTP release. In fact, you don't have to wait:
 start your prototype as a release, with zero pain and all of the benefit.
-<br/>
-<br/>
-<br/>
-<br/>
 '''
 link_text = "Learn More"
 link_url = "https://lfe.io/reference/lfe-rebar3/current/command-ref/projects/release.html"

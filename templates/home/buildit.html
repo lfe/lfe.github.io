@@ -1,0 +1,49 @@
+<!-- What You Can Build Section -->
+
+<div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+  {% set buildit_section = section.extra.buildit %}
+  {% set builds = [
+  buildit_section.scripts,
+  buildit_section.libraries,
+  buildit_section.apps,
+  buildit_section.releases] %}
+  <!-- Grid -->
+  <div class="grid md:grid-cols-3 gap-12">
+    <div class="lg:w-3/4">
+      <h2 class="text-3xl text-gray-800 font-bold lg:text-4xl dark:text-white">
+        {{ buildit_section.title | markdown(inline=true) | safe }}
+      </h2>
+      <p class="mt-3 text-gray-800 dark:text-gray-400">
+        {{ buildit_section.content | markdown(inline=true) | safe }}
+      </p>
+    </div>
+    <!-- End Col -->
+
+    <div class="space-y-6 lg:space-y-10 col-span-2">
+
+      {% for build in builds %}
+      <!-- Block -->
+      <div class="flex buildit-card">
+        <div class="ml-5 sm:ml-8">
+          <h2 class="text-base sm:text-lg font-semibold text-gray-800 dark:text-gray-200">
+            {{ build.title | markdown(inline=true) | safe }}
+          </h2>
+          <p class="mt-1 text-gray-600 dark:text-gray-400">
+            {{ build.content | markdown(inline=true) | safe }}
+            <a href="{{ build.link_url }}" role="button" class="flex justify-end justify-items-end no-underline">
+              <button type="button"
+              class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-slate-500 text-gray-100 hover:bg-slate-600 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800 no-underline">
+              {{ build.link_text }} &raquo;
+            </button>
+            </a>
+          </p>
+        </div>
+      </div>
+      <!-- End Block -->
+      {% endfor %}
+
+    </div>
+    <!-- End Col -->
+  </div>
+  <!-- End Grid -->
+</div>

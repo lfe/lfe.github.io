@@ -52,3 +52,23 @@ You may want to check the spelling first, though:
 ```shell
 make spell-check
 ```
+
+## Publishing to Staging
+
+The staging site is hosted in [another LFE repo](), and thus requires a custom remote URL to be added to your local git clone:
+
+```shell
+git remote add staging git@github.com:lfe/site-staging.git
+```
+
+With that in place, you can push your branch to that repo with:
+
+```shell
+git push staging <your branch name>
+```
+
+If you are pushing to a branch that is not the current default in staging, you'll want to change the default to your branch here:
+* <https://github.com/lfe/site-staging/settings>
+
+The Github Actions for deploying the site is set to only trigger on the `main` branch, so you'll want to manually kick off a deploy, when you're ready (the "Run workflow" drop-down at the top):
+* <https://github.com/lfe/site-staging/actions/workflows/deploy-site.yml>

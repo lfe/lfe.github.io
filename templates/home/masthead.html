@@ -6,7 +6,7 @@
     <div class="flex justify-center">
       <div id="ctc-component-1-tab-1" class="max-w-[60rem]" role="tabpanel"
         aria-labelledby="ctc-component-1-tab-1-item">
-        <div class="border rounded-xl shadow-sm p-0 bg-gradient-to-b from-slate-600 to-slate-800 border-gray-700">
+        <div class="border rounded-md shadow-sm p-0 bg-gradient-to-b from-slate-600 to-slate-800 border-gray-700">
 
           {% set excerpt_section = section.extra.excerpts %}
           {% set excerpts = [
@@ -29,7 +29,7 @@
               {% endif %}
 
               <button type="button"
-                class="hs-tab-active:font-semibold hs-tab-active:border-yellow-600 hs-tab-active:text-yellow-600 py-4 px-1 inline-flex items-center gap-2 border-b-[3px] border-transparent text-sm whitespace-nowrap text-gray-800 hover:text-yellow-600 {{ active }}"
+                class="hs-tab-active:font-semibold hs-tab-active:border-yellow-600 hs-tab-active:text-yellow-600 py-4 px-1 inline-flex items-center gap-2 border-b-[3px] border-transparent text-sm whitespace-nowrap text-gray-300 hover:text-yellow-600 {{ active }}"
                 id="horizontal-alignment-item-{{ excerpt.id }}" data-hs-tab="#horizontal-alignment-{{ excerpt.id }}"
                 aria-controls="horizontal-alignment-{{ excerpt.id }}" role="tab">
                 {{ excerpt.name }}
@@ -54,7 +54,7 @@
                   {{ excerpt.code | markdown(inline=true) | safe }}
                 </div>
                 <div class="pr-2">
-                  <p class="text-gray-500 dark:text-gray-400">
+                  <p class="font-thin text-gray-300">
                     {{ excerpt.desc | markdown(inline=true) | safe }}
                   </p>
                 </div>
@@ -74,7 +74,7 @@
         &nbsp;
       </div>
       <div>
-        <h2 class="lfe-summary">
+        <h2>
           {{ section.extra.summary.content | markdown(inline=true) | safe }}
           <a href="/learn">
             <button type="button"

@@ -639,7 +639,7 @@ content = "https://discord.gg/Uf3PszVHtF"
 ###   Final Callout-2 Section   ###############################
 
 [extra.callout2]
-title = "Give yourself to the <span class='text-blue-600'>Lisp</span> side of the Force!"
+title = "Give yourself to the <span style='color: lightskyblue;'>Lisp</span> side of the Force!"
 content = '''
 [img-src]: /images/xkcd-lisp-cycles.png
 [img-link]: http://xkcd.com/297/

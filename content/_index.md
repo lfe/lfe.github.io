@@ -482,7 +482,7 @@ link_url = "https://lfe.io/books/"
 title = "The LFE Tutorial"
 authors = "Robert Virding & Duncan McGreggor"
 cover = '''
-[img-src]: https://lfe.io/books/tutorial/images/cover.jpg
+[img-src]: https://cnbbooks.github.io/lfe-tutorial/images/cover.jpg
 [img-link]: https://lfe.io/books/tutorial/
 [![lfe-tutorial][img-src]][img-link]
 '''
@@ -543,7 +543,7 @@ cover = '''
 [![The LFE Style Guide][img-src]][img-link]
 '''
 description = '''Guidelines assembled from the Erlang and Lisp communities
-'''
+    '''
 link_text = "Read Now"
 link_url = "https://lfe.io/books/style-guide/"
 
@@ -566,8 +566,9 @@ link_url = "https://lfe.io/books/sicp/"
 title = "LFE Chineual"
 authors = "Duncan McGreggor & Robert Virding"
 cover = '''
-[img-src]: https://cnbbooks.github.io/lfe-manual/current/images/cover.jpg
-[img-link]: https://cnbbooks.github.io/lfe-manual/current/
+[img-src]: https://cnbbooks.github.io/lfe-manual/images/cover.jpg
+[img-link]: https://lfe.io/books/chinenual/
+
 [![sicp][img-src]][img-link]
 '''
 description = '''A work in progress, this book aims to eventually be the complete manual for LFE

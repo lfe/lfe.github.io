@@ -4,11 +4,11 @@
   {% set books = [
     books_section.quick_start,
     books_section.casting_spels,
-    books_section.lfe_tutorial,
-    books_section.rebar3,
-    books_section.styleguide,
     books_section.sicp,
-    books_section.chineual] %}
+    books_section.chineual,
+    books_section.lfe_tutorial,
+    books_section.rebar3
+  ] %}
   <div class="flex w-full justify-center">
     <h1>{{ books_section.title | markdown(inline=true) | safe }}</h1>
   </div>

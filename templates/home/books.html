@@ -2,12 +2,10 @@
 <div class="max-w-[80rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
   {% set books_section = section.extra.books %}
   {% set books = [
-    books_section.quick_start,
-    books_section.casting_spels,
-    books_section.sicp,
     books_section.chineual,
     books_section.lfe_tutorial,
-    books_section.rebar3
+    books_section.casting_spels,
+    books_section.sicp
   ] %}
   <div class="flex w-full justify-center">
     <h1>{{ books_section.title | markdown(inline=true) | safe }}</h1>

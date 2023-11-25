@@ -534,34 +534,6 @@ description = '''A work in progress, this book aims to eventually be the complet
 link_text = "Read Now"
 link_url = "https://cnbbooks.github.io/lfe-manual/current/"
 
-[extra.books.quick_start]
-
-title = "LFE Quick-Start"
-authors = "Duncan McGreggor"
-cover = '''
-[img-src]: https://lfe.io/books/rebar3-quick-start/images/cover.jpg
-[img-link]: https://lfe.io/books/rebar3-quick-start/
-[![casting-spels][img-src]][img-link]
-'''
-description = '''Get started with LFE using the `rebar3_lfe` project tooling plugin
-'''
-link_text = "Read Now"
-link_url = "https://lfe.io/books/rebar3-quick-start/"
-
-[extra.books.rebar3]
-
-title = "`rebar3_lfe` Command Reference"
-authors = "Duncan McGreggor"
-cover = '''
-[img-src]: https://lfe.io/reference/lfe-rebar3/current/images/cover.jpg
-[img-link]: https://lfe.io/reference/lfe-rebar3/
-[![rebar3_lfe command reference][img-src]][img-link]
-'''
-description = '''A helpful source of information for those who would like to take more advantage of the features provided by the `rebar3_lfe` plugin.
-'''
-link_text = "Read Now"
-link_url = "https://lfe.io/reference/lfe-rebar3/"
-
 ###   Select Videos Section   #################################
 
 [extra.videos]

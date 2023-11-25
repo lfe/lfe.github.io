@@ -29,6 +29,14 @@ When `(help)` and tab-completion aren't enough, it's time to break out the books
 * [Common Lisp compatibility](https://github.com/lfe/lfe/blob/develop/doc/src/lfe_cl.3.md)
 * [Clojure compatibility](https://github.com/lfe/lfe/blob/develop/doc/src/lfe_clj.3.md)
 
+Additionally, we have a large manual that is a work in progress and aims to provide a great deal of examples, context, and general instruction for LFE developers. That is available here:
+
+* [The LFE Machine Manual](https://lfe.io/books/chinenual)
+
+The LFE Style Guide used to be its own book, but it is now a section of the LFE Chinenual:
+
+* [The LFE Style Guide](https://cnbbooks.github.io/lfe-manual/part7/style-guide/index.html)
+
 If you want to remind yourself on all that the LFE plugin can do:
 
 * [rebar3_lfe Command Reference](https://lfe.io/reference/lfe-rebar3/)

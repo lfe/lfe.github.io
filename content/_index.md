@@ -521,7 +521,7 @@ link_url = "https://lfe.io/books/sicp/"
 
 [extra.books.chineual]
 
-title = "LFE Chineual"
+title = "LFE Chinenual"
 authors = "Duncan McGreggor & Robert Virding"
 cover = '''
 [img-src]: https://cnbbooks.github.io/lfe-manual/images/cover.jpg

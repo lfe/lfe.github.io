@@ -42,6 +42,12 @@ zola-build: clean
 
 build: zola-build docker-build tailwind-build
 
+cicd-zola-build:
+	@echo " >> Building site ..."
+	@zola build --force -o $(PUBLISH_DIR)
+
+cicd-build: cicd-zola-build cicd-tailwind-build
+
 serve: tailwind-build docker-build
 	@echo " >> Running site ..."
 	@docker run \
@@ -134,3 +140,8 @@ tailwind-build:
 	$(DOCKER_FQN) \
 	tailwindcss -i $(TAILWIND_INPUT) -o $(TAILWIND_OUTPUT) --minify
 	cp $(TAILWIND_BASE)/*.js $(JS_OUTPUT)
+
+cicd-tailwind-build:
+	@echo " >> Regenerated CSS ..."
+	@npx tailwindcss -i $(TAILWIND_INPUT) -o $(TAILWIND_OUTPUT) --minify
+	@cp $(TAILWIND_BASE)/*.js $(JS_OUTPUT)

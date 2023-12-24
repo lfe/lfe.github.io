@@ -53,6 +53,8 @@ You may want to check the spelling first, though:
 make spell-check
 ```
 
+(requires [aspell](http://aspell.net/))
+
 ## Publishing to Staging
 
 The staging site is hosted in [another LFE repo](), and thus requires a custom remote URL to be added to your local git clone:

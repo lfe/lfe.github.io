@@ -12,8 +12,6 @@ Note that the entire site content is driven with Markdown files -- *including* t
 
 The front page's content is in TOML variables between the `+++` metadata markers in `./content/_index.md`.
 
-If you're intersted in updating the CSS, everything you need to tweak should be in `./sass/lfe/_variables.scss`.
-
 More about the static site generator software:
 
 * [zola docs](https://www.getzola.org/documentation/getting-started/installation/)
@@ -21,6 +19,16 @@ More about the static site generator software:
 The templating language used by zola and which drives the layout/design of the LFE site:
 
 * [tera](https://tera.netlify.app/docs#templates)
+
+If you're intersted in updating the CSS, we use TailwindCSS + Preline, and everything you need to tweak should be in `./styles/*` (and mostly `site.css`).
+
+Before submitting a PR we recommend running the spell checker:
+
+```shell
+make spell-check
+```
+
+(requires [aspell](http://aspell.net/)).
 
 ## Dev Server
 
@@ -41,23 +49,11 @@ zola serve -p 5099
 
 ## Publishing
 
-To re-deploy the site with changes made to the above-mentioned files, simply do the following:
-
-```shell
-make publish
-```
-
-You may want to check the spelling first, though:
-
-```shell
-make spell-check
-```
-
-(requires [aspell](http://aspell.net/))
+The Github Actions for this repo now regenerates content and CSS as part of the CI/CD workflows, automatically re-publishing the site for all successful merges to `main`.
 
 ## Publishing to Staging
 
-The staging site is hosted in [another LFE repo](), and thus requires a custom remote URL to be added to your local git clone:
+The staging site is hosted in [another LFE repo](https://github.com/lfe/site-staging), and thus requires a custom remote URL to be added to your local git clone:
 
 ```shell
 git remote add staging git@github.com:lfe/site-staging.git

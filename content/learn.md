@@ -8,9 +8,9 @@ long_description = "Learning LFE must be taken in two tracks: learning the synta
 
 +++
 
-## [Quick Start Guides](#quick-start-guides)
+## [Quick Start](#quick-start)
 
-[Quick Start with rebar3](https://lfe.io/books/rebar3-quick-start/) - This will get you up and running with LFE, requiring _only_ that you have a modern Erlang installed (version 21+) and `rebar3`.
+[Quick Start with rebar3](https://cnbbooks.github.io/lfe-manual/part1/intro/setup.html) - This will get you up and running with LFE, requiring _only_ that you have a modern Erlang installed (version 21+) and `rebar3`.
 
 ## In-Depth
 

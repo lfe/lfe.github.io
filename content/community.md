@@ -41,11 +41,33 @@ long_description = "The LFE community is small but passionate; we are firm belie
 
 <i class="fab fa-github fa-1x"></i> The [official LFE code repository](https://github.com/lfe/lfe)
 
-<i class="fab fa-github fa-1x"></i> The [lfe Github org](https://github.com/lfe) (docs, site, repo mirror, additional Docker support)
+<i class="fab fa-github fa-1x"></i> The [lfe](https://github.com/lfe) org - LFE docs, site, rebar3 LFE plugin, examples, blog, etc.
 
-<i class="fab fa-github fa-1x"></i> The [lfex Github org](https://github.com/lfex) (LFE community libraries)
+<i class="fab fa-github fa-1x"></i> The [CB&B|Books](https://github.com/cnbbooks) org - Publisher where LFE books are maintained
 
-<i class="fab fa-github fa-1x"></i> The [lfe-rebar3 Github org](https://github.com/lfe-rebar3) (LFE rebar3 plugins)
+<i class="fab fa-github fa-1x"></i> The [lfex](https://github.com/lfex) org - LFE community libraries
+
+<i class="fab fa-github fa-1x"></i> The [lfeutre](https://github.com/lfeutre) org - Other LFE libraries, slightly "fringe"
+
+<i class="fab fa-github fa-1x"></i> The [lfe-http](https://github.com/lfe-http) org - Non-framework, HTTP-related LFE projects
+
+<i class="fab fa-github fa-1x"></i> The [lfe-mug](https://github.com/lfe-mug) org - LFE web application middleware, inspired by Clojure Ring and Reitit
+
+<i class="fab fa-github fa-1x"></i> The [lfe-dragon](https://github.com/lfe-dragon) org - A planned LFE web framework
+
+<i class="fab fa-github fa-1x"></i> The [lfe-support](https://github.com/lfe-support) org - Repos not written in LFE, but supporting LFE projects
+
+<i class="fab fa-github fa-1x"></i> The [erlsci](https://github.com/erlsci) org - Erlang projects used by various LFE projects
+
+<i class="fab fa-github fa-1x"></i> The [billosys](https://github.com/orgs/billosys/repositories?q=&type=all&language=erlang) org - LFE and Erlang projects at Billo Systems
+
+<i class="fab fa-github fa-1x"></i> The [quasiquoting](https://github.com/quasiquoting) org 
+
+<i class="fab fa-github fa-1x"></i> The [clojang](https://github.com/clojang) org - Idiomatic Clojure ⬄ Erlang/LFE/Elixir Interop
+
+<i class="fab fa-github fa-1x"></i> The [lfe-rebar3](https://github.com/lfe-rebar3) org - LFE rebar3 plugins, mostly old
+
+<i class="fab fa-github fa-1x"></i> The [lfe-deprecated](https://github.com/lfe-deprecated) org - Deprecated LFE projects
 
 <i class="fas fa-edit fa-1x"></i>  [LFE on Rosetta Code](http://rosettacode.org/wiki/Category:LFE)
 

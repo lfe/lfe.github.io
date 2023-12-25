@@ -33,27 +33,20 @@ Additionally, we have a large manual that is a work in progress and aims to prov
 
 * [The LFE Machine Manual](https://lfe.io/books/chinenual)
 
-The LFE Style Guide used to be its own book, but it is now a section of the LFE Chinenual:
-
-* [The LFE Style Guide](https://cnbbooks.github.io/lfe-manual/part7/style-guide/index.html)
-
-If you want to remind yourself on all that the LFE plugin can do:
-
-* [rebar3_lfe Command Reference](https://lfe.io/reference/lfe-rebar3/)
-
-More information on Docker usage is available here:
-
-* [https://hub.docker.com/r/lfex/lfe](https://hub.docker.com/r/lfex/lfe)
+The complete collection of published LFE books is avalable at [/books](https://lfe.io/books).
 
 ## docs.lfe.io
 
-The docs site for LFE is quite old and almost entirely out of date, but it's linked here since it still has some jewels that haven't been ported elsewhere:
+The docs site for LFE is QUITE OLD and almost entirely OUT OF DATE, but it's linked here since it still has some jewels that haven't been fully migrated into the LFE Machine Manual:
 
 * [docs.lfe.io](https://docs.lfe.io)
 
-There is a newer version of the docs site whose development has been stalled. Though not currently of much use, it's available here:
+There is a slightly newer version of the docs site whose development has been stalled. Though not currently of much use, it's available here:
 
 * [docs.lfe.io/dev/](https://docs.lfe.io/dev/index.html)
+
+
+Once all the usful content has been merged into the LFE Machine Manual, docs.lfe.io will redirect to this page and we'll delete this section ;-)
 
 ## Erlang
 

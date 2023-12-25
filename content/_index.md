@@ -483,41 +483,41 @@ title = "The LFE Tutorial"
 authors = "Robert Virding & Duncan McGreggor"
 cover = '''
 [img-src]: https://cnbbooks.github.io/lfe-tutorial/images/cover.jpg
-[img-link]: https://lfe.io/books/tutorial/
+[img-link]: https://cnbbooks.github.io/lfe-tutorial/
 [![lfe-tutorial][img-src]][img-link]
 '''
 description = '''An LFE version of the classic 'Erlang Tutorial'
 '''
 link_text = "Read Now"
-link_url = "https://lfe.io/books/tutorial/"
+link_url = "https://cnbbooks.github.io/lfe-tutorial/"
 
 [extra.books.casting_spels]
 
 title = "Casting SPELs in LFE"
 authors = "Duncan McGreggor & Conrad Barski"
 cover = '''
-[img-src]: https://lfe.io/books/casting-spels/images/cover.jpg
-[img-link]: https://lfe.io/books/casting-spels/
+[img-src]: https://cnbbooks.github.io/lfe-casting-spels/images/cover.jpg
+[img-link]: https://cnbbooks.github.io/lfe-casting-spels/
 [![casting-spels][img-src]][img-link]
 '''
 description = '''Build a text-based adventure game in LFE!
 '''
 link_text = "Read Now"
-link_url = "https://lfe.io/books/casting-spels/"
+link_url = "https://cnbbooks.github.io/lfe-casting-spels/"
 
 [extra.books.sicp]
 
 title = "SICP: The LFE Edition"
 authors = "Gerald Sussman, Harold Abelson, & Duncan McGreggor"
 cover = '''
-[img-src]: https://lfe.io/books/sicp/images/cover.jpg
-[img-link]: https://lfe.io/books/sicp/
+[img-src]: https://cnbbooks.github.io/lfe-sicp/images/cover.jpg
+[img-link]: https://cnbbooks.github.io/lfe-sicp
 [![sicp][img-src]][img-link]
 '''
 description = '''An LFE 'port' of the classic Scheme text<br/><br/>Note that, while the first section of the book is complete, the remaining sections have not been completed
 '''
 link_text = "Read Now"
-link_url = "https://lfe.io/books/sicp/"
+link_url = "https://cnbbooks.github.io/lfe-sicp"
 
 [extra.books.chineual]
 
@@ -525,14 +525,14 @@ title = "LFE Chinenual"
 authors = "Duncan McGreggor & Robert Virding"
 cover = '''
 [img-src]: https://cnbbooks.github.io/lfe-manual/images/cover.jpg
-[img-link]: https://lfe.io/books/chinenual/
+[img-link]: https://cnbbooks.github.io/lfe-manual
 
 [![sicp][img-src]][img-link]
 '''
 description = '''A work in progress, this book aims to eventually be the complete manual for LFE
 '''
 link_text = "Read Now"
-link_url = "https://cnbbooks.github.io/lfe-manual/current/"
+link_url = "https://cnbbooks.github.io/lfe-manual"
 
 ###   Select Videos Section   #################################
 

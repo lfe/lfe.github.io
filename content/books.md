@@ -26,13 +26,13 @@ AKA "The Chinenual" or just "The Manual"
 
 * [Official repository](https://github.com/cnbbooks/lfe-casting-spels.git)
 * [Submit request/feedback ticket](https://github.com/cnbbooks/lfe-casting-spels/issues/new)
-* [Published content](https://lfe.io/books/casting-spels/)
+* [Published content](https://cnbbooks.github.io/lfe-casting-spels/)
 
 ## Structure and Interpretation of Computer Programs
 
 * [Official repository](https://github.com/cnbbooks/lfe-sicp.git)
 * [Submit request/feedback ticket](https://github.com/cnbbooks/lfe-sicp/issues/new)
-* [Published content](https://lfe.io/books/sicp/)
+* [Published content](https://cnbbooks.github.io/lfe-sicp/)
 
 ## Old Books
 

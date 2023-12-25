@@ -26,6 +26,15 @@ While it is well-known the Robert Virding released the very first version of it 
 > * I like implementing languages.
 > * I also thought it would be a fun problem to solve. It contains many different parts and is quite open ended.
 
+## More
+
+You can learn more about LFE in the Chineual:
+
+* [Forward](https://cnbbooks.github.io/lfe-manual/preface/forward.html) - how to think about learning Erlang and LFE
+* [About LFE](https://cnbbooks.github.io/lfe-manual/part1/intro/about.html) - some more context on the history of LFE
+
 ## Its Creator
 
-Robert Virding is one of the co-inventors of Erlang and was an early member of the Ericsson Computer Science Lab. He took part in the original system design and contributed much of the original libraries, as well as to the current compiler. He has always been interested in the design of languages and their implementation, particularly functional and logic languages. Robert has created several different languages in Erlang and on the Erlang system, which have had various levels of adoption around the world. He has also worked as an entrepreneur, having been one of the co-founders of one of the first Erlang startups (Bluetail). Additionally, Robert spent a number of years at the Swedish Defence Materiel Administration (FMV) Modelling and Simulations Group. He co-authored the first book on Erlang, published by Prentice-Hall, is now Principal Language Expert at Erlang Solutions Ltd., and is regularly invited to teach and present throughout the world.
+<p class="text-nowrap ...">
+<img src="/images/rvirding.png" style="float:left; width:125px; padding-right:1em;" />Robert Virding is one of the co-inventors of Erlang and was an early member of the Ericsson Computer Science Lab. He took part in the original system design and contributed much of the original libraries, as well as to the current compiler. He has always been interested in the design of languages and their implementation, particularly functional and logic languages. Robert has created several different languages in Erlang and on the Erlang system, which have had various levels of adoption around the world. He has also worked as an entrepreneur, having been one of the co-founders of one of the first Erlang startups (Bluetail). Additionally, Robert spent a number of years at the Swedish Defence Materiel Administration (FMV) Modelling and Simulations Group. He co-authored the first book on Erlang, published by Prentice-Hall, is now Principal Language Expert at Erlang Solutions Ltd., and is regularly invited to teach and present throughout the world.
+</p>

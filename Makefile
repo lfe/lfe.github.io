@@ -142,6 +142,6 @@ tailwind-build:
 	cp $(TAILWIND_BASE)/*.js $(JS_OUTPUT)
 
 cicd-tailwind-build:
-	@echo " >> Regenerated CSS ..."
+	@echo " >> Regenerating CSS ..."
 	@npx tailwindcss -i $(TAILWIND_INPUT) -o $(TAILWIND_OUTPUT) --minify
 	@cp $(TAILWIND_BASE)/*.js $(JS_OUTPUT)

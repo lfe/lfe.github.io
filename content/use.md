@@ -33,7 +33,9 @@ Additionally, we have a large manual that is a work in progress and aims to prov
 
 * [The LFE Machine Manual](https://lfe.io/books/chinenual)
 
-The complete collection of published LFE books is avalable at [/books](https://lfe.io/books).
+The complete collection of published LFE books is avalable here:
+
+* [/books](https://lfe.io/books)
 
 ## docs.lfe.io
 

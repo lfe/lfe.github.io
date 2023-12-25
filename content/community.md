@@ -14,6 +14,10 @@ long_description = "The LFE community is small but passionate; we are firm belie
 
 <i class="fab fa-slack fa-1x"></i> Dedicated [LFE Slack workspace](https://lfe.slack.com/) (get an invite [here](https://erlef.org/slack-invite/lfe))
 
+<i class="fab fa-discord fa-1x"></i> [LFE Discord](https://discord.com/channels/1086332997478920334/1086332997961273356) (get an invite [here](https://discord.gg/Uf3PszVHtF))
+
+<i class="fa fa-hashtag fa-1x"></i> [LFE on matrix.org](https://app.element.io/#/room/#lfe-general:matrix.org)
+
 <i class="fab fa-slack fa-1x"></i> There's also an LFE channel on the official [Erlang Slack workspace](https://erlanger.slack.com) (get an invite [here](https://erlef.org/slack-invite/erlanger))
 
 <i class="fab fa-linkedin fa-1x"></i> [LFE](https://www.linkedin.com/groups/5175516/)

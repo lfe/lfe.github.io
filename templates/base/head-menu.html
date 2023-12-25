@@ -17,6 +17,7 @@
   </div>
   <div id="navbar-collapse-with-animation" class="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow sm:block">
     {% set current_page = "/" ~ current_path %}
+    <!-- DEBUG: current_path == {{ current_path }} -->
     {% set selected = "" %}
     {% set selected_style = "text-blue-600 sm:py-6 dark:text-blue-500" %}
     {% set unselected_style = "text-gray-500 hover:text-gray-400 sm:py-6 dark:text-gray-400 dark:hover:text-gray-500" %}
@@ -26,18 +27,18 @@
     <div id="lfe-main-nav" class="flex flex-col gap-y-4 gap-x-0 mt-5 sm:flex-row sm:items-center sm:justify-end sm:gap-y-0 sm:gap-x-7 sm:mt-0 sm:pl-7">
 
       {% set href = "/learn/" %}
-      {% if current_page == href %}
+      {% if current_path == href %}
       {% set selected = "page" %}
       {% set style = selected_style %}
       {% endif %}
-      <a class="font-medium {{style }}" href="{{ href }}" aria-current="{{ selected }}">
+      <a class="font-medium {{ style }}" href="{{ href }}" aria-current="{{ selected }}">
         Learn
       </a>
       {% set selected = "" %}
       {% set style = unselected_style %}
 
       {% set href = "/use/" %}
-      {% if current_page == href %}
+      {% if current_path == href %}
       {% set selected = "page" %}
       {% set style = selected_style %}
       {% endif %}
@@ -47,16 +48,28 @@
       {% set selected = "" %}
       {% set style = unselected_style %}
 
-       {% set href = "/community/" %}
-      <a class="font-medium text-gray-500 hover:text-gray-400 sm:py-6 dark:text-gray-400 dark:hover:text-gray-500" href="{{ href }}">
+      {% set href = "/community/" %}
+      {% if current_path == href %}
+      {% set selected = "page" %}
+      {% set style = selected_style %}
+      {% endif %}
+      <a class="font-medium {{ style }}" href="{{ href }}" aria-current="{{ selected }}">
         Community
       </a>
-
-       {% set href = "/about/" %}
-      <a class="font-medium text-gray-500 hover:text-gray-400 sm:py-6 dark:text-gray-400 dark:hover:text-gray-500" href="{{ href }}">
+      {% set selected = "" %}
+      {% set style = unselected_style %}
+      
+      {% set href = "/about/" %}
+      {% if current_path == href %}
+      {% set selected = "page" %}
+      {% set style = selected_style %}
+      {% endif %}
+      <a class="font-medium {{ style }}" href="{{ href }}" aria-current="{{ selected }}">
         About
       </a>
-
+      {% set selected = "" %}
+      {% set style = unselected_style %}
+      
       <a class="font-medium text-gray-500 hover:text-gray-400 sm:py-6 dark:text-gray-400 dark:hover:text-gray-500" href="http://blog.lfe.io">
         Blog
       </a>

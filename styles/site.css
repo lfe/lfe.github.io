@@ -25,6 +25,12 @@
         @apply mt-2 mb-2 flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:text-gray-200 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:text-gray-100;
     }
 
+    div.masthead-section nav button {
+        margin-bottom: 2px;
+        padding-top: 10px;
+        padding-bottom: 8px;
+    }
+    
     main {
         @apply relative flex flex-col min-h-screen bg-white bg-slate-100 dark:bg-slate-800;
     }

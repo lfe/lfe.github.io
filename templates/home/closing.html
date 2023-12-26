@@ -9,15 +9,26 @@
         <h1>
           {{ callout2.title | markdown(inline=true) | safe }}
         </h1>
-        <p class="flex align-middle text-center">
-          {{ callout1.title | markdown(inline=true) | safe }}
-          <a href="{{ callout1.content | markdown(inline=true) | safe }}">
+        <div class="grid grid-cols-3 gap-4">
+          <div class="prefix-container">
+            <p class="flex">
+              {{ callout1.prefix | markdown(inline=true) | safe }}
+            </p>
+          </div>
+          <div class="title-container">
+            <p class="flex align-middle text-center">
+              {{ callout1.title | markdown(inline=true) | safe }}
+            </p>
+          </div>
+          <div class="button-container">
+            <a href="{{ callout1.content | markdown(inline=true) | safe }}">
             <button type="button"
                     class="ml-2 mt-2 py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-yellow-500 text-slate-700 hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">
               Go &raquo;
             </button>
-          </a>
-        </p>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
 

@@ -161,6 +161,19 @@
         @apply mt-20 mb-20;
     }
 
+    .content-section .closing-callout p {
+        font-size: 140%;
+    }
+
+    .content-section .closing-callout .prefix-container {
+        padding-left: 2em;
+    }
+
+    .content-section .closing-callout .button-container {
+        padding-top: 1em;
+        padding-right: 2em;
+    }
+
     footer {
         @apply bg-slate-400 dark:bg-slate-950 border-t border-t-slate-700;
     }

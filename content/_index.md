@@ -592,12 +592,14 @@ channel_url = "https://www.youtube.com/@ErlangSolutions"
 ###   Final Callout-1 Section   ###############################
 
 [extra.callout1]
-title = "![discord logo](/images/discord-logo.png) Join us on<br/>Discord!"
+prefix = "![discord logo](/images/discord-logo.png)"
+title = "Join us on<br/>Discord!"
 content = "https://discord.gg/Uf3PszVHtF"
 
 ###   Final Callout-2 Section   ###############################
 
 [extra.callout2]
+prefix = ""
 title = "Give yourself to the <span style='color: lightskyblue;'>Lisp</span> side of the Force!"
 content = '''
 [img-src]: /images/xkcd-lisp-cycles.png

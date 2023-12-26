@@ -88,12 +88,18 @@
         @apply mt-0;
     }
 
+    main .content-section.home div.book-cards div.card-button,
     main .content-section.home div.video-cards div.card-button {
         width: 50%;
     }
     
     main .content-section.home div.video-cards div.card-action a {
         background-color: #C90C2E;
+        color: #eee;
+    }
+
+    main .content-section.home div.book-cards div.card-action a {
+        background-color: #124BC6;
         color: #eee;
     }
     

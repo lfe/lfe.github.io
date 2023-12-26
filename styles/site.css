@@ -80,6 +80,12 @@
         @apply pt-2 pb-4;
     }
 
+    main .content-section.home div.buildit {
+        background-image: url("/images/liffybot-big-fade.png");
+        background-repeat: no-repeat;
+        background-size: auto;
+    }
+    
     main .content-section.home div.buildit-card {
         @apply pt-0 mt-0;
     }

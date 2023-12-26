@@ -23,6 +23,6 @@
       (list-ref quotes (random-integer num-quotes))))
     (define set-quote (lambda ()
       (set-content! "#lfe-tagline" (get-quote))))
-    (set-timer! set-quote 60))
+    (set-timer! set-quote 10))
 </script>
 {% endblock extrascripts %}

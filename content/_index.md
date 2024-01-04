@@ -541,6 +541,54 @@ link_url = "https://cnbbooks.github.io/lfe-manual"
 title = "Videos"
 content = ""
 
+[extra.videos.lispnyc2021]
+
+service_name = "YouTube"
+venue = "LispNYC, 12 Jan 2021"
+title = "Lisp Flavoured Erlang"
+speaker = "Robert Virding"
+content = '''
+[img-src]: /images/LispNYC-2021-LFE.png
+[img-link]: https://www.youtube.com/watch?v=CAOrdVJTUow
+[![LispNYC 2021][img-src]][img-link]
+'''
+link_text = "Watch Now"
+link_url = "https://www.youtube.com/watch?v=CAOrdVJTUow"
+channel_text = "Visit Channel"
+channel_url = "https://www.youtube.com/@lispnyc1039"
+
+[extra.videos.clojutre2015]
+
+service_name = "YouTube"
+venue = "ClojuTRE 2015"
+title = "Wherefore art thou LFE?"
+speaker = "Robert Virding"
+content = '''
+[img-src]: /images/ClojuTRE-2015-LFE.png
+[img-link]: https://www.youtube.com/watch?v=BvCBTpnlqs8
+[![ClojuTRE 2015][img-src]][img-link]
+'''
+link_text = "Watch Now"
+link_url = "https://www.youtube.com/watch?v=BvCBTpnlqs8"
+channel_text = "Visit Channel"
+channel_url = "https://www.youtube.com/@Metosin"
+
+[extra.videos.codesync2022]
+
+service_name = "YouTube"
+venue = "CodeSync 2022"
+title = "Sound on BEAM: Music in the Land of Distributed Lisp"
+speaker = "Duncan McGreggor"
+content = '''
+[img-src]: /images/CodeSync-2022-SoundOnBeam.png
+[img-link]: https://www.youtube.com/watch?v=YjxWuJN5pH0
+[![CodeSync 2022][img-src]][img-link]
+'''
+link_text = "Watch Now"
+link_url = "https://www.youtube.com/watch?v=YjxWuJN5pH0"
+channel_text = "Visit Channel"
+channel_url = "https://www.youtube.com/@CodeSync"
+
 [extra.videos.ecu2016]
 
 service_name = "YouTube"

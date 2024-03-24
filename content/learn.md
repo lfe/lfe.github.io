@@ -33,6 +33,9 @@ There are some phenomenal materials available for a self-paced Erlang/OTP educat
 
 ### The Language & OTP
 
+* [Making reliable distributed systems in the presence of sodware errors](/papers/%5B2003%5D%20Armstrong%20-%20Making%20reliable%20distributed%20systems%20in%20the%20presence%20of%20software%20errors.pdf) - Joe Armstrong's PhD disertation
+* [A History of Erlang](/papers/%5B2007%5D%20Armstrong%20-%20HOPL%20III%20A%20History%20of%20Erlang.pdf) - Joe Armstrong's paper on the history of Erlang
+* [The Erlang Rationale](/papers/%5B2008%5D%20Virding%20-%20The%20Erlang%20Rationale.pdf) - Robert Virding's insights on the "why" of Erlang
 * [Learn You Some Erlang for Great Good!](https://learnyousomeerlang.com/) - Probably one of the best (and _definitely_ the most fun) books available for learning Erlang. (Also available [in print](https://nostarch.com/erlang).)
 * [Designing for Scalability with Erlang/OTP](https://www.oreilly.com/library/view/designing-for-scalability/9781449361556/) - The thinking person's OTP book: where to go when you really want to understand OTP.
 * [Erlang and OTP in Action](https://www.manning.com/books/erlang-and-otp-in-action) - This book is another fantastic resource, building up an OTP application piece at a time as you move through the chapters.

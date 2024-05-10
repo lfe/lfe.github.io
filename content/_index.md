@@ -180,7 +180,7 @@ set-person-age
 ;; Use the generated record constructor:
 lfe> (make-person name "Ford Prefect"
                        address "Betelgeuse Seven"
-                       age 234))
+                       age 234)
 #(person "Ford Prefect" "Betelgeuse Seven" 234)
 
 ```
@@ -209,7 +209,7 @@ lfe> (ackermann 3 4)
 125
 
 ;; Apply the function
-lfe> (funcall #'ackermann/2 3 4))
+lfe> (funcall #'ackermann/2 3 4)
 125
 ```
 '''

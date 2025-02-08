@@ -32,9 +32,7 @@ jobs:
           tool: zola@0.17.2
       - name: Install TailwindCSS
         run:
-          npm install
-          npm install yarn
-          yarn add tailwindcss@latest @tailwindcss/typography preline@latest
+          make cicd-tailwind-install
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v3

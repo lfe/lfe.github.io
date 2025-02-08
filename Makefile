@@ -143,6 +143,7 @@ tailwind-build:
 
 cicd-tailwind-install:
 	@echo " >> Installing tailwind ..."
+	npm init -y
 	npm install
 	npm install yarn
 	yarn add tailwindcss@latest @tailwindcss/typography preline@latest postcss@latest autoprefixer@latest cssnano@latest

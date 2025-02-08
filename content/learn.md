@@ -13,7 +13,7 @@ long_description = "Learning LFE must be taken in three tracks: learning the syn
 ### Getting Started
 
 * [Quick Start with rebar3](https://cnbbooks.github.io/lfe-manual/part1/intro/setup.html) - This will get you up and running with LFE, requiring _only_ that you have a modern Erlang installed (version 21+) and `rebar3`.
-* [The LFE Tutorial](https://lfe.io/books/tutorial/) - The Erlang "Getting Started" translated into LFE!
+* [The LFE Tutorial](https://cnbbooks.github.io/lfe-tutorial/) - The Erlang "Getting Started" translated into LFE!
 
 ### More Details
 

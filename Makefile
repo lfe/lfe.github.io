@@ -141,7 +141,11 @@ tailwind-build:
 	tailwindcss -i $(TAILWIND_INPUT) -o $(TAILWIND_OUTPUT) --minify
 	cp $(TAILWIND_BASE)/*.js $(JS_OUTPUT)
 
-cicd-tailwind-build:
+cicd-tailwind-install:
+	@echo " >> Installing tailwind ..."
+	@npm install -D tailwindcss@latest postcss@latest autoprefixer@latest
+
+cicd-tailwind-build: cicd-tailwind-install
 	@echo " >> Regenerating CSS ..."
-	@npm tailwindcss -i $(TAILWIND_INPUT) -o $(TAILWIND_OUTPUT) --minify
+	@npx tailwindcss -i $(TAILWIND_INPUT) -o $(TAILWIND_OUTPUT) --minify
 	@cp $(TAILWIND_BASE)/*.js $(JS_OUTPUT)

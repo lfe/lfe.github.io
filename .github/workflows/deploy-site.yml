@@ -39,6 +39,7 @@ jobs:
       - name: Build content and regen CSS
         run: make cicd-build
       - name: Upload artifact
+        id: deployment
         uses: actions/upload-pages-artifact@v3
         with:
           path: site

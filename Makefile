@@ -138,7 +138,7 @@ tailwind-build:
 	-v $(PWD):$(MOUNT_DIR) --workdir $(MOUNT_DIR) \
 	--entrypoint npx \
 	$(DOCKER_FQN) \
-	tailwindcss -i $(TAILWIND_INPUT) -o $(TAILWIND_OUTPUT) --minify
+	npx @tailwindcss/cli -i $(TAILWIND_INPUT) -o $(TAILWIND_OUTPUT) --minify
 	cp $(TAILWIND_BASE)/*.js $(JS_OUTPUT)
 
 cicd-tailwind-install:
@@ -146,9 +146,9 @@ cicd-tailwind-install:
 	@npm init -y
 	@npm install
 	@npm install yarn
-	@yarn add tailwindcss@latest @tailwindcss/typography preline@latest postcss@latest autoprefixer@latest cssnano@latest
+	@yarn add tailwindcss@latest @tailwindcss/typography @tailwindcss/cli preline@latest postcss@latest autoprefixer@latest cssnano@latest
 
 cicd-tailwind-build:
 	@echo " >> Regenerating CSS ..."
-	@npx tailwindcss/cli -i $(TAILWIND_INPUT) -o $(TAILWIND_OUTPUT) --minify
+	@npx @tailwindcss/cli -i $(TAILWIND_INPUT) -o $(TAILWIND_OUTPUT) --minify
 	@cp $(TAILWIND_BASE)/*.js $(JS_OUTPUT)

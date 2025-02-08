@@ -143,9 +143,11 @@ tailwind-build:
 
 cicd-tailwind-install:
 	@echo " >> Installing tailwind ..."
-	@npm install -D tailwindcss@latest postcss@latest autoprefixer@latest
+	npm install
+	npm install yarn
+	yarn add tailwindcss@latest @tailwindcss/typography preline@latest postcss@latest autoprefixer@latest cssnano@latest
 
-cicd-tailwind-build: cicd-tailwind-install
+cicd-tailwind-build:
 	@echo " >> Regenerating CSS ..."
 	@npx tailwindcss -i $(TAILWIND_INPUT) -o $(TAILWIND_OUTPUT) --minify
 	@cp $(TAILWIND_BASE)/*.js $(JS_OUTPUT)

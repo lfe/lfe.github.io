@@ -13,3 +13,5 @@ tramp
 .\#*
 /*.log
 /static/images/drafts/
+/workbench
+*backup*

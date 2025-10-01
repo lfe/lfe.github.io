@@ -83,5 +83,63 @@ window.addEventListener('load', () => {
             $item.checked = e.detail === 'dark'
         })
     })
+
+    // Custom dropdown implementation (Preline has a bug with the close logic)
+    const dropdown = document.querySelector('.custom-dropdown')
+    const dropdownToggle = document.querySelector('.custom-dropdown-toggle')
+    const dropdownMenu = document.querySelector('.custom-dropdown-menu')
+
+    if (dropdown && dropdownToggle && dropdownMenu) {
+
+        // Toggle dropdown on button click
+        dropdownToggle.addEventListener('click', function(e) {
+            e.preventDefault()
+            e.stopPropagation()
+
+            if (dropdown.classList.contains('open')) {
+                closeDropdown()
+            } else {
+                openDropdown()
+            }
+        })
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            // Don't close if clicking the toggle button (it handles itself)
+            if (dropdownToggle.contains(e.target)) {
+                return
+            }
+
+            // Close if clicking outside the dropdown
+            if (!dropdown.contains(e.target)) {
+                closeDropdown()
+            }
+        })
+
+        // Close dropdown when clicking a menu item
+        dropdownMenu.querySelectorAll('a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                closeDropdown()
+            })
+        })
+
+        function openDropdown() {
+            dropdown.classList.add('open')
+
+            // Calculate position for fixed positioning
+            const rect = dropdownToggle.getBoundingClientRect()
+            dropdownMenu.style.top = rect.bottom + 'px'
+            dropdownMenu.style.left = rect.left + 'px'
+
+            dropdownMenu.classList.remove('hidden')
+            dropdownMenu.classList.add('block')
+        }
+
+        function closeDropdown() {
+            dropdown.classList.remove('open')
+            dropdownMenu.classList.remove('block')
+            dropdownMenu.classList.add('hidden')
+        }
+    }
 })
 

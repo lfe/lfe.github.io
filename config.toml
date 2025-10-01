@@ -21,6 +21,6 @@ internal_level = "warn"
 [extra.download]
 
 repository = "https://github.com/lfe/lfe"
-prior_release = "2.0.1"
-current_release = "2.1.4"
+prior_release = "2.1.5"
+current_release = "2.2.0"
 pre_release = "refs/heads/develop"

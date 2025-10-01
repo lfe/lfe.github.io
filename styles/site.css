@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@variant dark (.dark &);
+
 @layer components {
     body {
         @apply dark:bg-slate-900 min-h-[75rem];

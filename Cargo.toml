@@ -1,0 +1,3 @@
+[workspace]
+members = ["tools/lfesite"]
+resolver = "2"

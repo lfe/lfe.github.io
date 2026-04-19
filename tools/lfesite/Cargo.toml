@@ -1,0 +1,21 @@
+[package]
+name = "lfesite"
+version = "0.1.0"
+edition = "2021"
+description = "Build orchestration and data pre-rendering for the LFE website"
+
+[dependencies]
+anyhow = "1"
+clap = { version = "4", features = ["derive"] }
+grass = "0.13"
+notify = { version = "7", features = ["macos_kqueue"] }
+pulldown-cmark = "0.12"
+regex = "1"
+serde = { version = "1", features = ["derive"] }
+serde_yaml = "0.9"
+sha2 = "0.10"
+toml = "0.8"
+walkdir = "2"
+
+[dev-dependencies]
+tempfile = "3"

@@ -1,6 +1,8 @@
 @import "tailwindcss";
 
 @variant dark (.dark &);
+@variant hs-tab-active (&.active);
+@variant hs-collapse-open (&.open);
 
 @layer components {
     body {

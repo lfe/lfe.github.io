@@ -46,7 +46,7 @@ cicd-zola-build:
 	@echo " >> Building site ..."
 	@zola build --force -o $(PUBLISH_DIR)
 
-cicd-build: cicd-zola-build cicd-tailwind-build
+cicd-build: cicd-tailwind-build cicd-zola-build
 
 serve: tailwind-build docker-build
 	@echo " >> Running site ..."

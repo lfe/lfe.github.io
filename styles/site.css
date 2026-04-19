@@ -3,6 +3,7 @@
 @variant dark (.dark &);
 @variant hs-tab-active (&.active);
 @variant hs-collapse-open (&.open);
+@variant hs-dark-mode-active (.dark &);
 
 @layer components {
     body {

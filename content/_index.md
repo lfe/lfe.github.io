@@ -24,54 +24,6 @@ sitetagline = "Taking the syntax out of distributed systems programming"
 #### To make this easier to read, the variables have been grouped with
 #### their sections via comment dividers below.
 
-###   Quotes   ################################################
-
-quotes = '''
-LFE is a proper Lisp, 100% compatible with Core Erlang and able to take full
-advantage of OTP.
-
-Light-weight, massive concurrency.
-Fault tolerance.
-Continuous operation with no downtime.
-Full distributed systems.
-Asynchronous communication.
-Process isolation.
-Soft real-time.
-
-Immutable data.
-Fixed set of data types.
-Pattern matching.
-Functional programming language.
-Support for modules.
-No global data.
-
-Runs efficiently on the BEAM.
-Seamless Erlang interop, including the ecosystem of Erlang libraries.
-
-"It is because of you, mother*@#$%, that we are not all using Lisp"
-"I'm sorry, what was that last part again? Did you just say 'Lisp'?"
-
-Taking the Syntax out of Distributed Systems Programming
-
-We're Syntactically and Semantically Chaotic
-
-Curly braces go home!
-
-LFE: Where even a distributed Prolog dare not go.
-
-MACLISP and supervision trees are all that anyone needs.
-
-LFE: Fifty Shades of Distributed, Syntax-Free Message-Passing.
-
-Come for the Lisp, stay for the Erlang/OTP.
-
-Come for the fault-tolerance and high-availability. Stay for the fault-tolerance and high-availability.
-
-LFE is _way_ cooler than FOCAL.
-What's "FOCAL"?
-See?!
-'''
-
 ###   Code Excerpts   #########################################
 
 [extra.excerpts]
@@ -80,24 +32,6 @@ See?!
 
 name = "REPL"
 id = "repl"
-code_old = '''
-```text
-Erlang/OTP 25 [erts-13.1.1] [source] [64-bit] [smp:16:16] [ds:16:16:10] [async...
-
-   ..-~.~_~---..
-  (      \\     )    |   A Lisp-2+ on the Erlang VM
-  |`-.._/_\\_.-':    |   Type (help) for usage info.
-  |         g |_ \   |
-  |        n    | |  |   Docs: http://docs.lfe.io/
-  |       a    / /   |   Source: http://github.com/lfe/lfe
-   \     l    |_/    |
-    \   r     /      |   LFE v2.1.2 (abort with ^G)
-     `-E___.-'
-
-lfe>
-
-```
-'''
 code = '''
 ![repl image mobile](/images/repl.png)
 '''
@@ -319,10 +253,6 @@ telecommunications.
 link_text = "Learn More"
 link_url = "/learn"
 
-###   Why LFE? Section   ######################################
-
-[extra.whylfe]
-
 ###   Features Section   ######################################
 
 [extra.features]
@@ -391,8 +321,6 @@ The mad-scientist powers of a Lisp combined with the efficiency of the Actor Mod
 link_text = "Learn More"
 link_url = "#"
 
-###   News Section   ##########################################
-
 ###   What You Can Build Section   ############################
 
 [extra.buildit]
@@ -447,26 +375,6 @@ start your prototype as a release, with zero pain and all of the benefit.
 '''
 link_text = "Learn More"
 link_url = "https://lfe.io/reference/lfe-rebar3/current/command-ref/projects/release.html"
-
-###   News Section   ##########################################
-
-[extra.news]
-
-title = "News Items"
-
-[extra.news.news1]
-
-title = "TBD"
-content = '''
-TBD
-'''
-
-[extra.news.news2]
-
-title = "TBD"
-content = '''
-TBD
-'''
 
 ###   Select Books Section   ##################################
 

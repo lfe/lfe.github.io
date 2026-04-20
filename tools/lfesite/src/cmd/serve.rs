@@ -16,9 +16,28 @@ use notify::{RecursiveMode, Watcher};
 /// 4. When the user presses Ctrl+C, kills the cobalt child process
 ///    and exits cleanly.
 pub fn run(project_dir: &Path, port: u16) -> Result<()> {
-    // Step 1: initial prerender
+    // Step 1: initial prerender + sass
     println!("=== Initial prerender ===");
     super::prerender::run(project_dir)?;
+
+    println!("\n=== Compiling SCSS ===");
+    super::sass::run(project_dir, project_dir)?;
+
+    println!("\n=== Running Tailwind ===");
+    let input = project_dir.join("styles/site.css");
+    let output = project_dir.join("css/site.css");
+    let status = Command::new("npx")
+        .args(["@tailwindcss/cli", "-i"])
+        .arg(&input)
+        .arg("-o")
+        .arg(&output)
+        .arg("--minify")
+        .current_dir(project_dir)
+        .status();
+    match status {
+        Ok(s) if s.success() => println!("  Tailwind CSS updated"),
+        _ => println!("  Tailwind CSS skipped (npx not available)"),
+    }
 
     // Step 2: start cobalt serve
     println!("\n=== Starting cobalt serve on port {port} ===");

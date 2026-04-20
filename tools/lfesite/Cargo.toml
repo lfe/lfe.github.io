@@ -1,6 +1,6 @@
 [package]
 name = "lfesite"
-version = "0.1.0"
+version = "5.0.0"
 edition = "2021"
 description = "Build orchestration and data pre-rendering for the LFE website"
 
@@ -9,12 +9,12 @@ anyhow = "1"
 clap = { version = "4", features = ["derive"] }
 grass = "0.13"
 notify = "8"
-pulldown-cmark = "0.12"
+pulldown-cmark = "0.13"
 regex = "1"
 serde = { version = "1", features = ["derive"] }
 serde_yaml = "0.9"
-sha2 = "0.10"
-toml = "0.8"
+sha2 = "0.11"
+toml = "1.1"
 walkdir = "2"
 
 [dev-dependencies]

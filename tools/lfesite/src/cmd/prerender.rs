@@ -255,7 +255,7 @@ fn process_mapping(map: &mut serde_yaml::Mapping) -> bool {
 /// Compute the SHA-256 digest of `data` and return it as a hex string.
 fn sha256(data: &[u8]) -> String {
     let digest = Sha256::digest(data);
-    format!("{digest:x}")
+    digest.iter().map(|b| format!("{b:02x}")).collect()
 }
 
 // ---------------------------------------------------------------------------

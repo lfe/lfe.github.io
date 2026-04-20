@@ -675,7 +675,7 @@ pre_release = "refs/heads/develop"
         assert!(result.starts_with("---\n"));
         assert!(result.contains("layout: page.liquid"));
         assert!(result.contains("title: About"));
-        assert!(result.contains("extra:"));
+        assert!(result.contains("data:"));
         assert!(result.contains("long_title: About LFE"));
         // in_search_index should be dropped (not mapped)
         assert!(!result.contains("in_search_index"));

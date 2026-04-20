@@ -31,6 +31,7 @@ pub fn run(project_dir: &Path) -> Result<()> {
     println!("=== Step 5/5: post-build ===");
     flatten_static(&output_dir)?;
     copy_root_files(project_dir, &output_dir)?;
+    generate_sitemap(project_dir, &output_dir, "https://lfe.io")?;
 
     println!("\nbuild complete: output in {}", output_dir.display());
     Ok(())
@@ -73,6 +74,65 @@ fn copy_root_files(project_dir: &Path, output_dir: &Path) -> Result<()> {
             println!("  copied {name}");
         }
     }
+    Ok(())
+}
+
+/// Generate a sitemap.xml from the markdown content files.
+fn generate_sitemap(project_dir: &Path, output_dir: &Path, base_url: &str) -> Result<()> {
+    let mut urls: Vec<String> = Vec::new();
+
+    for entry in WalkDir::new(project_dir)
+        .max_depth(3)
+        .into_iter()
+        .filter_map(|e| e.ok())
+        .filter(|e| {
+            e.file_type().is_file()
+                && e.path().extension().map_or(false, |ext| ext == "md")
+        })
+    {
+        let rel = match entry.path().strip_prefix(project_dir) {
+            Ok(r) => r,
+            Err(_) => continue,
+        };
+        let rel_str = rel.to_string_lossy();
+        if rel_str.starts_with("node_modules")
+            || rel_str.starts_with("target")
+            || rel_str.starts_with("workbench")
+            || rel_str == "README.md"
+        {
+            continue;
+        }
+
+        let stem = rel.file_stem().and_then(|s| s.to_str()).unwrap_or("");
+        let parent = rel.parent().map(|p| p.to_string_lossy().to_string()).unwrap_or_default();
+
+        let path = if stem == "index" && parent.is_empty() {
+            "/".to_string()
+        } else if stem == "index" {
+            format!("/{parent}/")
+        } else if parent.is_empty() {
+            format!("/{stem}/")
+        } else {
+            format!("/{parent}/{stem}/")
+        };
+        urls.push(path);
+    }
+
+    urls.sort();
+
+    let mut xml = String::from(
+        "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\
+         <urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n",
+    );
+    for url in &urls {
+        xml.push_str(&format!(
+            "    <url>\n        <loc>{base_url}{url}</loc>\n    </url>\n"
+        ));
+    }
+    xml.push_str("</urlset>\n");
+
+    fs::write(output_dir.join("sitemap.xml"), &xml)?;
+    println!("  generated sitemap.xml ({} URLs)", urls.len());
     Ok(())
 }
 

@@ -14,22 +14,23 @@ use walkdir::WalkDir;
 /// 4. Run Cobalt build
 /// 5. Generate sitemap
 pub fn run(project_dir: &Path) -> Result<()> {
+    let src_dir = project_dir.join("src");
     let output_dir = project_dir.join("site");
 
     println!("=== Step 1/5: prerender ===");
-    super::prerender::run(project_dir)?;
+    super::prerender::run_with_data_dir(&src_dir)?;
 
     println!("=== Step 2/5: sass ===");
-    super::sass::run(project_dir, &output_dir)?;
+    super::sass::run(project_dir, &src_dir)?;
 
     println!("=== Step 3/5: tailwindcss ===");
-    run_tailwind(project_dir)?;
+    run_tailwind(project_dir, &src_dir)?;
 
     println!("=== Step 4/5: cobalt ===");
     run_cobalt(project_dir, &output_dir)?;
 
     println!("=== Step 5/5: post-build ===");
-    generate_sitemap(project_dir, &output_dir, "https://lfe.io")?;
+    generate_sitemap(&src_dir, &output_dir, "https://lfe.io")?;
 
     println!("\nbuild complete: output in {}", output_dir.display());
     Ok(())
@@ -99,9 +100,9 @@ fn generate_sitemap(project_dir: &Path, output_dir: &Path, base_url: &str) -> Re
 /// Tries the standalone `tailwindcss` binary first.  If that is not
 /// found (exit status indicates a spawn failure), falls back to
 /// `npx @tailwindcss/cli` with the same arguments.
-fn run_tailwind(project_dir: &Path) -> Result<()> {
+fn run_tailwind(project_dir: &Path, src_dir: &Path) -> Result<()> {
     let input = project_dir.join("styles/site.css");
-    let output = project_dir.join("css/site.css");
+    let output = src_dir.join("css/site.css");
 
     let args = vec![
         "-i",
@@ -191,10 +192,11 @@ mod tests {
         let tmp = std::env::temp_dir().join("lfesite_test_tailwind");
         let _ = std::fs::remove_dir_all(&tmp);
         std::fs::create_dir_all(tmp.join("styles")).unwrap();
-        std::fs::create_dir_all(tmp.join("static/css")).unwrap();
+        let src = tmp.join("src");
+        std::fs::create_dir_all(src.join("css")).unwrap();
         std::fs::write(tmp.join("styles/site.css"), "/* empty */").unwrap();
 
-        let result = run_tailwind(&tmp);
+        let result = run_tailwind(&tmp, &src);
         // The result depends on what is installed in the environment.
         // We only assert it does not panic.
         drop(result);

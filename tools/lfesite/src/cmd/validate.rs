@@ -23,7 +23,9 @@ pub fn run(project_dir: &Path) -> Result<()> {
     // Check 1: YAML validity
     // ------------------------------------------------------------------
     println!("validate: checking data files...");
-    let data_dir = project_dir.join("_data");
+    let src_dir = project_dir.join("src");
+    let base = if src_dir.is_dir() { &src_dir } else { project_dir };
+    let data_dir = base.join("_data");
     let mut data_file_count: usize = 0;
 
     if data_dir.is_dir() {
@@ -95,8 +97,8 @@ pub fn run(project_dir: &Path) -> Result<()> {
     let mut content_file_count: usize = 0;
     let mut layouts_referenced: BTreeSet<String> = BTreeSet::new();
 
-    let plan_dir = project_dir.join("plan");
-    let content_dirs: Vec<&Path> = vec![project_dir, &plan_dir];
+    let plan_dir = base.join("plan");
+    let content_dirs: Vec<&Path> = vec![base, &plan_dir];
 
     for dir in &content_dirs {
         if !dir.is_dir() {
@@ -181,7 +183,7 @@ pub fn run(project_dir: &Path) -> Result<()> {
     // Check 4: Layout existence
     // ------------------------------------------------------------------
     println!("validate: checking layout references...");
-    let layouts_dir = project_dir.join("_layouts");
+    let layouts_dir = base.join("_layouts");
 
     for layout in &layouts_referenced {
         let layout_path = layouts_dir.join(layout);

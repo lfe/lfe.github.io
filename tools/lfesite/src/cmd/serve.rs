@@ -16,16 +16,18 @@ use notify::{RecursiveMode, Watcher};
 /// 4. When the user presses Ctrl+C, kills the cobalt child process
 ///    and exits cleanly.
 pub fn run(project_dir: &Path, port: u16) -> Result<()> {
+    let src_dir = project_dir.join("src");
+
     // Step 1: initial prerender + sass
     println!("=== Initial prerender ===");
-    super::prerender::run(project_dir)?;
+    super::prerender::run_with_data_dir(&src_dir)?;
 
     println!("\n=== Compiling SCSS ===");
-    super::sass::run(project_dir, project_dir)?;
+    super::sass::run(project_dir, &src_dir)?;
 
     println!("\n=== Running Tailwind ===");
     let input = project_dir.join("styles/site.css");
-    let output = project_dir.join("css/site.css");
+    let output = src_dir.join("css/site.css");
     let status = Command::new("npx")
         .args(["@tailwindcss/cli", "-i"])
         .arg(&input)
@@ -48,7 +50,7 @@ pub fn run(project_dir: &Path, port: u16) -> Result<()> {
         .context("failed to start `cobalt serve` — is cobalt installed?")?;
 
     // Step 3: watch _data/ for changes
-    let data_dir = project_dir.join("_data");
+    let data_dir = src_dir.join("_data");
     if !data_dir.is_dir() {
         let _ = child.kill();
         let _ = child.wait();
@@ -97,7 +99,7 @@ pub fn run(project_dir: &Path, port: u16) -> Result<()> {
                 while rx.try_recv().is_ok() {}
 
                 println!("\n=== Data file changed, re-running prerender ===");
-                if let Err(e) = super::prerender::run(project_dir) {
+                if let Err(e) = super::prerender::run_with_data_dir(&src_dir) {
                     eprintln!("prerender error: {e}");
                 }
             }

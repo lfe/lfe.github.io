@@ -14,7 +14,17 @@ use walkdir::WalkDir;
 /// Uses SHA-256 content hashing so files that are already up-to-date
 /// are left untouched.
 pub fn run(project_dir: &Path) -> Result<()> {
-    let data_dir = project_dir.join("_data");
+    let src_dir = project_dir.join("src");
+    let data_dir = if src_dir.join("_data").is_dir() {
+        src_dir.join("_data")
+    } else {
+        project_dir.join("_data")
+    };
+    run_with_data_dir(&data_dir.parent().unwrap_or(project_dir).to_path_buf())
+}
+
+pub fn run_with_data_dir(base_dir: &Path) -> Result<()> {
+    let data_dir = base_dir.join("_data");
     if !data_dir.is_dir() {
         anyhow::bail!("data directory not found: {}", data_dir.display());
     }
@@ -36,7 +46,7 @@ pub fn run(project_dir: &Path) -> Result<()> {
         scanned += 1;
         let path = entry.path();
         let rel = path
-            .strip_prefix(project_dir)
+            .strip_prefix(base_dir)
             .unwrap_or(path)
             .display();
 

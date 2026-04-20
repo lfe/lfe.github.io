@@ -2,10 +2,10 @@
 module.exports = {
     darkMode: 'class',
     content: [
-        "./_layouts/*.liquid",
-        "./_layouts/**/*.liquid",
-        "./_includes/*.liquid",
-        "./_includes/**/*.liquid",
+        "./src/_layouts/*.liquid",
+        "./src/_layouts/**/*.liquid",
+        "./src/_includes/*.liquid",
+        "./src/_includes/**/*.liquid",
         "./styles/*.{html,js}",
         "./styles/**/*.{html,js}",
     ],

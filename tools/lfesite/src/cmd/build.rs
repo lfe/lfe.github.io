@@ -97,61 +97,117 @@ fn generate_sitemap(project_dir: &Path, output_dir: &Path, base_url: &str) -> Re
 
 /// Run Tailwind CSS processing.
 ///
-/// Tries the standalone `tailwindcss` binary first.  If that is not
-/// found (exit status indicates a spawn failure), falls back to
-/// `npx @tailwindcss/cli` with the same arguments.
+/// Resolution order:
+/// 1. `tailwindcss` on PATH (user-installed standalone binary)
+/// 2. Cached standalone binary in `~/.cache/lfesite/`
+/// 3. Auto-download the standalone binary from GitHub Releases
 fn run_tailwind(project_dir: &Path, src_dir: &Path) -> Result<()> {
     let input = project_dir.join("tailwind/site.css");
     let output = src_dir.join("css/site.css");
 
-    let args = vec![
-        "-i",
-        input.to_str().context("input path is not valid UTF-8")?,
-        "-o",
-        output
-            .to_str()
-            .context("output path is not valid UTF-8")?,
-        "--minify",
-    ];
+    let binary = ensure_tailwind_binary()?;
 
-    // Try standalone tailwindcss binary first.
-    println!("  trying: tailwindcss {}", args.join(" "));
-    match Command::new("tailwindcss")
-        .args(&args)
+    let status = Command::new(&binary)
+        .args(["-i"])
+        .arg(&input)
+        .arg("-o")
+        .arg(&output)
+        .arg("--minify")
         .current_dir(project_dir)
         .status()
-    {
-        Ok(status) if status.success() => return Ok(()),
-        Ok(status) => {
-            println!(
-                "  tailwindcss exited with {status}, falling back to npx"
-            );
-        }
-        Err(e) if e.kind() == std::io::ErrorKind::NotFound => {
-            println!(
-                "  tailwindcss not found, falling back to npx"
-            );
-        }
-        Err(e) => {
-            bail!("failed to run tailwindcss: {e}");
-        }
-    }
-
-    // Fall back to npx @tailwindcss/cli.
-    let npx_args: Vec<&str> =
-        std::iter::once("@tailwindcss/cli").chain(args.iter().copied()).collect();
-    println!("  running: npx {}", npx_args.join(" "));
-    let status = Command::new("npx")
-        .args(&npx_args)
-        .current_dir(project_dir)
-        .status()
-        .context("failed to run npx @tailwindcss/cli")?;
+        .with_context(|| format!("failed to run {}", binary.display()))?;
 
     if !status.success() {
-        bail!("npx @tailwindcss/cli exited with {status}");
+        bail!("tailwindcss exited with {status}");
     }
 
     Ok(())
+}
+
+/// Find or download the Tailwind standalone CLI binary.
+pub fn ensure_tailwind_binary() -> Result<std::path::PathBuf> {
+    // 1. Check PATH
+    if let Ok(path) = which("tailwindcss") {
+        println!("  using: {}", path.display());
+        return Ok(path);
+    }
+
+    // 2. Check cache
+    let cache_dir = dirs_cache().join("lfesite");
+    let cached = cache_dir.join("tailwindcss");
+    if cached.is_file() {
+        println!("  using cached: {}", cached.display());
+        return Ok(cached);
+    }
+
+    // 3. Download
+    println!("  tailwindcss not found, downloading standalone binary...");
+    fs::create_dir_all(&cache_dir)?;
+
+    let (os, arch) = platform_tag();
+    let url = format!(
+        "https://github.com/tailwindlabs/tailwindcss/releases/latest/download/tailwindcss-{os}-{arch}"
+    );
+    println!("  downloading: {url}");
+
+    let status = Command::new("curl")
+        .args(["-sL", "-o"])
+        .arg(&cached)
+        .arg(&url)
+        .status()
+        .context("failed to run curl to download tailwindcss")?;
+
+    if !status.success() {
+        bail!("failed to download tailwindcss from {url}");
+    }
+
+    #[cfg(unix)]
+    {
+        use std::os::unix::fs::PermissionsExt;
+        fs::set_permissions(&cached, fs::Permissions::from_mode(0o755))?;
+    }
+
+    println!("  installed: {}", cached.display());
+    Ok(cached)
+}
+
+fn which(name: &str) -> Result<std::path::PathBuf> {
+    let output = Command::new("which")
+        .arg(name)
+        .output()
+        .context("failed to run which")?;
+    if output.status.success() {
+        let path = String::from_utf8_lossy(&output.stdout).trim().to_string();
+        Ok(std::path::PathBuf::from(path))
+    } else {
+        bail!("{name} not found on PATH")
+    }
+}
+
+fn dirs_cache() -> std::path::PathBuf {
+    if let Ok(xdg) = std::env::var("XDG_CACHE_HOME") {
+        return std::path::PathBuf::from(xdg);
+    }
+    if let Ok(home) = std::env::var("HOME") {
+        return std::path::PathBuf::from(home).join(".cache");
+    }
+    std::path::PathBuf::from("/tmp")
+}
+
+fn platform_tag() -> (&'static str, &'static str) {
+    let os = if cfg!(target_os = "macos") {
+        "macos"
+    } else if cfg!(target_os = "linux") {
+        "linux"
+    } else {
+        "linux"
+    };
+    let arch = if cfg!(target_arch = "aarch64") {
+        "arm64"
+    } else {
+        "x64"
+    };
+    (os, arch)
 }
 
 /// Run `cobalt build` to generate the final static site.

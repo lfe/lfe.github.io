@@ -23,17 +23,10 @@ jobs:
 
       - uses: dtolnay/rust-toolchain@stable
 
-      - name: Install Cobalt
-        run: cargo install cobalt-bin
-
-      - name: Install Tailwind CSS standalone
+      - name: Install tools
         run: |
-          curl -sLO https://github.com/tailwindlabs/tailwindcss/releases/latest/download/tailwindcss-linux-x64
-          chmod +x tailwindcss-linux-x64
-          sudo mv tailwindcss-linux-x64 /usr/local/bin/tailwindcss
-
-      - name: Build lfesite
-        run: cargo install --path tools/lfesite
+          cargo install cobalt-bin
+          cargo install --path tools/lfesite
 
       - name: Setup Pages
         id: pages

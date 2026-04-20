@@ -3,7 +3,7 @@ use std::process::Command;
 use std::sync::mpsc;
 use std::time::Duration;
 
-use anyhow::{Context, Result};
+use anyhow::{bail, Context, Result};
 use notify::{RecursiveMode, Watcher};
 
 /// Start a dev server with file watching.
@@ -26,19 +26,22 @@ pub fn run(project_dir: &Path, port: u16) -> Result<()> {
     super::sass::run(project_dir, &src_dir)?;
 
     println!("\n=== Running Tailwind ===");
+    let binary = super::build::ensure_tailwind_binary()?;
     let input = project_dir.join("tailwind/site.css");
     let output = src_dir.join("css/site.css");
-    let status = Command::new("npx")
-        .args(["@tailwindcss/cli", "-i"])
+    let status = Command::new(&binary)
+        .args(["-i"])
         .arg(&input)
         .arg("-o")
         .arg(&output)
         .arg("--minify")
         .current_dir(project_dir)
-        .status();
-    match status {
-        Ok(s) if s.success() => println!("  Tailwind CSS updated"),
-        _ => println!("  Tailwind CSS skipped (npx not available)"),
+        .status()
+        .with_context(|| format!("failed to run {}", binary.display()))?;
+    if status.success() {
+        println!("  Tailwind CSS updated");
+    } else {
+        bail!("tailwindcss exited with {status}");
     }
 
     // Step 2: start cobalt serve

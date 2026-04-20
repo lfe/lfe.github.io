@@ -16,7 +16,5 @@ tramp
 /workbench
 *backup*
 /.claude
-/package.json
-/node_modules
 /site
 /target

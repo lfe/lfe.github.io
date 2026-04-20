@@ -5,6 +5,21 @@
 <script type="text/javascript" src="/js/site.js"></script>
 <script>
     hljs.initHighlightingOnLoad();
+
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.custom-dropdown-toggle').forEach(function(btn) {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                var menu = btn.parentElement.querySelector('.custom-dropdown-menu');
+                menu.classList.toggle('hidden');
+            });
+        });
+        document.addEventListener('click', function() {
+            document.querySelectorAll('.custom-dropdown-menu').forEach(function(m) {
+                m.classList.add('hidden');
+            });
+        });
+    });
 </script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-38274766-3"></script>

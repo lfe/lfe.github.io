@@ -101,7 +101,7 @@ fn generate_sitemap(project_dir: &Path, output_dir: &Path, base_url: &str) -> Re
 /// found (exit status indicates a spawn failure), falls back to
 /// `npx @tailwindcss/cli` with the same arguments.
 fn run_tailwind(project_dir: &Path, src_dir: &Path) -> Result<()> {
-    let input = project_dir.join("styles/site.css");
+    let input = project_dir.join("tailwind/site.css");
     let output = src_dir.join("css/site.css");
 
     let args = vec![
@@ -191,10 +191,10 @@ mod tests {
         // rather than panicking.
         let tmp = std::env::temp_dir().join("lfesite_test_tailwind");
         let _ = std::fs::remove_dir_all(&tmp);
-        std::fs::create_dir_all(tmp.join("styles")).unwrap();
+        std::fs::create_dir_all(tmp.join("tailwind")).unwrap();
         let src = tmp.join("src");
         std::fs::create_dir_all(src.join("css")).unwrap();
-        std::fs::write(tmp.join("styles/site.css"), "/* empty */").unwrap();
+        std::fs::write(tmp.join("tailwind/site.css"), "/* empty */").unwrap();
 
         let result = run_tailwind(&tmp, &src);
         // The result depends on what is installed in the environment.

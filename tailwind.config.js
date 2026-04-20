@@ -6,8 +6,8 @@ module.exports = {
         "./src/_layouts/**/*.liquid",
         "./src/_includes/*.liquid",
         "./src/_includes/**/*.liquid",
-        "./styles/*.{html,js}",
-        "./styles/**/*.{html,js}",
+        "./tailwind/*.{html,js}",
+        "./tailwind/**/*.{html,js}",
     ],
     theme: {
         extend: {},

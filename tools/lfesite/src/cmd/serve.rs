@@ -26,7 +26,7 @@ pub fn run(project_dir: &Path, port: u16) -> Result<()> {
     super::sass::run(project_dir, &src_dir)?;
 
     println!("\n=== Running Tailwind ===");
-    let input = project_dir.join("styles/site.css");
+    let input = project_dir.join("tailwind/site.css");
     let output = src_dir.join("css/site.css");
     let status = Command::new("npx")
         .args(["@tailwindcss/cli", "-i"])

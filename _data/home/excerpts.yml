@@ -1,10 +1,7 @@
 items:
 - name: REPL
   id: repl
-  code_md: |
-    ![repl image mobile](/images/repl.png)
-  code_html: |
-    <p><img src="/images/repl.png" alt="repl image mobile" /></p>
+  code_html: <img src="/images/repl.png" alt="repl image mobile" />
   desc_md: |
     LFE comes with a powerful REPL, supporting interactive development
     (including writing macros!) as well as running scripts or even evaluating

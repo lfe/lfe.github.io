@@ -8,7 +8,7 @@ description = "Build orchestration and data pre-rendering for the LFE website"
 anyhow = "1"
 clap = { version = "4", features = ["derive"] }
 grass = "0.13"
-notify = { version = "7", features = ["macos_kqueue"] }
+notify = "8"
 pulldown-cmark = "0.12"
 regex = "1"
 serde = { version = "1", features = ["derive"] }

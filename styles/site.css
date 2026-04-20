@@ -149,7 +149,7 @@
     }
 
     .masthead-section pre {
-        @apply text-xs;
+        @apply text-xs leading-normal;
     }
 
     .content-section {

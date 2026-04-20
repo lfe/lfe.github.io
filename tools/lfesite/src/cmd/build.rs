@@ -12,7 +12,7 @@ use walkdir::WalkDir;
 /// 2. Compile SCSS to CSS
 /// 3. Run Tailwind CSS
 /// 4. Run Cobalt build
-/// 5. Flatten static/ into site root and copy CNAME
+/// 5. Generate sitemap
 pub fn run(project_dir: &Path) -> Result<()> {
     let output_dir = project_dir.join("site");
 
@@ -29,51 +29,9 @@ pub fn run(project_dir: &Path) -> Result<()> {
     run_cobalt(project_dir, &output_dir)?;
 
     println!("=== Step 5/5: post-build ===");
-    flatten_static(&output_dir)?;
-    copy_root_files(project_dir, &output_dir)?;
     generate_sitemap(project_dir, &output_dir, "https://lfe.io")?;
 
     println!("\nbuild complete: output in {}", output_dir.display());
-    Ok(())
-}
-
-/// Move contents of `{output}/static/` up to `{output}/` to match
-/// Zola's behaviour where `static/` contents are served from the
-/// site root.
-fn flatten_static(output_dir: &Path) -> Result<()> {
-    let static_dir = output_dir.join("static");
-    if !static_dir.is_dir() {
-        return Ok(());
-    }
-
-    for entry in WalkDir::new(&static_dir)
-        .into_iter()
-        .filter_map(|e| e.ok())
-        .filter(|e| e.file_type().is_file())
-    {
-        let rel = entry.path().strip_prefix(&static_dir)?;
-        let dest = output_dir.join(rel);
-        if let Some(parent) = dest.parent() {
-            fs::create_dir_all(parent)?;
-        }
-        fs::copy(entry.path(), &dest)?;
-    }
-
-    fs::remove_dir_all(&static_dir)?;
-    println!("  flattened static/ into site root");
-    Ok(())
-}
-
-/// Copy root-level files (CNAME, robots.txt, etc.) into the output.
-fn copy_root_files(project_dir: &Path, output_dir: &Path) -> Result<()> {
-    let files = ["CNAME"];
-    for name in &files {
-        let src = project_dir.join(name);
-        if src.exists() {
-            fs::copy(&src, output_dir.join(name))?;
-            println!("  copied {name}");
-        }
-    }
     Ok(())
 }
 
@@ -143,7 +101,7 @@ fn generate_sitemap(project_dir: &Path, output_dir: &Path, base_url: &str) -> Re
 /// `npx @tailwindcss/cli` with the same arguments.
 fn run_tailwind(project_dir: &Path) -> Result<()> {
     let input = project_dir.join("styles/site.css");
-    let output = project_dir.join("static/css/site.css");
+    let output = project_dir.join("css/site.css");
 
     let args = vec![
         "-i",

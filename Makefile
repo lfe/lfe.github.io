@@ -11,7 +11,7 @@ RESET := \033[0m
 # Variables
 PROJECT_NAME := LFE Website
 PUBLISH_DIR := site
-PORT := 3000
+PORT := 5093
 GIT_COMMIT := $(shell git rev-parse --short HEAD 2>/dev/null || echo "unknown")
 GIT_BRANCH := $(shell git rev-parse --abbrev-ref HEAD 2>/dev/null || echo "unknown")
 

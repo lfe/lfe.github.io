@@ -1,6 +1,7 @@
 ---
 layout: plan/page.liquid
 title: .plan Files
+permalink: "/plan/how-to-add/"
 data:
   long_description: How to add your .plan
   long_title: LFEX .plan Files

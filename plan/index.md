@@ -1,6 +1,7 @@
 ---
 layout: plan/index.liquid
 title: .plan Files
+permalink: "/plan/"
 data:
   long_description: .plan Files for developers in the Lisp Flavoured Erlang community
   long_title: LFEX .plan Files

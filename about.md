@@ -1,6 +1,7 @@
 ---
 layout: page.liquid
 title: About
+permalink: "/about/"
 data:
   long_description: A small bit of background on the programming language.
   long_title: About LFE

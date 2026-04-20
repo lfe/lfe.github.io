@@ -1,6 +1,7 @@
 ---
 layout: plan/page.liquid
 title: yurrriq's .plan
+permalink: "/plan/yurrriq/"
 data:
   long_description: yurrriq
   long_title: LFE .plan

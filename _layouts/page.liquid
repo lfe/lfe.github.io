@@ -10,7 +10,7 @@
     {% include "css.liquid" %}
 </head>
 
-<body>
+<body class="dark:bg-slate-900 min-h-[75rem]">
     <header class="top-nav">
     {% include "nav.liquid" %}
     </header>
@@ -18,8 +18,8 @@
     <main id="content" role="main">
       <div class="masthead-container">
         <div class="masthead-section">
-          <h1>{{ page.data.long_title }}</h1>
-          <h2>{{ page.data.long_description }}</h2>
+          {% if page.data.long_title %}<h1>{{ page.data.long_title }}</h1>{% endif %}
+          {% if page.data.long_description %}<h2>{{ page.data.long_description }}</h2>{% endif %}
         </div>
       </div>
 

@@ -1,6 +1,7 @@
 ---
 layout: page.liquid
 title: Learn
+permalink: "/learn/"
 data:
   long_description: 'Learning LFE must be taken in three tracks: learning the syntax particular to a Lisp on the Erlang VM, with all its support for pattern matching, Erlang-style arities, etc.; learning the ins-and-outs of BEAM languages and OTP; and finally, more deeply exploring the Lisp heritage of LFE. This multi-pronged approach is the path to success.'
   long_title: Resources for Learning LFE

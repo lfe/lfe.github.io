@@ -1,6 +1,7 @@
 ---
 layout: page.liquid
 title: Books
+permalink: "/books/"
 data:
   long_description: ''
   long_title: Published LFE Books

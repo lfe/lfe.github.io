@@ -22,3 +22,6 @@ ignore:
   - "CNAME"
   - "config.toml"
   - "*.log"
+  - "package.json"
+  - "tailwind.config.js"
+  - "_site"

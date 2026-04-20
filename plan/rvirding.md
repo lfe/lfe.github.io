@@ -1,6 +1,7 @@
 ---
 layout: plan/page.liquid
 title: rvirding's .plan
+permalink: "/plan/rvirding/"
 data:
   long_description: rvirding
   long_title: LFEX .plan

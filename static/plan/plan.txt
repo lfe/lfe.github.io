@@ -1,0 +1,20 @@
+$ finger lfex
+Login: lfex                       Name: Lisp Flavoured Erlang Community
+Directory: /home/lfex             Shell: /bin/lfe
+On since 2008 on pts/42 from marvin.lfe.io
+    42 seconds idle
+        (messages off)
+New mail: https://groups.google.com/g/lisp-flavoured-erlang
+Plan:
+
+
+
+
+
+
+
+
+
+
+
+

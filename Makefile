@@ -1,81 +1,44 @@
-PWD = $(shell pwd)
-UID = $(shell id -u)
-GID = $(shell id -g)
-
 PUBLISH_DIR = site
-BRANCH = main
-TMP_GIT_DIR = /tmp/lfe-io-site-git
-PORT = 5099
-
-#############################################################################
-###   DOCKER   ##############################################################
-#############################################################################
-
-ZOLA_VERS = 0.16
-NODE_VERS = 20
-ALPINE_VERS = 3.17
-DOCKER_TAG = zola$(ZOLA_VERS)-node$(NODE_VERS)-alpine$(ALPINE_VERS)
-DOCKER_ORG = lfex
-DOCKER_FQN = $(DOCKER_ORG):$(DOCKER_TAG)
-MOUNT_DIR = /app
-
-docker-build:
-	docker build -t $(DOCKER_FQN) .
-
-docker-shell:
-	docker run -it \
-	--entrypoint ash \
-	$(DOCKER_FQN)
-
-docker-publish: docker-build
-	docker push $(DOCKER_FQN)
+PORT = 3000
 
 #############################################################################
 ###   SITE   ################################################################
 #############################################################################
 
-zola-build: clean
-	@echo " >> Building site ..."
-	docker run \
-	-u "$(UID):$(GID)" -v $(PWD):$(MOUNT_DIR) --workdir $(MOUNT_DIR) $(DOCKER_FQN) \
-	build -o $(PUBLISH_DIR)
+build:
+	@lfesite build
 
-build: zola-build docker-build tailwind-build
-
-cicd-zola-build:
-	@echo " >> Building site ..."
-	@zola build --force -o $(PUBLISH_DIR)
-
-cicd-build: cicd-tailwind-build cicd-zola-build
-
-serve: tailwind-build docker-build
-	@echo " >> Running site ..."
-	@docker run \
-	-p 8080:8080 -p 1024:1024 \
-	-u "$(UID):$(GID)" -v $(PWD):$(MOUNT_DIR) --workdir $(MOUNT_DIR) $(DOCKER_FQN) \
-	serve --interface 0.0.0.0 --port 8080 --base-url localhost
+serve:
+	@lfesite serve --port $(PORT)
 
 run: serve
 
 clean:
-	@echo " >> Removing files from site dir ..."
-	@rm -rf $(PUBLISH_DIR)
+	@echo " >> Removing build output ..."
+	@rm -rf $(PUBLISH_DIR) _site
 
-$(PUBLISH_DIR)/CNAME:
-	@echo " >> Copying CNAME File ..."
-	@cp CNAME $(PUBLISH_DIR)/
+#############################################################################
+###   DEVELOPMENT   #########################################################
+#############################################################################
 
-publish: build $(PUBLISH_DIR)/CNAME
-	@echo " >> Publishing site ..."
-	@git commit -am "Updated content"
-	@git push origin $(BRANCH)
+install:
+	@echo " >> Installing lfesite ..."
+	@cargo install --path tools/lfesite
+	@echo " >> Installing cobalt ..."
+	@cargo install cobalt-bin
+
+prerender:
+	@lfesite prerender
+
+migrate:
+	@lfesite migrate
 
 #############################################################################
 ###   SPELLING   ############################################################
 #############################################################################
 
 spell-check:
-	@for FILE in `find . -name "*.md"`; do \
+	@for FILE in `find . -name "*.md" -not -path "./node_modules/*" -not -path "./target/*"`; do \
 	RESULTS=$$(cat $$FILE | aspell -d en_GB --mode=markdown list | sort -u | sed -e ':a' -e 'N;$$!ba' -e 's/\n/, /g'); \
 	if [[ "$$RESULTS" != "" ]] ; then \
 	echo "Potential spelling errors in $$FILE:"; \
@@ -99,7 +62,7 @@ add-words:
 	@echo
 
 spell-suggest:
-	@for FILE in `find . -name "*.md"`; do \
+	@for FILE in `find . -name "*.md" -not -path "./node_modules/*" -not -path "./target/*"`; do \
 	RESULTS=$$(cat $$FILE | aspell -d en_GB --mode=markdown list | sort -u ); \
 	if [[ "$$RESULTS" != "" ]] ; then \
 	echo "Potential spelling errors in $$FILE:"; \
@@ -109,46 +72,3 @@ spell-suggest:
 	echo; \
 	fi; \
 	done
-
-#############################################################################
-###   TAILWIND   ############################################################
-#############################################################################
-
-TAILWIND_BASE = styles
-TAILWIND_INPUT = $(TAILWIND_BASE)/site.css
-TAILWIND_OUTPUT = static/css/site.css
-JS_OUTPUT = static/js/
-
-tailwind-setup: tailwind.config.js $(JS_OUTPUT)/preline.js
-
-$(JS_OUTPUT)/preline.js:
-	ID=$$(docker create $(DOCKER_FQN)) && \
-	docker cp $$ID:/node_modules/preline/dist/preline.js $(TAILWIND_BASE)/ && \
-	docker rm -v $$ID
-
-tailwind.config.js:
-	docker run -it \
-	-v $(PWD):$(MOUNT_DIR) --workdir $(MOUNT_DIR) \
-	--entrypoint npx \
-	$(DOCKER_FQN) \
-	tailwindcss init
-
-tailwind-build:
-	docker run -it \
-	-v $(PWD):$(MOUNT_DIR) --workdir $(MOUNT_DIR) \
-	--entrypoint npx \
-	$(DOCKER_FQN) \
-	npx @tailwindcss/cli -i $(TAILWIND_INPUT) -o $(TAILWIND_OUTPUT) --minify
-	cp $(TAILWIND_BASE)/*.js $(JS_OUTPUT)
-
-cicd-tailwind-install:
-	@echo " >> Installing tailwind ..."
-	@npm init -y
-	@npm install
-	@npm install yarn
-	@yarn add tailwindcss@latest @tailwindcss/typography @tailwindcss/cli preline@latest postcss@latest autoprefixer@latest cssnano@latest
-
-cicd-tailwind-build:
-	@echo " >> Regenerating CSS ..."
-	@npx @tailwindcss/cli -i $(TAILWIND_INPUT) -o $(TAILWIND_OUTPUT) --minify
-	@cp $(TAILWIND_BASE)/*.js $(JS_OUTPUT)

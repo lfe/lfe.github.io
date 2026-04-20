@@ -2,17 +2,17 @@
 module.exports = {
     darkMode: 'class',
     content: [
-        "./templates/*.html",
-        "./templates/**/*.html",
+        "./_layouts/*.liquid",
+        "./_layouts/**/*.liquid",
+        "./_includes/*.liquid",
+        "./_includes/**/*.liquid",
         "./styles/*.{html,js}",
         "./styles/**/*.{html,js}",
-        "node_modules/preline/dist/*.js",
     ],
     theme: {
         extend: {},
     },
     plugins: [
         require('@tailwindcss/typography'),
-        require('preline/plugin'),
     ],
 }

@@ -78,7 +78,7 @@ info:
 	@echo "  Rust:           $$(rustc --version 2>/dev/null || echo 'not found')"
 	@echo "  Cobalt:         $$(cobalt --version 2>/dev/null || echo 'not found')"
 	@echo "  lfesite:        $$(lfesite --version 2>/dev/null || echo 'not found')"
-	@echo "  Tailwind:       $$(tailwindcss --version 2>/dev/null || npx @tailwindcss/cli --version 2>/dev/null || echo 'not found')"
+	@echo "  Tailwind:       $$(tailwindcss --version 2>/dev/null || echo 'not found')"
 	@echo ""
 
 .PHONY: check-tools
@@ -95,14 +95,23 @@ check-tools:
 ###   SITE   ################################################################
 #############################################################################
 
+LFESITE := $(shell command -v lfesite 2>/dev/null)
+
+.PHONY: ensure-lfesite
+ensure-lfesite:
+ifndef LFESITE
+	@echo "$(YELLOW)→ Installing lfesite...$(RESET)"
+	@cargo install --path tools/lfesite
+endif
+
 .PHONY: build
-build:
+build: ensure-lfesite
 	@echo "$(BLUE)Building $(PROJECT_NAME)...$(RESET)"
 	@lfesite build
 	@echo "$(GREEN)✓ Build complete$(RESET)"
 
 .PHONY: serve
-serve:
+serve: ensure-lfesite
 	@echo "$(BLUE)Starting dev server on port $(PORT)...$(RESET)"
 	@lfesite serve --port $(PORT)
 

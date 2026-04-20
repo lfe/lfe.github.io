@@ -8,19 +8,53 @@ Visit <a href="http://lfe.io/">lfe.io</a>!
 
 Feel free to [open a ticket](https://github.com/lfe/lfe.github.io/issues/new) or fork the site and submit a [pull request](https://github.com/lfe/lfe.github.io/pulls).
 
-Note that the entire site content is driven with Markdown files -- *including* the metadata sections of those files!
+### Prerequisites
 
-The front page's content is in TOML variables between the `+++` metadata markers in `./content/_index.md`.
+The only prerequisite is [Rust](https://www.rust-lang.org/tools/install). Everything else is installed automatically:
 
-More about the static site generator software:
+```shell
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```
 
-* [zola docs](https://www.getzola.org/documentation/getting-started/installation/)
+### Quick Start
 
-The templating language used by zola and which drives the layout/design of the LFE site:
+```shell
+make build    # Build the site (installs tools on first run)
+make serve    # Start dev server with live reload
+```
 
-* [tera](https://tera.netlify.app/docs#templates)
+The first `make build` will automatically install `lfesite` (the build tool), `cobalt` (the static site generator), and download the Tailwind CSS standalone binary. No npm, no node, no Docker required.
 
-If you're intersted in updating the CSS, we use TailwindCSS + Preline, and everything you need to tweak should be in `./styles/*` (and mostly `site.css`).
+Run `make help` to see all available targets, or `make check-tools` to verify your setup.
+
+### Project Structure
+
+```
+src/                  # Site content and assets
+  ├── _data/home/     #   Home page data (YAML — excerpts, features, books, etc.)
+  ├── _data/site.yml  #   Site-wide config (download URLs, versions)
+  ├── _includes/      #   Liquid template partials
+  ├── _layouts/       #   Liquid page layouts
+  ├── *.md            #   Content pages (about, learn, use, etc.)
+  ├── css/, js/       #   Stylesheets and scripts
+  ├── images/         #   Image assets
+  └── ...             #   Other static files (favicon, fonts, papers, etc.)
+sass/                 # FontAwesome SCSS source
+tailwind/             # Tailwind CSS source (site.css)
+tools/lfesite/        # Build tool (Rust)
+```
+
+### Editing Content
+
+- **Page content**: Edit the `.md` files in `src/` (e.g., `src/about.md`, `src/learn.md`)
+- **Home page widgets**: Edit YAML files in `src/_data/home/` (excerpts, features, books, videos, etc.)
+- **Site config** (download versions): Edit `src/_data/site.yml`
+- **Templates**: Edit Liquid files in `src/_layouts/` and `src/_includes/`
+- **CSS**: Edit `tailwind/site.css` (Tailwind v4 CSS-first config with `@variant` declarations)
+
+Content data files use a `_md` / `_html` convention: fields ending in `_md` contain markdown source, and `lfesite prerender` generates the corresponding `_html` fields automatically during build.
+
+### Spell Checking
 
 Before submitting a PR we recommend running the spell checker:
 
@@ -28,45 +62,16 @@ Before submitting a PR we recommend running the spell checker:
 make spell-check
 ```
 
-(requires [aspell](http://aspell.net/)).
+(requires [aspell](http://aspell.net/))
 
 ## Dev Server
 
-If you would like to run the site locally, you may do so with this command:
-
-```bash
-zola serve
+```shell
+make serve
 ```
 
-This will start the site on a local dev server running on port 1111.
-
-If you want to run on a different port, simply set the `zola` port option to
-your liking:
-
-```bash
-zola serve -p 5099
-```
+This starts a dev server on port 5093 with live reload. Edit content or templates and the site rebuilds automatically.
 
 ## Publishing
 
-The Github Actions for this repo now regenerates content and CSS as part of the CI/CD workflows, automatically re-publishing the site for all successful merges to `main`.
-
-## Publishing to Staging
-
-The staging site is hosted in [another LFE repo](https://github.com/lfe/site-staging), and thus requires a custom remote URL to be added to your local git clone:
-
-```shell
-git remote add staging git@github.com:lfe/site-staging.git
-```
-
-With that in place, you can push your branch to that repo with:
-
-```shell
-git push staging <your branch name>
-```
-
-If you are pushing to a branch that is not the current default in staging, you'll want to change the default to your branch here:
-* <https://github.com/lfe/site-staging/settings>
-
-The Github Actions for deploying the site is set to only trigger on the `main` branch, so you'll want to manually kick off a deploy, when you're ready (the "Run workflow" drop-down at the top):
-* <https://github.com/lfe/site-staging/actions/workflows/deploy-site.yml>
+GitHub Actions automatically rebuilds and deploys the site for all successful merges to `main`.

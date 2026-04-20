@@ -1,12 +1,11 @@
-+++
-title = "Community"
-in_search_index = true
+---
+layout: page.liquid
+title: Community
+data:
+  long_description: The LFE community is small but passionate; we are firm believers in the Erlang VM and OTP, usually as a result of having suffered greatly in their absence and knowing incredible strengths. Most of all, though, we have a deep appreciation for the aesthetics, usefulness, and raw power of LISP. This is where you will find us.
+  long_title: Community Resources
+---
 
-[extra]
-long_title = "Community Resources"
-long_description = "The LFE community is small but passionate; we are firm believers in the Erlang VM and OTP, usually as a result of having suffered greatly in their absence and knowing incredible strengths. Most of all, though, we have a deep appreciation for the aesthetics, usefulness, and raw power of LISP. This is where you will find us."
-
-+++
 
 ## [Social Media](#social-media)
 

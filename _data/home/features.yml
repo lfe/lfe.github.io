@@ -1,0 +1,96 @@
+title: LFE Features
+items:
+- id: lisp
+  title_md_inline: Alien Technology
+  title_html: Alien Technology
+  icon_md_inline: '![lisp alien logo](/images/lisplogo-alien-tech-grey.png)'
+  icon_html: <img src="/images/lisplogo-alien-tech-grey.png" alt="lisp alien logo" />
+  content_md: |
+    It is an established fact that John McCarthy shared alien tech with the world in 1958 when he introduced us to Lisp. We continue that great tradition.
+
+    * Functions and variables with separate namespaces (LFE is a Lisp-2)
+    * Low-hygiene Macros
+    * Homoiconicity
+    * In-REPL Function and macro definitions
+  content_html: |
+    <p>It is an established fact that John McCarthy shared alien tech with the world in 1958 when he introduced us to Lisp. We continue that great tradition.</p>
+    <ul>
+    <li>Functions and variables with separate namespaces (LFE is a Lisp-2)</li>
+    <li>Low-hygiene Macros</li>
+    <li>Homoiconicity</li>
+    <li>In-REPL Function and macro definitions</li>
+    </ul>
+  link_text: Learn More
+  link_url: '#'
+- id: erlang
+  title_md_inline: Core Erlang Foundation
+  title_html: Core Erlang Foundation
+  icon_md_inline: <i class='fas fa-smile fa-2x'></i>
+  icon_html: <i class='fas fa-smile fa-2x'></i>
+  content_md: |
+    All the benefits of Erlang with none of the Prolog.
+
+    * No global data
+    * No mutable data
+    * Pattern matching and guards
+    * Compiler and interpreter
+    * Hot upgrading of deployed code
+    * The [Banarama of languages](https://www.youtube.com/watch?v=rRbY3TMUcgQ)
+  content_html: |
+    <p>All the benefits of Erlang with none of the Prolog.</p>
+    <ul>
+    <li>No global data</li>
+    <li>No mutable data</li>
+    <li>Pattern matching and guards</li>
+    <li>Compiler and interpreter</li>
+    <li>Hot upgrading of deployed code</li>
+    <li>The <a href="https://www.youtube.com/watch?v=rRbY3TMUcgQ">Banarama of languages</a></li>
+    </ul>
+  link_text: Learn More
+  link_url: '#'
+- id: otp
+  title_md_inline: '[Utterly Terrifying](https://www.youtube.com/watch?v=rRbY3TMUcgQ)'
+  title_html: <a href="https://www.youtube.com/watch?v=rRbY3TMUcgQ">Utterly Terrifying</a>
+  icon_md_inline: <i class='fas fa-pastafarianism fa-2x'></i>
+  icon_html: <i class='fas fa-pastafarianism fa-2x'></i>
+  content_md: |
+    The ability to generate distributed applications and full releases in mere minutes.
+
+    * Fault-tolerant
+    * Massively scalable
+    * Extreme Concurrency
+    * Soft real-time
+    * Open. Telecom. Platform.
+  content_html: |
+    <p>The ability to generate distributed applications and full releases in mere minutes.</p>
+    <ul>
+    <li>Fault-tolerant</li>
+    <li>Massively scalable</li>
+    <li>Extreme Concurrency</li>
+    <li>Soft real-time</li>
+    <li>Open. Telecom. Platform.</li>
+    </ul>
+  link_text: Learn More
+  link_url: '#'
+- id: lab
+  title_md_inline: Language Lab
+  title_html: Language Lab
+  icon_md_inline: <i class='fas fa-flask fa-2x'></i>
+  icon_html: <i class='fas fa-flask fa-2x'></i>
+  content_md: |
+    The mad-scientist powers of a Lisp combined with the efficiency of the Actor Model and Erlang's light-weight processes.
+
+    * Experiment with creating distributed systems in new ways.
+    * Create DSLs on-demand.
+    * Take advantage of 1000s of cores without having to change your code.
+    * Easily write your own compilers.
+  content_html: |
+    <p>The mad-scientist powers of a Lisp combined with the efficiency of the Actor Model and Erlang's light-weight processes.</p>
+    <ul>
+    <li>Experiment with creating distributed systems in new ways.</li>
+    <li>Create DSLs on-demand.</li>
+    <li>Take advantage of 1000s of cores without having to change your code.</li>
+    <li>Easily write your own compilers.</li>
+    </ul>
+  link_text: Learn More
+  link_url: '#'

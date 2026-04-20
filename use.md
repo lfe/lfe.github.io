@@ -1,12 +1,11 @@
-+++
-title = "Use"
-in_search_index = true
+---
+layout: page.liquid
+title: Use
+data:
+  long_description: LFE may be used as a shell, for scripting; as a development tool via its REPL; as a library; and as a full programming language in its own right, with a compiler that generates `.beam` files for use by the Erlang VM. This page aims to bring to your fingertips the resources you will need most in your daily use of LFE in one or more of these.
+  long_title: Using LFE
+---
 
-[extra]
-long_title = "Using LFE"
-long_description = "LFE may be used as a shell, for scripting; as a development tool via its REPL; as a library; and as a full programming language in its own right, with a compiler that generates `.beam` files for use by the Erlang VM. This page aims to bring to your fingertips the resources you will need most in your daily use of LFE in one or more of these."
-
-+++
 
 ## The REPL
 

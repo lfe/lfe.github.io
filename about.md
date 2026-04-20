@@ -1,11 +1,11 @@
-+++
-title = "About"
-in_search_index = true
+---
+layout: page.liquid
+title: About
+data:
+  long_description: A small bit of background on the programming language.
+  long_title: About LFE
+---
 
-[extra]
-long_title = "About LFE"
-long_description = "A small bit of background on the programming language."
-+++
 
 ## The Language
 

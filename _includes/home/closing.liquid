@@ -1,0 +1,40 @@
+<!-- Hero -->
+<div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 closing-callout">
+
+  <div class="grid grid-cols-3 grid-flow-col gap-4 p-6 rounded-md bg-slate-300 dark:bg-slate-600 text-center">
+    <div class="grid flex justify-center">
+      <div class="text-center mx-auto p-0">
+        <h1>
+          {{ site.data.home.callouts.items[1].title_html }}
+        </h1>
+        <div class="grid grid-cols-3 gap-4">
+          <div class="prefix-container">
+            <p class="flex">
+              {{ site.data.home.callouts.items[0].prefix_html }}
+            </p>
+          </div>
+          <div class="title-container">
+            <p class="flex align-middle text-center">
+              {{ site.data.home.callouts.items[0].title_html }}
+            </p>
+          </div>
+          <div class="button-container">
+            <a href="{{ site.data.home.callouts.items[0].content }}">
+            <button type="button"
+                    class="ml-2 mt-2 py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-yellow-500 text-slate-700 hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">
+              Go &raquo;
+            </button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid col-span-2 flex justify-center">
+      <div class="m-6 p-6 rounded-md dark:bg-white">
+        {{ site.data.home.callouts.items[1].content_html }}
+      </div>
+    </div>
+
+  </div>
+</div>

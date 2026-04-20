@@ -213,7 +213,7 @@ fn convert_content_file(path: &Path) -> Result<()> {
         }
         if !extra_map.is_empty() {
             fm.insert(
-                Yaml::String("extra".to_string()),
+                Yaml::String("data".to_string()),
                 Yaml::Mapping(extra_map),
             );
         }

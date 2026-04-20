@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    {% include "meta.liquid" %}
+    <title>(LFE:{{ page.title }})</title>
+    <meta name="description" content="{{ page.description }}">
+
+    {% include "favicon.liquid" %}
+    {% include "css.liquid" %}
+</head>
+
+<body>
+    <header class="top-nav">
+    {% include "nav.liquid" %}
+    </header>
+
+    <main role="main" class="flex-shrink-0 plan-page">
+        <div class="jumbotron lfe-masthead">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 page-title">
+                        <h1>{{ page.data.long_title }}</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 page-description">
+                        <h2>{{ page.data.long_description }}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container page-content plan-page-content">
+            {{ page.content }}
+        </div>
+    </main>
+
+    {% include "foot.liquid" %}
+
+    {% include "end-scripts.liquid" %}
+</body>
+
+</html>

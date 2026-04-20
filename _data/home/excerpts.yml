@@ -1,0 +1,324 @@
+items:
+- name: REPL
+  id: repl
+  code_md: |
+    ![repl image mobile](/images/repl.png)
+  code_html: |
+    <p><img src="/images/repl.png" alt="repl image mobile" /></p>
+  desc_md: |
+    LFE comes with a powerful REPL, supporting interactive development
+    (including writing macros!) as well as running scripts or even evaluating
+    arbitrary LFE code via the command line.
+  desc_html: |
+    <p>LFE comes with a powerful REPL, supporting interactive development
+    (including writing macros!) as well as running scripts or even evaluating
+    arbitrary LFE code via the command line.</p>
+- name: Simple Types
+  id: core-types
+  code_md: |
+    ```lisp
+    lfe> (== 42 #b101010)
+    true
+
+    lfe> (integer_to_list 42 2)
+    "101010"
+
+    lfe> #\a
+    97
+
+    lfe> "regular string"
+    "regular string"
+
+    lfe> #"binary string"
+    #"binary string"
+    ```
+  code_html: |
+    <pre><code class="language-lisp">lfe&gt; (== 42 #b101010)
+    true
+
+    lfe&gt; (integer_to_list 42 2)
+    "101010"
+
+    lfe&gt; #\a
+    97
+
+    lfe&gt; "regular string"
+    "regular string"
+
+    lfe&gt; #"binary string"
+    #"binary string"
+    </code></pre>
+  desc_md: |
+    Note that in LFE and Erlang a string is really just a list of integers;
+    there is no "string" type. There is, however, an "atom" type in LFE; this would be analogous to the Lisp symbol. For example, `'my-atom`, or if the atom has spaces in it, `'|my atom|`.
+  desc_html: |
+    <p>Note that in LFE and Erlang a string is really just a list of integers;
+    there is no "string" type. There is, however, an "atom" type in LFE; this would be analogous to the Lisp symbol. For example, <code>'my-atom</code>, or if the atom has spaces in it, <code>'|my atom|</code>.</p>
+- name: Compound Types
+  id: data-struct
+  code_md: |
+    ```lisp
+    ;; Lists
+    lfe> '(a b c 1 2 5)
+    (a b c 1 2 5)
+
+    ;; Tuples
+    lfe> #("element 1" 2 elem-3)
+    #("element 1" 2 elem-3)
+
+    ;; Maps
+    lfe> #m(key1 "value 1"
+            "key 2" value-2)
+    #M("key 2" value-2 key1 "value 1")
+
+
+    ```
+  code_html: |
+    <pre><code class="language-lisp">;; Lists
+    lfe&gt; '(a b c 1 2 5)
+    (a b c 1 2 5)
+
+    ;; Tuples
+    lfe&gt; #("element 1" 2 elem-3)
+    #("element 1" 2 elem-3)
+
+    ;; Maps
+    lfe&gt; #m(key1 "value 1"
+            "key 2" value-2)
+    #M("key 2" value-2 key1 "value 1")
+
+
+    </code></pre>
+  desc_md: |
+    In LFE lists are like they are in a Lisp (except they also include
+    strings). Additionally, LFE has tuples (Lisp vectors) and maps
+    (Lisp has tables). LFE has property lists, dicts, and ordered dicts
+    from Erlang, supported via additional libraries.
+  desc_html: |
+    <p>In LFE lists are like they are in a Lisp (except they also include
+    strings). Additionally, LFE has tuples (Lisp vectors) and maps
+    (Lisp has tables). LFE has property lists, dicts, and ordered dicts
+    from Erlang, supported via additional libraries.</p>
+- name: Records
+  id: records
+  code_md: |
+    ```lisp
+    ;; Defining a record automatically generates a set of
+    ;; useful functions for that particular record.
+    lfe> (defrecord person
+           name
+           address
+           age)
+    set-person-age
+
+    ;; Use the generated record constructor:
+    lfe> (make-person name "Ford Prefect"
+                           address "Betelgeuse Seven"
+                           age 234)
+    #(person "Ford Prefect" "Betelgeuse Seven" 234)
+
+    ```
+  code_html: |
+    <pre><code class="language-lisp">;; Defining a record automatically generates a set of
+    ;; useful functions for that particular record.
+    lfe&gt; (defrecord person
+           name
+           address
+           age)
+    set-person-age
+
+    ;; Use the generated record constructor:
+    lfe&gt; (make-person name "Ford Prefect"
+                           address "Betelgeuse Seven"
+                           age 234)
+    #(person "Ford Prefect" "Betelgeuse Seven" 234)
+
+    </code></pre>
+  desc_md: |
+    Like all data in LFE, records can be pattern-matched. Pattern matching
+    on record field names and data in function arguments is an extremely powerful
+    capability provided to developers.
+  desc_html: |
+    <p>Like all data in LFE, records can be pattern-matched. Pattern matching
+    on record field names and data in function arguments is an extremely powerful
+    capability provided to developers.</p>
+- name: Functions
+  id: funcs
+  code_md: |
+    ```lisp
+    ;; A recursive function with pattern matching:
+    lfe> (defun ackermann
+           ((0 n) (+ n 1))
+           ((m 0) (ackermann (- m 1) 1))
+           ((m n) (ackermann (- m 1)
+                             (ackermann m (- n 1)))))
+
+    ;; Call the function
+    lfe> (ackermann 3 4)
+    125
+
+    ;; Apply the function
+    lfe> (funcall #'ackermann/2 3 4)
+    125
+    ```
+  code_html: |
+    <pre><code class="language-lisp">;; A recursive function with pattern matching:
+    lfe&gt; (defun ackermann
+           ((0 n) (+ n 1))
+           ((m 0) (ackermann (- m 1) 1))
+           ((m n) (ackermann (- m 1)
+                             (ackermann m (- n 1)))))
+
+    ;; Call the function
+    lfe&gt; (ackermann 3 4)
+    125
+
+    ;; Apply the function
+    lfe&gt; (funcall #'ackermann/2 3 4)
+    125
+    </code></pre>
+  desc_md: |
+    As well as supporting the standard Lisp syntax for `defun`,
+    LFE functions support pattern matching in arguments, allowing you to create
+    concise, expressive, and elegant code.
+  desc_html: |
+    <p>As well as supporting the standard Lisp syntax for <code>defun</code>,
+    LFE functions support pattern matching in arguments, allowing you to create
+    concise, expressive, and elegant code.</p>
+- name: Macros
+  id: macros
+  code_md: |
+    ```lisp
+    ;; LFE and Erlang do not support n-arity functions, but
+    ;; you can write a Lisp macro to get around that :-)
+    lfe> (defmacro mean args
+           `(/ (lists:sum ,args)
+               ,(length args)))
+
+    ;; Use the macro with different numbers of arguments:
+    lfe> (mean 1)
+    1.0
+    lfe> (mean 1 2)
+    1.5
+    lfe> (mean 1 2 3 4 5 6 42 108)
+    21.375
+
+    ```
+  code_html: |
+    <pre><code class="language-lisp">;; LFE and Erlang do not support n-arity functions, but
+    ;; you can write a Lisp macro to get around that :-)
+    lfe&gt; (defmacro mean args
+           `(/ (lists:sum ,args)
+               ,(length args)))
+
+    ;; Use the macro with different numbers of arguments:
+    lfe&gt; (mean 1)
+    1.0
+    lfe&gt; (mean 1 2)
+    1.5
+    lfe&gt; (mean 1 2 3 4 5 6 42 108)
+    21.375
+
+    </code></pre>
+  desc_md: |
+    LFE macros are unhygenic, but with scoped variables. There is no `gensym` in
+    LFE due to this being unsafe in long-lived, distributed code (LFE supports
+    sharing code with remote nodes). With the exception of running in the REPL,
+    macros are only compile-time.
+  desc_html: |
+    <p>LFE macros are unhygenic, but with scoped variables. There is no <code>gensym</code> in
+    LFE due to this being unsafe in long-lived, distributed code (LFE supports
+    sharing code with remote nodes). With the exception of running in the REPL,
+    macros are only compile-time.</p>
+- name: Erlang Interop
+  id: erl
+  code_md: |
+    ```lisp
+    lfe> (lists:reverse
+           (erlang:integer_to_list
+             (lists:foldl #'*/2 1 '(1 2 3 4))))
+    "42"
+
+    lfe> (supervisor:which_children 'kernel_sup)
+    (#(logger_sup #Pid<0.70.0> supervisor (logger_sup))
+     #(kernel_safe_sup #Pid<0.69.0> supervisor (kernel))
+     #(kernel_refc #Pid<0.68.0> worker (kernel_refc))
+     #(kernel_config #Pid<0.67.0> worker (kernel_config))
+     #(user #Pid<0.63.0> supervisor (user_sup))
+     #(standard_error #Pid<0.61.0> supervisor (standard_error))
+     #(erl_signal_server #Pid<0.60.0> worker dynamic)
+     ...)
+    ```
+  code_html: |
+    <pre><code class="language-lisp">lfe&gt; (lists:reverse
+           (erlang:integer_to_list
+             (lists:foldl #'*/2 1 '(1 2 3 4))))
+    "42"
+
+    lfe&gt; (supervisor:which_children 'kernel_sup)
+    (#(logger_sup #Pid&lt;0.70.0&gt; supervisor (logger_sup))
+     #(kernel_safe_sup #Pid&lt;0.69.0&gt; supervisor (kernel))
+     #(kernel_refc #Pid&lt;0.68.0&gt; worker (kernel_refc))
+     #(kernel_config #Pid&lt;0.67.0&gt; worker (kernel_config))
+     #(user #Pid&lt;0.63.0&gt; supervisor (user_sup))
+     #(standard_error #Pid&lt;0.61.0&gt; supervisor (standard_error))
+     #(erl_signal_server #Pid&lt;0.60.0&gt; worker dynamic)
+     ...)
+    </code></pre>
+  desc_md: |
+    Here we have two examples of directly calling Erlang functions
+    from LFE. First, we're "folding" (a.k.a "reducing") over a list
+    of items, multiplying them by the accumulated value, and then further
+    transforming using other Erlang functions. Then we are calling an
+    Erlang function to get information about a particular supervision tree.
+  desc_html: |
+    <p>Here we have two examples of directly calling Erlang functions
+    from LFE. First, we're "folding" (a.k.a "reducing") over a list
+    of items, multiplying them by the accumulated value, and then further
+    transforming using other Erlang functions. Then we are calling an
+    Erlang function to get information about a particular supervision tree.</p>
+- name: OTP
+  id: otp
+  code_md: |
+    ```lisp
+    (defmodule server
+      (behaviour gen_server)
+      (export
+       (start_link 0)
+       (stop 0)
+       ...))
+
+    (defun handle_call
+      (('amount _caller state-data)
+       `#(reply ,state-data ,state-data))
+      (('stop _caller state-data)
+       `#(stop shutdown ok state-data))
+      ((message _caller state-data)
+       `#(reply ,(unknown-command) ,state-data)))
+    ```
+  code_html: |
+    <pre><code class="language-lisp">(defmodule server
+      (behaviour gen_server)
+      (export
+       (start_link 0)
+       (stop 0)
+       ...))
+
+    (defun handle_call
+      (('amount _caller state-data)
+       `#(reply ,state-data ,state-data))
+      (('stop _caller state-data)
+       `#(stop shutdown ok state-data))
+      ((message _caller state-data)
+       `#(reply ,(unknown-command) ,state-data)))
+    </code></pre>
+  desc_md: |
+    OTP is what you use when you need to create industrial grade applications
+    and services; there's nothing quite like it in the programming world. As
+    such, it has inspired countless imitations in a great many other programming
+    languages. In LFE, you get to use the real deal.
+  desc_html: |
+    <p>OTP is what you use when you need to create industrial grade applications
+    and services; there's nothing quite like it in the programming world. As
+    such, it has inspired countless imitations in a great many other programming
+    languages. In LFE, you get to use the real deal.</p>

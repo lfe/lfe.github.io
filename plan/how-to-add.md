@@ -1,12 +1,11 @@
-+++
-title = ".plan Files"
-in_search_index = true
-template = "plan/page.html"
+---
+layout: plan/page.liquid
+title: .plan Files
+data:
+  long_description: How to add your .plan
+  long_title: LFEX .plan Files
+---
 
-[extra]
-long_title = "LFEX .plan Files"
-long_description = "How to add your .plan"
-+++
 
 ## Steps
 

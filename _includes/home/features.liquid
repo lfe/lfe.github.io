@@ -1,0 +1,24 @@
+<div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+  <div class="flex w-full justify-center">
+    <h1>{{ site.data.home.features.title }}</h1>
+  </div>
+
+  <div class="grid sm:grid-cols-2 lg:grid-cols-2 items-center gap-6 md:gap-10">
+
+    {% for feature in site.data.home.features.items %}
+    <div class="w-full h-full bg-white shadow-lg rounded-md p-5 dark:bg-slate-900">
+      <div class="flex items-center gap-x-4 mb-3">
+        <div
+          class="inline-flex justify-center items-center w-[62px] h-[62px] rounded-full border-4 border-slate-50 bg-slate-100 dark:border-slate-900 dark:bg-slate-800 text-gray-500">
+          {{ feature.icon_html }}
+        </div>
+        <div class="flex-shrink-0">
+          <h3 class="block text-lg font-semibold text-gray-800 dark:text-white">{{ feature.title_html }}</h3>
+        </div>
+      </div>
+      <p class="text-gray-600 dark:text-gray-400">{{ feature.content_html }}</p>
+    </div>
+    {% endfor %}
+
+  </div>
+</div>

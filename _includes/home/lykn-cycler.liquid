@@ -1,0 +1,25 @@
+<script type="module" src="https://esm.sh/jsr/@lykn/browser@0.5.0"></script>
+<script type="text/lykn">
+    ;; Site: https://lykn.pl
+    ;; Project: https://github.com/lykn-lang/lykn
+    ;; Docs: https://cnbbooks.github.io/lykn
+  (bind quotes #a(
+    {% for q in site.data.home.quotes.items %}"\"{{ q }}\""{% unless forloop.last %}
+    {% endunless %}{% endfor %}))
+
+  (genfunc cycle
+    :args (:array items)
+    :yields :string
+    :body
+    (while true
+      (for-of item items (yield item))))
+
+  (bind it (cycle quotes))
+  (bind el (document:query-selector "#lfe-tagline"))
+
+  (setInterval
+    (fn ()
+      (bind next (it:next))
+      (set! el:text-content next:value))
+    10000)
+</script>

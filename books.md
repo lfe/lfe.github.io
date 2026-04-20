@@ -1,12 +1,11 @@
-+++
-title = "Books"
-in_search_index = true
+---
+layout: page.liquid
+title: Books
+data:
+  long_description: ''
+  long_title: Published LFE Books
+---
 
-[extra]
-long_title = "Published LFE Books"
-long_description = ""
-
-+++
 
 ## The LFE Machine Manual
 

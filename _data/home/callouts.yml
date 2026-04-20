@@ -1,0 +1,16 @@
+items:
+- id: discord
+  prefix_md_inline: '![discord logo](/images/discord-logo.png)'
+  prefix_html: <img src="/images/discord-logo.png" alt="discord logo" />
+  title_md_inline: Join us on<br/>Discord!
+  title_html: Join us on<br/>Discord!
+  content: https://discord.gg/Uf3PszVHtF
+- id: xkcd
+  title_md_inline: 'Give yourself to the <span style=''color: lightskyblue;''>Lisp</span> side of the Force!'
+  title_html: 'Give yourself to the <span style=''color: lightskyblue;''>Lisp</span> side of the Force!'
+  content_md: |
+    [img-src]: /images/xkcd-lisp-cycles.png
+    [img-link]: http://xkcd.com/297/
+    [![call-out content mobile][img-src]][img-link]
+  content_html: |
+    <p><a href="http://xkcd.com/297/"><img src="/images/xkcd-lisp-cycles.png" alt="call-out content mobile" /></a></p>

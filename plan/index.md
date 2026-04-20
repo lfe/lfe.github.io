@@ -1,12 +1,11 @@
-+++
-title = ".plan Files"
-in_search_index = true
-template = "plan/index.html"
+---
+layout: plan/index.liquid
+title: .plan Files
+data:
+  long_description: .plan Files for developers in the Lisp Flavoured Erlang community
+  long_title: LFEX .plan Files
+---
 
-[extra]
-long_title = "LFEX .plan Files"
-long_description = ".plan Files for developers in the Lisp Flavoured Erlang community"
-+++
 
 [![dot-plan-screenshot][screenie-src]][screenie-link]
 

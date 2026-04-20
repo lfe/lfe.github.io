@@ -1,0 +1,13 @@
+logo_image: /images/LFE-logo-abbr-6.2.png
+sitetagline: Taking the syntax out of distributed systems programming
+summary:
+  content_md: |
+    LFE is not a casual Lisp. It's a Lisp for those who want to build distributed
+    applications -- like the Erlang software that powers 40% of the world's
+    telecommunications.
+  content_html: |
+    <p>LFE is not a casual Lisp. It's a Lisp for those who want to build distributed
+    applications -- like the Erlang software that powers 40% of the world's
+    telecommunications.</p>
+  link_text: Learn More
+  link_url: /learn

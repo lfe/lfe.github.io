@@ -1,0 +1,71 @@
+<div class="masthead-container">
+  <div class="masthead-section">
+
+    <em id="lfe-tagline" class="tagline">"{{ site.data.home.masthead.sitetagline }}"</em>
+
+    <div class="flex justify-center">
+      <div id="ctc-component-1-tab-1" class="max-w-[60rem]" role="tabpanel"
+        aria-labelledby="ctc-component-1-tab-1-item">
+        <div class="border rounded-md shadow-sm p-0 bg-gradient-to-b from-slate-600 to-slate-800 border-gray-700">
+
+          <!-- tabs -->
+          <div class="border-b border-gray-200 border-gray-700">
+            <nav class="-mb-0.5 flex justify-center space-x-4 md:space-x-6 flex-wrap md:flex-nowrap" aria-label="Tabs" role="tablist">
+
+              {% for excerpt in site.data.home.excerpts.items %}
+              <button type="button"
+                class="hs-tab-active:font-semibold hs-tab-active:border-yellow-600 hs-tab-active:text-yellow-600 py-1 md:py-4 px-1 inline-flex items-center gap-2 border-b-[3px] border-transparent text-sm whitespace-nowrap text-gray-300 hover:text-yellow-600 {% if forloop.index == 1 %}active{% endif %}"
+                id="horizontal-alignment-item-{{ excerpt.id }}" data-hs-tab="#horizontal-alignment-{{ excerpt.id }}"
+                aria-controls="horizontal-alignment-{{ excerpt.id }}" role="tab">
+                {{ excerpt.name }}
+              </button>
+
+              {% endfor %}
+            </nav>
+          </div>
+
+          <!-- tabbed content -->
+          <div class="mt-0 bg-slate-800">
+
+            {% for excerpt in site.data.home.excerpts.items %}
+            <div id="horizontal-alignment-{{ excerpt.id }}" class="{% if forloop.index != 1 %}hidden{% endif %}" role="tabpanel"
+              aria-labelledby="horizontal-alignment-item-{{ excerpt.id }}">
+              <div class="grid grid-cols-1 md:grid-cols-3 md:gap-4">
+                <div class="md:col-span-2">
+                  {{ excerpt.code_html }}
+                </div>
+                <div class="px-4 py-2 md:pr-2">
+                  <p class="font-thin text-gray-300">
+                    {{ excerpt.desc_html }}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {% endfor %}
+
+          </div>
+        </div>
+
+      </div>
+    </div> <!-- center justification wrapper -->
+
+    <div class="max-w-[70rem] grid grid-cols-1 md:grid-cols-2 md:gap-4">
+      <div>
+        &nbsp;
+      </div>
+      <div>
+        <h2>
+          {{ site.data.home.masthead.summary.content_html }}
+          <a href="{{ site.data.home.masthead.summary.link_url }}" class="block mt-1 md:inline md:mt-0">
+            <button type="button"
+              class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-yellow-500 text-slate-700 hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">
+              {{ site.data.home.masthead.summary.link_text }} &raquo;
+            </button>
+          </a>
+        </h2>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,92 @@
+title: Videos
+items:
+- id: lispnyc2021
+  service_name: YouTube
+  venue: LispNYC, 12 Jan 2021
+  title: Lisp Flavoured Erlang
+  speaker: Robert Virding
+  content_md: |
+    [img-src]: /images/LispNYC-2021-LFE.png
+    [img-link]: https://www.youtube.com/watch?v=CAOrdVJTUow
+    [![LispNYC 2021][img-src]][img-link]
+  content_html: |
+    <p><a href="https://www.youtube.com/watch?v=CAOrdVJTUow"><img src="/images/LispNYC-2021-LFE.png" alt="LispNYC 2021" /></a></p>
+  link_text: Watch Now
+  link_url: https://www.youtube.com/watch?v=CAOrdVJTUow
+  channel_text: Visit Channel
+  channel_url: https://www.youtube.com/@lispnyc1039
+- id: clojutre2015
+  service_name: YouTube
+  venue: ClojuTRE 2015
+  title: Wherefore art thou LFE?
+  speaker: Robert Virding
+  content_md: |
+    [img-src]: /images/ClojuTRE-2015-LFE.png
+    [img-link]: https://www.youtube.com/watch?v=BvCBTpnlqs8
+    [![ClojuTRE 2015][img-src]][img-link]
+  content_html: |
+    <p><a href="https://www.youtube.com/watch?v=BvCBTpnlqs8"><img src="/images/ClojuTRE-2015-LFE.png" alt="ClojuTRE 2015" /></a></p>
+  link_text: Watch Now
+  link_url: https://www.youtube.com/watch?v=BvCBTpnlqs8
+  channel_text: Visit Channel
+  channel_url: https://www.youtube.com/@Metosin
+- id: codesync2022
+  service_name: YouTube
+  venue: CodeSync 2022
+  title: 'Sound on BEAM: Music in the Land of Distributed Lisp'
+  speaker: Duncan McGreggor
+  content_md: |
+    [img-src]: /images/CodeSync-2022-SoundOnBeam.png
+    [img-link]: https://www.youtube.com/watch?v=YjxWuJN5pH0
+    [![CodeSync 2022][img-src]][img-link]
+  content_html: |
+    <p><a href="https://www.youtube.com/watch?v=YjxWuJN5pH0"><img src="/images/CodeSync-2022-SoundOnBeam.png" alt="CodeSync 2022" /></a></p>
+  link_text: Watch Now
+  link_url: https://www.youtube.com/watch?v=YjxWuJN5pH0
+  channel_text: Visit Channel
+  channel_url: https://www.youtube.com/@CodeSync
+- id: efsf2017
+  service_name: YouTube
+  venue: Erlang Factory 2017
+  title: Lisp Machine Flavors for LFE on OTP
+  speaker: Robert Virding
+  content_md: |
+    [img-src]: /images/EFSF-2017-LFE.png
+    [img-link]: https://www.youtube.com/watch?v=AcehOqbwhPk
+    [![LFE EFSF 2017][img-src]][img-link]
+  content_html: |
+    <p><a href="https://www.youtube.com/watch?v=AcehOqbwhPk"><img src="/images/EFSF-2017-LFE.png" alt="LFE EFSF 2017" /></a></p>
+  link_text: Watch Now
+  link_url: https://www.youtube.com/watch?v=AcehOqbwhPk
+  channel_text: Visit Channel
+  channel_url: https://www.youtube.com/@ErlangSolutions
+- id: ecu2016
+  service_name: YouTube
+  venue: EUC 2016 Stockholm
+  title: 'LFE: A Real Lisp in the Erlang Ecosystem'
+  speaker: Robert Virding
+  content_md: |
+    [img-src]: /images/EUC-2016-LFE.png
+    [img-link]: https://www.youtube.com/watch?v=x2ysisqgd2g
+    [![LFE EUC 2016][img-src]][img-link]
+  content_html: |
+    <p><a href="https://www.youtube.com/watch?v=x2ysisqgd2g"><img src="/images/EUC-2016-LFE.png" alt="LFE EUC 2016" /></a></p>
+  link_text: Watch Now
+  link_url: https://www.youtube.com/watch?v=x2ysisqgd2g
+  channel_text: Visit Channel
+  channel_url: https://www.youtube.com/@ErlangSolutions
+- id: efsf2014
+  service_name: YouTube
+  venue: Erlang Factory 2014
+  title: LFE from 0 to 120kph...<br/>in 45 Minutes
+  speaker: Duncan McGreggor
+  content_md: |
+    [img-src]: /images/EFSF-2014-LFE.png
+    [img-link]: https://www.youtube.com/watch?v=Dgbm3BRmzuI
+    [![LFE EFSF 2014][img-src]][img-link]
+  content_html: |
+    <p><a href="https://www.youtube.com/watch?v=Dgbm3BRmzuI"><img src="/images/EFSF-2014-LFE.png" alt="LFE EFSF 2014" /></a></p>
+  link_text: Watch Now
+  link_url: https://www.youtube.com/watch?v=Dgbm3BRmzuI
+  channel_text: Visit Channel
+  channel_url: https://www.youtube.com/@ErlangSolutions

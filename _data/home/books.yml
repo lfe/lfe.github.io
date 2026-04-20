@@ -1,0 +1,65 @@
+title: Books
+link_text: View all books
+link_url: https://lfe.io/books/
+items:
+- id: chineual
+  title: LFE Chinenual
+  authors: Duncan McGreggor & Robert Virding
+  cover_md: |
+    [img-src]: https://cnbbooks.github.io/lfe-manual/images/cover.jpg
+    [img-link]: https://cnbbooks.github.io/lfe-manual
+
+    [![sicp][img-src]][img-link]
+  cover_html: |
+    <p><a href="https://cnbbooks.github.io/lfe-manual"><img src="https://cnbbooks.github.io/lfe-manual/images/cover.jpg" alt="sicp" /></a></p>
+  description_md: |
+    A work in progress, this book aims to eventually be the complete manual for LFE
+  description_html: |
+    <p>A work in progress, this book aims to eventually be the complete manual for LFE</p>
+  link_text: Read Now
+  link_url: https://cnbbooks.github.io/lfe-manual
+- id: lfe_tutorial
+  title: The LFE Tutorial
+  authors: Robert Virding & Duncan McGreggor
+  cover_md: |
+    [img-src]: https://cnbbooks.github.io/lfe-tutorial/images/cover.jpg
+    [img-link]: https://cnbbooks.github.io/lfe-tutorial/
+    [![lfe-tutorial][img-src]][img-link]
+  cover_html: |
+    <p><a href="https://cnbbooks.github.io/lfe-tutorial/"><img src="https://cnbbooks.github.io/lfe-tutorial/images/cover.jpg" alt="lfe-tutorial" /></a></p>
+  description_md: |
+    An LFE version of the classic 'Erlang Tutorial'
+  description_html: |
+    <p>An LFE version of the classic 'Erlang Tutorial'</p>
+  link_text: Read Now
+  link_url: https://cnbbooks.github.io/lfe-tutorial/
+- id: casting_spels
+  title: Casting SPELs in LFE
+  authors: Duncan McGreggor & Conrad Barski
+  cover_md: |
+    [img-src]: https://cnbbooks.github.io/lfe-casting-spels/images/cover.jpg
+    [img-link]: https://cnbbooks.github.io/lfe-casting-spels/
+    [![casting-spels][img-src]][img-link]
+  cover_html: |
+    <p><a href="https://cnbbooks.github.io/lfe-casting-spels/"><img src="https://cnbbooks.github.io/lfe-casting-spels/images/cover.jpg" alt="casting-spels" /></a></p>
+  description_md: |
+    Build a text-based adventure game in LFE!
+  description_html: |
+    <p>Build a text-based adventure game in LFE!</p>
+  link_text: Read Now
+  link_url: https://cnbbooks.github.io/lfe-casting-spels/
+- id: sicp
+  title: 'SICP: The LFE Edition'
+  authors: Gerald Sussman, Harold Abelson, & Duncan McGreggor
+  cover_md: |
+    [img-src]: https://cnbbooks.github.io/lfe-sicp/images/cover.jpg
+    [img-link]: https://cnbbooks.github.io/lfe-sicp
+    [![sicp][img-src]][img-link]
+  cover_html: |
+    <p><a href="https://cnbbooks.github.io/lfe-sicp"><img src="https://cnbbooks.github.io/lfe-sicp/images/cover.jpg" alt="sicp" /></a></p>
+  description_md: |
+    An LFE 'port' of the classic Scheme text<br/><br/>Note that, while the first section of the book is complete, the remaining sections have not been completed
+  description_html: |
+    <p>An LFE 'port' of the classic Scheme text<br/><br/>Note that, while the first section of the book is complete, the remaining sections have not been completed</p>
+  link_text: Read Now
+  link_url: https://cnbbooks.github.io/lfe-sicp

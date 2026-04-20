@@ -1,12 +1,11 @@
-+++
-title = "oubiwann's .plan"
-in_search_index = true
-template = "plan/page.html"
+---
+layout: plan/page.liquid
+title: oubiwann's .plan
+data:
+  long_description: oubiwann
+  long_title: LFEX .plan
+---
 
-[extra]
-long_title = "LFEX .plan"
-long_description = "oubiwann"
-+++
 
 [![dot-plan-screenshot][screenie-src]][screenie-link]
 

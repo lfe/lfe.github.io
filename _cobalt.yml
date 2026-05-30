@@ -1,2 +1,6 @@
 source: "src"
 destination: "./site"
+
+posts:
+  default:
+    permalink: "/blog/{{categories}}/{{year}}/{{month}}/{{day}}/{{hour}}{{minute}}-{{slug}}"

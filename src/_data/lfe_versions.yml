@@ -1,0 +1,8 @@
+current:
+  lfe: "2.1.5"
+  erlang: "27"
+  released: "2025-01-15"
+versions:
+  - lfe: "2.1"
+    erlang: "27"
+    released: "2024-06-01"

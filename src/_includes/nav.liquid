@@ -43,9 +43,11 @@
       <a class="font-medium text-gray-700 hover:text-gray-600 sm:py-6 dark:text-gray-400 dark:hover:text-gray-500" href="/about/">About</a>
       {% endif %}
 
-      <a class="font-medium text-gray-700 hover:text-gray-600 sm:py-6 dark:text-gray-400 dark:hover:text-gray-500" href="http://blog.lfe.io">
-        Blog
-      </a>
+      {% if page.permalink contains "blog/" %}
+      <a class="font-medium text-blue-600 sm:py-6 dark:text-blue-500" href="/blog/" aria-current="page">Blog</a>
+      {% else %}
+      <a class="font-medium text-gray-700 hover:text-gray-600 sm:py-6 dark:text-gray-400 dark:hover:text-gray-500" href="/blog/">Blog</a>
+      {% endif %}
 
       <div class="custom-dropdown relative sm:py-4">
         <button id="hs-dropdown-download" type="button" class="custom-dropdown-toggle flex items-center w-full text-gray-700 hover:text-gray-600 font-medium dark:text-gray-400 dark:hover:text-gray-500 ">

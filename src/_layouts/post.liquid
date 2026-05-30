@@ -10,15 +10,99 @@
     {% include "css.liquid" %}
 </head>
 
-<body class="dark:bg-slate-900 min-h-[75rem]">
+<body class="dark:bg-slate-900">
     <header class="top-nav">
     {% include "nav.liquid" %}
     </header>
 
     <main id="content" role="main">
-      <article>
-        <h1>{{ page.title }}</h1>
-        {{ page.content }}
+
+      {% if page.data.cover_image %}
+      <div class="blog-cover">
+        <img src="{{ page.data.cover_image }}" alt="{{ page.data.cover_alt }}" class="blog-cover-img">
+      </div>
+      {% endif %}
+
+      <article class="blog-post">
+        <div class="blog-post-container">
+
+          <div class="blog-post-header">
+            <div class="blog-category-badges">
+              {% for cat in page.categories %}
+              <a href="/blog/categories/{{ cat }}/" class="blog-category-badge">{{ cat }}</a>
+              {% endfor %}
+            </div>
+
+            <h1 class="blog-post-title">{{ page.title }}</h1>
+
+            <div class="blog-post-meta">
+              {% for author_entry in site.data.authors %}
+                {% if author_entry[0] == page.data.author %}
+                  {% assign author = author_entry[1] %}
+                {% endif %}
+              {% endfor %}
+
+              {% if author.avatar %}
+              <img src="{{ author.avatar }}" alt="{{ author.name }}" class="blog-author-avatar-sm">
+              {% else %}
+              <span class="blog-author-initials-sm">{{ page.data.author | truncate: 2, "" | upcase }}</span>
+              {% endif %}
+              <span class="blog-post-meta-text">
+                {% if author.name %}{{ author.name }}{% else %}{{ page.data.author }}{% endif %}
+              </span>
+              <span class="blog-post-meta-sep">&middot;</span>
+              <time datetime="{{ page.published_date | date: '%Y-%m-%d' }}">
+                {{ page.published_date | date: "%B %-d, %Y" }}
+              </time>
+              <span class="blog-post-meta-sep">&middot;</span>
+              {% assign words = page.content | strip_html | split: " " | size %}
+              {% assign reading_time = words | divided_by: 200 %}
+              {% if reading_time == 0 %}{% assign reading_time = 1 %}{% endif %}
+              <span>{{ reading_time }} min read</span>
+            </div>
+          </div>
+
+          {% if page.data.written_for %}
+          <div class="version-banner tier-warning">
+            <strong>Heads up:</strong> This post was written for
+            LFE {{ page.data.written_for.lfe }}
+            / Erlang/OTP {{ page.data.written_for.erlang }}.
+            The current release is LFE {{ site.data.lfe_versions.current.lfe }}.
+            APIs and examples may be outdated.
+          </div>
+          {% endif %}
+
+          <div class="blog-prose">
+            {{ page.content }}
+          </div>
+
+          <div class="blog-post-footer">
+            {% if page.tags.size > 0 %}
+            <div class="blog-tags">
+              {% for tag in page.tags %}
+              <span class="blog-tag-badge">{{ tag }}</span>
+              {% endfor %}
+            </div>
+            {% endif %}
+
+            {% if author %}
+            <div class="blog-author-bio">
+              {% if author.avatar %}
+              <img src="{{ author.avatar }}" alt="{{ author.name }}" class="blog-author-avatar-lg">
+              {% else %}
+              <div class="blog-author-initials-lg">{{ page.data.author | truncate: 2, "" | upcase }}</div>
+              {% endif %}
+              <div class="blog-author-bio-text">
+                <strong>{{ author.name }}</strong>
+                {% if author.bio %}
+                <p>{{ author.bio }}</p>
+                {% endif %}
+              </div>
+            </div>
+            {% endif %}
+          </div>
+
+        </div>
       </article>
     </main>
 

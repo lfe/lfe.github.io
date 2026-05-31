@@ -1,6 +1,6 @@
 [package]
 name = "lfesite"
-version = "5.0.0"
+version = "5.1.0"
 edition = "2021"
 description = "Build orchestration and data pre-rendering for the LFE website"
 

@@ -246,6 +246,185 @@
         @apply text-lg text-gray-200 italic;
     }
 
+    /* ── Blog Homepage: Section container ── */
+
+    .blog-home-section {
+        @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10;
+    }
+
+    .blog-section-heading {
+        @apply text-xl font-bold text-gray-800 dark:text-gray-200 mb-6 pb-2 border-b-2;
+        border-color: #9a7907;
+    }
+
+    /* ── Blog Homepage: Featured grid ── */
+
+    .blog-featured {
+        @apply mb-12;
+    }
+
+    .blog-featured-grid {
+        @apply grid gap-6;
+        grid-template-columns: 3fr 2fr;
+        grid-template-rows: auto auto auto;
+    }
+
+    .blog-featured-card {
+        @apply block rounded-lg overflow-hidden shadow-md bg-white dark:bg-slate-700 no-underline transition-shadow;
+    }
+
+    .blog-featured-card:hover {
+        @apply shadow-lg;
+    }
+
+    .blog-featured-card-large {
+        grid-row: 1 / 4;
+    }
+
+    .blog-featured-card-small {
+        @apply flex flex-row;
+    }
+
+    /* Card image areas */
+    .blog-card-img-wrap {
+        @apply overflow-hidden;
+    }
+
+    .blog-card-img-large {
+        @apply h-64;
+    }
+
+    .blog-card-img {
+        @apply w-full h-full object-cover;
+    }
+
+    .blog-featured-card-small .blog-card-img-wrap {
+        @apply w-32 flex-shrink-0;
+    }
+
+    .blog-card-fallback {
+        @apply flex items-center justify-center h-32;
+    }
+
+    .blog-card-fallback-large {
+        @apply h-64;
+    }
+
+    .blog-featured-card-small .blog-card-fallback {
+        @apply w-32 h-full flex-shrink-0;
+    }
+
+    .blog-card-fallback-label {
+        @apply text-white text-sm font-bold uppercase tracking-wider opacity-80;
+    }
+
+    .blog-card-fallback-large .blog-card-fallback-label {
+        @apply text-lg;
+    }
+
+    /* Category fallback gradients */
+    .blog-card-cat-tutorials { background: linear-gradient(135deg, #4338ca, #2563eb); }
+    .blog-card-cat-announcements { background: linear-gradient(135deg, #9a7907, #d97706); }
+    .blog-card-cat-site { background: linear-gradient(135deg, #475569, #6b7280); }
+    .blog-card-cat-archaeology { background: linear-gradient(135deg, #92400e, #b45309); }
+    .blog-card-cat-news { background: linear-gradient(135deg, #0d9488, #06b6d4); }
+
+    /* Card body */
+    .blog-card-body {
+        @apply p-4;
+    }
+
+    .blog-featured-card-small .blog-card-body {
+        @apply flex flex-col justify-center;
+    }
+
+    .blog-card-category {
+        @apply text-xs font-semibold uppercase tracking-wider mb-1;
+        color: #9a7907;
+    }
+
+    .blog-card-title {
+        @apply text-lg font-bold text-gray-800 dark:text-gray-100 leading-snug mb-2 pt-0 pb-0;
+    }
+
+    .blog-featured-card-large .blog-card-title {
+        @apply text-xl;
+    }
+
+    .blog-card-desc {
+        @apply text-sm text-gray-600 dark:text-gray-400 mb-2 line-clamp-2;
+    }
+
+    .blog-card-meta {
+        @apply text-xs text-gray-500 dark:text-gray-400;
+    }
+
+    /* Featured grid responsive */
+    @media (max-width: 768px) {
+        .blog-featured-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .blog-featured-card-large {
+            grid-row: auto;
+        }
+
+        .blog-featured-card-small {
+            @apply flex-col;
+        }
+
+        .blog-featured-card-small .blog-card-img-wrap,
+        .blog-featured-card-small .blog-card-fallback {
+            @apply w-full h-32;
+        }
+    }
+
+    /* ── Blog Homepage: All Stories ── */
+
+    .blog-stories {
+        @apply mb-12;
+    }
+
+    .blog-story-item {
+        @apply block py-4 border-b border-gray-200 dark:border-gray-700 no-underline;
+    }
+
+    .blog-story-item:hover {
+        @apply bg-gray-50 dark:bg-slate-700/50;
+    }
+
+    .blog-story-content {
+        @apply px-2;
+    }
+
+    .blog-story-title {
+        @apply text-base font-bold text-gray-800 dark:text-gray-100 pt-0 pb-1;
+    }
+
+    .blog-story-desc {
+        @apply text-sm text-gray-600 dark:text-gray-400 mb-1 line-clamp-1;
+    }
+
+    /* ── Blog Homepage: Pagination ── */
+
+    .blog-pagination {
+        @apply flex items-center justify-center gap-4 py-8;
+    }
+
+    .blog-pagination-link {
+        @apply px-4 py-2 rounded-md text-sm font-medium no-underline;
+        background-color: #9a7907;
+        color: #fff;
+    }
+
+    .blog-pagination-link:hover {
+        background-color: #7d6206;
+    }
+
+    .blog-pagination-info {
+        @apply text-sm text-gray-500 dark:text-gray-400;
+    }
+
     /* ── Blog: Cover painting ── */
 
     .blog-cover {

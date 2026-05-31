@@ -16,6 +16,7 @@
     </header>
 
     <main id="content" role="main">
+
       <div class="blog-masthead">
         <img src="/images/LFE_Masthead_00234_.png" alt="Vigdís — LiffyBot in a Mead-style command room" class="blog-masthead-img">
         <div class="blog-masthead-overlay">
@@ -24,14 +25,111 @@
         </div>
       </div>
 
-      <div class="content-section">
+      <section class="blog-home-section">
+
+        <div class="blog-featured">
+          <h2 class="blog-section-heading">Featured</h2>
+          <div class="blog-featured-grid">
+
+            {% for post in paginator.pages %}
+            {% if forloop.index <= 4 %}
+
+              {% assign author_name = post.data.author %}
+              {% for author_entry in site.data.authors %}
+                {% if author_entry[0] == post.data.author %}
+                  {% assign author_name = author_entry[1].name %}
+                {% endif %}
+              {% endfor %}
+
+              {% if forloop.first %}
+              <a href="/{{ post.permalink }}" class="blog-featured-card blog-featured-card-large">
+              {% else %}
+              <a href="/{{ post.permalink }}" class="blog-featured-card blog-featured-card-small">
+              {% endif %}
+
+                {% if post.data.cover_image %}
+                <div class="blog-card-img-wrap{% if forloop.first %} blog-card-img-large{% endif %}">
+                  <img src="{{ post.data.cover_image }}" alt="{{ post.data.cover_alt }}" class="blog-card-img">
+                </div>
+                {% else %}
+                <div class="blog-card-fallback{% if forloop.first %} blog-card-fallback-large{% endif %} blog-card-cat-{% for cat in post.categories %}{% if forloop.first %}{{ cat }}{% endif %}{% endfor %}">
+                  <span class="blog-card-fallback-label">{% for cat in post.categories %}{% if forloop.first %}{{ cat }}{% endif %}{% endfor %}</span>
+                </div>
+                {% endif %}
+
+                <div class="blog-card-body">
+                  <span class="blog-card-category">{% for cat in post.categories %}{% if forloop.first %}{{ cat }}{% endif %}{% endfor %}</span>
+                  <h3 class="blog-card-title">{{ post.title }}</h3>
+                  {% if post.description != "" %}
+                  <p class="blog-card-desc">{{ post.description }}</p>
+                  {% endif %}
+                  <p class="blog-card-meta">{{ author_name }} · {{ post.published_date | date: "%B %-d, %Y" }}</p>
+                </div>
+
+              </a>
+
+            {% endif %}
+            {% endfor %}
+
+          </div>
+        </div>
+
+        {% assign story_count = 0 %}
         {% for post in paginator.pages %}
-        <article class="mb-6">
-          <h3><a href="/{{ post.permalink }}">{{ post.title }}</a></h3>
-          <p class="text-sm text-gray-500">{{ post.published_date | date: "%B %-d, %Y" }}</p>
-        </article>
+          {% if forloop.index > 4 %}
+            {% assign story_count = story_count | plus: 1 %}
+          {% endif %}
         {% endfor %}
-      </div>
+
+        {% if story_count > 0 %}
+        <div class="blog-stories">
+          <h2 class="blog-section-heading">All Stories</h2>
+
+          {% for post in paginator.pages %}
+          {% if forloop.index > 4 %}
+
+            {% assign author_name = post.data.author %}
+            {% for author_entry in site.data.authors %}
+              {% if author_entry[0] == post.data.author %}
+                {% assign author_name = author_entry[1].name %}
+              {% endif %}
+            {% endfor %}
+
+            <a href="/{{ post.permalink }}" class="blog-story-item">
+              <div class="blog-story-content">
+                <span class="blog-card-category">{% for cat in post.categories %}{% if forloop.first %}{{ cat }}{% endif %}{% endfor %}</span>
+                <h3 class="blog-story-title">{{ post.title }}</h3>
+                {% if post.description != "" %}
+                <p class="blog-story-desc">{{ post.description }}</p>
+                {% endif %}
+                <p class="blog-card-meta">{{ author_name }} · {{ post.published_date | date: "%B %-d, %Y" }}</p>
+              </div>
+            </a>
+
+          {% endif %}
+          {% endfor %}
+
+        </div>
+        {% endif %}
+
+        {% if paginator.total_indexes > 1 %}
+        <nav class="blog-pagination">
+          {% if paginator.previous_index %}
+            <a href="/{{ paginator.previous_index_permalink }}" class="blog-pagination-link">&larr; Newer</a>
+          {% endif %}
+
+          <span class="blog-pagination-info">
+            Page {{ paginator.index }} of {{ paginator.total_indexes }}
+          </span>
+
+          {% if paginator.next_index %}
+            <a href="/{{ paginator.next_index_permalink }}" class="blog-pagination-link">Older &rarr;</a>
+          {% endif %}
+        </nav>
+        {% endif %}
+
+      </section>
+
     </main>
 
     {% include "foot.liquid" %}

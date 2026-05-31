@@ -2,3 +2,13 @@ duncan-mcgreggor:
   name: "Duncan McGreggor"
   bio: "LFE co-maintainer. Distributed systems engineer. Lisper on the BEAM."
   avatar: null
+
+robert-virding:
+  name: "Robert Virding"
+  bio: "Co-inventor of Erlang, creator of LFE. One of the original members of the Ericsson Computer Science Lab."
+  avatar: null
+
+fred-hebert:
+  name: "Fred Hébert"
+  bio: "Author of Learn You Some Erlang. Erlang and distributed systems engineer."
+  avatar: null

@@ -16,10 +16,11 @@
     </header>
 
     <main id="content" role="main">
-      <div class="masthead-container">
-        <div class="masthead-section">
+      <div class="blog-masthead">
+        <img src="/images/LFE_Masthead_00234_.png" alt="Vigdís — LiffyBot in a Mead-style command room" class="blog-masthead-img">
+        <div class="blog-masthead-overlay">
           {% if page.data.long_title %}<h1>{{ page.data.long_title }}</h1>{% endif %}
-          {% if page.data.long_description %}<h2>{{ page.data.long_description }}</h2>{% endif %}
+          {% if page.data.long_description %}<p>{{ page.data.long_description }}</p>{% endif %}
         </div>
       </div>
 

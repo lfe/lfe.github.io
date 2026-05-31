@@ -13,8 +13,8 @@ data:
     lfe: "1.2"
     erlang: "18"
   last_validated: null
-  cover_image: null
-  cover_alt: null
+  cover_image: "/images/fridays/LFE_Friday_00279_.png"
+  cover_alt: "Vigdís — LFE Friday, LiffyBot studying Erlang modules in a Mead-style command room"
   math: false
 ---
 

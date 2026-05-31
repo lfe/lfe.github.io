@@ -21,6 +21,12 @@ struct Cli {
 enum Command {
     /// One-shot Zola to Cobalt migration.
     Migrate,
+    /// Migrate Jekyll blog posts to Cobalt format.
+    BlogMigrate {
+        /// Path to the old Jekyll blog repository root.
+        #[arg(long)]
+        source: PathBuf,
+    },
     /// Walk _data/*.yml, render *_md fields to *_html.
     Prerender,
     /// Full build pipeline (prerender, sass, tailwind, cobalt).
@@ -41,6 +47,7 @@ fn main() -> Result<()> {
 
     match cli.command {
         Command::Migrate => cmd::migrate::run(&project_dir),
+        Command::BlogMigrate { source } => cmd::blog_migrate::run(&project_dir, &source),
         Command::Prerender => cmd::prerender::run(&project_dir),
         Command::Build => cmd::build::run(&project_dir),
         Command::Serve { port } => cmd::serve::run(&project_dir, port),

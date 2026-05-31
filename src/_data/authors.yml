@@ -12,3 +12,18 @@ fred-hebert:
   name: "Fred Hébert"
   bio: "Author of Learn You Some Erlang. Erlang and distributed systems engineer."
   avatar: null
+
+eric-bailey:
+  name: "Eric Bailey"
+  bio: "Erlang and LFE developer."
+  avatar: null
+
+anurag-mendhekar:
+  name: "Anurag Mendhekar"
+  bio: "Software engineer and LFE contributor."
+  avatar: null
+
+lfe-maintainers:
+  name: "LFE Maintainers"
+  bio: "The LFE core team."
+  avatar: null

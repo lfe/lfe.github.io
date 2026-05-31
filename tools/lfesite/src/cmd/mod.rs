@@ -1,3 +1,4 @@
+pub mod blog_migrate;
 pub mod build;
 pub mod migrate;
 pub mod prerender;

@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    {% include "meta.liquid" %}
+    <title>{{ page.title }} | LFE Blog</title>
+    <meta name="description" content="Posts by {{ page.title }}.">
+
+    {% include "favicon.liquid" %}
+    {% include "css.liquid" %}
+</head>
+
+<body class="dark:bg-slate-900">
+    <header class="top-nav">
+    {% include "nav.liquid" %}
+    </header>
+
+    <main id="content" role="main">
+      <section class="blog-home-section">
+
+        {% for author_entry in site.data.authors %}
+          {% if author_entry[0] == page.data.author_slug %}
+            {% assign author = author_entry[1] %}
+          {% endif %}
+        {% endfor %}
+
+        <div class="blog-author-page-header">
+          {% if author.avatar %}
+          <img src="{{ author.avatar }}" alt="{{ author.name }}" class="blog-author-avatar-lg">
+          {% else %}
+          <div class="blog-author-initials-lg">{{ author.name | truncate: 2, "" | upcase }}</div>
+          {% endif %}
+          <div>
+            <h1 class="blog-section-heading">{{ author.name }}</h1>
+            {% if author.bio %}
+            <p class="blog-author-page-bio">{{ author.bio }}</p>
+            {% endif %}
+          </div>
+        </div>
+
+        <div class="blog-tax-posts">
+          {% for post in paginator.pages %}
+            {% if post.data.author == page.data.author_slug %}
+              <a href="/{{ post.permalink }}" class="blog-tax-post-item">
+                <span class="blog-card-category">{% for cat in post.categories %}{% if forloop.first %}{{ cat }}{% endif %}{% endfor %}</span>
+                <h3 class="blog-story-title">{{ post.title }}</h3>
+                {% if post.description != "" %}
+                <p class="blog-story-desc">{{ post.description }}</p>
+                {% endif %}
+                <p class="blog-card-meta">{{ post.published_date | date: "%B %-d, %Y" }}</p>
+              </a>
+            {% endif %}
+          {% endfor %}
+        </div>
+
+      </section>
+    </main>
+
+    {% include "foot.liquid" %}
+
+    {% include "end-scripts.liquid" %}
+</body>
+
+</html>

@@ -425,6 +425,74 @@
         @apply text-sm text-gray-500 dark:text-gray-400;
     }
 
+    /* ── Blog: Taxonomy views (tags, categories, archive) ── */
+
+    .blog-tax-grid {
+        @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4;
+    }
+
+    .blog-tax-card {
+        @apply flex items-center justify-between px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-700 no-underline transition-colors;
+    }
+
+    .blog-tax-card:hover {
+        border-color: #9a7907;
+    }
+
+    .blog-tax-name {
+        @apply font-semibold text-gray-800 dark:text-gray-100;
+    }
+
+    .blog-tax-name-light {
+        @apply text-white;
+    }
+
+    .blog-tax-count {
+        @apply text-sm font-bold px-2 py-0.5 rounded-full bg-gray-100 dark:bg-slate-600 text-gray-600 dark:text-gray-300;
+    }
+
+    .blog-tax-count-light {
+        @apply bg-white/20 text-white;
+    }
+
+    .blog-tax-posts {
+        @apply mt-4;
+    }
+
+    .blog-tax-post-item {
+        @apply block py-4 border-b border-gray-200 dark:border-gray-700 no-underline;
+    }
+
+    .blog-tax-post-item:hover {
+        @apply bg-gray-50 dark:bg-slate-700/50;
+    }
+
+    /* ── Blog: Author pages ── */
+
+    .blog-author-page-card {
+        @apply flex items-center gap-4 py-4 px-2 border-b border-gray-200 dark:border-gray-700 no-underline;
+    }
+
+    .blog-author-page-card:hover {
+        @apply bg-gray-50 dark:bg-slate-700/50;
+    }
+
+    .blog-author-page-info {
+        @apply flex-1;
+    }
+
+    .blog-author-page-name {
+        @apply text-lg font-bold text-gray-800 dark:text-gray-100 pt-0 pb-0;
+    }
+
+    .blog-author-page-bio {
+        @apply text-sm text-gray-600 dark:text-gray-400 mt-1;
+    }
+
+    .blog-author-page-header {
+        @apply flex items-start gap-6 mb-8;
+    }
+
     /* ── Blog: Cover painting ── */
 
     .blog-cover {

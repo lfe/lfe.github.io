@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    {% include "meta.liquid" %}
+    <title>{{ page.title }} | LFE Blog</title>
+    <meta name="description" content="LFE blog authors.">
+
+    {% include "favicon.liquid" %}
+    {% include "css.liquid" %}
+</head>
+
+<body class="dark:bg-slate-900">
+    <header class="top-nav">
+    {% include "nav.liquid" %}
+    </header>
+
+    <main id="content" role="main">
+      <section class="blog-home-section">
+
+        <h1 class="blog-section-heading">{{ page.data.long_title }}</h1>
+
+        {% for author_entry in site.data.authors %}
+          {% assign slug = author_entry[0] %}
+          {% assign author = author_entry[1] %}
+
+          {% assign post_count = 0 %}
+          {% for post in paginator.pages %}
+            {% if post.data.author == slug %}
+              {% assign post_count = post_count | plus: 1 %}
+            {% endif %}
+          {% endfor %}
+
+          <a href="/blog/authors/{{ slug }}/" class="blog-author-page-card">
+            {% if author.avatar %}
+            <img src="{{ author.avatar }}" alt="{{ author.name }}" class="blog-author-avatar-lg">
+            {% else %}
+            <div class="blog-author-initials-lg">{{ author.name | truncate: 2, "" | upcase }}</div>
+            {% endif %}
+            <div class="blog-author-page-info">
+              <h3 class="blog-author-page-name">{{ author.name }}</h3>
+              {% if author.bio %}
+              <p class="blog-author-page-bio">{{ author.bio }}</p>
+              {% endif %}
+              <p class="blog-card-meta">{{ post_count }} posts</p>
+            </div>
+          </a>
+        {% endfor %}
+
+      </section>
+    </main>
+
+    {% include "foot.liquid" %}
+
+    {% include "end-scripts.liquid" %}
+</body>
+
+</html>

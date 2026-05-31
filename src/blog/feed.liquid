@@ -1,0 +1,22 @@
+---
+layout: null
+permalink: "/blog/feed.json"
+pagination:
+  include: All
+  per_page: 999
+---
+{
+  "version": "https://jsonfeed.org/version/1.1",
+  "title": "LFE Blog",
+  "home_page_url": "https://lfe.io/blog/",
+  "feed_url": "https://lfe.io/blog/feed.json",
+  "items": [
+    {% for post in paginator.pages %}{% unless forloop.first %},{% endunless %}{
+      "id": "https://lfe.io/{{ post.permalink }}",
+      "url": "https://lfe.io/{{ post.permalink }}",
+      "title": "{{ post.title | escape }}",
+      "date_published": "{{ post.published_date | date: "%Y-%m-%dT%H:%M:%SZ" }}",
+      "summary": "{{ post.description | escape }}"
+    }{% endfor %}
+  ]
+}

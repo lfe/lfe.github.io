@@ -1,0 +1,32 @@
+---
+layout: null
+permalink: "/blog/atom.xml"
+pagination:
+  include: All
+  per_page: 999
+---
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>LFE Blog</title>
+  <link href="https://lfe.io/blog/atom.xml" rel="self"/>
+  <link href="https://lfe.io/blog/"/>
+  <id>https://lfe.io/blog/</id>
+  {% for post in paginator.pages %}{% if forloop.first %}<updated>{{ post.published_date | date: "%Y-%m-%dT%H:%M:%SZ" }}</updated>{% endif %}{% endfor %}
+  {% for post in paginator.pages %}
+  {% assign author_name = post.data.author %}
+  {% for author_entry in site.data.authors %}
+    {% if author_entry[0] == post.data.author %}
+      {% assign author_name = author_entry[1].name %}
+    {% endif %}
+  {% endfor %}
+  <entry>
+    <title>{{ post.title | escape }}</title>
+    <link href="https://lfe.io/{{ post.permalink }}"/>
+    <id>https://lfe.io/{{ post.permalink }}</id>
+    <published>{{ post.published_date | date: "%Y-%m-%dT%H:%M:%SZ" }}</published>
+    <updated>{{ post.published_date | date: "%Y-%m-%dT%H:%M:%SZ" }}</updated>
+    <summary>{{ post.description | escape }}</summary>
+    <author><name>{{ author_name | escape }}</name></author>
+  </entry>
+  {% endfor %}
+</feed>

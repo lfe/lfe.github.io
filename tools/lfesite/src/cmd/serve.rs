@@ -1,5 +1,5 @@
 use std::path::Path;
-use std::process::Command;
+use std::process::{Child, Command, Stdio};
 use std::sync::mpsc;
 use std::time::Duration;
 
@@ -8,71 +8,37 @@ use notify::{RecursiveMode, Watcher};
 
 /// Start a dev server with file watching.
 ///
-/// 1. Runs a one-time prerender of `_data/**/*.yml` files.
-/// 2. Spawns `cobalt serve` as a background subprocess (it has its
-///    own watcher for templates and content).
-/// 3. Watches `_data/` for `.yml` / `.yaml` changes and re-runs
-///    prerender when a modification is detected.
-/// 4. When the user presses Ctrl+C, kills the cobalt child process
-///    and exits cleanly.
+/// 1. Runs the full build pipeline (prerender → sass → tailwind →
+///    cobalt build → sitemap → pagefind).
+/// 2. Starts a static file server on the output directory.
+/// 3. Watches source files for changes and re-runs the full pipeline
+///    on each change.
+///
+/// This avoids the dual-build-system conflict between `cobalt serve`
+/// (which wipes `site/` on rebuild) and pagefind (which writes into
+/// `site/pagefind/`).
 pub fn run(project_dir: &Path, port: u16) -> Result<()> {
+    let output_dir = project_dir.join("site");
+
+    // Step 1: initial full build
+    println!("=== Initial build ===");
+    super::build::run(project_dir)?;
+
+    // Step 2: start static file server
+    println!("\n=== Starting dev server on port {port} ===");
+    let mut server = start_server(&output_dir, port)?;
+    println!("  serving {} at http://localhost:{port}", output_dir.display());
+
+    // Step 3: watch src/ for changes
     let src_dir = project_dir.join("src");
-
-    // Step 1: initial prerender + sass
-    println!("=== Initial prerender ===");
-    super::prerender::run_with_data_dir(&src_dir)?;
-
-    println!("\n=== Compiling SCSS ===");
-    super::sass::run(project_dir, &src_dir)?;
-
-    println!("\n=== Running Tailwind ===");
-    let binary = super::build::ensure_tailwind_binary()?;
-    let input = project_dir.join("tailwind/site.css");
-    let output = src_dir.join("css/site.css");
-    let status = Command::new(&binary)
-        .args(["-i"])
-        .arg(&input)
-        .arg("-o")
-        .arg(&output)
-        .arg("--minify")
-        .current_dir(project_dir)
-        .status()
-        .with_context(|| format!("failed to run {}", binary.display()))?;
-    if status.success() {
-        println!("  Tailwind CSS updated");
-    } else {
-        bail!("tailwindcss exited with {status}");
-    }
-
-    // Step 2: start cobalt serve
-    println!("\n=== Starting cobalt serve on port {port} ===");
-    let mut child = Command::new("cobalt")
-        .args(["serve", "--port", &port.to_string()])
-        .current_dir(project_dir)
-        .spawn()
-        .context("failed to start `cobalt serve` — is cobalt installed?")?;
-
-    // Step 3: watch _data/ for changes
-    let data_dir = src_dir.join("_data");
-    if !data_dir.is_dir() {
-        let _ = child.kill();
-        let _ = child.wait();
-        anyhow::bail!(
-            "data directory not found: {}",
-            data_dir.display()
-        );
-    }
+    let tailwind_dir = project_dir.join("tailwind");
 
     let (tx, rx) = mpsc::channel();
 
     let mut watcher = notify::recommended_watcher(
         move |res: std::result::Result<notify::Event, notify::Error>| {
             if let Ok(event) = res {
-                let dominated_by_data_yaml = event.paths.iter().any(|p| {
-                    p.extension()
-                        .map_or(false, |ext| ext == "yml" || ext == "yaml")
-                });
-                if dominated_by_data_yaml && is_content_event(&event.kind) {
+                if is_content_event(&event.kind) {
                     let _ = tx.send(());
                 }
             }
@@ -81,41 +47,41 @@ pub fn run(project_dir: &Path, port: u16) -> Result<()> {
     .context("failed to create filesystem watcher")?;
 
     watcher
-        .watch(&data_dir, RecursiveMode::Recursive)
-        .with_context(|| {
-            format!("failed to watch directory: {}", data_dir.display())
-        })?;
+        .watch(&src_dir, RecursiveMode::Recursive)
+        .with_context(|| format!("failed to watch {}", src_dir.display()))?;
 
-    println!(
-        "Watching {} for changes... (Ctrl+C to stop)",
-        data_dir.display()
-    );
+    if tailwind_dir.is_dir() {
+        watcher
+            .watch(&tailwind_dir, RecursiveMode::Recursive)
+            .with_context(|| format!("failed to watch {}", tailwind_dir.display()))?;
+    }
 
-    // Step 4: event loop
+    println!("Watching for changes... (Ctrl+C to stop)\n");
+
+    // Step 4: event loop — rebuild on changes
     loop {
         match rx.recv_timeout(Duration::from_secs(1)) {
             Ok(()) => {
-                // Debounce: drain any additional events that arrived
-                // in rapid succession (e.g. editor write + rename).
                 while rx.try_recv().is_ok() {}
-                std::thread::sleep(Duration::from_millis(200));
+                std::thread::sleep(Duration::from_millis(300));
                 while rx.try_recv().is_ok() {}
 
-                println!("\n=== Data file changed, re-running prerender ===");
-                if let Err(e) = super::prerender::run_with_data_dir(&src_dir) {
-                    eprintln!("prerender error: {e}");
+                println!("\n=== File changed, rebuilding ===");
+                if let Err(e) = super::build::run(project_dir) {
+                    eprintln!("rebuild error: {e}");
+                } else {
+                    println!("=== Rebuild complete ===\n");
                 }
             }
             Err(mpsc::RecvTimeoutError::Timeout) => {
-                // Check whether cobalt is still running.
-                match child.try_wait() {
+                match server.try_wait() {
                     Ok(Some(status)) => {
-                        println!("cobalt serve exited with {status}");
+                        println!("dev server exited with {status}");
                         return Ok(());
                     }
-                    Ok(None) => {} // still running
+                    Ok(None) => {}
                     Err(e) => {
-                        eprintln!("error checking cobalt process: {e}");
+                        eprintln!("error checking server process: {e}");
                     }
                 }
             }
@@ -125,9 +91,23 @@ pub fn run(project_dir: &Path, port: u16) -> Result<()> {
         }
     }
 
-    let _ = child.kill();
-    let _ = child.wait();
+    let _ = server.kill();
+    let _ = server.wait();
     Ok(())
+}
+
+/// Start a static file server for the output directory.
+fn start_server(output_dir: &Path, port: u16) -> Result<Child> {
+    let dir = output_dir
+        .to_str()
+        .context("output dir path is not valid UTF-8")?;
+
+    Command::new("python3")
+        .args(["-m", "http.server", &port.to_string(), "-d", dir])
+        .stdout(Stdio::null())
+        .stderr(Stdio::null())
+        .spawn()
+        .context("failed to start python3 http.server — is python3 installed?")
 }
 
 /// Return `true` for event kinds that indicate file content has

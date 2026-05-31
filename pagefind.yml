@@ -1,0 +1,7 @@
+site: site
+glob: "blog/**/*.html"
+exclude_selectors:
+  - "nav"
+  - "header"
+  - "footer"
+  - ".blog-pagination"

@@ -13,24 +13,28 @@ use walkdir::WalkDir;
 /// 3. Run Tailwind CSS
 /// 4. Run Cobalt build
 /// 5. Generate sitemap
+/// 6. Run Pagefind search indexer
 pub fn run(project_dir: &Path) -> Result<()> {
     let src_dir = project_dir.join("src");
     let output_dir = project_dir.join("site");
 
-    println!("=== Step 1/5: prerender ===");
+    println!("=== Step 1/6: prerender ===");
     super::prerender::run_with_data_dir(&src_dir)?;
 
-    println!("=== Step 2/5: sass ===");
+    println!("=== Step 2/6: sass ===");
     super::sass::run(project_dir, &src_dir)?;
 
-    println!("=== Step 3/5: tailwindcss ===");
+    println!("=== Step 3/6: tailwindcss ===");
     run_tailwind(project_dir, &src_dir)?;
 
-    println!("=== Step 4/5: cobalt ===");
+    println!("=== Step 4/6: cobalt ===");
     run_cobalt(project_dir, &output_dir)?;
 
-    println!("=== Step 5/5: post-build ===");
+    println!("=== Step 5/6: post-build ===");
     generate_sitemap(&src_dir, &output_dir, "https://lfe.io")?;
+
+    println!("=== Step 6/6: pagefind ===");
+    run_pagefind(project_dir, &output_dir)?;
 
     println!("\nbuild complete: output in {}", output_dir.display());
     Ok(())
@@ -208,6 +212,25 @@ fn platform_tag() -> (&'static str, &'static str) {
         "x64"
     };
     (os, arch)
+}
+
+/// Run Pagefind to build the search index from rendered HTML.
+fn run_pagefind(project_dir: &Path, output_dir: &Path) -> Result<()> {
+    let site_path = output_dir
+        .to_str()
+        .context("output dir path is not valid UTF-8")?;
+
+    let status = Command::new("pagefind")
+        .args(["--site", site_path])
+        .current_dir(project_dir)
+        .status()
+        .context("failed to run pagefind -- is it installed? (cargo install pagefind)")?;
+
+    if !status.success() {
+        bail!("pagefind exited with {status}");
+    }
+
+    Ok(())
 }
 
 /// Run `cobalt build` to generate the final static site.

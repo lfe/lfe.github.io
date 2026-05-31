@@ -4,7 +4,7 @@ title: "Scientific Computing on the Erlang VM"
 description: "Polynomial Curve Fitting with LFE"
 permalink: "/blog/tutorials/2015/01/01/1215-scientific-computing-on-the-erlang-vm"
 categories: ["tutorials"]
-tags: []
+tags: [erlang, python, howtos, libraries, numpy, scipy, erlport, py, ascii, plotting, maths, statistics, science, scientific computing, statistical analysis, linear regression, curve fitting, polynomials]
 published_date: 2015-01-01 12:15:00 +0000
 is_draft: false
 data:

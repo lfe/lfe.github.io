@@ -4,7 +4,7 @@ title: "ErlPort and Python Part II: Making More Calls from LFE"
 description: "Part II of an Introduction to ErlPort with LFE"
 permalink: "/blog/tutorials/2014/12/03/1828-erlport-and-python-making-more-calls-from-lfe"
 categories: ["tutorials"]
-tags: []
+tags: [howtos, docs, erlport, python, interop, lfe, code, libraries, lisp, python 3, tools, tutorials]
 published_date: 2014-12-03 18:28:00 +0000
 is_draft: false
 data:

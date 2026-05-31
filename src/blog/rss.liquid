@@ -1,0 +1,26 @@
+---
+layout: null
+permalink: "/blog/rss.xml"
+pagination:
+  include: All
+  per_page: 999
+---
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>LFE Blog</title>
+    <link>https://lfe.io/blog/</link>
+    <description>Blog of the LFE (Lisp Flavoured Erlang) community</description>
+    <atom:link href="https://lfe.io/blog/rss.xml" rel="self" type="application/rss+xml"/>
+    {% for post in paginator.pages %}{% if forloop.first %}<lastBuildDate>{{ post.published_date | date: "%a, %d %b %Y %H:%M:%S +0000" }}</lastBuildDate>{% endif %}{% endfor %}
+    {% for post in paginator.pages %}
+    <item>
+      <title>{{ post.title | escape }}</title>
+      <link>https://lfe.io/{{ post.permalink }}</link>
+      <guid isPermaLink="true">https://lfe.io/{{ post.permalink }}</guid>
+      <pubDate>{{ post.published_date | date: "%a, %d %b %Y %H:%M:%S +0000" }}</pubDate>
+      <description>{{ post.description | escape }}</description>
+    </item>
+    {% endfor %}
+  </channel>
+</rss>

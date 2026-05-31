@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    {% include "meta.liquid" %}
+    <title>{{ page.title }} | LFE Blog</title>
+    <meta name="description" content="Search the LFE blog.">
+
+    {% include "favicon.liquid" %}
+    {% include "css.liquid" %}
+    <link href="/pagefind/pagefind-ui.css" rel="stylesheet">
+    <style>
+        :root {
+            --pagefind-ui-primary: #9a7907;
+            --pagefind-ui-text: #374151;
+            --pagefind-ui-background: #ffffff;
+            --pagefind-ui-border: #e5e7eb;
+            --pagefind-ui-tag: #f3f4f6;
+            --pagefind-ui-border-width: 1px;
+            --pagefind-ui-border-radius: 8px;
+            --pagefind-ui-font: ui-sans-serif, system-ui, sans-serif;
+        }
+        .dark {
+            --pagefind-ui-primary: #d4a90a;
+            --pagefind-ui-text: #d1d5db;
+            --pagefind-ui-background: #1e293b;
+            --pagefind-ui-border: #374151;
+            --pagefind-ui-tag: #374151;
+        }
+    </style>
+</head>
+
+<body class="dark:bg-slate-900">
+    <header class="top-nav">
+    {% include "nav.liquid" %}
+    </header>
+
+    <main id="content" role="main">
+      <section class="blog-home-section">
+        <h1 class="blog-section-heading">{{ page.data.long_title }}</h1>
+        <div id="search"></div>
+      </section>
+    </main>
+
+    {% include "foot.liquid" %}
+
+    {% include "end-scripts.liquid" %}
+    <script src="/pagefind/pagefind-ui.js"></script>
+    <script>
+        new PagefindUI({
+            element: "#search",
+            showSubResults: true,
+            showImages: false
+        });
+    </script>
+</body>
+
+</html>

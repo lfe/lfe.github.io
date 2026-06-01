@@ -34,7 +34,6 @@ Four lines of code, three clauses, zero conditionals. The shape of the data
 * [The LFE Machine Manual](https://cnbbooks.github.io/lfe-manual/) — the comprehensive guide to LFE
 * [About LFE](https://cnbbooks.github.io/lfe-manual/part1/intro/about.html) — what it is and where it comes from
 
-
 ## Getting started
 
 From zero to a running REPL in under five minutes.
@@ -61,7 +60,6 @@ Pick the path that suits you:
 * [The LFE Tutorial](https://cnbbooks.github.io/lfe-tutorial/) — Erlang’s "Getting Started" translated into LFE
 * `docker run -it lfex/lfe` — no install, instant REPL
 
-
 ## The language
 
 Types, records, and pattern matching aren’t isolated features — they compose.
@@ -87,7 +85,6 @@ destructures them directly in function heads. No casting, no null checks.
 * [LFE Examples](https://github.com/lfe/lfe/tree/develop/examples) — dozens of working examples in the LFE repo
 * [LFE on Rosetta Code](https://rosettacode.org/wiki/Category:LFE) — 99+ problems solved in LFE
 * [The LFE Machine Manual — Part II: Data Types](https://cnbbooks.github.io/lfe-manual/part2/README.html) — the full treatment
-
 
 ## OTP
 
@@ -128,7 +125,6 @@ state updates, and crash recovery. OTP gives you all of it.
 
 </div>
 
-
 ## Going deeper
 
 Macros, metaprogramming, the Lisp heritage that shaped LFE, and the
@@ -154,15 +150,15 @@ write by hand, with zero runtime overhead.
 
 ### The Lisp heritage
 
-LFE derives much of its character from Robert Virding’s experience with
-[MACLISP](https://en.wikipedia.org/wiki/Maclisp) as a physics PhD student
-at MIT. The [Moonual](http://www.softwarepreservation.org/projects/LISP/MIT/Moon-MACLISP_Reference_Manual-Apr_08_1974.pdf) (David Moon’s MACLISP reference) and the [Common Lisp HyperSpec](http://www.lispworks.com/documentation/HyperSpec/Front/Contents.htm) remain constant companions in LFE’s development.
+LFE derives much of its character from Robert Virding’s experiences with
+[Franz Lisp](https://en.wikipedia.org/wiki/Franz_Lisp) (which itself was based in large part upon [MACLISP](https://en.wikipedia.org/wiki/Maclisp)) at Stockholm University'a physics department and then again later at the Ericsson Computer Science Lab. Due to the MACLISP influence, The [Moonual](http://www.softwarepreservation.org/projects/LISP/MIT/Moon-MACLISP_Reference_Manual-Apr_08_1974.pdf) (David Moon’s MACLISP reference), the [Chineual](https://www.bitsavers.org/pdf/mit/cadr/chinual_3rdEd_Mar81.pdf), and the [Common Lisp HyperSpec](http://www.lispworks.com/documentation/HyperSpec/Front/Contents.htm) remain constant companions in LFE’s development.
+
+For more details on Lisp macros, be sure to check out the following:
 
 * [Lisp in Small Pieces](https://www.cambridge.org/core/books/lisp-in-small-pieces/66FD2BE3EDDDC68CA87D652C82CF849E) — the definitive account of Lisp implementation
 * [Let Over Lambda](https://letoverlambda.com/) — 50 years of Lisp, focused on the power of macros
 
 </div>
-
 
 ## Next steps
 

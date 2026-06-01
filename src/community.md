@@ -3,7 +3,7 @@ layout: page.liquid
 title: Community
 permalink: "/community/"
 data:
-  long_description: The LFE community is small but passionate; we are firm believers in the Erlang VM and OTP, usually as a result of having suffered greatly in their absence and knowing incredible strengths. Most of all, though, we have a deep appreciation for the aesthetics, usefulness, and raw power of LISP. This is where you will find us.
+  long_description: The LFE community is small but passionate; we are firm believers in the Erlang VM and OTP -- no only due to their incredible strengths, but sometimes too as a result of having suffered greatly in their absence. Most of all, though, we have a deep appreciation for the aesthetics, usefulness, and raw power of LISP. This is where you will find us.
   long_title: Community Resources
 ---
 
@@ -23,7 +23,6 @@ data:
 <i class="fab fa-linkedin fa-1x"></i> [LFE](https://www.linkedin.com/groups/5175516/)
 
 <i class="fab fa-twitter fa-1x"></i> [ErlangLisp](https://twitter.com/ErlangLisp)
-
 
 ## [Traditional Media](#traditional-media)
 
@@ -65,7 +64,7 @@ data:
 
 <i class="fab fa-github fa-1x"></i> The [billosys](https://github.com/orgs/billosys/repositories?q=&type=all&language=erlang) org - LFE and Erlang projects at Billo Systems
 
-<i class="fab fa-github fa-1x"></i> The [quasiquoting](https://github.com/quasiquoting) org 
+<i class="fab fa-github fa-1x"></i> The [quasiquoting](https://github.com/quasiquoting) org
 
 <i class="fab fa-github fa-1x"></i> The [clojang](https://github.com/clojang) org - Idiomatic Clojure ⬄ Erlang/LFE/Elixir Interop
 
@@ -76,4 +75,3 @@ data:
 <i class="fas fa-edit fa-1x"></i>  [LFE on Rosetta Code](http://rosettacode.org/wiki/Category:LFE)
 
 <i class="fab fa-docker fa-1x"></i> A large collection of [LFE Docker images](https://hub.docker.com/u/lfex/)
-

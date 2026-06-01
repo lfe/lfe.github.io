@@ -17,8 +17,8 @@ data:
 ---
 <a href="/blog/assets/images/posts/Python-logo.png"><img class="right small" src="/blog/assets/images/posts/Python-logo.png" /></a>Recently there has been a great deal of interest in running Python from
 Erlang/LFE. In particular,
-[these](http://blog.lfe.io/blog/tutorials/2014/11/21/1508-erlport-using-python-from-erlang-lfe/)
-[two](http://blog.lfe.io/blog/tutorials/2014/12/03/1828-erlport-and-python-making-more-calls-from-lfe/)
+[these](https://lfe.io/blog/tutorials/2014/11/21/1508-erlport-using-python-from-erlang-lfe/)
+[two](https://lfe.io/blog/tutorials/2014/12/03/1828-erlport-and-python-making-more-calls-from-lfe/)
 posts have gotten a lot of attention. This post introduces a new library for
 LFE and Erlang that builds upon the work demonstrated in those posts, and
 furthermore, points towards a future of distributed Python ... a future that is

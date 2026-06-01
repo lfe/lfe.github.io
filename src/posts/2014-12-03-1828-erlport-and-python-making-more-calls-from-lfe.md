@@ -17,7 +17,7 @@ data:
 ---
 <a href="/blog/assets/images/posts/Erlang-Python-Greats.png"><img class="right thumb" src="/blog/assets/images/posts/Erlang-Python-Greats.png" /></a>
 A short while ago, I did a
-[teaser post](http://blog.lfe.io/blog/tutorials/2014/11/21/1508-erlport-using-python-from-erlang-lfe/)
+[teaser post](https://lfe.io/blog/tutorials/2014/11/21/1508-erlport-using-python-from-erlang-lfe/)
 about calling Python from LFE. There was only a tiny bit of code... but! It
 came with one of the best Erlang/Python pictures EVAR. You know which one I'm
 talking about.

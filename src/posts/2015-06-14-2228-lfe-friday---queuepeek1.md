@@ -50,7 +50,7 @@ empty
 #((f e) (a b c d))
 ```
 
-And unlike we saw in the previous [LFE Friday on queue:head/1](http://blog.lfe.io/blog/tutorials/2015/05/29/0345-lfe-friday---queuehead1/), we can safely peek at an empty queue instead of getting an exception.
+And unlike we saw in the previous [LFE Friday on queue:head/1](https://lfe.io/blog/tutorials/2015/05/29/0345-lfe-friday---queuehead1/), we can safely peek at an empty queue instead of getting an exception.
 
 ```lfe
 > (queue:head empty-queue)

@@ -71,7 +71,7 @@ true
 true
 ```
 
-And if you are curious, by running ``ordsets:is_disjoint/2`` through ``timer:tc/3``, we can see that as soon as Erlang knows that the sets are not disjoint, it returns ``false``.  And if you remember from the previous [LFE Friday on timer:tc/3](http://blog.lfe.io/blog/tutorials/2015/01/10/2201-lfe-friday---timertc3/), the return value is a tuple with the first element being the number of *micro*seconds it took to complete.
+And if you are curious, by running ``ordsets:is_disjoint/2`` through ``timer:tc/3``, we can see that as soon as Erlang knows that the sets are not disjoint, it returns ``false``.  And if you remember from the previous [LFE Friday on timer:tc/3](https://lfe.io/blog/tutorials/2015/01/10/2201-lfe-friday---timertc3/), the return value is a tuple with the first element being the number of *micro*seconds it took to complete.
 
 ```lfe
 > (timer:tc 'ordsets 'is_disjoint (list (lists:seq 1 1000000) (lists:seq 2000000 3000000)))         

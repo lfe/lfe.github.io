@@ -87,7 +87,7 @@ wat
 
 This even mutates other variable references as well, so this breaks any convention that I have seen in the Erlang ecosystem about keeping all data immutable.
 
-We will continue looking at the ``digraph`` module in future [LFE Friday](http://blog.lfe.io/) posts, but I wanted to spend some time calling out the mutability inherent in the ``digraph()``s, so that when you need to use a one, you can be aware that this is not something you want to use in your concurrent parts of your application without great caution.
+We will continue looking at the ``digraph`` module in future [LFE Friday](https://lfe.io/blog/) posts, but I wanted to spend some time calling out the mutability inherent in the ``digraph()``s, so that when you need to use a one, you can be aware that this is not something you want to use in your concurrent parts of your application without great caution.
 
 ## The Dragons slain
 

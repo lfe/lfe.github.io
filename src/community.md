@@ -30,7 +30,7 @@ data:
 
 <i class="fas fa-hashtag fa-1x"></i> The `#erlang-lisp` channel on [Libera.chat](https://web.libera.chat/) (you'll need to [register your nick](https://libera.chat/guides/registration))
 
-<i class="fas fa-blog fa-1x"></i> The [LFE Blog](https://blog.lfe.io)
+<i class="fas fa-blog fa-1x"></i> The [LFE Blog](https://lfe.io/blog)
 
 <i class="fab fa-wikipedia-w fa-1x"></i> [LFE on Wikipedia](https://en.wikipedia.org/wiki/LFE_(programming_language))
 

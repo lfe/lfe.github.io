@@ -37,7 +37,7 @@ Today's LFE Friday comes from Gotland and looks some more at that ``ordsets`` mo
 
 Because ``ordsets:intersection/2`` looks for the common elements in the ordered sets, it is commutative, and as we see above, we get the same result regardless of which order we pass in the two ordered sets as arguments.
 
-If there are no items in common, the returned result is an empty ordered set (really an empty list, but see [last week's post on ordsets:union/2](http://blog.lfe.io/blog/tutorials/2015/07/04/0959-lfe-friday---ordsetsunion2/) on the dangers of just using a list as a ordered set).
+If there are no items in common, the returned result is an empty ordered set (really an empty list, but see [last week's post on ordsets:union/2](https://lfe.io/blog/tutorials/2015/07/04/0959-lfe-friday---ordsetsunion2/) on the dangers of just using a list as a ordered set).
 
 ```lfe
 > (set evens (ordsets:from_list (lists:seq 2 20 2)))

@@ -20,7 +20,7 @@ data:
 series by [Steven Proctor](https://twitter.com/stevenproctor).
 *This week's translator*: Robert Virding.
 
-At the end of [last week's LFE Friday](http://blog.lfe.io/blog/tutorials/2016/01/23/0122-lfe-friday---using-ets-select-with-a-limit/), we said we would continue looking at the behavior of the ``select`` functions in the ``ets`` module.
+At the end of [last week's LFE Friday](https://lfe.io/blog/tutorials/2016/01/23/0122-lfe-friday---using-ets-select-with-a-limit/), we said we would continue looking at the behavior of the ``select`` functions in the ``ets`` module.
 
 So before we do any experimentation, we setup our test ETS tables, and this time we will also create a table of type ``ordered_set``.
 

@@ -20,11 +20,11 @@ data:
 series by [Steven Proctor](https://twitter.com/stevenproctor).
 *This week's translator*: Robert Virding.
 
-Today's Christmas LFE Friday continues the introduction to ETS and <a href="http://blog.lfe.io/blog/tutorials/2015/12/22/0113-lfe-friday---ets-introduction-part-4/">picks up with the promise from last week</a>, and looks at the ``keypos`` ETS table setting, and the *Tweaks* that can be set.
+Today's Christmas LFE Friday continues the introduction to ETS and <a href="https://lfe.io/blog/tutorials/2015/12/22/0113-lfe-friday---ets-introduction-part-4/">picks up with the promise from last week</a>, and looks at the ``keypos`` ETS table setting, and the *Tweaks* that can be set.
 
 First, we will take a look at the ``keypos`` setting.
 
-The ``keypos`` is the 1-based index in the tuple to be stored that will be used as the key for the entry.  If you remember from the <a href="http://blog.lfe.io/blog/tutorials/2015/12/12/1716-lfe-friday---ets-introduction-part-3/">part 3 of the introduction to ETS about the different table types</a>, they use this index for their key comparison to determine if this is a unique item or not.
+The ``keypos`` is the 1-based index in the tuple to be stored that will be used as the key for the entry.  If you remember from the <a href="https://lfe.io/blog/tutorials/2015/12/12/1716-lfe-friday---ets-introduction-part-3/">part 3 of the introduction to ETS about the different table types</a>, they use this index for their key comparison to determine if this is a unique item or not.
 
 If we create a new table without specifying the ``keypos`` option, it defaults to ``1``.
 

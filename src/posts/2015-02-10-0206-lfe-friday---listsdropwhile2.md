@@ -41,7 +41,7 @@ Today’s LFE Friday is [lists:dropwhile/2](http://www.erlang.org/doc/man/lists.
 (hello World 1 3 bar 4)
 ```
 
-Unlike [lists:filter/2](http://blog.lfe.io/blog/tutorials/2015/02/02/0111-lfe-friday---listsfilter2/), ``lists:dropwhile/2`` stops checking the list as soon as the predicate function returns ``false``. This means that elements for which the predicate function would return ``true`` can still appear in the result list, as if they occur after an element for which the predicate function returns ``false``.
+Unlike [lists:filter/2](https://lfe.io/blog/tutorials/2015/02/02/0111-lfe-friday---listsfilter2/), ``lists:dropwhile/2`` stops checking the list as soon as the predicate function returns ``false``. This means that elements for which the predicate function would return ``true`` can still appear in the result list, as if they occur after an element for which the predicate function returns ``false``.
 
 ```lfe
 > (lists:dropwhile #'erlang:is_atom/1 '(hello World foo 1 3 bar 4))

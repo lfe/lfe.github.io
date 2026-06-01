@@ -24,7 +24,7 @@ Today's LFE Friday is on [digraph:in_neighbors/2](http://www.erlang.org/doc/man/
 
 ``digraph:in_neighbors/2`` takes a graph ``G``, and a vertex ``V``, and will return a list of all the vertices that have edges originating from them that are directed toward the vertex ``V``.
 
-We will continue working with the graph from last week's post on [digraph:get_path/3](http://blog.lfe.io/blog/tutorials/2015/11/07/2209-lfe-friday---digraphget_path3/).
+We will continue working with the graph from last week's post on [digraph:get_path/3](https://lfe.io/blog/tutorials/2015/11/07/2209-lfe-friday---digraphget_path3/).
 
 <br /><a href="/blog/assets/images/posts/digraph_get_path_graph.png"><img class="left small" src="/blog/assets/images/posts/digraph_get_path_graph.png" /></a><br /><br /><br /><br /><br /><br /><br /><br /><br />
 

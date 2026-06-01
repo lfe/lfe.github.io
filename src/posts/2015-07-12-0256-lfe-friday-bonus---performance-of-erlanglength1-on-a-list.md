@@ -28,7 +28,7 @@ Giving the Dallas/Fort Worth Erlang User group presentation last week, there wer
 
 I was 99% sure that Erlang has to run through the list every time, since it uses linked lists style data structures for it's list, but wasn't sure if there might be something smart in the implementation that I wasn't aware of to speed up that functionality.
 
-In putting together the regularly scheduled [LFE Friday](http://blog.lfe.io/tags.html#lfe%20friday-ref) post for today, I realized I should have busted out ``timer:tc`` to demonstrate the behavior of ``erlang:length/1`` by showing how long it takes to get the length of different lists.
+In putting together the regularly scheduled [LFE Friday](https://lfe.io/blog/tags.html#lfe%20friday-ref) post for today, I realized I should have busted out ``timer:tc`` to demonstrate the behavior of ``erlang:length/1`` by showing how long it takes to get the length of different lists.
 
 So in honor of that question, and as a reminder to review it at the next user group meeting, I am documenting the behavior here. And remember, that the first item in the result tuple is the time in microseconds the operation took.
 

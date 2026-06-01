@@ -37,7 +37,7 @@ We're currently working on an official LFE image for Docker, but in the mean
 time, we will demonstrate functionality with an image we've made available on
 the [LFE Exchange in Docker Hub](https://registry.hub.docker.com/u/lfex/lfe/).
 
-**UPDATE**: There is an [updated blog post](http://blog.lfe.io/blog/tutorials/2015/11/28/2110-lfe-yaws-docker-update/)
+**UPDATE**: There is an [updated blog post](https://lfe.io/blog/tutorials/2015/11/28/2110-lfe-yaws-docker-update/)
 for the latest image. Please read that for the quickest possible use of the
 LFE YAWS Dockerized web app.
 

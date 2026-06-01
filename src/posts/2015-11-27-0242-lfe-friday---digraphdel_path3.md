@@ -22,7 +22,7 @@ series by [Steven Proctor](https://twitter.com/stevenproctor).
 
 Today's LFE Friday is on [digraph:del_path/3](http://www.erlang.org/doc/man/digraph.html#del_path-3).
 
-We will continue working with the same graph we started with in the previous post on [digraph:get_path/3](http://blog.lfe.io/blog/tutorials/2015/11/07/2209-lfe-friday---digraphget_path3/).
+We will continue working with the same graph we started with in the previous post on [digraph:get_path/3](https://lfe.io/blog/tutorials/2015/11/07/2209-lfe-friday---digraphget_path3/).
 
 <br /><a href="/blog/assets/images/posts/digraph_get_path_graph.png"><img class="left small" src="/blog/assets/images/posts/digraph_get_path_graph.png" /></a><br /><br /><br /><br /><br /><br /><br /><br /><br />
 

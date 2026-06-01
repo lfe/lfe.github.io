@@ -16,7 +16,7 @@ data:
   math: false
 ---
 <a href="/blog/assets/images/posts/sicp.jpg"><img class="right medium" src="/blog/assets/images/posts/sicp.jpg" /></a>
-As [mentioned earlier](http://blog.lfe.io/update/2015/03/22/1342-sicp-the-lfe-edition-update/),
+As [mentioned earlier](https://lfe.io/blog/update/2015/03/22/1342-sicp-the-lfe-edition-update/),
 this post kicks off a blog series highlighting the new preface for the LFE
 edition of *Structure and Interpretation of Computer Programs*.
 ([book](http://lfe.gitbooks.io/sicp/content/index.html),

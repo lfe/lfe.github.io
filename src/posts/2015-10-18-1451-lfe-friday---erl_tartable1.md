@@ -46,6 +46,6 @@ With the `verbose` option, instead of just getting a list of filenames, we get a
 
 The tuple is: file-name, file-type (regular file/directory or a symbolic link), bytes of the file, timestamp tuple, permissions (expressed in decimal instead of octal so 420 is #o644), user-id, and group-id.
 
-The documentation does not specify any of the information about the return type, and the credit for clarification of what the `420 501 20` items represent is all from Robert Virding, from emailing him this post to be translated as part of <a href="http://blog.lfe.io/tags.html#lfe friday-ref" target="_blank">LFE Fridays</a>.
+The documentation does not specify any of the information about the return type, and the credit for clarification of what the `420 501 20` items represent is all from Robert Virding, from emailing him this post to be translated as part of <a href="https://lfe.io/blog/tags.html#lfe friday-ref" target="_blank">LFE Fridays</a>.
 
 -Proctor, Robert

@@ -22,7 +22,7 @@ series by [Steven Proctor](https://twitter.com/stevenproctor).
 
 Today’s LFE Friday covers [calendar:date_to_gregorian_days/3](http://www.erlang.org/doc/man/calendar.html#date_to_gregorian_days-3).
 
-As we saw in last week’s [LFE Friday on calendar:day_of_the_week/3](http://blog.lfe.io/blog/tutorials/2015/04/12/1941-lfe-friday---calendarday_of_the_week3/) when we were looking at some error messages, we saw that the errors were coming from ``calendar:date_to_gregorian_days/3``.
+As we saw in last week’s [LFE Friday on calendar:day_of_the_week/3](https://lfe.io/blog/tutorials/2015/04/12/1941-lfe-friday---calendarday_of_the_week3/) when we were looking at some error messages, we saw that the errors were coming from ``calendar:date_to_gregorian_days/3``.
 
 ```lfe
 > (calendar:day_of_the_week 0 0 0)        

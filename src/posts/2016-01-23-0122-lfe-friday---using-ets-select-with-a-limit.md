@@ -20,7 +20,7 @@ data:
 series by [Steven Proctor](https://twitter.com/stevenproctor).
 *This week's translator*: Robert Virding.
 
-In [last week's LFE Friday](http://blog.lfe.io/blog/tutorials/2016/01/18/1312-lfe-friday---ets-match_specs-and-functions/) we continued to explore ``ets:select/2`` and seeing its use when combined with using ``ets:fun2ms`` to generate the ``match_spec()``s.
+In [last week's LFE Friday](https://lfe.io/blog/tutorials/2016/01/18/1312-lfe-friday---ets-match_specs-and-functions/) we continued to explore ``ets:select/2`` and seeing its use when combined with using ``ets:fun2ms`` to generate the ``match_spec()``s.
 
 This week we will take a look at the other versions of select that the ``ets`` module provides.
 

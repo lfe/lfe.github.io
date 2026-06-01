@@ -20,7 +20,7 @@ data:
 series by [Steven Proctor](https://twitter.com/stevenproctor).
 *This week's translator*: Robert Virding.
 
-In [last week's LFE Friday](http://blog.lfe.io/tutorial/2016/01/10/2016-lfe-friday---more-ets-data-matching/) we concluded with showing how we can take advantage of using ``ets:select`` to take advantage of making our queries more expressive.
+In [last week's LFE Friday](https://lfe.io/blog/tutorial/2016/01/10/2016-lfe-friday---more-ets-data-matching/) we concluded with showing how we can take advantage of using ``ets:select`` to take advantage of making our queries more expressive.
 
 First we will need a new ETS table, so we start with a new public "Products" table, and do our standard of creating a new process and giving ownership of the table away.
 

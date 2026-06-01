@@ -47,6 +47,6 @@ The erlang module also includes a version ``erlang:apply/2`` that takes a functi
 (1 2 3 a b c)
 ```
 
-While ``erlang:apply/2`` and ``erlang:apply/3`` will not be part of your common usage, there are cases where it is needed, like last weeks [timer:tc](http://blog.lfe.io/blog/tutorials/2015/01/10/2201-lfe-friday---timertc3/). And though your usage of it will likely be rare, it is still good to know that you have it handy.
+While ``erlang:apply/2`` and ``erlang:apply/3`` will not be part of your common usage, there are cases where it is needed, like last weeks [timer:tc](https://lfe.io/blog/tutorials/2015/01/10/2201-lfe-friday---timertc3/). And though your usage of it will likely be rare, it is still good to know that you have it handy.
 
 –Proctor, Robert

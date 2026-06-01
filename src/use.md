@@ -26,10 +26,9 @@ Once in the REPL, `(help)` prints available commands and double-tap
 functions.
 
 * [Development Setup](https://cnbbooks.github.io/lfe-manual/part1/intro/setup.html) — installing Erlang + rebar3 + LFE
-* [The LFE REPL](https://cnbbooks.github.io/lfe-manual/part1/repl/README.html) — features, readline, job control, file evaluation
-* [Creating LFE Projects](https://cnbbooks.github.io/lfe-manual/part3/projects/README.html) — project layout and rebar3 conventions
+* [The LFE REPL](https://cnbbooks.github.io/lfe-manual/part1/repl/) — features, readline, job control, file evaluation
+* [Creating LFE Projects](https://cnbbooks.github.io/lfe-manual/part3/projects/) — project layout and rebar3 conventions
 * [Emacs lfe-mode](https://github.com/lfe/lfe/tree/develop/emacs) — syntax highlighting and REPL integration, bundled with LFE
-
 
 <div class="content-card">
 
@@ -42,11 +41,10 @@ functions.
 * [LFE formatting](https://github.com/lfe/lfe/blob/develop/doc/src/lfe_io.3.md) — I/O and format strings
 * [Common Lisp compatibility](https://github.com/lfe/lfe/blob/develop/doc/src/lfe_cl.3.md) — the `cl` module
 * [Clojure compatibility](https://github.com/lfe/lfe/blob/develop/doc/src/lfe_clj.3.md) — the `clj` module
-* [Style Guide](https://cnbbooks.github.io/lfe-manual/part7/style-guide/README.html) — naming, formatting, data representation conventions
+* [Style Guide](https://cnbbooks.github.io/lfe-manual/part7/style-guide/) — naming, formatting, data representation conventions
 * [All LFE books](/books) — the complete collection
 
 </div>
-
 
 ## OTP reference
 
@@ -65,8 +63,7 @@ lfe> (application:which_applications)
 * Key modules: [erlang](http://erlang.org/doc/man/erlang.html), [application](http://erlang.org/doc/man/application.html), [supervisor](http://erlang.org/doc/man/supervisor.html)
 * Behaviours: [gen_server](http://erlang.org/doc/man/gen_server.html), [gen_event](http://erlang.org/doc/man/gen_event.html), [gen_statem](http://erlang.org/doc/man/gen_statem.html)
 * Data: [lists](http://erlang.org/doc/man/lists.html), [maps](http://erlang.org/doc/man/maps.html), [proplists](http://erlang.org/doc/man/proplists.html)
-* [The LFE Machine Manual — Part V: OTP](https://cnbbooks.github.io/lfe-manual/part5/README.html) — OTP in LFE
-
+* [The LFE Machine Manual — Part V: OTP](https://cnbbooks.github.io/lfe-manual/part5/) — OTP in LFE
 
 ## Ecosystem & interop
 
@@ -86,12 +83,11 @@ lfe> (lists:reverse
 * [rebar3_lfe plugin](https://github.com/lfe-rebar3/rebar3_lfe) — the LFE compiler plugin for rebar3
 * [Community libraries](/community#repos-code-container-images) — the LFE ecosystem on GitHub
 
-
 <div class="content-card">
 
 ### Deployment
 
-* [Releases](https://cnbbooks.github.io/lfe-manual/part5/rels/README.html) — building OTP releases
+* [Releases](https://cnbbooks.github.io/lfe-manual/part5/rels/) — building OTP releases
 * [LFE Docker images](https://hub.docker.com/u/lfex/) — a large collection of ready-to-use images
 * [Adopting Erlang](https://adoptingerlang.org/) — taking BEAM applications into production
 * [Stuff Goes Bad — Erlang in Anger](https://erlang-in-anger.com/) — debugging production systems

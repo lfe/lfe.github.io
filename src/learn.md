@@ -84,7 +84,7 @@ destructures them directly in function heads. No casting, no null checks.
 * [Casting SPELs in LFE](https://cnbbooks.github.io/lfe-casting-spels/) — learn by building a game, from records through to `gen_server`
 * [LFE Examples](https://github.com/lfe/lfe/tree/develop/examples) — dozens of working examples in the LFE repo
 * [LFE on Rosetta Code](https://rosettacode.org/wiki/Category:LFE) — 99+ problems solved in LFE
-* [The LFE Machine Manual — Part II: Data Types](https://cnbbooks.github.io/lfe-manual/part2/README.html) — the full treatment
+* [The LFE Machine Manual — Part II: Data Types](https://cnbbooks.github.io/lfe-manual/part2/) — the full treatment
 
 ## OTP
 
@@ -111,7 +111,7 @@ state updates, and crash recovery. OTP gives you all of it.
 * [Learn You Some Erlang for Great Good!](https://learnyousomeerlang.com/) — the best (and most fun) introduction to OTP
 * [Designing for Scalability with Erlang/OTP](https://www.oreilly.com/library/view/designing-for-scalability/9781449361556/) — the thinking person’s OTP book
 * [Erlang and OTP in Action](https://www.manning.com/books/erlang-and-otp-in-action) — builds an OTP application piece by piece
-* [The LFE Machine Manual — Part V: OTP](https://cnbbooks.github.io/lfe-manual/part5/README.html) — OTP in LFE specifically
+* [The LFE Machine Manual — Part V: OTP](https://cnbbooks.github.io/lfe-manual/part5/) — OTP in LFE specifically
 
 <div class="content-card">
 

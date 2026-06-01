@@ -268,19 +268,58 @@ fn ensure_pagefind_binary() -> Result<std::path::PathBuf> {
     );
     println!("  downloading: {url}");
 
-    let cmd = format!(
-        "curl -sL '{}' | tar xz -C '{}' pagefind",
-        url,
-        cache_dir.display()
-    );
-    let status = Command::new("sh")
-        .args(["-c", &cmd])
+    // Download tarball to a temp file so we can inspect/extract it
+    let tarball = cache_dir.join("pagefind.tar.gz");
+    let dl_status = Command::new("curl")
+        .args(["-sL", "-o"])
+        .arg(&tarball)
+        .arg(&url)
         .status()
-        .context("failed to download pagefind")?;
+        .context("failed to download pagefind tarball")?;
 
-    if !status.success() || !cached.is_file() {
-        bail!("failed to download pagefind from {url}");
+    if !dl_status.success() {
+        bail!("curl failed downloading {url}");
     }
+
+    // List contents for debugging
+    let listing = Command::new("tar")
+        .args(["tzf"])
+        .arg(&tarball)
+        .output()
+        .context("failed to list tarball contents")?;
+    let contents = String::from_utf8_lossy(&listing.stdout);
+    println!("  tarball contents: {}", contents.trim().replace('\n', ", "));
+
+    // Extract everything, then find/rename the pagefind binary
+    let status = Command::new("tar")
+        .args(["xzf"])
+        .arg(&tarball)
+        .arg("-C")
+        .arg(&cache_dir)
+        .status()
+        .context("failed to extract pagefind tarball")?;
+
+    if !status.success() {
+        bail!("failed to extract pagefind from {url}");
+    }
+
+    // The extended tarball may name the binary pagefind_extended
+    if !cached.is_file() {
+        let extended = cache_dir.join("pagefind_extended");
+        if extended.is_file() {
+            fs::rename(&extended, &cached)?;
+            println!("  renamed pagefind_extended -> pagefind");
+        } else {
+            // Clean up and fail with helpful info
+            let _ = fs::remove_file(&tarball);
+            bail!(
+                "pagefind binary not found after extraction (contents: {})",
+                contents.trim()
+            );
+        }
+    }
+
+    let _ = fs::remove_file(&tarball);
 
     #[cfg(unix)]
     {

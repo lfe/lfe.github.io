@@ -3,60 +3,161 @@ layout: page.liquid
 title: Learn
 permalink: "/learn/"
 data:
-  long_description: 'Learning LFE must be taken in three tracks: learning the syntax particular to a Lisp on the Erlang VM, with all its support for pattern matching, Erlang-style arities, etc.; learning the ins-and-outs of BEAM languages and OTP; and finally, more deeply exploring the Lisp heritage of LFE. This multi-pronged approach is the path to success.'
-  long_title: Resources for Learning LFE
+  long_description: From first taste to deep mastery — follow your curiosity at the pace that suits you.
+  long_title: Learn LFE
 ---
 
 
-## LFE
+## What does LFE look like?
 
-### Getting Started
+You saw the basics on the [home page](/) — pattern matching, data types, macros.
+Here’s what those ideas look like when they start working together:
 
-* [Quick Start with rebar3](https://cnbbooks.github.io/lfe-manual/part1/intro/setup.html) - This will get you up and running with LFE, requiring _only_ that you have a modern Erlang installed (version 21+) and `rebar3`.
-* [The LFE Tutorial](https://cnbbooks.github.io/lfe-tutorial/) - The Erlang "Getting Started" translated into LFE!
+```lisp
+;; Erlang tuples + Lisp pattern matching = expressive dispatch
+(defun handle
+  ((`#(ok ,result))    (io:format "Success: ~p~n" `(,result)))
+  ((`#(error ,reason)) (io:format "Failed: ~p~n" `(,reason)))
+  ((‘shutdown)         (io:format "Shutting down.~n" ‘())))
 
-### More Details
+lfe> (handle #(ok 42))
+Success: 42
+ok
+lfe> (handle #(error "timeout"))
+Failed: "timeout"
+ok
+```
 
-* [Casting SPELs in LFE](https://cnbbooks.github.io/lfe-casting-spels/index.html) - The famous "Casting SPELs in Lisp" translated into LFE, but taking things further than the original with state management via `defrecord`, creating a custom game server, and then dipping the toes into OTP with a conversion of the custom game server to a `gen_server`.
-* [LFE Examples](https://github.com/lfe/lfe/tree/develop/examples) - For those that learn by watching and playing, the `./examples` directory in the LFE repo may be quite useful.
-* LFE on [Rosetta Code](https://rosettacode.org/wiki/Category:LFE) - If those examples aren't enough for you, there are 99 others to choose from on Rosetta Code!
+Four lines of code, three clauses, zero conditionals. The shape of the data
+*is* the control flow.
 
-### Next Step for LFE?
-
-* Once you've learned the syntax and the underlying principles of the Erlang VM, you're going to want to actually _use_ this beautiful Lisp! Be sure to check out our [reference materials, how-tows, etc.](/use).
-* [The community](/community) will be an invaluable resource in your journey of learning, to be sure to stop in whatever medium makes you happy, say "hi" and ask us lots of questions!
+* [The LFE Machine Manual](https://cnbbooks.github.io/lfe-manual/) — the comprehensive guide to LFE
+* [About LFE](https://cnbbooks.github.io/lfe-manual/part1/intro/about.html) — what it is and where it comes from
 
 
-## Erlang
+## Getting started
 
-There are some phenomenal materials available for a self-paced Erlang/OTP education. Some of the classics are given below. For those with bigger budgets, remember that formal training is also an option! (In fact, there are not only classes offered for Erlang, but also LFE ...)
+From zero to a running REPL in under five minutes.
 
-### The Language & OTP
+```lisp
+lfe> (defun hello (name)
+       (io:format "Hello, ~s!~n" `(,name)))
+hello
 
-* [Making reliable distributed systems in the presence of sodware errors](/papers/%5B2003%5D%20Armstrong%20-%20Making%20reliable%20distributed%20systems%20in%20the%20presence%20of%20software%20errors.pdf) - Joe Armstrong's PhD disertation
-* [A History of Erlang](/papers/%5B2007%5D%20Armstrong%20-%20HOPL%20III%20A%20History%20of%20Erlang.pdf) - Joe Armstrong's paper on the history of Erlang
-* [The Erlang Rationale](/papers/%5B2008%5D%20Virding%20-%20The%20Erlang%20Rationale.pdf) - Robert Virding's insights on the "why" of Erlang
-* [Learn You Some Erlang for Great Good!](https://learnyousomeerlang.com/) - Probably one of the best (and _definitely_ the most fun) books available for learning Erlang. (Also available [in print](https://nostarch.com/erlang).)
-* [Designing for Scalability with Erlang/OTP](https://www.oreilly.com/library/view/designing-for-scalability/9781449361556/) - The thinking person's OTP book: where to go when you really want to understand OTP.
-* [Erlang and OTP in Action](https://www.manning.com/books/erlang-and-otp-in-action) - This book is another fantastic resource, building up an OTP application piece at a time as you move through the chapters.
+lfe> (hello "world")
+Hello, world!
+ok
 
-### In Production
+lfe> (lists:map #’hello/1 ‘("LFE" "Erlang" "OTP"))
+Hello, LFE!
+Hello, Erlang!
+Hello, OTP!
+(ok ok ok)
+```
 
-Once you've learned how to write Erlang/LFE/OTP applications, is time to get them into production, and you'll find the following invaluable references for that:
+Pick the path that suits you:
 
-* [Adopting Erlang](https://adoptingerlang.org/) - _"Adopting Erlang is an ongoing effort to gather all the resources that will help you use Erlang in a business. The booksite is divided in three sections focusing particularly on Erlang/OTP’s higher level concepts in the current open source ecosystem, how to use it in production (while setting up a pipeline for continuous development and delivery), and how to build a team when you’re starting from scratch."_
-* [Stuff Goes Bad - Erlang in Anger](https://erlang-in-anger.com/) - _"This book intends to be a little guide about how to be the Erlang medic in a time of war. It is first and foremost a collection of tips and tricks to help understand where failures come from, and a dictionary of different code snippets and practices that helped developers debug production systems that were built in Erlang."_
+* [Quick Start with rebar3](https://cnbbooks.github.io/lfe-manual/part1/intro/setup.html) — Erlang 21+ and `rebar3` are all you need
+* [The LFE Tutorial](https://cnbbooks.github.io/lfe-tutorial/) — Erlang’s "Getting Started" translated into LFE
+* `docker run -it lfex/lfe` — no install, instant REPL
 
-## Lisp
 
-In the event that you want to dive deeper into the world of Lisp itself, there are several excellent texts to explore.
+## The language
 
-### Internals
+Types, records, and pattern matching aren’t isolated features — they compose.
 
-* [Lisp in Small Pieces](https://www.cambridge.org/core/books/lisp-in-small-pieces/66FD2BE3EDDDC68CA87D652C82CF849E) - _"This is a comprehensive account of the semantics and the implementation of the whole Lisp family of languages, namely Lisp, Scheme and related dialects. It describes 11 interpreters and 2 compilers, including very recent techniques of interpretation and compilation."_
-* [Let Over Lambda—50 Years of Lisp](https://letoverlambda.com/) - _"Starting with the fundamentals, it describes the most advanced features of the most advanced language: COMMON LISP. The point of this book is to expose you to ideas that you might otherwise never be exposed to. This book is about macros, that is programs that write programs. Macros are what make lisp the greatest programming language in the world. When used properly, macros enable amazing feats of abstraction, programmer productivity, and code efficiency and security that are unheard of elsewhere. Macros let you do things you simply cannot do in other languages."_
+```lisp
+(defrecord person name age role)
 
-### Reference
+(defun greet
+  (((match-person name n role ‘admin))
+   (io:format "Welcome back, ~s (admin)~n" `(,n)))
+  (((match-person name n))
+   (io:format "Hello, ~s~n" `(,n))))
 
-* [Common Lisp HyperSpec](http://www.lispworks.com/documentation/HyperSpec/Front/Contents.htm) - This is the definitive reference manual for the Common Lisp standard. The LFE core contributors have made nearly constant reference (and deference) to this document in the course of implementing features in LFE.
-* [The Moonual](http://www.softwarepreservation.org/projects/LISP/MIT/Moon-MACLISP_Reference_Manual-Apr_08_1974.pdf) - This is a bit of computing history that not many are aware of: the manual for [MACLISP](https://en.wikipedia.org/wiki/Maclisp) written by David Moon. This is of interest to LFE developers due to the influence it has had upon the design and development of LFE. LFE actually derives most of it Lisp nature due to the experiences Robert Virding had as a physics PhD student who programmed in MACLISP on university machines. Even since then, we have constantly referenced the Moonual, almost as much as the Common Lisp HyperSpec (and in some cases, more!). It is of particular interest that the MAC project at MIT not only gave birth to MACLISP, but also [MACSYMA](https://en.wikipedia.org/wiki/Macsyma) (originally written in MACLISP, since ported to Common Lisp) which significantly influenced the development of Mathematica.
+lfe> (greet (make-person name "Ford" age 234 role ‘admin))
+Welcome back, Ford (admin)
+ok
+```
+
+Records generate constructor and accessor functions. Pattern matching
+destructures them directly in function heads. No casting, no null checks.
+
+* [Casting SPELs in LFE](https://cnbbooks.github.io/lfe-casting-spels/) — learn by building a game, from records through to `gen_server`
+* [LFE Examples](https://github.com/lfe/lfe/tree/develop/examples) — dozens of working examples in the LFE repo
+* [LFE on Rosetta Code](https://rosettacode.org/wiki/Category:LFE) — 99+ problems solved in LFE
+* [The LFE Machine Manual — Part II: Data Types](https://cnbbooks.github.io/lfe-manual/part2/README.html) — the full treatment
+
+
+## OTP
+
+This is what makes the Erlang VM worth the trip. Processes that supervise
+each other, restart on failure, and scale to millions of concurrent
+connections.
+
+```lisp
+;; The gen_server from the home page, now in action:
+lfe> (my-server:start_link)
+#(ok <0.42.0>)
+
+lfe> (my-server:get-amount)
+0
+lfe> (my-server:deposit 100)
+ok
+lfe> (my-server:get-amount)
+100
+```
+
+Behind those four calls: a supervised process, a message queue, serialized
+state updates, and crash recovery. OTP gives you all of it.
+
+* [Learn You Some Erlang for Great Good!](https://learnyousomeerlang.com/) — the best (and most fun) introduction to OTP
+* [Designing for Scalability with Erlang/OTP](https://www.oreilly.com/library/view/designing-for-scalability/9781449361556/) — the thinking person’s OTP book
+* [Erlang and OTP in Action](https://www.manning.com/books/erlang-and-otp-in-action) — builds an OTP application piece by piece
+* [The LFE Machine Manual — Part V: OTP](https://cnbbooks.github.io/lfe-manual/part5/README.html) — OTP in LFE specifically
+
+
+## Going deeper
+
+Macros, metaprogramming, the Lisp heritage that shaped LFE, and the
+operational wisdom to run it in production.
+
+```lisp
+;; The home page showed a variadic `mean` macro.
+;; Here’s one that writes a gen_server call wrapper:
+(defmacro defcall
+  ((name args body)
+   `(defun ,name ,args
+      (gen_server:call (whereis ‘my-server) ,body))))
+
+;; One line generates a complete API function:
+(defcall get-amount () ‘amount)
+(defcall deposit (n) `#(add ,n))
+```
+
+Macros run at compile time — the generated code is exactly what you’d
+write by hand, with zero runtime overhead.
+
+### The Erlang heritage
+
+* [A History of Erlang](/papers/%5B2007%5D%20Armstrong%20-%20HOPL%20III%20A%20History%20of%20Erlang.pdf) — Joe Armstrong’s HOPL III paper
+* [The Erlang Rationale](/papers/%5B2008%5D%20Virding%20-%20The%20Erlang%20Rationale.pdf) — Robert Virding on the "why" of Erlang
+* [Making reliable distributed systems in the presence of software errors](/papers/%5B2003%5D%20Armstrong%20-%20Making%20reliable%20distributed%20systems%20in%20the%20presence%20of%20software%20errors.pdf) — Joe Armstrong’s PhD dissertation
+* [Adopting Erlang](https://adoptingerlang.org/) — taking Erlang/LFE into production
+* [Stuff Goes Bad — Erlang in Anger](https://erlang-in-anger.com/) — debugging production BEAM systems
+
+### The Lisp heritage
+
+LFE derives much of its character from Robert Virding’s experience with
+[MACLISP](https://en.wikipedia.org/wiki/Maclisp) as a physics PhD student
+at MIT. The [Moonual](http://www.softwarepreservation.org/projects/LISP/MIT/Moon-MACLISP_Reference_Manual-Apr_08_1974.pdf) (David Moon’s MACLISP reference) and the [Common Lisp HyperSpec](http://www.lispworks.com/documentation/HyperSpec/Front/Contents.htm) remain constant companions in LFE’s development.
+
+* [Lisp in Small Pieces](https://www.cambridge.org/core/books/lisp-in-small-pieces/66FD2BE3EDDDC68CA87D652C82CF849E) — the definitive account of Lisp implementation
+* [Let Over Lambda](https://letoverlambda.com/) — 50 years of Lisp, focused on the power of macros
+
+
+## Next steps
+
+Ready to build something? The [Use](/use) page has the reference materials
+and tooling you’ll need. And the [community](/community) is always happy
+to help.

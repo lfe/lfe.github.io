@@ -26,6 +26,7 @@
       {% endif %}
     </div>
 
+    {% unless page.permalink contains "search" %}
     <form class="blog-subnav-search" action="/blog/search/" method="get">
       <svg class="blog-subnav-search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <circle cx="11" cy="11" r="8"></circle>
@@ -33,5 +34,6 @@
       </svg>
       <input type="text" name="q" class="blog-subnav-search-input" placeholder="Search blog..." aria-label="Search blog">
     </form>
+    {% endunless %}
   </div>
 </nav>

@@ -425,6 +425,13 @@
         max-height: 360px;
     }
 
+    .blog-masthead::after {
+        content: '';
+        @apply absolute inset-0 pointer-events-none;
+        background: radial-gradient(ellipse at center, rgba(0,0,0,0.5) 30%, rgba(0,0,0,0.8) 100%);
+        z-index: 1;
+    }
+
     .blog-masthead-img {
         @apply w-full object-cover object-center;
         max-height: 360px;
@@ -433,6 +440,7 @@
     .blog-masthead-overlay {
         @apply absolute bottom-0 left-0 w-full px-8 py-6;
         background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);
+        z-index: 2;
     }
 
     .blog-masthead-overlay h1 {
@@ -693,8 +701,14 @@
     /* ── Blog: Cover painting ── */
 
     .blog-cover {
-        @apply w-full bg-slate-200 dark:bg-slate-900 overflow-hidden;
+        @apply relative w-full bg-slate-200 dark:bg-slate-900 overflow-hidden;
         max-height: 420px;
+    }
+
+    .blog-cover::after {
+        content: '';
+        @apply absolute inset-0 pointer-events-none;
+        background: radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.9) 100%);
     }
 
     .blog-cover-img {

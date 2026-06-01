@@ -40,7 +40,8 @@
     }
 
     .tab-gold {
-        color: var(--gold-500);
+        color: #d1d5db;
+        border-bottom-color: transparent;
     }
 
     .tab-gold:hover {
@@ -50,6 +51,7 @@
     .tab-gold.active {
         color: var(--gold-500);
         border-bottom-color: var(--gold-600);
+        font-weight: 600;
     }
 
     .cta-gold {

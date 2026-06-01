@@ -14,7 +14,7 @@
 
               {% for excerpt in site.data.home.excerpts.items %}
               <button type="button"
-                class="hs-tab-active:font-semibold tab-gold py-1 md:py-4 px-1 inline-flex items-center gap-2 border-b-[3px] border-transparent text-sm whitespace-nowrap text-gray-300 {% if forloop.index == 1 %}active{% endif %}"
+                class="hs-tab-active:font-semibold tab-gold py-1 md:py-4 px-1 inline-flex items-center gap-2 border-b-[3px] text-sm whitespace-nowrap {% if forloop.index == 1 %}active{% endif %}"
                 id="horizontal-alignment-item-{{ excerpt.id }}" data-hs-tab="#horizontal-alignment-{{ excerpt.id }}"
                 aria-controls="horizontal-alignment-{{ excerpt.id }}" role="tab">
                 {{ excerpt.name }}

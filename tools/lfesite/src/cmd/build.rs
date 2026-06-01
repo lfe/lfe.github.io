@@ -292,19 +292,27 @@ fn ensure_pagefind_binary() -> Result<std::path::PathBuf> {
     Ok(cached)
 }
 
-/// Resolve the latest pagefind release version tag (e.g. "v1.3.0")
-/// by following GitHub's `/releases/latest` redirect.
+/// Resolve the latest pagefind release version tag (e.g. "v1.3.0").
+///
+/// Uses the GitHub API to query the latest release, extracting the
+/// tag_name field with grep/sed (no jq dependency).
 fn resolve_pagefind_version() -> Result<String> {
     let output = Command::new("sh")
         .args([
             "-c",
-            "curl -sI https://github.com/CloudCannon/pagefind/releases/latest \
-             | grep -i '^location:' | sed 's|.*/||' | tr -d '\\r\\n'",
+            r#"curl -sL https://api.github.com/repos/CloudCannon/pagefind/releases/latest | grep '"tag_name"' | sed 's/.*"tag_name": *"//;s/".*//' | tr -d '\r\n'"#,
         ])
         .output()
         .context("failed to resolve pagefind version")?;
 
+    let stderr = String::from_utf8_lossy(&output.stderr);
+    if !stderr.is_empty() {
+        eprintln!("  debug (stderr): {stderr}");
+    }
+
     let version = String::from_utf8_lossy(&output.stdout).trim().to_string();
+    println!("  resolved version: '{version}'");
+
     if version.is_empty() || !version.starts_with('v') {
         bail!("could not determine latest pagefind version (got: '{version}')");
     }

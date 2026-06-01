@@ -14,7 +14,7 @@
 
               {% for excerpt in site.data.home.excerpts.items %}
               <button type="button"
-                class="hs-tab-active:font-semibold hs-tab-active:border-yellow-600 hs-tab-active:text-yellow-600 py-1 md:py-4 px-1 inline-flex items-center gap-2 border-b-[3px] border-transparent text-sm whitespace-nowrap text-gray-300 hover:text-yellow-600 {% if forloop.index == 1 %}active{% endif %}"
+                class="hs-tab-active:font-semibold tab-gold py-1 md:py-4 px-1 inline-flex items-center gap-2 border-b-[3px] border-transparent text-sm whitespace-nowrap text-gray-300 {% if forloop.index == 1 %}active{% endif %}"
                 id="horizontal-alignment-item-{{ excerpt.id }}" data-hs-tab="#horizontal-alignment-{{ excerpt.id }}"
                 aria-controls="horizontal-alignment-{{ excerpt.id }}" role="tab">
                 {{ excerpt.name }}
@@ -59,7 +59,7 @@
           {{ site.data.home.masthead.summary.content_html }}
           <a href="{{ site.data.home.masthead.summary.link_url }}" class="block mt-1 md:inline md:mt-0">
             <button type="button"
-              class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-yellow-500 text-slate-700 hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">
+              class="cta-gold py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold focus:outline-none focus:ring-2 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">
               {{ site.data.home.masthead.summary.link_text }} &raquo;
             </button>
           </a>

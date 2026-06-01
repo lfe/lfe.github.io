@@ -1,5 +1,21 @@
 @import "tailwindcss";
 
+@font-face {
+    font-family: 'Newsreader';
+    src: url('/fonts/Newsreader-Variable.woff2') format('woff2');
+    font-weight: 200 800;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Newsreader';
+    src: url('/fonts/Newsreader-Italic-Variable.woff2') format('woff2');
+    font-weight: 200 800;
+    font-style: italic;
+    font-display: swap;
+}
+
 @variant dark (.dark &);
 @variant hs-tab-active (&.active);
 @variant hs-collapse-open (&.open);
@@ -786,6 +802,11 @@
         @apply mx-auto;
         max-width: 65ch;
         line-height: 1.7;
+    }
+
+    .blog-prose p,
+    .blog-prose li {
+        font-family: 'Newsreader', Georgia, serif;
     }
 
     .blog-prose p {

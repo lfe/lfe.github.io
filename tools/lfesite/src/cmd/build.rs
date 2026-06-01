@@ -215,22 +215,92 @@ fn platform_tag() -> (&'static str, &'static str) {
 }
 
 /// Run Pagefind to build the search index from rendered HTML.
+///
+/// Resolution order (mirrors tailwind):
+/// 1. `pagefind` on PATH
+/// 2. Cached binary in `~/.cache/lfesite/`
+/// 3. Auto-download from GitHub Releases
 fn run_pagefind(project_dir: &Path, output_dir: &Path) -> Result<()> {
     let site_path = output_dir
         .to_str()
         .context("output dir path is not valid UTF-8")?;
 
-    let status = Command::new("pagefind")
+    let binary = ensure_pagefind_binary()?;
+
+    let status = Command::new(&binary)
         .args(["--site", site_path])
         .current_dir(project_dir)
         .status()
-        .context("failed to run pagefind -- is it installed? (cargo install pagefind)")?;
+        .with_context(|| format!("failed to run {}", binary.display()))?;
 
     if !status.success() {
         bail!("pagefind exited with {status}");
     }
 
     Ok(())
+}
+
+/// Find or download the Pagefind binary.
+fn ensure_pagefind_binary() -> Result<std::path::PathBuf> {
+    // 1. Check PATH
+    if let Ok(path) = which("pagefind") {
+        println!("  using: {}", path.display());
+        return Ok(path);
+    }
+
+    // 2. Check cache
+    let cache_dir = dirs_cache().join("lfesite");
+    let cached = cache_dir.join("pagefind");
+    if cached.is_file() {
+        println!("  using cached: {}", cached.display());
+        return Ok(cached);
+    }
+
+    // 3. Download — pagefind releases are tarballs, not standalone binaries
+    println!("  pagefind not found, downloading from GitHub Releases...");
+    fs::create_dir_all(&cache_dir)?;
+
+    let target = pagefind_target_triple();
+    let url = format!(
+        "https://github.com/CloudCannon/pagefind/releases/latest/download/pagefind_extended-{target}.tar.gz"
+    );
+    println!("  downloading: {url}");
+
+    let cmd = format!(
+        "curl -sL '{}' | tar xz -C '{}' pagefind",
+        url,
+        cache_dir.display()
+    );
+    let status = Command::new("sh")
+        .args(["-c", &cmd])
+        .status()
+        .context("failed to download pagefind")?;
+
+    if !status.success() || !cached.is_file() {
+        bail!("failed to download pagefind from {url}");
+    }
+
+    #[cfg(unix)]
+    {
+        use std::os::unix::fs::PermissionsExt;
+        fs::set_permissions(&cached, fs::Permissions::from_mode(0o755))?;
+    }
+
+    println!("  installed: {}", cached.display());
+    Ok(cached)
+}
+
+/// Pagefind release assets use Rust target triples.
+fn pagefind_target_triple() -> &'static str {
+    if cfg!(target_os = "macos") && cfg!(target_arch = "aarch64") {
+        "aarch64-apple-darwin"
+    } else if cfg!(target_os = "macos") {
+        "x86_64-apple-darwin"
+    } else if cfg!(target_arch = "aarch64") {
+        "aarch64-unknown-linux-musl"
+    } else {
+        "x86_64-unknown-linux-musl"
+    }
 }
 
 /// Run `cobalt build` to generate the final static site.

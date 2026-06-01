@@ -249,6 +249,22 @@
         @apply max-w-[80rem] mx-0 sm:mx-auto py-10 px-4 sm:px-6 lg:px-8;
     }
 
+    .content-card {
+        @apply rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-slate-700/50 px-4 py-5 my-6;
+    }
+
+    .content-card h3 {
+        @apply pt-0 mt-0;
+    }
+
+    .content-section pre {
+        @apply rounded-md p-4 mt-4 mb-6 overflow-x-auto text-sm leading-relaxed;
+    }
+
+    .content-section code:not(pre code) {
+        @apply px-1.5 py-0.5 rounded text-sm bg-gray-100 dark:bg-slate-700 text-gray-800 dark:text-gray-200;
+    }
+
     .content-section blockquote {
         @apply p-8;
     }
@@ -807,6 +823,7 @@
     .blog-prose p,
     .blog-prose li {
         font-family: 'Newsreader', Georgia, serif;
+        font-size: 1.125rem;
     }
 
     .blog-prose p {

@@ -116,6 +116,18 @@ state updates, and crash recovery. OTP gives you all of it.
 * [Erlang and OTP in Action](https://www.manning.com/books/erlang-and-otp-in-action) — builds an OTP application piece by piece
 * [The LFE Machine Manual — Part V: OTP](https://cnbbooks.github.io/lfe-manual/part5/README.html) — OTP in LFE specifically
 
+<div class="content-card">
+
+### The Erlang heritage
+
+* [A History of Erlang](/papers/%5B2007%5D%20Armstrong%20-%20HOPL%20III%20A%20History%20of%20Erlang.pdf) — Joe Armstrong’s HOPL III paper
+* [The Erlang Rationale](/papers/%5B2008%5D%20Virding%20-%20The%20Erlang%20Rationale.pdf) — Robert Virding on the "why" of Erlang
+* [Making reliable distributed systems in the presence of software errors](/papers/%5B2003%5D%20Armstrong%20-%20Making%20reliable%20distributed%20systems%20in%20the%20presence%20of%20software%20errors.pdf) — Joe Armstrong’s PhD dissertation
+* [Adopting Erlang](https://adoptingerlang.org/) — taking Erlang/LFE into production
+* [Stuff Goes Bad — Erlang in Anger](https://erlang-in-anger.com/) — debugging production BEAM systems
+
+</div>
+
 
 ## Going deeper
 
@@ -138,13 +150,7 @@ operational wisdom to run it in production.
 Macros run at compile time — the generated code is exactly what you’d
 write by hand, with zero runtime overhead.
 
-### The Erlang heritage
-
-* [A History of Erlang](/papers/%5B2007%5D%20Armstrong%20-%20HOPL%20III%20A%20History%20of%20Erlang.pdf) — Joe Armstrong’s HOPL III paper
-* [The Erlang Rationale](/papers/%5B2008%5D%20Virding%20-%20The%20Erlang%20Rationale.pdf) — Robert Virding on the "why" of Erlang
-* [Making reliable distributed systems in the presence of software errors](/papers/%5B2003%5D%20Armstrong%20-%20Making%20reliable%20distributed%20systems%20in%20the%20presence%20of%20software%20errors.pdf) — Joe Armstrong’s PhD dissertation
-* [Adopting Erlang](https://adoptingerlang.org/) — taking Erlang/LFE into production
-* [Stuff Goes Bad — Erlang in Anger](https://erlang-in-anger.com/) — debugging production BEAM systems
+<div class="content-card">
 
 ### The Lisp heritage
 
@@ -154,6 +160,8 @@ at MIT. The [Moonual](http://www.softwarepreservation.org/projects/LISP/MIT/Moon
 
 * [Lisp in Small Pieces](https://www.cambridge.org/core/books/lisp-in-small-pieces/66FD2BE3EDDDC68CA87D652C82CF849E) — the definitive account of Lisp implementation
 * [Let Over Lambda](https://letoverlambda.com/) — 50 years of Lisp, focused on the power of macros
+
+</div>
 
 
 ## Next steps

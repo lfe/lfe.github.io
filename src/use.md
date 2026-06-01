@@ -31,7 +31,9 @@ functions.
 * [Emacs lfe-mode](https://github.com/lfe/lfe/tree/develop/emacs) — syntax highlighting and REPL integration, bundled with LFE
 
 
-## Language reference
+<div class="content-card">
+
+### Language reference
 
 * [The LFE Machine Manual](https://cnbbooks.github.io/lfe-manual/) — the comprehensive reference (in progress)
 * [The LFE Guide](https://github.com/lfe/lfe/blob/develop/doc/src/lfe_guide.7.md) — core language guide (man page source)
@@ -42,6 +44,8 @@ functions.
 * [Clojure compatibility](https://github.com/lfe/lfe/blob/develop/doc/src/lfe_clj.3.md) — the `clj` module
 * [Style Guide](https://cnbbooks.github.io/lfe-manual/part7/style-guide/README.html) — naming, formatting, data representation conventions
 * [All LFE books](/books) — the complete collection
+
+</div>
 
 
 ## OTP reference
@@ -83,10 +87,14 @@ lfe> (lists:reverse
 * [Community libraries](/community#repos-code-container-images) — the LFE ecosystem on GitHub
 
 
-## Deployment
+<div class="content-card">
+
+### Deployment
 
 * [Releases](https://cnbbooks.github.io/lfe-manual/part5/rels/README.html) — building OTP releases
 * [LFE Docker images](https://hub.docker.com/u/lfex/) — a large collection of ready-to-use images
 * [Adopting Erlang](https://adoptingerlang.org/) — taking BEAM applications into production
 * [Stuff Goes Bad — Erlang in Anger](https://erlang-in-anger.com/) — debugging production systems
 * [rebar3 — Getting Started](https://www.rebar3.org/docs/getting-started), [Configuration](https://www.rebar3.org/docs/configuration), [Using Plugins](https://rebar3.org/docs/configuration/plugins/), [Writing Plugins](https://rebar3.org/docs/tutorials/building_plugins/)
+
+</div>

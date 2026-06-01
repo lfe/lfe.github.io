@@ -1,0 +1,37 @@
+<nav class="blog-subnav" aria-label="Blog sections">
+  <div class="blog-subnav-inner">
+    <div class="blog-subnav-links">
+      {% if page.permalink contains "archive" %}
+      <a href="/blog/archive/" class="active">Archive</a>
+      {% else %}
+      <a href="/blog/archive/">Archive</a>
+      {% endif %}
+
+      {% if page.permalink contains "categories" %}
+      <a href="/blog/categories/" class="active">Categories</a>
+      {% else %}
+      <a href="/blog/categories/">Categories</a>
+      {% endif %}
+
+      {% if page.permalink contains "tags" %}
+      <a href="/blog/tags/" class="active">Tags</a>
+      {% else %}
+      <a href="/blog/tags/">Tags</a>
+      {% endif %}
+
+      {% if page.permalink contains "authors" %}
+      <a href="/blog/authors/" class="active">Authors</a>
+      {% else %}
+      <a href="/blog/authors/">Authors</a>
+      {% endif %}
+    </div>
+
+    <form class="blog-subnav-search" action="/blog/search/" method="get">
+      <svg class="blog-subnav-search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+      <input type="text" name="q" class="blog-subnav-search-input" placeholder="Search blog..." aria-label="Search blog">
+    </form>
+  </div>
+</nav>

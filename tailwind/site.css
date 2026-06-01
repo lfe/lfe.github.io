@@ -296,6 +296,94 @@
         @apply inline max-h-6;
     }
 
+    /* ── Blog: Subnav ── */
+
+    .blog-subnav {
+        @apply w-full;
+        background-color: oklch(0.869 0.022 252.894);
+        border-bottom: 1px solid oklch(0.554 0.046 257.417);
+    }
+
+    .dark .blog-subnav {
+        background-color: oklch(0.373 0.044 257.287);
+        border-bottom-color: oklch(0.208 0.042 265.755);
+    }
+
+    .blog-subnav-inner {
+        @apply max-w-[80rem] mx-auto px-4 sm:px-6 lg:px-8 flex items-center;
+        padding-top: 6px;
+        padding-bottom: 6px;
+    }
+
+    .blog-subnav-links {
+        @apply flex items-center gap-4 text-sm;
+    }
+
+    .blog-subnav-links a {
+        @apply no-underline;
+        color: #4b5563;
+    }
+
+    .dark .blog-subnav-links a {
+        color: #9ca3af;
+    }
+
+    .blog-subnav-links a:hover {
+        color: #475569;
+    }
+
+    .dark .blog-subnav-links a:hover {
+        color: #cbd5e1;
+    }
+
+    .blog-subnav-links a.active {
+        color: #475569;
+        text-decoration: underline;
+        text-underline-offset: 4px;
+        text-decoration-thickness: 2px;
+    }
+
+    .dark .blog-subnav-links a.active {
+        color: #cbd5e1;
+    }
+
+    .blog-subnav-search {
+        @apply ml-auto flex items-center relative;
+    }
+
+    .blog-subnav-search-icon {
+        @apply absolute left-2 pointer-events-none;
+        color: #64748b;
+    }
+
+    .dark .blog-subnav-search-icon {
+        color: #9ca3af;
+    }
+
+    .blog-subnav-search-input {
+        @apply text-xs rounded pl-7 pr-2 py-1;
+        width: 120px;
+        background: rgba(255, 255, 255, 0.6);
+        border: 1px solid oklch(0.704 0.04 256.788);
+        color: #4b5563;
+    }
+
+    .blog-subnav-search-input::placeholder {
+        color: inherit;
+        opacity: 0.6;
+    }
+
+    .dark .blog-subnav-search-input {
+        background: rgba(0, 0, 0, 0.25);
+        border-color: oklch(0.446 0.043 257.281);
+        color: #9ca3af;
+    }
+
+    .blog-subnav-search-input:focus {
+        @apply outline-none ring-1;
+        ring-color: oklch(0.554 0.046 257.417);
+    }
+
     /* ── Blog: Masthead ── */
 
     .blog-masthead {

@@ -34,6 +34,7 @@
     <header class="top-nav">
     {% include "nav.liquid" %}
     </header>
+    {% include "blog-subnav.liquid" %}
 
     <main id="content" role="main">
       <section class="blog-home-section">
@@ -47,11 +48,16 @@
     {% include "end-scripts.liquid" %}
     <script src="/pagefind/pagefind-ui.js"></script>
     <script>
-        new PagefindUI({
+        window.pfUI = new PagefindUI({
             element: "#search",
             showSubResults: true,
             showImages: false
         });
+        var params = new URLSearchParams(window.location.search);
+        var q = params.get('q');
+        if (q) {
+            window.pfUI.triggerSearch(q);
+        }
     </script>
 </body>
 

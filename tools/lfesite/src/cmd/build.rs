@@ -256,13 +256,15 @@ fn ensure_pagefind_binary() -> Result<std::path::PathBuf> {
         return Ok(cached);
     }
 
-    // 3. Download — pagefind releases are tarballs, not standalone binaries
+    // 3. Download — pagefind releases are tarballs whose filenames
+    //    include the version, so we must resolve the latest tag first.
     println!("  pagefind not found, downloading from GitHub Releases...");
     fs::create_dir_all(&cache_dir)?;
 
+    let version = resolve_pagefind_version()?;
     let target = pagefind_target_triple();
     let url = format!(
-        "https://github.com/CloudCannon/pagefind/releases/latest/download/pagefind_extended-{target}.tar.gz"
+        "https://github.com/CloudCannon/pagefind/releases/download/{version}/pagefind_extended-{version}-{target}.tar.gz"
     );
     println!("  downloading: {url}");
 
@@ -288,6 +290,26 @@ fn ensure_pagefind_binary() -> Result<std::path::PathBuf> {
 
     println!("  installed: {}", cached.display());
     Ok(cached)
+}
+
+/// Resolve the latest pagefind release version tag (e.g. "v1.3.0")
+/// by following GitHub's `/releases/latest` redirect.
+fn resolve_pagefind_version() -> Result<String> {
+    let output = Command::new("sh")
+        .args([
+            "-c",
+            "curl -sI https://github.com/CloudCannon/pagefind/releases/latest \
+             | grep -i '^location:' | sed 's|.*/||' | tr -d '\\r\\n'",
+        ])
+        .output()
+        .context("failed to resolve pagefind version")?;
+
+    let version = String::from_utf8_lossy(&output.stdout).trim().to_string();
+    if version.is_empty() || !version.starts_with('v') {
+        bail!("could not determine latest pagefind version (got: '{version}')");
+    }
+    println!("  latest version: {version}");
+    Ok(version)
 }
 
 /// Pagefind release assets use Rust target triples.

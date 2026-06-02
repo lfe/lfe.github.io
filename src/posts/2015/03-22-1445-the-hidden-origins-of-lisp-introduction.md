@@ -26,12 +26,12 @@ the foundation (laid by the given individual) which ended up being crucial to
 the development of Lisp, concluding with a section regarding Lisp's important
 role in the future of computer science and related industries:
 
- * [Introduction](/excerpts/2015/03/22/1445-the-hidden-origins-of-lisp-introduction/)
- * [Giuseppe Peano](/excerpts/2015/03/23/1008-the-hidden-origins-of-lisp-peano/)
- * [Bertrand Russell](/excerpts/2015/03/24/0111-the-hidden-origins-of-lisp-russell/)
- * [Alonzo Church](/excerpts/2015/03/25/1108-the-hidden-origins-of-lisp-church/)
- * [John McCarthy](/excerpts/2015/03/26/1111-the-hidden-origins-of-lisp-mccarthy/)
- * [The Place of Lisp in the 21st Century](/excerpts/2015/03/27/1101-the-hidden-origins-of-lisp-future)
+ * [Introduction](/blog/excerpts/2015/03/22/1445-the-hidden-origins-of-lisp-introduction/)
+ * [Giuseppe Peano](/blog/excerpts/2015/03/23/1008-the-hidden-origins-of-lisp-peano/)
+ * [Bertrand Russell](/blog/excerpts/2015/03/24/0111-the-hidden-origins-of-lisp-russell/)
+ * [Alonzo Church](/blog/excerpts/2015/03/25/1108-the-hidden-origins-of-lisp-church/)
+ * [John McCarthy](/blog/excerpts/2015/03/26/1111-the-hidden-origins-of-lisp-mccarthy/)
+ * [The Place of Lisp in the 21st Century](/blog/excerpts/2015/03/27/1101-the-hidden-origins-of-lisp-future)
 
 The LFE preface in SICP also has a quick summary of the origins of Erlang
 and of LFE itself, discusses changes from the 2nd edition of SICP, then

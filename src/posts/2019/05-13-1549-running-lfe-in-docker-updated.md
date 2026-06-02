@@ -19,7 +19,7 @@ data:
 ---
 
 <a href="/blog/assets/images/posts/DockerLogo.png"><img class="right thumb" src="/blog/assets/images/posts/DockerLogo.png" /></a>So much
-changed since the [original version of this tutorial]() was created, back in 2014 -- not the least of which is [Docker](https://www.docker.com/)'s 
+changed since the [original version of this tutorial](/blog/tutorials/2014/12/07/1837-running-lfe-in-docker) was created, back in 2014 -- not the least of which is [Docker](https://www.docker.com/)'s 
 continued rise in the industry. There have been many new releases of Erlang and there is an actively
 supported Dockerhub repo of Erlang Docker images. Most significantly for LFE users, though, are the 
 following changes:

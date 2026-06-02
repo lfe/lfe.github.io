@@ -29,12 +29,12 @@ compelling to offer current and future generations of computer programmers.
 
 The list of posts for this series are as follows:
 
- * [Introduction](/excerpts/2015/03/22/1445-the-hidden-origins-of-lisp-introduction/)
- * [Giuseppe Peano](/excerpts/2015/03/23/1008-the-hidden-origins-of-lisp-peano/)
- * [Bertrand Russell](/excerpts/2015/03/24/0111-the-hidden-origins-of-lisp-russell/)
- * [Alonzo Church](/excerpts/2015/03/25/1108-the-hidden-origins-of-lisp-church/)
- * [John McCarthy](/excerpts/2015/03/26/1111-the-hidden-origins-of-lisp-mccarthy/)
- * [The Place of Lisp in the 21st Century](/excerpts/2015/03/27/1101-the-hidden-origins-of-lisp-future)
+ * [Introduction](/blog/excerpts/2015/03/22/1445-the-hidden-origins-of-lisp-introduction/)
+ * [Giuseppe Peano](/blog/excerpts/2015/03/23/1008-the-hidden-origins-of-lisp-peano/)
+ * [Bertrand Russell](/blog/excerpts/2015/03/24/0111-the-hidden-origins-of-lisp-russell/)
+ * [Alonzo Church](/blog/excerpts/2015/03/25/1108-the-hidden-origins-of-lisp-church/)
+ * [John McCarthy](/blog/excerpts/2015/03/26/1111-the-hidden-origins-of-lisp-mccarthy/)
+ * [The Place of Lisp in the 21st Century](/blog/excerpts/2015/03/27/1101-the-hidden-origins-of-lisp-future)
 
 If you find any issues or have questions, concerns, etc., you may provide
 feedback about the preface in the

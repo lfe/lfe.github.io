@@ -562,6 +562,7 @@ fn rewrite_internal_links(line: &str) -> String {
         "/archaeology/",
         "/formalwear/",
         "/updates/",
+        "/excerpts/",
     ];
 
     let mut result = line.to_string();

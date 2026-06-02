@@ -22,7 +22,7 @@ stories, ideas, tutorials, manifestos, sonnets, and novellas about LFE and, in
 fact, any Lisp running on the Erlang VM.
 
 This was an implicit understanding before, but (to borrow from the
-[Zen of Python](), explicit is better than implicit. There's now a link in the
+[Zen of Python](https://peps.python.org/pep-0020/), explicit is better than implicit. There's now a link in the
 header of the blog where you can [fork](https://github.com/lfe/blog/fork) the
 repository. This information is also supplied in the repo's
 [README](https://github.com/lfe/blog) file.

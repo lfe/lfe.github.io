@@ -21,6 +21,9 @@
         });
     });
 </script>
+{% if page.permalink contains "blog/" %}
+<script src="/pagefind/pagefind-component-ui.js" type="module"></script>
+{% endif %}
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-38274766-3"></script>
 <script>

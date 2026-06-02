@@ -33,6 +33,27 @@
     --gold-800: oklch(0.425 0.085 90.7);
     --gold-900: oklch(0.319 0.063 91.9);
     --gold-950: oklch(0.238 0.046 93.5);
+
+    /* ── Pagefind Component UI theming ── */
+    --pf-border-focus: #9a7907;
+    --pf-outline-focus: #9a7907;
+    --pf-mark: #9a7907;
+    --pf-font: ui-sans-serif, system-ui, sans-serif;
+    --pf-border-radius: 8px;
+}
+
+.dark {
+    --pf-text: #d1d5db;
+    --pf-text-secondary: #9ca3af;
+    --pf-text-muted: #6b7280;
+    --pf-background: #1e293b;
+    --pf-border: #374151;
+    --pf-border-focus: #d4a90a;
+    --pf-hover: #334155;
+    --pf-outline-focus: #d4a90a;
+    --pf-mark: #d4a90a;
+    --pf-skeleton: #334155;
+    --pf-skeleton-shine: #475569;
 }
 
 @layer components {
@@ -344,9 +365,10 @@
     }
 
     .blog-subnav-inner {
-        @apply max-w-[80rem] mx-auto px-4 sm:px-6 lg:px-8 flex items-center;
+        @apply max-w-[80rem] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between;
         padding-top: 6px;
         padding-bottom: 6px;
+        min-height: calc(1.75rem + 12px);
     }
 
     .blog-subnav-links {
@@ -416,6 +438,57 @@
     .blog-subnav-search-input:focus {
         @apply outline-none ring-1;
         ring-color: oklch(0.554 0.046 257.417);
+    }
+
+    /* ── Blog: Subnav searchbox (Component UI) ── */
+
+    .blog-subnav-inner pagefind-searchbox {
+        @apply block ml-auto;
+        --pf-border-radius: 4px;
+        --pf-font: ui-sans-serif, system-ui, sans-serif;
+        --pf-input-font-size: 0.875rem;
+        --pf-input-height: 1.75rem;
+    }
+
+    .dark .blog-subnav-inner pagefind-searchbox {
+        --pf-background: rgba(0, 0, 0, 0.25);
+        --pf-border: oklch(0.446 0.043 257.281);
+        --pf-text: #9ca3af;
+        --pf-text-secondary: #9ca3af;
+        --pf-hover: #334155;
+        --pf-border-focus: #d4a90a;
+        --pf-outline-focus: #d4a90a;
+    }
+
+    .blog-subnav-inner pagefind-searchbox {
+        --pf-background: rgba(255, 255, 255, 0.6);
+        --pf-border: oklch(0.704 0.04 256.788);
+        --pf-text: #4b5563;
+        --pf-text-secondary: #64748b;
+    }
+
+    /* ── Blog: Search page (Component UI) ── */
+
+    .blog-home-section pagefind-input,
+    .blog-home-section pagefind-results,
+    .blog-home-section pagefind-summary {
+        --pf-font: ui-sans-serif, system-ui, sans-serif;
+    }
+
+    .dark .blog-home-section pagefind-input,
+    .dark .blog-home-section pagefind-results,
+    .dark .blog-home-section pagefind-summary {
+        --pf-text: #d1d5db;
+        --pf-text-secondary: #9ca3af;
+        --pf-text-muted: #6b7280;
+        --pf-background: #1e293b;
+        --pf-border: #374151;
+        --pf-border-focus: #d4a90a;
+        --pf-hover: #334155;
+        --pf-outline-focus: #d4a90a;
+        --pf-mark: #d4a90a;
+        --pf-skeleton: #334155;
+        --pf-skeleton-shine: #475569;
     }
 
     /* ── Blog: Masthead ── */

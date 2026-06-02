@@ -27,6 +27,12 @@ pub fn run(src_dir: &Path) -> Result<()> {
         return Ok(());
     }
 
+    // 0. Assign default cover images to posts that have none
+    let assigned = assign_default_covers(src_dir)?;
+    if assigned > 0 {
+        println!("  assigned cover images to {} posts", assigned);
+    }
+
     // 1. Read editorial config
     let config_str = fs::read_to_string(&blog_yml).context("reading blog.yml")?;
     let config: serde_yaml::Value =
@@ -481,13 +487,24 @@ fn format_date_from_slug(slug: &str) -> String {
 }
 
 // ---------------------------------------------------------------------------
-// Deterministic image side
+// Deterministic selection
 // ---------------------------------------------------------------------------
 
-/// Compute a deterministic "left" or "right" from a post slug.
+/// Deterministically pick an item from a pool using the slug's SHA-256 hash.
 ///
-/// Uses the first byte of the slug's SHA-256 hash. Stable across builds
-/// for the same slug — a post's image side never changes.
+/// Same slug always picks the same item. Stable across builds, platforms,
+/// and pool reorderings (the pool must be sorted before calling).
+fn deterministic_pick<'a>(slug: &str, pool: &'a [String]) -> Option<&'a String> {
+    if pool.is_empty() {
+        return None;
+    }
+    let hash = Sha256::digest(slug.as_bytes());
+    let index =
+        u32::from_le_bytes([hash[0], hash[1], hash[2], hash[3]]) as usize % pool.len();
+    Some(&pool[index])
+}
+
+/// Compute a deterministic "left" or "right" from a post slug.
 fn deterministic_side(slug: &str) -> String {
     let hash = Sha256::digest(slug.as_bytes());
     if hash[0] % 2 == 0 {
@@ -495,6 +512,96 @@ fn deterministic_side(slug: &str) -> String {
     } else {
         "right".to_string()
     }
+}
+
+// ---------------------------------------------------------------------------
+// Default cover assignment
+// ---------------------------------------------------------------------------
+
+/// Scan all posts for `cover_image: null` and assign a deterministic image
+/// from the default pool (`src/images/default/`). Writes directly into the
+/// post's front-matter — idempotent (once assigned, kept on subsequent builds).
+///
+/// Uses the same `deterministic_pick` function available for Friday images
+/// or any other image pool.
+fn assign_default_covers(src_dir: &Path) -> Result<u32> {
+    let default_dir = src_dir.join("images/default");
+    if !default_dir.is_dir() {
+        return Ok(0);
+    }
+
+    // Collect and sort the pool for deterministic ordering.
+    let mut pool: Vec<String> = fs::read_dir(&default_dir)
+        .context("reading images/default")?
+        .filter_map(|e| e.ok())
+        .filter(|e| {
+            e.path()
+                .extension()
+                .map_or(false, |ext| ext == "png" || ext == "jpg" || ext == "webp")
+        })
+        .filter_map(|e| {
+            e.file_name()
+                .to_str()
+                .map(|name| format!("/images/default/{name}"))
+        })
+        .collect();
+    pool.sort();
+
+    if pool.is_empty() {
+        return Ok(0);
+    }
+
+    let posts_dir = src_dir.join("posts");
+    if !posts_dir.is_dir() {
+        return Ok(0);
+    }
+
+    let mut assigned = 0u32;
+
+    for entry in WalkDir::new(&posts_dir)
+        .into_iter()
+        .filter_map(|e| e.ok())
+        .filter(|e| {
+            e.file_type().is_file()
+                && e.path().extension().map_or(false, |ext| ext == "md")
+        })
+    {
+        let path = entry.path();
+        let content = fs::read_to_string(path)
+            .with_context(|| format!("reading {}", path.display()))?;
+
+        if !content.contains("cover_image: null") {
+            continue;
+        }
+
+        let slug = match slug_from_path(path, &posts_dir) {
+            Some(s) => s,
+            None => continue,
+        };
+
+        let image = match deterministic_pick(&slug, &pool) {
+            Some(img) => img.clone(),
+            None => continue,
+        };
+
+        let new_content = content
+            .replace(
+                "cover_image: null",
+                &format!("cover_image: \"{image}\""),
+            )
+            .replace(
+                "cover_alt: null",
+                "cover_alt: \"Vigdís — LFE, retro-futurist digital painting\"",
+            );
+
+        if new_content != content {
+            fs::write(path, &new_content)
+                .with_context(|| format!("writing {}", path.display()))?;
+            assigned += 1;
+        }
+    }
+
+    Ok(assigned)
 }
 
 // ---------------------------------------------------------------------------
@@ -506,19 +613,36 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_deterministic_side_is_stable() {
-        let a = deterministic_side("2019-05-13-1549-running-lfe-in-docker-updated");
-        let b = deterministic_side("2019-05-13-1549-running-lfe-in-docker-updated");
+    fn test_deterministic_pick_is_stable() {
+        let pool: Vec<String> = vec!["a.png", "b.png", "c.png"]
+            .into_iter()
+            .map(String::from)
+            .collect();
+        let a = deterministic_pick("some-slug", &pool);
+        let b = deterministic_pick("some-slug", &pool);
         assert_eq!(a, b);
     }
 
     #[test]
-    fn test_deterministic_side_varies() {
-        // With enough different slugs, both sides should appear.
-        let sides: HashSet<String> = (0..20)
-            .map(|i| deterministic_side(&format!("2024-01-01-0000-test-post-{i}")))
+    fn test_deterministic_pick_distributes() {
+        let pool: Vec<String> = (0..5).map(|i| format!("img-{i}.png")).collect();
+        let picks: HashSet<&String> = (0..50)
+            .filter_map(|i| deterministic_pick(&format!("slug-{i}"), &pool))
             .collect();
-        assert!(sides.len() > 1, "expected both left and right sides");
+        assert!(picks.len() > 1, "expected multiple distinct picks");
+    }
+
+    #[test]
+    fn test_deterministic_pick_empty_pool() {
+        let pool: Vec<String> = vec![];
+        assert!(deterministic_pick("any-slug", &pool).is_none());
+    }
+
+    #[test]
+    fn test_deterministic_side_is_stable() {
+        let a = deterministic_side("2019-05-13-1549-running-lfe-in-docker-updated");
+        let b = deterministic_side("2019-05-13-1549-running-lfe-in-docker-updated");
+        assert_eq!(a, b);
     }
 
     #[test]

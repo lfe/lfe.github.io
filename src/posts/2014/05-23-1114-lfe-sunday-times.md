@@ -11,8 +11,8 @@ data:
   author: duncan-mcgreggor
   written_for: null
   last_validated: null
-  cover_image: null
-  cover_alt: null
+  cover_image: "/images/default/LFE_00220_.png"
+  cover_alt: "Vigdís — LFE, retro-futurist digital painting"
   math: false
 ---
 After watching the LFE Daily from <a href="http://paper.li">paper.li</a> for a few weeks,

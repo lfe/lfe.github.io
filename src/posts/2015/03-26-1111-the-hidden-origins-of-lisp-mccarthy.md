@@ -11,8 +11,8 @@ data:
   author: duncan-mcgreggor
   written_for: null
   last_validated: null
-  cover_image: null
-  cover_alt: null
+  cover_image: "/images/default/LFE_00255_.png"
+  cover_alt: "Vigdís — LFE, retro-futurist digital painting"
   math: false
 ---
 <a href="/blog/assets/images/posts/John-McCarthy.jpg"><img class="right medium" src="/blog/assets/images/posts/John-McCarthy.jpg" /></a> John McCarthy: Creator of the prefix-notation programming language Lisp and founder of AI.

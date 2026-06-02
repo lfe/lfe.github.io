@@ -11,8 +11,8 @@ data:
   author: duncan-mcgreggor
   written_for: null
   last_validated: null
-  cover_image: null
-  cover_alt: null
+  cover_image: "/images/default/LFE_00245_.png"
+  cover_alt: "Vigdís — LFE, retro-futurist digital painting"
   math: false
 ---
 <a href="/blog/assets/images/posts/Erlang-Python-Greats.png"><img class="right thumb" src="/blog/assets/images/posts/Erlang-Python-Greats.png" /></a>

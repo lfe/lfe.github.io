@@ -11,8 +11,8 @@ data:
   author: duncan-mcgreggor
   written_for: null
   last_validated: null
-  cover_image: null
-  cover_alt: null
+  cover_image: "/images/default/LFE_00255_.png"
+  cover_alt: "Vigdís — LFE, retro-futurist digital painting"
   math: false
 ---
 When asked recently about the history of LFE on the <a href="https://groups.google.com/d/msg/lisp-flavoured-erlang/XA5HeLbQQDk/Jdbf0KJV7dUJ">LFE mail list</a>,

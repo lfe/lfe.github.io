@@ -11,8 +11,8 @@ data:
   author: duncan-mcgreggor
   written_for: null
   last_validated: null
-  cover_image: null
-  cover_alt: null
+  cover_image: "/images/default/LFE_00253_.png"
+  cover_alt: "Vigdís — LFE, retro-futurist digital painting"
   math: false
 ---
 <a href="/blog/assets/images/posts/lfetool-logo-large-grey.png"><img class="right smallplus" src="/blog/assets/images/posts/lfetool-logo-large-grey.png" /></a>The next version of lfetool will provide users with the flexibility

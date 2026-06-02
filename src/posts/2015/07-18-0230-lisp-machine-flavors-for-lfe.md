@@ -11,8 +11,8 @@ data:
   author: robert-virding
   written_for: null
   last_validated: null
-  cover_image: null
-  cover_alt: null
+  cover_image: "/images/default/LFE_00243_.png"
+  cover_alt: "Vigdís — LFE, retro-futurist digital painting"
   math: false
 ---
 <a href="/blog/assets/images/posts/lm_logo.png"><img class="right tiny" src="/blog/assets/images/posts/lm_logo.png" /></a>Long, long ago I did an implementation of MIT Lisp Machine Flavors for Portable Standard Lisp. This was a very interesting project but it is now all lost in antiquity.

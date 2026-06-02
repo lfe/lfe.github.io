@@ -11,8 +11,8 @@ data:
   author: duncan-mcgreggor
   written_for: null
   last_validated: null
-  cover_image: null
-  cover_alt: null
+  cover_image: "/images/default/LFE_00218_.png"
+  cover_alt: "Vigdís — LFE, retro-futurist digital painting"
   math: false
 ---
 <a href="/blog/assets/images/posts/t-shirt2-unbox-1.jpg"><img class="right thumb" src="/blog/assets/images/posts/t-shirt2-unbox-1.jpg" /></a>The LFE community's latest T-shirt bonanza is drawing to a close, the conclusion of which will result in the perfect summer-wear for the discerning hacker. This is a fun little post that shares a bit of the T-shirt's unboxing :-)

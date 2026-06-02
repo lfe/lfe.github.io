@@ -13,8 +13,8 @@ data:
     lfe: "0.9"
     erlang: "17"
   last_validated: null
-  cover_image: null
-  cover_alt: null
+  cover_image: "/images/default/LFE_00243_.png"
+  cover_alt: "Vigdís — LFE, retro-futurist digital painting"
   math: false
 ---
 

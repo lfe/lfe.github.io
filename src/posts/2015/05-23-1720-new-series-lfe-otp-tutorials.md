@@ -11,8 +11,8 @@ data:
   author: duncan-mcgreggor
   written_for: null
   last_validated: null
-  cover_image: null
-  cover_alt: null
+  cover_image: "/images/default/LFE_00239_.png"
+  cover_alt: "Vigdís — LFE, retro-futurist digital painting"
   math: false
 ---
 <a href="/blog/assets/images/posts/LFE-signal.jpg"><img class="right tiny" src="/blog/assets/images/posts/LFE-signal.jpg" /></a>This post introduces an new series of tutorials on the LFE blog which will step LFE users through OTP in the style of Lisp Flavoured Erlang.

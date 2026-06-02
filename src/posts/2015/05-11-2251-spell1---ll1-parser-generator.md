@@ -11,8 +11,8 @@ data:
   author: robert-virding
   written_for: null
   last_validated: null
-  cover_image: null
-  cover_alt: null
+  cover_image: "/images/default/LFE_00255_.png"
+  cover_alt: "Vigdís — LFE, retro-futurist digital painting"
   math: false
 ---
 <a href="/blog/assets/images/posts/lfe-tooling-leonardo-gears-2.png"><img class="right small" src="/blog/assets/images/posts/lfe-tooling-leonardo-gears-2.png" /></a>I have been working on an LL(1) grammar parser generator for Erlang/LFE. While we have yecc for LALR(1) grammars this isn't suitable for everything. I think there are 2 main problems:

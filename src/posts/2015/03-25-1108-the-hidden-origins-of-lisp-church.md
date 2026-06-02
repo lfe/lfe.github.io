@@ -11,8 +11,8 @@ data:
   author: duncan-mcgreggor
   written_for: null
   last_validated: null
-  cover_image: null
-  cover_alt: null
+  cover_image: "/images/default/LFE_00255_.png"
+  cover_alt: "Vigdís — LFE, retro-futurist digital painting"
   math: true
 ---
 <a href="/blog/assets/images/posts/Alonzo-Church.jpg"><img class="right medium" src="/blog/assets/images/posts/Alonzo-Church.jpg" /></a> Alonzo Church: Creator of the λ&#8209;calculus and articulator of the Church–Turing thesis.

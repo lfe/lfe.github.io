@@ -11,8 +11,8 @@ data:
   author: eric-bailey
   written_for: null
   last_validated: null
-  cover_image: null
-  cover_alt: null
+  cover_image: "/images/default/LFE_00237_.png"
+  cover_alt: "Vigdís — LFE, retro-futurist digital painting"
   math: false
 ---
 What follows is an LFE translation of Roberto Aloi's

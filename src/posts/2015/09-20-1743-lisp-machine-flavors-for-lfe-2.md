@@ -11,8 +11,8 @@ data:
   author: robert-virding
   written_for: null
   last_validated: null
-  cover_image: null
-  cover_alt: null
+  cover_image: "/images/default/LFE_00239_.png"
+  cover_alt: "Vigdís — LFE, retro-futurist digital painting"
   math: false
 ---
 <a href="/blog/assets/images/posts/lm_logo.png"><img class="right tiny" src="/blog/assets/images/posts/lm_logo.png" /></a>Work on an LFE Flavors implementation had progressed and there is now something to test here [LFE Flavors](https://github.com/rvirding/flavors).

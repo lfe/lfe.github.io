@@ -11,8 +11,8 @@ data:
   author: lfe-maintainers
   written_for: null
   last_validated: null
-  cover_image: null
-  cover_alt: null
+  cover_image: "/images/default/LFE_00245_.png"
+  cover_alt: "Vigdís — LFE, retro-futurist digital painting"
   math: false
 ---
 <a href="/blog/assets/images/posts/LFE-Happy-Holidays.png"><img class="left medium" src="/blog/assets/images/posts/LFE-Happy-Holidays.png" /></a>

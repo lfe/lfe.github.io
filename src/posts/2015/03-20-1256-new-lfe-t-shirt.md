@@ -11,8 +11,8 @@ data:
   author: duncan-mcgreggor
   written_for: null
   last_validated: null
-  cover_image: null
-  cover_alt: null
+  cover_image: "/images/default/LFE_00239_.png"
+  cover_alt: "Vigdís — LFE, retro-futurist digital painting"
   math: false
 ---
 <a href="/blog/assets/images/posts/lfescars2-front-back.png"><img class="left thumb" src="/blog/assets/images/posts/lfescars2-front-back.png" /></a>The new LFE T-shirt is designed and awaiting more sign-ups! We're about 1/4 of the way (**Update**: now 1/2!) to the minimum pledges required. If you'd like to order one or ten, you may do so <a href="http://www.customink.com/signup/96rbuknu">here</a>. For more information on the process, read on ...

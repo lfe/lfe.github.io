@@ -18,22 +18,25 @@ pub fn run(project_dir: &Path) -> Result<()> {
     let src_dir = project_dir.join("src");
     let output_dir = project_dir.join("site");
 
-    println!("=== Step 1/6: prerender ===");
+    println!("=== Step 1/7: prerender ===");
     super::prerender::run_with_data_dir(&src_dir)?;
 
-    println!("=== Step 2/6: sass ===");
+    println!("=== Step 2/7: blog-resolve ===");
+    super::blog_resolve::run(&src_dir)?;
+
+    println!("=== Step 3/7: sass ===");
     super::sass::run(project_dir, &src_dir)?;
 
-    println!("=== Step 3/6: tailwindcss ===");
+    println!("=== Step 4/7: tailwindcss ===");
     run_tailwind(project_dir, &src_dir)?;
 
-    println!("=== Step 4/6: cobalt ===");
+    println!("=== Step 5/7: cobalt ===");
     run_cobalt(project_dir, &output_dir)?;
 
-    println!("=== Step 5/6: post-build ===");
+    println!("=== Step 6/7: post-build ===");
     generate_sitemap(&src_dir, &output_dir, "https://lfe.io")?;
 
-    println!("=== Step 6/6: pagefind ===");
+    println!("=== Step 7/7: pagefind ===");
     run_pagefind(project_dir, &output_dir)?;
 
     println!("\nbuild complete: output in {}", output_dir.display());

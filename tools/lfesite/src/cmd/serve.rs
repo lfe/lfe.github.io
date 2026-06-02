@@ -3,7 +3,7 @@ use std::process::{Child, Command, Stdio};
 use std::sync::mpsc;
 use std::time::Duration;
 
-use anyhow::{bail, Context, Result};
+use anyhow::{Context, Result};
 use notify::{RecursiveMode, Watcher};
 
 /// Start a dev server with file watching.

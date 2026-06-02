@@ -4,6 +4,7 @@ use anyhow::Result;
 use clap::{Parser, Subcommand};
 
 mod cmd;
+mod slug;
 
 /// Build orchestration and data pre-rendering for the LFE website.
 #[derive(Debug, Parser)]
@@ -39,6 +40,36 @@ enum Command {
     },
     /// Sanity checks on data files.
     Validate,
+    /// Create a new blog post.
+    NewPost {
+        /// Post title
+        title: String,
+        /// Create as draft
+        #[arg(long)]
+        draft: bool,
+        /// Override the URL slug
+        #[arg(long)]
+        slug: Option<String>,
+        /// Post category (default: tutorials)
+        #[arg(long, default_value = "tutorials")]
+        category: String,
+        /// Comma-separated tags
+        #[arg(long, default_value = "")]
+        tags: String,
+        /// Override timestamp (YYYY-MM-DD HH:MM)
+        #[arg(long)]
+        date: Option<String>,
+    },
+    /// Publish a draft post (set is_draft: false).
+    PublishPost {
+        /// Path to the post file
+        file: PathBuf,
+    },
+    /// Convert a post to draft, or create a new draft interactively.
+    DraftPost {
+        /// Path to an existing post file (omit to create new draft)
+        file: Option<PathBuf>,
+    },
 }
 
 fn main() -> Result<()> {
@@ -52,5 +83,20 @@ fn main() -> Result<()> {
         Command::Build => cmd::build::run(&project_dir),
         Command::Serve { port } => cmd::serve::run(&project_dir, port),
         Command::Validate => cmd::validate::run(&project_dir),
+        Command::NewPost { title, draft, slug, category, tags, date } => {
+            cmd::new_post::run(
+                &project_dir,
+                &title,
+                draft,
+                slug.as_deref(),
+                &category,
+                &tags,
+                date.as_deref(),
+            )
+        }
+        Command::PublishPost { file } => cmd::publish_post::run(&file),
+        Command::DraftPost { file } => {
+            cmd::draft_post::run(&project_dir, file.as_deref())
+        }
     }
 }

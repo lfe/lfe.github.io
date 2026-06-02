@@ -1,0 +1,28 @@
+# ── Blog Front Page: Editorial Configuration ──
+#
+# Each slot takes a post slug (filename stem, e.g. "2019-05-13-1549-running-...").
+# Leave null or omit to fall back to the next chronological post from the river.
+#
+# The lfesite prerender step resolves these slugs to full post metadata
+# and writes _data/blog_resolved.yml for the templates.
+
+# ── Feature Well ──
+# Centerpiece: large card, left side. Widescreen cover on top, text below.
+centrepiece: "2019-05-13-1549-running-lfe-in-docker-updated"
+
+# Off-ledes: three stacked cards, right side. Square image left, text right.
+lede_1: "2019-05-13-1538-catch-up"
+lede_2: "2016-04-27-1052-tracing-lfe-functions"
+# lede_3 removed — feature well is now 1+2
+
+# ── Spotlight Strip ──
+# Full-width highlight: text left, image right, 50/50 split.
+spotlight: "2014-12-15-1848-byte-august-1979-the-lisp-issue"
+
+# ── River ──
+# Number of chronological items shown after the spotlight, before the CTA.
+river_count: 6
+
+# ── Defaults ──
+default_cover_image: "/images/LFE_Masthead_00234_.png"
+default_cover_alt: "The LFE Blog"

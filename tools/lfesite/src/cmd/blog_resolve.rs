@@ -56,7 +56,7 @@ pub fn run(src_dir: &Path) -> Result<()> {
         .unwrap_or("The LFE Blog");
 
     // 5. Resolve editorial slots
-    let slot_names = ["centrepiece", "lede_1", "lede_2", "lede_3", "spotlight"];
+    let slot_names = ["centrepiece", "lede_1", "lede_2", "spotlight"];
 
     // Slugs explicitly configured for any slot (used to build the fallback pool).
     let configured_slugs: HashSet<&str> = slot_names

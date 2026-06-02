@@ -29,106 +29,110 @@
 
       <section class="blog-home-section">
 
+        <!-- ── Feature Well ── -->
         <div class="blog-featured">
           <h2 class="blog-section-heading">Featured</h2>
           <div class="blog-featured-grid">
 
-            {% for post in paginator.pages %}
-            {% if forloop.index <= 4 %}
-
-              {% assign author_name = post.data.author %}
-              {% for author_entry in site.data.authors %}
-                {% if author_entry[0] == post.data.author %}
-                  {% assign author_name = author_entry[1].name %}
+            <!-- Centrepiece: large card, left -->
+            {% if site.data.blog_resolved.centrepiece %}
+            {% assign cp = site.data.blog_resolved.centrepiece %}
+            <a href="{{ cp.permalink }}" class="blog-featured-card blog-featured-card-large">
+              <div class="blog-card-img-wrap blog-card-img-large">
+                <img src="{{ cp.cover_image }}" alt="{{ cp.cover_alt }}" class="blog-card-img">
+              </div>
+              <div class="blog-card-body">
+                <span class="blog-card-category">{% for cat in cp.categories %}{% if forloop.first %}{{ cat }}{% endif %}{% endfor %}</span>
+                <h3 class="blog-card-title">{{ cp.title }}</h3>
+                {% if cp.description != "" %}
+                <p class="blog-card-desc">{{ cp.description }}</p>
                 {% endif %}
-              {% endfor %}
-
-              {% if forloop.first %}
-              <a href="/{{ post.permalink }}" class="blog-featured-card blog-featured-card-large">
-              {% else %}
-              <a href="/{{ post.permalink }}" class="blog-featured-card blog-featured-card-small">
-              {% endif %}
-
-                {% if post.data.cover_image %}
-                <div class="blog-card-img-wrap{% if forloop.first %} blog-card-img-large{% endif %}">
-                  <img src="{{ post.data.cover_image }}" alt="{{ post.data.cover_alt }}" class="blog-card-img">
-                </div>
-                {% else %}
-                <div class="blog-card-fallback{% if forloop.first %} blog-card-fallback-large{% endif %} blog-card-cat-{% for cat in post.categories %}{% if forloop.first %}{{ cat }}{% endif %}{% endfor %}">
-                  <span class="blog-card-fallback-label">{% for cat in post.categories %}{% if forloop.first %}{{ cat }}{% endif %}{% endfor %}</span>
-                </div>
-                {% endif %}
-
-                <div class="blog-card-body">
-                  <span class="blog-card-category">{% for cat in post.categories %}{% if forloop.first %}{{ cat }}{% endif %}{% endfor %}</span>
-                  <h3 class="blog-card-title">{{ post.title }}</h3>
-                  {% if post.description != "" %}
-                  <p class="blog-card-desc">{{ post.description }}</p>
-                  {% endif %}
-                  <p class="blog-card-meta">{{ author_name }} · {{ post.published_date | date: "%B %-d, %Y" }}</p>
-                </div>
-
-              </a>
-
+                <p class="blog-card-meta">{{ cp.author_name }} · {{ cp.date_display }} · {{ cp.reading_time }} min read</p>
+              </div>
+            </a>
             {% endif %}
-            {% endfor %}
+
+            <!-- Off-ledes: three stacked cards, right -->
+            {% if site.data.blog_resolved.lede_1 %}
+            {% assign l1 = site.data.blog_resolved.lede_1 %}
+            <a href="{{ l1.permalink }}" class="blog-featured-card blog-featured-card-small">
+              <div class="blog-card-img-wrap">
+                <img src="{{ l1.cover_image }}" alt="{{ l1.cover_alt }}" class="blog-card-img blog-card-img-square">
+              </div>
+              <div class="blog-card-body">
+                <span class="blog-card-category">{% for cat in l1.categories %}{% if forloop.first %}{{ cat }}{% endif %}{% endfor %}</span>
+                <h3 class="blog-card-title">{{ l1.title }}</h3>
+                <p class="blog-card-meta">{{ l1.author_name }} · {{ l1.date_display }}</p>
+              </div>
+            </a>
+            {% endif %}
+
+            {% if site.data.blog_resolved.lede_2 %}
+            {% assign l2 = site.data.blog_resolved.lede_2 %}
+            <a href="{{ l2.permalink }}" class="blog-featured-card blog-featured-card-small">
+              <div class="blog-card-img-wrap">
+                <img src="{{ l2.cover_image }}" alt="{{ l2.cover_alt }}" class="blog-card-img blog-card-img-square">
+              </div>
+              <div class="blog-card-body">
+                <span class="blog-card-category">{% for cat in l2.categories %}{% if forloop.first %}{{ cat }}{% endif %}{% endfor %}</span>
+                <h3 class="blog-card-title">{{ l2.title }}</h3>
+                <p class="blog-card-meta">{{ l2.author_name }} · {{ l2.date_display }}</p>
+              </div>
+            </a>
+            {% endif %}
 
           </div>
         </div>
 
-        {% assign story_count = 0 %}
-        {% for post in paginator.pages %}
-          {% if forloop.index > 4 %}
-            {% assign story_count = story_count | plus: 1 %}
-          {% endif %}
-        {% endfor %}
-
-        {% if story_count > 0 %}
-        <div class="blog-stories">
-          <h2 class="blog-section-heading">All Stories</h2>
-
-          {% for post in paginator.pages %}
-          {% if forloop.index > 4 %}
-
-            {% assign author_name = post.data.author %}
-            {% for author_entry in site.data.authors %}
-              {% if author_entry[0] == post.data.author %}
-                {% assign author_name = author_entry[1].name %}
+        <!-- ── Spotlight Strip ── -->
+        {% if site.data.blog_resolved.spotlight %}
+        {% assign sp = site.data.blog_resolved.spotlight %}
+        <div class="blog-spotlight">
+          <h2 class="blog-section-heading">Spotlight</h2>
+          <a href="{{ sp.permalink }}" class="blog-spotlight-card">
+            <div class="blog-spotlight-text">
+              <span class="blog-card-category">{% for cat in sp.categories %}{% if forloop.first %}{{ cat }}{% endif %}{% endfor %}</span>
+              <h3 class="blog-spotlight-title">{{ sp.title }}</h3>
+              {% if sp.description != "" %}
+              <p class="blog-spotlight-desc">{{ sp.description }}</p>
               {% endif %}
-            {% endfor %}
+              <p class="blog-card-meta">{{ sp.author_name }} · {{ sp.date_display }} · {{ sp.reading_time }} min read</p>
+            </div>
+            <div class="blog-spotlight-img-wrap">
+              <img src="{{ sp.cover_image }}" alt="{{ sp.cover_alt }}" class="blog-spotlight-img">
+            </div>
+          </a>
+        </div>
+        {% endif %}
 
-            <a href="/{{ post.permalink }}" class="blog-story-item">
-              <div class="blog-story-content">
-                <span class="blog-card-category">{% for cat in post.categories %}{% if forloop.first %}{{ cat }}{% endif %}{% endfor %}</span>
-                <h3 class="blog-story-title">{{ post.title }}</h3>
-                {% if post.description != "" %}
-                <p class="blog-story-desc">{{ post.description }}</p>
-                {% endif %}
-                <p class="blog-card-meta">{{ author_name }} · {{ post.published_date | date: "%B %-d, %Y" }}</p>
-              </div>
-            </a>
+        <!-- ── The River ── -->
+        {% if site.data.blog_resolved.river.size > 0 %}
+        <div class="blog-river">
+          <h2 class="blog-section-heading">Recent</h2>
 
-          {% endif %}
+          {% for post in site.data.blog_resolved.river %}
+          <a href="{{ post.permalink }}" class="blog-river-item">
+            <div class="blog-river-img-wrap">
+              <img src="{{ post.cover_image }}" alt="{{ post.cover_alt }}" class="blog-river-img">
+            </div>
+            <div class="blog-river-text">
+              <span class="blog-card-category">{% for cat in post.categories %}{% if forloop.first %}{{ cat }}{% endif %}{% endfor %}</span>
+              <h3 class="blog-river-title">{{ post.title }}</h3>
+              {% if post.description != "" %}
+              <p class="blog-river-desc">{{ post.description }}</p>
+              {% endif %}
+              <p class="blog-card-meta">{{ post.author_name }} · {{ post.date_display }} · {{ post.reading_time }} min read</p>
+            </div>
+          </a>
           {% endfor %}
 
         </div>
         {% endif %}
 
-        {% if paginator.total_indexes > 1 %}
-        <nav class="blog-pagination">
-          {% if paginator.previous_index %}
-            <a href="/{{ paginator.previous_index_permalink }}" class="blog-pagination-link">&larr; Newer</a>
-          {% endif %}
-
-          <span class="blog-pagination-info">
-            Page {{ paginator.index }} of {{ paginator.total_indexes }}
-          </span>
-
-          {% if paginator.next_index %}
-            <a href="/{{ paginator.next_index_permalink }}" class="blog-pagination-link">Older &rarr;</a>
-          {% endif %}
-        </nav>
-        {% endif %}
+        <!-- ── Continue Reading CTA ── -->
+        <div class="blog-cta">
+          <a href="/blog/archive/" class="blog-cta-button">Continue Reading &rarr;</a>
+        </div>
 
       </section>
 

@@ -3,6 +3,7 @@ use std::path::Path;
 
 use anyhow::{bail, Context, Result};
 
+/// Publish a draft post by setting `is_draft: false` in its front matter.
 pub fn run(file: &Path) -> Result<()> {
     if !file.exists() {
         bail!("file not found: {}", file.display());
@@ -12,8 +13,8 @@ pub fn run(file: &Path) -> Result<()> {
         .with_context(|| format!("reading {}", file.display()))?;
 
     if content.contains("is_draft: false") {
-        println!();
-        println!("  already published: {}", file.display());
+        eprintln!();
+        eprintln!("  already published: {}", file.display());
         return Ok(());
     }
 
@@ -32,10 +33,10 @@ pub fn run(file: &Path) -> Result<()> {
         .map(|l| l.trim_start_matches("title:").trim().trim_matches('"'))
         .unwrap_or("(unknown)");
 
-    println!();
-    println!("  published: {}", file.display());
-    println!("  title:     \"{}\"", title);
-    println!();
+    eprintln!();
+    eprintln!("  published: {}", file.display());
+    eprintln!("  title:     \"{}\"", title);
+    eprintln!();
 
     Ok(())
 }

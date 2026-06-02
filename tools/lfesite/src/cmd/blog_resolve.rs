@@ -6,6 +6,8 @@ use anyhow::{Context, Result};
 use sha2::{Digest, Sha256};
 use walkdir::WalkDir;
 
+use crate::util::split_front_matter;
+
 /// Resolve blog editorial configuration into a template-ready data file.
 ///
 /// Reads `_data/blog.yml` (editorial config) and all post front-matter from
@@ -97,7 +99,10 @@ pub fn run(src_dir: &Path) -> Result<()> {
         resolved_slots.push((*name, resolved));
     }
 
-    // 6. Build river
+    // 6. Build sorted authors list (by post count desc, then name asc)
+    let authors_sorted = build_sorted_authors(&all_posts, &data_dir)?;
+
+    // 7. Build river
     let river: Vec<serde_yaml::Value> = all_posts
         .iter()
         .filter(|p| !used.contains(&p.slug))
@@ -108,7 +113,7 @@ pub fn run(src_dir: &Path) -> Result<()> {
         })
         .collect();
 
-    // 7. Assemble output
+    // 8. Assemble output
     let mut out = serde_yaml::Mapping::new();
 
     for (name, value) in &resolved_slots {
@@ -118,13 +123,14 @@ pub fn run(src_dir: &Path) -> Result<()> {
     }
 
     out.insert(ykey("river"), serde_yaml::Value::Sequence(river));
+    out.insert(ykey("authors_sorted"), serde_yaml::Value::Sequence(authors_sorted));
     out.insert(ykey("default_cover_image"), ystr(default_cover));
     out.insert(ykey("default_cover_alt"), ystr(default_alt));
 
     let yaml_out = serde_yaml::to_string(&serde_yaml::Value::Mapping(out))
         .context("serializing blog_resolved.yml")?;
 
-    // 8. Write (idempotent)
+    // 9. Write (idempotent)
     let resolved_path = data_dir.join("blog_resolved.yml");
     let needs_write = if resolved_path.exists() {
         let existing = fs::read_to_string(&resolved_path).unwrap_or_default();
@@ -409,19 +415,72 @@ fn slug_from_path(path: &Path, posts_dir: &Path) -> Option<String> {
     }
 }
 
-/// Split YAML front-matter (`---` delimited) from body content.
-fn split_front_matter(content: &str) -> Option<(String, &str)> {
-    let trimmed = content.trim_start();
-    let rest = trimmed.strip_prefix("---")?;
-    let end = rest.find("\n---")?;
-    let fm = rest[..end].to_string();
-    let body_start = end + 4;
-    let body = if body_start < rest.len() && rest.as_bytes()[body_start] == b'\n' {
-        &rest[body_start + 1..]
-    } else {
-        &rest[body_start..]
-    };
-    Some((fm, body))
+
+/// Build a sorted list of authors with post counts for template use.
+///
+/// Sorted by post count descending, then display name ascending for ties.
+fn build_sorted_authors(posts: &[PostMeta], data_dir: &Path) -> Result<Vec<serde_yaml::Value>> {
+    let path = data_dir.join("authors.yml");
+    if !path.exists() {
+        return Ok(Vec::new());
+    }
+
+    let content = fs::read_to_string(&path).context("reading authors.yml")?;
+    let doc: serde_yaml::Value =
+        serde_yaml::from_str(&content).context("parsing authors.yml")?;
+
+    let mut post_counts: HashMap<String, usize> = HashMap::new();
+    for post in posts {
+        *post_counts.entry(post.author_slug.clone()).or_insert(0) += 1;
+    }
+
+    let mut author_entries: Vec<(String, String, Option<String>, Option<String>, usize)> = Vec::new();
+
+    if let Some(map) = doc.as_mapping() {
+        for (key, value) in map {
+            if let Some(slug) = key.as_str() {
+                let name = value
+                    .get("name")
+                    .and_then(|v| v.as_str())
+                    .unwrap_or(slug)
+                    .to_string();
+                let bio = value
+                    .get("bio")
+                    .and_then(|v| v.as_str())
+                    .map(String::from);
+                let avatar = value
+                    .get("avatar")
+                    .and_then(|v| v.as_str())
+                    .map(String::from);
+                let count = post_counts.get(slug).copied().unwrap_or(0);
+                author_entries.push((slug.to_string(), name, bio, avatar, count));
+            }
+        }
+    }
+
+    author_entries.sort_by(|a, b| b.4.cmp(&a.4).then_with(|| a.1.cmp(&b.1)));
+
+    let sorted: Vec<serde_yaml::Value> = author_entries
+        .into_iter()
+        .map(|(slug, name, bio, avatar, count)| {
+            let mut map = serde_yaml::Mapping::new();
+            map.insert(ykey("slug"), ystr(&slug));
+            map.insert(ykey("name"), ystr(&name));
+            if let Some(b) = &bio {
+                map.insert(ykey("bio"), ystr(b));
+            }
+            if let Some(a) = &avatar {
+                map.insert(ykey("avatar"), ystr(a));
+            }
+            map.insert(
+                ykey("post_count"),
+                serde_yaml::Value::Number(serde_yaml::Number::from(count as u64)),
+            );
+            serde_yaml::Value::Mapping(map)
+        })
+        .collect();
+
+    Ok(sorted)
 }
 
 /// Load author slug → display name mapping from `_data/authors.yml`.

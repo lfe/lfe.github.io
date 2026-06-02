@@ -6,8 +6,9 @@ use std::process::Command;
 use anyhow::{bail, Context, Result};
 use chrono::{NaiveDateTime, Utc};
 
-use crate::slug::slugify;
+use crate::util::slugify;
 
+/// Create a new blog post file with front-matter scaffolding.
 pub fn run(
     project_dir: &Path,
     title: &str,
@@ -93,16 +94,16 @@ data:
         .with_context(|| format!("writing {}", filepath.display()))?;
 
     let rel_path = filepath.strip_prefix(project_dir).unwrap_or(&filepath);
-    println!();
-    println!("  created: {}", rel_path.display());
-    println!("  status:  {}", if draft { "draft" } else { "published (use --draft for draft)" });
-    println!("  author:  {author}");
-    println!();
+    eprintln!();
+    eprintln!("  created: {}", rel_path.display());
+    eprintln!("  status:  {}", if draft { "draft" } else { "published (use --draft for draft)" });
+    eprintln!("  author:  {author}");
+    eprintln!();
 
     // Offer to open in $EDITOR
     if let Ok(editor) = std::env::var("EDITOR") {
-        print!("  Open post in $EDITOR? [Y/n] ");
-        io::stdout().flush()?;
+        eprint!("  Open post in $EDITOR? [Y/n] ");
+        io::stderr().flush()?;
         let mut input = String::new();
         io::stdin().read_line(&mut input)?;
         let input = input.trim().to_lowercase();
@@ -126,12 +127,16 @@ fn detect_author() -> String {
         Ok(o) if o.status.success() => {
             let name = String::from_utf8_lossy(&o.stdout).trim().to_string();
             if name.is_empty() {
+                eprintln!("  note: git user.name is empty, using 'unknown' as author");
                 "unknown".to_string()
             } else {
                 slugify(&name)
             }
         }
-        _ => "unknown".to_string(),
+        _ => {
+            eprintln!("  note: could not detect author from git, using 'unknown'");
+            "unknown".to_string()
+        }
     }
 }
 

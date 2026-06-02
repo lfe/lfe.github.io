@@ -78,9 +78,10 @@ pub fn run(project_dir: &Path) -> Result<()> {
     // Check 2: _md/_html pairing (report)
     // ------------------------------------------------------------------
     println!("validate: checking _md/_html pairing...");
-    let pairing_errors: Vec<&String> = errors
+    let pairing_errors: Vec<&str> = errors
         .iter()
         .filter(|e| e.contains("has no") && e.contains("_html sibling"))
+        .map(|e| e.as_str())
         .collect();
     if pairing_errors.is_empty() {
         println!("  \u{2713} all _md fields have _html siblings");

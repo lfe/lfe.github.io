@@ -21,18 +21,9 @@
 
         <h1 class="blog-section-heading">{{ page.data.long_title }}</h1>
 
-        {% for author_entry in site.data.authors %}
-          {% assign slug = author_entry[0] %}
-          {% assign author = author_entry[1] %}
+        {% for author in site.data.blog_resolved.authors_sorted %}
 
-          {% assign post_count = 0 %}
-          {% for post in paginator.pages %}
-            {% if post.data.author == slug %}
-              {% assign post_count = post_count | plus: 1 %}
-            {% endif %}
-          {% endfor %}
-
-          <a href="/blog/authors/{{ slug }}/" class="blog-author-page-card">
+          <a href="/blog/authors/{{ author.slug }}/" class="blog-author-page-card">
             {% if author.avatar %}
             <img src="{{ author.avatar }}" alt="{{ author.name }}" class="blog-author-avatar-lg">
             {% else %}
@@ -43,7 +34,7 @@
               {% if author.bio %}
               <p class="blog-author-page-bio">{{ author.bio }}</p>
               {% endif %}
-              <p class="blog-card-meta">{{ post_count }} posts</p>
+              <p class="blog-card-meta">{{ author.post_count }} posts</p>
             </div>
           </a>
         {% endfor %}

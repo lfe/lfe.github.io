@@ -4,7 +4,7 @@ use anyhow::Result;
 use clap::{Parser, Subcommand};
 
 mod cmd;
-mod slug;
+mod util;
 
 /// Build orchestration and data pre-rendering for the LFE website.
 #[derive(Debug, Parser)]

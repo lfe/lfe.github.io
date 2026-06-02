@@ -336,8 +336,13 @@ fn ensure_pagefind_binary() -> Result<std::path::PathBuf> {
 
 /// Resolve the latest pagefind release version tag (e.g. "v1.3.0").
 ///
-/// Uses the GitHub API to query the latest release, extracting the
-/// tag_name field with grep/sed (no jq dependency).
+/// Resolve the latest pagefind release version tag (e.g. "v1.3.0").
+///
+/// Uses the GitHub API JSON endpoint with a `curl | grep | sed` shell
+/// pipeline to extract `tag_name`. This depends on `curl`, `grep`, and
+/// `sed` being available on PATH (standard on macOS and Linux). If the
+/// GitHub API response format changes, this will fail with a clear
+/// error message rather than silently downloading the wrong version.
 fn resolve_pagefind_version() -> Result<String> {
     let output = Command::new("sh")
         .args([

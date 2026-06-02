@@ -5,6 +5,8 @@ use std::path::Path;
 use anyhow::{Context, Result};
 use regex::Regex;
 
+use crate::util::split_front_matter;
+
 /// Run the Jekyll-to-Cobalt blog post migration.
 pub fn run(project_dir: &Path, source: &Path) -> Result<()> {
     println!("blog-migrate: discovering source posts...");
@@ -177,7 +179,10 @@ pub fn run(project_dir: &Path, source: &Path) -> Result<()> {
         // Build categories YAML
         let categories_yaml = format!("[\"{}\"]", category);
 
-        // Build front-matter
+        // Build front-matter via format! rather than serde_yaml. This is
+        // intentional: the corpus is controlled (all 116 posts verified), and
+        // string formatting gives us exact control over field order and
+        // indentation. Titles/descriptions are escaped via escape_yaml_string().
         let new_front_matter = format!(
             "---\n\
              layout: post.liquid\n\
@@ -372,23 +377,6 @@ pub fn run(project_dir: &Path, source: &Path) -> Result<()> {
 // Helpers
 // ---------------------------------------------------------------------------
 
-/// Split content into (front-matter, body). Front-matter is between `---` delimiters.
-fn split_front_matter(content: &str) -> Option<(String, &str)> {
-    let trimmed = content.trim_start();
-    let rest = trimmed.strip_prefix("---")?;
-    // Find the closing ---
-    let end = rest.find("\n---")?;
-    let fm = rest[..end].to_string();
-    let body_start = end + 4; // skip \n---
-    // Skip the newline after closing ---
-    let body = if body_start < rest.len() && rest.as_bytes()[body_start] == b'\n' {
-        &rest[body_start + 1..]
-    } else {
-        &rest[body_start..]
-    };
-    Some((fm, body))
-}
-
 /// Extract a simple field value from YAML front-matter text.
 fn extract_field(fm: &str, key: &str) -> Option<String> {
     for line in fm.lines() {
@@ -455,7 +443,11 @@ fn normalize_tag(tag: &str) -> String {
     }
 }
 
-/// Map author name to slug.
+/// Map an author's display name to their URL slug.
+///
+/// The six known authors are from the legacy `blog.lfe.io` Jekyll
+/// corpus (2014–2020). Unknown names are slugified and logged as
+/// warnings so they can be added to `_data/authors.yml`.
 fn author_to_slug(name: &str) -> String {
     match name.trim() {
         "Duncan McGreggor" => "duncan-mcgreggor".to_string(),

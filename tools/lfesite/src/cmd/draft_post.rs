@@ -4,6 +4,7 @@ use std::path::Path;
 
 use anyhow::{bail, Context, Result};
 
+/// Convert a published post to draft, or create a new draft interactively.
 pub fn run(project_dir: &Path, file: Option<&Path>) -> Result<()> {
     match file {
         Some(f) => draft_existing(f),
@@ -20,8 +21,8 @@ fn draft_existing(file: &Path) -> Result<()> {
         .with_context(|| format!("reading {}", file.display()))?;
 
     if content.contains("is_draft: true") {
-        println!();
-        println!("  already a draft: {}", file.display());
+        eprintln!();
+        eprintln!("  already a draft: {}", file.display());
         return Ok(());
     }
 
@@ -39,17 +40,17 @@ fn draft_existing(file: &Path) -> Result<()> {
         .map(|l| l.trim_start_matches("title:").trim().trim_matches('"'))
         .unwrap_or("(unknown)");
 
-    println!();
-    println!("  drafted: {}", file.display());
-    println!("  title:   \"{}\"", title);
-    println!();
+    eprintln!();
+    eprintln!("  drafted: {}", file.display());
+    eprintln!("  title:   \"{}\"", title);
+    eprintln!();
 
     Ok(())
 }
 
 fn draft_new(project_dir: &Path) -> Result<()> {
-    print!("  Title: ");
-    io::stdout().flush()?;
+    eprint!("  Title: ");
+    io::stderr().flush()?;
     let mut title = String::new();
     io::stdin().read_line(&mut title)?;
     let title = title.trim();

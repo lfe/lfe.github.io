@@ -12,6 +12,7 @@ RESET := \033[0m
 PROJECT_NAME := LFE Website
 PUBLISH_DIR := site
 PORT := 5093
+BINARY := lfesite
 GIT_COMMIT := $(shell git rev-parse --short HEAD 2>/dev/null || echo "unknown")
 GIT_BRANCH := $(shell git rev-parse --abbrev-ref HEAD 2>/dev/null || echo "unknown")
 
@@ -32,13 +33,13 @@ help:
 	@echo "  $(YELLOW)make clean$(RESET)            - Remove build output"
 	@echo ""
 	@echo "$(GREEN)Development:$(RESET)"
-	@echo "  $(YELLOW)make install$(RESET)           - Install lfesite and cobalt"
+	@echo "  $(YELLOW)make install$(RESET)           - Install $(BINARY) and cobalt"
 	@echo "  $(YELLOW)make prerender$(RESET)         - Render _md fields to _html in data files"
 	@echo "  $(YELLOW)make validate$(RESET)          - Check data files, front-matter, and layouts"
 	@echo "  $(YELLOW)make migrate$(RESET)           - One-shot Zola to Cobalt migration"
 	@echo ""
 	@echo "$(GREEN)Testing & Quality:$(RESET)"
-	@echo "  $(YELLOW)make test$(RESET)             - Run lfesite tests"
+	@echo "  $(YELLOW)make test$(RESET)             - Run $(BINARY) tests"
 	@echo "  $(YELLOW)make lint$(RESET)             - Run clippy and format check"
 	@echo "  $(YELLOW)make format$(RESET)           - Format Rust code"
 	@echo "  $(YELLOW)make check$(RESET)            - Build + lint + test + validate"
@@ -77,7 +78,7 @@ info:
 	@echo "$(GREEN)Tools:$(RESET)"
 	@echo "  Rust:           $$(rustc --version 2>/dev/null || echo 'not found')"
 	@echo "  Cobalt:         $$(cobalt --version 2>/dev/null || echo 'not found')"
-	@echo "  lfesite:        $$(lfesite --version 2>/dev/null || echo 'not found')"
+	@echo "  $(BINARY):        $$($(BINARY) --version 2>/dev/null || echo 'not found')"
 	@echo "  Tailwind:       $$(tailwindcss --version 2>/dev/null || echo 'not found')"
 	@echo ""
 
@@ -87,7 +88,7 @@ check-tools:
 	@command -v rustc >/dev/null 2>&1 && echo "$(GREEN)  ✓ rustc found$(RESET)" || echo "$(RED)  ✗ rustc not found$(RESET)"
 	@command -v cargo >/dev/null 2>&1 && echo "$(GREEN)  ✓ cargo found$(RESET)" || echo "$(RED)  ✗ cargo not found$(RESET)"
 	@command -v cobalt >/dev/null 2>&1 && echo "$(GREEN)  ✓ cobalt found$(RESET)" || echo "$(RED)  ✗ cobalt not found (install: cargo install cobalt-bin)$(RESET)"
-	@command -v lfesite >/dev/null 2>&1 && echo "$(GREEN)  ✓ lfesite found$(RESET)" || echo "$(RED)  ✗ lfesite not found (install: make install)$(RESET)"
+	@command -v $(BINARY) >/dev/null 2>&1 && echo "$(GREEN)  ✓ lfesite found$(RESET)" || echo "$(RED)  ✗ $(BINARY) not found (install: make install)$(RESET)"
 	@(command -v tailwindcss >/dev/null 2>&1 || command -v npx >/dev/null 2>&1) && echo "$(GREEN)  ✓ tailwindcss found$(RESET)" || echo "$(RED)  ✗ tailwindcss not found$(RESET)"
 	@command -v aspell >/dev/null 2>&1 && echo "$(GREEN)  ✓ aspell found$(RESET)" || echo "$(YELLOW)  ⊙ aspell not found (optional, for spell checking)$(RESET)"
 
@@ -95,25 +96,25 @@ check-tools:
 ###   SITE   ################################################################
 #############################################################################
 
-LFESITE := $(shell command -v lfesite 2>/dev/null)
+LFESITE := $(shell command -v $(BINARY) 2>/dev/null)
 
 .PHONY: ensure-lfesite
 ensure-lfesite:
 ifndef LFESITE
-	@echo "$(YELLOW)→ Installing lfesite...$(RESET)"
-	@cargo install --path tools/lfesite
+	@echo "$(YELLOW)→ Installing $(BINARY)...$(RESET)"
+	@cargo install --path tools/$(BINARY)
 endif
 
 .PHONY: build
 build: ensure-lfesite
 	@echo "$(BLUE)Building $(PROJECT_NAME)...$(RESET)"
-	@lfesite build
+	@$(BINARY) build
 	@echo "$(GREEN)✓ Build complete$(RESET)"
 
 .PHONY: serve
 serve: ensure-lfesite
 	@echo "$(BLUE)Starting dev server on port $(PORT)...$(RESET)"
-	@lfesite serve --port $(PORT)
+	@$(BINARY) serve --port $(PORT)
 
 .PHONY: run
 run: serve
@@ -121,7 +122,8 @@ run: serve
 .PHONY: clean
 clean:
 	@echo "$(BLUE)Cleaning build output...$(RESET)"
-	@rm -rf $(PUBLISH_DIR) _site
+	@rm -rf $(PUBLISH_DIR) _site target/*/$(BINARY)
+	@cargo uninstall $(BINARY) 2>/dev/null || true
 	@echo "$(GREEN)✓ Clean complete$(RESET)"
 
 #############################################################################
@@ -130,9 +132,9 @@ clean:
 
 .PHONY: install
 install:
-	@echo "$(BLUE)Installing lfesite...$(RESET)"
-	@cargo install --path tools/lfesite
-	@echo "$(GREEN)✓ lfesite installed$(RESET)"
+	@echo "$(BLUE)Installing $(BINARY)...$(RESET)"
+	@cargo install --path tools/$(BINARY)
+	@echo "$(GREEN)✓ $(BINARY) installed$(RESET)"
 	@echo "$(BLUE)Installing cobalt...$(RESET)"
 	@cargo install cobalt-bin
 	@echo "$(GREEN)✓ cobalt installed$(RESET)"
@@ -140,17 +142,17 @@ install:
 .PHONY: prerender
 prerender:
 	@echo "$(BLUE)Pre-rendering data files...$(RESET)"
-	@lfesite prerender
+	@$(BINARY) prerender
 	@echo "$(GREEN)✓ Prerender complete$(RESET)"
 
 .PHONY: validate
 validate:
-	@lfesite validate
+	@$(BINARY) validate
 
 .PHONY: migrate
 migrate:
 	@echo "$(YELLOW)⚠ This will modify content files in place$(RESET)"
-	@lfesite migrate
+	@$(BINARY) migrate
 
 #############################################################################
 ###   TESTING & QUALITY   ###################################################

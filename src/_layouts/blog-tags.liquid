@@ -41,13 +41,22 @@
                 {% endif %}
               {% endfor %}
 
-              <a href="/{{ post.permalink }}" class="blog-tax-post-item">
-                <span class="blog-card-category">{% for cat in post.categories %}{% if forloop.first %}{{ cat }}{% endif %}{% endfor %}</span>
-                <h3 class="blog-story-title">{{ post.title }}</h3>
-                {% if post.description != "" %}
-                <p class="blog-story-desc">{{ post.description }}</p>
-                {% endif %}
-                <p class="blog-card-meta">{{ author_name }} · {{ post.published_date | date: "%B %-d, %Y" }}</p>
+              <a href="/{{ post.permalink }}" class="blog-river-item">
+                <div class="blog-river-img-wrap">
+                  {% if post.data.cover_image %}
+                  <img src="{{ post.data.cover_image }}" alt="{{ post.data.cover_alt }}" class="blog-river-img">
+                  {% else %}
+                  <img src="{{ site.data.blog.default_cover_image }}" alt="{{ site.data.blog.default_cover_alt }}" class="blog-river-img">
+                  {% endif %}
+                </div>
+                <div class="blog-river-text">
+                  <span class="blog-card-category">{% for cat in post.categories %}{% if forloop.first %}{{ cat }}{% endif %}{% endfor %}</span>
+                  <h3 class="blog-river-title">{{ post.title }}</h3>
+                  {% if post.description != "" %}
+                  <p class="blog-river-desc">{{ post.description }}</p>
+                  {% endif %}
+                  <p class="blog-card-meta">{{ author_name }} · {{ post.published_date | date: "%B %-d, %Y" }}</p>
+                </div>
               </a>
 
             {% endfor %}

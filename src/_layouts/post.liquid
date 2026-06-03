@@ -58,6 +58,9 @@
               <time datetime="{{ page.published_date | date: '%Y-%m-%d' }}">
                 {{ page.published_date | date: "%B %-d, %Y" }}
               </time>
+              {% if page.data.updated %}
+              <span class="blog-post-updated">(updated: {{ page.data.updated | date: "%B %-d, %Y" }})</span>
+              {% endif %}
               <span class="blog-post-meta-sep">&middot;</span>
               {% assign words = page.content | strip_html | split: " " | size %}
               {% assign reading_time = words | divided_by: 200 %}

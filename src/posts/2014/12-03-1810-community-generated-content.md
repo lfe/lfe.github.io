@@ -11,8 +11,8 @@ data:
   author: duncan-mcgreggor
   written_for: null
   last_validated: null
-  cover_image: "/images/default/LFE_00243_.png"
-  cover_alt: "Vigdís — LFE, retro-futurist digital painting"
+  cover_image: "/images/newsroom/LFE_Newsroom_00297_.png"
+  cover_alt: "Vigdís — LFE news, a busy rotating space-station newsroom"
   math: false
 ---
 As was just mentioned on the

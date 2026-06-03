@@ -8,12 +8,12 @@
 
 # ── Feature Well ──
 # Centerpiece: large card, left side. Widescreen cover on top, text below.
-centrepiece: "2019-05-13-1549-running-lfe-in-docker-updated"
+centrepiece: ""
 
 # Off-ledes: three stacked cards, right side. Square image left, text right.
-lede_1: "2019-05-13-1538-catch-up"
-lede_2: "2016-04-27-1052-tracing-lfe-functions"
-# lede_3 removed — feature well is now 1+2
+lede_1: ""
+lede_2: ""
+
 
 # ── Spotlight Strip ──
 # Full-width highlight: text left, image right, 50/50 split.

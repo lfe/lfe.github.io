@@ -11,8 +11,8 @@ data:
   author: duncan-mcgreggor
   written_for: null
   last_validated: null
-  cover_image: "/images/default/LFE_00241_.png"
-  cover_alt: "Vigdís — LFE, retro-futurist digital painting"
+  cover_image: "/images/newsroom/LFE_Newsroom_00305_.png"
+  cover_alt: "Vigdís — LFE news, a busy rotating space-station newsroom"
   math: false
 ---
 <a href="/blog/assets/images/posts/screencapture-ierlang_demo.png"><img class="left thumb" src="/blog/assets/images/posts/screencapture-ierlang_demo.png" /></a>Back in April, the Erlang community

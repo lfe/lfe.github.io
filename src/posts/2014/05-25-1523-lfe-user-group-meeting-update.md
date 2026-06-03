@@ -11,8 +11,8 @@ data:
   author: duncan-mcgreggor
   written_for: null
   last_validated: null
-  cover_image: "/images/default/LFE_00237_.png"
-  cover_alt: "Vigdís — LFE, retro-futurist digital painting"
+  cover_image: "/images/newsroom/LFE_Newsroom_00291_.png"
+  cover_alt: "Vigdís — LFE news, a busy rotating space-station newsroom"
   math: false
 ---
 As you may have heard, we'll be hosting LFE's first "Language Summit" at the

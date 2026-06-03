@@ -11,8 +11,8 @@ data:
   author: robert-virding
   written_for: null
   last_validated: null
-  cover_image: "/images/default/LFE_00253_.png"
-  cover_alt: "Vigdís — LFE, retro-futurist digital painting"
+  cover_image: "/images/newsroom/LFE_Newsroom_00295_.png"
+  cover_alt: "Vigdís — LFE news, a busy rotating space-station newsroom"
   math: false
 ---
 <a href="/blog/assets/images/posts/ldialyzer.png"><img class="left medium" src="/blog/assets/images/posts/ldialyzer.png" /></a>

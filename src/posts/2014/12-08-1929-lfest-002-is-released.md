@@ -11,8 +11,8 @@ data:
   author: duncan-mcgreggor
   written_for: null
   last_validated: null
-  cover_image: "/images/default/LFE_00244_.png"
-  cover_alt: "Vigdís — LFE, retro-futurist digital painting"
+  cover_image: "/images/newsroom/LFE_Newsroom_00310_.png"
+  cover_alt: "Vigdís — LFE news, a busy rotating space-station newsroom"
   math: false
 ---
 lfest 0.0.2 includes the addition of text-only responses in addition to the

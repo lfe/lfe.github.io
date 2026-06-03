@@ -908,6 +908,10 @@
         @apply underline;
     }
 
+    .blog-post-updated {
+        @apply text-gray-400 dark:text-gray-500 italic;
+    }
+
     .blog-post-meta-sep {
         @apply text-gray-400 dark:text-gray-600;
     }

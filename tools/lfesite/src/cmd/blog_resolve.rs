@@ -601,24 +601,20 @@ fn deterministic_side(slug: &str) -> String {
 }
 
 // ---------------------------------------------------------------------------
-// Default cover assignment
+// Cover image assignment
 // ---------------------------------------------------------------------------
 
-/// Scan all posts for `cover_image: null` and assign a deterministic image
-/// from the default pool (`src/images/default/`). Writes directly into the
-/// post's front-matter — idempotent (once assigned, kept on subsequent builds).
+/// Collect a sorted pool of image paths from `src/images/<subdir>/`.
 ///
-/// Uses the same `deterministic_pick` function available for Friday images
-/// or any other image pool.
-fn assign_default_covers(src_dir: &Path) -> Result<u32> {
-    let default_dir = src_dir.join("images/default");
-    if !default_dir.is_dir() {
-        return Ok(0);
+/// Returns an empty Vec if the directory doesn't exist (silent fallthrough).
+fn collect_pool(src_dir: &Path, subdir: &str) -> Result<Vec<String>> {
+    let dir = src_dir.join("images").join(subdir);
+    if !dir.is_dir() {
+        return Ok(Vec::new());
     }
 
-    // Collect and sort the pool for deterministic ordering.
-    let mut pool: Vec<String> = fs::read_dir(&default_dir)
-        .context("reading images/default")?
+    let mut pool: Vec<String> = fs::read_dir(&dir)
+        .with_context(|| format!("reading images/{subdir}"))?
         .filter_map(|e| e.ok())
         .filter(|e| {
             e.path()
@@ -628,12 +624,48 @@ fn assign_default_covers(src_dir: &Path) -> Result<u32> {
         .filter_map(|e| {
             e.file_name()
                 .to_str()
-                .map(|name| format!("/images/default/{name}"))
+                .map(|name| format!("/images/{subdir}/{name}"))
         })
         .collect();
     pool.sort();
+    Ok(pool)
+}
 
-    if pool.is_empty() {
+/// Category-to-pool routing rules.
+struct CoverRoute {
+    categories: &'static [&'static str],
+    subdir: &'static str,
+    alt: &'static str,
+}
+
+const COVER_ROUTES: &[CoverRoute] = &[
+    CoverRoute {
+        categories: &["announcements", "news"],
+        subdir: "newsroom",
+        alt: "Vigdís — LFE news, a busy rotating space-station newsroom",
+    },
+];
+
+const DEFAULT_COVER_ALT: &str = "Vigdís — LFE, retro-futurist digital painting";
+
+/// Scan all posts for `cover_image: null` and assign a deterministic image
+/// from a category-routed pool. Posts whose categories match a route get
+/// images from that pool; all others fall through to `images/default/`.
+///
+/// Writes directly into the post's front-matter — idempotent (once assigned,
+/// kept on subsequent builds).
+fn assign_default_covers(src_dir: &Path) -> Result<u32> {
+    let default_pool = collect_pool(src_dir, "default")?;
+
+    let route_pools: Vec<(&CoverRoute, Vec<String>)> = COVER_ROUTES
+        .iter()
+        .map(|route| {
+            let pool = collect_pool(src_dir, route.subdir).unwrap_or_default();
+            (route, pool)
+        })
+        .collect();
+
+    if default_pool.is_empty() && route_pools.iter().all(|(_, p)| p.is_empty()) {
         return Ok(0);
     }
 
@@ -665,7 +697,38 @@ fn assign_default_covers(src_dir: &Path) -> Result<u32> {
             None => continue,
         };
 
-        let image = match deterministic_pick(&slug, &pool) {
+        let (fm_str, _) = match split_front_matter(&content) {
+            Some(pair) => pair,
+            None => continue,
+        };
+
+        let fm: serde_yaml::Value = match serde_yaml::from_str(&fm_str) {
+            Ok(v) => v,
+            Err(_) => continue,
+        };
+
+        let categories: Vec<String> = fm
+            .get("categories")
+            .and_then(|v| v.as_sequence())
+            .map(|seq| {
+                seq.iter()
+                    .filter_map(|v| v.as_str().map(|s| s.to_lowercase()))
+                    .collect()
+            })
+            .unwrap_or_default();
+
+        let (pool, alt) = route_pools
+            .iter()
+            .find(|(route, pool)| {
+                !pool.is_empty()
+                    && categories
+                        .iter()
+                        .any(|cat| route.categories.contains(&cat.as_str()))
+            })
+            .map(|(route, pool)| (pool, route.alt))
+            .unwrap_or((&default_pool, DEFAULT_COVER_ALT));
+
+        let image = match deterministic_pick(&slug, pool) {
             Some(img) => img.clone(),
             None => continue,
         };
@@ -677,7 +740,7 @@ fn assign_default_covers(src_dir: &Path) -> Result<u32> {
             )
             .replace(
                 "cover_alt: null",
-                "cover_alt: \"Vigdís — LFE, retro-futurist digital painting\"",
+                &format!("cover_alt: \"{alt}\""),
             );
 
         if new_content != content {
@@ -722,6 +785,50 @@ mod tests {
     fn test_deterministic_pick_empty_pool() {
         let pool: Vec<String> = vec![];
         assert!(deterministic_pick("any-slug", &pool).is_none());
+    }
+
+    #[test]
+    fn test_cover_route_matches_announcements() {
+        let newsroom = vec!["/images/newsroom/a.png".to_string()];
+        let default = vec!["/images/default/b.png".to_string()];
+        let route_pools: Vec<(&CoverRoute, Vec<String>)> = COVER_ROUTES
+            .iter()
+            .map(|r| (r, newsroom.clone()))
+            .collect();
+
+        let cats_announce = vec!["announcements".to_string()];
+        let cats_news = vec!["news".to_string()];
+        let cats_tutorials = vec!["tutorials".to_string()];
+
+        let pick_announce = route_pools
+            .iter()
+            .find(|(route, pool)| {
+                !pool.is_empty()
+                    && cats_announce.iter().any(|c| route.categories.contains(&c.as_str()))
+            })
+            .map(|(route, pool)| (pool, route.alt))
+            .unwrap_or((&default, DEFAULT_COVER_ALT));
+        assert!(pick_announce.0[0].contains("newsroom"));
+
+        let pick_news = route_pools
+            .iter()
+            .find(|(route, pool)| {
+                !pool.is_empty()
+                    && cats_news.iter().any(|c| route.categories.contains(&c.as_str()))
+            })
+            .map(|(route, pool)| (pool, route.alt))
+            .unwrap_or((&default, DEFAULT_COVER_ALT));
+        assert!(pick_news.0[0].contains("newsroom"));
+
+        let pick_tutorials = route_pools
+            .iter()
+            .find(|(route, pool)| {
+                !pool.is_empty()
+                    && cats_tutorials.iter().any(|c| route.categories.contains(&c.as_str()))
+            })
+            .map(|(route, pool)| (pool, route.alt))
+            .unwrap_or((&default, DEFAULT_COVER_ALT));
+        assert!(pick_tutorials.0[0].contains("default"));
     }
 
     #[test]

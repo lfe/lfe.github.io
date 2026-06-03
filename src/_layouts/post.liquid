@@ -51,9 +51,9 @@
               {% else %}
               <span class="blog-author-initials-sm">{{ page.data.author | truncate: 2, "" | upcase }}</span>
               {% endif %}
-              <span class="blog-post-meta-text">
+              <a href="/blog/authors/{{ page.data.author }}/" class="blog-post-meta-text">
                 {% if author.name %}{{ author.name }}{% else %}{{ page.data.author }}{% endif %}
-              </span>
+              </a>
               <span class="blog-post-meta-sep">&middot;</span>
               <time datetime="{{ page.published_date | date: '%Y-%m-%d' }}">
                 {{ page.published_date | date: "%B %-d, %Y" }}
@@ -84,7 +84,7 @@
             {% if page.tags.size > 0 %}
             <div class="blog-tags">
               {% for tag in page.tags %}
-              <span class="blog-tag-badge">{{ tag }}</span>
+              <a href="/blog/tags/{{ tag }}/" class="blog-tag-badge">{{ tag }}</a>
               {% endfor %}
             </div>
             {% endif %}
@@ -99,7 +99,7 @@
               <div class="blog-author-initials-lg">{{ page.data.author | truncate: 2, "" | upcase }}</div>
               {% endif %}
               <div class="blog-author-bio-text">
-                <strong>{{ author.name }}</strong>
+                <a href="/blog/authors/{{ page.data.author }}/" class="blog-author-bio-link"><strong>{{ author.name }}</strong></a>
                 {% if author.bio %}
                 <p>{{ author.bio }}</p>
                 {% endif %}

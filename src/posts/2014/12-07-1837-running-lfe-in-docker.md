@@ -11,8 +11,8 @@ data:
   author: duncan-mcgreggor
   written_for: null
   last_validated: null
-  cover_image: "/images/default/LFE_00255_.png"
-  cover_alt: "Vigdís — LFE, retro-futurist digital painting"
+  cover_image: "/images/tutorials/LFE_Tutorial_00340_.png"
+  cover_alt: "Vigdís — LFE tutorial, a retro-futurist study aboard a spaceship"
   math: false
 ---
 <a href="/blog/assets/images/posts/DockerLogo.png"><img class="left thumb" src="/blog/assets/images/posts/DockerLogo.png" /></a>

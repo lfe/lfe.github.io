@@ -11,8 +11,8 @@ data:
   author: duncan-mcgreggor
   written_for: null
   last_validated: null
-  cover_image: "/images/default/LFE_00237_.png"
-  cover_alt: "Vigdís — LFE, retro-futurist digital painting"
+  cover_image: "/images/tutorials/LFE_Tutorial_00333_.png"
+  cover_alt: "Vigdís — LFE tutorial, a retro-futurist study aboard a spaceship"
   math: false
 ---
 <a href="/blog/assets/images/posts/LFE-signal.jpg"><img class="right thumb" src="/blog/assets/images/posts/LFE-signal.jpg" /></a>In this post we take a look at some non-OTP code examples discussed in [Casting SPELs in Lisp (LFE Edition)](http://lfe.gitbooks.io/casting-spels/), examine their differences and similarities, and then briefly describe what they are missing which OTP might be able to provide.

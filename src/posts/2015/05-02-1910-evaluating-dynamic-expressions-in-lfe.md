@@ -11,8 +11,8 @@ data:
   author: robert-virding
   written_for: null
   last_validated: null
-  cover_image: "/images/default/LFE_00237_.png"
-  cover_alt: "Vigdís — LFE, retro-futurist digital painting"
+  cover_image: "/images/tutorials/LFE_Tutorial_00348_.png"
+  cover_alt: "Vigdís — LFE tutorial, a retro-futurist study aboard a spaceship"
   math: false
 ---
 <a href="/blog/assets/images/posts/LispFlavoredErlang-medium-square.png"><img class="right small" src="/blog/assets/images/posts/LispFlavoredErlang-medium-square.png" /></a>Sometimes you need to evaluate a dynamic expression in LFE, one that has been created during the execution of the program. For example, imagine some other process has sent us an LFE expression which we need to evaluate.

@@ -11,8 +11,8 @@ data:
   author: duncan-mcgreggor
   written_for: null
   last_validated: null
-  cover_image: "/images/default/LFE_00227_.png"
-  cover_alt: "Vigdís — LFE, retro-futurist digital painting"
+  cover_image: "/images/tutorials/LFE_Tutorial_00379_.png"
+  cover_alt: "Vigdís — LFE tutorial, a retro-futurist study aboard a spaceship"
   math: false
 ---
 <a href="/blog/assets/images/posts/ButterCrunchLettuce-2-medium.png"><img class="right small" src="/blog/assets/images/posts/ButterCrunchLettuce-2-medium.png" /></a>

@@ -11,8 +11,8 @@ data:
   author: robert-virding
   written_for: null
   last_validated: null
-  cover_image: "/images/default/LFE_00220_.png"
-  cover_alt: "Vigdís — LFE, retro-futurist digital painting"
+  cover_image: "/images/tutorials/LFE_Tutorial_00340_.png"
+  cover_alt: "Vigdís — LFE tutorial, a retro-futurist study aboard a spaceship"
   math: false
 ---
 <a href="/blog/assets/images/posts/lfe-tooling-leonardo-gears-2.png"><img class="right small" src="/blog/assets/images/posts/lfe-tooling-leonardo-gears-2.png" /></a> Work has been proceeding with spell1 and we now have something useable. There are now two front-ends for the language of the grammar files and output files, one for handling Erlang, and the other for handling LFE.

@@ -634,6 +634,7 @@ fn collect_pool(src_dir: &Path, subdir: &str) -> Result<Vec<String>> {
 /// Category-to-pool routing rules.
 struct CoverRoute {
     categories: &'static [&'static str],
+    exclude_slug: Option<&'static str>,
     subdir: &'static str,
     alt: &'static str,
 }
@@ -641,8 +642,15 @@ struct CoverRoute {
 const COVER_ROUTES: &[CoverRoute] = &[
     CoverRoute {
         categories: &["announcements", "news"],
+        exclude_slug: None,
         subdir: "newsroom",
         alt: "Vigdís — LFE news, a busy rotating space-station newsroom",
+    },
+    CoverRoute {
+        categories: &["tutorials"],
+        exclude_slug: Some("lfe-friday"),
+        subdir: "tutorials",
+        alt: "Vigdís — LFE tutorial, a retro-futurist study aboard a spaceship",
     },
 ];
 
@@ -724,6 +732,9 @@ fn assign_default_covers(src_dir: &Path) -> Result<u32> {
                     && categories
                         .iter()
                         .any(|cat| route.categories.contains(&cat.as_str()))
+                    && route
+                        .exclude_slug
+                        .map_or(true, |pat| !slug.contains(pat))
             })
             .map(|(route, pool)| (pool, route.alt))
             .unwrap_or((&default_pool, DEFAULT_COVER_ALT));
@@ -787,48 +798,94 @@ mod tests {
         assert!(deterministic_pick("any-slug", &pool).is_none());
     }
 
+    fn resolve_route<'a>(
+        slug: &str,
+        categories: &[String],
+        route_pools: &'a [(&CoverRoute, Vec<String>)],
+        default: &'a [String],
+    ) -> (&'a [String], &'a str) {
+        route_pools
+            .iter()
+            .find(|(route, pool)| {
+                !pool.is_empty()
+                    && categories
+                        .iter()
+                        .any(|cat| route.categories.contains(&cat.as_str()))
+                    && route
+                        .exclude_slug
+                        .map_or(true, |pat| !slug.contains(pat))
+            })
+            .map(|(route, pool)| (pool.as_slice(), route.alt))
+            .unwrap_or((default, DEFAULT_COVER_ALT))
+    }
+
     #[test]
-    fn test_cover_route_matches_announcements() {
-        let newsroom = vec!["/images/newsroom/a.png".to_string()];
-        let default = vec!["/images/default/b.png".to_string()];
-        let route_pools: Vec<(&CoverRoute, Vec<String>)> = COVER_ROUTES
+    fn test_cover_route_announcements() {
+        let pools: Vec<(&CoverRoute, Vec<String>)> = COVER_ROUTES
             .iter()
-            .map(|r| (r, newsroom.clone()))
+            .map(|r| {
+                let pool = vec![format!("/images/{}/a.png", r.subdir)];
+                (r, pool)
+            })
             .collect();
+        let default = vec!["/images/default/b.png".to_string()];
 
-        let cats_announce = vec!["announcements".to_string()];
-        let cats_news = vec!["news".to_string()];
-        let cats_tutorials = vec!["tutorials".to_string()];
+        let cats = vec!["announcements".to_string()];
+        let (pool, _) = resolve_route("2024-01-01-some-post", &cats, &pools, &default);
+        assert!(pool[0].contains("newsroom"));
 
-        let pick_announce = route_pools
+        let cats = vec!["news".to_string()];
+        let (pool, _) = resolve_route("2024-01-01-some-post", &cats, &pools, &default);
+        assert!(pool[0].contains("newsroom"));
+    }
+
+    #[test]
+    fn test_cover_route_tutorials() {
+        let pools: Vec<(&CoverRoute, Vec<String>)> = COVER_ROUTES
             .iter()
-            .find(|(route, pool)| {
-                !pool.is_empty()
-                    && cats_announce.iter().any(|c| route.categories.contains(&c.as_str()))
+            .map(|r| {
+                let pool = vec![format!("/images/{}/a.png", r.subdir)];
+                (r, pool)
             })
-            .map(|(route, pool)| (pool, route.alt))
-            .unwrap_or((&default, DEFAULT_COVER_ALT));
-        assert!(pick_announce.0[0].contains("newsroom"));
+            .collect();
+        let default = vec!["/images/default/b.png".to_string()];
 
-        let pick_news = route_pools
-            .iter()
-            .find(|(route, pool)| {
-                !pool.is_empty()
-                    && cats_news.iter().any(|c| route.categories.contains(&c.as_str()))
-            })
-            .map(|(route, pool)| (pool, route.alt))
-            .unwrap_or((&default, DEFAULT_COVER_ALT));
-        assert!(pick_news.0[0].contains("newsroom"));
+        let cats = vec!["tutorials".to_string()];
+        let (pool, _) = resolve_route("2015-05-24-1808-what-is-otp", &cats, &pools, &default);
+        assert!(pool[0].contains("tutorials"), "non-friday tutorial should get tutorials pool");
+    }
 
-        let pick_tutorials = route_pools
+    #[test]
+    fn test_cover_route_friday_excluded_from_tutorials() {
+        let pools: Vec<(&CoverRoute, Vec<String>)> = COVER_ROUTES
             .iter()
-            .find(|(route, pool)| {
-                !pool.is_empty()
-                    && cats_tutorials.iter().any(|c| route.categories.contains(&c.as_str()))
+            .map(|r| {
+                let pool = vec![format!("/images/{}/a.png", r.subdir)];
+                (r, pool)
             })
-            .map(|(route, pool)| (pool, route.alt))
-            .unwrap_or((&default, DEFAULT_COVER_ALT));
-        assert!(pick_tutorials.0[0].contains("default"));
+            .collect();
+        let default = vec!["/images/default/b.png".to_string()];
+
+        let cats = vec!["tutorials".to_string()];
+        let (pool, _) = resolve_route("2015-05-29-0345-lfe-friday---queuehead1", &cats, &pools, &default);
+        assert!(pool[0].contains("default"), "lfe-friday post should fall through to default");
+    }
+
+    #[test]
+    fn test_cover_route_unmatched_falls_to_default() {
+        let pools: Vec<(&CoverRoute, Vec<String>)> = COVER_ROUTES
+            .iter()
+            .map(|r| {
+                let pool = vec![format!("/images/{}/a.png", r.subdir)];
+                (r, pool)
+            })
+            .collect();
+        let default = vec!["/images/default/b.png".to_string()];
+
+        let cats = vec!["excerpts".to_string()];
+        let (pool, alt) = resolve_route("2015-03-22-some-excerpt", &cats, &pools, &default);
+        assert!(pool[0].contains("default"));
+        assert_eq!(alt, DEFAULT_COVER_ALT);
     }
 
     #[test]

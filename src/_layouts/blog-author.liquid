@@ -26,7 +26,9 @@
         {% endfor %}
 
         <div class="blog-author-page-header">
-          {% if author.avatar %}
+          {% if author.github_user %}
+          <img src="https://avatars.githubusercontent.com/{{ author.github_user }}?s=128" alt="{{ author.name }}" class="blog-author-avatar-lg">
+          {% elsif author.avatar %}
           <img src="{{ author.avatar }}" alt="{{ author.name }}" class="blog-author-avatar-lg">
           {% else %}
           <div class="blog-author-initials-lg">{{ author.name | truncate: 2, "" | upcase }}</div>
@@ -35,6 +37,13 @@
             <h1 class="blog-section-heading">{{ author.name }}</h1>
             {% if author.bio %}
             <p class="blog-author-page-bio">{{ author.bio }}</p>
+            {% endif %}
+            {% if author.links.size > 0 %}
+            <ul class="blog-author-links">
+              {% for link in author.links %}
+              <li>{{ link.label_html }}</li>
+              {% endfor %}
+            </ul>
             {% endif %}
           </div>
         </div>

@@ -44,7 +44,9 @@
                 {% endif %}
               {% endfor %}
 
-              {% if author.avatar %}
+              {% if author.github_user %}
+              <img src="https://avatars.githubusercontent.com/{{ author.github_user }}?s=64" alt="{{ author.name }}" class="blog-author-avatar-sm">
+              {% elsif author.avatar %}
               <img src="{{ author.avatar }}" alt="{{ author.name }}" class="blog-author-avatar-sm">
               {% else %}
               <span class="blog-author-initials-sm">{{ page.data.author | truncate: 2, "" | upcase }}</span>
@@ -89,7 +91,9 @@
 
             {% if author %}
             <div class="blog-author-bio">
-              {% if author.avatar %}
+              {% if author.github_user %}
+              <img src="https://avatars.githubusercontent.com/{{ author.github_user }}?s=128" alt="{{ author.name }}" class="blog-author-avatar-lg">
+              {% elsif author.avatar %}
               <img src="{{ author.avatar }}" alt="{{ author.name }}" class="blog-author-avatar-lg">
               {% else %}
               <div class="blog-author-initials-lg">{{ page.data.author | truncate: 2, "" | upcase }}</div>
@@ -98,6 +102,13 @@
                 <strong>{{ author.name }}</strong>
                 {% if author.bio %}
                 <p>{{ author.bio }}</p>
+                {% endif %}
+                {% if author.links.size > 0 %}
+                <ul class="blog-author-links">
+                  {% for link in author.links %}
+                  <li>{{ link.label_html }}</li>
+                  {% endfor %}
+                </ul>
                 {% endif %}
               </div>
             </div>

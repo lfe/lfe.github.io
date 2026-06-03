@@ -962,6 +962,24 @@
         @apply text-base text-gray-800 dark:text-gray-200;
     }
 
+    .blog-author-links {
+        @apply flex flex-wrap gap-3 mt-2 list-none pl-0;
+    }
+
+    .blog-author-links li {
+        @apply text-sm mt-0;
+    }
+
+    .blog-author-links li a {
+        @apply no-underline font-medium;
+        color: var(--gold-600);
+    }
+
+    .blog-author-links li a:hover {
+        color: var(--gold-700);
+        @apply underline;
+    }
+
     /* ── Blog: Version banner ── */
 
     .version-banner {

@@ -1,29 +1,56 @@
 duncan-mcgreggor:
-  name: "Duncan McGreggor"
-  bio: "LFE co-maintainer. Distributed systems engineer. Lisper on the BEAM."
+  name: Duncan McGreggor
+  github_user: oubiwann
   avatar: null
-
+  bio: LFE co-maintainer. Distributed systems engineer. Lisper on the BEAM. Creator of the Lykn language.
+  links:
+  - label_md_inline: '[GitHub](https://github.com/oubiwann)'
+    label_html: <a href="https://github.com/oubiwann">GitHub</a>
+  - label_md_inline: '[Mastodon](https://mastodon.social/@oubiwann)'
+    label_html: <a href="https://mastodon.social/@oubiwann">Mastodon</a>
 robert-virding:
-  name: "Robert Virding"
-  bio: "Co-inventor of Erlang, creator of LFE. One of the original members of the Ericsson Computer Science Lab."
+  name: Robert Virding
+  github_user: rvirding
   avatar: null
-
+  bio: Co-inventor of Erlang, creator of LFE. One of the original members of the Ericsson Computer Science Lab.
+  links:
+  - label_md_inline: '[GitHub](https://github.com/rvirding)'
+    label_html: <a href="https://github.com/rvirding">GitHub</a>
+  - label_md_inline: '[Mastodon](https://fosstodon.org/@rvirding)'
+    label_html: <a href="https://fosstodon.org/@rvirding">Mastodon</a>
 fred-hebert:
-  name: "Fred Hébert"
-  bio: "Author of Learn You Some Erlang. Erlang and distributed systems engineer."
+  name: Fred Hébert
+  github_user: ferd
   avatar: null
-
+  bio: Author of Learn You Some Erlang. Erlang and distributed systems engineer.
+  links:
+  - label_md_inline: '[GitHub](https://github.com/ferd)'
+    label_html: <a href="https://github.com/ferd">GitHub</a>
+  - label_md_inline: '[Website](https://ferd.ca)'
+    label_html: <a href="https://ferd.ca">Website</a>
 eric-bailey:
-  name: "Eric Bailey"
-  bio: "Erlang and LFE developer."
+  name: Eric Bailey
+  github_user: yurrriq
   avatar: null
-
+  bio: Erlang and LFE developer.
+  links:
+  - label_md_inline: '[GitHub](https://github.com/yurrriq)'
+    label_html: <a href="https://github.com/yurrriq">GitHub</a>
 anurag-mendhekar:
-  name: "Anurag Mendhekar"
-  bio: "Software engineer and LFE contributor."
+  name: Anurag Mendhekar
+  github_user: null
   avatar: null
-
+  bio: Software engineer, LFE contributor, and co-author of The Little Learner with Daniel P. Friedman
+  links: []
 lfe-maintainers:
-  name: "LFE Maintainers"
-  bio: "The LFE core team."
-  avatar: null
+  name: LFE Maintainers
+  github_user: null
+  avatar: https://avatars.githubusercontent.com/u/3434967
+  bio: The LFE core team.
+  links:
+  - label_md_inline: '[GitHub](https://github.com/lfe)'
+    label_html: <a href="https://github.com/lfe">GitHub</a>
+  - label_md_inline: '[Website](https://lfe.io)'
+    label_html: <a href="https://lfe.io">Website</a>
+  - label_md_inline: '[Mastodon](https://fosstodon.org/@lfe)'
+    label_html: <a href="https://fosstodon.org/@lfe">Mastodon</a>

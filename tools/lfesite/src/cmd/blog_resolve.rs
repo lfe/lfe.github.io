@@ -434,7 +434,16 @@ fn build_sorted_authors(posts: &[PostMeta], data_dir: &Path) -> Result<Vec<serde
         *post_counts.entry(post.author_slug.clone()).or_insert(0) += 1;
     }
 
-    let mut author_entries: Vec<(String, String, Option<String>, Option<String>, usize)> = Vec::new();
+    struct AuthorEntry {
+        slug: String,
+        name: String,
+        bio: Option<String>,
+        avatar: Option<String>,
+        github_user: Option<String>,
+        post_count: usize,
+    }
+
+    let mut author_entries: Vec<AuthorEntry> = Vec::new();
 
     if let Some(map) = doc.as_mapping() {
         for (key, value) in map {
@@ -452,29 +461,47 @@ fn build_sorted_authors(posts: &[PostMeta], data_dir: &Path) -> Result<Vec<serde
                     .get("avatar")
                     .and_then(|v| v.as_str())
                     .map(String::from);
+                let github_user = value
+                    .get("github_user")
+                    .and_then(|v| v.as_str())
+                    .map(String::from);
                 let count = post_counts.get(slug).copied().unwrap_or(0);
-                author_entries.push((slug.to_string(), name, bio, avatar, count));
+                author_entries.push(AuthorEntry {
+                    slug: slug.to_string(),
+                    name,
+                    bio,
+                    avatar,
+                    github_user,
+                    post_count: count,
+                });
             }
         }
     }
 
-    author_entries.sort_by(|a, b| b.4.cmp(&a.4).then_with(|| a.1.cmp(&b.1)));
+    author_entries.sort_by(|a, b| {
+        b.post_count
+            .cmp(&a.post_count)
+            .then_with(|| a.name.cmp(&b.name))
+    });
 
     let sorted: Vec<serde_yaml::Value> = author_entries
         .into_iter()
-        .map(|(slug, name, bio, avatar, count)| {
+        .map(|entry| {
             let mut map = serde_yaml::Mapping::new();
-            map.insert(ykey("slug"), ystr(&slug));
-            map.insert(ykey("name"), ystr(&name));
-            if let Some(b) = &bio {
+            map.insert(ykey("slug"), ystr(&entry.slug));
+            map.insert(ykey("name"), ystr(&entry.name));
+            if let Some(b) = &entry.bio {
                 map.insert(ykey("bio"), ystr(b));
             }
-            if let Some(a) = &avatar {
+            if let Some(a) = &entry.avatar {
                 map.insert(ykey("avatar"), ystr(a));
+            }
+            if let Some(g) = &entry.github_user {
+                map.insert(ykey("github_user"), ystr(g));
             }
             map.insert(
                 ykey("post_count"),
-                serde_yaml::Value::Number(serde_yaml::Number::from(count as u64)),
+                serde_yaml::Value::Number(serde_yaml::Number::from(entry.post_count as u64)),
             );
             serde_yaml::Value::Mapping(map)
         })

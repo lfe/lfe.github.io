@@ -24,7 +24,9 @@
         {% for author in site.data.blog_resolved.authors_sorted %}
 
           <a href="/blog/authors/{{ author.slug }}/" class="blog-author-page-card">
-            {% if author.avatar %}
+            {% if author.github_user %}
+            <img src="https://avatars.githubusercontent.com/{{ author.github_user }}?s=128" alt="{{ author.name }}" class="blog-author-avatar-lg">
+            {% elsif author.avatar %}
             <img src="{{ author.avatar }}" alt="{{ author.name }}" class="blog-author-avatar-lg">
             {% else %}
             <div class="blog-author-initials-lg">{{ author.name | truncate: 2, "" | upcase }}</div>

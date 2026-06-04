@@ -437,10 +437,23 @@ lfe> (set g (mref r 'graph))
 lfe> (graffeo:no_vertices g)
 3061
 lfe> (graffeo:no_edges g)
-;; ~12000 edges, varying slightly by run if you add new cards
+14341
 ```
 
 3,061 vertices breaks down as 1,664 source vertices + 1,397 abstract vertices, the latter being 1,394 *carded* abstract concepts plus 3 *ghost* concepts (referenced as prerequisites but never written up). We meet the ghosts in §5.7.
+
+Note: if you are getting zero cards and if this returns an empty list:
+
+```lfe
+lfe> (filelib:wildcard "../../workbench/ai-engineering/knowledge/erlang/concept-cards/*")
+()
+```
+
+The you might have forgotten to perform the following in the `erlang-concepts` directory:
+
+```shell
+make fetch-cards
+```
 
 The abstract-edge breakdown is worth pulling out, because it tells you something about the *texture* of how the corpus is annotated:
 
@@ -473,8 +486,8 @@ lfe> (lfeerlcpt-queries:top-concepts-by-degree g 5)
  #(#"pattern-matching" 92)
  #(#"otp-application" 86)
  #(#"message-passing" 84)
- #(#"supervisor" 68))
-```
+ #(#"process" 71))
+ ```
 
 Anyone who has shipped Erlang reading that list nods: `gen_server`, pattern matching, message passing, applications, supervisors. The graph has reconstructed the OTP **syllabus** from nothing but cross-references, with no human ranking anything by hand.
 
@@ -734,15 +747,34 @@ Three of them. They are obvious gaps in the corpus — `os:system_time/0` is a s
 
 ### 5.8 Weighted shortest paths: the minimum-surprise learning path
 
-Everything we've done so far is structural — edges are present or absent. graffeo also carries weighted shortest paths (`dijkstra/2,3`, `astar/3,4`) with a pluggable cost function. That opens a qualitatively different question: not *can* you get from concept $X$ to concept $Y$, but what's the *gentlest* route — the path through the fewest unfamiliar ideas.
+Everything we've done so far is structural — edges are present or absent. graffeo also carries weighted shortest paths (`dijkstra/2,3`, `astar/3,4`) with a pluggable cost function. That opens a qualitatively different question: not *can* you get from concept $X$ to concept $Y$, but what's the *gentlest* route — the path through the most-trusted relationships in the corpus.
 
-The cards assert no weights, so we have to design them. A reasonable proxy for "how well-known a stepping-stone concept is" is **coverage breadth** — the number of distinct books that document the concept. A concept that all six relevant books explain is well-known; a concept that only one book covers is exotic. So:
+The cards assert no explicit numerical weights, so we have to design them out of what the corpus *does* tell us. Every abstract-layer edge carries an `asserted_by` set — the list of books that drew that relationship. An edge asserted by six books is consensus; an edge asserted by one is a single author's opinion. A natural cost function:
 
-$$w(u \to v) = \frac{1}{\mathrm{coverage}(v)}$$
+$$w(u \to v) = \frac{1}{|\mathrm{asserted\_by}(u \to v)|}$$
 
-A well-documented target has a low edge cost; an obscure one has a high cost. Then a shortest path from "a concept I know" to "a concept I don't" minimises the total surprise — it routes through the well-trodden middle of the corpus.
+A well-asserted edge has a low cost; an idiosyncratic one has a high cost. Then a shortest path from "a concept I know" to "a concept I don't" minimises the total *idiosyncrasy* — it routes through the well-trodden middle of the corpus, the edges every author drew.
 
-Let's build it. First, coverage:
+This is also a beautifully self-contained cost function: it reads off the edge's own metadata and needs nothing else. That matters, because graffeo's `dijkstra` is specified to call its cost function as `cost(meta) -> number` — only the metadata of the edge being relaxed, not the endpoints. If we wanted "cost from the target's properties" (e.g. coverage breadth of the destination vertex), we'd have to pre-bake those properties into edge metadata with a graph rewrite before running Dijkstra. The assertion-count cost avoids that detour.
+
+Here it is:
+
+```lfe
+(defun gentlest-path (g from-concept _to-concept)
+  (let* ((pg (project-by-type g 'prerequisites))
+         (cost (lambda (meta)
+                 (case meta
+                   ((map 'label (map 'asserted_by asserters))
+                    (/ 1.0 (length asserters)))
+                   (_ 1.0)))))
+    ;; Returns a map of target -> #(distance predecessor).
+    ;; Caller looks up `_to-concept` to reconstruct the path.
+    (graffeo:dijkstra pg from-concept (map 'cost cost))))
+```
+
+`graffeo:dijkstra/3` takes the graph, a source vertex, and an options map; `'cost` is a function `meta -> non-negative number`. The result is a map of `target → {distance, predecessor}`, from which you can reconstruct the actual path.
+
+(For completeness: if you wanted the original "1 / coverage(target)" weighting, you'd write a `weight-by-coverage` helper that walks every edge of the prerequisite projection, looks up the *target's* in-degree from source-layer cards, and re-adds the edge with a `weight` field set on the meta. Then graffeo's `default_cost` — which reads `weight` if present — picks it up automatically. The exercise is left to the curious reader; `coverage-of` from below gives you the per-target number.)
 
 ```lfe
 (defun coverage-of (g slug)
@@ -753,36 +785,34 @@ Let's build it. First, coverage:
           (element 1 v))))))
 ```
 
-The number of source-layer cards pointing into `slug` is the number of books that documented it. Now wire it as an edge cost into graffeo:
-
-```lfe
-(defun gentlest-path (g from-concept _to-concept)
-  (let* ((pg (project-by-type g 'prerequisites))
-         (cost (lambda (_from to _meta)
-                 (case (coverage-of g to)
-                   (0 1.0e6)               ; ghosts are very expensive
-                   (n (/ 1.0 n))))))
-    ;; Returns a map of target -> #(distance predecessor).
-    ;; Caller looks up `_to-concept` to reconstruct the path.
-    (graffeo:dijkstra pg from-concept (map 'cost cost))))
-```
-
-`graffeo:dijkstra/3` takes the graph, a source vertex, and an options map; `'cost` is a function `(from, to, meta) -> non-negative number`. The result is a map of `target → {distance, predecessor}`, from which you can reconstruct the actual path.
+`coverage-of` isn't called by `gentlest-path` itself, but it's exported because it's the natural building block for the alternative weighting — and a useful query in its own right ("how widely is this concept documented?").
 
 Why **Dijkstra** for this and not BFS? BFS gives you shortest paths *measured in number of edges*; Dijkstra gives you shortest paths *measured in total weight*, provided every edge weight is non-negative. The two coincide if every edge weight is 1. The non-negativity precondition is essential — Dijkstra's correctness proof leans on the fact that the first time a vertex is finalised, its tentative distance cannot be improved by going through a *further-away* vertex, which would have to add non-negative cost. With negative edges (which our weights don't have, but it's worth knowing why) you need Bellman–Ford, which is $O(V \cdot E)$ instead of Dijkstra's $O((V + E) \log V)$ with a binary heap.
 
-For one-to-one queries (you have a specific source and a specific destination), **A***improves on Dijkstra by directing the search using a heuristic estimate of the remaining distance. graffeo's `astar/4` takes both a `'cost` and a `'heuristic` option, the latter being a function `target -> non-negative number` that estimates the remaining cost from `target` to the goal. If the heuristic is *admissible* (never overestimates the true remaining cost) and *consistent* (the triangle inequality holds), A* finds the optimal path while expanding far fewer vertices than Dijkstra. For our learning-path use, a useful admissible heuristic is the **graph-theoretic distance** (edge count) from `target` to the goal, scaled by the *minimum* coverage cost in the graph — that gives a lower bound on the remaining weighted cost.
+For one-to-one queries (you have a specific source and a specific destination), **A***improves on Dijkstra by directing the search using a heuristic estimate of the remaining distance. graffeo's `astar/4` takes both a `'cost` and a `'heuristic` option, the latter being a function `target -> non-negative number` that estimates the remaining cost from `target` to the goal. If the heuristic is *admissible* (never overestimates the true remaining cost) and *consistent* (the triangle inequality holds), A* finds the optimal path while expanding far fewer vertices than Dijkstra. For our learning-path use, a useful admissible heuristic is the **graph-theoretic distance** (edge count) from `target` to the goal, scaled by the *minimum* edge cost in the graph — that gives a lower bound on the remaining weighted cost.
 
 A real run, asking for the gentlest path from `pattern-matching` (well-known) to `recon-trace` (deep diagnostics territory):
 
 ```
 lfe> (set result (lfeerlcpt-queries:gentlest-path g
-                                             #"pattern-matching"
-                                             #"recon-trace"))
+                                                  #"pattern-matching"
+                                                  #"recon-trace"))
 ;; reconstruct the path from `result` (a map of target -> {dist, pred})
+#(#M(#"atom" 0.6666666666666666 #"erlang-term" 0.8333333333333333
+     #"list" 0.3333333333333333 #"pattern-matching" 0
+     #"single-assignment" 1.0 #"single-assignment-variable" 1.0
+     #"term" 1.0 #"tuple" 0.3333333333333333 #"variable" 1.0
+     #"variables" 2.0)
+  #M(#"atom" #"tuple" #"erlang-term" #"list"
+     #"list" #"pattern-matching"
+     #"single-assignment" #"pattern-matching"
+     #"single-assignment-variable" #"pattern-matching"
+     #"term" #"pattern-matching" #"tuple" #"pattern-matching"
+     #"variable" #"pattern-matching"
+     #"variables" #"single-assignment"))
 ```
 
-You'll find a short route through `message-passing → tracing → debug → recon` or similar — well-trodden stepping stones. Compare with an unweighted shortest path (BFS-distance, edge-count optimal), and you'll often find a *longer* route — measured in edges — but a *gentler* one — measured in surprise. The point of the weighting is to spend more hops on familiar ground to land softer at the end.
+You'll find a short route weighted toward edges many books agreed on — well-trodden stepping stones. Compare with an unweighted shortest path (BFS-distance, edge-count optimal), and you'll often find a *longer* route — measured in edges — but a *gentler* one — measured in consensus mass. The point of the weighting is to spend more hops on familiar ground to land softer at the end.
 
 This kind of pluggable cost function — bring your own metric, graffeo runs the search — is what makes the library suitable as a substrate for downstream domain reasoning. Curriculum design, dependency-aware build ordering, message routing in a known-topology cluster, even queuing-theoretic models on top of process graphs: all of them are shortest-path queries on top of a weight function that the domain author writes.
 
@@ -815,13 +845,31 @@ The runner ties the catalog into a single CLI entry point:
     'ok))
 ```
 
-Each `print-*` function is a thin display wrapper over a query — the same shape as the Erlang runner, line for line. You can drive the whole catalog with:
+Each `print-*` function is a thin display wrapper over a query — the same shape as the Erlang runner, line for line.
 
-```shell
-rebar3 lfe run -- ''
+To drive the whole catalog from the shell, we need one tiny thing. `rebar3 lfe run` is built on top of `lfescript`, which expects a **script-style** LFE file: a top-level `(defun main (args) ...)` with *no* `(defmodule ...)` wrapper. Our `lfeerlcpt.lfe` is a proper module (so it can be called from anywhere in the project), which means it can't be fed straight to `lfescript`. The fix is a one-line shim:
+
+```lfe
+;; scripts/run-lfe-example.lfe
+(defun main (args)
+  (lfeerlcpt:main args))
 ```
 
-or, equivalently, from the REPL:
+That's the whole script — no module, no exports, just a top-level `main/1` that delegates to the real runner. Now this works:
+
+```shell
+rebar3 lfe run --main scripts/run-lfe-example.lfe
+```
+
+If you'd rather drop the `--main` flag, set the script as the project's default main once in `rebar.config`:
+
+```erlang
+{lfe, [{main, "scripts/run-lfe-example.lfe"}]}.
+```
+
+And then `rebar3 lfe run` works on its own.
+
+From the REPL — no script needed — the call is direct:
 
 ```
 lfe> (lfeerlcpt:main '())
@@ -831,7 +879,7 @@ The example's `make example` target still runs the Erlang version. If you want a
 
 ```makefile
 example-lfe: fetch-cards compile
- @rebar3 lfe run -- ''
+	@rebar3 lfe run --main scripts/run-lfe-example.lfe
 ```
 
 ## 7. Exercises
@@ -863,6 +911,204 @@ If you want to keep teaching yourself graph theory, three suggestions:
 And if you want to keep using graffeo, the [project README](https://github.com/erlsci/graffeo) lists the rest of the API — `bfs`, `degree_centrality`, `astar`, `is_tree`, `is_arborescence`, `loop_vertices`, `get_short_path` — most of which we didn't touch in this tour. The shape is the same: a function on the graph, a clear definition behind it, a place in the literature you can chase if you want the math.
 
 The corpus we used is real, the questions are real, and the answers are reproducible. The next graph you build will be different — perhaps a process-supervision graph, perhaps a node-distribution graph, perhaps a cluster-topology graph for a queue system you're writing — but the patterns transfer. *Filter to project a subgraph; reach across a layer with a join; condense to escape cycles; topsort to read an order; weight to ask for the gentlest path.* Those five moves cover most of what working programmers ever need from graph theory, and graffeo gives you each of them in a line or two of LFE.
+
+## Appendix A: the rest of the parser
+
+The body of the post showed `parse-file`, `parse-string`, `extract-frontmatter`, `collect-until-closing`, and `classify-line`. To make the file compile, here are the helpers I waved at earlier — they're direct translations of the Erlang originals and don't introduce any LFE idiom we haven't already met.
+
+```lfe
+(defun parse-kv
+  ((key #"[]") (tuple 'kv key '()))
+  ((key value) (tuple 'kv key (unquote-bin value))))
+
+(defun unquote-bin
+  (((binary "\"" (rest binary)))
+   (case (binary:last rest)
+     (34 (binary:part rest 0 (- (byte_size rest) 1)))
+     (_ rest)))
+  ((bin) bin))
+
+(defun parse-fm-lines (lines)
+  (parse-fm-lines lines 'undefined (map)))
+
+(defun parse-fm-lines
+  ((() _current-key acc) acc)
+  (((cons line rest) current-key acc)
+   (let ((trimmed (string:trim line)))
+     (case (classify-line trimmed)
+       ('empty (parse-fm-lines rest current-key acc))
+       ('section-header (parse-fm-lines rest current-key acc))
+       ((tuple 'list-item value)
+        (case current-key
+          ('undefined (parse-fm-lines rest current-key acc))
+          (key
+           (let* ((existing (maps:get key acc '()))
+                  (new-list (case (is_list existing)
+                              ('true (lists:append existing (list value)))
+                              ('false (list value)))))
+             (parse-fm-lines rest key (mset acc key new-list))))))
+       ((tuple 'kv key value)
+        (parse-fm-lines rest key (mset acc key value)))))))
+
+(defun build-card (props)
+  (let ((required (list #"slug" #"concept" #"category"
+                        #"tier" #"source" #"source_slug")))
+    (case (check-required required props)
+      ('ok
+       (tuple 'ok
+              (map 'slug           (get-bin #"slug" props)
+                   'concept        (get-bin #"concept" props)
+                   'category       (get-bin #"category" props)
+                   'tier           (get-bin #"tier" props)
+                   'source         (get-bin #"source" props)
+                   'source_slug    (get-bin #"source_slug" props)
+                   'prerequisites  (get-list #"prerequisites" props)
+                   'extends        (get-list #"extends" props)
+                   'related        (get-list #"related" props)
+                   'contrasts_with (get-list #"contrasts_with" props))))
+      ((= (tuple 'error _) err) err))))
+
+(defun check-required
+  ((() _props) 'ok)
+  (((cons key rest) props)
+   (case (maps:is_key key props)
+     ('true (check-required rest props))
+     ('false (tuple 'error (tuple 'missing-field key))))))
+
+(defun get-bin (key props)
+  (let ((v (maps:get key props #"")))
+    (case v
+      (b (when (is_binary b)) b)
+      (l (when (is_list l)) (iolist_to_binary (lists:join #", " l)))
+      (_ #""))))
+
+(defun get-list (key props)
+  (let ((v (maps:get key props '())))
+    (case v
+      (l (when (is_list l)) l)
+      (b (when (andalso (is_binary b) (=/= b #""))) (list b))
+      (_ '()))))
+```
+
+## Appendix B: the rest of the ingest
+
+§4 showed `build`, `add-source-layer`, `add-abstract-layer`, `add-membership`, `add-source-edges`, `add-card-source-edges`, `add-typed-edge`, and `project-source-edges`. The remaining helpers — the cross-only edge pass, the metadata merge, and the public reader functions — are below.
+
+```lfe
+(defun group-by-source (cards)
+  (lists:foldl
+   (lambda (card acc)
+     (let ((src (mref card 'source_slug)))
+       (maps:update_with
+        src
+        (lambda (existing) (lists:append existing (list card)))
+        (list card)
+        acc)))
+   (map)
+   cards))
+
+(defun merge-type-meta
+  (((map 'label (map 'types t1 'asserted_by a1))
+    (map 'label (map 'types t2 'asserted_by a2)))
+   (map 'label (map 'types (lists:usort (lists:append t1 t2))
+                    'asserted_by (lists:usort (lists:append a1 a2)))))
+  ((_acc new) new))
+
+(defun merge-contracted-into (g contracted)
+  (let ((cvs (graffeo:vertices contracted)))
+    (lists:foldl
+     (lambda (from g-acc)
+       (let ((out-nbrs (graffeo:out_neighbours contracted from)))
+         (lists:foldl
+          (lambda (to g-acc2)
+            (case (graffeo:edge_meta contracted from to)
+              ((tuple 'ok meta)
+               (case (graffeo:edge_meta g-acc2 from to)
+                 ((tuple 'ok ex-meta)
+                  (graffeo:add_edge g-acc2 from to
+                                    (merge-type-meta ex-meta meta)))
+                 ('error (graffeo:add_edge g-acc2 from to meta))))
+              ('error g-acc2)))
+          g-acc out-nbrs)))
+     g cvs)))
+
+(defun add-abstract-edges (cards g)
+  (let ((g1 (project-source-edges g)))
+    (add-cross-only-edges cards g1)))
+
+(defun add-cross-only-edges (cards g)
+  (let ((cards-by-source (group-by-source cards))
+        (all-card-slugs (sets:from_list
+                         (lc ((<- c cards)) (mref c 'slug))
+                         '(#(version 2)))))
+    (lists:foldl
+     (lambda (card g-acc)
+       (let* ((src (mref card 'source_slug))
+              (src-cards (maps:get src cards-by-source))
+              (local-slugs (sets:from_list
+                            (lc ((<- c src-cards)) (mref c 'slug))
+                            '(#(version 2)))))
+         (add-card-cross-edges card local-slugs all-card-slugs g-acc)))
+     g cards)))
+
+(defun add-card-cross-edges (card local-slugs all-card-slugs g)
+  (let* ((from-slug (mref card 'slug))
+         (src (mref card 'source_slug))
+         (rel-types (list (tuple 'prerequisites
+                                 (mref card 'prerequisites))
+                          (tuple 'extends
+                                 (mref card 'extends))
+                          (tuple 'related
+                                 (mref card 'related))
+                          (tuple 'contrasts_with
+                                 (mref card 'contrasts_with)))))
+    (lists:foldl
+     (lambda (type-and-targets g-acc)
+       (let (((tuple type targets) type-and-targets))
+         (lists:foldl
+          (lambda (target-slug g-acc2)
+            (let ((is-local (sets:is_element target-slug local-slugs))
+                  (is-self  (=:= target-slug from-slug)))
+              (case (orelse is-self is-local)
+                ('true g-acc2)
+                ('false
+                 (case (sets:is_element target-slug all-card-slugs)
+                   ('true
+                    (add-typed-edge g-acc2 from-slug target-slug
+                                    type src))
+                   ('false
+                    (ensure-ghost-vertex g-acc2 target-slug
+                                         from-slug type src)))))))
+          g-acc (lists:sort targets))))
+     g rel-types)))
+
+(defun ensure-ghost-vertex (g target-slug from-slug type src)
+  (let ((g1 (case (lists:member target-slug (graffeo:vertices g))
+              ('true g)
+              ('false (graffeo:add_vertex g target-slug)))))
+    (add-typed-edge g1 from-slug target-slug type src)))
+
+(defun source-vertices (g)
+  (lc ((<- v (graffeo:vertices g)) (is_tuple v)) v))
+
+(defun abstract-vertices (g)
+  (lc ((<- v (graffeo:vertices g)) (is_binary v)) v))
+
+(defun build-from-dir (base-dir)
+  (let* ((dirs (filelib:wildcard (++ base-dir "/*")))
+         (files (lists:sort
+                 (lists:flatmap
+                  (lambda (dir) (filelib:wildcard (++ dir "/*.md")))
+                  dirs)))
+         (cards (lists:map
+                 (lambda (f)
+                   (let (((tuple 'ok c) (lfeerlcpt-parser:parse-file f)))
+                     c))
+                 files)))
+    (build cards)))
+```
+
+(If you named your modules differently — `lfec-*` rather than `lfeerlcpt-*`, say — adjust the `lfeerlcpt-parser:parse-file` call inside `build-from-dir` to match.)
 
 ## Sources
 

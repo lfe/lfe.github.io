@@ -9,6 +9,9 @@
     {% include "favicon.liquid" %}
     {% include "css.liquid" %}
     {% include "feed-links.liquid" %}
+    {% if page.data.math %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css">
+    {% endif %}
 </head>
 
 <body class="dark:bg-slate-900">
@@ -125,6 +128,25 @@
     {% include "foot.liquid" %}
 
     {% include "end-scripts.liquid" %}
+    {% if page.data.math %}
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        if (typeof renderMathInElement === "function") {
+          renderMathInElement(document.querySelector(".blog-prose"), {
+            delimiters: [
+              {left: "\\begin{equation}", right: "\\end{equation}", display: true},
+              {left: "$$", right: "$$", display: false}
+            ],
+            throwOnError: false
+          });
+        } else {
+          console.warn("KaTeX auto-render not loaded");
+        }
+      });
+    </script>
+    {% endif %}
 </body>
 
 </html>

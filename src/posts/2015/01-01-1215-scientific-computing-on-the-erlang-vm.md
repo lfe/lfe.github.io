@@ -389,11 +389,9 @@ We already have the following:
 
 With these, we will be able to calculate $$R^2$$:
 
-$$
 \begin{equation}
 R^2 \equiv 1 - {SS_{\rm res}\over SS_{\rm tot}}
 \end{equation}
-$$
 
 Here are the calculations:
 

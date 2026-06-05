@@ -57,7 +57,7 @@ These were some of the most compelling challenges in mathematics at that time. A
 
 Church had started working on the λ&#8209;calculus when attempting to address the Russell Paradox [^6]. However, it was not that goal toward which the λ&#8209;calculus was ultimately applied. Instead, it became useful -- essential, even -- in his efforts to define what he called "calculability" and what is now more commonly referred to as *computability*.[^7] In this the λ&#8209;calculus was an unparalleled success, allowing Church to solve the *Entschiedungsproblem* using the concept of recursive functions.
 
-Syntactically, Church's λ&#8209;-notation made a significant improvement upon that found in the *Principia Mathematica* [^8]. Given the *Principia* phrase $$\phi x̂$$ and the λ&#8209;calculus equivalent, $$\lambda x \phi x$$, one benefits from the use of the latter by virtue of the fact that it unambiguously states that the variable $$x$$ is bound by the term-forming operator $$\lambda$$. This innovation was necessary for Church's work and was a powerful tool put to use by John McCarthy when he built the first programming language which used the λ&#8209;calculus: Lisp.
+Syntactically, Church's λ&#8209;-notation made a significant improvement upon that found in the *Principia Mathematica* [^8]. Given the *Principia* phrase $\phi x̂$ and the λ&#8209;calculus equivalent, $\lambda x \phi x$, one benefits from the use of the latter by virtue of the fact that it unambiguously states that the variable $x$ is bound by the term-forming operator $\lambda$. This innovation was necessary for Church's work and was a powerful tool put to use by John McCarthy when he built the first programming language which used the λ&#8209;calculus: Lisp.
 
 ---
 

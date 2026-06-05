@@ -2,10 +2,10 @@
 layout: post.liquid
 title: "Graph Theory in LFE: A Knowledge Graph of Erlang Itself"
 description: "A deep, hands-on tour of graph theory in LFE — built on a real corpus of 1,664 Erlang concept cards, driven by the graffeo library, and unfolded slowly enough to teach the mathematics underneath each query."
-permalink: "/blog/tutorials/2026/06/03/1500-graph-theory-in-lfe-graffeo-erlang-knowledge"
+permalink: "/blog/tutorials/2026/06/05/1008-graph-theory-in-lfe-graffeo-erlang-knowledge"
 categories: ["tutorials"]
 tags: [graffeo, graphs, graph-theory, erlang, otp, knowledge-graph, dijkstra, mathematics, maths, libraries]
-published_date: 2026-06-03 15:00:00 +0000
+published_date: 2026-06-05 10:08:00 +0500
 is_draft: false
 data:
   author: duncan-mcgreggor

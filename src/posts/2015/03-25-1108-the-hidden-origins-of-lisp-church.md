@@ -4,7 +4,7 @@ title: "The Hidden Origins of Lisp: Alonzo Church"
 description: ""
 permalink: "/blog/excerpts/2015/03/25/1108-the-hidden-origins-of-lisp-church"
 categories: ["excerpts"]
-tags: ["books", "documentation", "education", "history", "lisp", "mathematics", "sicp"]
+tags: ["books", "documentation", "education", "history", "lisp", "mathematics", "maths", "sicp"]
 published_date: 2015-03-25 11:08:00 +0000
 is_draft: false
 data:
@@ -21,12 +21,12 @@ This is one of a series of posts tracing the origins of Lisp through four brief
 biographical vignettes of individuals whose contributions to mathematics
 ultimately supported the creation of Lisp:
 
- * [Introduction](/blog/excerpts/2015/03/22/1445-the-hidden-origins-of-lisp-introduction/)
- * [Giuseppe Peano](/blog/excerpts/2015/03/23/1008-the-hidden-origins-of-lisp-peano/)
- * [Bertrand Russell](/blog/excerpts/2015/03/24/0111-the-hidden-origins-of-lisp-russell/)
- * [Alonzo Church](/blog/excerpts/2015/03/25/1108-the-hidden-origins-of-lisp-church/)
- * [John McCarthy](/blog/excerpts/2015/03/26/1111-the-hidden-origins-of-lisp-mccarthy/)
- * [The Place of Lisp in the 21st Century](/blog/excerpts/2015/03/27/1101-the-hidden-origins-of-lisp-future)
+* [Introduction](/blog/excerpts/2015/03/22/1445-the-hidden-origins-of-lisp-introduction/)
+* [Giuseppe Peano](/blog/excerpts/2015/03/23/1008-the-hidden-origins-of-lisp-peano/)
+* [Bertrand Russell](/blog/excerpts/2015/03/24/0111-the-hidden-origins-of-lisp-russell/)
+* [Alonzo Church](/blog/excerpts/2015/03/25/1108-the-hidden-origins-of-lisp-church/)
+* [John McCarthy](/blog/excerpts/2015/03/26/1111-the-hidden-origins-of-lisp-mccarthy/)
+* [The Place of Lisp in the 21st Century](/blog/excerpts/2015/03/27/1101-the-hidden-origins-of-lisp-future)
 
 The material presented in these
 posts has been taken from early drafts of the new preface for the LFE edition
@@ -75,4 +75,4 @@ Syntactically, Church's λ&#8209;-notation made a significant improvement upon t
 
 [^7]: "Computability" was the term which Turing used.
 
-[^8]: See the discussion of "Propositional Functions" in the section "The Notation in Principia Mathematica":  http://plato.stanford.edu/entries/pm-notation/#4. Note that the section of the *Principia Mathematica* which they reference in that linked discussion on the Stanford site is at the beginning of "Section B: Theory of Apparent Variables" in the *Principia*.
+[^8]: See the discussion of "Propositional Functions" in the section "The Notation in Principia Mathematica":  <http://plato.stanford.edu/entries/pm-notation/#4>. Note that the section of the *Principia Mathematica* which they reference in that linked discussion on the Stanford site is at the beginning of "Section B: Theory of Apparent Variables" in the *Principia*.

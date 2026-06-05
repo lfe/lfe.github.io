@@ -4,7 +4,7 @@ title: "Scientific Computing on the Erlang VM"
 description: "Polynomial Curve Fitting with LFE"
 permalink: "/blog/tutorials/2015/01/01/1215-scientific-computing-on-the-erlang-vm"
 categories: ["tutorials"]
-tags: [erlang, python, howtos, libraries, numpy, scipy, erlport, py, ascii, plotting, maths, statistics, science, scientific computing, statistical analysis, linear regression, curve fitting, polynomials]
+tags: [erlang, python, howtos, libraries, numpy, scipy, erlport, py, ascii, plotting, mathematics, maths, statistics, science, scientific computing, statistical analysis, linear regression, curve fitting, polynomials]
 published_date: 2015-01-01 12:15:00 +0000
 is_draft: false
 data:
@@ -24,7 +24,6 @@ usage, the
 [previously discussed](http://localhost:4000/blog/announcements/2014/12/27/1641-easy-python-from-lfeerlang)
 Erlang/LFE library for running Python code from the Erlang VM.
 
-
 ## Background
 
 The content of this post was taken from a
@@ -38,7 +37,6 @@ on the same subject, by David Edgar Liebke.
 This content is also available in the
 [lsci examples directory](https://github.com/lfex/lsci/tree/cbba7e4705bdc8baaa8b8abaf40ae1649ed44b42/examples/polyfit).
 
-
 ## Introduction
 
 The lsci library (pronounced "Elsie") provides access to the fast numerical
@@ -47,46 +45,45 @@ community. lsci is written in LFE but can be used just as easily from Erlang.
 
 lsci provides the following set of features:
 
- * Wrapper functions (many generated dynamically via macros) for:
-   * The Python 3 standard library module [math](https://docs.python.org/3/library/math.html)
-   * The Python 3 standard library module [cmath](https://docs.python.org/3/library/cmath.html)
-   * The Python 3 standard library module [statistics](https://docs.python.org/3/library/statistics.html)
-   * [NumPy](http://www.numpy.org/)
-   * [SciPy](http://www.scipy.org/scipylib/index.html)
-   * Planned support for
+* Wrapper functions (many generated dynamically via macros) for:
+  * The Python 3 standard library module [math](https://docs.python.org/3/library/math.html)
+  * The Python 3 standard library module [cmath](https://docs.python.org/3/library/cmath.html)
+  * The Python 3 standard library module [statistics](https://docs.python.org/3/library/statistics.html)
+  * [NumPy](http://www.numpy.org/)
+  * [SciPy](http://www.scipy.org/scipylib/index.html)
+  * Planned support for
      [fractions](https://docs.python.org/3/library/fractions.html),
      [decimal](https://docs.python.org/3/library/decimal.html),
      [Pandas](http://pandas.pydata.org/),
      [matplotlib](http://matplotlib.org/), and
      [SymPy](http://www.sympy.org/en/index.html)
- * The [py](https://github.com/lfex/py/) wrappers for
+* The [py](https://github.com/lfex/py/) wrappers for
    [ErlPort](http://erlport.org/) which make calling Python
    module-level functions, object attributes and methods, constructors,
    function objects, etc., very easy
- * Custom encoders/decoders for some of the wrapped data types
+* Custom encoders/decoders for some of the wrapped data types
 
 lsci is brand-new, and thus has far to go before it completely wraps all the
 functionality in NumPy, SciPy, etc. However, enough of it is done that one can
 perform tasks like polynomial curve-fitting and statistical regression.
 
-
 ## Setup
 
 To run this tutorial, you will need the following on your system:
 
- * Erlang (tested with 17.3)
- * rebar
- * lfetool
- * Python 3
- * git
+* Erlang (tested with 17.3)
+* rebar
+* lfetool
+* Python 3
+* git
 
 With those in place, let's get you ready:
 
 ```lfe
-$ git clone git@github.com:lfex/lsci.git
-$ cd lsci
-$ make
-$ . ./python/.venv/bin/activate
+git clone git@github.com:lfex/lsci.git
+cd lsci
+make
+. ./python/.venv/bin/activate
 ```
 
 That will download all the Erlang and Python dependencies, compile the Erlang
@@ -97,7 +94,7 @@ use the Python virtualenv, with all the libraries you just downloaded.
 You are now ready for the LFE REPL:
 
 ```lfe
-$ make repl-no-deps
+make repl-no-deps
 ```
 
 ## Loading Data
@@ -159,7 +156,6 @@ a list:
  #(...) ...)
 ```
 
-
 ## A Note about Values
 
 If you haven't noticed yet, you certainly will as you run through these
@@ -183,7 +179,6 @@ As such, lsci compromises by providing convenience functions for converting
 returned results to something we can look at. We will use such functions as
 ``->list`` and ``->float`` in the remainder of this tutorial for just that
 purpose.
-
 
 ## Plotting Our Data
 
@@ -255,7 +250,6 @@ o
 ok
 ```
 
-
 ## Curve Fitting
 
 The [NIST data set](http://www.itl.nist.gov/div898/strd/lls/data/LINKS/DATA/Filip.dat)
@@ -275,7 +269,6 @@ Using NumPy, we can easily fit a 10th-degree polynomial curve to this data.
 We will use ``numpy.polyfit`` for finding a least squares polynomial fit,
 passing it the $x$ and $y$ values for the data to fit as well as the degree
 of our polynomial:
-
 
 ```lfe
 > (set coeffs (lsci-np:polyfit xs ys 10))
@@ -347,7 +340,6 @@ Let's call this function against several values as a sanity check:
 ```
 
 By examining our original data set, we can see that these check out just fine.
-
 
 ## Polynomial Linear Regression
 
@@ -450,7 +442,7 @@ Now we're ready to get the $R^2$ value for our model:
 ```
 
 If we compare this to the value from the original NIST data file,
-``0.996727416185620 ``, we see that our model did pretty well:
+``0.996727416185620``, we see that our model did pretty well:
 
 ```lfe
 > (lsci-np:->float (lsci-np:- r-squared 0.996727416185620))
@@ -458,7 +450,6 @@ If we compare this to the value from the original NIST data file,
 ```
 
 That's a pretty tiny difference!
-
 
 ## A Linear Model Class
 
@@ -580,7 +571,6 @@ returned ``0.77668860985022548``. Let's try that again with our new object:
 
 Nice.
 
-
 ## Plotting the Model with the Observed Data
 
 We're going to need some data to feed to our fitted-poly function so that it
@@ -588,8 +578,6 @@ can create the smooth polynomial curve that we will overlay on our scatter
 plot. Let's create a linear space between our minimum and maximum x values
 (200 points should give us a nice, smooth curve). Then let's use fitted-poly
 to generate the y values:
-
-
 
 ```lfe
 > (set xs-fitted
@@ -658,7 +646,6 @@ o-
 
 ok
 ```
-
 
 ## Conclusion
 

@@ -4,7 +4,7 @@ title: "Graph Theory in LFE: A Knowledge Graph of Erlang Itself"
 description: "A deep, hands-on tour of graph theory in LFE — built on a real corpus of 1,664 Erlang concept cards, driven by the graffeo library, and unfolded slowly enough to teach the mathematics underneath each query."
 permalink: "/blog/tutorials/2026/06/03/1500-graph-theory-in-lfe-graffeo-erlang-knowledge"
 categories: ["tutorials"]
-tags: [lfe, graffeo, graphs, graph-theory, erlang, otp, knowledge-graph, scc, topsort, dijkstra]
+tags: [graffeo, graphs, graph-theory, erlang, otp, knowledge-graph, dijkstra, mathematics, maths, libraries]
 published_date: 2026-06-03 15:00:00 +0000
 is_draft: false
 data:
@@ -879,7 +879,7 @@ The example's `make example` target still runs the Erlang version. If you want a
 
 ```makefile
 example-lfe: fetch-cards compile
-	@rebar3 lfe run --main scripts/run-lfe-example.lfe
+ @rebar3 lfe run --main scripts/run-lfe-example.lfe
 ```
 
 ## 7. Exercises

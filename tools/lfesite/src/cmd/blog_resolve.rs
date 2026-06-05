@@ -66,19 +66,24 @@ pub fn run(src_dir: &Path) -> Result<()> {
     // 5. Resolve editorial slots
     let slot_names = ["centrepiece", "lede_1", "lede_2", "spotlight"];
 
-    // Slugs explicitly configured for any slot (used to build the fallback pool).
-    let configured_slugs: HashSet<&str> = slot_names
+    // Permalinks explicitly configured for any slot (used to build the
+    // fallback pool). Empty/null slots are ignored.
+    let configured_permalinks: HashSet<&str> = slot_names
         .iter()
         .filter_map(|name| config.get(*name).and_then(|v| v.as_str()))
+        .filter(|s| !s.is_empty())
         .collect();
 
+    // Editorial slots reference posts by permalink (the post's front-matter
+    // `permalink:`), so the lookup is keyed by permalink, not by the
+    // reconstructed filename slug.
     let post_map: HashMap<&str, &PostMeta> =
-        all_posts.iter().map(|p| (p.slug.as_str(), p)).collect();
+        all_posts.iter().map(|p| (p.permalink.as_str(), p)).collect();
 
     // Fallback pool: posts NOT named in any editorial slot, in reverse-chrono order.
     let fallback_pool: Vec<&PostMeta> = all_posts
         .iter()
-        .filter(|p| !configured_slugs.contains(p.slug.as_str()))
+        .filter(|p| !configured_permalinks.contains(p.permalink.as_str()))
         .collect();
     let mut fallback_idx: usize = 0;
 
@@ -105,7 +110,7 @@ pub fn run(src_dir: &Path) -> Result<()> {
     // 7. Build river
     let river: Vec<serde_yaml::Value> = all_posts
         .iter()
-        .filter(|p| !used.contains(&p.slug))
+        .filter(|p| !used.contains(&p.permalink))
         .take(river_count)
         .map(|p| {
             let side = deterministic_side(&p.slug);
@@ -153,8 +158,9 @@ pub fn run(src_dir: &Path) -> Result<()> {
 // Slot resolution
 // ---------------------------------------------------------------------------
 
-/// Resolve a single editorial slot: try the configured slug, fall back to
-/// the next unused post from the chronological pool.
+/// Resolve a single editorial slot: try the configured permalink, fall back
+/// to the next unused post from the chronological pool. `used` is keyed by
+/// permalink so the river filter (also permalink-keyed) stays consistent.
 fn resolve_slot(
     name: &str,
     config: &serde_yaml::Value,
@@ -165,15 +171,19 @@ fn resolve_slot(
     default_cover: &str,
     default_alt: &str,
 ) -> Option<serde_yaml::Value> {
-    // Try configured slug
-    if let Some(slug) = config.get(name).and_then(|v| v.as_str()) {
-        if let Some(post) = post_map.get(slug) {
-            used.insert(slug.to_string());
+    // Try the configured permalink (skip empty/null slots).
+    if let Some(permalink) = config
+        .get(name)
+        .and_then(|v| v.as_str())
+        .filter(|s| !s.is_empty())
+    {
+        if let Some(post) = post_map.get(permalink) {
+            used.insert(post.permalink.clone());
             return Some(post_to_yaml(post, default_cover, default_alt, None));
         }
         eprintln!(
-            "  warning: {} slug '{}' not found, using fallback",
-            name, slug
+            "  warning: {} permalink '{}' not found, using fallback",
+            name, permalink
         );
     }
 
@@ -181,8 +191,8 @@ fn resolve_slot(
     while *fallback_idx < fallback_pool.len() {
         let post = fallback_pool[*fallback_idx];
         *fallback_idx += 1;
-        if !used.contains(&post.slug) {
-            used.insert(post.slug.clone());
+        if !used.contains(&post.permalink) {
+            used.insert(post.permalink.clone());
             return Some(post_to_yaml(post, default_cover, default_alt, None));
         }
     }
@@ -1003,6 +1013,74 @@ mod tests {
             map.get(&ykey("cover_image")).and_then(|v| v.as_str()),
             Some("/default.png")
         );
+    }
+
+    #[test]
+    fn test_run_resolves_slots_by_permalink() {
+        // Editorial slots now carry full permalinks (matching the post's
+        // front-matter `permalink:`), not reconstructed filename slugs.
+        // The configured post here is the *older* one, so a slug-keyed
+        // lookup that misses would fall back to the newer post and the
+        // assertion below would catch it.
+        let root = std::env::temp_dir().join("lfesite_blog_resolve_permalink");
+        let _ = fs::remove_dir_all(&root);
+        let posts = root.join("posts").join("2026");
+        let data = root.join("_data");
+        fs::create_dir_all(&posts).unwrap();
+        fs::create_dir_all(&data).unwrap();
+
+        let featured = "/blog/tutorials/2026/06/03/0230-welcome";
+        // Older post (the one we feature, by permalink).
+        fs::write(
+            posts.join("06-03-0230-welcome.md"),
+            format!(
+                "---\ntitle: \"Welcome\"\npermalink: \"{featured}\"\n\
+                 categories: [\"tutorials\"]\nis_draft: false\n\
+                 data:\n  author: duncan\n---\nBody.\n"
+            ),
+        )
+        .unwrap();
+        // Newer post (would win a chronological fallback).
+        fs::write(
+            posts.join("06-04-1800-lykn.md"),
+            "---\ntitle: \"Lykn\"\npermalink: \"/blog/languages/2026/06/04/1800-lykn\"\n\
+             categories: [\"languages\"]\nis_draft: false\n\
+             data:\n  author: duncan\n---\nBody.\n",
+        )
+        .unwrap();
+
+        fs::write(
+            data.join("blog.yml"),
+            format!("centrepiece: \"{featured}\"\nriver_count: 6\n"),
+        )
+        .unwrap();
+
+        run(&root).unwrap();
+
+        let resolved = fs::read_to_string(data.join("blog_resolved.yml")).unwrap();
+        let doc: serde_yaml::Value = serde_yaml::from_str(&resolved).unwrap();
+
+        let centre = doc
+            .get("centrepiece")
+            .and_then(|c| c.get("permalink"))
+            .and_then(|v| v.as_str());
+        assert_eq!(
+            centre,
+            Some(featured),
+            "centrepiece must resolve to the configured permalink, not a fallback"
+        );
+
+        if let Some(river) = doc.get("river").and_then(|v| v.as_sequence()) {
+            assert!(
+                !river.iter().any(|p| p
+                    .get("permalink")
+                    .and_then(|v| v.as_str())
+                    == Some(featured)),
+                "a featured post must not also appear in the river"
+            );
+        }
+
+        let _ = fs::remove_dir_all(&root);
     }
 
     #[test]

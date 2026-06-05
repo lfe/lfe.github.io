@@ -1,14 +1,15 @@
 # ── Blog Front Page: Editorial Configuration ──
 #
-# Each slot takes a post slug (filename stem, e.g. "2019-05-13-1549-running-...").
-# Leave null or omit to fall back to the next chronological post from the river.
+# Each slot takes a post permalink — the exact `permalink:` from the post's
+# front-matter (e.g. "/blog/tutorials/2026/06/05/1008-..."), copied verbatim.
+# Leave "" / null or omit to fall back to the next chronological post.
 #
-# The lfesite prerender step resolves these slugs to full post metadata
+# The lfesite build step resolves these permalinks to full post metadata
 # and writes _data/blog_resolved.yml for the templates.
 
 # ── Feature Well ──
 # Centerpiece: large card, left side. Widescreen cover on top, text below.
-centrepiece: ""
+centrepiece: "/blog/languages/2026/06/04/1800-lykn-a-lisp-born-from-lfe"
 
 # Off-ledes: three stacked cards, right side. Square image left, text right.
 lede_1: ""
@@ -17,7 +18,7 @@ lede_2: ""
 
 # ── Spotlight Strip ──
 # Full-width highlight: text left, image right, 50/50 split.
-spotlight: "2014-12-15-1848-byte-august-1979-the-lisp-issue"
+spotlight: "/blog/tutorials/2026/06/05/1008-graph-theory-in-lfe-graffeo-erlang-knowledge"
 
 # ── River ──
 # Number of chronological items shown after the spotlight, before the CTA.

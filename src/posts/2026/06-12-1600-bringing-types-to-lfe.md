@@ -8,11 +8,11 @@ tags: [lfe, types, type-systems, gradual-typing, lykn, gleam, haskell, rust, rac
 published_date: 2026-06-12 16:00:00 +0000
 is_draft: false
 data:
-  author: duncan-mcgreggor
+  author: oubiwann
   written_for: null
   last_validated: null
   cover_image: "/images/LFE_AbstractRabitHole_OTH_00257_.png"
-  cover_alt: "Vigdís — to be added"
+  cover_alt: "Vigdís — abstract painting with a hint of a gateway in the near-distance"
   math: false
 ---
 
@@ -23,12 +23,12 @@ multi-clause function heads. We pattern-match on the shape of our data and trust
 the shapes line up. The discipline is *there*; it simply isn't *checked*. Recently, I've been building something that *does* check this convention, and I want to explain why —
 and what I learned by observing the related works of others.
 
-This realisation came as  someone of a releief. There's been a historical tendency for typing to be resisted or outright rejected in certain quarters of the Elrang world. That fact that, with the right frame of refence and the proper amount of squinting, the BEAM community already sodes this? Well, that makes working on a library likfe `lfe/typed` much easier :-D (And thanks to Gleam and other efforts, easier still!)
+This realisation came as  someone of a relief. There's been a historical tendency for typing to be resisted or outright rejected in certain quarters of the Erlang world. The fact that, with the right frame of reference and the proper amount of squinting, the BEAM community already does this? Well, that makes working on a library like `lfe/typed` much easier :-D (And thanks to Gleam and other efforts, easier still!)
 
 ## A spark from a different language
 
 The immediate spark came from somewhere unexpected: [Lykn](https://lykn.pl), a small
-Lisp I built earlier this year that compiles a kernel language of S-expressions to clean JavaScript. After the first few releases of Lykn, it grew a macro-powered surface langauge, which in turn quicky
+Lisp I built earlier this year that compiles a kernel language of S-expressions to clean JavaScript. After the first few releases of Lykn, it grew a macro-powered surface language, which in turn quickly
 grew a feature I'd wanted for a long time — *contract-style function definitions*. This is
 where a function's types live right at its boundary, woven into the same form as the
 function itself rather than floating somewhere else in the file. Writing Lykn code, I
@@ -168,16 +168,16 @@ Typed Clojure did an incredible job.
 ## Our (small, respectful) objections
 
 I want to be careful here, because every one of these systems is more battle-tested
-than ours. We have defintely *learned* from all of them, and formed opinion about them, but we have not mastered them. Our opinions and objections aren't much more sophisticated than an armchair enthusiast's, and are almost entirely matters of *ergonomics*,
+than ours. We have definitely *learned* from all of them, and formed opinion about them, but we have not mastered them. Our opinions and objections aren't much more sophisticated than an armchair enthusiast's, and are almost entirely matters of *ergonomics*,
 not of soundness. But, they're exactly the itch Lykn had already scratched. And, as UX, they can make or break one's early experience of the system.
 
-Caveats asid: in each Lisp case abouve, **the type information lives apart from the code it describes.** Typed
+Caveats aside: in each Lisp case above, **the type information lives apart from the code it describes.** Typed
 Racket's `(: area ...)` is a separate form that floats above the `define`; the name is
 repeated, and the signature and the body can drift apart. Coalton's `declare` is
 likewise detached from its `define`, and the whole typed world lives inside a
 `coalton-toplevel` island — you are either *in* Coalton or *in* Common Lisp, and the
 seam shows. Typed Clojure's `t/ann` is an annotation bolted on from the outside,
-necessarily, because the host language has no place to put a type. (LFE has a nearly identical proble + solution, in fact).
+necessarily, because the host language has no place to put a type. (LFE has a nearly identical problem + solution, in fact).
 
 None of that is wrong. But coming off of Lykn, I wanted the opposite reflex: the types
 should feel like a *part of the definition*, at the boundary where the values cross, with no
@@ -190,14 +190,14 @@ Okay, that's the ergonomics - on to some other interesting bits.
 
 The other half of the problem I faced was strategic, not syntactic, and here the teacher was
 [Gleam](https://gleam.run/). Gleam is a young, statically typed language for the BEAM
-that has, in a remarkably short time, done almost everything right. Intrigued, we read. We learned. And utlimately we mostly tried to copy its judgment — as a template for good decision-making.
+that has, in a remarkably short time, done almost everything right. Intrigued, we read. We learned. And ultimately we mostly tried to copy its judgment — as a template for good decision-making.
 
 A few of its moves became principles for us:
 
 - **Adoption follows interop, not rewrites.** Gleam compiles to the BEAM and calls
   Erlang and Elixir freely; you don't have to abandon your ecosystem to use it. We took
   this further: `lfe/typed` isn't even a new language. It's a library and a build step (echos of Typed Clojure).
-  You keep writing LFE; utliately, the output is ordinary BEAM bytecode, and anything on the
+  You keep writing LFE; the output is eventually ordinary BEAM bytecode, and anything on the
   BEAM can call it. There is no "different LFE" to adopt. (Not as a language implementation; tooling and static analysis have caused us to use a new file extension for now, `.lfet`; more on that in a future post)
 - **Friendly errors are not polish; they're the product.** Gleam treats its compiler's
   output the way Elm does — as a teaching surface — and adoption may track that friendliness
@@ -291,4 +291,4 @@ the compiler would give you — pointing at exactly what you typed, naming exact
 went wrong, suggesting exactly the fix. The REPL has always been where Lisp does its
 best thinking out loud; we'd like it to be where Typed LFE does, too.
 
-We've got a series of posts planned for diving into Typed LFE in detail, including one that goes over our architectural decisions in detail (most of which rest upon the single most important directive: keep LFE proper stable and functional). If you're intested have having a poke-about, our code is here: [github.com/lfe/typed](https://github.com/lfe/typed).
+We've got a series of posts planned for diving into Typed LFE in detail, including one that goes over our architectural decisions in detail (most of which rest upon the single most important directive: keep LFE proper stable and functional). If you're interested have having a poke-about, our code is here: [github.com/lfe/typed](https://github.com/lfe/typed).

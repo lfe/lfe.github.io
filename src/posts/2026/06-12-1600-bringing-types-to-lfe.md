@@ -23,7 +23,7 @@ multi-clause function heads. We pattern-match on the shape of our data and trust
 the shapes line up. The discipline is *there*; it simply isn't *checked*. Recently, I've been building something that *does* check this convention, and I want to explain why —
 and what I learned by observing the related works of others.
 
-This realisation came as  someone of a releief. There's been a historical tendency for typing to be resisted or outrigh rejected in certain quarters of the Elrang world. That fact that, with the right frame of refence and the proper amount of squinting, the BEAM community already sodes this? Well, that makes working on a library likfe `lfe/typed` much easier :-D (And thanks to Gleam and other efforts, easier still!)
+This realisation came as  someone of a releief. There's been a historical tendency for typing to be resisted or outright rejected in certain quarters of the Elrang world. That fact that, with the right frame of refence and the proper amount of squinting, the BEAM community already sodes this? Well, that makes working on a library likfe `lfe/typed` much easier :-D (And thanks to Gleam and other efforts, easier still!)
 
 ## A spark from a different language
 

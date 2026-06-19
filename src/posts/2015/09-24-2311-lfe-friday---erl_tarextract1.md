@@ -4,7 +4,7 @@ title: "LFE Friday - erl_tar:extract/1"
 description: ""
 permalink: "/blog/tutorials/2015/09/24/2311-lfe-friday---erl_tarextract1"
 categories: ["tutorials"]
-tags: ["lfe friday", "lfe", "erlang"]
+tags: ["lfe-friday", "lfe", "erlang"]
 published_date: 2015-09-24 23:11:00 +0000
 is_draft: false
 data:

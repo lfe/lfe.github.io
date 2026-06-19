@@ -4,7 +4,7 @@ title: "LFE Friday - calendar:iso_week_number/1"
 description: ""
 permalink: "/blog/tutorials/2015/05/11/2333-lfe-friday---calendariso_week_number1"
 categories: ["tutorials"]
-tags: ["lfe friday", "lfe", "erlang"]
+tags: ["lfe-friday", "lfe", "erlang"]
 published_date: 2015-05-11 23:33:00 +0000
 is_draft: false
 data:

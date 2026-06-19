@@ -4,7 +4,7 @@ title: "LFE Friday - ETS selects, continuations and inserts"
 description: ""
 permalink: "/blog/tutorials/2016/01/31/0030-lfe-friday---ets-selects-continuations-and-inserts"
 categories: ["tutorials"]
-tags: ["lfe friday", "lfe", "erlang"]
+tags: ["lfe-friday", "lfe", "erlang"]
 published_date: 2016-01-31 00:30:00 +0000
 is_draft: false
 data:

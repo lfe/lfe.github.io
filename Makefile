@@ -40,9 +40,10 @@ help:
 	@echo ""
 	@echo "$(GREEN)Testing & Quality:$(RESET)"
 	@echo "  $(YELLOW)make test$(RESET)             - Run $(BINARY) tests"
-	@echo "  $(YELLOW)make lint$(RESET)             - Run clippy and format check"
+	@echo "  $(YELLOW)make lint$(RESET)             - Run clippy, format check, and tag/category check"
+	@echo "  $(YELLOW)make check-tags-cats$(RESET)  - Ensure no spaces in post tags/categories"
 	@echo "  $(YELLOW)make format$(RESET)           - Format Rust code"
-	@echo "  $(YELLOW)make check$(RESET)            - Build + lint + test + validate"
+	@echo "  $(YELLOW)make check$(RESET)            - lint + test + validate"
 	@echo ""
 	@echo "$(GREEN)Spelling:$(RESET)"
 	@echo "  $(YELLOW)make spell-check$(RESET)      - Check for spelling errors in markdown"
@@ -165,7 +166,7 @@ test:
 	@echo "$(GREEN)✓ All tests passed$(RESET)"
 
 .PHONY: lint
-lint:
+lint: check-tags-cats
 	@echo "$(BLUE)Running linter checks...$(RESET)"
 	@echo "$(CYAN)  • Running clippy...$(RESET)"
 	@cargo clippy --workspace -- -D warnings
@@ -174,6 +175,23 @@ lint:
 	@cargo fmt --all -- --check
 	@echo "$(GREEN)  ✓ Format check passed$(RESET)"
 
+# Enforce the no-spaces rule for post tags/categories (spaces break tag URLs,
+# e.g. /blog/tags/lfe%20friday/). Scans every tags:/categories: line, strips
+# the YAML brackets and comma separators, and fails if any element still
+# contains a space. Use hyphens instead (lfe-friday, not "lfe friday").
+.PHONY: check-tags-cats
+check-tags-cats:
+	@echo "$(BLUE)Checking post tags/categories for spaces...$(RESET)"
+	@files=$$(grep -rlE '^(tags|categories):' src/posts/ 2>/dev/null); \
+	if [ -z "$$files" ]; then echo "$(GREEN)  ✓ no tag/category metadata found$(RESET)"; exit 0; fi; \
+	bad=$$(awk '/^(tags|categories):/{l=$$0; sub(/^[a-z]+: *\[/,"",l); sub(/\].*$$/,"",l); gsub(/ *, */,",",l); gsub(/,/,"",l); if(l ~ / /) print FILENAME":"FNR": "$$0}' $$files); \
+	if [ -n "$$bad" ]; then \
+		echo "$(RED)  ✗ spaces found in tags/categories (use '-' instead):$(RESET)"; \
+		echo "$$bad" | sed 's/^/    /'; \
+		exit 1; \
+	fi; \
+	echo "$(GREEN)  ✓ no spaces in tags/categories$(RESET)"
+
 .PHONY: format
 format:
 	@echo "$(BLUE)Formatting code...$(RESET)"
@@ -181,7 +199,7 @@ format:
 	@echo "$(GREEN)✓ Code formatted$(RESET)"
 
 .PHONY: check
-check: lint test validate
+check: lint test validate check-tags-cats
 	@echo ""
 	@echo "$(GREEN)✓ All checks passed (lint + test + validate)$(RESET)"
 	@echo ""

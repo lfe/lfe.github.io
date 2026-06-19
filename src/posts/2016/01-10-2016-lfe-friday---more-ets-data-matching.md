@@ -4,7 +4,7 @@ title: "LFE Friday - More ETS data matching (and querying)"
 description: ""
 permalink: "/blog/tutorials/2016/01/10/2016-lfe-friday---more-ets-data-matching"
 categories: ["tutorials"]
-tags: ["lfe friday", "lfe", "erlang"]
+tags: ["lfe-friday", "lfe", "erlang"]
 published_date: 2016-01-10 20:16:00 +0000
 is_draft: false
 data:

@@ -70,6 +70,11 @@ It writes `src/posts/<year>/MM-DD-HHMM-slug.md` and generates the filename,
 `published_date` from one timestamp — so they start consistent. Author is your
 git `user.name`, slugified, and must exist in `src/_data/authors.yml`.
 
+**No spaces in tags or categories** — use hyphens (`lfe-friday`, not `lfe
+friday`). A space becomes an ugly, router-breaking tag URL like
+`/blog/tags/lfe%20friday/`. Enforced by `make check-tags-cats` (wired into
+`make lint` and `make check`).
+
 **Cover images:** posts with `cover_image: null` get one auto-assigned by the
 blog-resolve step, deterministically, from a category-routed pool
 (`announcements`/`news`→newsroom, `tutorials`→tutorials except `lfe-friday`,

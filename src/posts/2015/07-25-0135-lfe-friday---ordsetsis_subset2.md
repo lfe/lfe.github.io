@@ -4,7 +4,7 @@ title: "LFE Friday - ordsets:is_subset/2"
 description: ""
 permalink: "/blog/tutorials/2015/07/25/0135-lfe-friday---ordsetsis_subset2"
 categories: ["tutorials"]
-tags: ["lfe friday", "lfe", "erlang"]
+tags: ["lfe-friday", "lfe", "erlang"]
 published_date: 2015-07-25 01:35:00 +0000
 is_draft: false
 data:

@@ -4,7 +4,7 @@ title: "LFE Friday - calendar:day_of_the_week/3"
 description: ""
 permalink: "/blog/tutorials/2015/04/12/1941-lfe-friday---calendarday_of_the_week3"
 categories: ["tutorials"]
-tags: ["lfe friday", "lfe", "erlang"]
+tags: ["lfe-friday", "lfe", "erlang"]
 published_date: 2015-04-12 19:41:00 +0000
 is_draft: false
 data:

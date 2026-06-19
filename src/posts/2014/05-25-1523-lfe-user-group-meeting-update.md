@@ -4,7 +4,7 @@ title: "LFE User Group Meeting: Update"
 description: "We now have a date and time for the User Group meeting in Stockholm!"
 permalink: "/blog/news/2014/05/25/1523-lfe-user-group-meeting-update"
 categories: ["news"]
-tags: ["news", "user groups", "meetups", "conferences", "summits"]
+tags: ["news", "user-groups", "meetups", "conferences", "summits"]
 published_date: 2014-05-25 15:23:00 +0000
 is_draft: false
 data:

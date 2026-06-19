@@ -4,7 +4,7 @@ title: "LFE Friday - ordsets:is_disjoint/2"
 description: ""
 permalink: "/blog/tutorials/2015/03/22/2108-lfe-friday---ordsetsis_disjoint2"
 categories: ["tutorials"]
-tags: ["lfe friday", "lfe", "erlang"]
+tags: ["lfe-friday", "lfe", "erlang"]
 published_date: 2015-03-22 21:08:00 +0000
 is_draft: false
 data:

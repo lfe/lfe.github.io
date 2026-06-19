@@ -4,7 +4,7 @@ title: "LFE Friday - timer:tc/3"
 description: ""
 permalink: "/blog/tutorials/2015/01/10/2201-lfe-friday---timertc3"
 categories: ["tutorials"]
-tags: ["lfe friday", "lfe", "erlang"]
+tags: ["lfe-friday", "lfe", "erlang"]
 published_date: 2015-01-10 22:01:00 +0000
 is_draft: false
 data:

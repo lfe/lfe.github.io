@@ -4,7 +4,7 @@ title: "LFE Friday - string:tokens/2"
 description: ""
 permalink: "/blog/tutorials/2015/02/13/1751-lfe-friday---stringtokens2"
 categories: ["tutorials"]
-tags: ["lfe friday", "lfe", "erlang"]
+tags: ["lfe-friday", "lfe", "erlang"]
 published_date: 2015-02-13 17:51:00 +0000
 is_draft: false
 data:

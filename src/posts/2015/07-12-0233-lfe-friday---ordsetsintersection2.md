@@ -4,7 +4,7 @@ title: "LFE Friday - ordsets:intersection/2"
 description: ""
 permalink: "/blog/tutorials/2015/07/12/0233-lfe-friday---ordsetsintersection2"
 categories: ["tutorials"]
-tags: ["lfe friday", "lfe", "erlang"]
+tags: ["lfe-friday", "lfe", "erlang"]
 published_date: 2015-07-12 02:33:00 +0000
 is_draft: false
 data:

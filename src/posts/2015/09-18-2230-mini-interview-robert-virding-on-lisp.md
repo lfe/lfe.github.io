@@ -4,7 +4,7 @@ title: "An Interview with Robert Virding on Lisp"
 description: ""
 permalink: "/blog/interview/2015/09/18/2230-mini-interview-robert-virding-on-lisp"
 categories: ["interview"]
-tags: ["history", "lisp", "erlang", "lambda machine", "symbolics", "vms", "flavors", "oop", "parlog"]
+tags: ["history", "lisp", "erlang", "lambda-machine", "symbolics", "vms", "flavors", "oop", "parlog"]
 published_date: 2015-09-18 22:30:00 +0000
 is_draft: false
 data:

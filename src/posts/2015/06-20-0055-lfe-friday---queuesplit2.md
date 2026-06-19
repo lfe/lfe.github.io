@@ -4,7 +4,7 @@ title: "LFE Friday - queue:split/2"
 description: ""
 permalink: "/blog/tutorials/2015/06/20/0055-lfe-friday---queuesplit2"
 categories: ["tutorials"]
-tags: ["lfe friday", "lfe", "erlang"]
+tags: ["lfe-friday", "lfe", "erlang"]
 published_date: 2015-06-20 00:55:00 +0000
 is_draft: false
 data:

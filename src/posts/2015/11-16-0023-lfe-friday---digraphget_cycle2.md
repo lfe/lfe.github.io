@@ -4,7 +4,7 @@ title: "LFE Friday - digraph:get_cycle/2"
 description: ""
 permalink: "/blog/tutorials/2015/11/16/0023-lfe-friday---digraphget_cycle2"
 categories: ["tutorials"]
-tags: ["lfe friday", "lfe", "erlang"]
+tags: ["lfe-friday", "lfe", "erlang"]
 published_date: 2015-11-16 00:23:00 +0000
 is_draft: false
 data:

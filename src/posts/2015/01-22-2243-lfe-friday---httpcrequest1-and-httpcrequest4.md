@@ -4,7 +4,7 @@ title: "LFE Friday - httpc:request/1 and httpc:request/4"
 description: ""
 permalink: "/blog/tutorials/2015/01/22/2243-lfe-friday---httpcrequest1-and-httpcrequest4"
 categories: ["tutorials"]
-tags: ["lfe friday", "lfe", "erlang"]
+tags: ["lfe-friday", "lfe", "erlang"]
 published_date: 2015-01-22 22:43:00 +0000
 is_draft: false
 data:

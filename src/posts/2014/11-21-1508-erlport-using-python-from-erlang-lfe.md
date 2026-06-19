@@ -4,7 +4,7 @@ title: "ErlPort: Using Python from Erlang/LFE"
 description: "A Quick Introduction to ErlPort via LFE"
 permalink: "/blog/tutorials/2014/11/21/1508-erlport-using-python-from-erlang-lfe"
 categories: ["tutorials"]
-tags: [howtos, docs, erlport, python, interop, lfe, code, ports, jinterface, clojure, java, libraries, lisp, python 3, tools, reblog, quick-starts]
+tags: [howtos, docs, erlport, python, interop, lfe, code, ports, jinterface, clojure, java, libraries, lisp, python-3, tools, reblog, quick-starts]
 published_date: 2014-11-21 15:08:00 +0000
 is_draft: false
 data:

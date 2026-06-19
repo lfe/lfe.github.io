@@ -4,7 +4,7 @@ title: "BYTE, August 1979: The LISP Issue"
 description: "An exploration of the Ancient LISP code on the cover of BYTE, August 1972"
 permalink: "/blog/archaeology/2014/12/15/1848-byte-august-1979-the-lisp-issue"
 categories: [archaeology]
-tags: [fun, lisp, common lisp]
+tags: [fun, lisp, common-lisp]
 published_date: 2014-12-15 18:48:00 +0000
 is_draft: false
 data:

@@ -4,7 +4,7 @@ title: "LFE Friday - ordsets:union/2"
 description: ""
 permalink: "/blog/tutorials/2015/07/04/0959-lfe-friday---ordsetsunion2"
 categories: ["tutorials"]
-tags: ["lfe friday", "lfe", "erlang"]
+tags: ["lfe-friday", "lfe", "erlang"]
 published_date: 2015-07-04 09:59:00 +0000
 is_draft: false
 data:

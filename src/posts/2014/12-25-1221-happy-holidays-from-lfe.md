@@ -4,7 +4,7 @@ title: "Happy Holidays from LFE"
 description: ""
 permalink: "/blog/holidays/2014/12/25/1221-happy-holidays-from-lfe"
 categories: ["holidays"]
-tags: ["seasons", "greetings", "winter", "christmas", "hanukkah", "boxing day", "kwanzaa", "festivus"]
+tags: ["seasons", "greetings", "winter", "christmas", "hanukkah", "boxing-day", "kwanzaa", "festivus"]
 published_date: 2014-12-25 12:21:00 +0000
 is_draft: false
 data:

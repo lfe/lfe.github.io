@@ -4,7 +4,7 @@ title: "A Quicksort LFE Assist"
 description: "Helping LFE/Erlang newcomers avoid pattern-matching and recursion gotchas"
 permalink: "/blog/tutorials/2015/07/18/1824-a-quicksort-lfe-assist"
 categories: [tutorials]
-tags: [answers, questions, mail list, algorithms]
+tags: [answers, questions, mail-list, algorithms]
 published_date: 2015-07-18 18:24:00 +0000
 is_draft: false
 data:

@@ -4,7 +4,7 @@ title: "LFE Friday - calendar:date_to_gregorian_days/3"
 description: ""
 permalink: "/blog/tutorials/2015/04/20/1707-lfe-friday---calendardate_to_gregorian_days3"
 categories: ["tutorials"]
-tags: ["lfe friday", "lfe", "erlang"]
+tags: ["lfe-friday", "lfe", "erlang"]
 published_date: 2015-04-20 17:07:00 +0000
 is_draft: false
 data:

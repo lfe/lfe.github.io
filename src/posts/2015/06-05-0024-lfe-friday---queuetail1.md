@@ -4,7 +4,7 @@ title: "LFE Friday - queue:tail/1"
 description: ""
 permalink: "/blog/tutorials/2015/06/05/0024-lfe-friday---queuetail1"
 categories: ["tutorials"]
-tags: ["lfe friday", "lfe", "erlang"]
+tags: ["lfe-friday", "lfe", "erlang"]
 published_date: 2015-06-05 00:24:00 +0000
 is_draft: false
 data:

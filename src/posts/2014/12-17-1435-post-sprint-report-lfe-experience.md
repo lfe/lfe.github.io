@@ -4,7 +4,7 @@ title: "Post Sprint Report: LFE Experience"
 description: "A first-encounter with LFE from an Erlang appreciator with a Lisp background."
 permalink: "/blog/reports/2014/12/17/1435-post-sprint-report-lfe-experience"
 categories: ["reports"]
-tags: ["community", "engineering teams", "lfe in the wild", "ux"]
+tags: ["community", "engineering-teams", "lfe-in-the-wild", "ux"]
 published_date: 2014-12-17 14:35:00 +0000
 is_draft: false
 data:

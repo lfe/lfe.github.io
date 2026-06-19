@@ -4,7 +4,7 @@ title: "LFE Friday - Using ETS select with a limit"
 description: ""
 permalink: "/blog/tutorials/2016/01/23/0122-lfe-friday---using-ets-select-with-a-limit"
 categories: ["tutorials"]
-tags: ["lfe friday", "lfe", "erlang"]
+tags: ["lfe-friday", "lfe", "erlang"]
 published_date: 2016-01-23 01:22:00 +0000
 is_draft: false
 data:

@@ -4,7 +4,7 @@ title: "LFE Friday - digraph:add_edge/4"
 description: ""
 permalink: "/blog/tutorials/2015/10/23/2231-lfe-friday---digraphadd_edge4"
 categories: ["tutorials"]
-tags: ["lfe friday", "lfe", "erlang"]
+tags: ["lfe-friday", "lfe", "erlang"]
 published_date: 2015-10-23 22:31:00 +0000
 is_draft: false
 data:

@@ -4,7 +4,7 @@ title: "LFE Friday - ETS Introduction, part 4: ETS Access Protections"
 description: ""
 permalink: "/blog/tutorials/2015/12/22/0113-lfe-friday---ets-introduction-part-4"
 categories: ["tutorials"]
-tags: ["lfe friday", "lfe", "erlang"]
+tags: ["lfe-friday", "lfe", "erlang"]
 published_date: 2015-12-22 01:13:00 +0000
 is_draft: false
 data:

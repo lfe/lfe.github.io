@@ -4,7 +4,7 @@ title: "LFE Friday - digraph:in_neighbors/2"
 description: ""
 permalink: "/blog/tutorials/2015/11/13/0117-lfe-friday---digraphin_neighbors2"
 categories: ["tutorials"]
-tags: ["lfe friday", "lfe", "erlang"]
+tags: ["lfe-friday", "lfe", "erlang"]
 published_date: 2015-11-13 01:17:00 +0000
 is_draft: false
 data:

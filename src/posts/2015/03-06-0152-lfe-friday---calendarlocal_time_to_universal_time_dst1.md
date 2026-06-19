@@ -4,7 +4,7 @@ title: "LFE Friday - calendar:local_time_to_universal_time_dst/1"
 description: ""
 permalink: "/blog/tutorials/2015/03/06/0152-lfe-friday---calendarlocal_time_to_universal_time_dst1"
 categories: ["tutorials"]
-tags: ["lfe friday", "lfe", "erlang"]
+tags: ["lfe-friday", "lfe", "erlang"]
 published_date: 2015-03-06 01:52:00 +0000
 is_draft: false
 data:

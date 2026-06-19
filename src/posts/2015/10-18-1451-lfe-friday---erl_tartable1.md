@@ -4,7 +4,7 @@ title: "LFE Friday - erl_tar:table/1"
 description: ""
 permalink: "/blog/tutorials/2015/10/18/1451-lfe-friday---erl_tartable1"
 categories: ["tutorials"]
-tags: ["lfe friday", "lfe", "erlang"]
+tags: ["lfe-friday", "lfe", "erlang"]
 published_date: 2015-10-18 14:51:00 +0000
 is_draft: false
 data:

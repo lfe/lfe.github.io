@@ -4,7 +4,7 @@ title: "LFE Friday - erl_tar:create/2"
 description: ""
 permalink: "/blog/tutorials/2015/09/18/0131-lfe-friday---erl_tarcreate2"
 categories: ["tutorials"]
-tags: ["lfe friday", "lfe", "erlang"]
+tags: ["lfe-friday", "lfe", "erlang"]
 published_date: 2015-09-18 01:31:00 +0000
 is_draft: false
 data:

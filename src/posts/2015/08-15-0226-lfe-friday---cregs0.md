@@ -4,7 +4,7 @@ title: "LFE Friday - c:regs/0"
 description: ""
 permalink: "/blog/tutorials/2015/08/15/0226-lfe-friday---cregs0"
 categories: ["tutorials"]
-tags: ["lfe friday", "lfe", "erlang"]
+tags: ["lfe-friday", "lfe", "erlang"]
 published_date: 2015-08-15 02:26:00 +0000
 is_draft: false
 data:

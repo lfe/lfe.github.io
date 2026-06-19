@@ -4,7 +4,7 @@ title: "LFE Friday - digraph:add_vertex/1"
 description: ""
 permalink: "/blog/tutorials/2015/10/20/0147-lfe-friday---digraphadd_vertex1"
 categories: ["tutorials"]
-tags: ["lfe friday", "lfe", "erlang"]
+tags: ["lfe-friday", "lfe", "erlang"]
 published_date: 2015-10-20 01:47:00 +0000
 is_draft: false
 data:

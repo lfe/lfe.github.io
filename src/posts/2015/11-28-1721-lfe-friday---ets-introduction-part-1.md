@@ -4,7 +4,7 @@ title: "LFE Friday - ETS Introduction, part 1"
 description: ""
 permalink: "/blog/tutorials/2015/11/28/1721-lfe-friday---ets-introduction-part-1"
 categories: [tutorials]
-tags: [lfe friday, lfe, erlang]
+tags: [lfe-friday, lfe, erlang]
 published_date: 2015-11-28 17:21:00 +0000
 is_draft: false
 data:

@@ -50,10 +50,10 @@ enum Command {
         /// Override the URL slug
         #[arg(long)]
         slug: Option<String>,
-        /// Post category (default: tutorials)
+        /// Post category (default: tutorials). No spaces — use hyphens (e.g. user-groups)
         #[arg(long, default_value = "tutorials")]
         category: String,
-        /// Comma-separated tags
+        /// Comma-separated tags. No spaces within a tag — use hyphens (e.g. lfe-friday)
         #[arg(long, default_value = "")]
         tags: String,
         /// Override timestamp (YYYY-MM-DD HH:MM)

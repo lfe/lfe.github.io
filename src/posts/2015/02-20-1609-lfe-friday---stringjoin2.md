@@ -4,7 +4,7 @@ title: "LFE Friday - string:join/2"
 description: ""
 permalink: "/blog/tutorials/2015/02/20/1609-lfe-friday---stringjoin2"
 categories: ["tutorials"]
-tags: ["lfe friday", "lfe", "erlang"]
+tags: ["lfe-friday", "lfe", "erlang"]
 published_date: 2015-02-20 16:09:00 +0000
 is_draft: false
 data:

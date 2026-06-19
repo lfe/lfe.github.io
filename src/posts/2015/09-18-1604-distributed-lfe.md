@@ -4,7 +4,7 @@ title: "Distributed LFE"
 description: ""
 permalink: "/blog/tutorials/2015/09/18/1604-distributed-lfe"
 categories: ["tutorials"]
-tags: ["erlang", "otp", "distributed systems", "remote nodes", "rpc"]
+tags: ["erlang", "otp", "distributed-systems", "remote-nodes", "rpc"]
 published_date: 2015-09-18 16:04:00 +0000
 is_draft: false
 data:

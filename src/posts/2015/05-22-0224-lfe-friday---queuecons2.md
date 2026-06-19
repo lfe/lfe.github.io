@@ -4,7 +4,7 @@ title: "LFE Friday - queue:cons/2"
 description: ""
 permalink: "/blog/tutorials/2015/05/22/0224-lfe-friday---queuecons2"
 categories: ["tutorials"]
-tags: ["lfe friday", "lfe", "erlang"]
+tags: ["lfe-friday", "lfe", "erlang"]
 published_date: 2015-05-22 02:24:00 +0000
 is_draft: false
 data:

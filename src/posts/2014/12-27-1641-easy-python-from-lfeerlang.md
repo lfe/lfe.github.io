@@ -4,7 +4,7 @@ title: "Easy Python from LFE/Erlang"
 description: "The quickest way to use Python from LFE/Erlang"
 permalink: "/blog/announcements/2014/12/27/1641-easy-python-from-lfeerlang"
 categories: ["announcements"]
-tags: ["python", "erlport", "ports", "erlang", "interop", "libraries", "python 3", "docs", "howtos", "code"]
+tags: ["python", "erlport", "ports", "erlang", "interop", "libraries", "python-3", "docs", "howtos", "code"]
 published_date: 2014-12-27 16:41:00 +0000
 is_draft: false
 data:

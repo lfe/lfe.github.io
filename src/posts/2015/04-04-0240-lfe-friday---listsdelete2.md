@@ -4,7 +4,7 @@ title: "LFE Friday - lists:delete/2"
 description: ""
 permalink: "/blog/tutorials/2015/04/04/0240-lfe-friday---listsdelete2"
 categories: ["tutorials"]
-tags: ["lfe friday", "lfe", "erlang"]
+tags: ["lfe-friday", "lfe", "erlang"]
 published_date: 2015-04-04 02:40:00 +0000
 is_draft: false
 data:

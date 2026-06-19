@@ -4,7 +4,7 @@ title: "LFE Friday - calendar:valid_date/3"
 description: ""
 permalink: "/blog/tutorials/2015/04/24/1716-lfe-friday---calendarvalid_date3"
 categories: ["tutorials"]
-tags: ["lfe friday", "lfe", "erlang"]
+tags: ["lfe-friday", "lfe", "erlang"]
 published_date: 2015-04-24 17:16:00 +0000
 is_draft: false
 data:

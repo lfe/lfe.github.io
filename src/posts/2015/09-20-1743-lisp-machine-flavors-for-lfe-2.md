@@ -4,7 +4,7 @@ title: "Lisp Machine Flavors for LFE (2)"
 description: ""
 permalink: "/blog/tutorials/2015/09/20/1743-lisp-machine-flavors-for-lfe-2"
 categories: ["tutorials"]
-tags: ["lisp machine", "flavors"]
+tags: ["lisp-machine", "flavors"]
 published_date: 2015-09-20 17:43:00 +0000
 is_draft: false
 data:

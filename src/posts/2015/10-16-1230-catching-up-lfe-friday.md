@@ -4,7 +4,7 @@ title: "Catching up LFE Friday"
 description: ""
 permalink: "/blog/tutorials/2015/10/16/1230-catching-up-lfe-friday"
 categories: ["tutorials"]
-tags: ["lfe friday", "lfe", "erlang"]
+tags: ["lfe-friday", "lfe", "erlang"]
 published_date: 2015-10-16 12:30:00 +0000
 is_draft: false
 data:

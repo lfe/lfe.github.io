@@ -4,7 +4,7 @@ title: "LFE Friday - The digraph module"
 description: ""
 permalink: "/blog/tutorials/2015/10/18/1701-lfe-friday---the-digraph-module"
 categories: ["tutorials"]
-tags: ["lfe friday", "lfe", "erlang"]
+tags: ["lfe-friday", "lfe", "erlang"]
 published_date: 2015-10-18 17:01:00 +0000
 is_draft: false
 data:

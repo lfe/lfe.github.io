@@ -4,7 +4,7 @@ title: "LFE Friday - dict:merge/3"
 description: ""
 permalink: "/blog/tutorials/2015/03/01/1823-lfe-friday---dictmerge3"
 categories: ["tutorials"]
-tags: ["lfe friday", "lfe", "erlang"]
+tags: ["lfe-friday", "lfe", "erlang"]
 published_date: 2015-03-01 18:23:00 +0000
 is_draft: false
 data:

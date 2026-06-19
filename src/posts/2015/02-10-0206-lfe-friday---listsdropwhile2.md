@@ -4,7 +4,7 @@ title: "LFE Friday - lists:dropwhile/2"
 description: ""
 permalink: "/blog/tutorials/2015/02/10/0206-lfe-friday---listsdropwhile2"
 categories: ["tutorials"]
-tags: ["lfe friday", "lfe", "erlang"]
+tags: ["lfe-friday", "lfe", "erlang"]
 published_date: 2015-02-10 02:06:00 +0000
 is_draft: false
 data:

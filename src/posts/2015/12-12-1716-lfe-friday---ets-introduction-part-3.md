@@ -4,7 +4,7 @@ title: "LFE Friday - ETS Introduction, part 3: ETS Table Types"
 description: ""
 permalink: "/blog/tutorials/2015/12/12/1716-lfe-friday---ets-introduction-part-3"
 categories: ["tutorials"]
-tags: ["lfe friday", "lfe", "erlang"]
+tags: ["lfe-friday", "lfe", "erlang"]
 published_date: 2015-12-12 17:16:00 +0000
 is_draft: false
 data:

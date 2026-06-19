@@ -5,8 +5,9 @@
 Copy the block below into `src/posts/YYYY/MM-DD-HHMM-<slug>.md` and
 replace every `«…»`. Slug rule: title lowercased, punctuation stripped;
 `" - "` → `---`, `:` and `/` deleted (`LFE Friday - maps:get/3` →
-`lfe-friday---mapsget3`). HTML comments are guidance — delete them all
-before publishing.
+`lfe-friday---mapsget3`). Tag/category rule: no spaces in any tag or
+category — use hyphens (`lfe-friday`, not `lfe friday`). HTML comments
+are guidance — delete them all before publishing.
 
 ````markdown
 ---
@@ -15,7 +16,7 @@ title: "LFE Friday - «module:function/arity»"
 description: "«One sentence: what the function does and the one interesting thing this post shows about it.»"
 permalink: "/blog/tutorials/«YYYY»/«MM»/«DD»/«HHMM»-lfe-friday---«slug»"
 categories: ["tutorials"]
-tags: [lfe friday, lfe, erlang, «module», «concept-tags»]
+tags: [lfe-friday, lfe, erlang, «module», «concept-tags»]
 published_date: «YYYY-MM-DD HH:MM»:00 +0000
 is_draft: false
 data:

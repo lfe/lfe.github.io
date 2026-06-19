@@ -4,7 +4,7 @@ title: "Towards multi-methods in LFE"
 description: "Exploring the shape of multi-methods in the LFE library LOS"
 permalink: "/blog/design/2015/07/11/1720-towards-multi-methods-in-lfe"
 categories: ["design"]
-tags: ["language", "macros", "libraries", "los", "clojure", "objects", "generic functions"]
+tags: ["language", "macros", "libraries", "los", "clojure", "objects", "generic-functions"]
 published_date: 2015-07-11 17:20:00 +0000
 is_draft: false
 data:

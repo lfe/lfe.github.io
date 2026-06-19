@@ -4,7 +4,7 @@ title: "LFE Friday - lists:filter/2"
 description: ""
 permalink: "/blog/tutorials/2015/02/02/0111-lfe-friday---listsfilter2"
 categories: ["tutorials"]
-tags: ["lfe friday", "lfe", "erlang"]
+tags: ["lfe-friday", "lfe", "erlang"]
 published_date: 2015-02-02 01:11:00 +0000
 is_draft: false
 data:

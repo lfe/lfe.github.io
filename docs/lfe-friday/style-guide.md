@@ -214,8 +214,9 @@ Required frontmatter (see the template for the full block):
   `"LFE Friday - <Topic>, part N"` for arcs.
 - `permalink`: `/blog/tutorials/YYYY/MM/DD/HHMM-<slug>` — must agree
   with the file path and `published_date`.
-- `categories`: `["tutorials"]`. Tags: always `[lfe friday, lfe,
-  erlang]`, plus the module name and any concept tags.
+- `categories`: `["tutorials"]`. Tags: always `[lfe-friday, lfe,
+  erlang]`, plus the module name and any concept tags. No spaces in any
+  tag or category — use hyphens (`lfe-friday`, not `lfe friday`).
 - `data.written_for`: **fill it in** (this drives the site's version
   banner): the LFE and Erlang/OTP versions the post was tested against.
 - `data.cover_image` / `cover_alt`: an LFE Friday Vigdís painting from

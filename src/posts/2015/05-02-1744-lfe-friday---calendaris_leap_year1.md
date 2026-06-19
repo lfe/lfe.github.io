@@ -4,7 +4,7 @@ title: "LFE Friday - calendar:is_leap_year/1"
 description: ""
 permalink: "/blog/tutorials/2015/05/02/1744-lfe-friday---calendaris_leap_year1"
 categories: ["tutorials"]
-tags: ["lfe friday", "lfe", "erlang"]
+tags: ["lfe-friday", "lfe", "erlang"]
 published_date: 2015-05-02 17:44:00 +0000
 is_draft: false
 data:

@@ -4,7 +4,7 @@ title: "LFE Friday - ETS Introduction, part 5: keypos, read_concurrency and writ
 description: ""
 permalink: "/blog/tutorials/2015/12/25/2138-lfe-friday---ets-introduction-part-5"
 categories: ["tutorials"]
-tags: ["lfe friday", "lfe", "erlang"]
+tags: ["lfe-friday", "lfe", "erlang"]
 published_date: 2015-12-25 21:38:00 +0000
 is_draft: false
 data:

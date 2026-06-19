@@ -4,7 +4,7 @@ title: "LFE Friday - ETS, match_specs and functions"
 description: ""
 permalink: "/blog/tutorials/2016/01/18/1312-lfe-friday---ets-match_specs-and-functions"
 categories: ["tutorials"]
-tags: ["lfe friday", "lfe", "erlang"]
+tags: ["lfe-friday", "lfe", "erlang"]
 published_date: 2016-01-18 13:12:00 +0000
 is_draft: false
 data:

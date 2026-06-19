@@ -4,7 +4,7 @@ title: "LFE Friday - c:xm/1"
 description: ""
 permalink: "/blog/tutorials/2015/08/02/0212-lfe-friday---cxm1"
 categories: ["tutorials"]
-tags: ["lfe friday", "lfe", "erlang"]
+tags: ["lfe-friday", "lfe", "erlang"]
 published_date: 2015-08-02 02:12:00 +0000
 is_draft: false
 data:

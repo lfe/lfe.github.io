@@ -4,7 +4,7 @@ title: "LFE Friday - c:pid/3"
 description: ""
 permalink: "/blog/tutorials/2015/09/05/0107-lfe-friday---cpid3"
 categories: ["tutorials"]
-tags: ["lfe friday", "lfe", "erlang"]
+tags: ["lfe-friday", "lfe", "erlang"]
 published_date: 2015-09-05 01:07:00 +0000
 is_draft: false
 data:

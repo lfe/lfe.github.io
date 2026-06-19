@@ -4,7 +4,7 @@ title: "LFE Friday Bonus - Performance of erlang:length/1 on a list"
 description: ""
 permalink: "/blog/tutorials/2015/07/12/0256-lfe-friday-bonus---performance-of-erlanglength1-on-a-list"
 categories: ["tutorials"]
-tags: ["lfe friday", "lfe", "erlang"]
+tags: ["lfe-friday", "lfe", "erlang"]
 published_date: 2015-07-12 02:56:00 +0000
 is_draft: false
 data:

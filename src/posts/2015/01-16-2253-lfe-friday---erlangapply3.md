@@ -4,7 +4,7 @@ title: "LFE Friday - erlang:apply/3"
 description: ""
 permalink: "/blog/tutorials/2015/01/16/2253-lfe-friday---erlangapply3"
 categories: ["tutorials"]
-tags: ["lfe friday", "lfe", "erlang"]
+tags: ["lfe-friday", "lfe", "erlang"]
 published_date: 2015-01-16 22:53:00 +0000
 is_draft: false
 data:

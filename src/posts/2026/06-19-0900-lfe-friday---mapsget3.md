@@ -4,7 +4,7 @@ title: "LFE Friday - maps:get/3"
 description: "Reopening LFE Friday with the safe map read: maps:get/3 hands back a default instead of crashing on a missing key — plus the one eager-evaluation gotcha to know."
 permalink: "/blog/tutorials/2026/06/19/0900-lfe-friday---mapsget3"
 categories: ["tutorials"]
-tags: [lfe friday, lfe, erlang, maps, defaults]
+tags: [lfe-friday, lfe, erlang, maps, defaults]
 published_date: 2026-06-19 09:00:00 +0000
 is_draft: false
 data:

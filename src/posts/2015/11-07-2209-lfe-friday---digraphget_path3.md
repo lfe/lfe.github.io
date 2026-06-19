@@ -4,7 +4,7 @@ title: "LFE Friday - digraph:get_path/3"
 description: ""
 permalink: "/blog/tutorials/2015/11/07/2209-lfe-friday---digraphget_path3"
 categories: ["tutorials"]
-tags: ["lfe friday", "lfe", "erlang"]
+tags: ["lfe-friday", "lfe", "erlang"]
 published_date: 2015-11-07 22:09:00 +0000
 is_draft: false
 data:

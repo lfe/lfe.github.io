@@ -4,7 +4,7 @@ title: "LFE Friday - lists:flatmap/2"
 description: ""
 permalink: "/blog/tutorials/2015/03/13/1559-lfe-friday---listsflatmap2"
 categories: ["tutorials"]
-tags: ["lfe friday", "lfe", "erlang"]
+tags: ["lfe-friday", "lfe", "erlang"]
 published_date: 2015-03-13 15:59:00 +0000
 is_draft: false
 data:

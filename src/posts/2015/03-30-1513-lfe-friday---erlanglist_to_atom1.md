@@ -4,7 +4,7 @@ title: "LFE Friday - erlang:list_to_atom/1"
 description: ""
 permalink: "/blog/tutorials/2015/03/30/1513-lfe-friday---erlanglist_to_atom1"
 categories: ["tutorials"]
-tags: ["lfe friday", "lfe", "erlang"]
+tags: ["lfe-friday", "lfe", "erlang"]
 published_date: 2015-03-30 15:13:00 +0000
 is_draft: false
 data:

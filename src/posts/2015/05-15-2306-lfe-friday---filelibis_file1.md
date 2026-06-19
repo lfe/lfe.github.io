@@ -4,7 +4,7 @@ title: "LFE Friday - filelib:is_file/1"
 description: ""
 permalink: "/blog/tutorials/2015/05/15/2306-lfe-friday---filelibis_file1"
 categories: ["tutorials"]
-tags: ["lfe friday", "lfe", "erlang"]
+tags: ["lfe-friday", "lfe", "erlang"]
 published_date: 2015-05-15 23:06:00 +0000
 is_draft: false
 data:

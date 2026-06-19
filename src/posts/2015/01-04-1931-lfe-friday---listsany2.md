@@ -4,7 +4,7 @@ title: "LFE Friday - lists:any/2"
 description: ""
 permalink: "/blog/tutorials/2015/01/04/1931-lfe-friday---listsany2"
 categories: [tutorials]
-tags: [lfe friday, lfe, erlang]
+tags: [lfe-friday, lfe, erlang]
 published_date: 2015-01-04 19:31:00 +0000
 is_draft: false
 data:

@@ -4,7 +4,7 @@ title: "Coming Soon: LFE Friday!"
 description: "With Steven Proctor's blessing, LFE will be re-publishing Erlang Thursdays..."
 permalink: "/blog/announcements/2015/01/03/1244-coming-soon-lfe-fridays"
 categories: [announcements]
-tags: [howtos, erlang, stdlib, lfe friday]
+tags: [howtos, erlang, stdlib, lfe-friday]
 published_date: 2015-01-03 12:44:00 +0000
 is_draft: false
 data:

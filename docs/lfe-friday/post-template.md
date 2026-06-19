@@ -40,9 +40,9 @@ Today's LFE Friday «is/covers» [«module:function/arity»](https://www.erlang.
 
 <!-- 3. HAPPY PATH — 3–7 calls, real unedited output, prompt is "> ". -->
 ```lfe
-> («module»:«function» «args»)
+lfe> («module»:«function» «args»)
 «actual output»
-> («module»:«function» «args»)
+lfe> («module»:«function» «args»)
 «actual output»
 ```
 
@@ -55,7 +55,7 @@ Today's LFE Friday «is/covers» [«module:function/arity»](https://www.erlang.
 «Lead-in: what we're about to try and why it might misbehave.»
 
 ```lfe
-> («module»:«function» «bad args»)
+lfe> («module»:«function» «bad args»)
 exception error: «actual error»
 ```
 
@@ -74,16 +74,15 @@ exception error: «actual error»
 The `«module»` module also provides [«sibling/arity»](https://www.erlang.org/doc/apps/«app»/«module».html#«sibling»/«arity»), which «one-line contrast».
 
 ```lfe
-> («module»:«sibling» «args»)
+lfe> («module»:«sibling» «args»)
 «actual output»
 ```
 
 <!-- 7. CLOSE — arc posts: trail next week ("Next week, we will …").
      Standalone posts: a one-sentence practicality verdict ("While the
-     odds are low you'll reach for this daily, …"). Then sign. -->
+     odds are low you'll reach for this daily, …"). No signature line —
+     the author byline is rendered at the top of the post. -->
 «Closing line.»
-
-- «Surname»
 ````
 
 ## Pre-publish checklist (from the style guide, §9)
@@ -96,7 +95,8 @@ The `«module»` module also provides [«sibling/arity»](https://www.erlang.org
 5. Exactly one deeper cut, ≤2 paragraphs.
 6. No headings/bullets in the body unless the post genuinely turns a
    corner; ~250–450 words incl. code (~650–1,100 for arc installments).
-7. Signature line; arc recap + trail lines if in an arc.
+7. No signature line (author byline is rendered at the top); arc recap +
+   trail lines if in an arc.
 8. Frontmatter: permalink ↔ filename ↔ published_date agree;
    `written_for` filled; cover image from `/images/fridays/`; guidance
    comments deleted.

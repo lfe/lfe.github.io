@@ -19,7 +19,7 @@ original series started but never covered.
 
 | Week | Module | Topic | Notes |
 |------|--------|-------|-------|
-| 1 | maps | maps:new/0, from_list/1, to_list/1, get/2, get/3, put/3 | Basics, comparison with dict |
+| 1 | maps | maps:new/0, from_list/1, to_list/1, put/3 | Basics, comparison with dict — get/2 & get/3 covered 2026-06-19 |
 | 2 | maps | maps:merge/2, merge_with/3, update/3, update_with/3 | Mutations, merge_with is OTP 24+ |
 | 3 | maps | maps:filter/2, filtermap/2, map/2, fold/3, foreach/2 | Functional operations |
 | 4 | maps | maps:keys/1, values/1, find/2, is_key/2, size/1, groups_from_list/2 | Querying and grouping |

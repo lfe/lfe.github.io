@@ -82,8 +82,9 @@ Posts follow this sequence (the template encodes it):
    `queue:cons/2` → `queue:snoc/2`; the other arities. This is how the
    series teaches the *module*, not just the function.
 
-7. **The sign-off.** Series-continuity line if in an arc ("Next week,
-   we will…"), then the signature (§6).
+7. **The close.** Series-continuity line if in an arc ("Next week, we
+   will…"). No signature line — the author is shown at the top of the post
+   (§6).
 
 Steps 3–6 can interleave — the corpus often probes, explains a little,
 probes again. The order above is the default, not a straitjacket.
@@ -161,8 +162,11 @@ exceptional posts.
 
 - All shell blocks are fenced with ` ```lfe `; non-LFE shell commands
   (rarely needed) use ` ```shell `.
-- REPL lines start with the prompt `>` followed by one space. Show the
-  output exactly as printed, unindented, on the lines following.
+- REPL lines start with the prompt `lfe>` followed by one space. Show the
+  output exactly as printed, unindented, on the lines following. (The shell
+  prompt changed from a bare `>` to `lfe>`; posts in the 2015–2016 archive
+  still show the old bare prompt — leave those as-is, use `lfe>` going
+  forward.)
 - Inline code uses single backticks: `` `lists:any/2` ``. (The 2015
   corpus used ``double backticks``; new posts use the modern
   convention.)
@@ -184,13 +188,17 @@ exceptional posts.
   Proctor, original author; Robert Virding, translator). **New original
   posts drop the per-post Proctor header** — the series' lineage is
   credited once, on the series/announcement page.
-- **Keep the signature ritual.** Close every post with a signature line:
-  - Single author: `- McGreggor`
-  - Adaptation or co-written post: original surname first, adapter
-    second, honoring the old form: `- <Original>, <Adapter>`
+- **No closing signature.** New posts do *not* end with a `- Surname`
+  sign-off. The author is rendered at the top of every post from the
+  `data.author` frontmatter, so a trailing signature is redundant. (The
+  2015–2016 archive keeps its `- Proctor, Robert` lines; the change applies
+  from the 2026 revival forward.) End instead on the post's last line of
+  prose — for arc installments, that's the "next week" trail.
 - The frontmatter `data.author` must name a key from
   `src/_data/authors.yml` (e.g. `duncan-mcgreggor`, `robert-virding`).
-  Add new authors there before first use.
+  Add new authors there before first use. For an adaptation or co-written
+  post, credit the second contributor through the post's author/byline data,
+  not a signature line.
 
 
 ## 7. Frontmatter and file conventions
@@ -242,7 +250,8 @@ Required frontmatter (see the template for the full block):
 6. No headings/bullets unless the post genuinely turned a corner.
 7. Word count (incl. code): ~250–450 (standalone) / ~650–1,100 (arc
    installment).
-8. Signature line present; arc continuity lines present if in an arc.
+8. No closing signature line (the byline is rendered at the top of the
+   post); arc continuity lines present if in an arc.
 9. Frontmatter complete; permalink ↔ filename ↔ published_date agree;
    `written_for` filled; cover image set.
 
@@ -264,9 +273,9 @@ Required frontmatter (see the template for the full block):
 > short-circuit pay off by timing both halves of the same question:
 >
 > ```lfe
-> > (timer:tc 'lists 'any (list (lambda (x) (== (rem x 2) 1)) (lists:seq 2 200000 2)))
+> lfe> (timer:tc 'lists 'any (list (lambda (x) (== (rem x 2) 1)) (lists:seq 2 200000 2)))
 > #(171661 false)
-> > (timer:tc 'lists 'any (list (lambda (x) (== (rem x 2) 0)) (lists:seq 2 200000 2)))
+> lfe> (timer:tc 'lists 'any (list (lambda (x) (== (rem x 2) 0)) (lists:seq 2 200000 2)))
 > #(19 true)
 > ```
 >

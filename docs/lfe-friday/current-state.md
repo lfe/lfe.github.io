@@ -108,6 +108,12 @@ Against the full OTP core set of **190 publicly documented modules**, that's
 | lists:flatmap/2 | LFE Friday - lists:flatmap/2 |
 | lists:delete/2 | LFE Friday - lists:delete/2 |
 
+### maps — 1 post
+
+| Function | Post |
+|----------|------|
+| maps:get/3, maps:get/2 (find/2 demonstrated) | LFE Friday - maps:get/3 |
+
 ### ordsets — 5 posts
 
 | Function | Post |

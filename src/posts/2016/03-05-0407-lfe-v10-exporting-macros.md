@@ -9,7 +9,9 @@ published_date: 2016-03-05 04:07:00 +0000
 is_draft: false
 data:
   author: robert-virding
-  written_for: null
+  written_for:
+    lfe: "0.10"
+    erlang: "18"
   last_validated: null
   cover_image: "/images/tutorials/LFE_Tutorial_00361_.png"
   cover_alt: "Vigdís — LFE tutorial, a retro-futurist study aboard a spaceship"

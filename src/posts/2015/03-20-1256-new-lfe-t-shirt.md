@@ -9,7 +9,9 @@ published_date: 2015-03-20 12:56:00 +0000
 is_draft: false
 data:
   author: duncan-mcgreggor
-  written_for: null
+  written_for:
+    lfe: "0.9"
+    erlang: "17"
   last_validated: null
   cover_image: "/images/default/LFE_00239_.png"
   cover_alt: "Vigdís — LFE, retro-futurist digital painting"

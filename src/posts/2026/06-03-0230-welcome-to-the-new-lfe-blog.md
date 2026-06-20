@@ -9,7 +9,9 @@ published_date: 2026-06-03 02:30:00 +0000
 is_draft: false
 data:
   author: duncan-mcgreggor
-  written_for: null
+  written_for:
+    lfe: "2.2.1"
+    erlang: "29"
   last_validated: null
   cover_image: "/images/newsroom/LFE_Newsroom_00310_.png"
   cover_alt: "Vigdís — LFE news, a busy rotating space-station newsroom"

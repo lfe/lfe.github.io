@@ -9,7 +9,9 @@ published_date: 2015-03-13 15:59:00 +0000
 is_draft: false
 data:
   author: robert-virding
-  written_for: null
+  written_for:
+    lfe: "0.9"
+    erlang: "17"
   last_validated: null
   cover_image: "/images/fridays/LFE_Friday_00284_.png"
   cover_alt: "Vigdís — LFE Friday, LiffyBot studying Erlang modules in a Mead-style command room"

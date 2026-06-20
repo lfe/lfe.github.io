@@ -9,7 +9,9 @@ published_date: 2026-06-04 18:00:00 +0000
 is_draft: false
 data:
   author: duncan-mcgreggor
-  written_for: null
+  written_for:
+    lfe: "2.2.1"
+    erlang: "29"
   last_validated: null
   cover_image: "/images/LichenMoss_00183_.png"
   cover_alt: "Vigdís — lichen and moss on ancient stone, oil and digital"

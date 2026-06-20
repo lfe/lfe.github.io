@@ -9,7 +9,9 @@ published_date: 2026-06-05 10:08:00 +0500
 is_draft: false
 data:
   author: duncan-mcgreggor
-  written_for: null
+  written_for:
+    lfe: "2.2.0"
+    erlang: "27"
   last_validated: null
   cover_image: "/images/LFE_Graffeo_00409_.png"
   cover_alt: null

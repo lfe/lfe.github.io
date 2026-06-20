@@ -9,7 +9,9 @@ published_date: 2015-07-08 13:49:00 +0000
 is_draft: false
 data:
   author: duncan-mcgreggor
-  written_for: null
+  written_for:
+    lfe: "0.10"
+    erlang: "17"
   last_validated: null
   cover_image: "/images/tutorials/LFE_Tutorial_00332_.png"
   cover_alt: "Vigdís — LFE tutorial, a retro-futurist study aboard a spaceship"

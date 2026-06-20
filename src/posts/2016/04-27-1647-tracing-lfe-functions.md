@@ -9,7 +9,9 @@ published_date: 2016-04-27 16:47:00 +0000
 is_draft: false
 data:
   author: eric-bailey
-  written_for: null
+  written_for:
+    lfe: "1.0.2"
+    erlang: "18"
   last_validated: null
   cover_image: "/images/tutorials/LFE_Tutorial_00340_.png"
   cover_alt: "Vigdís — LFE tutorial, a retro-futurist study aboard a spaceship"

@@ -9,7 +9,9 @@ published_date: 2026-06-12 16:00:00 +0000
 is_draft: false
 data:
   author: oubiwann
-  written_for: null
+  written_for:
+    lfe: "2.2.1"
+    erlang: "29"
   last_validated: null
   cover_image: "/images/LFE_AbstractRabitHole_OTH_00257_.png"
   cover_alt: "Vigdís — abstract painting with a hint of a gateway in the near-distance"

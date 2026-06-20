@@ -2,49 +2,386 @@
   "schema_version": 1,
   "note": "Authoritative LFE + Erlang/OTP release timeline. Edit by hand; all lookup tables are derived in-memory by tools/lfesite (see src/releases.rs). Dates are ISO 8601 (YYYY-MM-DD). 'approximate' marks dates inferred rather than confirmed (notably pre-1.0 LFE). 'prerelease' marks tagged-but-unpublished releases. Source: docs/lfe-erlang-release-history.md.",
   "lfe": [
-    { "version": "0.1", "date": "2008-03-01", "approximate": true, "supports_otp": ["R12B"], "notes": "Initial announcement on erlang-questions (Robert Virding); built on Erlang R12B-0. No Lisp shell." },
-    { "version": "0.2", "date": "2009-01-01", "approximate": true, "supports_otp": ["R12B", "R13B"], "notes": "Became a Lisp-2; first LFE shell." },
-    { "version": "0.3", "date": "2010-01-01", "approximate": true, "supports_otp": ["R13B"], "notes": "More Common Lisp-inspired forms; lfe_boot, lfe_gen." },
-    { "version": "0.4", "date": "2010-06-01", "approximate": true, "supports_otp": ["R13B"], "notes": "Last dev version for R12B-5 and older; future development moves to R13B." },
-    { "version": "0.5", "date": "2011-01-01", "approximate": true, "supports_otp": ["R13B"], "notes": "Unicode binary types; lfe_io:format; list* macro." },
-    { "version": "0.6.1", "date": "2011-06-01", "approximate": true, "supports_otp": ["R13B"], "notes": "Era tutorials pin v0.6.1 on OTP R13B04 (LFE Shell V5.7.4)." },
-    { "version": "0.7", "date": "2012-06-01", "approximate": true, "supports_otp": ["R14B", "R15B"], "notes": "Travis CI; list comprehensions; match-spec generator." },
-    { "version": "0.8", "date": "2013-09-01", "approximate": true, "supports_otp": ["R15B", "R16B"], "notes": "Function/macro definitions in the shell; block comments." },
-    { "version": "0.9", "date": "2014-07-01", "approximate": true, "supports_otp": ["17"], "notes": "Maps support era; targets R14+ through OTP 17." },
-    { "version": "0.10", "date": "2015-07-01", "approximate": true, "supports_otp": ["18"], "notes": "Final 0.x series before 1.0." },
-    { "version": "1.0.2", "date": "2016-04-17", "approximate": false, "supports_otp": ["18", "19"], "notes": "First Hex publish of the 1.0 milestone (v1.0/v1.0.1 tagged but not on Hex)." },
-    { "version": "1.1.1", "date": "2016-08-18", "approximate": false, "supports_otp": ["18", "19"], "notes": "Hex.pm." },
-    { "version": "1.2.0", "date": "2016-09-27", "approximate": false, "supports_otp": ["18", "19"], "notes": "Hex.pm." },
-    { "version": "1.3", "date": "2018-01-01", "approximate": true, "supports_otp": ["18", "19", "20", "21"], "notes": "Long-lived stable tag; active through 2019-2020. Not published to Hex." },
-    { "version": "2.0", "date": "2021-06-07", "approximate": false, "supports_otp": ["21", "22", "23", "24"], "notes": "First release of the v2.x rewrite cluster after a multi-year gap." },
-    { "version": "2.0.1", "date": "2021-06-26", "approximate": false, "supports_otp": ["21", "22", "23", "24"], "notes": "Bug fixes for map handling on older Erlang (Hex date)." },
-    { "version": "2.1.0", "date": "2023-01-02", "approximate": false, "supports_otp": ["24", "25", "26"], "notes": "First v2.1 release." },
-    { "version": "2.1.1", "date": "2023-01-03", "approximate": false, "supports_otp": ["24", "25", "26"], "notes": "Quickfix release (Hex date)." },
-    { "version": "2.1.2", "date": "2023-08-02", "approximate": false, "supports_otp": ["24", "25", "26"], "notes": "Fixes for comparison macros with 3+ args." },
-    { "version": "2.1.3", "date": "2024-01-04", "approximate": false, "supports_otp": ["25", "26", "27"], "notes": "New lc/list-comp and bc/binary-comp implementations in the REPL." },
-    { "version": "2.1.4", "date": "2024-09-03", "approximate": false, "supports_otp": ["25", "26", "27"], "notes": "macOS build patch (Hex date)." },
-    { "version": "2.1.5", "date": "2024-09-13", "approximate": false, "supports_otp": ["25", "26", "27"], "notes": "Fix tests with recent rebar3." },
-    { "version": "2.2.0", "date": "2025-01-11", "approximate": false, "supports_otp": ["26", "27", "28"], "notes": "Detection for Mix projects to start the LFE REPL in project context. Most recent Hex.pm publication." },
-    { "version": "2.2.1", "date": "2025-06-01", "approximate": true, "prerelease": true, "supports_otp": ["26", "27", "28"], "notes": "Tagged after 2.2.0; appears in the lfe/lfe README REPL banner. Not yet published to Hex (date approximate)." }
+    {
+      "version": "0.1",
+      "date": "2008-03-01",
+      "approximate": true,
+      "notes": "Initial announcement on erlang-questions (Robert Virding); built on Erlang R12B-0. No Lisp shell.",
+      "supports_otp": [
+        "R12B"
+      ]
+    },
+    {
+      "version": "0.2",
+      "date": "2009-01-01",
+      "approximate": true,
+      "notes": "Became a Lisp-2; first LFE shell.",
+      "supports_otp": [
+        "R12B",
+        "R13B"
+      ]
+    },
+    {
+      "version": "0.3",
+      "date": "2010-01-01",
+      "approximate": true,
+      "notes": "More Common Lisp-inspired forms; lfe_boot, lfe_gen.",
+      "supports_otp": [
+        "R13B"
+      ]
+    },
+    {
+      "version": "0.4",
+      "date": "2010-06-01",
+      "approximate": true,
+      "notes": "Last dev version for R12B-5 and older; future development moves to R13B.",
+      "supports_otp": [
+        "R13B"
+      ]
+    },
+    {
+      "version": "0.5",
+      "date": "2011-01-01",
+      "approximate": true,
+      "notes": "Unicode binary types; lfe_io:format; list* macro.",
+      "supports_otp": [
+        "R13B"
+      ]
+    },
+    {
+      "version": "0.6.1",
+      "date": "2011-06-01",
+      "approximate": true,
+      "notes": "Era tutorials pin v0.6.1 on OTP R13B04 (LFE Shell V5.7.4).",
+      "supports_otp": [
+        "R13B"
+      ]
+    },
+    {
+      "version": "0.7",
+      "date": "2012-06-01",
+      "approximate": true,
+      "notes": "Travis CI; list comprehensions; match-spec generator.",
+      "supports_otp": [
+        "R14B",
+        "R15B"
+      ]
+    },
+    {
+      "version": "0.8",
+      "date": "2013-09-01",
+      "approximate": true,
+      "notes": "Function/macro definitions in the shell; block comments.",
+      "supports_otp": [
+        "R15B",
+        "R16B"
+      ]
+    },
+    {
+      "version": "0.9",
+      "date": "2014-07-01",
+      "approximate": true,
+      "notes": "Maps support era; targets R14+ through OTP 17.",
+      "supports_otp": [
+        "17"
+      ]
+    },
+    {
+      "version": "0.10",
+      "date": "2015-07-01",
+      "approximate": true,
+      "notes": "Final 0.x series before 1.0.",
+      "supports_otp": [
+        "18"
+      ]
+    },
+    {
+      "version": "1.0.2",
+      "date": "2016-04-17",
+      "notes": "First Hex publish of the 1.0 milestone (v1.0/v1.0.1 tagged but not on Hex).",
+      "supports_otp": [
+        "18",
+        "19"
+      ]
+    },
+    {
+      "version": "1.1.1",
+      "date": "2016-08-18",
+      "notes": "Hex.pm.",
+      "supports_otp": [
+        "18",
+        "19"
+      ]
+    },
+    {
+      "version": "1.2.0",
+      "date": "2016-09-27",
+      "notes": "Hex.pm.",
+      "supports_otp": [
+        "18",
+        "19"
+      ]
+    },
+    {
+      "version": "1.3",
+      "date": "2018-01-01",
+      "approximate": true,
+      "notes": "Long-lived stable tag; active through 2019-2020. Not published to Hex.",
+      "supports_otp": [
+        "18",
+        "19",
+        "20",
+        "21"
+      ]
+    },
+    {
+      "version": "2.0",
+      "date": "2021-06-07",
+      "notes": "First release of the v2.x rewrite cluster after a multi-year gap.",
+      "supports_otp": [
+        "21",
+        "22",
+        "23",
+        "24"
+      ]
+    },
+    {
+      "version": "2.0.1",
+      "date": "2021-06-26",
+      "notes": "Bug fixes for map handling on older Erlang (Hex date).",
+      "supports_otp": [
+        "21",
+        "22",
+        "23",
+        "24"
+      ]
+    },
+    {
+      "version": "2.1.0",
+      "date": "2023-01-02",
+      "notes": "First v2.1 release.",
+      "supports_otp": [
+        "24",
+        "25",
+        "26"
+      ]
+    },
+    {
+      "version": "2.1.1",
+      "date": "2023-01-03",
+      "notes": "Quickfix release (Hex date).",
+      "supports_otp": [
+        "24",
+        "25",
+        "26"
+      ]
+    },
+    {
+      "version": "2.1.2",
+      "date": "2023-08-02",
+      "notes": "Fixes for comparison macros with 3+ args.",
+      "supports_otp": [
+        "24",
+        "25",
+        "26"
+      ]
+    },
+    {
+      "version": "2.1.3",
+      "date": "2024-01-04",
+      "notes": "New lc/list-comp and bc/binary-comp implementations in the REPL.",
+      "supports_otp": [
+        "25",
+        "26",
+        "27"
+      ]
+    },
+    {
+      "version": "2.1.4",
+      "date": "2024-09-03",
+      "notes": "macOS build patch (Hex date).",
+      "supports_otp": [
+        "25",
+        "26",
+        "27"
+      ]
+    },
+    {
+      "version": "2.1.5",
+      "date": "2024-09-13",
+      "notes": "Fix tests with recent rebar3.",
+      "supports_otp": [
+        "25",
+        "26",
+        "27"
+      ]
+    },
+    {
+      "version": "2.2.0",
+      "date": "2025-01-11",
+      "notes": "Detection for Mix projects to start the LFE REPL in project context. Most recent Hex.pm publication.",
+      "supports_otp": [
+        "26",
+        "27",
+        "28"
+      ]
+    },
+    {
+      "version": "2.2.1",
+      "date": "2025-06-01",
+      "approximate": true,
+      "prerelease": true,
+      "notes": "Tagged after 2.2.0; appears in the lfe/lfe README REPL banner. Not yet published to Hex (date approximate).",
+      "supports_otp": [
+        "26",
+        "27",
+        "28"
+      ]
+    }
   ],
   "erlang": [
-    { "version": "R12B", "date": "2008-11-05", "approximate": false, "series": "R", "notes": "Representative date R12B-5; the active R12B series during 2008." },
-    { "version": "R13B", "date": "2009-04-21", "approximate": false, "series": "R", "notes": "Significant overhaul." },
-    { "version": "R14B", "date": "2010-09-15", "approximate": false, "series": "R", "notes": "ets improvements, native IPv6, recursive funs, epp macros." },
-    { "version": "R15B", "date": "2011-12-14", "approximate": false, "series": "R", "notes": "Native OS time, silent process loader, halfword emulator." },
-    { "version": "R16B", "date": "2013-02-25", "approximate": false, "series": "R", "notes": "Last R-named series before integer versioning." },
-    { "version": "17.0", "date": "2014-04-07", "approximate": false, "series": "integer", "notes": "New integer version scheme. Maps introduced (EEP-43), experimental in 17.0. maps:get/3 added in 17.1." },
-    { "version": "18.0", "date": "2015-06-23", "approximate": false, "series": "integer", "notes": "Maps stabilised. License changed to Apache 2.0. New time API." },
-    { "version": "19.0", "date": "2016-06-22", "approximate": false, "series": "integer", "notes": "Dirty schedulers GA. ETS performance work." },
-    { "version": "20.0", "date": "2017-06-21", "approximate": false, "series": "integer", "notes": "Atom Unicode support. New compiler optimisations." },
-    { "version": "21.0", "date": "2018-06-19", "approximate": false, "series": "integer", "notes": "New logger framework. File I/O moved to NIFs. Unified stack-traces." },
-    { "version": "22.0", "date": "2019-05-10", "approximate": false, "series": "integer", "notes": "Improved binary matching, ssl improvements, distribution improvements." },
-    { "version": "23.0", "date": "2020-05-11", "approximate": false, "series": "integer", "notes": "Improved compiler/SSA optimisations; SSL/TLS hardening; socket NIF." },
-    { "version": "24.0", "date": "2021-05-10", "approximate": false, "series": "integer", "notes": "BeamAsm JIT (x86_64) by default; EEP-48 documentation API." },
-    { "version": "25.0", "date": "2022-05-17", "approximate": false, "series": "integer", "notes": "JIT type-based optimisations; maybe-expression (experimental)." },
-    { "version": "26.0", "date": "2023-05-15", "approximate": false, "series": "integer", "notes": "New shell with completion; AArch64 JIT; incremental Dialyzer." },
-    { "version": "27.0", "date": "2024-05-17", "approximate": false, "series": "integer", "notes": "In-source doc attributes (-doc); maybe on by default; json module." },
-    { "version": "28.0", "date": "2025-05-20", "approximate": false, "series": "integer", "notes": "Continued JIT/compiler improvements." },
-    { "version": "29.0", "date": "2026-05-13", "approximate": false, "series": "integer", "notes": "Latest stable as of June 2026." }
+    {
+      "version": "R12B",
+      "date": "2008-11-05",
+      "notes": "Representative date R12B-5; the active R12B series during 2008.",
+      "series": "R"
+    },
+    {
+      "version": "R13B",
+      "date": "2009-04-21",
+      "notes": "Significant overhaul.",
+      "series": "R"
+    },
+    {
+      "version": "R14B",
+      "date": "2010-09-15",
+      "notes": "ets improvements, native IPv6, recursive funs, epp macros.",
+      "series": "R"
+    },
+    {
+      "version": "R15B",
+      "date": "2011-12-14",
+      "notes": "Native OS time, silent process loader, halfword emulator.",
+      "series": "R"
+    },
+    {
+      "version": "R16B",
+      "date": "2013-02-25",
+      "notes": "Last R-named series before integer versioning.",
+      "series": "R"
+    },
+    {
+      "version": "17.0",
+      "date": "2014-04-07",
+      "notes": "New integer version scheme. Maps introduced (EEP-43), experimental in 17.0. maps:get/3 added in 17.1.",
+      "series": "integer"
+    },
+    {
+      "version": "18.0",
+      "date": "2015-06-23",
+      "notes": "Maps stabilised. License changed to Apache 2.0. New time API.",
+      "series": "integer"
+    },
+    {
+      "version": "19.0",
+      "date": "2016-06-22",
+      "notes": "Dirty schedulers GA. ETS performance work.",
+      "series": "integer"
+    },
+    {
+      "version": "20.0",
+      "date": "2017-06-21",
+      "notes": "Atom Unicode support. New compiler optimisations.",
+      "series": "integer"
+    },
+    {
+      "version": "21.0",
+      "date": "2018-06-19",
+      "notes": "New logger framework. File I/O moved to NIFs. Unified stack-traces.",
+      "series": "integer"
+    },
+    {
+      "version": "22.0",
+      "date": "2019-05-10",
+      "notes": "Improved binary matching, ssl improvements, distribution improvements.",
+      "series": "integer"
+    },
+    {
+      "version": "23.0",
+      "date": "2020-05-11",
+      "notes": "Improved compiler/SSA optimisations; SSL/TLS hardening; socket NIF.",
+      "series": "integer"
+    },
+    {
+      "version": "24.0",
+      "date": "2021-05-10",
+      "notes": "BeamAsm JIT (x86_64) by default; EEP-48 documentation API.",
+      "series": "integer"
+    },
+    {
+      "version": "25.0",
+      "date": "2022-05-17",
+      "notes": "JIT type-based optimisations; maybe-expression (experimental).",
+      "series": "integer"
+    },
+    {
+      "version": "26.0",
+      "date": "2023-05-15",
+      "notes": "New shell with completion; AArch64 JIT; incremental Dialyzer.",
+      "series": "integer"
+    },
+    {
+      "version": "27.0",
+      "date": "2024-05-17",
+      "notes": "In-source doc attributes (-doc); maybe on by default; json module.",
+      "series": "integer"
+    },
+    {
+      "version": "28.0",
+      "date": "2025-05-20",
+      "notes": "Continued JIT/compiler improvements.",
+      "series": "integer"
+    },
+    {
+      "version": "29.0",
+      "date": "2026-05-13",
+      "notes": "Latest stable as of June 2026.",
+      "series": "integer"
+    },
+    {
+      "version": "26.2.5.21",
+      "date": "2026-05-27",
+      "series": "integer"
+    },
+    {
+      "version": "27.3.4.12",
+      "date": "2026-05-27",
+      "series": "integer"
+    },
+    {
+      "version": "28.5.0.1",
+      "date": "2026-05-27",
+      "series": "integer"
+    },
+    {
+      "version": "29.0.1",
+      "date": "2026-05-27",
+      "series": "integer"
+    },
+    {
+      "version": "27.3.4.13",
+      "date": "2026-06-10",
+      "series": "integer"
+    },
+    {
+      "version": "28.5.0.2",
+      "date": "2026-06-10",
+      "series": "integer"
+    },
+    {
+      "version": "29.0.2",
+      "date": "2026-06-10",
+      "series": "integer"
+    }
   ]
 }

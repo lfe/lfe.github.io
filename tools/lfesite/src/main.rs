@@ -4,6 +4,7 @@ use anyhow::Result;
 use clap::{Parser, Subcommand};
 
 mod cmd;
+mod releases;
 mod util;
 
 /// Build orchestration and data pre-rendering for the LFE website.
@@ -40,6 +41,32 @@ enum Command {
     },
     /// Sanity checks on data files.
     Validate,
+    /// Audit (and optionally fix) data.written_for version banners on posts.
+    VersionCheck {
+        /// Check a single post (default: all of src/posts).
+        #[arg(long)]
+        file: Option<PathBuf>,
+        /// Write computed banners to disk (default: report only).
+        #[arg(long)]
+        fix: bool,
+        /// With --fix, also rewrite existing values that disagree.
+        #[arg(long)]
+        overwrite: bool,
+    },
+    /// Regenerate src/_data/lfe_versions.yml from data/release-history.json.
+    SyncVersions,
+    /// Cross-reference the release history (one of --date, --lfe, --erlang).
+    Versions {
+        /// Nearest LFE + Erlang releases on or before this date (YYYY-MM-DD).
+        #[arg(long)]
+        date: Option<String>,
+        /// An LFE version: show its release date and contemporary Erlang.
+        #[arg(long)]
+        lfe: Option<String>,
+        /// An Erlang version: show its release date and contemporary LFE.
+        #[arg(long)]
+        erlang: Option<String>,
+    },
     /// Create a new blog post.
     NewPost {
         /// Post title
@@ -83,20 +110,35 @@ fn main() -> Result<()> {
         Command::Build => cmd::build::run(&project_dir),
         Command::Serve { port } => cmd::serve::run(&project_dir, port),
         Command::Validate => cmd::validate::run(&project_dir),
-        Command::NewPost { title, draft, slug, category, tags, date } => {
-            cmd::new_post::run(
-                &project_dir,
-                &title,
-                draft,
-                slug.as_deref(),
-                &category,
-                &tags,
-                date.as_deref(),
-            )
-        }
+        Command::VersionCheck {
+            file,
+            fix,
+            overwrite,
+        } => cmd::version_check::run(&project_dir, file.as_deref(), fix, overwrite),
+        Command::SyncVersions => cmd::sync_versions::run(&project_dir),
+        Command::Versions { date, lfe, erlang } => cmd::versions_lookup::run(
+            &project_dir,
+            date.as_deref(),
+            lfe.as_deref(),
+            erlang.as_deref(),
+        ),
+        Command::NewPost {
+            title,
+            draft,
+            slug,
+            category,
+            tags,
+            date,
+        } => cmd::new_post::run(
+            &project_dir,
+            &title,
+            draft,
+            slug.as_deref(),
+            &category,
+            &tags,
+            date.as_deref(),
+        ),
         Command::PublishPost { file } => cmd::publish_post::run(&file),
-        Command::DraftPost { file } => {
-            cmd::draft_post::run(&project_dir, file.as_deref())
-        }
+        Command::DraftPost { file } => cmd::draft_post::run(&project_dir, file.as_deref()),
     }
 }

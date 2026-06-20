@@ -18,25 +18,28 @@ pub fn run(project_dir: &Path) -> Result<()> {
     let src_dir = project_dir.join("src");
     let output_dir = project_dir.join("site");
 
-    println!("=== Step 1/7: prerender ===");
+    println!("=== Step 1/8: sync-versions ===");
+    crate::releases::ReleaseHistory::load(project_dir)?.write_lfe_versions_yml(&src_dir)?;
+
+    println!("=== Step 2/8: prerender ===");
     super::prerender::run_with_data_dir(&src_dir)?;
 
-    println!("=== Step 2/7: blog-resolve ===");
+    println!("=== Step 3/8: blog-resolve ===");
     super::blog_resolve::run(&src_dir)?;
 
-    println!("=== Step 3/7: sass ===");
+    println!("=== Step 4/8: sass ===");
     super::sass::run(project_dir, &src_dir)?;
 
-    println!("=== Step 4/7: tailwindcss ===");
+    println!("=== Step 5/8: tailwindcss ===");
     run_tailwind(project_dir, &src_dir)?;
 
-    println!("=== Step 5/7: cobalt ===");
+    println!("=== Step 6/8: cobalt ===");
     run_cobalt(project_dir, &output_dir)?;
 
-    println!("=== Step 6/7: post-build ===");
+    println!("=== Step 7/8: post-build ===");
     generate_sitemap(&src_dir, &output_dir, "https://lfe.io")?;
 
-    println!("=== Step 7/7: pagefind ===");
+    println!("=== Step 8/8: pagefind ===");
     run_pagefind(project_dir, &output_dir)?;
 
     println!("\nbuild complete: output in {}", output_dir.display());
@@ -51,10 +54,7 @@ fn generate_sitemap(project_dir: &Path, output_dir: &Path, base_url: &str) -> Re
         .max_depth(3)
         .into_iter()
         .filter_map(|e| e.ok())
-        .filter(|e| {
-            e.file_type().is_file()
-                && e.path().extension().map_or(false, |ext| ext == "md")
-        })
+        .filter(|e| e.file_type().is_file() && e.path().extension().is_some_and(|ext| ext == "md"))
     {
         let rel = match entry.path().strip_prefix(project_dir) {
             Ok(r) => r,
@@ -70,7 +70,10 @@ fn generate_sitemap(project_dir: &Path, output_dir: &Path, base_url: &str) -> Re
         }
 
         let stem = rel.file_stem().and_then(|s| s.to_str()).unwrap_or("");
-        let parent = rel.parent().map(|p| p.to_string_lossy().to_string()).unwrap_or_default();
+        let parent = rel
+            .parent()
+            .map(|p| p.to_string_lossy().to_string())
+            .unwrap_or_default();
 
         let path = if stem == "index" && parent.is_empty() {
             "/".to_string()
@@ -202,10 +205,10 @@ fn dirs_cache() -> std::path::PathBuf {
 }
 
 fn platform_tag() -> (&'static str, &'static str) {
+    // Non-macOS platforms (incl. anything not explicitly handled) use the
+    // Linux standalone binary.
     let os = if cfg!(target_os = "macos") {
         "macos"
-    } else if cfg!(target_os = "linux") {
-        "linux"
     } else {
         "linux"
     };
@@ -291,7 +294,10 @@ fn ensure_pagefind_binary() -> Result<std::path::PathBuf> {
         .output()
         .context("failed to list tarball contents")?;
     let contents = String::from_utf8_lossy(&listing.stdout);
-    println!("  tarball contents: {}", contents.trim().replace('\n', ", "));
+    println!(
+        "  tarball contents: {}",
+        contents.trim().replace('\n', ", ")
+    );
 
     // Extract everything, then find/rename the pagefind binary
     let status = Command::new("tar")

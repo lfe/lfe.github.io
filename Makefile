@@ -36,6 +36,9 @@ help:
 	@echo "  $(YELLOW)make install$(RESET)           - Install $(BINARY) and cobalt"
 	@echo "  $(YELLOW)make prerender$(RESET)         - Render _md fields to _html in data files"
 	@echo "  $(YELLOW)make validate$(RESET)          - Check data files, front-matter, and layouts"
+	@echo "  $(YELLOW)make version-check$(RESET)     - Audit data.written_for version banners on posts"
+	@echo "  $(YELLOW)make version-fix$(RESET)       - Fill data.written_for banners on posts (writes files)"
+	@echo "  $(YELLOW)make sync-versions$(RESET)     - Regenerate src/_data/lfe_versions.yml from release history"
 	@echo "  $(YELLOW)make migrate$(RESET)           - One-shot Zola to Cobalt migration"
 	@echo ""
 	@echo "$(GREEN)Testing & Quality:$(RESET)"
@@ -43,7 +46,7 @@ help:
 	@echo "  $(YELLOW)make lint$(RESET)             - Run clippy, format check, and tag/category check"
 	@echo "  $(YELLOW)make check-tags-cats$(RESET)  - Ensure no spaces in post tags/categories"
 	@echo "  $(YELLOW)make format$(RESET)           - Format Rust code"
-	@echo "  $(YELLOW)make check$(RESET)            - lint + test + validate"
+	@echo "  $(YELLOW)make check$(RESET)            - lint + test + validate + version-check"
 	@echo ""
 	@echo "$(GREEN)Spelling:$(RESET)"
 	@echo "  $(YELLOW)make spell-check$(RESET)      - Check for spelling errors in markdown"
@@ -150,6 +153,19 @@ prerender:
 validate:
 	@$(BINARY) validate
 
+.PHONY: version-check
+version-check:
+	@$(BINARY) version-check
+
+.PHONY: version-fix
+version-fix:
+	@echo "$(YELLOW)⚠ This will write data.written_for into posts$(RESET)"
+	@$(BINARY) version-check --fix
+
+.PHONY: sync-versions
+sync-versions:
+	@$(BINARY) sync-versions
+
 .PHONY: migrate
 migrate:
 	@echo "$(YELLOW)⚠ This will modify content files in place$(RESET)"
@@ -199,9 +215,9 @@ format:
 	@echo "$(GREEN)✓ Code formatted$(RESET)"
 
 .PHONY: check
-check: lint test validate check-tags-cats
+check: lint test validate check-tags-cats version-check
 	@echo ""
-	@echo "$(GREEN)✓ All checks passed (lint + test + validate)$(RESET)"
+	@echo "$(GREEN)✓ All checks passed (lint + test + validate + version-check)$(RESET)"
 	@echo ""
 
 #############################################################################

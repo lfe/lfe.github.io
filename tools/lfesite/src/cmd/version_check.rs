@@ -1,10 +1,12 @@
 //! Audit (and optionally fix) the `data.written_for` version banner on blog
 //! posts, using the release history as the source of truth.
 //!
-//! Default behaviour mirrors `validate`: it checks and reports, exiting
-//! non-zero when there is anything to fix, so it slots into `make check`/CI.
-//! Pass `--fix` to write the computed banner into posts (filling `null`
-//! values); `--fix --overwrite` also rewrites existing values that disagree.
+//! Default behaviour mirrors `validate`: it checks and reports, slotting into
+//! `make check`/CI. It exits non-zero when a post is *missing* a banner the
+//! tool could fill (the new-post case a gate must catch); mismatches against
+//! existing hand-authored values are advisory and do not fail the build. Pass
+//! `--fix` to write the computed banner into posts (filling `null` values);
+//! `--fix --overwrite` also rewrites existing values that disagree.
 
 use std::fs;
 use std::path::{Path, PathBuf};
@@ -85,11 +87,18 @@ impl Scanner {
 
 /// Run the version-check across one post or all posts under `src/posts`.
 ///
+/// As a check (no `--fix`) it fails — non-zero exit — only when posts are
+/// *missing* a `written_for` banner that the tool could fill; this is the case
+/// a build gate must catch (a new post without a banner). Mismatches against
+/// existing hand-authored values are reported as warnings but do not fail the
+/// build, since reconciling them is a human judgement and leaving them as-is is
+/// legitimate.
+///
 /// # Errors
 ///
 /// Returns an error (non-zero exit) when the release history cannot be loaded,
 /// a file cannot be read/written, or — acting as a check — when posts still
-/// need their `written_for` banner filled or corrected.
+/// need a `written_for` banner filled.
 pub fn run(project_dir: &Path, file: Option<&Path>, fix: bool, overwrite: bool) -> Result<()> {
     let history = ReleaseHistory::load(project_dir)?;
     let scanner = Scanner::new()?;
@@ -102,7 +111,6 @@ pub fn run(project_dir: &Path, file: Option<&Path>, fix: bool, overwrite: bool) 
     let mut fills = 0usize;
     let mut mismatches = 0usize;
     let mut fixed = 0usize;
-    let mut unresolved = 0usize;
     let mut ok = 0usize;
     let mut skipped = 0usize;
 
@@ -139,7 +147,6 @@ pub fn run(project_dir: &Path, file: Option<&Path>, fix: bool, overwrite: bool) 
                         describe(computed)
                     );
                 } else {
-                    unresolved += 1;
                     println!(
                         "  MISMATCH {} : has {}, computed {}",
                         rel.display(),
@@ -159,16 +166,18 @@ pub fn run(project_dir: &Path, file: Option<&Path>, fix: bool, overwrite: bool) 
         println!("version-check: {fixed} post(s) written");
     }
 
-    let actionable = if fix { unresolved } else { fills + mismatches };
-    if actionable > 0 {
-        bail!(
-            "{actionable} post(s) need written_for {}",
-            if fix {
-                "corrected (re-run with --overwrite to apply)"
-            } else {
-                "filled or corrected (re-run with --fix)"
-            }
+    // Mismatches against hand-authored values are advisory, not a gate failure.
+    if mismatches > 0 && !overwrite {
+        println!(
+            "note: {mismatches} post(s) have a hand-authored written_for that differs from the \
+             computed best guess; review and run with --fix --overwrite to update, or leave as-is."
         );
+    }
+
+    // Only missing banners the tool can fill constitute a check failure.
+    let needs_fill = if fix { 0 } else { fills };
+    if needs_fill > 0 {
+        bail!("{needs_fill} post(s) are missing a written_for banner (run with --fix)");
     }
     Ok(())
 }
@@ -625,5 +634,56 @@ Body with ```lfe``` and Erlang/OTP 18.
         let out = std::fs::read_to_string(&post).unwrap();
         assert!(out.contains("  written_for:\n    lfe: \"0.10\"\n    erlang: \"18\"\n"));
         assert!(out.contains("  last_validated: null\n"));
+    }
+
+    /// Build a temp project with the fixture history and a single post.
+    /// Returns the temp dir (keep alive), the project root, and the post path.
+    fn project_with_post(
+        body_and_fm: &str,
+    ) -> (tempfile::TempDir, std::path::PathBuf, std::path::PathBuf) {
+        let dir = tempfile::tempdir().unwrap();
+        let proj = dir.path().to_path_buf();
+        std::fs::create_dir_all(proj.join("data")).unwrap();
+        std::fs::write(proj.join("data/release-history.json"), HISTORY).unwrap();
+        let posts = proj.join("src/posts/x");
+        std::fs::create_dir_all(&posts).unwrap();
+        let post = posts.join("p.md");
+        std::fs::write(&post, body_and_fm).unwrap();
+        (dir, proj, post)
+    }
+
+    #[test]
+    fn check_fails_on_missing_banner() {
+        // A null banner with usage is a fill candidate -> check must fail.
+        let (_d, proj, post) = project_with_post(
+            "\
+---
+published_date: 2016-01-01 00:00:00 +0000
+data:
+  written_for: null
+---
+Body with ```lfe``` and Erlang/OTP 18.
+",
+        );
+        assert!(run(&proj, Some(&post), false, false).is_err());
+    }
+
+    #[test]
+    fn check_passes_on_mismatch_only() {
+        // A hand-authored value that merely disagrees is advisory, not a gate
+        // failure: check returns Ok.
+        let (_d, proj, post) = project_with_post(
+            "\
+---
+published_date: 2016-01-03 00:00:00 +0000
+data:
+  written_for:
+    lfe: \"1.2.0\"
+    erlang: \"18\"
+---
+Body with ```lfe``` (computed would be 0.10).
+",
+        );
+        assert!(run(&proj, Some(&post), false, false).is_ok());
     }
 }

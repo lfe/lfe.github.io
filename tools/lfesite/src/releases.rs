@@ -18,45 +18,88 @@ use std::path::Path;
 
 use anyhow::{Context, Result};
 use chrono::NaiveDate;
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 
 /// One release of either LFE or Erlang/OTP.
 ///
 /// A single shape serves both timelines; the language-specific fields
-/// (`series`, `supports_otp`) are optional and default to empty.
-#[derive(Debug, Clone, Deserialize)]
+/// (`series`, `supports_otp`) are optional and default to empty. Default-valued
+/// fields are omitted on serialization to keep `release-history.json` tidy.
+#[derive(Debug, Clone, Deserialize, Serialize)]
 pub struct Release {
     /// Canonical display version, e.g. `"2.2.0"`, `"17.0"`, `"R16B"`.
     pub version: String,
     /// Release date.
-    #[serde(deserialize_with = "de_date")]
+    #[serde(deserialize_with = "de_date", serialize_with = "ser_date")]
     pub date: NaiveDate,
     /// `true` when the date is an estimate rather than a confirmed date.
-    #[serde(default)]
+    #[serde(default, skip_serializing_if = "std::ops::Not::not")]
     pub approximate: bool,
     /// `true` for tagged-but-unpublished releases (e.g. LFE 2.2.1).
-    #[serde(default)]
+    #[serde(default, skip_serializing_if = "std::ops::Not::not")]
     pub prerelease: bool,
-    // The fields below are part of the JSON schema and round-tripped for data
-    // fidelity / future reporting, but are not yet consumed by lookups.
     /// Free-text note from the release history.
-    #[serde(default)]
-    #[allow(dead_code)]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub notes: Option<String>,
     /// Erlang version family: `"R"` or `"integer"` (Erlang releases only).
-    #[serde(default)]
-    #[allow(dead_code)]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub series: Option<String>,
     /// OTP majors this LFE release supports (LFE releases only).
-    #[serde(default)]
-    #[allow(dead_code)]
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
     pub supports_otp: Vec<String>,
 }
 
-#[derive(Debug, Deserialize)]
-struct RawHistory {
-    lfe: Vec<Release>,
-    erlang: Vec<Release>,
+/// The on-disk shape of `data/release-history.json`: the two timelines plus the
+/// top-level metadata, round-tripped so hand-authored fields survive edits.
+#[derive(Debug, Deserialize, Serialize)]
+pub struct FileHistory {
+    #[serde(default = "default_schema_version")]
+    pub schema_version: u32,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub note: Option<String>,
+    pub lfe: Vec<Release>,
+    pub erlang: Vec<Release>,
+}
+
+fn default_schema_version() -> u32 {
+    1
+}
+
+impl FileHistory {
+    /// Read `data/release-history.json` under `project_dir`.
+    ///
+    /// # Errors
+    ///
+    /// Returns an error if the file cannot be read or parsed.
+    pub fn load(project_dir: &Path) -> Result<Self> {
+        let path = history_path(project_dir);
+        let raw = fs::read_to_string(&path)
+            .with_context(|| format!("reading release history: {}", path.display()))?;
+        serde_json::from_str(&raw)
+            .with_context(|| format!("parsing release history: {}", path.display()))
+    }
+
+    /// Write `data/release-history.json` under `project_dir`, both timelines
+    /// sorted ascending by date, with a trailing newline.
+    ///
+    /// # Errors
+    ///
+    /// Returns an error if the file cannot be written.
+    pub fn save(&mut self, project_dir: &Path) -> Result<()> {
+        self.lfe
+            .sort_by(|a, b| a.date.cmp(&b.date).then(a.version.cmp(&b.version)));
+        self.erlang
+            .sort_by(|a, b| a.date.cmp(&b.date).then(a.version.cmp(&b.version)));
+        let path = history_path(project_dir);
+        let mut json = serde_json::to_string_pretty(self).context("serializing release history")?;
+        json.push('\n');
+        fs::write(&path, json).with_context(|| format!("writing {}", path.display()))?;
+        Ok(())
+    }
+}
+
+fn history_path(project_dir: &Path) -> std::path::PathBuf {
+    project_dir.join("data").join("release-history.json")
 }
 
 /// Loaded, indexed release data: both timelines sorted ascending by date,
@@ -84,7 +127,7 @@ impl ReleaseHistory {
     /// Returns an error if the file cannot be read or does not parse as the
     /// expected JSON schema.
     pub fn load(project_dir: &Path) -> Result<Self> {
-        let path = project_dir.join("data").join("release-history.json");
+        let path = history_path(project_dir);
         let raw = fs::read_to_string(&path)
             .with_context(|| format!("reading release history: {}", path.display()))?;
         Self::from_json(&raw)
@@ -97,19 +140,25 @@ impl ReleaseHistory {
     ///
     /// Returns an error if the text does not parse as the expected schema.
     pub fn from_json(json: &str) -> Result<Self> {
-        let raw: RawHistory = serde_json::from_str(json).context("invalid release-history JSON")?;
-        let mut lfe = raw.lfe;
-        let mut erlang = raw.erlang;
+        let file: FileHistory =
+            serde_json::from_str(json).context("invalid release-history JSON")?;
+        Ok(Self::from_file(file))
+    }
+
+    /// Build the indexed history from a parsed [`FileHistory`].
+    fn from_file(file: FileHistory) -> Self {
+        let mut lfe = file.lfe;
+        let mut erlang = file.erlang;
         lfe.sort_by_key(|r| r.date);
         erlang.sort_by_key(|r| r.date);
         let lfe_idx = build_index(&lfe);
         let erlang_idx = build_index(&erlang);
-        Ok(Self {
+        Self {
             lfe,
             erlang,
             lfe_idx,
             erlang_idx,
-        })
+        }
     }
 
     /// Lookup #1: nearest LFE and Erlang releases at or before `date`.
@@ -176,7 +225,7 @@ impl ReleaseHistory {
         let current = self
             .current_lfe()
             .context("no stable LFE release found in history")?;
-        let companion = erlang_display(self.erlang_at(current.date));
+        let companion = companion_major(self.erlang_at(current.date));
 
         let mut out = String::new();
         out.push_str("# Generated by `lfesite sync-versions` from data/release-history.json.\n");
@@ -187,7 +236,7 @@ impl ReleaseHistory {
         out.push_str(&format!("  released: \"{}\"\n", current.date));
         out.push_str("versions:\n");
         for r in self.lfe.iter().rev() {
-            let erl = erlang_display(self.erlang_at(r.date));
+            let erl = companion_major(self.erlang_at(r.date));
             out.push_str(&format!("  - lfe: \"{}\"\n", r.version));
             out.push_str(&format!("    erlang: \"{erl}\"\n"));
             out.push_str(&format!("    released: \"{}\"\n", r.date));
@@ -196,6 +245,86 @@ impl ReleaseHistory {
         let path = src_dir.join("_data").join("lfe_versions.yml");
         fs::write(&path, &out).with_context(|| format!("writing {}", path.display()))?;
         Ok(())
+    }
+
+    /// Update the LFE download versions in `src/_data/site.yml`:
+    /// `download.current_release` (latest stable LFE) and `download.prior_release`
+    /// (second-latest). `pre_release`, `repository`, and all other lines are left
+    /// byte-for-byte intact via targeted line replacement.
+    ///
+    /// # Errors
+    ///
+    /// Returns an error if fewer than two stable LFE releases exist, or the file
+    /// cannot be read/written or lacks the expected keys.
+    pub fn write_site_download_versions(&self, src_dir: &Path) -> Result<()> {
+        let mut stable = self
+            .lfe
+            .iter()
+            .rev()
+            .filter(|r| !r.prerelease && !r.approximate);
+        let current = stable
+            .next()
+            .context("no stable LFE release found in history")?;
+        let prior = stable
+            .next()
+            .context("need at least two stable LFE releases for site.yml")?;
+
+        let path = src_dir.join("_data").join("site.yml");
+        let text =
+            fs::read_to_string(&path).with_context(|| format!("reading {}", path.display()))?;
+        let text = replace_scalar(&text, "current_release", &current.version)
+            .with_context(|| format!("no download.current_release in {}", path.display()))?;
+        let text = replace_scalar(&text, "prior_release", &prior.version)
+            .with_context(|| format!("no download.prior_release in {}", path.display()))?;
+        fs::write(&path, text).with_context(|| format!("writing {}", path.display()))?;
+        Ok(())
+    }
+}
+
+/// Replace the value of an indented `key: value` line, preserving indentation
+/// and every other line. Returns `None` if the key is not found.
+fn replace_scalar(text: &str, key: &str, value: &str) -> Option<String> {
+    let mut found = false;
+    let out: Vec<String> = text
+        .lines()
+        .map(|line| {
+            let trimmed = line.trim_start();
+            if !found && trimmed.starts_with(&format!("{key}:")) {
+                found = true;
+                let indent = &line[..line.len() - trimmed.len()];
+                format!("{indent}{key}: {value}")
+            } else {
+                line.to_string()
+            }
+        })
+        .collect();
+    if !found {
+        return None;
+    }
+    let mut joined = out.join("\n");
+    if text.ends_with('\n') {
+        joined.push('\n');
+    }
+    Some(joined)
+}
+
+/// Display form for an Erlang companion release: major only (`"29.0.2"` -> `"29"`),
+/// R-series kept whole; empty when absent.
+fn companion_major(release: Option<&Release>) -> String {
+    release
+        .map(|r| erlang_major(&r.version))
+        .unwrap_or_default()
+}
+
+/// Reduce an Erlang version to its display major: integer series take the part
+/// before the first `.` (`"29.0.2"` -> `"29"`, `"17.0"` -> `"17"`); R-series keep
+/// their full name (`"R16B"`).
+#[must_use]
+pub fn erlang_major(version: &str) -> String {
+    if version.starts_with(['R', 'r']) {
+        version.to_string()
+    } else {
+        version.split('.').next().unwrap_or(version).to_string()
     }
 }
 
@@ -272,17 +401,12 @@ fn normalize_keys(version: &str) -> Vec<String> {
     keys
 }
 
-/// Render an Erlang release for site/frontmatter display: integer majors drop
-/// the `.0` (`"17.0"` → `"17"`); R-series keep their name.
-fn erlang_display(release: Option<&Release>) -> String {
-    match release {
-        Some(r) => r
-            .version
-            .strip_suffix(".0")
-            .unwrap_or(&r.version)
-            .to_string(),
-        None => String::new(),
-    }
+/// Serialize a `NaiveDate` as an ISO `YYYY-MM-DD` string.
+fn ser_date<S>(date: &NaiveDate, s: S) -> std::result::Result<S::Ok, S::Error>
+where
+    S: serde::Serializer,
+{
+    s.serialize_str(&date.format("%Y-%m-%d").to_string())
 }
 
 /// Deserialize a `NaiveDate` from an ISO `YYYY-MM-DD` string.
@@ -407,5 +531,52 @@ mod tests {
         assert_eq!(normalize_keys("17.0"), vec!["17.0", "17"]);
         assert_eq!(normalize_keys("2.2.0"), vec!["2.2.0", "2.2", "2"]);
         assert_eq!(normalize_keys("R16B"), vec!["R16B", "R16", "16"]);
+    }
+
+    #[test]
+    fn erlang_major_reduces_to_major() {
+        assert_eq!(erlang_major("29.0.2"), "29");
+        assert_eq!(erlang_major("28.5"), "28");
+        assert_eq!(erlang_major("17.0"), "17");
+        assert_eq!(erlang_major("R16B"), "R16B");
+    }
+
+    #[test]
+    fn file_history_round_trip_omits_defaults_and_keeps_fields() {
+        let json = r#"{
+          "schema_version": 1,
+          "note": "hello",
+          "lfe": [
+            { "version": "2.2.0", "date": "2025-01-11" },
+            { "version": "2.2.1", "date": "2025-06-01", "approximate": true,
+              "prerelease": true, "notes": "tagged" }
+          ],
+          "erlang": [
+            { "version": "29.0", "date": "2026-05-13", "series": "integer" }
+          ]
+        }"#;
+        let file: FileHistory = serde_json::from_str(json).unwrap();
+        let out = serde_json::to_string_pretty(&file).unwrap();
+        // Defaults omitted on the plain release...
+        assert!(out.contains("\"version\": \"2.2.0\""));
+        assert!(!out.contains("\"approximate\": false"));
+        assert!(!out.contains("\"supports_otp\""));
+        // ...hand-authored fields preserved.
+        assert!(out.contains("\"note\": \"hello\""));
+        assert!(out.contains("\"prerelease\": true"));
+        assert!(out.contains("\"notes\": \"tagged\""));
+        assert!(out.contains("\"series\": \"integer\""));
+        assert!(out.contains("\"date\": \"2026-05-13\""));
+    }
+
+    #[test]
+    fn replace_scalar_preserves_siblings() {
+        let yaml = "download:\n  current_release: 2.2.0\n  pre_release: refs/heads/develop\n  repository: https://example\n";
+        let out = replace_scalar(yaml, "current_release", "2.3.0").unwrap();
+        assert!(out.contains("  current_release: 2.3.0\n"));
+        assert!(out.contains("  pre_release: refs/heads/develop\n"));
+        assert!(out.contains("  repository: https://example\n"));
+        assert!(out.ends_with('\n'));
+        assert!(replace_scalar(yaml, "nonexistent", "x").is_none());
     }
 }

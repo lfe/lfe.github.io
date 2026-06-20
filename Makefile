@@ -39,6 +39,8 @@ help:
 	@echo "  $(YELLOW)make version-check$(RESET)     - Audit data.written_for version banners on posts"
 	@echo "  $(YELLOW)make version-fix$(RESET)       - Fill data.written_for banners on posts (writes files)"
 	@echo "  $(YELLOW)make sync-versions$(RESET)     - Regenerate src/_data/lfe_versions.yml from release history"
+	@echo "  $(YELLOW)make update-versions$(RESET)   - Pull new LFE/Erlang tags from GitHub and refresh version data"
+	@echo "  $(YELLOW)make update-versions-dry$(RESET) - Preview update-versions without writing"
 	@echo "  $(YELLOW)make migrate$(RESET)           - One-shot Zola to Cobalt migration"
 	@echo ""
 	@echo "$(GREEN)Testing & Quality:$(RESET)"
@@ -165,6 +167,14 @@ version-fix:
 .PHONY: sync-versions
 sync-versions:
 	@$(BINARY) sync-versions
+
+.PHONY: update-versions
+update-versions:
+	@$(BINARY) update-versions
+
+.PHONY: update-versions-dry
+update-versions-dry:
+	@$(BINARY) update-versions --dry-run
 
 .PHONY: migrate
 migrate:

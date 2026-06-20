@@ -55,6 +55,15 @@ enum Command {
     },
     /// Regenerate src/_data/lfe_versions.yml from data/release-history.json.
     SyncVersions,
+    /// Pull new LFE/Erlang release tags from GitHub and refresh version data.
+    UpdateVersions {
+        /// Report what would change without writing any files.
+        #[arg(long)]
+        dry_run: bool,
+        /// Back-fill every missing release, not just those newer than the latest.
+        #[arg(long)]
+        all: bool,
+    },
     /// Cross-reference the release history (one of --date, --lfe, --erlang).
     Versions {
         /// Nearest LFE + Erlang releases on or before this date (YYYY-MM-DD).
@@ -116,6 +125,9 @@ fn main() -> Result<()> {
             overwrite,
         } => cmd::version_check::run(&project_dir, file.as_deref(), fix, overwrite),
         Command::SyncVersions => cmd::sync_versions::run(&project_dir),
+        Command::UpdateVersions { dry_run, all } => {
+            cmd::update_versions::run(&project_dir, dry_run, all)
+        }
         Command::Versions { date, lfe, erlang } => cmd::versions_lookup::run(
             &project_dir,
             date.as_deref(),

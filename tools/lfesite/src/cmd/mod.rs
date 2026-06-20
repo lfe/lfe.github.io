@@ -11,6 +11,7 @@ pub mod publish_post;
 pub mod sass;
 pub mod serve;
 pub mod sync_versions;
+pub mod update_versions;
 pub mod validate;
 pub mod version_check;
 pub mod versions_lookup;

@@ -15,7 +15,7 @@ use anyhow::{bail, Context, Result};
 use regex::Regex;
 use walkdir::WalkDir;
 
-use crate::releases::{Release, ReleaseHistory};
+use crate::releases::{erlang_major, Release, ReleaseHistory};
 use crate::util::{replace_yaml_block, split_front_matter};
 
 /// The `lfe`/`erlang` pair as it appears (or should appear) in front-matter.
@@ -273,7 +273,7 @@ fn compute(
         approximate: lfe.approximate || erlang.approximate,
         value: WrittenFor {
             lfe: lfe.version.clone(),
-            erlang: erlang_major(&erlang),
+            erlang: erlang_major(&erlang.version),
         },
         provenance,
     })
@@ -367,14 +367,6 @@ fn same_releases(history: &ReleaseHistory, a: &WrittenFor, b: &WrittenFor) -> bo
         _ => a.erlang == b.erlang,
     };
     lfe_eq && erl_eq
-}
-
-/// Erlang display form: integer majors drop `.0`; R-series keep their name.
-fn erlang_major(r: &Release) -> String {
-    r.version
-        .strip_suffix(".0")
-        .unwrap_or(&r.version)
-        .to_string()
 }
 
 /// Replace the post's `written_for` node and write the file back.

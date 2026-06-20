@@ -24,7 +24,11 @@ pub fn run(project_dir: &Path) -> Result<()> {
     // ------------------------------------------------------------------
     println!("validate: checking data files...");
     let src_dir = project_dir.join("src");
-    let base = if src_dir.is_dir() { &src_dir } else { project_dir };
+    let base = if src_dir.is_dir() {
+        &src_dir
+    } else {
+        project_dir
+    };
     let data_dir = base.join("_data");
     let mut data_file_count: usize = 0;
 
@@ -37,7 +41,7 @@ pub fn run(project_dir: &Path) -> Result<()> {
                 e.file_type().is_file()
                     && e.path()
                         .extension()
-                        .map_or(false, |ext| ext == "yml" || ext == "yaml")
+                        .is_some_and(|ext| ext == "yml" || ext == "yaml")
             })
         {
             let path = entry.path();
@@ -52,11 +56,7 @@ pub fn run(project_dir: &Path) -> Result<()> {
 
                         // Check 2 inline: collect _md/_html pairing errors
                         // while we have the parsed document.
-                        check_md_html_pairing(
-                            &doc,
-                            &rel_display.to_string(),
-                            &mut errors,
-                        );
+                        check_md_html_pairing(&doc, &rel_display.to_string(), &mut errors);
                     }
                     Err(e) => {
                         data_file_count += 1;
@@ -119,17 +119,12 @@ pub fn run(project_dir: &Path) -> Result<()> {
             if !path.is_file() {
                 continue;
             }
-            let ext_match = path
-                .extension()
-                .map_or(false, |ext| ext == "md");
+            let ext_match = path.extension().is_some_and(|ext| ext == "md");
             if !ext_match {
                 continue;
             }
             // Skip README.md
-            if path
-                .file_name()
-                .map_or(false, |n| n == "README.md")
-            {
+            if path.file_name().is_some_and(|n| n == "README.md") {
                 continue;
             }
 
@@ -151,9 +146,7 @@ pub fn run(project_dir: &Path) -> Result<()> {
                 }
                 Some(fm_str) => match serde_yaml::from_str::<serde_yaml::Value>(fm_str) {
                     Err(e) => {
-                        errors.push(format!(
-                            "{rel_display}: invalid front-matter YAML: {e}"
-                        ));
+                        errors.push(format!("{rel_display}: invalid front-matter YAML: {e}"));
                     }
                     Ok(fm) => {
                         let layout = fm
@@ -168,9 +161,7 @@ pub fn run(project_dir: &Path) -> Result<()> {
                                 ));
                             }
                             Some(layout_val) => {
-                                println!(
-                                    "  \u{2713} {rel_display} (layout: {layout_val})"
-                                );
+                                println!("  \u{2713} {rel_display} (layout: {layout_val})");
                                 layouts_referenced.insert(layout_val.to_owned());
                             }
                         }
@@ -212,10 +203,7 @@ pub fn run(project_dir: &Path) -> Result<()> {
         for err in &errors {
             println!("  ERROR: {err}");
         }
-        anyhow::bail!(
-            "validation failed with {} error(s)",
-            errors.len()
-        )
+        anyhow::bail!("validation failed with {} error(s)", errors.len())
     }
 }
 
@@ -236,7 +224,7 @@ fn extract_frontmatter(content: &str) -> Option<&str> {
     }
     let after_first = &content[3..];
     // The first delimiter line may have trailing whitespace / newline.
-    let after_first = after_first.trim_start_matches(|c: char| c == '\r');
+    let after_first = after_first.trim_start_matches('\r');
     if !after_first.starts_with('\n') {
         return None;
     }
@@ -253,11 +241,7 @@ fn extract_frontmatter(content: &str) -> Option<&str> {
 /// Recursively walk a parsed YAML tree and report any `*_md` or
 /// `*_md_inline` key that does not have a corresponding `*_html` sibling
 /// in the same mapping.
-fn check_md_html_pairing(
-    value: &serde_yaml::Value,
-    file_label: &str,
-    errors: &mut Vec<String>,
-) {
+fn check_md_html_pairing(value: &serde_yaml::Value, file_label: &str, errors: &mut Vec<String>) {
     match value {
         serde_yaml::Value::Mapping(map) => {
             for (key, val) in map.iter() {
@@ -268,18 +252,16 @@ fn check_md_html_pairing(
 
                 let html_key = if let Some(base) = key_str.strip_suffix("_md_inline") {
                     Some(format!("{base}_html"))
-                } else if let Some(base) = key_str.strip_suffix("_md") {
-                    Some(format!("{base}_html"))
                 } else {
-                    None
+                    key_str
+                        .strip_suffix("_md")
+                        .map(|base| format!("{base}_html"))
                 };
 
                 if let Some(html_key) = html_key {
                     let html_yaml_key = serde_yaml::Value::String(html_key.clone());
                     if !map.contains_key(&html_yaml_key) {
-                        errors.push(format!(
-                            "{file_label}: {key_str} has no {html_key} sibling"
-                        ));
+                        errors.push(format!("{file_label}: {key_str} has no {html_key} sibling"));
                     }
                 }
 

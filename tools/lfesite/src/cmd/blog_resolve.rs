@@ -77,8 +77,10 @@ pub fn run(src_dir: &Path) -> Result<()> {
     // Editorial slots reference posts by permalink (the post's front-matter
     // `permalink:`), so the lookup is keyed by permalink, not by the
     // reconstructed filename slug.
-    let post_map: HashMap<&str, &PostMeta> =
-        all_posts.iter().map(|p| (p.permalink.as_str(), p)).collect();
+    let post_map: HashMap<&str, &PostMeta> = all_posts
+        .iter()
+        .map(|p| (p.permalink.as_str(), p))
+        .collect();
 
     // Fallback pool: posts NOT named in any editorial slot, in reverse-chrono order.
     let fallback_pool: Vec<&PostMeta> = all_posts
@@ -92,7 +94,7 @@ pub fn run(src_dir: &Path) -> Result<()> {
 
     for name in &slot_names {
         let resolved = resolve_slot(
-            *name,
+            name,
             &config,
             &post_map,
             &fallback_pool,
@@ -128,7 +130,10 @@ pub fn run(src_dir: &Path) -> Result<()> {
     }
 
     out.insert(ykey("river"), serde_yaml::Value::Sequence(river));
-    out.insert(ykey("authors_sorted"), serde_yaml::Value::Sequence(authors_sorted));
+    out.insert(
+        ykey("authors_sorted"),
+        serde_yaml::Value::Sequence(authors_sorted),
+    );
     out.insert(ykey("default_cover_image"), ystr(default_cover));
     out.insert(ykey("default_cover_alt"), ystr(default_alt));
 
@@ -161,6 +166,7 @@ pub fn run(src_dir: &Path) -> Result<()> {
 /// Resolve a single editorial slot: try the configured permalink, fall back
 /// to the next unused post from the chronological pool. `used` is keyed by
 /// permalink so the river filter (also permalink-keyed) stays consistent.
+#[allow(clippy::too_many_arguments)]
 fn resolve_slot(
     name: &str,
     config: &serde_yaml::Value,
@@ -231,12 +237,7 @@ fn scan_posts(posts_dir: &Path, authors: &HashMap<String, String>) -> Result<Vec
     let mut entries: Vec<_> = WalkDir::new(posts_dir)
         .into_iter()
         .filter_map(|e| e.ok())
-        .filter(|e| {
-            e.file_type().is_file()
-                && e.path()
-                    .extension()
-                    .map_or(false, |ext| ext == "md")
-        })
+        .filter(|e| e.file_type().is_file() && e.path().extension().is_some_and(|ext| ext == "md"))
         .collect();
     entries.sort_by_key(|e| e.file_name().to_os_string());
 
@@ -251,8 +252,8 @@ fn scan_posts(posts_dir: &Path, authors: &HashMap<String, String>) -> Result<Vec
             None => continue,
         };
 
-        let content = fs::read_to_string(&path)
-            .with_context(|| format!("reading {}", path.display()))?;
+        let content =
+            fs::read_to_string(path).with_context(|| format!("reading {}", path.display()))?;
 
         let (fm_str, body) = match split_front_matter(&content) {
             Some(pair) => pair,
@@ -425,7 +426,6 @@ fn slug_from_path(path: &Path, posts_dir: &Path) -> Option<String> {
     }
 }
 
-
 /// Build a sorted list of authors with post counts for template use.
 ///
 /// Sorted by post count descending, then display name ascending for ties.
@@ -436,8 +436,7 @@ fn build_sorted_authors(posts: &[PostMeta], data_dir: &Path) -> Result<Vec<serde
     }
 
     let content = fs::read_to_string(&path).context("reading authors.yml")?;
-    let doc: serde_yaml::Value =
-        serde_yaml::from_str(&content).context("parsing authors.yml")?;
+    let doc: serde_yaml::Value = serde_yaml::from_str(&content).context("parsing authors.yml")?;
 
     let mut post_counts: HashMap<String, usize> = HashMap::new();
     for post in posts {
@@ -463,10 +462,7 @@ fn build_sorted_authors(posts: &[PostMeta], data_dir: &Path) -> Result<Vec<serde
                     .and_then(|v| v.as_str())
                     .unwrap_or(slug)
                     .to_string();
-                let bio = value
-                    .get("bio")
-                    .and_then(|v| v.as_str())
-                    .map(String::from);
+                let bio = value.get("bio").and_then(|v| v.as_str()).map(String::from);
                 let avatar = value
                     .get("avatar")
                     .and_then(|v| v.as_str())
@@ -528,16 +524,14 @@ fn load_authors(data_dir: &Path) -> Result<HashMap<String, String>> {
     }
 
     let content = fs::read_to_string(&path).context("reading authors.yml")?;
-    let doc: serde_yaml::Value =
-        serde_yaml::from_str(&content).context("parsing authors.yml")?;
+    let doc: serde_yaml::Value = serde_yaml::from_str(&content).context("parsing authors.yml")?;
 
     let mut authors = HashMap::new();
     if let Some(map) = doc.as_mapping() {
         for (key, value) in map {
-            if let (Some(slug), Some(name)) = (
-                key.as_str(),
-                value.get("name").and_then(|v| v.as_str()),
-            ) {
+            if let (Some(slug), Some(name)) =
+                (key.as_str(), value.get("name").and_then(|v| v.as_str()))
+            {
                 authors.insert(slug.to_string(), name.to_string());
             }
         }
@@ -595,8 +589,7 @@ fn deterministic_pick<'a>(slug: &str, pool: &'a [String]) -> Option<&'a String> 
         return None;
     }
     let hash = Sha256::digest(slug.as_bytes());
-    let index =
-        u32::from_le_bytes([hash[0], hash[1], hash[2], hash[3]]) as usize % pool.len();
+    let index = u32::from_le_bytes([hash[0], hash[1], hash[2], hash[3]]) as usize % pool.len();
     Some(&pool[index])
 }
 
@@ -629,7 +622,7 @@ fn collect_pool(src_dir: &Path, subdir: &str) -> Result<Vec<String>> {
         .filter(|e| {
             e.path()
                 .extension()
-                .map_or(false, |ext| ext == "png" || ext == "jpg" || ext == "webp")
+                .is_some_and(|ext| ext == "png" || ext == "jpg" || ext == "webp")
         })
         .filter_map(|e| {
             e.file_name()
@@ -697,14 +690,11 @@ fn assign_default_covers(src_dir: &Path) -> Result<u32> {
     for entry in WalkDir::new(&posts_dir)
         .into_iter()
         .filter_map(|e| e.ok())
-        .filter(|e| {
-            e.file_type().is_file()
-                && e.path().extension().map_or(false, |ext| ext == "md")
-        })
+        .filter(|e| e.file_type().is_file() && e.path().extension().is_some_and(|ext| ext == "md"))
     {
         let path = entry.path();
-        let content = fs::read_to_string(path)
-            .with_context(|| format!("reading {}", path.display()))?;
+        let content =
+            fs::read_to_string(path).with_context(|| format!("reading {}", path.display()))?;
 
         if !content.contains("cover_image: null") {
             continue;
@@ -742,9 +732,7 @@ fn assign_default_covers(src_dir: &Path) -> Result<u32> {
                     && categories
                         .iter()
                         .any(|cat| route.categories.contains(&cat.as_str()))
-                    && route
-                        .exclude_slug
-                        .map_or(true, |pat| !slug.contains(pat))
+                    && route.exclude_slug.is_none_or(|pat| !slug.contains(pat))
             })
             .map(|(route, pool)| (pool, route.alt))
             .unwrap_or((&default_pool, DEFAULT_COVER_ALT));
@@ -755,18 +743,11 @@ fn assign_default_covers(src_dir: &Path) -> Result<u32> {
         };
 
         let new_content = content
-            .replace(
-                "cover_image: null",
-                &format!("cover_image: \"{image}\""),
-            )
-            .replace(
-                "cover_alt: null",
-                &format!("cover_alt: \"{alt}\""),
-            );
+            .replace("cover_image: null", &format!("cover_image: \"{image}\""))
+            .replace("cover_alt: null", &format!("cover_alt: \"{alt}\""));
 
         if new_content != content {
-            fs::write(path, &new_content)
-                .with_context(|| format!("writing {}", path.display()))?;
+            fs::write(path, &new_content).with_context(|| format!("writing {}", path.display()))?;
             assigned += 1;
         }
     }
@@ -821,9 +802,7 @@ mod tests {
                     && categories
                         .iter()
                         .any(|cat| route.categories.contains(&cat.as_str()))
-                    && route
-                        .exclude_slug
-                        .map_or(true, |pat| !slug.contains(pat))
+                    && route.exclude_slug.is_none_or(|pat| !slug.contains(pat))
             })
             .map(|(route, pool)| (pool.as_slice(), route.alt))
             .unwrap_or((default, DEFAULT_COVER_ALT))
@@ -862,7 +841,10 @@ mod tests {
 
         let cats = vec!["tutorials".to_string()];
         let (pool, _) = resolve_route("2015-05-24-1808-what-is-otp", &cats, &pools, &default);
-        assert!(pool[0].contains("tutorials"), "non-friday tutorial should get tutorials pool");
+        assert!(
+            pool[0].contains("tutorials"),
+            "non-friday tutorial should get tutorials pool"
+        );
     }
 
     #[test]
@@ -877,8 +859,16 @@ mod tests {
         let default = vec!["/images/default/b.png".to_string()];
 
         let cats = vec!["tutorials".to_string()];
-        let (pool, _) = resolve_route("2015-05-29-0345-lfe-friday---queuehead1", &cats, &pools, &default);
-        assert!(pool[0].contains("default"), "lfe-friday post should fall through to default");
+        let (pool, _) = resolve_route(
+            "2015-05-29-0345-lfe-friday---queuehead1",
+            &cats,
+            &pools,
+            &default,
+        );
+        assert!(
+            pool[0].contains("default"),
+            "lfe-friday post should fall through to default"
+        );
     }
 
     #[test]
@@ -1010,7 +1000,7 @@ mod tests {
         let yaml = post_to_yaml(&post, "/default.png", "Default", None);
         let map = yaml.as_mapping().unwrap();
         assert_eq!(
-            map.get(&ykey("cover_image")).and_then(|v| v.as_str()),
+            map.get(ykey("cover_image")).and_then(|v| v.as_str()),
             Some("/default.png")
         );
     }
@@ -1072,10 +1062,9 @@ mod tests {
 
         if let Some(river) = doc.get("river").and_then(|v| v.as_sequence()) {
             assert!(
-                !river.iter().any(|p| p
-                    .get("permalink")
-                    .and_then(|v| v.as_str())
-                    == Some(featured)),
+                !river
+                    .iter()
+                    .any(|p| p.get("permalink").and_then(|v| v.as_str()) == Some(featured)),
                 "a featured post must not also appear in the river"
             );
         }
@@ -1102,11 +1091,11 @@ mod tests {
         let yaml = post_to_yaml(&post, "/default.png", "Default", Some("left"));
         let map = yaml.as_mapping().unwrap();
         assert_eq!(
-            map.get(&ykey("cover_image")).and_then(|v| v.as_str()),
+            map.get(ykey("cover_image")).and_then(|v| v.as_str()),
             Some("/custom.png")
         );
         assert_eq!(
-            map.get(&ykey("image_side")).and_then(|v| v.as_str()),
+            map.get(ykey("image_side")).and_then(|v| v.as_str()),
             Some("left")
         );
     }

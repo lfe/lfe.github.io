@@ -33,8 +33,12 @@ pub fn run(project_dir: &Path, output_dir: &Path) -> Result<()> {
         anyhow::bail!("sass directory not found: {}", sass_dir.display());
     }
 
-    fs::create_dir_all(output_dir)
-        .with_context(|| format!("failed to create output directory: {}", output_dir.display()))?;
+    fs::create_dir_all(output_dir).with_context(|| {
+        format!(
+            "failed to create output directory: {}",
+            output_dir.display()
+        )
+    })?;
 
     let options = grass::Options::default().load_path(&sass_dir);
 

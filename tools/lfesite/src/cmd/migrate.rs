@@ -14,8 +14,7 @@ use toml::Value as Toml;
 pub fn run(project_dir: &Path) -> Result<()> {
     let data_dir = project_dir.join("_data");
     let home_dir = data_dir.join("home");
-    fs::create_dir_all(&home_dir)
-        .with_context(|| format!("creating {}", home_dir.display()))?;
+    fs::create_dir_all(&home_dir).with_context(|| format!("creating {}", home_dir.display()))?;
 
     // --- Parse front-matter from content/_index.md ---
     let index_path = project_dir.join("content/_index.md");
@@ -23,8 +22,7 @@ pub fn run(project_dir: &Path) -> Result<()> {
         .with_context(|| format!("reading {}", index_path.display()))?;
     let toml_str = extract_toml_frontmatter(&index_text)
         .context("extracting TOML front-matter from content/_index.md")?;
-    let root: Toml = toml::from_str(&toml_str)
-        .context("parsing TOML front-matter")?;
+    let root: Toml = toml::from_str(&toml_str).context("parsing TOML front-matter")?;
     let extra = root
         .get("extra")
         .context("missing [extra] in front-matter")?;
@@ -103,8 +101,7 @@ pub fn run(project_dir: &Path) -> Result<()> {
 
     for rel_path in content_files {
         let path = project_dir.join(rel_path);
-        convert_content_file(&path)
-            .with_context(|| format!("converting {}", path.display()))?;
+        convert_content_file(&path).with_context(|| format!("converting {}", path.display()))?;
         println!("  {rel_path}");
         content_file_count += 1;
     }
@@ -171,16 +168,15 @@ fn extract_body(text: &str) -> Option<&str> {
 /// `layout`, `title`, optional `description`, and optional `extra` fields,
 /// then writes the file back in place with `---` delimiters.
 fn convert_content_file(path: &Path) -> Result<()> {
-    let text = fs::read_to_string(path)
-        .with_context(|| format!("reading {}", path.display()))?;
+    let text = fs::read_to_string(path).with_context(|| format!("reading {}", path.display()))?;
 
     let toml_str = extract_toml_frontmatter(&text)
         .with_context(|| format!("no TOML front-matter in {}", path.display()))?;
-    let body = extract_body(&text)
-        .with_context(|| format!("no closing +++ in {}", path.display()))?;
+    let body =
+        extract_body(&text).with_context(|| format!("no closing +++ in {}", path.display()))?;
 
-    let root: Toml = toml::from_str(&toml_str)
-        .with_context(|| format!("parsing TOML in {}", path.display()))?;
+    let root: Toml =
+        toml::from_str(&toml_str).with_context(|| format!("parsing TOML in {}", path.display()))?;
 
     // Determine layout from template field
     let layout = match root.get("template").and_then(|v| v.as_str()) {
@@ -212,20 +208,16 @@ fn convert_content_file(path: &Path) -> Result<()> {
             extra_map.insert(Yaml::String(k.clone()), toml_to_yaml(v));
         }
         if !extra_map.is_empty() {
-            fm.insert(
-                Yaml::String("data".to_string()),
-                Yaml::Mapping(extra_map),
-            );
+            fm.insert(Yaml::String("data".to_string()), Yaml::Mapping(extra_map));
         }
     }
 
-    let yaml_str = serde_yaml::to_string(&Yaml::Mapping(fm))
-        .context("serializing YAML front-matter")?;
+    let yaml_str =
+        serde_yaml::to_string(&Yaml::Mapping(fm)).context("serializing YAML front-matter")?;
 
     // Write the converted file
     let output = format!("---\n{yaml_str}---\n{body}");
-    fs::write(path, output)
-        .with_context(|| format!("writing {}", path.display()))?;
+    fs::write(path, output).with_context(|| format!("writing {}", path.display()))?;
 
     Ok(())
 }
@@ -235,14 +227,10 @@ fn toml_to_yaml(v: &Toml) -> Yaml {
     match v {
         Toml::String(s) => Yaml::String(s.clone()),
         Toml::Integer(i) => Yaml::Number(serde_yaml::Number::from(*i)),
-        Toml::Float(f) => {
-            Yaml::Number(serde_yaml::Number::from(*f))
-        }
+        Toml::Float(f) => Yaml::Number(serde_yaml::Number::from(*f)),
         Toml::Boolean(b) => Yaml::Bool(*b),
         Toml::Datetime(dt) => Yaml::String(dt.to_string()),
-        Toml::Array(arr) => {
-            Yaml::Sequence(arr.iter().map(toml_to_yaml).collect())
-        }
+        Toml::Array(arr) => Yaml::Sequence(arr.iter().map(toml_to_yaml).collect()),
         Toml::Table(tbl) => {
             let mut m = serde_yaml::Mapping::new();
             for (k, val) in tbl {
@@ -275,8 +263,7 @@ fn yaml_map(pairs: Vec<(&str, Yaml)>) -> Yaml {
 fn write_yaml(path: &Path, value: &Yaml) -> Result<()> {
     let text = serde_yaml::to_string(value)
         .with_context(|| format!("serializing YAML for {}", path.display()))?;
-    fs::write(path, text)
-        .with_context(|| format!("writing {}", path.display()))?;
+    fs::write(path, text).with_context(|| format!("writing {}", path.display()))?;
     Ok(())
 }
 
@@ -286,9 +273,7 @@ fn write_yaml(path: &Path, value: &Yaml) -> Result<()> {
 
 /// 1. masthead.yml
 fn build_masthead(extra: &Toml) -> Result<Yaml> {
-    let summary = extra
-        .get("summary")
-        .context("missing [extra.summary]")?;
+    let summary = extra.get("summary").context("missing [extra.summary]")?;
 
     Ok(yaml_map(vec![
         ("logo_image", yaml_str(extra, "logo_image")?),
@@ -306,9 +291,7 @@ fn build_masthead(extra: &Toml) -> Result<Yaml> {
 
 /// 2. excerpts.yml
 fn build_excerpts(extra: &Toml) -> Result<Yaml> {
-    let section = extra
-        .get("excerpts")
-        .context("missing [extra.excerpts]")?;
+    let section = extra.get("excerpts").context("missing [extra.excerpts]")?;
 
     let order = [
         "repl",
@@ -341,9 +324,7 @@ fn build_excerpts(extra: &Toml) -> Result<Yaml> {
 
 /// 3. features.yml
 fn build_features(extra: &Toml) -> Result<Yaml> {
-    let section = extra
-        .get("features")
-        .context("missing [extra.features]")?;
+    let section = extra.get("features").context("missing [extra.features]")?;
 
     let title = yaml_str(section, "title")?;
 
@@ -374,9 +355,7 @@ fn build_features(extra: &Toml) -> Result<Yaml> {
 
 /// 4. buildit.yml
 fn build_buildit(extra: &Toml) -> Result<Yaml> {
-    let section = extra
-        .get("buildit")
-        .context("missing [extra.buildit]")?;
+    let section = extra.get("buildit").context("missing [extra.buildit]")?;
 
     let title = yaml_str(section, "title")?;
 
@@ -406,9 +385,7 @@ fn build_buildit(extra: &Toml) -> Result<Yaml> {
 
 /// 5. books.yml
 fn build_books(extra: &Toml) -> Result<Yaml> {
-    let section = extra
-        .get("books")
-        .context("missing [extra.books]")?;
+    let section = extra.get("books").context("missing [extra.books]")?;
 
     let title = yaml_str(section, "title")?;
     let link_text = yaml_str(section, "link_text")?;
@@ -444,9 +421,7 @@ fn build_books(extra: &Toml) -> Result<Yaml> {
 
 /// 6. videos.yml
 fn build_videos(extra: &Toml) -> Result<Yaml> {
-    let section = extra
-        .get("videos")
-        .context("missing [extra.videos]")?;
+    let section = extra.get("videos").context("missing [extra.videos]")?;
 
     let title = yaml_str(section, "title")?;
 
@@ -488,12 +463,8 @@ fn build_videos(extra: &Toml) -> Result<Yaml> {
 
 /// 7. callouts.yml
 fn build_callouts(extra: &Toml) -> Result<Yaml> {
-    let c1 = extra
-        .get("callout1")
-        .context("missing [extra.callout1]")?;
-    let c2 = extra
-        .get("callout2")
-        .context("missing [extra.callout2]")?;
+    let c1 = extra.get("callout1").context("missing [extra.callout1]")?;
+    let c2 = extra.get("callout2").context("missing [extra.callout2]")?;
 
     let item1 = yaml_map(vec![
         ("id", Yaml::String("discord".to_string())),
@@ -519,8 +490,7 @@ fn build_quotes(template_text: &str) -> Result<Yaml> {
     // Each quote in the Lykn source looks like:  "\"Some quote text.\""
     // In the raw file the bytes are:  " \ " <text> \ " "
     // We match the outer "\"  ...  \"" and capture the inner text.
-    let re = Regex::new(r#""\\?"([^"]*?)\\?""#)
-        .context("compiling quote regex")?;
+    let re = Regex::new(r#""\\?"([^"]*?)\\?""#).context("compiling quote regex")?;
 
     // Find the block between `(bind quotes #a(` and the closing `))`
     let start = template_text
@@ -554,17 +524,13 @@ fn build_quotes(template_text: &str) -> Result<Yaml> {
 
 /// 9. site.yml  (from config.toml)
 fn build_site(config_text: &str) -> Result<Yaml> {
-    let config: Toml = toml::from_str(config_text)
-        .context("parsing config.toml")?;
+    let config: Toml = toml::from_str(config_text).context("parsing config.toml")?;
     let download = config
         .get("extra")
         .and_then(|e| e.get("download"))
         .context("missing [extra.download] in config.toml")?;
 
-    Ok(yaml_map(vec![(
-        "download",
-        toml_to_yaml(download),
-    )]))
+    Ok(yaml_map(vec![("download", toml_to_yaml(download))]))
 }
 
 #[cfg(test)]
@@ -596,7 +562,7 @@ mod tests {
         let items = yaml
             .as_mapping()
             .unwrap()
-            .get(&Yaml::String("items".into()))
+            .get(Yaml::String("items".into()))
             .unwrap()
             .as_sequence()
             .unwrap();
@@ -620,12 +586,12 @@ pre_release = "refs/heads/develop"
         let dl = yaml
             .as_mapping()
             .unwrap()
-            .get(&Yaml::String("download".into()))
+            .get(Yaml::String("download".into()))
             .unwrap()
             .as_mapping()
             .unwrap();
         assert_eq!(
-            dl.get(&Yaml::String("current_release".into()))
+            dl.get(Yaml::String("current_release".into()))
                 .unwrap()
                 .as_str()
                 .unwrap(),
@@ -724,10 +690,7 @@ pre_release = "refs/heads/develop"
             ("a", Yaml::String("first".into())),
         ]);
         let mapping = m.as_mapping().unwrap();
-        let keys: Vec<&str> = mapping
-            .keys()
-            .map(|k| k.as_str().unwrap())
-            .collect();
+        let keys: Vec<&str> = mapping.keys().map(|k| k.as_str().unwrap()).collect();
         // serde_yaml::Mapping preserves insertion order
         assert_eq!(keys, vec!["b", "a"]);
     }

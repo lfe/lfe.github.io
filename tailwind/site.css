@@ -1406,3 +1406,19 @@
         }
     }
 }
+
+/* Scoped padding resists enlarged root sizing while preserving wide spacing. */
+.features-grid .feature-card {
+    padding-inline: clamp(12px, 4vw, 20px);
+}
+
+/* Let a feature heading take a full row when its icon no longer fits beside it. */
+.features-grid .feature-header-title {
+    flex: 1 1 12rem;
+    min-width: 0;
+}
+
+/* Retain quotation measure when the author's text size is enlarged. */
+main .editorial-prose blockquote {
+    padding-inline: clamp(12px, 3vw, 32px);
+}

@@ -6,13 +6,13 @@
   <div class="features-grid grid sm:grid-cols-2 lg:grid-cols-2 items-center gap-6 md:gap-10">
 
     {% for feature in site.data.home.features.items %}
-    <div class="min-w-0 w-full h-full bg-lfe-panel shadow-lg rounded-md p-5">
-      <div class="flex items-center gap-x-4 mb-3">
+    <div class="feature-card min-w-0 w-full h-full bg-lfe-panel shadow-lg rounded-md p-5">
+      <div class="feature-header flex flex-wrap items-center gap-x-4 mb-3">
         <div
-          class="inline-flex justify-center items-center w-[62px] h-[62px] rounded-full border-4 border-lfe-boundary bg-lfe-raised text-lfe-muted">
+          class="feature-header-icon inline-flex shrink-0 justify-center items-center w-[62px] h-[62px] rounded-full border-4 border-lfe-boundary bg-lfe-raised text-lfe-muted">
           {{ feature.icon_html }}
         </div>
-        <div class="min-w-0 flex-1">
+        <div class="feature-header-title">
           <h3 class="block text-lg font-semibold text-lfe-primary">{{ feature.title_html }}</h3>
         </div>
       </div>

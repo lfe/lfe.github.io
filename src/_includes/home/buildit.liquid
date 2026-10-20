@@ -4,7 +4,7 @@
   <!-- Grid -->
   <div class="buildit grid md:grid-cols-3 gap-12">
     <div class="lg:w-3/4">
-      <h2 class="text-3xl text-gray-800 font-bold lg:text-4xl dark:text-white">
+      <h2 class="text-3xl text-lfe-primary font-bold lg:text-4xl">
         {{ site.data.home.buildit.title_html }}
       </h2>
     </div>
@@ -16,14 +16,14 @@
       <!-- Block -->
       <div class="flex buildit-card">
         <div class="ml-5 sm:ml-8">
-          <h2 class="text-base sm:text-lg font-semibold text-gray-800 dark:text-gray-200">
+          <h2 class="text-base sm:text-lg font-semibold text-lfe-primary">
             {{ build.title }}
           </h2>
-          <p class="mt-1 text-gray-600 dark:text-gray-400">
+          <p class="mt-1 text-lfe-secondary">
             {{ build.content_html }}
             <a href="{{ build.link_url }}" role="button" class="flex justify-end justify-items-end no-underline">
               <button type="button"
-              class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-slate-500 text-gray-100 hover:bg-slate-600 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800 no-underline">
+              class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-lfe-action-secondary text-lfe-action-secondary-text hover:bg-lfe-action-secondary-hover transition-all text-sm no-underline">
               {{ build.link_text }} &raquo;
             </button>
             </a>

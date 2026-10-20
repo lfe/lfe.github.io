@@ -2,25 +2,25 @@
   <div class="blog-subnav-inner">
     <div class="blog-subnav-links">
       {% if page.permalink contains "archive" %}
-      <a href="/blog/archive/" class="active">Archive</a>
+      <a href="/blog/archive/" class="active" aria-current="page">Archive</a>
       {% else %}
       <a href="/blog/archive/">Archive</a>
       {% endif %}
 
       {% if page.permalink contains "categories" %}
-      <a href="/blog/categories/" class="active">Categories</a>
+      <a href="/blog/categories/" class="active" aria-current="page">Categories</a>
       {% else %}
       <a href="/blog/categories/">Categories</a>
       {% endif %}
 
       {% if page.permalink contains "tags" %}
-      <a href="/blog/tags/" class="active">Tags</a>
+      <a href="/blog/tags/" class="active" aria-current="page">Tags</a>
       {% else %}
       <a href="/blog/tags/">Tags</a>
       {% endif %}
 
       {% if page.permalink contains "authors" %}
-      <a href="/blog/authors/" class="active">Authors</a>
+      <a href="/blog/authors/" class="active" aria-current="page">Authors</a>
       {% else %}
       <a href="/blog/authors/">Authors</a>
       {% endif %}

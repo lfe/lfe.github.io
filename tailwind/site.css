@@ -789,6 +789,11 @@
         @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10;
     }
 
+    .blog-search-section {
+        inline-size: 100%;
+        min-inline-size: 0;
+    }
+
     .blog-section-heading {
         @apply text-xl font-bold text-lfe-primary  mb-6 pb-2 border-b-2;
         border-color: var(--lfe-link);

@@ -475,6 +475,13 @@
         line-height: 1.7;
     }
 
+    .editorial-prose p,
+    .editorial-prose li {
+        font-family: 'Newsreader', Georgia, serif;
+        font-size: 1.125rem;
+        line-height: 1.7;
+    }
+
     .editorial-prose h1,
     .editorial-prose h2,
     .editorial-prose h3,
@@ -491,6 +498,10 @@
     .editorial-prose pre {
         max-width: 100%;
         overflow-x: auto;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+
+    .editorial-prose code {
         font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
     }
 
@@ -1257,6 +1268,8 @@
     .blog-prose {
         @apply mx-auto;
         max-width: 65ch;
+        font-family: 'Newsreader', Georgia, serif;
+        font-size: 1.125rem;
         line-height: 1.7;
     }
 
@@ -1264,6 +1277,20 @@
     .blog-prose li {
         font-family: 'Newsreader', Georgia, serif;
         font-size: 1.125rem;
+        line-height: 1.7;
+    }
+
+    .blog-prose h1,
+    .blog-prose h2,
+    .blog-prose h3,
+    .blog-prose h4,
+    .blog-prose h5,
+    .blog-prose h6 {
+        font-family: ui-sans-serif, system-ui, sans-serif;
+    }
+
+    .blog-prose a {
+        overflow-wrap: anywhere;
     }
 
     .blog-prose p {
@@ -1305,6 +1332,7 @@
 
     .blog-prose pre {
         @apply rounded-md p-4 mb-6 overflow-x-auto text-sm leading-relaxed;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
     }
 
     .blog-prose code:not(pre code) {
@@ -1312,7 +1340,10 @@
     }
 
     .blog-prose table {
-        @apply w-full mb-6 text-sm;
+        @apply mb-6 text-sm;
+        display: block;
+        max-width: 100%;
+        overflow-x: auto;
     }
 
     .blog-prose th {

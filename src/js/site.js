@@ -3,6 +3,8 @@
 //////////////////////////////////////////////////////////////////////////////
 
 const HSThemeAppearance = {
+    currentTheme: 'default',
+    storageWriteFailed: false,
     init() {
         this.setAppearance(this.getOriginalAppearance(), false, false)
     },
@@ -15,10 +17,13 @@ const HSThemeAppearance = {
     },
     setAppearance(theme, saveInStore = true, dispatchEvent = true) {
         const requestedTheme = ['dark', 'default', 'auto'].includes(theme) ? theme : 'default'
+        this.currentTheme = requestedTheme
         if (saveInStore) {
             try {
                 localStorage.setItem('hs_theme', requestedTheme)
+                this.storageWriteFailed = false
             } catch (_error) {
+                this.storageWriteFailed = true
                 // A denied or unavailable storage API must not disable controls.
             }
         }
@@ -43,18 +48,19 @@ const HSThemeAppearance = {
         return appearance
     },
     getAppearance() {
-        const theme = this.getOriginalAppearance()
+        const theme = this.currentTheme
         if (theme === 'auto') {
             return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'default'
         }
         return theme
     },
     getOriginalAppearance() {
+        if (this.storageWriteFailed) return this.currentTheme
         try {
             const theme = localStorage.getItem('hs_theme')
             return ['dark', 'default', 'auto'].includes(theme) ? theme : 'default'
         } catch (_error) {
-            return 'default'
+            return this.currentTheme
         }
     }
 }
@@ -85,6 +91,7 @@ const mobileCloseIcon = document.querySelector('.mobile-close-icon')
 const downloadToggle = document.querySelector('#hs-dropdown-download')
 const downloadMenu = document.querySelector('#download-menu')
 const downloadDisclosure = downloadToggle?.closest('.custom-dropdown')
+let lastNavigationFocus = null
 
 function setMobileNav(open, returnFocus = false) {
     if (!mobileNav || !mobileNavToggle) return
@@ -107,9 +114,30 @@ mobileNavToggle?.addEventListener('click', () => {
     setMobileNav(mobileNavToggle.getAttribute('aria-expanded') !== 'true')
 })
 
-navMedia.addEventListener('change', () => {
+navMedia.addEventListener('change', (event) => {
+    const activeElement = document.activeElement
+    const activeIsDocument = activeElement === document.body || activeElement === document.documentElement
+    const recentlyHiddenFocus = activeIsDocument
+        && lastNavigationFocus?.getClientRects().length === 0
+        ? lastNavigationFocus
+        : null
+    const focusedElement = activeIsDocument ? recentlyHiddenFocus : activeElement
+    const focusedWithinMobileNav = mobileNav?.contains(focusedElement)
+    const focusedMobileToggle = focusedElement === mobileNavToggle
+    const focusedDownloadLink = downloadMenu?.contains(focusedElement)
+
     setMobileNav(false)
     setDownloadOpen(false)
+
+    if (!event.matches && focusedWithinMobileNav) {
+        mobileNavToggle?.focus()
+    } else if (event.matches && focusedMobileToggle) {
+        const firstNavigationLink = document.querySelector('#lfe-main-nav > a[href]')
+            || document.querySelector('nav.top-nav a.brand-plate')
+        firstNavigationLink?.focus()
+    } else if (focusedDownloadLink) {
+        downloadToggle?.focus()
+    }
 })
 
 downloadToggle?.addEventListener('click', () => {
@@ -120,9 +148,17 @@ document.addEventListener('pointerdown', (event) => {
     if (downloadDisclosure && !downloadDisclosure.contains(event.target)) {
         setDownloadOpen(false)
     }
+    if (!mobileNav?.contains(event.target) && event.target !== mobileNavToggle) {
+        lastNavigationFocus = null
+    }
 })
 
 document.addEventListener('focusin', (event) => {
+    if (mobileNav?.contains(event.target) || event.target === mobileNavToggle) {
+        lastNavigationFocus = event.target
+    } else if (event.target !== document.body && event.target !== document.documentElement) {
+        lastNavigationFocus = null
+    }
     if (downloadDisclosure && !downloadDisclosure.contains(event.target)) {
         setDownloadOpen(false)
     }

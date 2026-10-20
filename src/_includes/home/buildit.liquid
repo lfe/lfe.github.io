@@ -19,15 +19,15 @@
           <h3 class="text-base sm:text-lg font-semibold text-lfe-primary">
             {{ build.title }}
           </h3>
-          <p class="mt-1 text-lfe-secondary">
+          <div class="mt-1 text-lfe-secondary">
             {{ build.content_html }}
-            <a href="{{ build.link_url }}" role="button" class="flex justify-end justify-items-end no-underline">
-              <button type="button"
-              class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-lfe-action-secondary text-lfe-action-secondary-text hover:bg-lfe-action-secondary-hover transition-all text-sm no-underline">
+            <div class="mt-3 flex justify-end">
+              <a href="{{ build.link_url }}"
+              class="inline-flex justify-center items-center gap-2 rounded-md border border-transparent py-2 px-3 font-semibold bg-lfe-action-secondary text-lfe-action-secondary-text hover:bg-lfe-action-secondary-hover transition-all text-sm no-underline">
               {{ build.link_text }} &raquo;
-            </button>
-            </a>
-          </p>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
       <!-- End Block -->

@@ -8,80 +8,123 @@ related:
   - ai-engineering/project11-unified-design-practice
 ---
 
-# LFE colour atlas and design exploration
+# LFE colour atlas and incremental design trials
 
-Revision 1.0 — 2026-10-28.
+Revision 1.1 — 2026-10-28.
 
-## Brief and definition of done
+## Intent and brief
 
-Give Duncan a faithful HTML colour/value atlas of today's LFE site, then use
-that baseline in a small OpenDesign experiment and a chosen reversible
-semantic-token migration. The first useful result is the actual local palette
-and lightness page. Intended audience: Duncan and his OpenDesign session;
-this is supplied intent, not visitor research.
+Duncan wants a strong practical design workflow using the visual-design-system
+guides, OpenDesign and GPT, reducing his dependence on Anthropic. Begin with
+small tasks and grow them only after using/reviewing real results. His assessment
+of Claude Design is a personal reference for desired design quality, not an
+independently measured product ranking or proof of comparative performance.
 
-Preserve current paint, gradients, opacity, state differences and exceptions
-through the baseline work. Distinguish existing aliases from inferred roles.
-Show ambiguities rather than inventing implemented tokens or correcting colours.
-Deliver source under `src/design/colour-atlas/`, without public navigation edits.
+First task: a faithful HTML colour/value atlas of today's LFE website.
+The design should make the palette and lightness relationships useful to a
+designer. OpenDesign owns its composition and visual judgment within that brief;
+do not pre-solve its layout here. Preserve current paints and distinguish
+existing aliases, inferred roles and unknowns. Do not improve colours yet.
 
-## Current evidence and boundaries
+This project is the LFE colour-atlas/concept/adoption sequence, not a mandate
+to build a general competitor, run broad vendor benchmarks or maintain a new
+evaluation platform. First-run evidence informs the next prompt and possible
+design-skill changes, not a general claim that the guides caused the result.
+
+## Homes and authority
+
+Site root/input: `/Users/oubiwann/lab/lfe/lfe.github.io` (`./` in OpenDesign).
+Planning: `./.worktrees/planning/`, orphan `planning` branch.
+Trial artifacts: current slice `artifacts/`, including actual HTML comps.
+No site source output, route or Cobalt integration in the atlas trials.
+Source integration is a later, separately issued assignment after design approval.
+The unused clean `codex/lfe-colour-atlas` worktree is held for that possibility.
+
+Workflow: Two Contributors with Operator relay. Sofie plans, writes prompts,
+reviews artifacts/source fidelity and records acceptance here. OpenDesign is
+the executing CC through its Codex CLI; the Operator reports it is configured
+for GPT 6 Astra. Do not silently substitute the earlier Luna proposal or change
+OpenDesign's model/settings. Actual runtime identity/settings are recorded only
+if available; configured identity is not proof of backend identity.
+Duncan launches each run, supplies visual judgment and decides the next pass.
+No Autonomous Mode, internal implementation agent or background monitor has
+been authorized. The prior Sol/Luna Autonomous selector was not approved.
+
+CC has read access to site inputs and write ownership only of the issued
+slice artifacts/proposed closing report. CDC owns plans, ledgers, prompt issues
+and Git integration. Sequence access; review after a completed run. Do not
+edit an artifact concurrently with its author. Independent self-acceptance is
+not allowed. Project acceptance remains the Operator's decision.
+Local scoped planning commits are allowed; no push, merge, deployment, source
+migration, skill change, model/profile change or automatic next-run submission.
+
+## Current evidence and scope
 
 Site baseline: 036e231b09c48966da26d2227bccb4fa3b295df9.
 Current layouts load `src/css/site.css` from `tailwind/site.css`, plus
 `src/css/common.css` and `src/css/highlight.css`. They already include OKLCH
-gold/Tailwind variables, component classes and Pagefind aliases. Earlier
-green/cream `sass/lfe/_variables.scss` and `src/lfe.css` are legacy material;
-earlier design-skill LFE specimens are separate example worktrees.
-Neither is today's production palette.
+gold/Tailwind values, component classes and Pagefind aliases.
+Legacy green/cream Sass and earlier isolated LFE design-skill specimens are
+not the active theme baseline. The original checkout's unrelated dirty
+Makefile/Rust files and untracked verification brief remain untouched.
 
-The installed visual-design-system is 2.0.0: all 21 installed files matched
-main and `design-2.0` at 53625abb368a86ce6a36f190a99fcc7d3b6b51df.
-The active collaboration framework is 3.0.1.
-
-Source inspection and checks needed to deliver this page are within scope.
-No separate research, source acquisition, framework comparison, complete
-artwork/pixel palette, visitor study or site-wide accessibility certification.
-Do not claim a model's lightness is WCAG luminance, HSV value or exact visual
-equality. OKHSL/OKHSV readouts need a verified algorithm and round-trip checks;
-conversion of production CSS is not a prerequisite for a faithful atlas.
+Installed visual-design-system 2.0.0: all 21 installed files matched
+`design-2.0` / main 53625abb368a86ce6a36f190a99fcc7d3b6b51df during setup.
+Installed collaboration-framework: 3.0.1. First task-relevant guide input is
+fixed for the first pass; a future change must be recorded, not mixed in silently.
+Normal source reading and checks serve this delivery. No separate source
+acquisition, artwork/pixel extraction, visitor study or broad research is
+commissioned. Lightness, luminance, contrast and HSV V remain distinct.
 
 ## Roadmap
 
-| Arc | Usable delivery/home | Required input | Status |
+| Arc | Usable result and home | Dependency | Status |
 |---|---|---|---|
-| Arc01 as-is atlas | Palette/value page, roles/states and local tool handoff in `src/design/colour-atlas/` | Current active CSS/layouts | Open; execution awaits workflow selection |
-| Arc02 OpenDesign concepts | Conservative and exploratory alternatives against the same baseline/task | Accepted atlas plus Operator tool/session decisions | Roadmap only |
-| Arc03 semantic adoption | Chosen mapping with first rendered consumer and rollback | Operator-selected direction and migration contract | Roadmap only |
+| Arc01 as-is atlas | Self-contained palette/value comp, then roles/states, in slice artifacts | Current active CSS and installed guides | Open; first prompt ready for Operator launch |
+| Arc02 OpenDesign concepts | Conservative/exploratory alternatives in their owning slice artifacts | Atlas review and Operator brief | Roadmap only; not yet issued |
+| Arc03 chosen integration | Approved design translated into Cobalt-friendly source/templates with a checked first consumer and rollback | Explicit design/integration approval | Roadmap only; not yet issued |
 
-Later arcs are not authorized to execute yet; detail them when near.
+Keep later arc detail late. Baseline conversion of site CSS to OKHSL/OKHSV or
+semantic tokens is not a prerequisite. Readouts need a verified algorithm;
+production migration needs separate approval.
 
-## Workflow, ownership and authority
+## Learning loop
 
-Planning: orphan `planning`, `.worktrees/planning`.
-Source: `codex/lfe-colour-atlas`, `.worktrees/colour-atlas`, at baseline above.
-Original main checkout's Makefile/Rust changes and
-`CC-verification-brief-otp-tutorials.md` are protected and outside the task.
+For each slice: agree a small brief and observable review criteria; issue a
+preserved OpenDesign prompt; Operator runs it; inspect actual comp and a concise
+run record; Duncan provides visual feedback; record one concrete keep/change/
+next-test decision. A second pass gets cc-prompt-iteration01.md, preserving the
+first output via a scoped Git commit before revision. No extra archive tree.
 
-CDC: Sofie in the coordinating conversation. Default is CDC + CC. A pending
-question proposes Autonomous Mode for Arc01 only: OpenAI gpt-6.1-sol/high for
-CDC/review and gpt-6-luna/high for CC. This is a proposal, not approval.
-Hold contributor dispatch and source implementation until the Operator chooses.
-If normal relay is selected, provide the preserved CC prompt path. No CRC.
-Slice acceptance requires independent CDC review; arc composition needs a fresh
-independent context or Operator verdict. Operator owns project acceptance.
+First pass is a developmental trial, not a controlled A/B test. Review source
+fidelity, information hierarchy/optical balance, practical usefulness,
+interaction/legibility, and operator effort. Use concrete observations, not a
+universal beauty score. A valid trial may reveal a poor design.
+Stop after one initial pass for review; do not ask OpenDesign to iterate until
+it can declare itself successful. Record changed prompt, guide, model or app
+conditions in later passes. Larger tasks follow only as Operator-selected work.
+Do not force a new project for every prompt correction.
 
-After issue, CC owns source mutations/index and CDC owns planning. Sequence
-build/generation and review handbacks. An implementer cannot independently
-accept its repairs. Record actual context identities when assigned.
+Feedback is split into design critique, prompt problem, tool limitation or
+possible guide gap. A guide gap needs inspection and a separately scoped
+ai-engineering change before editing the released skill. No automatic attribution
+of a bad output to the model or guide. Future vendor comparisons require
+matched briefs/inputs and actual comparable artifacts; none is commissioned now.
 
-Local scoped commits and loopback preview are allowed. No push, merge, public
-deployment, OpenDesign upload/submission, new runtime/dependency installation
-or profile/browser-preference changes. Preserve unrelated work and do not
-install tools merely for validation.
+## Visibility
+
+Direct filesystem/Git review of outputs is available. Live Codex transcript
+access is not established: OpenDesign owns its harness/session exposure.
+Ask its first run to report an available session identifier and saved transcript
+path, or state unavailable. Do not fabricate a shared session or install a
+monitor. Bounded read-only inspection can be chosen once actual evidence exists.
 
 ## Version history
 
-- 1.0 — 2026-10-28: Operator approved faithful-atlas-first delivery. Created
-  planning/source worktrees and corrected the preliminary legacy-Sass assessment
-  using actual stylesheet links. Awaiting workflow selection; no source edits.
+- 1.0 — 2026-10-28: Prepared faithful-atlas-first site-source plan and draft
+  prompt; no source implementation or dispatch occurred.
+- 1.1 — 2026-10-28: Operator clarified the real experiment: OpenDesign/GPT 6
+  Astra executes, Sofie plans/reviews, incremental trials, comps in slice
+  artifacts and later explicit Cobalt integration. Replaced the unissued draft,
+  removed Autonomous/Luna hold and production build/output requirements, and
+  added a small qualitative learning loop and honest visibility boundary.

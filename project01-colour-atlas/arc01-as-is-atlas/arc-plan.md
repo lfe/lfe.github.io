@@ -1,48 +1,61 @@
-# Arc01 — As-is LFE colour atlas
+# Arc01 — As-is LFE atlas in OpenDesign
 
-Revision 1.0 — 2026-10-28. Open; source execution awaits workflow selection.
+Revision 1.1 — 2026-10-28. Open; first prompt ready for Operator launch.
 
 ## Capability and slices
 
-Deliver a locally viewable HTML reference of the current CSS palette, lightness
-relationships and selected component/state pairs, with provenance and a useful
-OpenDesign handoff. No production colour corrections or token migration.
+Use OpenDesign + its configured GPT 6 Astra Codex CLI to produce a faithful
+colour/value atlas, then extend it with role/state context. These are local HTML
+design experiments, not changes to the site.
 
-1. `slice01-palette-and-value-study`: actual responsive palette/lightness page,
-   original values, declared ramps and syntax paints; test its rendered use early.
-2. `slice02-roles-states-and-handoff`: extend the same page with source-traced
-   navigation/action/body/code/search roles, state pairs, gradients/alpha context
-   and an OpenDesign handoff. Detail after Slice01 acceptance.
+1. `slice01-palette-and-value-study`: self-contained palette/value comp in
+   `artifacts/atlas.html`, reviewed for fidelity, design quality and usefulness.
+   One initial pass, then stop for Operator/Sofie review.
+2. `slice02-roles-states-and-handoff`: after acceptance, extend the atlas with a
+   bounded navigation/action/body/code/search role/state study and explicit
+   inferred-vs-implemented semantics. Detail only after the first result.
 
-Both slices deliver usable page increments with source/build/browser checks.
-Do not introduce research/inventory/validation-only phases, a site crawler,
-generic token platform, CSS compiler or tool installation.
+Do not open/execute Slice02 automatically. Human design feedback guides the
+increment. Normal corrections stay in distinct numbered slice prompts; no new
+planning project per feedback message. Preserve first-pass bytes through Git
+before revising them. No separate audit/validation-only arcs.
 
-## Inputs, integration and semantics
+## Inputs, artifact boundary and implementation freedom
 
-Use project-plan.md's baseline, homes, workflow hold and protected changes.
-`tailwind/site.css:1-115` defines gold/Pagefind scopes and component classes.
-Actual layout links determine active CSS. Root token declarations do not prove
-every token is visibly consumed. Distinguish declaration, observed consumer,
-inferred role and unresolved mapping.
+Site materials at `./`, plans under `./.worktrees/planning/`; project-plan.md
+records the baseline and workflow. Read current stylesheet links and real values,
+not legacy Sass or previous example themes. Declared tokens do not prove use.
 
-Add only `src/design/colour-atlas/`, reachable at `/design/colour-atlas/`
-after the local build; no public navigation change. Keep atlas chrome separate
-from measured specimens. Preserve gradients' stops/space and alpha context.
-Model-based grayscale is an aid, not a calibrated physical value chart.
-Slice01 does not claim OKHSL/OKHSV readouts; add those only with a verified
-algorithm and checks in a later scoped increment.
+OpenDesign designs the atlas composition. Specify truthful content and usability
+checks without prescribing a CSS grid/card pattern, component hierarchy,
+typeface or visual solution. Use the design guides to make and explain choices.
+The atlas can use a neutral presentation surround; palette swatches must preserve
+the site's original authored paints, alpha and distinctions. Do not silently
+clip/round supplied colours into replacement source values.
 
-## Acceptance and boundaries
+Deliver a self-contained HTML file in Slice01 artifacts: inline CSS/JS and
+source-derived data, no fetch back to the site or assumption that the orphan
+planning tree contains site CSS. Include source paths/revision and coverage.
+No image assets, network dependencies, site build, route, navigation or Cobalt
+template change. Artifact-only scope is an explicit Operator-selected output
+home, repeated in the slice prompt.
 
-Sibling ledger governs. Actual assembled page, applicable native build,
-preservation diff, dispositioned limits and independent arc composition review
-gate closure. Duncan owns design/taste and later concept selection.
-Historical design-skill source-fidelity gaps do not block this source-based tool.
-If Autonomous Mode is selected, stop after this arc; no redesign, OpenDesign
-submission, merge or publication. No mode/model choice is assumed yet.
+## Review, endpoint and gates
+
+Technical checks cover palette/data fidelity, model-lightness calculations,
+local HTML behavior, narrow/wide presentation and source preservation.
+Duncan supplies aesthetic/usefulness judgment; Sofie independently checks the
+actual artifact and supports the critique. Successful execution is not proof
+of design quality, competitive parity or a guide's causal effect.
+
+Stop each trial for review and the arc before redesign/integration/publication.
+No Autonomous execution/internal implementer. Arc closure needs the assembled
+artifact and independent composition/Operator review. Historical skill-source
+fidelity does not block this site-source task.
 
 ## Version history
 
-- 1.0 — 2026-10-28: Two delivery slices with early page checks; later roles/state
-  work extends the same usable artifact.
+- 1.0 — 2026-10-28: Two-slice site-source atlas proposed, never executed.
+- 1.1 — 2026-10-28: Applied Operator's OpenDesign trial workflow, artifact-only
+  HTML output, design freedom and per-pass review. Native site build/integration
+  moved to the future explicitly gated integration arc.

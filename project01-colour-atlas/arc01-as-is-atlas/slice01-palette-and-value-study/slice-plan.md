@@ -1,87 +1,115 @@
-# Slice01 — Palette and value study
+# Slice01 — First OpenDesign palette/value trial
 
-Revision 1.0. Status: prepared, not issued.
+Revision 1.1. Status: issued to Operator for manual OpenDesign launch; not run.
 
-## Goal and assignment
+## Brief and active assignment
 
-Before: colours are scattered through active CSS. After: Duncan can inspect
-the actual palette with original coordinates, grouped ramps/code paints and
-labelled lightness/grayscale views. Existing site colours/pages stay unchanged.
-Read project plan, arc plan, this plan and their ledgers before work.
+Duncan wants a designer's usable view of the current LFE palette and its
+lightness relationships, as the first small trial of visual-design-system
+guidance through OpenDesign/GPT. Produce the actual HTML comp, then stop.
+The site's paints are evidence to preserve; the atlas's composition is a design
+decision OpenDesign should make using the supplied guides.
 
-Current draft: `cc-prompt.md`. It is not issued until the pending workflow/model
-decision is recorded. Source implementation and contributor dispatch are held.
+Current assignment: `cc-prompt.md`, first issue on 2026-10-28 after clarification.
+CC: OpenDesign desktop using its configured Codex CLI / GPT 6 Astra, as reported
+by Duncan. Reasoning setting/backend identity not independently verified.
+CDC: Sofie here; Operator launches/relays and provides visual review. No
+Autonomous Mode, internal CC or automatic next slice.
 
-## Implementation contract
+## Input and output contracts
 
-Source baseline 036e231b09c48966da26d2227bccb4fa3b295df9, branch
-`codex/lfe-colour-atlas`, `.worktrees/colour-atlas`.
-Allowed source files, all under `src/design/colour-atlas/`:
-`index.html`, `atlas.css`, `atlas.js`, `colour-math.js`, `README.md`.
-Omit an unnecessary listed module if appropriate. No existing file edits,
-package/runtime installation or global tool changes.
-Return paths: `artifacts/batch-record.md`, `closing-report.md` and ledger
-Evidence/Notes only. CDC owns row statuses. Artifacts default to this slice's
-`artifacts/`; only the concise batch record is expected, not a snapshot program.
+OpenDesign workspace: `/Users/oubiwann/lab/lfe/lfe.github.io`.
+Site materials at `./`; planning at `./.worktrees/planning/`.
+Source baseline: 036e231b09c48966da26d2227bccb4fa3b295df9. Confirm relevant
+inputs still match; report drift instead of silently selecting another design.
+Unrelated Makefile/Rust work and verification brief are read-only/protected.
 
-Use plain browser ESM, semantic HTML, native labelled controls and scoped CSS.
-Load original same-origin `../../css/site.css` and `../../css/highlight.css`
-through native CSSOM in an isolated measurement document/iframe so site
-selectors cannot style atlas chrome. Load failures must visibly identify the
-resource and recovery path; do not substitute invented colours. No third-party
-requests, analytics, persisted state or animation.
+Allowed writes, relative to this slice:
+- `artifacts/atlas.html`: self-contained HTML comp with inline CSS/JS/data.
+- `artifacts/batch-record.md`: concise run/inputs/checks/limits/decision record.
+- `closing-report.md`: proposed-done return, all five rows accounted for.
 
-Enumerate all root --gold-* and --color-* colour declarations in the compiled
-sheet, retaining names/authored values/provenance; separately enumerate explicit
-syntax-highlighter paint declarations with selectors. Keep duplicate paints'
-distinct labels/roles. Derive actual counts. Label these as declared palette,
-not all visible colours on every route. Common/search/inline/image paints and
-resolved state pairs are outside this slice, declared for Slice02.
+This is the Operator's explicit prototype-delivery home. Do not put the comp in
+site `src/`, do not use the unused `.worktrees/colour-atlas` worktree, and do not
+modify source/CSS/templates/config/tools, plans, ledgers, prompts, skills or
+model/profile settings. No push/merge/deployment/subagents/automatic follow-up.
+CC should not commit from the dirty source checkout; Sofie records the returned
+owned files on the planning branch before revision.
 
-Composition: short baseline/source header, gold ramp, foundation families,
-separate code paints, value study and limits. Native ordering control switches
-family order vs ascending Oklab lightness. Show original swatches/readable values
-and parallel neutral-lightness strips. Author OKLCH L may be used directly;
-hex/RGB need sRGB decoding then Oklab conversion. Label approximation if using
-8-bit browser/Canvas samples. Alpha paints stay explicit and unranked without a
-named backdrop; unresolved paints are reported rather than silently black.
-No OKHSL/OKHSV readout or false equivalence with luminance/contrast.
-Wrap labels/values and stack groups at narrow widths. No hover-only details.
+## Design and data
 
-## Applied guidance and author readiness
+Read the design skill and relevant colour/system-evolution guidance. Inspect
+current stylesheet links and the live-theme sources. Present all declared root
+gold/Tailwind colour variables from `src/css/site.css`, and the syntax
+highlighter's explicit colour/background paints from `src/css/highlight.css`.
+Keep token/selector names, original authored values, source identity and
+distinct labels for repeated values. Derive counts. Label declared palette
+rather than claiming every declared token has a rendered consumer.
 
-Design colour.md and system-evolution.md: preserve supplied paints, distinguish
-alias/owner/consumer and do not globally replace equal literals.
-Design workflow sections 1/2/4: source evidence, short brief and actual artifact.
-Cobalt CB-03/08/09/32: visible source subtree and correct raw page/output route.
-JS core ID-01/02/03 and anti-pattern ID-01/03: const, strict equality and nullish
-defaults; browser ESM, no Node/Deno project introduced.
-Testing validation-gates Proportionate Proof: native build, actual consumer and
-focused numerical checks rather than a new reusable validator.
+Use source-derived data embedded in the HTML. No network requests or runtime
+site-CSS fetches: the planning checkout is orphaned, and OpenDesign preview may
+not serve the site root. The result should also open directly as a local file.
+No remote fonts/assets/analytics/storage. Static swatches/text remain useful
+without JS; interactions may enhance them. Missing/unsupported data is labelled,
+not replaced with a plausible colour or a zero.
 
-Author inspected the actual stylesheet links, root/component definitions,
-generated palette, syntax paints, layout/theme mechanism and Make entrypoints.
-Coverage/UI/failure/precision decisions are resolved here. CSSOM mechanics and
-private helpers are CC discretion; changing scope/model/dependencies is not.
+Show a meaningful lightness/value study with neutral counterparts. Name the
+actual metric: Oklab/OKLCH L differs from luminance, contrast and HSV V.
+Preserve alpha and background assumptions; rank opaque paints only unless a
+backdrop is explicit. Author OKLCH L can be used directly; hex/RGB needs sRGB
+decoding and Oklab conversion. Disclose browser/8-bit approximation if used.
+Do not label OKLCH as OKHSL/OKHSV or fabricate those readouts.
 
-## Verification and exit
+The visual arrangement, typography, sequencing and useful small controls are
+OpenDesign decisions. Make original values readable, keep comparison meaningful,
+allow long labels to wrap, and make chosen controls labelled/keyboard operable
+with visible focus. No hover-only essential content. No automatic palette fixes.
 
-Run `make help` first, then native `make build` in the isolated source worktree.
-Record actual exits/warnings and inspect generated changes. Existing CSS/config/
-layout inputs must match baseline at return; if generation changes them, report
-the exact discrepancy before claiming preservation. Do not stage/discard unknown
-work. Use this branch's Makefile, not the original dirty checkout's variant.
+## Small trial and review criteria
 
-Check source/built route and local assets, actual browser at narrow/wide width,
-native sorting and keyboard-visible controls, labels and resource-failure state.
-Compare complete declared populations, not samples. Numerical witnesses:
-black/white endpoints; blue/yellow at equal HSV V must differ in Oklab L;
-duplicate colour labels survive; transparency requires a backdrop.
-No whole-site conformance, calibrated display or OpenDesign compatibility claim.
+This is one developmental first-use trial, not an A/B test or vendor ranking.
+Keep the guide version, source baseline and task stable for this pass. Record
+actual guide sections used, tool/model/settings if exposed, assumptions and
+any OpenDesign/Codex session/transcript pointer actually available. Unknown is
+acceptable; do not create telemetry or claim a monitoring connection.
 
-Return local reviewable candidate, not merged/published result. All five ledger
-criteria need actual evidence and independent CDC review.
+Predeclared review:
+- Fidelity: can we trace swatches/labels/metrics to the selected current inputs?
+- Design: does hierarchy, spacing, type and optical balance help compare rather
+  than decorate or obscure the colours?
+- Usefulness: can Duncan identify a colour's original value/source and compare
+  lightness without decoding an unlabelled dashboard?
+- Behavior: readable narrow/wide, labelled keyboard controls if present,
+  no invented values, clear alpha/unsupported states.
+- Effort: what did Duncan have to explain/correct; what run/feedback count
+  actually occurred? Do not invent time measurements.
+
+Record a brief design rationale and self-critique with one keep/change/next-test
+observation. Do not run repeated self-refinements to claim success. Return the
+first complete attempt, with any unresolved defects; stop for our review.
+Duncan's visual verdict and independent CDC checks remain pending.
+
+## Checks and author readiness
+
+Check the complete selected token/syntax population against source, not a
+sample. Numerical witnesses: black/white endpoints; blue/yellow at equal HSV V
+must differ in Oklab L; duplicate labels survive; alpha needs a backdrop.
+Use actual HTML preview/browser checks available in OpenDesign, report sizes/
+conditions and distinguish observed from unrun. Do not install tools or create
+a generic test harness. `make build` is not applicable to this artifact-only
+slice; no site routes/assets are added.
+
+CDC inspected current CSS links/root gold/components, generated palette, syntax
+paints, layout and theme mechanism. Design colour/system-evolution preserve
+supplied values and distinguish owners/consumers. Design workflow/data comparison
+guides support a task-led hierarchy and truthful measures without fixing a
+visual solution. Scientific-methods framing/measures/confounds/protocol guidance
+supports a qualitative first pass, preserved inputs and explicit limits.
+Source integration/Cobalt checks belong to a future issued assignment.
 
 ## Assignment history
 
-- 2026-10-28: `cc-prompt.md` prepared, not issued; workflow/model choice pending.
+- 2026-10-28: Earlier cc-prompt.md was prepared but explicitly unissued; no run.
+- 2026-10-28: Operator clarified OpenDesign/GPT 6 Astra, artifact comps and
+  incremental review. Replaced that unissued draft and issued this initial
+  `cc-prompt.md` to the Operator. No executed refinement counted.

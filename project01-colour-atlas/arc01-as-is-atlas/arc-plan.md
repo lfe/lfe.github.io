@@ -1,6 +1,6 @@
 # Arc01 — As-is LFE atlas in OpenDesign
 
-Revision 1.1 — 2026-10-28. Open; first prompt ready for Operator launch.
+Revision 1.2 — 2026-10-28. Open; first return imported, review pending.
 
 ## Capability and slices
 
@@ -59,3 +59,5 @@ fidelity does not block this site-source task.
 - 1.1 — 2026-10-28: Applied Operator's OpenDesign trial workflow, artifact-only
   HTML output, design freedom and per-pass review. Native site build/integration
   moved to the future explicitly gated integration arc.
+
+- 1.2 — 2026-10-28: Imported first return and screenshots; reproduced selected palette membership and recorded usage/context and component-literal gaps. No successor opened; acceptance remains pending.

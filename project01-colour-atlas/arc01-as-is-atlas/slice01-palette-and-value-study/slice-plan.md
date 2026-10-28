@@ -1,6 +1,6 @@
 # Slice01 — First OpenDesign palette/value trial
 
-Revision 1.1. Status: issued to Operator for manual OpenDesign launch; not run.
+Revision 1.2. Status: first OpenDesign return imported; review pending.
 
 ## Brief and active assignment
 
@@ -113,3 +113,5 @@ Source integration/Cobalt checks belong to a future issued assignment.
 - 2026-10-28: Operator clarified OpenDesign/GPT 6 Astra, artifact comps and
   incremental review. Replaced that unissued draft and issued this initial
   `cc-prompt.md` to the Operator. No executed refinement counted.
+
+- 2026-10-28: Operator returned Colour-Atlas-Study.zip after project-local output relocation; CDC imported its five members unchanged and reviewed screenshot/source coverage in artifacts/import-and-coverage-review.md. All criteria remain open; no new assignment issued.

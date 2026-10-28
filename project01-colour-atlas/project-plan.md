@@ -10,7 +10,7 @@ related:
 
 # LFE colour atlas and incremental design trials
 
-Revision 1.1 — 2026-10-28.
+Revision 1.2 — 2026-10-28.
 
 ## Intent and brief
 
@@ -50,8 +50,10 @@ Duncan launches each run, supplies visual judgment and decides the next pass.
 No Autonomous Mode, internal implementation agent or background monitor has
 been authorized. The prior Sol/Luna Autonomous selector was not approved.
 
-CC has read access to site inputs and write ownership only of the issued
-slice artifacts/proposed closing report. CDC owns plans, ledgers, prompt issues
+CC has read access to site inputs. The intended canonical write home is the
+issued slice artifacts/proposed closing report; the first run could only write
+inside OpenDesign's own project. Operator-authorized export/manual import is
+therefore the demonstrated return route; do not assume broader write access. CDC owns plans, ledgers, prompt issues
 and Git integration. Sequence access; review after a completed run. Do not
 edit an artifact concurrently with its author. Independent self-acceptance is
 not allowed. Project acceptance remains the Operator's decision.
@@ -80,7 +82,7 @@ commissioned. Lightness, luminance, contrast and HSV V remain distinct.
 
 | Arc | Usable result and home | Dependency | Status |
 |---|---|---|---|
-| Arc01 as-is atlas | Self-contained palette/value comp, then roles/states, in slice artifacts | Current active CSS and installed guides | Open; first prompt ready for Operator launch |
+| Arc01 as-is atlas | Self-contained palette/value comp, then roles/states, in slice artifacts | Current active CSS and installed guides | Open; first return imported, review pending |
 | Arc02 OpenDesign concepts | Conservative/exploratory alternatives in their owning slice artifacts | Atlas review and Operator brief | Roadmap only; not yet issued |
 | Arc03 chosen integration | Approved design translated into Cobalt-friendly source/templates with a checked first consumer and rollback | Explicit design/integration approval | Roadmap only; not yet issued |
 
@@ -128,3 +130,5 @@ monitor. Bounded read-only inspection can be chosen once actual evidence exists.
   artifacts and later explicit Cobalt integration. Replaced the unissued draft,
   removed Autonomous/Luna hold and production build/output requirements, and
   added a small qualitative learning loop and honest visibility boundary.
+
+- 1.2 — 2026-10-28: Operator supplied first ZIP and two screenshots. Imported unchanged results, reproduced 52 token/43 syntax memberships and recorded gaps/host check limits without acceptance or source changes. Future prompts should support project-local export/manual import.

@@ -1,6 +1,6 @@
 # Arc01 — As-is LFE atlas in OpenDesign
 
-Revision 1.2 — 2026-10-28. Open; first return imported, review pending.
+Revision 1.3 — 2026-10-28. Open; Slice01 Iteration01 issued.
 
 ## Capability and slices
 
@@ -10,9 +10,11 @@ design experiments, not changes to the site.
 
 1. `slice01-palette-and-value-study`: self-contained palette/value comp in
    `artifacts/atlas.html`, reviewed for fidelity, design quality and usefulness.
-   One initial pass, then stop for Operator/Sofie review.
+   Initial pass returned; Operator approved Iteration01 adding named component
+   literals and an eight-region dark-homepage usage study before slice acceptance.
 2. `slice02-roles-states-and-handoff`: after acceptance, extend the atlas with a
-   bounded navigation/action/body/code/search role/state study and explicit
+   remaining mode/state/search role study, building on the Slice01 homepage
+   context plate without duplicating it, and explicit
    inferred-vs-implemented semantics. Detail only after the first result.
 
 Do not open/execute Slice02 automatically. Human design feedback guides the
@@ -61,3 +63,5 @@ fidelity does not block this site-source task.
   moved to the future explicitly gated integration arc.
 
 - 1.2 — 2026-10-28: Imported first return and screenshots; reproduced selected palette membership and recorded usage/context and component-literal gaps. No successor opened; acceptance remains pending.
+
+- 1.3 — 2026-10-28: Operator requested the updated atlas with missing bits. Added the bounded homepage/literal refinement to open Slice01; retained remaining mode/state/search work in Slice02. Issued a distinct iteration prompt; no slice accepted or advanced.

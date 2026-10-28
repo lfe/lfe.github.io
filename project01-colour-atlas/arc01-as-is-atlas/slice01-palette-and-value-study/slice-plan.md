@@ -1,6 +1,6 @@
 # Slice01 — First OpenDesign palette/value trial
 
-Revision 1.2. Status: first OpenDesign return imported; review pending.
+Revision 1.3. Status: Iteration01 issued to Operator for OpenDesign; not run.
 
 ## Brief and active assignment
 
@@ -10,7 +10,9 @@ guidance through OpenDesign/GPT. Produce the actual HTML comp, then stop.
 The site's paints are evidence to preserve; the atlas's composition is a design
 decision OpenDesign should make using the supplied guides.
 
-Current assignment: `cc-prompt.md`, first issue on 2026-10-28 after clarification.
+Current assignment: `cc-prompt-iteration01.md`, issued 2026-10-28 at the
+Operator's request for an updated atlas including the missing bits.
+The initial `cc-prompt.md` and all first-return files remain preserved.
 CC: OpenDesign desktop using its configured Codex CLI / GPT 6 Astra, as reported
 by Duncan. Reasoning setting/backend identity not independently verified.
 CDC: Sofie here; Operator launches/relays and provides visual review. No
@@ -24,7 +26,8 @@ Source baseline: 036e231b09c48966da26d2227bccb4fa3b295df9. Confirm relevant
 inputs still match; report drift instead of silently selecting another design.
 Unrelated Makefile/Rust work and verification brief are read-only/protected.
 
-Allowed writes, relative to this slice:
+Canonical return homes, relative to this slice (OpenDesign writes project-local
+copies for ZIP export; CDC imports them):
 - `artifacts/atlas.html`: self-contained HTML comp with inline CSS/JS/data.
 - `artifacts/batch-record.md`: concise run/inputs/checks/limits/decision record.
 - `closing-report.md`: proposed-done return, all five rows accounted for.
@@ -42,6 +45,7 @@ Read the design skill and relevant colour/system-evolution guidance. Inspect
 current stylesheet links and the live-theme sources. Present all declared root
 gold/Tailwind colour variables from `src/css/site.css`, and the syntax
 highlighter's explicit colour/background paints from `src/css/highlight.css`.
+Iteration01's additional scope below extends this original selection.
 Keep token/selector names, original authored values, source identity and
 distinct labels for repeated values. Derive counts. Label declared palette
 rather than claiming every declared token has a rendered consumer.
@@ -107,6 +111,34 @@ visual solution. Scientific-methods framing/measures/confounds/protocol guidance
 supports a qualitative first pass, preserved inputs and explicit limits.
 Source integration/Cobalt checks belong to a future issued assignment.
 
+
+## Operator-approved Iteration01 amendment
+
+The 2026-10-28 request approves a bounded refinement inside this still-open
+slice: preserve all 95 first-pass records, add the named tab/header/card-action
+literal declarations, and add eight dark-homepage colour-context specimens.
+This supersedes earlier broad deferral of all component literals/role context
+to Slice02 only for the listed scope. It does not accept the first pass or
+open the next slice.
+
+The current prompt is the detailed implementation/design brief:
+`cc-prompt-iteration01.md`. It covers header, main, masthead, code tabs/surround,
+feature card, video card, closing/CTA and footer; actual gradients/pairs;
+existing-vs-inferred role mapping; source/cascade qualification; image exclusion;
+and unchanged source paints. Composition remains OpenDesign's judgment.
+Source references and proof route are in that prompt and the bounded review.
+
+OpenDesign's demonstrated output route is project-local atlas.html,
+batch-record.md and closing-report.md, followed by user ZIP export/manual import.
+Do not ask it to write canonical files or broaden permissions.
+Host-prohibited post-generation checks remain explicitly unperformed, assigned
+to CDC/Operator review; implementation coverage and independent gates remain.
+
+Readiness: CDC rechecked the source blocks/markup and actual first artifact.
+Preservation population, new literal identities, gradient/state context,
+mutation homes, host limitations and discriminating source checks are resolved.
+The new S01-06 verifies the approved addition. All six rows remain open.
+
 ## Assignment history
 
 - 2026-10-28: Earlier cc-prompt.md was prepared but explicitly unissued; no run.
@@ -115,3 +147,5 @@ Source integration/Cobalt checks belong to a future issued assignment.
   `cc-prompt.md` to the Operator. No executed refinement counted.
 
 - 2026-10-28: Operator returned Colour-Atlas-Study.zip after project-local output relocation; CDC imported its five members unchanged and reviewed screenshot/source coverage in artifacts/import-and-coverage-review.md. All criteria remain open; no new assignment issued.
+
+- 2026-10-28: Operator requested the missing-bits update; issued `cc-prompt-iteration01.md`, predecessor `cc-prompt.md`. First attempt preserved at afcfa66. Active refinement count: one issued, zero executed. No Slice02 opening or acceptance.

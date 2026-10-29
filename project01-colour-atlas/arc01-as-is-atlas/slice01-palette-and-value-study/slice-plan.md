@@ -1,6 +1,6 @@
 # Slice01 — First OpenDesign palette/value trial
 
-Revision 1.4. Status: Iteration01 imported; independent review in progress.
+Revision 1.5. Status: Iteration02 issued for Reset repair; Slice01 remains open.
 
 ## Brief and active assignment
 
@@ -10,13 +10,15 @@ guidance through OpenDesign/GPT. Produce the actual HTML comp, then stop.
 The site's paints are evidence to preserve; the atlas's composition is a design
 decision OpenDesign should make using the supplied guides.
 
-Current assignment: `cc-prompt-iteration01.md`, issued 2026-10-28 at the
-Operator's request for an updated atlas including the missing bits.
+Current assignment: `cc-prompt-iteration02.md`, issued 2026-10-29 after CDC
+reproduced the Reset failure. Iteration01 is returned with F01; its data and
+layout evidence is retained at the unchanged candidate.
 The initial `cc-prompt.md` and all first-return files remain preserved.
 CC: OpenDesign desktop using its configured Codex CLI / GPT 6 Astra, as reported
 by Duncan. Reasoning setting/backend identity not independently verified.
 CDC: Sofie here; Operator launches/relays and provides visual review. No
-Autonomous Mode, internal CC or automatic next slice.
+Autonomous Mode or internal CC. The Operator now authorizes closure and the
+next slice only after the applicable checks pass; F01 currently prevents that.
 
 ## Input and output contracts
 
@@ -121,7 +123,7 @@ This supersedes earlier broad deferral of all component literals/role context
 to Slice02 only for the listed scope. It does not accept the first pass or
 open the next slice.
 
-The current prompt is the detailed implementation/design brief:
+The preserved Iteration01 prompt is the detailed design brief:
 `cc-prompt-iteration01.md`. It covers header, main, masthead, code tabs/surround,
 feature card, video card, closing/CTA and footer; actual gradients/pairs;
 existing-vs-inferred role mapping; source/cascade qualification; image exclusion;
@@ -151,3 +153,19 @@ The new S01-06 verifies the approved addition. All six rows remain open.
 - 2026-10-28: Operator requested the missing-bits update; issued `cc-prompt-iteration01.md`, predecessor `cc-prompt.md`. First attempt preserved at afcfa66. Active refinement count: one issued, zero executed. No Slice02 opening or acceptance.
 
 - 2026-10-29: Iteration01 returned in LFE-Colour-Atlas-Iteration01.zip and imported unchanged. artifacts/iteration01-review.md records preservation of all 95 original records, six literal additions, numeric checks and the actual wide preview. One refinement executed; disposition returned for review, not accepted. No next assignment issued.
+
+## Iteration02 author readiness and review handoff
+
+CDC's cdc-verification.md records fresh 320/375px checks, keyboard filter/sort,
+pagination and empty-state checks, plus F01. Source inspection identifies
+exactly two ID substitutions; no reset-ID CSS selector exists. The repair
+retains the native reset/page/render/query-focus sequence and all atlas data.
+The prompt supplies discriminating Enter/Space/click regression sequences,
+allowed project-local outputs, a required-reading manifest and host limits.
+No unresolved design decision or new investigation is delegated.
+
+- 2026-10-29: Operator requested narrow/keyboard checks and conditional closure/
+  successor opening. F01 fails that condition. Issued cc-prompt-iteration02.md,
+  predecessor cc-prompt-iteration01.md, for the Reset repair only. Disposition:
+  active. One refinement executed, second issued/unexecuted. Earlier prompts
+  and imported atlas remain unchanged. All six rows remain open; no Slice02.

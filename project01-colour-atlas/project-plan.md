@@ -10,7 +10,7 @@ related:
 
 # LFE colour atlas and incremental design trials
 
-Revision 1.4 — 2026-10-29.
+Revision 1.5 — 2026-10-29.
 
 ## Intent and brief
 
@@ -82,7 +82,7 @@ commissioned. Lightness, luminance, contrast and HSV V remain distinct.
 
 | Arc | Usable result and home | Dependency | Status |
 |---|---|---|---|
-| Arc01 as-is atlas | Self-contained palette/value comp, then roles/states, in slice artifacts | Current active CSS and installed guides | Open; Slice01 Iteration01 under review |
+| Arc01 as-is atlas | Self-contained palette/value comp, then roles/states, in slice artifacts | Current active CSS and installed guides | Open; Slice01 Iteration02 Reset repair issued |
 | Arc02 OpenDesign concepts | Conservative/exploratory alternatives in their owning slice artifacts | Atlas review and Operator brief | Roadmap only; not yet issued |
 | Arc03 chosen integration | Approved design translated into Cobalt-friendly source/templates with a checked first consumer and rollback | Explicit design/integration approval | Roadmap only; not yet issued |
 
@@ -136,3 +136,8 @@ monitor. Bounded read-only inspection can be chosen once actual evidence exists.
 - 1.3 — 2026-10-28: Operator approved a follow-up atlas prompt for missing component literals and actual dark-homepage colour relationships. Issued Slice01 Iteration01 with source preservation and project-local ZIP return; no implementation, acceptance or next-arc launch here.
 
 - 1.4 — 2026-10-29: Imported Operator-returned Iteration01 ZIP unchanged. Initial checks preserve all 95 records, add six literal identities and reproduce numeric data; actual wide preview inspected. Positive Operator visual feedback recorded at its stated scope; no acceptance or new execution.
+
+- 1.5 — 2026-10-29: Narrow/keyboard review reproduced a Reset failure while
+  layout, filters, sort, pagination and empty state passed their checked scope.
+  Issued a two-substitution Slice01 repair. Operator's closure/next-slice
+  instruction is conditional on passing; no closure or successor opening yet.

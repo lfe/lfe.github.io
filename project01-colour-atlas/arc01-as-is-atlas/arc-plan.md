@@ -1,6 +1,6 @@
 # Arc01 — As-is LFE atlas in OpenDesign
 
-Revision 1.7 — 2026-10-29. Open; Slice01 closed, Slice02 technical review passed; Operator gates pending.
+Revision 1.8 — 2026-10-29. Closed; both slices accepted and composition verified.
 
 ## Capability and slices
 
@@ -12,8 +12,8 @@ design experiments, not changes to the site.
    `artifacts/atlas.html`, reviewed for fidelity, design quality and usefulness.
    Closed: Iteration02 accepted, 101 records and eight source-traced dark
    regions, with repaired Reset and Operator direct-file confirmation.
-2. `slice02-roles-states-and-handoff`: returned; technical review passed,
-   Operator direct-file/visual review pending. Extends the accepted comp with
+2. `slice02-roles-states-and-handoff`: closed; initial return accepted with
+   Operator direct-file/visual approval. Extends the accepted comp with
    light/dark state references for gold CTA, navigation, tabs, development
    download and Pagefind alias scopes. Preserve the 101-record catalogue and
    homepage plate; distinguish declarations, cascaded consumer values and
@@ -90,3 +90,10 @@ fidelity does not block this site-source task.
   complete predecessor preservation and all 36 Pagefind mappings; 320/375px,
   keyboard/disclosure and four Reset cases pass. No repair required so far.
   Operator current-artifact observations remain open before slice/arc close.
+
+
+- 1.8 — 2026-10-29: Slice02's current direct-file and visual gates passed;
+  all four slice rows closed. Fresh arc-scale navigation/state/palette/Reset
+  composition passed on unchanged final HTML. Duncan explicitly instructed
+  Arc01 closure. All four arc rows are done; the closing report bubbles the
+  accepted baseline and design questions to Project01. Arc02 remains unissued.

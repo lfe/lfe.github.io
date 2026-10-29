@@ -34,3 +34,33 @@ LFE-Colour-Atlas-Slice02.zip contains exactly atlas.html, batch-record.md and cl
 ## Bubble-up to the arc
 
 Candidate implementation is ready for independent review. All S02 rows remain open; no repository, planning, source, skill or ledger files were edited. The declaration/cascade distinctions and missing vendor evidence are handoff findings, not authority to fix the website. No next slice/arc, build, publication or token migration was performed. Stop for Duncan and Sofie / CDC.
+
+
+## CDC close supplement — 2026-10-29
+
+Sofie / CDC accepts the initial Slice02 return, without a repair iteration.
+The CC report above remains historical attestation, preserved at planning
+3dda6a8. [Final CDC acceptance](cdc-verification.md#final-acceptance) records
+all four rows as done: S02-01/02 retain reproduced technical evidence;
+S02-03/04 now also have Duncan's direct-file and visual/usefulness observations.
+No HTML, source input, batch record or issued prompt was changed at close.
+
+Artifact inventory: artifacts/atlas.html and artifacts/batch-record.md.
+This closing report and the review/plan/ledger/prompt are first-class slice
+documents. The user-supplied ZIP is external transport, not another canonical
+artifact. One initial implementation, zero refinement iterations.
+
+### Final bubble-up to the arc
+
+Delivered the planned five-group role/state extension and all 36 local
+Pagefind paint declarations while exactly preserving the predecessor's
+101-record catalogue, comparison script, source annotations and eight contexts.
+The actual standalone comp is accepted at its bounded as-is scope.
+No scope was dropped. Unavailable vendor consumption/defaults are labelled
+unknown as specified; this is not a claim of a complete search implementation.
+
+Keep the paired references, honest source/cascade distinctions and separate
+readable annotations. The page is long, but local links/disclosures support
+lookup and Duncan judged the study suitable. Carry the current-location,
+social-hover, CTA-focus and Pagefind-ownership questions into the next brief.
+No released-skill change or vendor-ranking conclusion follows from this trial.

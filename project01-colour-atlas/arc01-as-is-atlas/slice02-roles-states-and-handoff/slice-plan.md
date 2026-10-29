@@ -1,6 +1,6 @@
 # Slice02 — As-is roles, modes and states
 
-Revision 1.1 — 2026-10-29. Status: returned; technical review passed, Operator review pending.
+Revision 1.2 — 2026-10-29. Status: closed; initial return accepted.
 
 ## Outcome and authority
 
@@ -13,7 +13,8 @@ Two Contributors: OpenDesign desktop / its configured GPT 6 Astra via Codex
 CLI implements; Sofie / CDC plans, imports and independently reviews. Duncan
 launches/relays and supplies visual judgment. No Autonomous Mode, internal
 implementer, background monitor or change to model settings.
-Current assignment: cc-prompt.md. One attempt, then return for review.
+Closing assignment: cc-prompt.md, initial return accepted. One execution,
+zero refinement iterations; no further OpenDesign assignment is active.
 
 ## Inputs and preservation
 
@@ -111,3 +112,13 @@ checks passed. The prompt remains preserved and no iteration has been issued.
 Disposition: cc-prompt.md returned for review; one initial execution, zero
 refinement passes. Preview: http://127.0.0.1:55842/atlas.html#modes-states.
 No required correction identified; no slice/arc closure or next arc issued.
+
+
+## Closure — 2026-10-29
+
+Duncan approved the as-is study and confirmed the current direct file/controls
+work. CDC closes all four rows in cdc-verification.md#final-acceptance.
+No further artifact edits or repeated technical tests were necessary; retained
+evidence still matches the unchanged candidate hash. cc-prompt.md is accepted.
+The preceding pending states describe the historical initial review.
+Arc01 composition/closure follows; no next design arc is issued here.

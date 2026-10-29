@@ -10,7 +10,7 @@ related:
 
 # LFE colour atlas and incremental design trials
 
-Revision 1.7 — 2026-10-29.
+Revision 1.8 — 2026-10-29.
 
 ## Intent and brief
 
@@ -82,7 +82,7 @@ commissioned. Lightness, luminance, contrast and HSV V remain distinct.
 
 | Arc | Usable result and home | Dependency | Status |
 |---|---|---|---|
-| Arc01 as-is atlas | Self-contained palette/value comp, then roles/states, in slice artifacts | Current active CSS and installed guides | Open; Slice01 closed, Slice02 technically reviewed; Operator gates pending |
+| Arc01 as-is atlas | Self-contained palette/value comp, then roles/states, in slice artifacts | Current active CSS and installed guides | Closed; both slices accepted, assembled atlas reviewed |
 | Arc02 OpenDesign concepts | Conservative/exploratory alternatives in their owning slice artifacts | Atlas review and Operator brief | Roadmap only; not yet issued |
 | Arc03 chosen integration | Approved design translated into Cobalt-friendly source/templates with a checked first consumer and rollback | Explicit design/integration approval | Roadmap only; not yet issued |
 
@@ -152,3 +152,11 @@ monitor. Bounded read-only inspection can be chosen once actual evidence exists.
 - 1.7 — 2026-10-29: Arc01 Slice02 candidate returned and independently checked.
   Technical scope passes; current direct-file and visual/usefulness gates await
   Duncan. No source change, next-arc opening or publication authorized here.
+
+
+- 1.8 — 2026-10-29: Arc01 closed after both slice acceptances, fresh assembled
+  walkthrough and Duncan's explicit close instruction. The accepted as-is
+  atlas is the next arc's baseline. Manual ZIP transport, preserved data/script
+  and early interaction checks remain the practical workflow. Source cascade/
+  vendor limitations become inputs to the concept brief, not automatic fixes
+  or new research work. Agree Arc02's small design brief before issuing it.

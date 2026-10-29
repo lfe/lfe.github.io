@@ -2,7 +2,12 @@
 
 Reviewer: Sofie / CDC, 2026-10-29. Two Contributors; OpenDesign is CC.
 Assignment: cc-prompt.md at planning ad9132b.
-Current verdict: **technical review passes; Operator gates pending**.
+Current verdict: **accepted; Slice02 closed**, 2026-10-29.
+See [final acceptance](#final-acceptance).
+
+## Historical initial review at 3dda6a8
+
+Initial verdict: technical review passed; Operator gates were pending.
 No required correction found. S02-01/02 accepted; S02-03/04 remain open for
 the current extended comp's direct-file and visual/usefulness observations.
 No slice or arc closure, successor opening or publication.
@@ -133,3 +138,35 @@ assignment is needed on the evidence reviewed. The original catalogue and
 current/hover/focus distinctions must survive any later design proposal.
 Missing vendor internals stay a named limitation of this local-alias study,
 not an acquisition project or a fabricated default. No next-arc work is issued.
+
+
+## Final acceptance
+
+Duncan's responses for this exact extended artifact:
+- Visual/usefulness review: "Suitable for this as-is study".
+- Direct-file check: "Direct file and controls work".
+
+These independently supplied Operator observations close the two remaining
+gates. The atlas remains SHA-256
+d39acba479bf74e9c960adc1821524785ea2f65e3322fef5a2cdc3b26fd7b9d0;
+all previously reproduced technical evidence remains applicable, not rerun.
+No change to the HTML, source inputs, batch record or issued prompt.
+
+| ID | Final status | Evidence |
+|---|---|---|
+| S02-01 | done | Retained exact predecessor/data/script preservation and five-group review. |
+| S02-02 | done | Retained complete 36-declaration/source comparison and rendered witnesses. |
+| S02-03 | done | Retained responsive, keyboard, Reset, static-content and source checks plus Duncan's current direct-file observation. |
+| S02-04 | done | Reviewed records, critique and handoff plus Duncan's current visual/usefulness verdict. |
+
+Four opening rows, four done; no deferred/no-op row or silent drop.
+The preserved CC closing report receives a clearly attributed CDC supplement.
+Artifact inventory reconciles to two files under artifacts/ (atlas.html and
+batch-record.md) and the first-class closing report in the slice root; the ZIP
+is retained external transport in Downloads. No new capture/archival artifact.
+
+Bubble-up verified: Slice02 delivers the remaining bounded light/dark/state/
+search-alias study in the same atlas. Missing vendor internals remain explicit
+scope limits, not a hidden deferral. Arc01 can compose the accepted two slices
+and use the source-supported design questions when briefing a later concept
+trial. No redesign, integration or publication is authorized by slice closure.

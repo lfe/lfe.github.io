@@ -22,3 +22,25 @@ Duncan/Sofie should map atlas.html → artifacts/atlas.html, batch-record.md →
 ## Critique and next check
 
 The update makes the relation between broad slate surfaces and small accents explicit, while keeping the original reference intact. Page length and intentionally weak source pairs remain design concerns. Inspect at 375px and 1440px, trace the video action cascade, exercise the component-literal filter by keyboard, and independently reconcile final data/ZIP contents before import. No post-generation checks or automatic fix round were performed here. Stop for review; no publication, integration or Slice02.
+
+
+## Iteration02 — F01 Reset repair proposed return
+
+2026-10-29; `cc-prompt-iteration02.md` (predecessor Iteration01). The sections above remain the historical Iteration01 return. This pass changes only id="reset" → id="atlas-reset" and getElementById('reset') → getElementById('atlas-reset'). The native reset/page-zero/render/query-focus sequence is unchanged. No redesign or new behavior pathway.
+
+Input atlas SHA-256: `d89a87a580aebd674ea11afb2e6a23d6adc3be15c4204dbd7097c94d19df09a9`.
+Prepared output SHA-256: `1c11f970a1c0b383719fddab164b8b092eb9ba51257882150ed0c42fc5199959` (prewrite bytes, not post-write verification).
+Prewrite reverse-substitution reproduces the pinned input exactly; embedded data bytes are identical, with 101 identities / 100 opaque / one translucent. Complete prior record contents preserved as prefixes.
+
+| Row | Iteration02 proposal and remaining gate |
+|---|---|
+| S01-01 | Unchanged data and provenance by exact-byte preservation outside the two IDs. Retain prior CDC evidence; no fresh site-source audit. Open. |
+| S01-02 | Lightness, alpha, numeric data and algorithms unchanged. Retain prior CDC numerical evidence; no fresh browser test. Open. |
+| S01-03 | F01 prescribed repair implemented; proposed satisfaction pending CDC Enter/Space/click/repeated-Reset regression. Earlier layout checks retained, not rerun. Open. |
+| S01-04 | Standalone dependencies unchanged; repository access read only. Direct-file/no-JS and final integrity/ZIP review remain CDC gates. Open. |
+| S01-05 | Intake, exact changes, prewrite hashes/preservation results and limitations appended to records. Prior observations preserved as history. Open. |
+| S01-06 | Eight contexts, source mappings, gradients, weak pairs and literal distinctions unchanged. Retain prior review evidence. Open. |
+
+Return `LFE-Colour-Atlas-Iteration02.zip` with atlas.html, batch-record.md, closing-report.md for the existing manual import mapping. No generated-artifact preview/test, ZIP validation, canonical status update, acceptance, closure or Slice02 opening.
+
+Next CDC check: Component literals + Dark-to-light + #eee, then Enter on Reset; All opaque page 2, then Space on Reset; unmatched query, then click Reset; repeated Reset at defaults. Each must restore empty query, Gold, Source order, page 1 of 1, 11 gold rows and query focus without an exception. Stop for Duncan and Sofie's review.

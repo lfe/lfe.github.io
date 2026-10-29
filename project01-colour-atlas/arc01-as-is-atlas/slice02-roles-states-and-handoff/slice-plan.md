@@ -1,6 +1,6 @@
 # Slice02 — As-is roles, modes and states
 
-Revision 1.0 — 2026-10-29. Status: open; prompt issued for Operator launch.
+Revision 1.1 — 2026-10-29. Status: returned; technical review passed, Operator review pending.
 
 ## Outcome and authority
 
@@ -61,8 +61,8 @@ Translucent paints keep alpha and an explicit source surface when shown.
 Canonical return: artifacts/atlas.html, artifacts/batch-record.md and root
 closing-report.md. OpenDesign instead writes these three files in its writable
 project/output directory and supplies a ZIP; CDC imports them here. This is the
-existing Operator-approved artifact-delivery boundary. This artifacts directory
-is intentionally empty until a real return; no placeholder comp or close report.
+existing Operator-approved artifact-delivery boundary. The returned comp and batch record are now imported into artifacts/;
+the proposed closing report is in the slice root.
 
 Read all site material only. Preserve dirty Makefile/Rust work and the untracked
 verification brief. Do not write site src/, plans/ledgers/prompts, installed
@@ -100,3 +100,14 @@ for Arc01 composition. Arc close and later redesign still need their own review.
 - 2026-10-29: Opened after Slice01 Iteration02 acceptance under Duncan's
   conditional close-and-advance instruction. Issued cc-prompt.md, initial
   assignment, active/unexecuted. Same manual OpenDesign workflow and settings.
+
+
+## Initial return and independent review — 2026-10-29
+
+LFE-Colour-Atlas-Slice02.zip imported unchanged into the three specified homes.
+CDC verification independently accepts S02-01/02; S02-03/04 await Duncan's
+current-artifact direct-file and visual/usefulness observations after technical
+checks passed. The prompt remains preserved and no iteration has been issued.
+Disposition: cc-prompt.md returned for review; one initial execution, zero
+refinement passes. Preview: http://127.0.0.1:55842/atlas.html#modes-states.
+No required correction identified; no slice/arc closure or next arc issued.

@@ -1,6 +1,6 @@
 # Slice01 — First OpenDesign palette/value trial
 
-Revision 1.5. Status: Iteration02 issued for Reset repair; Slice01 remains open.
+Revision 1.6. Status: closed; Iteration02 accepted on 2026-10-29.
 
 ## Brief and active assignment
 
@@ -10,15 +10,16 @@ guidance through OpenDesign/GPT. Produce the actual HTML comp, then stop.
 The site's paints are evidence to preserve; the atlas's composition is a design
 decision OpenDesign should make using the supplied guides.
 
-Current assignment: `cc-prompt-iteration02.md`, issued 2026-10-29 after CDC
-reproduced the Reset failure. Iteration01 is returned with F01; its data and
-layout evidence is retained at the unchanged candidate.
+Closing assignment: `cc-prompt-iteration02.md`, issued 2026-10-29 and now
+accepted. Iteration01's F01 is resolved; its unchanged data/layout evidence
+remains retained, with fresh Reset regression and Operator local-file review.
 The initial `cc-prompt.md` and all first-return files remain preserved.
 CC: OpenDesign desktop using its configured Codex CLI / GPT 6 Astra, as reported
 by Duncan. Reasoning setting/backend identity not independently verified.
 CDC: Sofie here; Operator launches/relays and provides visual review. No
 Autonomous Mode or internal CC. The Operator now authorizes closure and the
-next slice only after the applicable checks pass; F01 currently prevents that.
+next slice only after the applicable checks pass. Those checks now pass at
+their recorded scope; Slice02 may be opened, with execution still Operator-led.
 
 ## Input and output contracts
 
@@ -169,3 +170,14 @@ No unresolved design decision or new investigation is delegated.
   predecessor cc-prompt-iteration01.md, for the Reset repair only. Disposition:
   active. One refinement executed, second issued/unexecuted. Earlier prompts
   and imported atlas remain unchanged. All six rows remain open; no Slice02.
+
+
+## Closure — 2026-10-29
+
+Iteration02 returned in LFE-Colour-Atlas-Iteration02.zip and preserved unchanged
+at dc65d53. CDC accepts all six rows in cdc-verification.md; the only artifact
+changes are the two prescribed IDs. Duncan confirms direct local-file opening,
+filters and Reset. Two executed refinements after the initial delivery.
+Disposition: cc-prompt-iteration02.md accepted. No outstanding Slice01 finding;
+later mode/state/search composition stays with Slice02. The historical open
+states above describe their issue dates, not the current verdict.

@@ -1,0 +1,8 @@
+# Slice02 ledger
+
+| ID | Criterion | Verify | Significance | Origin | Status | Evidence | Notes |
+|---|---|---|---|---|---|---|---|
+| S02-01 | Extended comp preserves the accepted 101-record palette, comparison behavior and eight contexts while adding source-traceable roles for the five named groups. | Exact predecessor data/script comparison, source/consumer joins and actual comp. | correctness-grade | Arc01 scope | open | | No palette repair or new installed tokens. |
+| S02-02 | Light/dark and applicable states preserve actual declarations/cascade/alpha; all 36 scoped Pagefind paints are represented with missing vendor defaults and inferred semantics explicit. | Complete scoped mapping; dark background, alias ownership, cascade and alpha witnesses. | correctness-grade | Mode/state/search study | open | | Alias declaration is not runtime consumer proof. |
+| S02-03 | The assembled standalone comp remains readable narrow/wide, useful without script for static content, and keyboard usable with the repaired Reset and no site changes. | Dependency/static-content/source checks; actual controls, focus, phone/wide and direct-file observations. | correctness-grade | Usable comp | open | | No site build, live search or conformance claim. |
+| S02-04 | Return records real inputs/checks/limits, includes an artifact inventory and concise design handoff, and receives independent and Operator review. | Batch/closing records, four-row walk, concrete critique and CDC/Operator observations. | serious | Learning and Arc01 handoff | open | | No causal guide/vendor ranking claim. |

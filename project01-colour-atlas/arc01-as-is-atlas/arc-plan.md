@@ -1,6 +1,6 @@
 # Arc01 — As-is LFE atlas in OpenDesign
 
-Revision 1.5 — 2026-10-29. Open; Slice01 Iteration02 Reset repair issued.
+Revision 1.6 — 2026-10-29. Open; Slice01 closed, Slice02 opened for Operator launch.
 
 ## Capability and slices
 
@@ -10,15 +10,17 @@ design experiments, not changes to the site.
 
 1. `slice01-palette-and-value-study`: self-contained palette/value comp in
    `artifacts/atlas.html`, reviewed for fidelity, design quality and usefulness.
-   Initial pass returned; Operator approved Iteration01 adding named component
-   literals and an eight-region dark-homepage usage study before slice acceptance.
-2. `slice02-roles-states-and-handoff`: after acceptance, extend the atlas with a
-   remaining mode/state/search role study, building on the Slice01 homepage
-   context plate without duplicating it, and explicit
-   inferred-vs-implemented semantics. Detail only after the first result.
+   Closed: Iteration02 accepted, 101 records and eight source-traced dark
+   regions, with repaired Reset and Operator direct-file confirmation.
+2. `slice02-roles-states-and-handoff`: open. Extend the accepted comp with
+   light/dark state references for gold CTA, navigation, tabs, development
+   download and Pagefind alias scopes. Preserve the 101-record catalogue and
+   homepage plate; distinguish declarations, cascaded consumer values and
+   inferred semantics. Return one self-contained comp plus a brief handoff,
+   not a live search service or production token migration.
 
 Operator's 2026-10-29 instruction authorizes closing Slice01 and opening
-Slice02 once applicable checks pass. F01 currently prevents that advancement;
+Slice02 once applicable checks pass. Slice01 now meets that condition;
 OpenDesign execution still requires Operator launch. Human feedback guides the increment. Normal corrections stay in distinct numbered slice prompts; no new
 planning project per feedback message. Preserve first-pass bytes through Git
 before revising them. No separate audit/validation-only arcs.
@@ -36,7 +38,7 @@ The atlas can use a neutral presentation surround; palette swatches must preserv
 the site's original authored paints, alpha and distinctions. Do not silently
 clip/round supplied colours into replacement source values.
 
-Deliver a self-contained HTML file in Slice01 artifacts: inline CSS/JS and
+Deliver a self-contained HTML file in the executing slice's artifacts: inline CSS/JS and
 source-derived data, no fetch back to the site or assumption that the orphan
 planning tree contains site CSS. Include source paths/revision and coverage.
 No image assets, network dependencies, site build, route, navigation or Cobalt
@@ -73,3 +75,11 @@ fidelity does not block this site-source task.
   Slice01 remains open under Iteration02's mechanical repair; retained source/
   numeric/context evidence remains pinned. Next slice is conditionally
   authorized after passing acceptance, not opened ahead of the repair.
+
+
+- 1.6 — 2026-10-29: Slice01 closed after the exact Reset repair, CDC regression
+  and Operator direct-file confirmation. Opened Slice02 within the approved
+  remaining mode/state/search scope. Five source-bound component groups and
+  36 scoped Pagefind paint declarations keep it small; missing vendor defaults
+  remain explicit unknowns. Preserve the working comparison script and avoid
+  another state controller. Same manual ZIP and independent-check route.

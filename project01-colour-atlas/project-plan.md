@@ -10,7 +10,7 @@ related:
 
 # LFE colour atlas and incremental design trials
 
-Revision 1.5 — 2026-10-29.
+Revision 1.6 — 2026-10-29.
 
 ## Intent and brief
 
@@ -82,7 +82,7 @@ commissioned. Lightness, luminance, contrast and HSV V remain distinct.
 
 | Arc | Usable result and home | Dependency | Status |
 |---|---|---|---|
-| Arc01 as-is atlas | Self-contained palette/value comp, then roles/states, in slice artifacts | Current active CSS and installed guides | Open; Slice01 Iteration02 Reset repair issued |
+| Arc01 as-is atlas | Self-contained palette/value comp, then roles/states, in slice artifacts | Current active CSS and installed guides | Open; Slice01 closed, Slice02 ready for Operator launch |
 | Arc02 OpenDesign concepts | Conservative/exploratory alternatives in their owning slice artifacts | Atlas review and Operator brief | Roadmap only; not yet issued |
 | Arc03 chosen integration | Approved design translated into Cobalt-friendly source/templates with a checked first consumer and rollback | Explicit design/integration approval | Roadmap only; not yet issued |
 
@@ -141,3 +141,9 @@ monitor. Bounded read-only inspection can be chosen once actual evidence exists.
   layout, filters, sort, pagination and empty state passed their checked scope.
   Issued a two-substitution Slice01 repair. Operator's closure/next-slice
   instruction is conditional on passing; no closure or successor opening yet.
+
+
+- 1.6 — 2026-10-29: Arc01 Slice01 accepted after CDC's four-case Reset
+  regression, exact preservation checks and Duncan's direct-file observation.
+  Opened the planned remaining mode/state/search extension as Slice02; no
+  redesign, source integration or automatic OpenDesign submission authorized.

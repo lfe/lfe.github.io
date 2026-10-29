@@ -44,3 +44,41 @@ Prewrite reverse-substitution reproduces the pinned input exactly; embedded data
 Return `LFE-Colour-Atlas-Iteration02.zip` with atlas.html, batch-record.md, closing-report.md for the existing manual import mapping. No generated-artifact preview/test, ZIP validation, canonical status update, acceptance, closure or Slice02 opening.
 
 Next CDC check: Component literals + Dark-to-light + #eee, then Enter on Reset; All opaque page 2, then Space on Reset; unmatched query, then click Reset; repeated Reset at defaults. Each must restore empty query, Gold, Source order, page 1 of 1, 11 gold rows and query focus without an exception. Stop for Duncan and Sofie's review.
+
+
+## CDC close supplement — 2026-10-29
+
+This section is Sofie / CDC's acceptance supplement, not a rewrite of CC's
+proposed return above. The complete CC Iteration02 return is preserved at
+planning dc65d53. [CDC verification](cdc-verification.md#iteration02-acceptance)
+independently accepts S01-01 through S01-06 as **done**: six rows, no deferrals,
+no no-ops. Reset passes Enter, Space, pointer and repeated-default cases.
+Duncan confirms the canonical file opens directly and filters/Reset work.
+Retained versus fresh evidence and untested conditions are explicit there.
+
+Artifact inventory (eight files under artifacts/):
+- atlas.html: accepted standalone comp, 101 records / 100 opaque / one alpha.
+- batch-record.md: CC's preserved intake, design/change and check-limit record.
+- import-and-coverage-review.md and iteration01-review.md: CDC's earlier
+  source/screenshot/data and wide-preview observations.
+- DESIGN-HANDOFF.md and DESIGN-MANIFEST.json: retained first-export metadata,
+  historical only, not governing instructions or current inventories.
+- screenshots/site-home-dark.png and screenshots/site-videos-footer-dark.png:
+  supplied site reference images, not embedded in the deliverable atlas.
+Plans, prompts, ledger, this report and CDC verification are first-class
+documents outside the supporting-artifact inventory.
+
+### Bubble-up to the arc
+
+Delivered: Arc01's first palette/value study and approved eight-region context
+addition, preserving original paints, provenance, alpha and numeric meaning.
+The actual comp is in this slice's artifacts/, with no site-source integration.
+Scope-as-delivered matches the revised six-row contract; remaining mode/state/
+search work was explicitly assigned to Slice02, not dropped from this slice.
+
+Learnings: manual ZIP transport works; post-generation checks need CDC/Operator
+because of OpenDesign's host restriction. A control that looks correct still
+needs an actual transition check: Reset's name collision was found and repaired.
+Keep the slate-led context plate and original lookup; test the next extension
+against real alias ownership/cascade rather than inventing missing state values.
+No finding here changes the released design skill or demonstrates vendor parity.

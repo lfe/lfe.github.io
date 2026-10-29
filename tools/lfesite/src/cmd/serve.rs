@@ -27,7 +27,10 @@ pub fn run(project_dir: &Path, port: u16) -> Result<()> {
     // Step 2: start static file server
     println!("\n=== Starting dev server on port {port} ===");
     let mut server = start_server(&output_dir, port)?;
-    println!("  serving {} at http://localhost:{port}", output_dir.display());
+    println!(
+        "  serving {} at http://localhost:{port}",
+        output_dir.display()
+    );
 
     // Step 3: watch src/ for changes
     let src_dir = project_dir.join("src");
@@ -73,18 +76,16 @@ pub fn run(project_dir: &Path, port: u16) -> Result<()> {
                     println!("=== Rebuild complete ===\n");
                 }
             }
-            Err(mpsc::RecvTimeoutError::Timeout) => {
-                match server.try_wait() {
-                    Ok(Some(status)) => {
-                        println!("dev server exited with {status}");
-                        return Ok(());
-                    }
-                    Ok(None) => {}
-                    Err(e) => {
-                        eprintln!("error checking server process: {e}");
-                    }
+            Err(mpsc::RecvTimeoutError::Timeout) => match server.try_wait() {
+                Ok(Some(status)) => {
+                    println!("dev server exited with {status}");
+                    return Ok(());
                 }
-            }
+                Ok(None) => {}
+                Err(e) => {
+                    eprintln!("error checking server process: {e}");
+                }
+            },
             Err(mpsc::RecvTimeoutError::Disconnected) => {
                 break;
             }

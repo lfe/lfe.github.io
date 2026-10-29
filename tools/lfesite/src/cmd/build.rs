@@ -51,10 +51,7 @@ fn generate_sitemap(project_dir: &Path, output_dir: &Path, base_url: &str) -> Re
         .max_depth(3)
         .into_iter()
         .filter_map(|e| e.ok())
-        .filter(|e| {
-            e.file_type().is_file()
-                && e.path().extension().map_or(false, |ext| ext == "md")
-        })
+        .filter(|e| e.file_type().is_file() && e.path().extension().is_some_and(|ext| ext == "md"))
     {
         let rel = match entry.path().strip_prefix(project_dir) {
             Ok(r) => r,
@@ -70,7 +67,10 @@ fn generate_sitemap(project_dir: &Path, output_dir: &Path, base_url: &str) -> Re
         }
 
         let stem = rel.file_stem().and_then(|s| s.to_str()).unwrap_or("");
-        let parent = rel.parent().map(|p| p.to_string_lossy().to_string()).unwrap_or_default();
+        let parent = rel
+            .parent()
+            .map(|p| p.to_string_lossy().to_string())
+            .unwrap_or_default();
 
         let path = if stem == "index" && parent.is_empty() {
             "/".to_string()
@@ -204,8 +204,6 @@ fn dirs_cache() -> std::path::PathBuf {
 fn platform_tag() -> (&'static str, &'static str) {
     let os = if cfg!(target_os = "macos") {
         "macos"
-    } else if cfg!(target_os = "linux") {
-        "linux"
     } else {
         "linux"
     };
@@ -291,7 +289,10 @@ fn ensure_pagefind_binary() -> Result<std::path::PathBuf> {
         .output()
         .context("failed to list tarball contents")?;
     let contents = String::from_utf8_lossy(&listing.stdout);
-    println!("  tarball contents: {}", contents.trim().replace('\n', ", "));
+    println!(
+        "  tarball contents: {}",
+        contents.trim().replace('\n', ", ")
+    );
 
     // Extract everything, then find/rename the pagefind binary
     let status = Command::new("tar")

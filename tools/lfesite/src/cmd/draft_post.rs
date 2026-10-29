@@ -17,8 +17,8 @@ fn draft_existing(file: &Path) -> Result<()> {
         bail!("file not found: {}", file.display());
     }
 
-    let content = fs::read_to_string(file)
-        .with_context(|| format!("reading {}", file.display()))?;
+    let content =
+        fs::read_to_string(file).with_context(|| format!("reading {}", file.display()))?;
 
     if content.contains("is_draft: true") {
         eprintln!();
@@ -31,8 +31,7 @@ fn draft_existing(file: &Path) -> Result<()> {
     }
 
     let updated = content.replacen("is_draft: false", "is_draft: true", 1);
-    fs::write(file, &updated)
-        .with_context(|| format!("writing {}", file.display()))?;
+    fs::write(file, &updated).with_context(|| format!("writing {}", file.display()))?;
 
     let title = content
         .lines()
@@ -61,11 +60,11 @@ fn draft_new(project_dir: &Path) -> Result<()> {
     super::new_post::run(
         project_dir,
         title,
-        true,   // draft
-        None,   // slug
-        "tutorials",  // default category
-        "",     // no tags
-        None,   // current time
+        true,        // draft
+        None,        // slug
+        "tutorials", // default category
+        "",          // no tags
+        None,        // current time
     )
 }
 

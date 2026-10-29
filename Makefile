@@ -43,7 +43,7 @@ help:
 	@echo "  $(YELLOW)make lint$(RESET)             - Run clippy, format check, and tag/category check"
 	@echo "  $(YELLOW)make check-tags-cats$(RESET)  - Ensure no spaces in post tags/categories"
 	@echo "  $(YELLOW)make format$(RESET)           - Format Rust code"
-	@echo "  $(YELLOW)make check$(RESET)            - lint + test + validate"
+	@echo "  $(YELLOW)make check$(RESET)            - tags/cats + lint + test + validate"
 	@echo ""
 	@echo "$(GREEN)Spelling:$(RESET)"
 	@echo "  $(YELLOW)make spell-check$(RESET)      - Check for spelling errors in markdown"
@@ -199,9 +199,9 @@ format:
 	@echo "$(GREEN)✓ Code formatted$(RESET)"
 
 .PHONY: check
-check: lint test validate check-tags-cats
+check: check-tags-cats lint test validate
 	@echo ""
-	@echo "$(GREEN)✓ All checks passed (lint + test + validate)$(RESET)"
+	@echo "$(GREEN)✓ All checks passed (tags/cats + lint + test + validate)$(RESET)"
 	@echo ""
 
 #############################################################################

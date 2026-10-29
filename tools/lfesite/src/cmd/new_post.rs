@@ -20,7 +20,10 @@ pub fn run(
 ) -> Result<()> {
     let slug = match slug_override {
         Some(s) => {
-            if !s.chars().all(|c| c.is_ascii_lowercase() || c.is_ascii_digit() || c == '-') {
+            if !s
+                .chars()
+                .all(|c| c.is_ascii_lowercase() || c.is_ascii_digit() || c == '-')
+            {
                 bail!("slug must match [a-z0-9-]+, got: {s}");
             }
             s.to_string()
@@ -51,7 +54,10 @@ pub fn run(
     let tag_list = if tags.is_empty() {
         "[]".to_string()
     } else {
-        let items: Vec<String> = tags.split(',').map(|t| format!("\"{}\"", t.trim())).collect();
+        let items: Vec<String> = tags
+            .split(',')
+            .map(|t| format!("\"{}\"", t.trim()))
+            .collect();
         format!("[{}]", items.join(", "))
     };
 
@@ -80,8 +86,7 @@ data:
     );
 
     let dir = project_dir.join(format!("src/posts/{year}"));
-    fs::create_dir_all(&dir)
-        .with_context(|| format!("creating directory: {}", dir.display()))?;
+    fs::create_dir_all(&dir).with_context(|| format!("creating directory: {}", dir.display()))?;
 
     let filename = format!("{month}-{day}-{hhmm}-{slug}.md");
     let filepath = dir.join(&filename);
@@ -90,13 +95,19 @@ data:
         bail!("file already exists: {}", filepath.display());
     }
 
-    fs::write(&filepath, &content)
-        .with_context(|| format!("writing {}", filepath.display()))?;
+    fs::write(&filepath, &content).with_context(|| format!("writing {}", filepath.display()))?;
 
     let rel_path = filepath.strip_prefix(project_dir).unwrap_or(&filepath);
     eprintln!();
     eprintln!("  created: {}", rel_path.display());
-    eprintln!("  status:  {}", if draft { "draft" } else { "published (use --draft for draft)" });
+    eprintln!(
+        "  status:  {}",
+        if draft {
+            "draft"
+        } else {
+            "published (use --draft for draft)"
+        }
+    );
     eprintln!("  author:  {author}");
     eprintln!();
 
@@ -119,9 +130,7 @@ data:
 }
 
 fn detect_author() -> String {
-    let output = Command::new("git")
-        .args(["config", "user.name"])
-        .output();
+    let output = Command::new("git").args(["config", "user.name"]).output();
 
     match output {
         Ok(o) if o.status.success() => {

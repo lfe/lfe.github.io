@@ -9,8 +9,8 @@ pub fn run(file: &Path) -> Result<()> {
         bail!("file not found: {}", file.display());
     }
 
-    let content = fs::read_to_string(file)
-        .with_context(|| format!("reading {}", file.display()))?;
+    let content =
+        fs::read_to_string(file).with_context(|| format!("reading {}", file.display()))?;
 
     if content.contains("is_draft: false") {
         eprintln!();
@@ -23,8 +23,7 @@ pub fn run(file: &Path) -> Result<()> {
     }
 
     let updated = content.replacen("is_draft: true", "is_draft: false", 1);
-    fs::write(file, &updated)
-        .with_context(|| format!("writing {}", file.display()))?;
+    fs::write(file, &updated).with_context(|| format!("writing {}", file.display()))?;
 
     // Extract title for display
     let title = content

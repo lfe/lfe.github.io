@@ -15,8 +15,7 @@ pub fn run(project_dir: &Path, source: &Path) -> Result<()> {
     let drafts_dir = source.join("src/_drafts");
     let dest_dir = project_dir.join("src/posts");
 
-    fs::create_dir_all(&dest_dir)
-        .with_context(|| format!("creating {}", dest_dir.display()))?;
+    fs::create_dir_all(&dest_dir).with_context(|| format!("creating {}", dest_dir.display()))?;
 
     // Collect existing posts (filenames only) for dedup
     let existing: HashSet<String> = fs::read_dir(&dest_dir)
@@ -94,9 +93,9 @@ pub fn run(project_dir: &Path, source: &Path) -> Result<()> {
     let mut migrated = 0u32;
 
     for (filename, path, is_draft) in &post_files {
-        let caps = filename_re.captures(filename).with_context(|| {
-            format!("filename does not match expected pattern: {}", filename)
-        })?;
+        let caps = filename_re
+            .captures(filename)
+            .with_context(|| format!("filename does not match expected pattern: {}", filename))?;
         let year = &caps[1];
         let month = &caps[2];
         let day = &caps[3];
@@ -107,7 +106,7 @@ pub fn run(project_dir: &Path, source: &Path) -> Result<()> {
         let mm = &hhmm[2..];
 
         let content =
-            fs::read_to_string(&path).with_context(|| format!("reading {}", path.display()))?;
+            fs::read_to_string(path).with_context(|| format!("reading {}", path.display()))?;
 
         // Split front-matter and body
         let (front_matter_str, body) = split_front_matter(&content)
@@ -129,10 +128,7 @@ pub fn run(project_dir: &Path, source: &Path) -> Result<()> {
         // Normalize category
         let category = normalize_category(&category_raw);
         if category != category_raw.to_lowercase() && !category_raw.is_empty() {
-            normalizations.push(format!(
-                "category: '{}' -> '{}'",
-                category_raw, category
-            ));
+            normalizations.push(format!("category: '{}' -> '{}'", category_raw, category));
         }
 
         // Normalize tags
@@ -227,7 +223,7 @@ pub fn run(project_dir: &Path, source: &Path) -> Result<()> {
             .with_context(|| format!("writing {}", dest_path.display()))?;
 
         migrated += 1;
-        if migrated % 20 == 0 {
+        if migrated.is_multiple_of(20) {
             println!("  processed {} posts...", migrated);
         }
     }
@@ -261,7 +257,11 @@ pub fn run(project_dir: &Path, source: &Path) -> Result<()> {
                 img_skipped += 1;
             } else {
                 fs::copy(entry.path(), &dest_path).with_context(|| {
-                    format!("copying {} to {}", entry.path().display(), dest_path.display())
+                    format!(
+                        "copying {} to {}",
+                        entry.path().display(),
+                        dest_path.display()
+                    )
                 })?;
                 copied += 1;
             }
@@ -279,25 +279,16 @@ pub fn run(project_dir: &Path, source: &Path) -> Result<()> {
     let mut authors_added = 0u32;
 
     if authors_path.exists() {
-        let authors_content =
-            fs::read_to_string(&authors_path).context("reading authors.yml")?;
+        let authors_content = fs::read_to_string(&authors_path).context("reading authors.yml")?;
 
         let stub_authors = [
-            (
-                "eric-bailey",
-                "Eric Bailey",
-                "Erlang and LFE developer.",
-            ),
+            ("eric-bailey", "Eric Bailey", "Erlang and LFE developer."),
             (
                 "anurag-mendhekar",
                 "Anurag Mendhekar",
                 "Software engineer and LFE contributor.",
             ),
-            (
-                "lfe-maintainers",
-                "LFE Maintainers",
-                "The LFE core team.",
-            ),
+            ("lfe-maintainers", "LFE Maintainers", "The LFE core team."),
         ];
 
         let mut appended = String::new();
@@ -349,10 +340,7 @@ pub fn run(project_dir: &Path, source: &Path) -> Result<()> {
     }
 
     // Multi-word tags
-    let multi_word: Vec<_> = all_tags
-        .keys()
-        .filter(|t| t.contains(' '))
-        .collect();
+    let multi_word: Vec<_> = all_tags.keys().filter(|t| t.contains(' ')).collect();
     if !multi_word.is_empty() {
         report.push_str("\n## Multi-word Tags (flagged for review)\n\n");
         for t in multi_word {
@@ -398,8 +386,8 @@ fn extract_field(fm: &str, key: &str) -> Option<String> {
 fn extract_tags(fm: &str) -> Vec<String> {
     for line in fm.lines() {
         let trimmed = line.trim();
-        if trimmed.starts_with("tags:") {
-            let value = trimmed["tags:".len()..].trim();
+        if let Some(value) = trimmed.strip_prefix("tags:") {
+            let value = value.trim();
             // Parse [tag1, tag2, ...] format
             if let Some(inner) = value.strip_prefix('[').and_then(|v| v.strip_suffix(']')) {
                 return parse_tag_list(inner);
@@ -543,8 +531,7 @@ fn transform_code_fences(line: &str) -> String {
     }
 
     // Check for ```lisp (exact or followed by whitespace)
-    if trimmed == "```lisp" || trimmed.starts_with("```lisp ") || trimmed.starts_with("```lisp\t")
-    {
+    if trimmed == "```lisp" || trimmed.starts_with("```lisp ") || trimmed.starts_with("```lisp\t") {
         return line.replacen("```lisp", "```lfe", 1);
     }
 
@@ -617,18 +604,9 @@ mod tests {
     #[test]
     fn test_extract_field() {
         let fm = "\ntitle: \"Hello World\"\ncategory: tutorials\nauthor: Duncan McGreggor\n";
-        assert_eq!(
-            extract_field(fm, "title").unwrap(),
-            "Hello World"
-        );
-        assert_eq!(
-            extract_field(fm, "category").unwrap(),
-            "tutorials"
-        );
-        assert_eq!(
-            extract_field(fm, "author").unwrap(),
-            "Duncan McGreggor"
-        );
+        assert_eq!(extract_field(fm, "title").unwrap(), "Hello World");
+        assert_eq!(extract_field(fm, "category").unwrap(), "tutorials");
+        assert_eq!(extract_field(fm, "author").unwrap(), "Duncan McGreggor");
     }
 
     #[test]

@@ -9,7 +9,10 @@
 pub fn slugify(input: &str) -> String {
     let s = input.to_lowercase();
     let s = s.replace([' ', '_'], "-");
-    let s: String = s.chars().filter(|c| c.is_ascii_lowercase() || c.is_ascii_digit() || *c == '-').collect();
+    let s: String = s
+        .chars()
+        .filter(|c| c.is_ascii_lowercase() || c.is_ascii_digit() || *c == '-')
+        .collect();
     let mut result = String::new();
     let mut prev_hyphen = false;
     for c in s.chars() {

@@ -83,20 +83,23 @@ fn main() -> Result<()> {
         Command::Build => cmd::build::run(&project_dir),
         Command::Serve { port } => cmd::serve::run(&project_dir, port),
         Command::Validate => cmd::validate::run(&project_dir),
-        Command::NewPost { title, draft, slug, category, tags, date } => {
-            cmd::new_post::run(
-                &project_dir,
-                &title,
-                draft,
-                slug.as_deref(),
-                &category,
-                &tags,
-                date.as_deref(),
-            )
-        }
+        Command::NewPost {
+            title,
+            draft,
+            slug,
+            category,
+            tags,
+            date,
+        } => cmd::new_post::run(
+            &project_dir,
+            &title,
+            draft,
+            slug.as_deref(),
+            &category,
+            &tags,
+            date.as_deref(),
+        ),
         Command::PublishPost { file } => cmd::publish_post::run(&file),
-        Command::DraftPost { file } => {
-            cmd::draft_post::run(&project_dir, file.as_deref())
-        }
+        Command::DraftPost { file } => cmd::draft_post::run(&project_dir, file.as_deref()),
     }
 }

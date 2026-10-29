@@ -20,7 +20,7 @@ pub fn run(project_dir: &Path) -> Result<()> {
     } else {
         project_dir.join("_data")
     };
-    run_with_data_dir(&data_dir.parent().unwrap_or(project_dir).to_path_buf())
+    run_with_data_dir(data_dir.parent().unwrap_or(project_dir))
 }
 
 pub fn run_with_data_dir(base_dir: &Path) -> Result<()> {
@@ -40,18 +40,14 @@ pub fn run_with_data_dir(base_dir: &Path) -> Result<()> {
             e.file_type().is_file()
                 && e.path()
                     .extension()
-                    .map_or(false, |ext| ext == "yml" || ext == "yaml")
+                    .is_some_and(|ext| ext == "yml" || ext == "yaml")
         })
     {
         scanned += 1;
         let path = entry.path();
-        let rel = path
-            .strip_prefix(base_dir)
-            .unwrap_or(path)
-            .display();
+        let rel = path.strip_prefix(base_dir).unwrap_or(path).display();
 
-        let contents = fs::read_to_string(path)
-            .with_context(|| format!("failed to read {rel}"))?;
+        let contents = fs::read_to_string(path).with_context(|| format!("failed to read {rel}"))?;
 
         let mut doc: serde_yaml::Value = serde_yaml::from_str(&contents)
             .with_context(|| format!("failed to parse YAML in {rel}"))?;
@@ -71,8 +67,7 @@ pub fn run_with_data_dir(base_dir: &Path) -> Result<()> {
                 println!("  skip (unchanged): {rel}");
                 skipped += 1;
             } else {
-                fs::write(path, &new_yaml)
-                    .with_context(|| format!("failed to write {rel}"))?;
+                fs::write(path, &new_yaml).with_context(|| format!("failed to write {rel}"))?;
                 println!("  updated: {rel}");
                 updated += 1;
             }
@@ -83,9 +78,7 @@ pub fn run_with_data_dir(base_dir: &Path) -> Result<()> {
     }
 
     println!();
-    println!(
-        "prerender: {scanned} file(s) scanned, {updated} updated, {skipped} skipped"
-    );
+    println!("prerender: {scanned} file(s) scanned, {updated} updated, {skipped} skipped");
     Ok(())
 }
 
@@ -96,9 +89,8 @@ pub fn run_with_data_dir(base_dir: &Path) -> Result<()> {
 /// Render a markdown string to HTML using pulldown-cmark with common
 /// extensions enabled.
 fn render_markdown(input: &str) -> String {
-    let options = Options::ENABLE_TABLES
-        | Options::ENABLE_FOOTNOTES
-        | Options::ENABLE_STRIKETHROUGH;
+    let options =
+        Options::ENABLE_TABLES | Options::ENABLE_FOOTNOTES | Options::ENABLE_STRIKETHROUGH;
     let parser = Parser::new_ext(input, options);
     let mut html_output = String::new();
     html::push_html(&mut html_output, parser);
@@ -210,10 +202,8 @@ fn process_mapping(map: &mut serde_yaml::Mapping) -> bool {
     // Set of _md keys that have a generated _html counterpart, so we
     // know which existing _html entries to skip (they will be
     // re-inserted in the right position).
-    let html_keys_to_insert: std::collections::HashSet<String> = inserts
-        .iter()
-        .map(|(_, html, _)| html.clone())
-        .collect();
+    let html_keys_to_insert: std::collections::HashSet<String> =
+        inserts.iter().map(|(_, html, _)| html.clone()).collect();
 
     // Map from md_key -> html_key for positional insertion.
     let md_to_html: std::collections::HashMap<String, String> = inserts
@@ -336,10 +326,7 @@ mod tests {
         let html_val = map
             .get(serde_yaml::Value::String("label_html".into()))
             .unwrap();
-        assert_eq!(
-            html_val.as_str().unwrap(),
-            "Hello <strong>world</strong>"
-        );
+        assert_eq!(html_val.as_str().unwrap(), "Hello <strong>world</strong>");
     }
 
     #[test]
@@ -386,10 +373,7 @@ items:
         process_value(&mut doc);
 
         let map = doc.as_mapping().unwrap();
-        let keys: Vec<&str> = map
-            .keys()
-            .filter_map(|k| k.as_str())
-            .collect();
+        let keys: Vec<&str> = map.keys().filter_map(|k| k.as_str()).collect();
 
         let md_pos = keys.iter().position(|k| *k == "content_md").unwrap();
         let html_pos = keys.iter().position(|k| *k == "content_html").unwrap();

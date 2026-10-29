@@ -10,7 +10,7 @@ related:
 
 # LFE colour atlas and incremental design trials
 
-Revision 1.3 — 2026-10-28.
+Revision 1.4 — 2026-10-29.
 
 ## Intent and brief
 
@@ -82,7 +82,7 @@ commissioned. Lightness, luminance, contrast and HSV V remain distinct.
 
 | Arc | Usable result and home | Dependency | Status |
 |---|---|---|---|
-| Arc01 as-is atlas | Self-contained palette/value comp, then roles/states, in slice artifacts | Current active CSS and installed guides | Open; Slice01 Iteration01 issued |
+| Arc01 as-is atlas | Self-contained palette/value comp, then roles/states, in slice artifacts | Current active CSS and installed guides | Open; Slice01 Iteration01 under review |
 | Arc02 OpenDesign concepts | Conservative/exploratory alternatives in their owning slice artifacts | Atlas review and Operator brief | Roadmap only; not yet issued |
 | Arc03 chosen integration | Approved design translated into Cobalt-friendly source/templates with a checked first consumer and rollback | Explicit design/integration approval | Roadmap only; not yet issued |
 
@@ -134,3 +134,5 @@ monitor. Bounded read-only inspection can be chosen once actual evidence exists.
 - 1.2 — 2026-10-28: Operator supplied first ZIP and two screenshots. Imported unchanged results, reproduced 52 token/43 syntax memberships and recorded gaps/host check limits without acceptance or source changes. Future prompts should support project-local export/manual import.
 
 - 1.3 — 2026-10-28: Operator approved a follow-up atlas prompt for missing component literals and actual dark-homepage colour relationships. Issued Slice01 Iteration01 with source preservation and project-local ZIP return; no implementation, acceptance or next-arc launch here.
+
+- 1.4 — 2026-10-29: Imported Operator-returned Iteration01 ZIP unchanged. Initial checks preserve all 95 records, add six literal identities and reproduce numeric data; actual wide preview inspected. Positive Operator visual feedback recorded at its stated scope; no acceptance or new execution.

@@ -1,65 +1,78 @@
-# LFE atlas — first-pass batch record
+# LFE atlas — Iteration01 batch record
 
-Date: 2026-10-28. First HTML attempt in this conversation; no refinement pass.
+Date: 2026-10-28. Project01 / Arc01 / Slice01. First refinement, assigned by `cc-prompt-iteration01.md`; predecessor `cc-prompt.md`. Return to Duncan and Sofie; no acceptance or ledger change.
 
-## Contract and destination
+## Intake and versioned local change contract
 
-Create an as-is colour/value reference, preserve original authored colours and alpha, distinguish declarations from consumers, embed all runtime inputs, and stop for Duncan/Sofie review. This is an artifact trial, not a site change. S01-01 through S01-05 govern the proposed return. The easily missed constraint is that declared tokens do not prove rendered use, and an alpha paint cannot join an opaque appearance ranking without a stated backdrop.
+Contract `slice01-iteration01-v1`, route direct_edit, simple execution. The explicit bounded addition is eight dark-homepage context specimens and six named component-literal records. Preserve the imported atlas's 95 original records, exact values, alpha caveat, numerical method, static catalogues, syntax attribution and comparison controls. Retain the neutral specimen-book design, local fonts and single standalone `atlas.html` identity. Changes are limited to atlas navigation/hierarchy, context annotations, the added population, and these two return records. No installed website semantic tokens are created. New human-purpose labels are descriptive atlas proposals.
 
-The Operator explicitly authorized relocation to OpenDesign's writable project directory after the planning worktree was unavailable for writing. Outputs here: `atlas.html`, `batch-record.md`, `closing-report.md`. Move these respectively to the original slice's `artifacts/atlas.html`, `artifacts/batch-record.md`, and `closing-report.md` under `/Users/oubiwann/lab/lfe/lfe.github.io/.worktrees/planning/project01-colour-atlas/arc01-as-is-atlas/slice01-palette-and-value-study/`.
+Baseline imported atlas SHA-256: `addef23910b44baca10a312f7964b2c648c880eef5ec7bf1e1b7670c7ce68515`. Pre-generation read confirms project-local atlas bytes equal that imported baseline. First return remains preserved by planning commit afcfa66 (per issued assignment). Project-local replacement and ZIP export are explicitly authorized; site and planning are read only.
 
-## Loaded inputs and identity
+Requirements: S01-01 source fidelity and added literals; S01-02 unchanged lightness/alpha semantics; S01-03 readable responsive static/keyboard paths; S01-04 standalone and protected inputs; S01-05 truthful records; S01-06 eight source-traced contexts. Final source/browser/ZIP inspection and acceptance belong to independent review. No site build, commit, deployment, source/plan/ledger/prompt/skill modification, subagent, configuration change, or next slice.
 
-Source checkout HEAD: `036e231b09c48966da26d2227bccb4fa3b295df9`. Planning HEAD: `163ccb04d53254b0f884c1e09bceb3175cf81c49`, with clean planning status when read. Full required planning content was loaded: planning AGENTS.md; project-plan.md and project ledger; arc-plan.md and arc ledger; slice-plan.md and slice ledger; issued cc-prompt.md. The assignment was loaded in tool output 81df6e; the remaining full planning packet in 07744b. No required content from these reads was truncated.
+## Loaded inputs
 
-Full design reads: visual-design-system SKILL.md (version 2.0.0), colour.md and system-evolution.md. Scoped complete reads: design-workflow sections 1, 2, 4, 5; data-and-comparison sections Define what each number means, Choose the display for the comparison, Arrange and format the values. Colour/system-evolution read: 9474f4; scoped sections: 363f76. The earlier SKILL.md read identified version 2.0.0. No version-label mismatch was observed; this run did not independently reproduce the planning document's historical 21-file comparison to upstream commit 53625ab.
+Read planning AGENTS.md; current project, arc and slice plans and each ledger; predecessor prompt; current Iteration01 prompt; full import-and-coverage-review.md. Slice plan names this exact active iteration. Read actual imported HTML as starting point: data population, CSS, affected header/sections, navigation and script behavior. Long catalogue markup is retained from the baseline, not re-created. Both supplied screenshot PNGs were visually inspected as input references. They show slate-led surfaces, dark cards, rose video accents and the lighter closing callout. This is not a preview of the revised artifact; no pixel sampling performed.
 
-Current hashes of loaded design files:
+Visual-design-system version 2.0.0 is unchanged. Fully loaded SKILL.md and colour.md. Loaded system-evolution sections Start with the adopting contract, Respect CSS value and cascade behavior, Compare actual rendered pairs and states; design-workflow 4 and 5; data-and-comparison Define what each number means, Choose the display for the comparison, Arrange and format the values. Prior complete readings are supplemented by current scoped reads. Truncated tool outputs were recovered with bounded reads before edits. Project-management iteration filename/preservation and issuing/executing sections loaded; earlier project-management intake and Biome JavaScript guidance retained. No browser-script redesign is required.
+
+Guide identities (SHA-256):
 - `SKILL.md`: `a657a92a4970a6b008fbbfab663b50a49e91be868bd219d6e044c881a9fe4239`
 - `guides/colour.md`: `51e943b7db7097058b63be9c7b1bb7e56fda99cbbc8df7394b2eb77a1a013d23`
 - `guides/system-evolution.md`: `dd0522c78c6ed2a89f38e10ca6ca8b01eb972ce1ec46e101ba75e4e80b92f5fe`
 - `guides/design-workflow.md`: `5acb2bc99359ead86787ec58de185d300b69776c08eabde08c6d9bdbcd213c2b`
 - `guides/data-and-comparison.md`: `c2fd22781948b8e4d7d4f7a3f9c17bb8e91b41ed3a92d78cf1033e5f80a1caeb`
 
-Source reads: complete css.liquid, home.liquid and page.liquid; tailwind/site.css lines 1–115; full highlight.css; complete bounded root --gold-* / --color-* query from generated site.css (not a minified-line dump). Tool outputs 7b0e15, c7a8c9 and e68bcf contain the source/context reads and complete selected results. Scoped `git diff` against baseline for all six inputs was empty. Both palette source SHA-256 values were rechecked before data preparation:
+Source baseline: `036e231b09c48966da26d2227bccb4fa3b295df9`. All 18 checked relevant input files equal baseline bytes before generation. Full stylesheet links, home/page layouts, nav, masthead, features, videos, closing and footer markup read. Book action markup checked; data excerpts, feature/video copy and callout copy read. Tailwind scope covers requested ranges plus body text rules at 229–232 and needed footer context. Compiled CSS queried by bounded selector blocks, root declarations, layer order and gradient registration. Highlight CSS read fully. Screenshot content and code/image distinction are explicit.
 
-- site.css: `3de716db7aa27d270cbd5eebe376a094f5e20122d50095dd36f013d64644f4f9`
-- highlight.css: `db04738bb8186fbbfc5ade776154ba6062209f5d5130c191a7c628c1faba095d`
+Source identities:
+- `src/css/site.css`: `3de716db7aa27d270cbd5eebe376a094f5e20122d50095dd36f013d64644f4f9`
+- `src/css/highlight.css`: `db04738bb8186fbbfc5ade776154ba6062209f5d5130c191a7c628c1faba095d`
+- `src/css/common.css`: `241e5f8310f1037a07e46cc4577d00d727760df92a5a65d4d5ad79b4bbc508b7`
+- `tailwind/site.css`: `94651d85df1b40801a46574deff3e91958a444fc863965aa9fb26997fccafb16`
+- `src/_includes/css.liquid`: `dfafc0f7fb4d7757fc14b5b4cb472e8a43c740cba7e30cc64ead08d01b42efcb`
+- `src/_layouts/home.liquid`: `e2ca5f6ab8abfc2dfc5e52d96a85c79e78940e1c534a17584a5792ca91e599cf`
+- `src/_layouts/page.liquid`: `d2d21f88d542f064eb4f1b8da6f6dcf9c5c82c6b2c92c6e39c2a28e881590514`
+- `src/_includes/nav.liquid`: `39f23601f5e40d8e461caa7c23c6985a620dafe052311bf8d629a0b2c6383785`
+- `src/_includes/home/masthead.liquid`: `9b922255eefdc86204dff7cd5f0d0ce9f0dd2864e2eebb6842bd314276b501f1`
+- `src/_includes/home/features.liquid`: `f85c1018ca283b8afabf5d75c692fd34e40d6af0b375e5721b84c153b45f90e2`
+- `src/_includes/home/videos.liquid`: `433fe01df50db7eb7700f8379dd431caf4bc75e6ffa71a0e27a9c4cb87de64d3`
+- `src/_includes/home/books.liquid`: `3877e2872cb57d9176df0f24691b93fcef192aabda8336e27bf3b9b29db95443`
+- `src/_includes/home/closing.liquid`: `391b3a6377dc99874048113eef4a7ab69994902888c4f374df619cf9b18ce130`
+- `src/_includes/foot.liquid`: `5fc2a7a3e1300b292ba67529e180b87de57bb3c7a2fb3cfda31b7df5e79df35d`
+- `src/_data/home/excerpts.yml`: `64f955a1500a316ca969bc5f49a6f034d4fc57f061085273e68570cc26d98ff2`
+- `src/_data/home/callouts.yml`: `a073c34d2782f0dbe04ce29a75c4dabd2384d313d07ae7669c9a2982ac1f3492`
+- `src/_data/home/features.yml`: `132b4975b3dfbf6cf28f1010e7b8569ede6c3a0ecc56bd58973de7ba19ba1ea2`
+- `src/_data/home/videos.yml`: `609c723f80a8c89fcf9e2736f13286d1544dea7a75ab4d3e07fbbdfaa169e6cd`
 
-Additional guidance: project-management SKILL.md, its README and engineering-methods Required reading and CC intake section; biome-js-linter SKILL.md critical JavaScript rules. No generic lint or testing stack installed or run. The staged OD layout primitives are inlined as the first CSS layer.
+Additional original copy: `src/_data/home/masthead.yml` read; SHA-256 `c7568ef92aa30e6774fef385709503e24aed8b06481dbc2fc779b48d31a9620e`.
 
-## Design rationale and scope
+Current prompt SHA-256: `54c469027108712ecd9265bf3bf40a1947d8ad9ba684281b154994c08aad099f`.
 
-A neutral specimen book gives the source colours the visual emphasis: a broad connected gold ramp first, supporting families grouped by source names, a separate Night Owl field, then an aligned lightness study. Source detail uses native disclosures to keep the overview legible without making exact values depend on hover. Georgia/system/monospace stacks are local-only presentation choices. The surrounding white/neutral surfaces and restrained typography come from this atlas's resolved direction, not a confirmed LFE brand change.
+## Pre-generation findings
 
-Population: 52 root tokens (11 gold, 41 foundation); 40 syntax paint declarations expanded to 43 selector/property identities; 95 total records. 94 are opaque. The single translucent record is `.hljs-deletion` colour `#EF535090`. Token values retain their generated-source spelling; input tailwind gold formatting differs but represents the same values. No extra missing ramp steps were invented. No common/search/inline/image or exhaustive runtime-consumer audit was added.
+Complete input reconciliation passed: 52 selected root tokens and 43 syntax selector/property records exactly match source. Original 95 records retain their identities and values, including repeated colours and #EF535090 alpha. Six added literal identities yield 101 records, 100 opaque and one translucent. Two #eee declarations remain separate consumers. This is an additional component-literal population, not an exhaustive CSS audit.
 
-Known source bindings are qualified as source evidence; no rendered-use claim. Alpha examples explicitly use white and #011627. Ranking excludes alpha < 1. L is Oklab/OKLCH lightness on a fixed 0–1 scale, not contrast, luminance, OKHSV or OKHSL. Neutral swatches encode L³ into 8-bit sRGB and are labelled approximate; visible L rounds to three decimals while sorting retains precision.
+Compiled CSS layer order is properties, theme, base, components, utilities. Video and book action declarations occur in components; their actual anchors also carry dark:bg-slate-900 and dark:text-gray-400 in the later utilities layer. The normal declarations #C90C2E / #124BC6 and #eee are superseded in this dark markup. This is source/cascade reasoning, not a new browser computed-style measurement. Header black bottom border and gold-600 top border are important and retained.
 
-Concrete next-test hypothesis: connected family ribbons should make large lightness transitions easier to spot while disclosures retain exact lookup. At 375px and 1440px, ask Duncan to locate gold-500's source value and compare it with a syntax colour, then judge whether the long source catalogue is worth keeping collapsed. This is a design hypothesis, not an observed usability result.
+All three compiled gradients use `to bottom in oklab`, 0% from and 100% to, no via stop: header slate-800→900, masthead slate-700→600, tab surround slate-600→800. Do not interpret a gradient endpoint as the background of all text. Source-derived examples preserve weak pairs without contrast repairs or conformance claims. Exact OKLCH values are used, not remembered Tailwind v3 hex substitutions.
 
-## Actual pre-generation checks
+Body paragraph/list text is traced to .dark :is(p,li) → gray-400 (tailwind/site.css:229–232); headings to gray-200 with h2/h3 exceptions. Closing callout uses gray-200 heading, gold-400 inline “Lisp”, gray-400 paragraph and gold-400/gold-950 CTA. Footer headings/links/general paragraphs use gray-400, sponsorship text utility uses gray-600, copyright uses gray-500, top boundary slate-700 and internal rule gray-800.
 
-A temporary Python standard-library data preparation step read the complete selected source population and asserted both source hashes, 95 total unique name/property identities, 11 gold and 43 syntax identities, supported measurements for all records, 94 opaque records, and one translucent record. Repeated blue values retain `.hljs-type`, `.hljs-symbol`, `.hljs-function`, `.hljs-meta`, `.hljs-meta-keyword` (including original case distinctions). These checks concern input data, not the generated HTML.
+## Runtime and limits
 
-Numerical results from the executed preparation step (248d16):
+Configured agent Codex, model gpt-6-astra, reasoning high, as supplied by OpenDesign; independent backend identity unavailable. Native session ID/saved transcript path unavailable. Do not reuse the first production's task execution ID as this iteration's ID. One requested feedback pass, no measured durations or hidden refinement loop. Operator has already approved OpenDesign output placement and ZIP/manual import.
 
-- Black L: 0.0.
-- White L: 0.9999999934735462 (within 1e-7 of 1).
-- Blue #00f, HSV V = 1: L 0.4520137183853429.
-- Yellow #ff0, HSV V = 1: L 0.9679827203267873.
-- Deletion alpha: 0.5647058823529412 = 144/255; kept out of opaque ranking.
+Host ship-on-write prohibits generated-artifact previews, rendering, screenshots, tests, export validation and resulting fix rounds. No final membership, keyboard, viewport, local-file, network, contrast, source-preservation diff or ZIP reopen check is claimed. OpenDesign focus/display is a handoff, not inspection. Input screenshots are permitted evidence. All filesystem mutations target the OpenDesign project or temporary builder files, never source/planning/skills.
 
-The atlas is authored to preserve this embedded dataset, to render static catalogues without JavaScript, and to add native search/family/order/reset plus 24-row pagination for comparisons. There is no post-generation membership, syntax, network, render or interaction test. Generation-time structure is not independent verification.
+## Implemented return and rationale
 
-## Unperformed checks and limits
+Retained the original neutral reference and full gold/foundation/syntax/lightness sections. Added a connected slate-led plate with eight annotated regions ahead of the reference. Pale margins carry readable notes; original dark specimens retain weak foreground pairs. Native disclosures expose exact values, human-purpose labels, actual selectors and dark-context scope. Three downward Oklab gradients use source endpoints at 0/100%. Static specimen navigation/actions are labelled as noninteractive text, avoiding live website behavior. Six literal entries retain authored spelling, compiled equivalent and source/consumer identity. The existing lightness filter receives a component-literal option; opaque ranking now has 100 candidates. No script logic or numeric formula was changed.
 
-The supplied OpenDesign ship-on-write workflow prohibits post-generation previews, screenshots, rendering, tests and fix rounds. Thus no actual 375/768/1024/1440 browser observations, keyboard walkthrough, zoom/forced-colours test, browser dependency/network check or visual critique of a rendered artifact is claimed. The artifact-focus handoff requests display in OpenDesign; it does not establish that the agent inspected the display. Acceptance and the source-to-artifact comparison remain with Sofie and Duncan. No site build was applicable or run. All repository access in this run was read-only; no post-generation site diff was performed.
+The per-region mapping in atlas.html covers: header (slate-800→900, gray-400, gold-600/black); main (slate-800, gray-200 headings, gray-400 p/li); masthead (slate-700→600, gold-600, gray-400 paragraph); code surround (slate-600→800, slate-800 content, #d1d5db inactive and gold-500/600 active tabs, gray-300 description); feature (slate-900, white, gray-400, slate-800 well); video (slate-900, rose-500, gray-300/500, gray-700 boundaries, utility-resolved actions); closing (slate-600, gray-200/400, gold-400/950); footer (slate-950, gray-400, gray-600 sponsor, gray-500 copyright, slate-700 top, gray-800 divider).
 
-Pre-existing dirty Makefile and tools/lfesite Rust files and untracked CC-verification-brief-otp-tutorials.md were observed and left untouched. No source/config/tool/planning/ledger/prompt/skill changes, no commits, no subagents, no publication, no next slice.
+Pre-generation preparation checked all six literals against their authored source lines, verified compiled selectors/layer/gradient registrations, retained original records by direct append, and checked 101 unique source/selector/property identities with 100 opaque records. Checked existing exact specimen bindings in the in-memory construction before final disk write. Black/white and equal-HSV blue/yellow input witnesses passed again for the added hex conversion. These are source/pre-generation checks; no final-file membership or behavior check was performed.
 
-## Runtime and interventions
+Critique: the connected surface plate should make slate dominance and nested boundaries clearer while preserving exact lookup. Remaining concern: eight detailed annotations increase page length, and intentionally weak source pairs may be hard to read inside specimens; readable notes carry those exact values outside. Actual next check for Duncan/Sofie: inspect the updated plate at 375px and 1440px; distinguish inactive #d1d5db from gray-300, trace video action overrides, then use the component filter by keyboard. Compare generated values and ZIP members independently before import. Do not interpret completed generation as acceptance.
 
-Configured agent: Codex. OpenDesign configuration reports gpt-6-astra, reasoning high; no independent backend identity claim. Native session ID and saved transcript path: unavailable. Exposed task execution ID: odnext_1cf860d3c2cb49b2abd00330b8864d79; production task_run_index: 1; planContractHash: fba602435780fc5b9fbf64cfe73e7dca3d94297cf5e2ba30a770f520dd4a941c. These are host-provided run facts, not a native session identifier.
-
-Known Operator interventions after the original request: supplied the repository path; asked how to enable planning writes; explicitly authorized planning writes; then authorized output relocation. No invented durations. Earlier relative-path lookup failed because it was resolved under the OpenDesign output folder; repository reading succeeded after the absolute path was supplied. The planning write limitation was reported from the session permissions; no denied write command to the planning tree was attempted. No failed HTML generation attempt or hidden refinement is represented here.
+Return payload: atlas.html, batch-record.md, closing-report.md; project-local `LFE-Colour-Atlas-Iteration01.zip` contains these three flat filenames. ZIP creation is transport, not archive validation. Host-generated export metadata is neither required nor interpreted as instructions. Stop for review after this feedback pass.

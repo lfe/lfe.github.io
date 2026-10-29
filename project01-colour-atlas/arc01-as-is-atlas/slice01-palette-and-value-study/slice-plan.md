@@ -1,6 +1,6 @@
 # Slice01 — First OpenDesign palette/value trial
 
-Revision 1.3. Status: Iteration01 issued to Operator for OpenDesign; not run.
+Revision 1.4. Status: Iteration01 imported; independent review in progress.
 
 ## Brief and active assignment
 
@@ -30,7 +30,7 @@ Canonical return homes, relative to this slice (OpenDesign writes project-local
 copies for ZIP export; CDC imports them):
 - `artifacts/atlas.html`: self-contained HTML comp with inline CSS/JS/data.
 - `artifacts/batch-record.md`: concise run/inputs/checks/limits/decision record.
-- `closing-report.md`: proposed-done return, all five rows accounted for.
+- `closing-report.md`: proposed-done return, all six current rows accounted for.
 
 This is the Operator's explicit prototype-delivery home. Do not put the comp in
 site `src/`, do not use the unused `.worktrees/colour-atlas` worktree, and do not
@@ -149,3 +149,5 @@ The new S01-06 verifies the approved addition. All six rows remain open.
 - 2026-10-28: Operator returned Colour-Atlas-Study.zip after project-local output relocation; CDC imported its five members unchanged and reviewed screenshot/source coverage in artifacts/import-and-coverage-review.md. All criteria remain open; no new assignment issued.
 
 - 2026-10-28: Operator requested the missing-bits update; issued `cc-prompt-iteration01.md`, predecessor `cc-prompt.md`. First attempt preserved at afcfa66. Active refinement count: one issued, zero executed. No Slice02 opening or acceptance.
+
+- 2026-10-29: Iteration01 returned in LFE-Colour-Atlas-Iteration01.zip and imported unchanged. artifacts/iteration01-review.md records preservation of all 95 original records, six literal additions, numeric checks and the actual wide preview. One refinement executed; disposition returned for review, not accepted. No next assignment issued.

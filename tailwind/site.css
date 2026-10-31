@@ -181,43 +181,43 @@
     }
 
     .tab-gold {
-        color: var(--lfe-code-tab);
+        color: var(--lfe-text-secondary);
         border-bottom-color: transparent;
     }
 
     .tab-gold:hover {
-        color: var(--lfe-code-tab-hover);
+        color: var(--lfe-link-hover);
     }
 
     .tab-gold.active {
-        color: var(--lfe-code-tab-active);
-        border-bottom-color: var(--lfe-code-tab-active);
+        color: var(--lfe-link);
+        border-bottom-color: var(--lfe-link);
         font-weight: 600;
     }
 
     .tab-gold:focus-visible,
     .code-description :focus-visible {
-        outline-color: var(--lfe-code-focus);
+        outline-color: var(--lfe-focus);
     }
 
     .code-description,
     .code-description :is(p, li, code) {
-        color: var(--lfe-code-text);
+        color: var(--lfe-text-primary);
     }
 
     .code-description a {
-        color: var(--lfe-code-link);
+        color: var(--lfe-link);
         text-decoration: underline;
         text-underline-offset: 0.15em;
     }
 
     .code-description a:hover,
     .code-description a:focus-visible {
-        color: var(--lfe-code-link-hover);
+        color: var(--lfe-link-hover);
     }
 
     .code-description a:visited {
-        color: var(--lfe-code-link);
+        color: var(--lfe-link-visited);
     }
 
     .cta-gold {
@@ -504,10 +504,6 @@
 
     .masthead-section h2 {
         @apply font-thin text-xl;
-    }
-
-    .masthead-section .border-lfe-code-boundary {
-        border-color: var(--lfe-code-boundary);
     }
 
     .masthead-section pre {

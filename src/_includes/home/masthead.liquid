@@ -14,10 +14,10 @@
 
     <div class="flex justify-center">
       <div class="max-w-[60rem]">
-        <div class="border rounded-md shadow-sm p-0 bg-lfe-code-surface border-lfe-code-boundary">
+        <div class="border rounded-md shadow-sm p-0 bg-lfe-panel border-lfe-boundary">
 
           <!-- tabs -->
-          <div class="border-b border-lfe-code-boundary">
+          <div class="border-b bg-lfe-raised border-lfe-boundary">
             <nav id="lfe-excerpt-tabs" class="-mb-0.5 flex justify-center space-x-4 md:space-x-6 flex-wrap md:flex-nowrap" aria-label="Language examples" role="tablist">
 
               {% for excerpt in site.data.home.excerpts.items %}
@@ -33,13 +33,13 @@
           </div>
 
           <!-- tabbed content -->
-          <div class="mt-0 bg-lfe-code-surface">
+          <div class="mt-0 bg-lfe-panel">
 
             {% for excerpt in site.data.home.excerpts.items %}
             <div id="horizontal-alignment-{{ excerpt.id }}" class="excerpt-panel{% if forloop.index != 1 %} hidden{% endif %}" role="tabpanel" tabindex="0"
               aria-labelledby="horizontal-alignment-item-{{ excerpt.id }}">
               <div class="grid grid-cols-1 md:grid-cols-3 md:gap-4">
-                <div class="md:col-span-2">
+                <div class="md:col-span-2 bg-lfe-code-surface">
                   {{ excerpt.code_html }}
                 </div>
                 <div class="code-description px-4 py-2 md:pr-2">

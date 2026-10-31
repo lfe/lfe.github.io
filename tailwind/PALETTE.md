@@ -195,7 +195,7 @@ Each semantic alias is defined in both `:root` and `.dark`. Keep the definitions
 - `--lfe-callout-title` is mode-local orange action emphasis for the existing home closing callout. Its canonical Markdown input uses this semantic alias; the build regenerates derived `title_html`.
 - Pagefind’s four `--pf-error-*` values use the real error family. Its ordinary link, raised surface, selected mark and focus continue to use their semantic roles.
 - `--lfe-brand-ink` is fixed to slate 800 in both modes for the category-count plate.
-- Code cells, syntax highlighting, tabs, REPL/terminal art and `--lfe-on-art` retain their component-owned values. They are deliberately outside these new semantic families.
+- Actual code cells, syntax highlighting, REPL/terminal imagery and `--lfe-on-art` retain their component-owned values. The widget frame, tab strip/tab states and description use ordinary semantic UI roles and adopt this palette; the legacy `--lfe-code-tab*` definitions stay preserved.
 
 Typical consumers:
 

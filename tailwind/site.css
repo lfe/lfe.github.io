@@ -153,6 +153,7 @@
     --gold-950: var(--lfe-gold-950);
 
     /* Light-mode semantic roles are resolved in this scope. */
+    --lfe-accent-divider: var(--lfe-orange-action-light);
     --lfe-action: var(--lfe-orange-action-light);
     --lfe-action-hover: var(--lfe-orange-hover-light);
     --lfe-action-quiet: var(--lfe-slate-600);
@@ -223,6 +224,7 @@
 
 .dark {
     /* Dark-mode aliases are explicit to avoid inherited var() capture. */
+    --lfe-accent-divider: var(--lfe-orange-500);
     --lfe-action: var(--lfe-orange-action-dark);
     --lfe-action-hover: var(--lfe-orange-hover-dark);
     --lfe-action-quiet: var(--lfe-slate-700);
@@ -435,7 +437,7 @@
     header.top-nav {
         @apply sticky top-0 inset-x-0 flex flex-wrap sm:justify-start z-50 w-full text-sm py-3 sm:py-0 bg-lfe-panel;
         background-color: var(--lfe-header);
-        border-top: 3px solid var(--lfe-nav-accent) !important;
+        border-top: 3px solid var(--lfe-accent-divider) !important;
         border-bottom: 1px solid var(--lfe-header) !important;
     }
 
@@ -622,7 +624,7 @@
     .masthead-container {
         @apply max-w-[100%];
         background: var(--lfe-masthead);
-        border-bottom: 1px solid var(--lfe-link) !important;
+        border-bottom: 1px solid var(--lfe-accent-divider) !important;
     }
 
     .masthead-section {

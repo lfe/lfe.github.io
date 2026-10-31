@@ -2444,6 +2444,7 @@
   },
   "semantic": {
     "light": {
+      "lfe-accent-divider": "var(--lfe-orange-action-light)",
       "lfe-action": "var(--lfe-orange-action-light)",
       "lfe-action-hover": "var(--lfe-orange-hover-light)",
       "lfe-action-quiet": "var(--lfe-slate-600)",
@@ -2496,6 +2497,7 @@
       "lfe-warning-text": "var(--lfe-gold-ink-light)"
     },
     "dark": {
+      "lfe-accent-divider": "var(--lfe-orange-500)",
       "lfe-action": "var(--lfe-orange-action-dark)",
       "lfe-action-hover": "var(--lfe-orange-hover-dark)",
       "lfe-action-quiet": "var(--lfe-slate-700)",

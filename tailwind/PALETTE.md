@@ -145,6 +145,7 @@ Each semantic alias is defined in both `:root` and `.dark`. Keep the definitions
 | `--lfe-action-secondary` | `var(--lfe-slate-700)` | `var(--lfe-slate-600)` |
 | `--lfe-action-secondary-hover` | `var(--lfe-slate-600)` | `var(--lfe-slate-700)` |
 | `--lfe-action-secondary-text` | `#ffffff` | `var(--lfe-slate-200)` |
+| `--lfe-accent-divider` | `var(--lfe-orange-action-light)` | `var(--lfe-orange-500)` |
 | `--lfe-boundary` | `var(--lfe-slate-500)` | `var(--lfe-slate-400)` |
 | `--lfe-brand-ink` | `var(--lfe-slate-800)` | `var(--lfe-slate-800)` |
 | `--lfe-brand-plate` | `var(--lfe-slate-50)` | `var(--lfe-slate-50)` |
@@ -192,6 +193,7 @@ Each semantic alias is defined in both `:root` and `.dark`. Keep the definitions
 
 - The existing `--gold-50` through `--gold-950` names remain compatibility aliases to `--lfe-gold-*`; new code should use the namespaced primitives or semantic roles.
 - `--lfe-footer-hover` and `--lfe-footer-focus` intentionally use the selected **dark-mode** orange action in both site modes, preserving the footer’s inverse-surface contract.
+- The top-nav 3px rule and masthead 1px divider use `--lfe-accent-divider`: light mode retains `#875315`, while dark mode uses existing orange 500 `#bb8145`. These two border paints do not change interactive nav/link/action/focus roles.
 - `--lfe-callout-title` is mode-local orange action emphasis for the existing home closing callout. Its canonical Markdown input uses this semantic alias; the build regenerates derived `title_html`.
 - Pagefind’s four `--pf-error-*` values use the real error family. Its ordinary link, raised surface, selected mark and focus continue to use their semantic roles.
 - `--lfe-brand-ink` is fixed to slate 800 in both modes for the category-count plate.

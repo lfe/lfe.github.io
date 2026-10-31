@@ -5,21 +5,6 @@
 <script type="text/javascript" src="/js/site.js"></script>
 <script>
     hljs.initHighlightingOnLoad();
-
-    document.addEventListener('DOMContentLoaded', function() {
-        document.querySelectorAll('.custom-dropdown-toggle').forEach(function(btn) {
-            btn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                var menu = btn.parentElement.querySelector('.custom-dropdown-menu');
-                menu.classList.toggle('hidden');
-            });
-        });
-        document.addEventListener('click', function() {
-            document.querySelectorAll('.custom-dropdown-menu').forEach(function(m) {
-                m.classList.add('hidden');
-            });
-        });
-    });
 </script>
 {% if page.permalink contains "blog/" %}
 <script src="/pagefind/pagefind-component-ui.js" type="module"></script>

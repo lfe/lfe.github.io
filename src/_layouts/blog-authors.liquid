@@ -10,13 +10,13 @@
     {% include "css.liquid" %}
 </head>
 
-<body class="dark:bg-slate-900">
+<body>
     <header class="top-nav">
     {% include "nav.liquid" %}
     </header>
     {% include "blog-subnav.liquid" %}
 
-    <main id="content" role="main">
+    <main id="content" role="main" tabindex="-1">
       <section class="blog-home-section">
 
         <h1 class="blog-section-heading">{{ page.data.long_title }}</h1>

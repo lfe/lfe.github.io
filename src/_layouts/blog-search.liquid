@@ -8,21 +8,20 @@
 
     {% include "favicon.liquid" %}
     {% include "css.liquid" %}
-    <link href="/pagefind/pagefind-component-ui.css" rel="stylesheet">
     <script src="/pagefind/pagefind-component-ui.js" type="module"></script>
 </head>
 
-<body class="dark:bg-slate-900">
+<body>
     <header class="top-nav">
     {% include "nav.liquid" %}
     </header>
     {% include "blog-subnav.liquid" %}
 
-    <main id="content" role="main">
-      <section class="blog-home-section">
+    <main id="content" role="main" tabindex="-1">
+      <section class="blog-home-section blog-search-section">
         <h1 class="blog-section-heading">{{ page.data.long_title }}</h1>
         <pagefind-config bundle-path="/pagefind/"></pagefind-config>
-        <pagefind-input autofocus></pagefind-input>
+        <pagefind-input></pagefind-input>
         <pagefind-summary></pagefind-summary>
         <pagefind-results></pagefind-results>
       </section>
@@ -31,13 +30,7 @@
     {% include "foot.liquid" %}
 
     {% include "end-scripts.liquid" %}
-    <script type="module">
-        const q = new URLSearchParams(window.location.search).get('q');
-        if (q) {
-          const input = document.querySelector('pagefind-input');
-          if (input) input.setAttribute('value', q);
-        }
-    </script>
+    <script type="module" src="/js/blog-search.js"></script>
 </body>
 
 </html>

@@ -10,12 +10,12 @@
     {% include "css.liquid" %}
 </head>
 
-<body class="dark:bg-slate-900 min-h-[75rem]">
+<body class="min-h-[75rem]">
     <header class="top-nav">
     {% include "nav.liquid" %}
     </header>
 
-    <main id="content" role="main">
+    <main id="content" role="main" tabindex="-1">
       <div class="masthead-container">
         <div class="masthead-section">
           {% if page.data.long_title %}<h1>{{ page.data.long_title }}</h1>{% endif %}
@@ -24,7 +24,11 @@
       </div>
 
       <div class="content-section">
+        {% if page.permalink == 'about/' %}
+        <div class="editorial-prose">{{ page.content }}</div>
+        {% else %}
         {{ page.content }}
+        {% endif %}
       </div>
     </main>
 

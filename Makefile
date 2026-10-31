@@ -28,9 +28,9 @@ help:
 	@echo "$(CYAN)╚══════════════════════════════════════════════════════════╝$(RESET)"
 	@echo ""
 	@echo "$(GREEN)Site:$(RESET)"
-	@echo "  $(YELLOW)make build$(RESET)            - Build the site (prerender + sass + tailwind + cobalt)"
+	@echo "  $(YELLOW)make build$(RESET)            - Build the site (prerender + blog-resolve + Tailwind + Cobalt + sitemap + Pagefind)"
 	@echo "  $(YELLOW)make serve$(RESET)            - Start dev server with file watching (port $(PORT))"
-	@echo "  $(YELLOW)make clean$(RESET)            - Remove build output"
+	@echo "  $(YELLOW)make clean$(RESET)            - Remove site output and branch-local lfesite builds"
 	@echo ""
 	@echo "$(GREEN)Development:$(RESET)"
 	@echo "  $(YELLOW)make install$(RESET)           - Install $(BINARY) and cobalt"
@@ -79,7 +79,7 @@ info:
 	@echo "$(GREEN)Tools:$(RESET)"
 	@echo "  Rust:           $$(rustc --version 2>/dev/null || echo 'not found')"
 	@echo "  Cobalt:         $$(cobalt --version 2>/dev/null || echo 'not found')"
-	@echo "  $(BINARY):        $$($(BINARY) --version 2>/dev/null || echo 'not found')"
+	@echo "  $(BINARY):        $$($(LFESITE) --version 2>/dev/null || echo 'not found')"
 	@echo "  Tailwind:       $$(tailwindcss --version 2>/dev/null || echo 'not found')"
 	@echo ""
 
@@ -89,7 +89,7 @@ check-tools:
 	@command -v rustc >/dev/null 2>&1 && echo "$(GREEN)  ✓ rustc found$(RESET)" || echo "$(RED)  ✗ rustc not found$(RESET)"
 	@command -v cargo >/dev/null 2>&1 && echo "$(GREEN)  ✓ cargo found$(RESET)" || echo "$(RED)  ✗ cargo not found$(RESET)"
 	@command -v cobalt >/dev/null 2>&1 && echo "$(GREEN)  ✓ cobalt found$(RESET)" || echo "$(RED)  ✗ cobalt not found (install: cargo install cobalt-bin)$(RESET)"
-	@command -v $(BINARY) >/dev/null 2>&1 && echo "$(GREEN)  ✓ lfesite found$(RESET)" || echo "$(RED)  ✗ $(BINARY) not found (install: make install)$(RESET)"
+	@test -x "$(LFESITE)" && echo "$(GREEN)  ✓ lfesite found at $(LFESITE)$(RESET)" || echo "$(YELLOW)  ⊙ lfesite will be built by runtime targets at $(LFESITE)$(RESET)"
 	@(command -v tailwindcss >/dev/null 2>&1 || command -v npx >/dev/null 2>&1) && echo "$(GREEN)  ✓ tailwindcss found$(RESET)" || echo "$(RED)  ✗ tailwindcss not found$(RESET)"
 	@command -v aspell >/dev/null 2>&1 && echo "$(GREEN)  ✓ aspell found$(RESET)" || echo "$(YELLOW)  ⊙ aspell not found (optional, for spell checking)$(RESET)"
 
@@ -97,25 +97,28 @@ check-tools:
 ###   SITE   ################################################################
 #############################################################################
 
-LFESITE := $(shell command -v $(BINARY) 2>/dev/null)
-
+ifeq ($(origin LFESITE),undefined)
+TARGET_DIR := $(if $(CARGO_TARGET_DIR),$(abspath $(CARGO_TARGET_DIR)),$(CURDIR)/target)
+LFESITE := $(TARGET_DIR)/debug/$(BINARY)
 .PHONY: ensure-lfesite
 ensure-lfesite:
-ifndef LFESITE
-	@echo "$(YELLOW)→ Installing $(BINARY)...$(RESET)"
-	@cargo install --path tools/$(BINARY)
+	@cargo build --package $(BINARY)
+else
+.PHONY: ensure-lfesite
+ensure-lfesite:
+	@test -x "$(LFESITE)" || { echo "LFESITE override is not executable: $(LFESITE)" >&2; exit 1; }
 endif
 
 .PHONY: build
 build: ensure-lfesite
 	@echo "$(BLUE)Building $(PROJECT_NAME)...$(RESET)"
-	@$(BINARY) build
+	@$(LFESITE) build
 	@echo "$(GREEN)✓ Build complete$(RESET)"
 
 .PHONY: serve
 serve: ensure-lfesite
 	@echo "$(BLUE)Starting dev server on port $(PORT)...$(RESET)"
-	@$(BINARY) serve --port $(PORT)
+	@$(LFESITE) serve --port $(PORT)
 
 .PHONY: run
 run: serve
@@ -124,7 +127,6 @@ run: serve
 clean:
 	@echo "$(BLUE)Cleaning build output...$(RESET)"
 	@rm -rf $(PUBLISH_DIR) _site target/*/$(BINARY)
-	@cargo uninstall $(BINARY) 2>/dev/null || true
 	@echo "$(GREEN)✓ Clean complete$(RESET)"
 
 #############################################################################
@@ -141,19 +143,19 @@ install:
 	@echo "$(GREEN)✓ cobalt installed$(RESET)"
 
 .PHONY: prerender
-prerender:
+prerender: ensure-lfesite
 	@echo "$(BLUE)Pre-rendering data files...$(RESET)"
-	@$(BINARY) prerender
+	@$(LFESITE) prerender
 	@echo "$(GREEN)✓ Prerender complete$(RESET)"
 
 .PHONY: validate
-validate:
-	@$(BINARY) validate
+validate: ensure-lfesite
+	@$(LFESITE) validate
 
 .PHONY: migrate
-migrate:
+migrate: ensure-lfesite
 	@echo "$(YELLOW)⚠ This will modify content files in place$(RESET)"
-	@$(BINARY) migrate
+	@$(LFESITE) migrate
 
 #############################################################################
 ###   TESTING & QUALITY   ###################################################

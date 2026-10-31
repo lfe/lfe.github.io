@@ -9,7 +9,6 @@ use walkdir::WalkDir;
 ///
 /// Executes each stage in order:
 /// 1. Pre-render data files
-/// 2. Compile SCSS to CSS
 /// 3. Run Tailwind CSS
 /// 4. Run Cobalt build
 /// 5. Generate sitemap
@@ -18,25 +17,22 @@ pub fn run(project_dir: &Path) -> Result<()> {
     let src_dir = project_dir.join("src");
     let output_dir = project_dir.join("site");
 
-    println!("=== Step 1/7: prerender ===");
+    println!("=== Step 1/6: prerender ===");
     super::prerender::run_with_data_dir(&src_dir)?;
 
-    println!("=== Step 2/7: blog-resolve ===");
+    println!("=== Step 2/6: blog-resolve ===");
     super::blog_resolve::run(&src_dir)?;
 
-    println!("=== Step 3/7: sass ===");
-    super::sass::run(project_dir, &src_dir)?;
-
-    println!("=== Step 4/7: tailwindcss ===");
+    println!("=== Step 3/6: tailwindcss ===");
     run_tailwind(project_dir, &src_dir)?;
 
-    println!("=== Step 5/7: cobalt ===");
+    println!("=== Step 4/6: cobalt ===");
     run_cobalt(project_dir, &output_dir)?;
 
-    println!("=== Step 6/7: post-build ===");
+    println!("=== Step 5/6: sitemap ===");
     generate_sitemap(&src_dir, &output_dir, "https://lfe.io")?;
 
-    println!("=== Step 7/7: pagefind ===");
+    println!("=== Step 6/6: pagefind ===");
     run_pagefind(project_dir, &output_dir)?;
 
     println!("\nbuild complete: output in {}", output_dir.display());

@@ -8,7 +8,7 @@ use notify::{RecursiveMode, Watcher};
 
 /// Start a dev server with file watching.
 ///
-/// 1. Runs the full build pipeline (prerender → sass → tailwind →
+/// 1. Runs the full build pipeline (prerender → blog-resolve → tailwind →
 ///    cobalt build → sitemap → pagefind).
 /// 2. Starts a static file server on the output directory.
 /// 3. Watches source files for changes and re-runs the full pipeline
@@ -37,11 +37,12 @@ pub fn run(project_dir: &Path, port: u16) -> Result<()> {
     let tailwind_dir = project_dir.join("tailwind");
 
     let (tx, rx) = mpsc::channel();
+    let watched_project_dir = project_dir.to_path_buf();
 
     let mut watcher = notify::recommended_watcher(
         move |res: std::result::Result<notify::Event, notify::Error>| {
             if let Ok(event) = res {
-                if is_content_event(&event.kind) {
+                if is_relevant_content_event(&event, &watched_project_dir) {
                     let _ = tx.send(());
                 }
             }
@@ -121,6 +122,25 @@ fn is_content_event(kind: &notify::EventKind) -> bool {
     )
 }
 
+/// Ignore only build outputs that are written inside watched source roots.
+/// Empty paths do not identify an observed source file and therefore do not rebuild.
+fn is_relevant_content_event(event: &notify::Event, project_dir: &Path) -> bool {
+    if !is_content_event(&event.kind) || event.paths.is_empty() {
+        return false;
+    }
+
+    let generated_css = project_dir.join("src/css/site.css");
+    let generated_blog = project_dir.join("src/_data/blog_resolved.yml");
+    event.paths.iter().any(|path| {
+        let path = if path.is_absolute() {
+            path.clone()
+        } else {
+            project_dir.join(path)
+        };
+        path != generated_css && path != generated_blog
+    })
+}
+
 // ---------------------------------------------------------------------------
 // Tests
 // ---------------------------------------------------------------------------
@@ -128,6 +148,74 @@ fn is_content_event(kind: &notify::EventKind) -> bool {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use notify::event::{CreateKind, ModifyKind};
+    use notify::EventKind;
+
+    fn event(kind: EventKind, paths: Vec<std::path::PathBuf>) -> notify::Event {
+        notify::Event {
+            kind,
+            paths,
+            attrs: Default::default(),
+        }
+    }
+
+    fn root() -> std::path::PathBuf {
+        std::path::PathBuf::from("/tmp/lfe-site")
+    }
+
+    #[test]
+    fn generated_outputs_do_not_trigger_rebuilds() {
+        for kind in [
+            EventKind::Modify(ModifyKind::Data(notify::event::DataChange::Content)),
+            EventKind::Create(CreateKind::File),
+        ] {
+            for rel in ["src/css/site.css", "src/_data/blog_resolved.yml"] {
+                let ev = event(kind.clone(), vec![root().join(rel)]);
+                assert!(!is_relevant_content_event(&ev, &root()), "{rel}");
+            }
+        }
+    }
+
+    #[test]
+    fn source_and_mixed_paths_trigger_rebuilds() {
+        let kind = EventKind::Modify(ModifyKind::Data(notify::event::DataChange::Content));
+        for rel in [
+            "tailwind/site.css",
+            "src/posts/post.md",
+            "src/_layouts/page.liquid",
+            "src/_data/site.yml",
+        ] {
+            assert!(
+                is_relevant_content_event(&event(kind.clone(), vec![root().join(rel)]), &root()),
+                "{rel}"
+            );
+        }
+        assert!(is_relevant_content_event(
+            &event(
+                kind.clone(),
+                vec![
+                    root().join("src/css/site.css"),
+                    root().join("src/_layouts/page.liquid")
+                ]
+            ),
+            &root()
+        ));
+    }
+
+    #[test]
+    fn empty_paths_and_non_content_events_do_not_trigger_rebuilds() {
+        assert!(!is_relevant_content_event(
+            &event(
+                EventKind::Modify(ModifyKind::Data(notify::event::DataChange::Content)),
+                vec![]
+            ),
+            &root()
+        ));
+        assert!(!is_relevant_content_event(
+            &event(EventKind::Other, vec![root().join("src/about.md")]),
+            &root()
+        ));
+    }
 
     #[test]
     fn test_is_content_event_create() {

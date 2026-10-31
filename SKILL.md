@@ -4,7 +4,7 @@ description: >
   Use when working in the lfe.github.io repo — building or serving the LFE
   website/blog, adding or editing blog posts, fixing post URLs/permalinks or
   front-page placements, or changing the `lfesite` Rust build tool. Covers the
-  Cobalt + lfesite + Tailwind/Sass/Pagefind pipeline and the permalink model.
+  Cobalt + lfesite + Tailwind/Pagefind pipeline and the permalink model.
 ---
 
 # LFE Website & Blog (lfe.github.io)
@@ -14,7 +14,7 @@ description: >
 The LFE project website and blog (domain `lfe.io`, see `CNAME`). Static site
 built by **Cobalt** (a Rust SSG) and driven by a **custom Rust tool, `lfesite`**
 (in `tools/lfesite/`), which wraps the whole pipeline. Templates are **Liquid**;
-styling is **Tailwind + Sass**; search is **Pagefind**.
+styling is **Tailwind**; search is **Pagefind**.
 
 **Canonical insight:** a post's identity is its `permalink`. The date/time/slug
 is duplicated in three places that must agree — **filename**, **`published_date`**,
@@ -39,13 +39,13 @@ one later, you must edit all three. (See Gotchas.)
 
 ## Commands
 
-Everything runs through `make` (which calls the installed `lfesite` binary):
+Everything runs through `make` (which builds and calls this checkout’s `lfesite` binary by default):
 
 | Command | Does |
 |---------|------|
 | `make build` | Full build → `site/` |
-| `make serve` | Dev server + file watch (port 3000) |
-| `make clean` | Remove `site/`, `target/`, uninstall `lfesite` |
+| `make serve` | Dev server + file watch (port 5093 by default) |
+| `make clean` | Remove `site/`, `_site/`, and branch-local `target/*/lfesite` outputs; does not uninstall a shared binary |
 | `make install` | `cargo install` the `lfesite` binary **and** `cobalt-bin` |
 | `make validate` | Sanity-check data files, front-matter, layouts |
 | `make test` / `make check` | `lfesite` tests / build+lint+test+validate |
@@ -53,14 +53,9 @@ Everything runs through `make` (which calls the installed `lfesite` binary):
 `lfesite` subcommands (also runnable directly): `build`, `serve`, `prerender`,
 `validate`, `new-post`, `publish-post`, `draft-post`, `migrate`, `blog-migrate`.
 
-### `make build` pipeline (7 steps, in `tools/lfesite/src/cmd/build.rs`)
+`make build` runs six stages in `tools/lfesite/src/cmd/build.rs`: **prerender** (render `*_md` fields), **blog-resolve** (editorial slots and cover images), **Tailwind** (from `tailwind/site.css` to generated `src/css/site.css`), **Cobalt**, **sitemap.xml**, and **Pagefind**.
 
-1. **prerender** — render `*_md` / `*_md_inline` fields in `_data/**/*.yml` to `*_html` siblings
-2. **blog-resolve** — resolve front-page editorial slots + assign cover images (see below)
-3. **sass** → 4. **tailwindcss** → 5. **cobalt build** → 6. **sitemap.xml** → 7. **pagefind** index
-
-`cobalt` must be installed (via `make install`). `tailwindcss` and `pagefind`
-auto-download standalone binaries to `~/.cache/lfesite/` if not on `PATH`.
+By default Make builds `tools/lfesite` into this checkout’s `target/debug/lfesite` (or `$CARGO_TARGET_DIR/debug/lfesite`) before build, serve, prerender, validate or migrate. Set `LFESITE=/path/to/lfesite` to use an existing executable; an override is not built automatically. `make install` remains the explicit global install. `cobalt` must be installed with `make install`; `tailwindcss` and `pagefind` auto-download standalone binaries to `~/.cache/lfesite/` if not on `PATH`. `src/fontawesome*.css` and `src/webfonts/` are tracked vendor assets loaded directly by `src/_includes/css.liquid`; no Sass compiler or Sass source is used.
 
 ## Working on blog posts
 
@@ -99,12 +94,11 @@ substitutes the wrong post — check build output for that warning.
 | Renamed/re-dated a post but it keeps its **old URL** | The explicit `permalink` in front-matter wasn't updated. Cobalt uses it verbatim (it overrides the `_cobalt.yml` default template). Update filename **+** `published_date` **+** `permalink` together. |
 | Old URL still 200s after a permalink change | `site/` is **not** auto-cleaned — stale output lingers. `make clean` (or delete the stale `site/.../old-path/` dir) and rebuild. |
 | Front-page slot shows the **wrong post** | `blog.yml` slot value doesn't exactly match the post's `permalink`. Match the exact string (mind trailing slashes). Watch for the "using fallback" warning. |
-| Edited `tools/lfesite/` but the build behaves unchanged | The build uses the **installed** binary on `PATH` (`~/.cargo/bin/lfesite`), not `target/`. Re-run `cargo install --path tools/lfesite --force` (or `make install`). |
+| Edited `tools/lfesite/` but the build behaves unchanged | Make builds and invokes `target/debug/lfesite` from this checkout by default (or `$CARGO_TARGET_DIR/debug/lfesite`). Check `LFESITE` for an explicit executable override. |
 | A "the builder is broken" report | Usually it isn't — it faithfully uses front-matter/data. The migration-gap tell is **something reconstructing or hardcoding a date/slug instead of reading `permalink`**. Trace to the stale source value. |
 
 ## Verify before claiming done
 
-After changes: `cd tools/lfesite && cargo test` for tool changes; `make build`
-(watch for `using fallback` warnings) and inspect `site/`. `site/` and
+After changes: `make check` for the repository-native tool checks, then `make build` (watch for permalink fallback warnings) and inspect `site/`. `site/` and
 `src/_data/blog_resolved.yml` are gitignored generated artifacts — commit
 sources, not output.

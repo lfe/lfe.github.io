@@ -30,7 +30,7 @@ enum Command {
     },
     /// Walk _data/*.yml, render *_md fields to *_html.
     Prerender,
-    /// Full build pipeline (prerender, sass, tailwind, cobalt).
+    /// Full build pipeline (prerender, blog-resolve, Tailwind, Cobalt, sitemap, Pagefind).
     Build,
     /// Dev server with file watching.
     Serve {

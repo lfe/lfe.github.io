@@ -8,7 +8,6 @@ description = "Build orchestration and data pre-rendering for the LFE website"
 anyhow = "1"
 chrono = "0.4"
 clap = { version = "4", features = ["derive"] }
-grass = "0.13"
 notify = "8"
 pulldown-cmark = "0.13"
 regex = "1"

@@ -8,6 +8,5 @@ pub mod migrate;
 pub mod new_post;
 pub mod prerender;
 pub mod publish_post;
-pub mod sass;
 pub mod serve;
 pub mod validate;

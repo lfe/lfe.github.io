@@ -470,6 +470,10 @@
         min-width: 0;
     }
 
+    .features-grid .feature-header-icon {
+        border-color: var(--lfe-tagline);
+    }
+
     .features-grid h3 {
         overflow-wrap: anywhere;
     }

@@ -34,20 +34,20 @@
     --gold-900: oklch(0.319 0.063 91.9);
     --gold-950: oklch(0.238 0.046 93.5);
 
-    --lfe-header: #e2e8f0;
-    --lfe-masthead: #f8fafc;
-    --lfe-nav: #334155;
+    --lfe-header: #e4e7f0;
+    --lfe-masthead: #f9fafc;
+    --lfe-nav: #393f55;
     --lfe-nav-accent: #806000;
     --lfe-tagline: #704777;
     --lfe-code-boundary: #8a8173;
     --lfe-footer-focus: #f4cf67;
-    --lfe-canvas: #f8fafc;
+    --lfe-canvas: #f9fafc;
     --lfe-panel: #ffffff;
-    --lfe-raised: #e2e8f0;
-    --lfe-hover: #cbd5e1;
-    --lfe-text-primary: #1e293b;
-    --lfe-text-secondary: #334155;
-    --lfe-text-muted: #475569;
+    --lfe-raised: #e4e7f0;
+    --lfe-hover: #ced4e1;
+    --lfe-text-primary: #23273b;
+    --lfe-text-secondary: #393f55;
+    --lfe-text-muted: #4d5369;
     --lfe-interactive-accent: #806000;
     --lfe-link: var(--lfe-interactive-accent);
     --lfe-link-hover: #665000;
@@ -55,7 +55,7 @@
     --lfe-action: #806000;
     --lfe-action-hover: #665000;
     --lfe-on-action: #ffffff;
-    --lfe-boundary: #64748b;
+    --lfe-boundary: #6a728b;
     --lfe-focus: var(--lfe-interactive-accent);
     --lfe-code-surface: #1e293b;
     --lfe-code-text: #c3c7ca;
@@ -66,22 +66,22 @@
     --lfe-code-link: #e9ca66;
     --lfe-code-link-hover: #f6d977;
     --lfe-on-art: #f1efe7;
-    --lfe-brand-plate: #f8fafc;
+    --lfe-brand-plate: #f9fafc;
     --lfe-info-text: #16416f;
     --lfe-info-surface: #e9f1ff;
     --lfe-info-boundary: #a8bedb;
     --lfe-warning-text: #6b450c;
     --lfe-warning-surface: #fff3d6;
     --lfe-warning-boundary: #d8bd82;
-    --lfe-footer-text: #e2e8f0;
-    --lfe-footer-surface: #1e293b;
-    --lfe-action-secondary: #334155;
-    --lfe-action-secondary-hover: #475569;
+    --lfe-footer-text: #e4e7f0;
+    --lfe-footer-surface: #23273b;
+    --lfe-action-secondary: #393f55;
+    --lfe-action-secondary-hover: #4d5369;
     --lfe-action-secondary-text: #ffffff;
-    --lfe-action-quiet: #475569;
-    --lfe-action-quiet-hover: #334155;
+    --lfe-action-quiet: #4d5369;
+    --lfe-action-quiet-hover: #393f55;
     --lfe-action-quiet-text: #ffffff;
-    --lfe-footer: #e2e8f0;
+    --lfe-footer: #e4e7f0;
     --lfe-footer-hover: #f4cf67;
 
     /* ── Pagefind component typography and shape ── */
@@ -90,28 +90,28 @@
 }
 
 .dark {
-    --lfe-header: #0f172a;
-    --lfe-masthead: #1e293b;
-    --lfe-nav: #cbd5e1;
+    --lfe-header: #15152a;
+    --lfe-masthead: #23273b;
+    --lfe-nav: #ced4e1;
     --lfe-nav-accent: #f4cf67;
     --lfe-tagline: #d6afe0;
     --lfe-code-boundary: #8190a2;
     --lfe-footer-focus: #f4cf67;
-    --lfe-canvas: #0f172a;
-    --lfe-panel: #1e293b;
-    --lfe-raised: #334155;
-    --lfe-hover: #475569;
-    --lfe-text-primary: #e2e8f0;
-    --lfe-text-secondary: #cbd5e1;
-    --lfe-text-muted: #b8c5d6;
+    --lfe-canvas: #15152a;
+    --lfe-panel: #23273b;
+    --lfe-raised: #393f55;
+    --lfe-hover: #4d5369;
+    --lfe-text-primary: #e4e7f0;
+    --lfe-text-secondary: #ced4e1;
+    --lfe-text-muted: #bcc3d6;
     --lfe-interactive-accent: #f4cf67;
     --lfe-link: var(--lfe-interactive-accent);
     --lfe-link-hover: #ffe195;
     --lfe-link-visited: #d6afe0;
     --lfe-action: #f4cf67;
     --lfe-action-hover: #ffe195;
-    --lfe-on-action: #172033;
-    --lfe-boundary: #94a3b8;
+    --lfe-on-action: #1d1e33;
+    --lfe-boundary: #9aa1b8;
     --lfe-focus: var(--lfe-interactive-accent);
     --lfe-code-surface: #1e293b;
     --lfe-code-text: #c3c7ca;
@@ -122,22 +122,22 @@
     --lfe-code-link: #e9ca66;
     --lfe-code-link-hover: #f6d977;
     --lfe-on-art: #f1efe7;
-    --lfe-brand-plate: #f8fafc;
+    --lfe-brand-plate: #f9fafc;
     --lfe-info-text: #c0d9f7;
     --lfe-info-surface: #192f47;
     --lfe-info-boundary: #53708f;
     --lfe-warning-text: #f2d49a;
     --lfe-warning-surface: #362a19;
     --lfe-warning-boundary: #80663d;
-    --lfe-footer-text: #e2e8f0;
-    --lfe-footer-surface: #0f172a;
-    --lfe-action-secondary: #475569;
-    --lfe-action-secondary-hover: #334155;
-    --lfe-action-secondary-text: #e2e8f0;
-    --lfe-action-quiet: #334155;
-    --lfe-action-quiet-hover: #475569;
-    --lfe-action-quiet-text: #e2e8f0;
-    --lfe-footer: #e2e8f0;
+    --lfe-footer-text: #e4e7f0;
+    --lfe-footer-surface: #15152a;
+    --lfe-action-secondary: #4d5369;
+    --lfe-action-secondary-hover: #393f55;
+    --lfe-action-secondary-text: #e4e7f0;
+    --lfe-action-quiet: #393f55;
+    --lfe-action-quiet-hover: #4d5369;
+    --lfe-action-quiet-text: #e4e7f0;
+    --lfe-footer: #e4e7f0;
     --lfe-footer-hover: #f4cf67;
 }
 
@@ -1148,7 +1148,7 @@
 
     .blog-tax-count-light {
         background: var(--lfe-brand-plate);
-        color: #1e293b;
+        color: #23273b;
     }
 
     .blog-tax-posts {

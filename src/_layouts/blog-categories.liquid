@@ -23,7 +23,7 @@
           <h1 class="blog-section-heading">{{ page.data.long_title }}</h1>
           <div class="blog-tax-grid">
             {% for sub in paginator.indexes %}
-              <a href="/{{ sub.index_permalink }}" class="blog-tax-card blog-card-cat-{{ sub.index_title }}">
+              <a href="/{{ sub.index_permalink }}" class="blog-tax-card blog-category-tile blog-card-cat-{{ sub.index_title }}">
                 <span class="blog-tax-name blog-tax-name-light">{{ sub.index_title }}</span>
                 <span class="blog-tax-count blog-tax-count-light">{{ sub.total_pages }}</span>
               </a>

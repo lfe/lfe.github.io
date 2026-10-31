@@ -750,13 +750,13 @@
         --pf-font: ui-sans-serif, system-ui, sans-serif;
         --pf-text: var(--lfe-text-primary);
         --pf-text-secondary: var(--lfe-text-secondary);
-        --pf-text-muted: var(--lfe-text-muted);
+        --pf-text-muted: var(--lfe-text-secondary);
         --pf-background: var(--lfe-panel);
         --pf-border: var(--lfe-boundary);
         --pf-border-focus: var(--lfe-focus);
         --pf-skeleton: var(--lfe-raised);
         --pf-skeleton-shine: var(--lfe-hover);
-        --pf-hover: var(--lfe-hover);
+        --pf-hover: var(--lfe-raised);
         --pf-mark: var(--lfe-link);
         --pf-outline-focus: var(--lfe-focus);
         --pf-error-bg: var(--lfe-warning-surface);
@@ -917,12 +917,25 @@
         @apply text-lg;
     }
 
-    /* Category fallback gradients */
-    .blog-card-cat-tutorials { background: linear-gradient(135deg, #4338ca, #2563eb); }
-    .blog-card-cat-announcements { background: linear-gradient(135deg, #705406, #916f10); }
-    .blog-card-cat-site { background: linear-gradient(135deg, #475569, #6b7280); }
-    .blog-card-cat-archaeology { background: linear-gradient(135deg, #92400e, #b45309); }
-    .blog-card-cat-news { background: linear-gradient(135deg, #075e57, #0e637d); }
+    /* Taxonomy tiles use one semantic surface for known and future categories. */
+    .blog-tax-card.blog-category-tile,
+    .blog-tax-card.blog-card-cat-tutorials,
+    .blog-tax-card.blog-card-cat-announcements,
+    .blog-tax-card.blog-card-cat-site,
+    .blog-tax-card.blog-card-cat-archaeology,
+    .blog-tax-card.blog-card-cat-news {
+        background-color: var(--lfe-action-secondary);
+        color: var(--lfe-action-secondary-text);
+    }
+
+    .blog-tax-card.blog-category-tile:hover,
+    .blog-tax-card.blog-card-cat-tutorials:hover,
+    .blog-tax-card.blog-card-cat-announcements:hover,
+    .blog-tax-card.blog-card-cat-site:hover,
+    .blog-tax-card.blog-card-cat-archaeology:hover,
+    .blog-tax-card.blog-card-cat-news:hover {
+        background-color: var(--lfe-action-secondary-hover);
+    }
 
     /* Card body */
     .blog-card-body {
@@ -1122,7 +1135,7 @@
     }
 
     .blog-tax-name-light {
-        @apply text-white;
+        @apply text-lfe-action-secondary-text;
     }
 
     .blog-tax-count {
@@ -1131,7 +1144,7 @@
 
     .blog-tax-count-light {
         background: var(--lfe-brand-plate);
-        color: #252b33;
+        color: #1e293b;
     }
 
     .blog-tax-posts {

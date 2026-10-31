@@ -10,7 +10,7 @@ Feel free to [open a ticket](https://github.com/lfe/lfe.github.io/issues/new) or
 
 ### Prerequisites
 
-The only prerequisite is [Rust](https://www.rust-lang.org/tools/install). Everything else is installed automatically:
+Prerequisites are [Rust](https://www.rust-lang.org/tools/install) to build the local site tool and Cobalt to generate the site. Run `make install` to explicitly install `lfesite` and Cobalt. Tailwind CSS and Pagefind standalone binaries are downloaded automatically when the build first needs them.
 
 ```shell
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
@@ -35,16 +35,16 @@ Run `make help` to see all available targets, or `make check-tools` to verify yo
 
 ```
 src/                  # Site content and assets
-  ├── _data/home/     #   Home page data (YAML — excerpts, features, books, etc.)
-  ├── _data/site.yml  #   Site-wide config (download URLs, versions)
-  ├── _includes/      #   Liquid template partials
-  ├── _layouts/       #   Liquid page layouts
-  ├── *.md            #   Content pages (about, learn, use, etc.)
-  ├── css/, js/       #   Stylesheets and scripts
-  ├── images/         #   Image assets
-  └── ...             #   Other static files (favicon, fonts, papers, etc.)
+  ├── _data/home/      # Home page data (YAML — excerpts, features, books, etc.)
+  ├── _data/site.yml   # Site-wide config (download URLs, versions)
+  ├── _includes/       # Liquid template partials
+  ├── _layouts/        # Liquid page layouts
+  ├── *.md             # Content pages (about, learn, use, etc.)
+  ├── css/, js/        # Stylesheets and scripts
+  ├── images/          # Image assets
   ├── fontawesome*.css # Tracked FontAwesome compiled stylesheets
   ├── webfonts/        # Tracked FontAwesome fonts
+  └── ...              # Other static files (favicon, papers, etc.)
 tailwind/             # Tailwind CSS source (site.css)
 tools/lfesite/        # Build tool (Rust)
 ```

@@ -9,6 +9,7 @@ use walkdir::WalkDir;
 ///
 /// Executes each stage in order:
 /// 1. Pre-render data files
+/// 2. Resolve blog data
 /// 3. Run Tailwind CSS
 /// 4. Run Cobalt build
 /// 5. Generate sitemap

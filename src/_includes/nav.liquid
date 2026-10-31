@@ -5,7 +5,7 @@
       <img class="w-auto h-6 sm:h-7" src="/images/logo_developer@2x.png" alt="Lisp Flavoured Erlang" />
     </a>
 
-    <button id="mobile-navigation-toggle" type="button" class="sm:hidden p-2 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-lfe-panel text-lfe-primary shadow-sm align-middle hover:bg-lfe-raised transition-all text-sm" aria-controls="navbar-collapse-with-animation" aria-expanded="false" aria-label="Toggle navigation">
+    <button id="mobile-navigation-toggle" type="button" class="sm:hidden p-2 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-lfe-panel text-lfe-nav shadow-sm align-middle hover:bg-lfe-raised transition-all text-sm" aria-controls="navbar-collapse-with-animation" aria-expanded="false" aria-label="Toggle navigation">
       <svg class="mobile-menu-icon w-4 h-4" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
         <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
       </svg>
@@ -20,37 +20,37 @@
       {% if page.permalink == "learn/" %}
       <a class="font-medium nav-active sm:py-6" href="/learn/" aria-current="page">Learn</a>
       {% else %}
-      <a class="font-medium text-lfe-primary hover:text-lfe-link-hover sm:py-6" href="/learn/">Learn</a>
+      <a class="font-medium text-lfe-nav hover:text-lfe-nav-accent sm:py-6" href="/learn/">Learn</a>
       {% endif %}
 
       {% if page.permalink == "use/" %}
       <a class="font-medium nav-active sm:py-6" href="/use/" aria-current="page">Use</a>
       {% else %}
-      <a class="font-medium text-lfe-primary hover:text-lfe-link-hover sm:py-6" href="/use/">Use</a>
+      <a class="font-medium text-lfe-nav hover:text-lfe-nav-accent sm:py-6" href="/use/">Use</a>
       {% endif %}
 
       {% if page.permalink == "community/" %}
       <a class="font-medium nav-active sm:py-6" href="/community/" aria-current="page">Community</a>
       {% else %}
-      <a class="font-medium text-lfe-primary hover:text-lfe-link-hover sm:py-6" href="/community/">Community</a>
+      <a class="font-medium text-lfe-nav hover:text-lfe-nav-accent sm:py-6" href="/community/">Community</a>
       {% endif %}
 
       {% if page.permalink == "about/" %}
       <a class="font-medium nav-active sm:py-6" href="/about/" aria-current="page">About</a>
       {% else %}
-      <a class="font-medium text-lfe-primary hover:text-lfe-link-hover sm:py-6" href="/about/">About</a>
+      <a class="font-medium text-lfe-nav hover:text-lfe-nav-accent sm:py-6" href="/about/">About</a>
       {% endif %}
 
       {% if page.permalink contains "blog/" %}
       <a class="font-medium nav-active sm:py-6" href="/blog/" aria-current="page">Blog</a>
       {% else %}
-      <a class="font-medium text-lfe-primary hover:text-lfe-link-hover sm:py-6" href="/blog/">Blog</a>
+      <a class="font-medium text-lfe-nav hover:text-lfe-nav-accent sm:py-6" href="/blog/">Blog</a>
       {% endif %}
 
       <div class="custom-dropdown relative sm:py-4">
-        <button id="hs-dropdown-download" type="button" class="custom-dropdown-toggle flex items-center w-full text-lfe-primary hover:text-lfe-link-hover font-medium" aria-expanded="false" aria-controls="download-menu">
+        <button id="hs-dropdown-download" type="button" class="custom-dropdown-toggle flex items-center w-full text-lfe-nav hover:text-lfe-nav-accent font-medium" aria-expanded="false" aria-controls="download-menu">
           Download
-          <svg class="ml-2 w-2.5 h-2.5 text-lfe-secondary" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <svg class="ml-2 w-2.5 h-2.5 text-lfe-nav" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <path d="M2 5L8.16086 10.6869C8.35239 10.8637 8.64761 10.8637 8.83914 10.6869L15 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
           </svg>
         </button>
@@ -67,13 +67,13 @@
         </div>
       </div>
 
-      <a class="flex items-center gap-x-2 font-medium text-lfe-primary nav-hover-gold hover:text-lfe-link-hover sm:border-l sm:border-lfe-boundary sm:my-6 sm:pl-6" aria-label="Github" href="https://github.com/lfe/lfe">
+      <a class="flex items-center gap-x-2 font-medium text-lfe-nav nav-hover-gold hover:text-lfe-nav-accent sm:border-l sm:border-lfe-boundary sm:my-6 sm:pl-6" aria-label="Github" href="https://github.com/lfe/lfe">
         <i class="fab fa-github" aria-hidden="true"></i>
       </a>
-      <a class="flex items-center gap-x-2 font-medium text-lfe-primary nav-hover-gold hover:text-lfe-link-hover" aria-label="Mastodon" href="https://fosstodon.org/web/@lfe" rel="me">
+      <a class="flex items-center gap-x-2 font-medium text-lfe-nav nav-hover-gold hover:text-lfe-nav-accent" aria-label="Mastodon" href="https://fosstodon.org/web/@lfe" rel="me">
         <i class="fab fa-mastodon" aria-hidden="true"></i>
       </a>
-      <button id="theme-toggle" type="button" class="group flex items-center text-lfe-secondary nav-hover-gold hover:text-lfe-link-hover font-medium" aria-label="Dark theme" aria-pressed="false">
+      <button id="theme-toggle" type="button" class="group flex items-center text-lfe-nav nav-hover-gold hover:text-lfe-nav-accent font-medium" aria-label="Dark theme" aria-pressed="false">
         <svg class="w-4 h-4 dark:hidden" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
           <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278zM4.858 1.311A7.269 7.269 0 0 0 1.025 7.71c0 4.02 3.279 7.276 7.319 7.276a7.316 7.316 0 0 0 5.205-2.162c-.337.042-.68.063-1.029.063-4.61 0-8.343-3.714-8.343-8.29 0-1.167.242-2.278.681-3.286z" />
         </svg>

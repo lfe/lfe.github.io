@@ -9,7 +9,7 @@
     {% for book in site.data.home.books.items %}
     <div
       class="group flex flex-col h-full bg-lfe-panel border border-lfe-boundary shadow-sm rounded-md">
-      <div class="h-108 flex flex-col justify-center items-center bg-blue-600 rounded-t-md">
+      <div class="h-108 flex flex-col justify-center items-center bg-lfe-raised rounded-t-md">
         {{ book.cover_html }}
       </div>
       <div class="p-4 md:p-5">
@@ -24,7 +24,7 @@
       <div
         class="mt-auto flex border-t border-lfe-boundary divide-x divide-lfe-boundary">
         <div class="card-button card-action">
-        <a class="w-full py-3 px-4 inline-flex justify-center items-center gap-2 rounded-bl-md font-medium bg-lfe-panel text-lfe-primary shadow-sm align-middle hover:bg-lfe-raised transition-all text-sm sm:p-4"
+        <a class="w-full py-3 px-4 inline-flex justify-center items-center gap-2 rounded-bl-md font-medium cta-gold shadow-sm align-middle transition-all text-sm sm:p-4"
           href="{{ book.link_url }}">
           {{ book.link_text }}
         </a>

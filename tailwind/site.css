@@ -1440,6 +1440,11 @@
         overflow-y: hidden;
     }
 
+    .blog-prose .katex-display:focus-visible {
+        outline: 2px solid var(--lfe-focus);
+        outline-offset: 2px;
+    }
+
     .blog-prose .katex-display > .katex {
         min-inline-size: max-content;
     }

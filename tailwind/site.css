@@ -835,6 +835,8 @@
 
     .blog-home-section {
         @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10;
+        inline-size: 100%;
+        min-inline-size: 0;
     }
 
     .blog-search-section {
@@ -1058,10 +1060,12 @@
 
     .blog-river-text {
         @apply flex-1 flex flex-col justify-center;
+        min-inline-size: 0;
     }
 
     .blog-river-title {
         @apply text-lg font-bold text-lfe-primary  pt-0 pb-1 leading-snug;
+        overflow-wrap: anywhere;
     }
 
     .blog-river-desc {
@@ -1428,6 +1432,16 @@
     .blog-prose pre {
         @apply rounded-md p-4 mb-6 overflow-x-auto text-sm leading-relaxed;
         font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+
+    .blog-prose .katex-display {
+        max-inline-size: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+    }
+
+    .blog-prose .katex-display > .katex {
+        min-inline-size: max-content;
     }
 
     .blog-prose code:not(pre code) {

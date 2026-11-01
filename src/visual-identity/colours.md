@@ -13,4 +13,4 @@ Each row shows a named paint with its variable, hexadecimal value, and actual qu
 
 The adopted panel is a thirty-degree OKLCH hue arrangement around the dark slate-800 anchor. Lightness and chroma vary with purpose, gamut limits can reduce chroma, and conversion to 8-bit sRGB shifts the measured hue. Equal angles are design choices, not equal perceptual distances or a universal harmony rule.
 
-The palette recipe and conversion reference above are drawn from the selected study. The source-panel comparison is preserved at planning commit `e599ba13124683bbaab965cc113a1817b9b0fe69`; this page shows the adopted direction, not the earlier three-candidate gallery.
+The palette recipe and conversion reference below are drawn from the selected study. The source-panel comparison is preserved at planning commit `e599ba13124683bbaab965cc113a1817b9b0fe69`; this page shows the adopted direction, not the earlier three-candidate gallery.

@@ -20,15 +20,24 @@
         <div class="content-section visual-identity-content">
             <div class="vi-shell">
                 {% include "visual-identity/nav.liquid" %}
-                <article class="vi-article">{{ page.content }}</article>
-                {% if page.permalink == "visual-identity/" %}
-                    {% include "visual-identity/direction.liquid" %}
-                {% elsif page.permalink == "visual-identity/colours/" %}
+                {% if page.permalink == "visual-identity/colours/" %}
+                    {% assign vi_palette_view = "quick" %}
                     {% include "visual-identity/palette.liquid" %}
-                {% elsif page.permalink == "visual-identity/tokens/" %}
-                    {% include "visual-identity/tokens.liquid" %}
-                {% elsif page.permalink == "visual-identity/themes/" %}
-                    {% include "visual-identity/boards.liquid" %}
+                    <details class="vi-method-notes">
+                        <summary>Method and source notes</summary>
+                        <article class="vi-article">{{ page.content }}</article>
+                    </details>
+                    {% assign vi_palette_view = "detailed" %}
+                    {% include "visual-identity/palette.liquid" %}
+                {% else %}
+                    <article class="vi-article">{{ page.content }}</article>
+                    {% if page.permalink == "visual-identity/" %}
+                        {% include "visual-identity/direction.liquid" %}
+                    {% elsif page.permalink == "visual-identity/tokens/" %}
+                        {% include "visual-identity/tokens.liquid" %}
+                    {% elsif page.permalink == "visual-identity/themes/" %}
+                        {% include "visual-identity/boards.liquid" %}
+                    {% endif %}
                 {% endif %}
             </div>
         </div>

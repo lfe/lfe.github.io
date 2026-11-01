@@ -694,8 +694,8 @@ roles:
   key: lfe-action-quiet
   kind: site
   category: Actions
-  purpose: Quiet action fill with a slate foreground.
-  consumers: Development download action.
+  purpose: Quiet slate action fill paired with its foreground role.
+  consumers: Development download action; foreground uses --lfe-action-quiet-text.
   light_expression: var(--lfe-slate-600)
   light_hex: '#4d5369'
   dark_expression: var(--lfe-slate-700)
@@ -705,7 +705,7 @@ roles:
   kind: site
   category: Actions
   purpose: Hover fill for the quiet development action.
-  consumers: Development download hover state.
+  consumers: Development download hover state; foreground uses --lfe-action-quiet-text.
   light_expression: var(--lfe-slate-700)
   light_hex: '#393f55'
   dark_expression: var(--lfe-slate-600)
@@ -724,8 +724,8 @@ roles:
   key: lfe-action-secondary
   kind: site
   category: Actions
-  purpose: Secondary action fill that keeps the primary action visually distinct.
-  consumers: Previous-release download action.
+  purpose: Secondary action fill paired with --lfe-action-secondary-text.
+  consumers: Previous-release download and Build It Learn More actions.
   light_expression: var(--lfe-slate-700)
   light_hex: '#393f55'
   dark_expression: var(--lfe-slate-600)
@@ -735,7 +735,7 @@ roles:
   kind: site
   category: Actions
   purpose: Hover fill for the secondary action.
-  consumers: Previous-release download hover state.
+  consumers: Previous-release download and Build It Learn More hover states.
   light_expression: var(--lfe-slate-600)
   light_hex: '#4d5369'
   dark_expression: var(--lfe-slate-700)
@@ -745,7 +745,7 @@ roles:
   kind: site
   category: Actions
   purpose: Foreground paired with the secondary action fill.
-  consumers: Previous-release download action and hover.
+  consumers: Previous-release download and Build It Learn More actions and hover states.
   light_expression: '#ffffff'
   light_hex: '#ffffff'
   dark_expression: var(--lfe-slate-200)
@@ -804,8 +804,8 @@ roles:
   key: lfe-code-boundary
   kind: code/art
   category: Code and artwork exceptions
-  purpose: Boundary owned by code and syntax presentation.
-  consumers: Existing code block and REPL borders; unrelated to page card boundaries.
+  purpose: Retained boundary utility mapping for code-owned content.
+  consumers: Retained --color-lfe-code-boundary mapping; no active product-template utility consumer located.
   light_expression: '#8a8173'
   light_hex: '#8a8173'
   dark_expression: '#8190a2'
@@ -814,8 +814,8 @@ roles:
   key: lfe-code-focus
   kind: code/art
   category: Code and artwork exceptions
-  purpose: Focus paint for legacy code-tab controls.
-  consumers: Code example tab styling only; not the widget interface tabs.
+  purpose: Retained focus role for legacy code-tab controls.
+  consumers: No active current template or state consumer; widget tabs use ordinary semantic UI roles.
   light_expression: '#e9ca66'
   light_hex: '#e9ca66'
   dark_expression: '#e9ca66'
@@ -824,8 +824,8 @@ roles:
   key: lfe-code-link
   kind: code/art
   category: Code and artwork exceptions
-  purpose: Link paint inside code-owned content.
-  consumers: Links within highlighted code and REPL panels.
+  purpose: Retained link role for code-owned content.
+  consumers: No active current template consumer located; highlighted-code paints remain component-owned.
   light_expression: '#e9ca66'
   light_hex: '#e9ca66'
   dark_expression: '#e9ca66'
@@ -834,8 +834,8 @@ roles:
   key: lfe-code-link-hover
   kind: code/art
   category: Code and artwork exceptions
-  purpose: Hover paint for links inside code-owned content.
-  consumers: Hovered links in code and REPL panels.
+  purpose: Retained hover role for code-owned links.
+  consumers: No active current template consumer located; highlighted-code paints remain component-owned.
   light_expression: '#f6d977'
   light_hex: '#f6d977'
   dark_expression: '#f6d977'
@@ -844,8 +844,8 @@ roles:
   key: lfe-code-surface
   kind: code/art
   category: Code and artwork exceptions
-  purpose: Background owned by code and terminal surfaces.
-  consumers: Syntax-highlighted blocks and REPL output.
+  purpose: Background for the current home code-example cell.
+  consumers: Home code-cell container uses bg-lfe-code-surface; syntax highlighting and REPL artwork retain independent paints.
   light_expression: '#1e293b'
   light_hex: '#1e293b'
   dark_expression: '#1e293b'
@@ -854,8 +854,8 @@ roles:
   key: lfe-code-tab
   kind: code/art
   category: Code and artwork exceptions
-  purpose: Inactive legacy code-tab text.
-  consumers: Legacy code example tabs only; current widget tabs retain their own ordinary UI roles.
+  purpose: Retained inactive legacy code-tab role.
+  consumers: No active current template or state consumer; widget tabs use ordinary semantic UI roles.
   light_expression: '#c3c7ca'
   light_hex: '#c3c7ca'
   dark_expression: '#c3c7ca'
@@ -864,8 +864,8 @@ roles:
   key: lfe-code-tab-active
   kind: code/art
   category: Code and artwork exceptions
-  purpose: Active legacy code-tab text.
-  consumers: Legacy code example tabs only; not ordinary widget UI tabs.
+  purpose: Retained active legacy code-tab role.
+  consumers: No active current template or state consumer; widget tabs use ordinary semantic UI roles.
   light_expression: '#e9ca66'
   light_hex: '#e9ca66'
   dark_expression: '#e9ca66'
@@ -874,8 +874,8 @@ roles:
   key: lfe-code-tab-hover
   kind: code/art
   category: Code and artwork exceptions
-  purpose: Hover paint for legacy code tabs.
-  consumers: Legacy code example tabs only.
+  purpose: Retained hover role for legacy code tabs.
+  consumers: No active current template or state consumer; widget tabs use ordinary semantic UI roles.
   light_expression: '#f6d977'
   light_hex: '#f6d977'
   dark_expression: '#f6d977'
@@ -884,8 +884,8 @@ roles:
   key: lfe-code-text
   kind: code/art
   category: Code and artwork exceptions
-  purpose: Foreground for code-owned text.
-  consumers: Highlighted code and REPL text.
+  purpose: Retained code-text utility mapping.
+  consumers: Retained --color-lfe-code mapping; no active product-template utility consumer located. Actual highlighted-code text retains component-owned paints.
   light_expression: '#c3c7ca'
   light_hex: '#c3c7ca'
   dark_expression: '#c3c7ca'
@@ -974,8 +974,8 @@ roles:
   key: lfe-footer-text
   kind: site
   category: Footer
-  purpose: Primary foreground on the inverse footer surface.
-  consumers: Footer text and supporting marks.
+  purpose: Foreground used by the inverse-footer reference; shared footer text uses --lfe-footer.
+  consumers: Visual-identity inverse-footer specimen; site footer copy uses its companion role.
   light_expression: var(--lfe-slate-200)
   light_hex: '#e4e7f0'
   dark_expression: var(--lfe-slate-200)
@@ -1034,8 +1034,8 @@ roles:
   key: lfe-interactive-accent
   kind: site
   category: Links and focus
-  purpose: Accent for interactive details that need a distinct mark.
-  consumers: Small interactive indicators and themed examples.
+  purpose: Reserved semantic accent alias for a future interactive detail.
+  consumers: No active product paint consumer located in current source.
   light_expression: var(--lfe-orange-action-light)
   light_hex: '#875315'
   dark_expression: var(--lfe-orange-action-dark)
@@ -1297,8 +1297,8 @@ role_groups:
     key: lfe-action-quiet
     kind: site
     category: Actions
-    purpose: Quiet action fill with a slate foreground.
-    consumers: Development download action.
+    purpose: Quiet slate action fill paired with its foreground role.
+    consumers: Development download action; foreground uses --lfe-action-quiet-text.
     light_expression: var(--lfe-slate-600)
     light_hex: '#4d5369'
     dark_expression: var(--lfe-slate-700)
@@ -1308,7 +1308,7 @@ role_groups:
     kind: site
     category: Actions
     purpose: Hover fill for the quiet development action.
-    consumers: Development download hover state.
+    consumers: Development download hover state; foreground uses --lfe-action-quiet-text.
     light_expression: var(--lfe-slate-700)
     light_hex: '#393f55'
     dark_expression: var(--lfe-slate-600)
@@ -1327,8 +1327,8 @@ role_groups:
     key: lfe-action-secondary
     kind: site
     category: Actions
-    purpose: Secondary action fill that keeps the primary action visually distinct.
-    consumers: Previous-release download action.
+    purpose: Secondary action fill paired with --lfe-action-secondary-text.
+    consumers: Previous-release download and Build It Learn More actions.
     light_expression: var(--lfe-slate-700)
     light_hex: '#393f55'
     dark_expression: var(--lfe-slate-600)
@@ -1338,7 +1338,7 @@ role_groups:
     kind: site
     category: Actions
     purpose: Hover fill for the secondary action.
-    consumers: Previous-release download hover state.
+    consumers: Previous-release download and Build It Learn More hover states.
     light_expression: var(--lfe-slate-600)
     light_hex: '#4d5369'
     dark_expression: var(--lfe-slate-700)
@@ -1348,7 +1348,7 @@ role_groups:
     kind: site
     category: Actions
     purpose: Foreground paired with the secondary action fill.
-    consumers: Previous-release download action and hover.
+    consumers: Previous-release download and Build It Learn More actions and hover states.
     light_expression: '#ffffff'
     light_hex: '#ffffff'
     dark_expression: var(--lfe-slate-200)
@@ -1369,8 +1369,8 @@ role_groups:
     key: lfe-code-boundary
     kind: code/art
     category: Code and artwork exceptions
-    purpose: Boundary owned by code and syntax presentation.
-    consumers: Existing code block and REPL borders; unrelated to page card boundaries.
+    purpose: Retained boundary utility mapping for code-owned content.
+    consumers: Retained --color-lfe-code-boundary mapping; no active product-template utility consumer located.
     light_expression: '#8a8173'
     light_hex: '#8a8173'
     dark_expression: '#8190a2'
@@ -1379,8 +1379,8 @@ role_groups:
     key: lfe-code-focus
     kind: code/art
     category: Code and artwork exceptions
-    purpose: Focus paint for legacy code-tab controls.
-    consumers: Code example tab styling only; not the widget interface tabs.
+    purpose: Retained focus role for legacy code-tab controls.
+    consumers: No active current template or state consumer; widget tabs use ordinary semantic UI roles.
     light_expression: '#e9ca66'
     light_hex: '#e9ca66'
     dark_expression: '#e9ca66'
@@ -1389,8 +1389,8 @@ role_groups:
     key: lfe-code-link
     kind: code/art
     category: Code and artwork exceptions
-    purpose: Link paint inside code-owned content.
-    consumers: Links within highlighted code and REPL panels.
+    purpose: Retained link role for code-owned content.
+    consumers: No active current template consumer located; highlighted-code paints remain component-owned.
     light_expression: '#e9ca66'
     light_hex: '#e9ca66'
     dark_expression: '#e9ca66'
@@ -1399,8 +1399,8 @@ role_groups:
     key: lfe-code-link-hover
     kind: code/art
     category: Code and artwork exceptions
-    purpose: Hover paint for links inside code-owned content.
-    consumers: Hovered links in code and REPL panels.
+    purpose: Retained hover role for code-owned links.
+    consumers: No active current template consumer located; highlighted-code paints remain component-owned.
     light_expression: '#f6d977'
     light_hex: '#f6d977'
     dark_expression: '#f6d977'
@@ -1409,8 +1409,8 @@ role_groups:
     key: lfe-code-surface
     kind: code/art
     category: Code and artwork exceptions
-    purpose: Background owned by code and terminal surfaces.
-    consumers: Syntax-highlighted blocks and REPL output.
+    purpose: Background for the current home code-example cell.
+    consumers: Home code-cell container uses bg-lfe-code-surface; syntax highlighting and REPL artwork retain independent paints.
     light_expression: '#1e293b'
     light_hex: '#1e293b'
     dark_expression: '#1e293b'
@@ -1419,8 +1419,8 @@ role_groups:
     key: lfe-code-tab
     kind: code/art
     category: Code and artwork exceptions
-    purpose: Inactive legacy code-tab text.
-    consumers: Legacy code example tabs only; current widget tabs retain their own ordinary UI roles.
+    purpose: Retained inactive legacy code-tab role.
+    consumers: No active current template or state consumer; widget tabs use ordinary semantic UI roles.
     light_expression: '#c3c7ca'
     light_hex: '#c3c7ca'
     dark_expression: '#c3c7ca'
@@ -1429,8 +1429,8 @@ role_groups:
     key: lfe-code-tab-active
     kind: code/art
     category: Code and artwork exceptions
-    purpose: Active legacy code-tab text.
-    consumers: Legacy code example tabs only; not ordinary widget UI tabs.
+    purpose: Retained active legacy code-tab role.
+    consumers: No active current template or state consumer; widget tabs use ordinary semantic UI roles.
     light_expression: '#e9ca66'
     light_hex: '#e9ca66'
     dark_expression: '#e9ca66'
@@ -1439,8 +1439,8 @@ role_groups:
     key: lfe-code-tab-hover
     kind: code/art
     category: Code and artwork exceptions
-    purpose: Hover paint for legacy code tabs.
-    consumers: Legacy code example tabs only.
+    purpose: Retained hover role for legacy code tabs.
+    consumers: No active current template or state consumer; widget tabs use ordinary semantic UI roles.
     light_expression: '#f6d977'
     light_hex: '#f6d977'
     dark_expression: '#f6d977'
@@ -1449,8 +1449,8 @@ role_groups:
     key: lfe-code-text
     kind: code/art
     category: Code and artwork exceptions
-    purpose: Foreground for code-owned text.
-    consumers: Highlighted code and REPL text.
+    purpose: Retained code-text utility mapping.
+    consumers: Retained --color-lfe-code mapping; no active product-template utility consumer located. Actual highlighted-code text retains component-owned paints.
     light_expression: '#c3c7ca'
     light_hex: '#c3c7ca'
     dark_expression: '#c3c7ca'
@@ -1511,8 +1511,8 @@ role_groups:
     key: lfe-footer-text
     kind: site
     category: Footer
-    purpose: Primary foreground on the inverse footer surface.
-    consumers: Footer text and supporting marks.
+    purpose: Foreground used by the inverse-footer reference; shared footer text uses --lfe-footer.
+    consumers: Visual-identity inverse-footer specimen; site footer copy uses its companion role.
     light_expression: var(--lfe-slate-200)
     light_hex: '#e4e7f0'
     dark_expression: var(--lfe-slate-200)
@@ -1533,8 +1533,8 @@ role_groups:
     key: lfe-interactive-accent
     kind: site
     category: Links and focus
-    purpose: Accent for interactive details that need a distinct mark.
-    consumers: Small interactive indicators and themed examples.
+    purpose: Reserved semantic accent alias for a future interactive detail.
+    consumers: No active product paint consumer located in current source.
     light_expression: var(--lfe-orange-action-light)
     light_hex: '#875315'
     dark_expression: var(--lfe-orange-action-dark)

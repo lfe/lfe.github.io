@@ -1,3 +1,47 @@
+{% if vi_palette_view == "quick" %}
+<section class="vi-quick-reference vi-section" aria-labelledby="vi-quick-title">
+    <div class="vi-section-heading">
+        <p class="vi-eyebrow">Current selected direction</p>
+        <h2 id="vi-quick-title">Seven colour families at a glance</h2>
+        <p>Each labelled ribbon links to its detailed swatches and exact anchors below.</p>
+    </div>
+    <div class="vi-quick-ribbons">
+        {% for family in site.data.visual_identity_palette.families %}
+            <figure class="vi-quick-family" aria-labelledby="vi-quick-family-{{ family.name }}">
+                <figcaption><a id="vi-quick-family-{{ family.name }}" href="#vi-family-{{ family.name }}">{{ family.title }}</a></figcaption>
+                <div class="vi-quick-ribbon" role="list" aria-label="{{ family.title }} family stops">
+                    {% for stop in family.stops %}
+                        <span class="vi-quick-stop" role="listitem" aria-label="{{ family.title }} {{ stop.name }}">
+                            <i style="background-color:var({{ stop.variable }})" aria-hidden="true"></i>
+                            <span>{{ stop.name }}</span>
+                        </span>
+                    {% endfor %}
+                </div>
+            </figure>
+        {% endfor %}
+    </div>
+</section>
+<section class="vi-selected-direction vi-section" aria-labelledby="vi-selected-direction-title">
+    <div class="vi-section-heading">
+        <p class="vi-eyebrow">Illustrative current direction</p>
+        <h2 id="vi-selected-direction-title">30° nav, tagline, and action</h2>
+        <p>A small paired specimen from the selected panel, using the current shared masthead tagline.</p>
+    </div>
+    <div class="vi-mini-grid">
+        {% for mode in site.data.visual_identity_palette.boards %}
+            <section class="vi-mini-board vi-mini-{{ mode[0] }}" style="color-scheme:{{ mode[0] }};{{ mode[1].declarations }}" aria-label="{{ mode[1].label }} selected direction specimen">
+                <header class="vi-mini-header">
+                    <a class="vi-mini-home" href="/">LFE</a>
+                    <nav aria-label="{{ mode[1].label }} specimen navigation"><a href="/learn/">Learn</a><a href="/use/">Use</a></nav>
+                </header>
+                <div class="vi-mini-masthead"><p class="vi-mini-tagline">{{ site.data.home.masthead.sitetagline }}</p></div>
+                <a class="vi-mini-action" href="/learn/">Learn More <span aria-hidden="true">→</span></a>
+                <p class="vi-mini-caption">{{ mode[1].label }} · fixed reference</p>
+            </section>
+        {% endfor %}
+    </div>
+</section>
+{% else %}
 <section class="vi-section" aria-labelledby="vi-ramp-title">
     <div class="vi-section-heading">
         <p class="vi-eyebrow">Source: tailwind/palette.json</p>
@@ -54,3 +98,5 @@
         <div><dt>Slate source</dt><dd><a href="{{ site.data.visual_identity_palette.recipe.slate_source }}">Tailwind CSS 3.4.17 public colors</a></dd></div>
     </dl>
 </section>
+
+{% endif %}

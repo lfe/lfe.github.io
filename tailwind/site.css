@@ -2472,3 +2472,177 @@ main .content-section.visual-identity-content a:hover {
     font-size: .82rem;
     line-height: 1.4;
 }
+
+/* Quick visual reference for the source-native colour page. */
+.vi-quick-reference,
+.vi-selected-direction {
+    margin-top: 1.1rem;
+}
+
+.vi-quick-ribbons {
+    display: grid;
+    gap: .85rem;
+}
+
+.vi-quick-family {
+    min-width: 0;
+    margin: 0;
+}
+
+.vi-quick-family figcaption {
+    margin-bottom: .25rem;
+    font-size: .95rem;
+    font-weight: 700;
+}
+
+.vi-quick-family figcaption a {
+    color: var(--lfe-tagline);
+    text-decoration: underline;
+    text-underline-offset: .18em;
+}
+
+.vi-quick-ribbon {
+    display: grid;
+    grid-template-columns: repeat(11, minmax(0, 1fr));
+    min-width: 0;
+}
+
+.vi-quick-stop {
+    display: grid;
+    min-width: 0;
+    justify-items: center;
+    gap: .18rem;
+    text-align: center;
+}
+
+.vi-quick-stop i {
+    display: block;
+    width: 100%;
+    height: 1.35rem;
+}
+
+.vi-quick-stop span {
+    color: var(--lfe-text-primary);
+    font-size: .8125rem;
+    font-variant-numeric: tabular-nums;
+    line-height: 1.25;
+}
+
+.vi-method-notes {
+    margin: 1rem 0;
+    padding: .85rem 1rem;
+    border: 1px solid var(--lfe-boundary);
+    border-radius: .65rem;
+    background: var(--lfe-panel);
+}
+
+.vi-method-notes summary {
+    color: var(--lfe-link);
+    font-size: .95rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.vi-method-notes summary:focus-visible {
+    outline: 2px solid var(--lfe-focus);
+    outline-offset: 3px;
+}
+
+.vi-mini-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: .85rem;
+}
+
+.vi-mini-board {
+    min-width: 0;
+    padding: .85rem;
+    border: 1px solid var(--lfe-boundary);
+    border-radius: .75rem;
+    background: var(--lfe-canvas);
+    color: var(--lfe-text-primary);
+}
+
+.vi-mini-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .6rem;
+    padding: .45rem .55rem;
+    border-radius: .45rem;
+    background: var(--lfe-header);
+    color: var(--lfe-nav);
+}
+
+.vi-mini-header nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .65rem;
+}
+
+.vi-mini-home,
+.vi-mini-header nav a {
+    color: var(--lfe-nav);
+    font-size: .875rem;
+    font-weight: 700;
+}
+
+.vi-mini-header nav a:hover,
+.vi-mini-home:hover {
+    color: var(--lfe-nav-accent);
+}
+
+.vi-mini-home:focus-visible,
+.vi-mini-header nav a:focus-visible,
+.vi-mini-action:focus-visible {
+    outline: 2px solid var(--lfe-focus);
+    outline-offset: 3px;
+}
+
+.vi-mini-tagline {
+    margin: .75rem 0 !important;
+    color: var(--lfe-tagline) !important;
+    font-size: .92rem !important;
+    font-weight: 700;
+}
+
+.vi-mini-action {
+    display: inline-flex;
+    min-height: 2.45rem;
+    align-items: center;
+    gap: .4rem;
+    padding: .45rem .75rem;
+    border-radius: .45rem;
+    background: var(--lfe-action);
+    color: var(--lfe-on-action) !important;
+    font-size: .875rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.vi-mini-action:hover {
+    background: var(--lfe-action-hover);
+}
+
+.vi-mini-caption {
+    margin: .6rem 0 0 !important;
+    color: var(--lfe-text-muted) !important;
+    font-size: .8125rem !important;
+}
+
+@media (max-width: 42rem) {
+    .vi-mini-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+.vi-mini-masthead {
+    margin: .7rem 0;
+    padding: .55rem;
+    border-radius: .4rem;
+    background: var(--lfe-masthead);
+}
+
+.vi-mini-tagline {
+    margin: 0 !important;
+}

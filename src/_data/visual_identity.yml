@@ -68,28 +68,28 @@ roles:
     consumers: Current download and primary action hover states.
   lfe-action-quiet:
     category: Actions
-    purpose: Quiet action fill with a slate foreground.
-    consumers: Development download action.
+    purpose: Quiet slate action fill paired with its foreground role.
+    consumers: Development download action; foreground uses --lfe-action-quiet-text.
   lfe-action-quiet-hover:
     category: Actions
     purpose: Hover fill for the quiet development action.
-    consumers: Development download hover state.
+    consumers: Development download hover state; foreground uses --lfe-action-quiet-text.
   lfe-action-quiet-text:
     category: Actions
     purpose: Foreground paired with the quiet action fill.
     consumers: Development download action and hover.
   lfe-action-secondary:
     category: Actions
-    purpose: Secondary action fill that keeps the primary action visually distinct.
-    consumers: Previous-release download action.
+    purpose: Secondary action fill paired with --lfe-action-secondary-text.
+    consumers: Previous-release download and Build It Learn More actions.
   lfe-action-secondary-hover:
     category: Actions
     purpose: Hover fill for the secondary action.
-    consumers: Previous-release download hover state.
+    consumers: Previous-release download and Build It Learn More hover states.
   lfe-action-secondary-text:
     category: Actions
     purpose: Foreground paired with the secondary action fill.
-    consumers: Previous-release download action and hover.
+    consumers: Previous-release download and Build It Learn More actions and hover states.
   lfe-boundary:
     category: Surfaces and structure
     purpose: General-purpose separation between adjacent surfaces.
@@ -144,8 +144,8 @@ roles:
     consumers: The site footer container.
   lfe-footer-text:
     category: Footer
-    purpose: Primary foreground on the inverse footer surface.
-    consumers: Footer text and supporting marks.
+    purpose: Foreground used by the inverse-footer reference; shared footer text uses --lfe-footer.
+    consumers: Visual-identity inverse-footer specimen; site footer copy uses its companion role.
   lfe-header:
     category: Navigation and dividers
     purpose: Header navigation background surface.
@@ -168,8 +168,8 @@ roles:
     consumers: Informational version banners.
   lfe-interactive-accent:
     category: Links and focus
-    purpose: Accent for interactive details that need a distinct mark.
-    consumers: Small interactive indicators and themed examples.
+    purpose: Reserved semantic accent alias for a future interactive detail.
+    consumers: No active product paint consumer located in current source.
   lfe-link:
     category: Links and focus
     purpose: Default link colour.
@@ -260,40 +260,40 @@ roles:
     consumers: Warning version banners.
   lfe-code-boundary:
     category: Code and artwork exceptions
-    purpose: Boundary owned by code and syntax presentation.
-    consumers: Existing code block and REPL borders; unrelated to page card boundaries.
+    purpose: Retained boundary utility mapping for code-owned content.
+    consumers: Retained --color-lfe-code-boundary mapping; no active product-template utility consumer located.
   lfe-code-focus:
     category: Code and artwork exceptions
-    purpose: Focus paint for legacy code-tab controls.
-    consumers: Code example tab styling only; not the widget interface tabs.
+    purpose: Retained focus role for legacy code-tab controls.
+    consumers: No active current template or state consumer; widget tabs use ordinary semantic UI roles.
   lfe-code-link:
     category: Code and artwork exceptions
-    purpose: Link paint inside code-owned content.
-    consumers: Links within highlighted code and REPL panels.
+    purpose: Retained link role for code-owned content.
+    consumers: No active current template consumer located; highlighted-code paints remain component-owned.
   lfe-code-link-hover:
     category: Code and artwork exceptions
-    purpose: Hover paint for links inside code-owned content.
-    consumers: Hovered links in code and REPL panels.
+    purpose: Retained hover role for code-owned links.
+    consumers: No active current template consumer located; highlighted-code paints remain component-owned.
   lfe-code-surface:
     category: Code and artwork exceptions
-    purpose: Background owned by code and terminal surfaces.
-    consumers: Syntax-highlighted blocks and REPL output.
+    purpose: Background for the current home code-example cell.
+    consumers: Home code-cell container uses bg-lfe-code-surface; syntax highlighting and REPL artwork retain independent paints.
   lfe-code-tab:
     category: Code and artwork exceptions
-    purpose: Inactive legacy code-tab text.
-    consumers: Legacy code example tabs only; current widget tabs retain their own ordinary UI roles.
+    purpose: Retained inactive legacy code-tab role.
+    consumers: No active current template or state consumer; widget tabs use ordinary semantic UI roles.
   lfe-code-tab-active:
     category: Code and artwork exceptions
-    purpose: Active legacy code-tab text.
-    consumers: Legacy code example tabs only; not ordinary widget UI tabs.
+    purpose: Retained active legacy code-tab role.
+    consumers: No active current template or state consumer; widget tabs use ordinary semantic UI roles.
   lfe-code-tab-hover:
     category: Code and artwork exceptions
-    purpose: Hover paint for legacy code tabs.
-    consumers: Legacy code example tabs only.
+    purpose: Retained hover role for legacy code tabs.
+    consumers: No active current template or state consumer; widget tabs use ordinary semantic UI roles.
   lfe-code-text:
     category: Code and artwork exceptions
-    purpose: Foreground for code-owned text.
-    consumers: Highlighted code and REPL text.
+    purpose: Retained code-text utility mapping.
+    consumers: Retained --color-lfe-code mapping; no active product-template utility consumer located. Actual highlighted-code text retains component-owned paints.
   lfe-on-art:
     category: Code and artwork exceptions
     purpose: Foreground placed over retained artwork.

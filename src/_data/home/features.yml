@@ -3,8 +3,8 @@ items:
 - id: lisp
   title_md_inline: Alien Technology
   title_html: Alien Technology
-  icon_md_inline: <svg width="54" height="32" viewBox="71 384 497 294" role="img" aria-label="lisp alien logo"><use href="/images/lisplogo_alien-theme.svg#alien"></use></svg>
-  icon_html: <svg width="54" height="32" viewBox="71 384 497 294" role="img" aria-label="lisp alien logo"><use href="/images/lisplogo_alien-theme.svg#alien"></use></svg>
+  icon_md_inline: <svg width="54" height="32" viewBox="0 0 497 294" role="img" aria-label="lisp alien logo"><use href="/images/lisplogo_alien-theme.svg#alien" width="497" height="294"></use></svg>
+  icon_html: <svg width="54" height="32" viewBox="0 0 497 294" role="img" aria-label="lisp alien logo"><use href="/images/lisplogo_alien-theme.svg#alien" width="497" height="294"></use></svg>
   content_md: |
     It is an established fact that John McCarthy shared alien tech with the world in 1958 when he introduced us to Lisp. We continue that great tradition.
 

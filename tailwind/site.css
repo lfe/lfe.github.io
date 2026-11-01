@@ -583,9 +583,27 @@
     }
 
     main .content-section.home div.buildit {
+        position: relative;
+        isolation: isolate;
+    }
+
+    main .content-section.home div.buildit::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        pointer-events: none;
         background-image: url("/images/liffybot-big-fade.png");
         background-repeat: no-repeat;
-        background-size: auto;
+        background-size: auto 100%;
+        background-position: left top;
+        opacity: 0.5;
+    }
+
+    @media (width < 48rem) {
+        main .content-section.home div.buildit::before {
+            background-position: 25% top;
+        }
     }
     
     main .content-section.home div.buildit-card {

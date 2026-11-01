@@ -8,17 +8,17 @@ data:
 ---
 
 
-<h2 id="the-language">The Language</h2>
+<h2 class="scroll-mt-28" id="the-language">The Language</h2>
 
 LFE is a Lisp-2+ written for the Erlang VM, providing 100% compatibility with Core Erlang. It is a proper, functional dialect of Lisp with a REPL and macros, as well as features inherited from Erlang, such as pattern pattern matching. Importantly, LFE boasts seamless interoperability with Erlang and the BEAM ecosystem of libraries. It not only has been used in stable production applications since 2015, it has also been employed by start-ups as their differentiating tech. LFE is flexible enough to be everything from your go-to scripting solution to your preferred syntax for massively scalable, soft-real time services.
 
-<h2 id="its-creator">Its Creator</h2>
+<h2 class="scroll-mt-28" id="its-creator">Its Creator</h2>
 
 <p>
 <img src="/images/rvirding.png" style="float:left; width:125px; padding-right:1em;" />Robert Virding is one of the co-inventors of Erlang and was an early member of the Ericsson Computer Science Lab. He took part in the original system design and contributed much of the original libraries, as well as to the current compiler. He has always been interested in the design of languages and their implementation, particularly functional and logic languages. Robert has created several different languages in Erlang and on the Erlang system, which have had various levels of adoption around the world. He has also worked as an entrepreneur, having been one of the co-founders of one of the first Erlang startups (Bluetail). Additionally, Robert spent a number of years at the Swedish Defence Materiel Administration (FMV) Modelling and Simulations Group. He co-authored the first book on Erlang, published by Prentice-Hall, is now Principal Language Expert at Erlang Solutions Ltd., and is regularly invited to teach and present throughout the world.
 </p>
 
-<h2 id="a-short-history">A Short History</h2>
+<h2 class="scroll-mt-28" id="a-short-history">A Short History</h2>
 
 While it is well-known the Robert Virding released the very first version of it in 2008, there was a little more initial whimsy associated with the decision to write the LFE programming language:
 
@@ -33,13 +33,13 @@ While it is well-known the Robert Virding released the very first version of it 
 > * I like implementing languages.
 > * I also thought it would be a fun problem to solve. It contains many different parts and is quite open ended.
 
-<h2 id="more">More</h2>
+<h2 class="scroll-mt-28" id="more">More</h2>
 
 You can learn more about LFE in the Chineual:
 
 * [Forward](https://cnbbooks.github.io/lfe-manual/preface/forward.html) - how to think about learning Erlang and LFE
 * [About LFE](https://cnbbooks.github.io/lfe-manual/part1/intro/about.html) - some more context on the history of LFE
 
-<h2 id="the-site">The Site</h2>
+<h2 class="scroll-mt-28" id="the-site">The Site</h2>
 
 The LFE site aims to make learning, using, and contributing to Lisp Flavoured Erlang clear, welcoming, and enjoyable. If you’re interested in the site’s visual design practices, take a look at our [visual identity reference](/visual-identity/).

@@ -1,0 +1,2045 @@
+design:
+  commit: e599ba13124683bbaab965cc113a1817b9b0fe69
+  candidate: grid30
+  artifact: project01-colour-atlas/arc03-design-deploy/slice06-accent-comparison/artifacts/palette-spec.json
+  anchor_hex: '#23273b'
+  anchor_oklch: L 0.278 · C 0.037 · h 275.0°
+recipe:
+  chromatic_hues:
+    orange: 65.02235362898926
+    gold: 95.02235362898926
+    green: 155.02235362898932
+    blue: 245.02235362898932
+    red: 35.022353628989265
+    plum: 335.02235362898926
+  profile:
+    '50':
+    - 0.985
+    - 0.012
+    '100':
+    - 0.96
+    - 0.024
+    '200':
+    - 0.91
+    - 0.045
+    '300':
+    - 0.84
+    - 0.07
+    '400':
+    - 0.75
+    - 0.09
+    '500':
+    - 0.65
+    - 0.105
+    '600':
+    - 0.56
+    - 0.1
+    '700':
+    - 0.47
+    - 0.085
+    '800':
+    - 0.38
+    - 0.07
+    '900':
+    - 0.29
+    - 0.055
+    '950':
+    - 0.21
+    - 0.035
+  gamut: fixed L/h;50 binary-search C reductions when needed, inward C margin0.000001; nearest8bit sRGB; no clipping
+  slate: Tailwind3.4.17 source hex ramp -> per-stop OKLCH hue+15, L/C unchanged before quantisation; existing accepted stop hex preserved
+  slate_source: https://raw.githubusercontent.com/tailwindlabs/tailwindcss/v3.4.17/src/public/colors.js
+  conversion: https://www.w3.org/TR/css-color-4/#color-conversion-code
+families:
+- name: slate
+  title: Slate
+  stops:
+  - name: '50'
+    variable: --lfe-slate-50
+    hex: '#f9fafc'
+    oklch: L 0.985 · C 0.003 · h 264.5°
+    chroma_reduction: 0.0
+    baseline_hex: '#f8fafc'
+  - name: '100'
+    variable: --lfe-slate-100
+    hex: '#f2f5f9'
+    oklch: L 0.969 · C 0.006 · h 255.5°
+    chroma_reduction: 0.0
+    baseline_hex: '#f1f5f9'
+  - name: '200'
+    variable: --lfe-slate-200
+    hex: '#e4e7f0'
+    oklch: L 0.928 · C 0.013 · h 271.3°
+    chroma_reduction: 0.0
+    baseline_hex: '#e2e8f0'
+  - name: '300'
+    variable: --lfe-slate-300
+    hex: '#ced4e1'
+    oklch: L 0.869 · C 0.019 · h 266.0°
+    chroma_reduction: 0.0
+    baseline_hex: '#cbd5e1'
+  - name: '400'
+    variable: --lfe-slate-400
+    hex: '#9aa1b8'
+    oklch: L 0.711 · C 0.034 · h 272.1°
+    chroma_reduction: 0.0
+    baseline_hex: '#94a3b8'
+  - name: '500'
+    variable: --lfe-slate-500
+    hex: '#6a728b'
+    oklch: L 0.555 · C 0.040 · h 271.1°
+    chroma_reduction: 0.0
+    baseline_hex: '#64748b'
+  - name: '600'
+    variable: --lfe-slate-600
+    hex: '#4d5369'
+    oklch: L 0.446 · C 0.037 · h 272.9°
+    chroma_reduction: 0.0
+    baseline_hex: '#475569'
+  - name: '700'
+    variable: --lfe-slate-700
+    hex: '#393f55'
+    oklch: L 0.372 · C 0.039 · h 272.6°
+    chroma_reduction: 0.0
+    baseline_hex: '#334155'
+  - name: '800'
+    variable: --lfe-slate-800
+    hex: '#23273b'
+    oklch: L 0.278 · C 0.037 · h 275.0°
+    chroma_reduction: 0.0
+    baseline_hex: '#1e293b'
+  - name: '900'
+    variable: --lfe-slate-900
+    hex: '#15152a'
+    oklch: L 0.208 · C 0.041 · h 282.2°
+    chroma_reduction: 0.0
+    baseline_hex: '#0f172a'
+  - name: '950'
+    variable: --lfe-slate-950
+    hex: '#050517'
+    oklch: L 0.130 · C 0.041 · h 279.0°
+    chroma_reduction: 0.0
+    baseline_hex: '#020617'
+- name: orange
+  title: Orange
+  stops:
+  - name: '50'
+    variable: --lfe-orange-50
+    hex: '#fff9f3'
+    oklch: L 0.985 · C 0.010 · h 67.7°
+    chroma_reduction: 0.002162318122196699
+  - name: '100'
+    variable: --lfe-orange-100
+    hex: '#feefe1'
+    oklch: L 0.960 · C 0.025 · h 65.6°
+    chroma_reduction: 0.0
+  - name: '200'
+    variable: --lfe-orange-200
+    hex: '#f7dcc3'
+    oklch: L 0.910 · C 0.045 · h 65.0°
+    chroma_reduction: 0.0
+  - name: '300'
+    variable: --lfe-orange-300
+    hex: '#ebc29b'
+    oklch: L 0.840 · C 0.070 · h 65.2°
+    chroma_reduction: 0.0
+  - name: '400'
+    variable: --lfe-orange-400
+    hex: '#d6a270'
+    oklch: L 0.750 · C 0.090 · h 64.6°
+    chroma_reduction: 0.0
+  - name: '500'
+    variable: --lfe-orange-500
+    hex: '#bb8145'
+    oklch: L 0.650 · C 0.105 · h 65.0°
+    chroma_reduction: 0.0
+  - name: '600'
+    variable: --lfe-orange-600
+    hex: '#9c672e'
+    oklch: L 0.559 · C 0.099 · h 65.0°
+    chroma_reduction: 0.0
+  - name: '700'
+    variable: --lfe-orange-700
+    hex: '#7b5021'
+    oklch: L 0.470 · C 0.085 · h 65.3°
+    chroma_reduction: 0.0
+  - name: '800'
+    variable: --lfe-orange-800
+    hex: '#5c3a15'
+    oklch: L 0.381 · C 0.070 · h 64.9°
+    chroma_reduction: 0.0
+  - name: '900'
+    variable: --lfe-orange-900
+    hex: '#3e2509'
+    oklch: L 0.290 · C 0.055 · h 65.1°
+    chroma_reduction: 0.0
+  - name: '950'
+    variable: --lfe-orange-950
+    hex: '#231506'
+    oklch: L 0.210 · C 0.035 · h 66.8°
+    chroma_reduction: 0.0
+- name: gold
+  title: Gold
+  stops:
+  - name: '50'
+    variable: --lfe-gold-50
+    hex: '#fcfaf1'
+    oklch: L 0.984 · C 0.012 · h 96.4°
+    chroma_reduction: 0.0
+  - name: '100'
+    variable: --lfe-gold-100
+    hex: '#f7f2e0'
+    oklch: L 0.960 · C 0.024 · h 94.1°
+    chroma_reduction: 0.0
+  - name: '200'
+    variable: --lfe-gold-200
+    hex: '#eae2c0'
+    oklch: L 0.910 · C 0.046 · h 96.2°
+    chroma_reduction: 0.0
+  - name: '300'
+    variable: --lfe-gold-300
+    hex: '#d9cb97'
+    oklch: L 0.841 · C 0.070 · h 94.8°
+    chroma_reduction: 0.0
+  - name: '400'
+    variable: --lfe-gold-400
+    hex: '#c0ae6a'
+    oklch: L 0.751 · C 0.090 · h 95.0°
+    chroma_reduction: 0.0
+  - name: '500'
+    variable: --lfe-gold-500
+    hex: '#a38e3c'
+    oklch: L 0.649 · C 0.105 · h 94.9°
+    chroma_reduction: 0.0
+  - name: '600'
+    variable: --lfe-gold-600
+    hex: '#877323'
+    oklch: L 0.559 · C 0.100 · h 94.6°
+    chroma_reduction: 0.0
+  - name: '700'
+    variable: --lfe-gold-700
+    hex: '#6a5a18'
+    oklch: L 0.471 · C 0.085 · h 95.0°
+    chroma_reduction: 0.0
+  - name: '800'
+    variable: --lfe-gold-800
+    hex: '#4e420d'
+    oklch: L 0.381 · C 0.071 · h 95.7°
+    chroma_reduction: 0.0
+  - name: '900'
+    variable: --lfe-gold-900
+    hex: '#342b04'
+    oklch: L 0.291 · C 0.056 · h 95.6°
+    chroma_reduction: 0.0
+  - name: '950'
+    variable: --lfe-gold-950
+    hex: '#1d1804'
+    oklch: L 0.209 · C 0.036 · h 96.1°
+    chroma_reduction: 0.0
+- name: green
+  title: Green
+  stops:
+  - name: '50'
+    variable: --lfe-green-50
+    hex: '#f4fdf7'
+    oklch: L 0.986 · C 0.012 · h 157.0°
+    chroma_reduction: 0.0
+  - name: '100'
+    variable: --lfe-green-100
+    hex: '#e6f7eb'
+    oklch: L 0.960 · C 0.024 · h 155.2°
+    chroma_reduction: 0.0
+  - name: '200'
+    variable: --lfe-green-200
+    hex: '#cbebd4'
+    oklch: L 0.911 · C 0.046 · h 154.2°
+    chroma_reduction: 0.0
+  - name: '300'
+    variable: --lfe-green-300
+    hex: '#a7d9b7'
+    oklch: L 0.841 · C 0.070 · h 154.9°
+    chroma_reduction: 0.0
+  - name: '400'
+    variable: --lfe-green-400
+    hex: '#7fbf95'
+    oklch: L 0.750 · C 0.090 · h 154.9°
+    chroma_reduction: 0.0
+  - name: '500'
+    variable: --lfe-green-500
+    hex: '#55a273'
+    oklch: L 0.650 · C 0.105 · h 155.3°
+    chroma_reduction: 0.0
+  - name: '600'
+    variable: --lfe-green-600
+    hex: '#3d865a'
+    oklch: L 0.561 · C 0.101 · h 154.9°
+    chroma_reduction: 0.0
+  - name: '700'
+    variable: --lfe-green-700
+    hex: '#2d6945'
+    oklch: L 0.471 · C 0.086 · h 154.8°
+    chroma_reduction: 0.0
+  - name: '800'
+    variable: --lfe-green-800
+    hex: '#1f4d32'
+    oklch: L 0.380 · C 0.069 · h 155.3°
+    chroma_reduction: 0.0
+  - name: '900'
+    variable: --lfe-green-900
+    hex: '#11331f'
+    oklch: L 0.289 · C 0.054 · h 155.0°
+    chroma_reduction: 0.0
+  - name: '950'
+    variable: --lfe-green-950
+    hex: '#0a1d11'
+    oklch: L 0.210 · C 0.035 · h 154.4°
+    chroma_reduction: 0.0
+- name: blue
+  title: Blue
+  stops:
+  - name: '50'
+    variable: --lfe-blue-50
+    hex: '#f6fbff'
+    oklch: L 0.985 · C 0.008 · h 241.7°
+    chroma_reduction: 0.0044325092983138895
+  - name: '100'
+    variable: --lfe-blue-100
+    hex: '#e7f4ff'
+    oklch: L 0.961 · C 0.020 · h 243.4°
+    chroma_reduction: 0.003627577562689291
+  - name: '200'
+    variable: --lfe-blue-200
+    hex: '#c9e5fe'
+    oklch: L 0.909 · C 0.045 · h 245.3°
+    chroma_reduction: 0.0
+  - name: '300'
+    variable: --lfe-blue-300
+    hex: '#a5d0f6'
+    oklch: L 0.840 · C 0.070 · h 245.4°
+    chroma_reduction: 0.0
+  - name: '400'
+    variable: --lfe-blue-400
+    hex: '#7db4e4'
+    oklch: L 0.750 · C 0.090 · h 245.7°
+    chroma_reduction: 0.0
+  - name: '500'
+    variable: --lfe-blue-500
+    hex: '#5495cb'
+    oklch: L 0.649 · C 0.105 · h 245.5°
+    chroma_reduction: 0.0
+  - name: '600'
+    variable: --lfe-blue-600
+    hex: '#3c7aab'
+    oklch: L 0.560 · C 0.100 · h 244.8°
+    chroma_reduction: 0.0
+  - name: '700'
+    variable: --lfe-blue-700
+    hex: '#2d5f87'
+    oklch: L 0.470 · C 0.085 · h 245.2°
+    chroma_reduction: 0.0
+  - name: '800'
+    variable: --lfe-blue-800
+    hex: '#1e4665'
+    oklch: L 0.381 · C 0.070 · h 244.6°
+    chroma_reduction: 0.0
+  - name: '900'
+    variable: --lfe-blue-900
+    hex: '#102e45'
+    oklch: L 0.291 · C 0.055 · h 244.6°
+    chroma_reduction: 0.0
+  - name: '950'
+    variable: --lfe-blue-950
+    hex: '#091a27'
+    oklch: L 0.210 · C 0.035 · h 243.6°
+    chroma_reduction: 0.0
+- name: red
+  title: Red
+  stops:
+  - name: '50'
+    variable: --lfe-red-50
+    hex: '#fff8f7'
+    oklch: L 0.984 · C 0.008 · h 27.2°
+    chroma_reduction: 0.004586718940237429
+  - name: '100'
+    variable: --lfe-red-100
+    hex: '#ffede9'
+    oklch: L 0.959 · C 0.020 · h 32.5°
+    chroma_reduction: 0.0038275295157506536
+  - name: '200'
+    variable: --lfe-red-200
+    hex: '#fed7cd'
+    oklch: L 0.909 · C 0.046 · h 34.7°
+    chroma_reduction: 0.0
+  - name: '300'
+    variable: --lfe-red-300
+    hex: '#f4bbac'
+    oklch: L 0.840 · C 0.070 · h 35.2°
+    chroma_reduction: 0.0
+  - name: '400'
+    variable: --lfe-red-400
+    hex: '#e19a87'
+    oklch: L 0.751 · C 0.090 · h 35.6°
+    chroma_reduction: 0.0
+  - name: '500'
+    variable: --lfe-red-500
+    hex: '#c67763'
+    oklch: L 0.650 · C 0.104 · h 35.0°
+    chroma_reduction: 0.0
+  - name: '600'
+    variable: --lfe-red-600
+    hex: '#a75d4b'
+    oklch: L 0.560 · C 0.101 · h 34.6°
+    chroma_reduction: 0.0
+  - name: '700'
+    variable: --lfe-red-700
+    hex: '#834839'
+    oklch: L 0.469 · C 0.085 · h 35.2°
+    chroma_reduction: 0.0
+  - name: '800'
+    variable: --lfe-red-800
+    hex: '#623428'
+    oklch: L 0.381 · C 0.070 · h 35.5°
+    chroma_reduction: 0.0
+  - name: '900'
+    variable: --lfe-red-900
+    hex: '#422018'
+    oklch: L 0.288 · C 0.055 · h 34.3°
+    chroma_reduction: 0.0
+  - name: '950'
+    variable: --lfe-red-950
+    hex: '#26120d'
+    oklch: L 0.210 · C 0.035 · h 34.9°
+    chroma_reduction: 0.0
+- name: plum
+  title: Plum
+  stops:
+  - name: '50'
+    variable: --lfe-plum-50
+    hex: '#fff8fd'
+    oklch: L 0.986 · C 0.010 · h 335.5°
+    chroma_reduction: 0.0013601393249019853
+  - name: '100'
+    variable: --lfe-plum-100
+    hex: '#fdecf8'
+    oklch: L 0.960 · C 0.024 · h 336.1°
+    chroma_reduction: 0.0
+  - name: '200'
+    variable: --lfe-plum-200
+    hex: '#f5d7ed'
+    oklch: L 0.910 · C 0.044 · h 335.3°
+    chroma_reduction: 0.0
+  - name: '300'
+    variable: --lfe-plum-300
+    hex: '#e8badd'
+    oklch: L 0.840 · C 0.070 · h 334.8°
+    chroma_reduction: 0.0
+  - name: '400'
+    variable: --lfe-plum-400
+    hex: '#d298c5'
+    oklch: L 0.749 · C 0.091 · h 334.7°
+    chroma_reduction: 0.0
+  - name: '500'
+    variable: --lfe-plum-500
+    hex: '#b776a9'
+    oklch: L 0.651 · C 0.106 · h 334.9°
+    chroma_reduction: 0.0
+  - name: '600'
+    variable: --lfe-plum-600
+    hex: '#985d8c'
+    oklch: L 0.560 · C 0.100 · h 334.6°
+    chroma_reduction: 0.0
+  - name: '700'
+    variable: --lfe-plum-700
+    hex: '#78486e'
+    oklch: L 0.471 · C 0.085 · h 334.8°
+    chroma_reduction: 0.0
+  - name: '800'
+    variable: --lfe-plum-800
+    hex: '#593351'
+    oklch: L 0.379 · C 0.070 · h 335.0°
+    chroma_reduction: 0.0
+  - name: '900'
+    variable: --lfe-plum-900
+    hex: '#3c2036'
+    oklch: L 0.290 · C 0.055 · h 335.2°
+    chroma_reduction: 0.0
+  - name: '950'
+    variable: --lfe-plum-950
+    hex: '#22121f'
+    oklch: L 0.210 · C 0.035 · h 333.8°
+    chroma_reduction: 0.0
+anchors:
+- name: orange-action-light
+  variable: --lfe-orange-action-light
+  hex: '#875315'
+  oklch: L 0.491 · C 0.100 · h 65.0°
+  origin: grid30.modes.light.accents.action
+- name: orange-hover-light
+  variable: --lfe-orange-hover-light
+  hex: '#734300'
+  oklch: L 0.431 · C 0.096 · h 65.5°
+  origin: grid30.modes.light.accents.hover
+- name: plum-tagline-light
+  variable: --lfe-plum-tagline-light
+  hex: '#704968'
+  oklch: L 0.460 · C 0.070 · h 334.3°
+  origin: grid30.modes.light.accents.plum
+- name: blue-ink-light
+  variable: --lfe-blue-ink-light
+  hex: '#2c5374'
+  oklch: L 0.429 · C 0.071 · h 246.0°
+  origin: grid30.modes.light.statuses.info.roles.ink
+- name: blue-tint-light
+  variable: --lfe-blue-tint-light
+  hex: '#eaf5ff'
+  oklch: L 0.965 · C 0.018 · h 245.4°
+  origin: grid30.modes.light.statuses.info.roles.tint
+- name: blue-border-light
+  variable: --lfe-blue-border-light
+  hex: '#6284a2'
+  oklch: L 0.599 · C 0.060 · h 245.7°
+  origin: grid30.modes.light.statuses.info.roles.border
+- name: green-ink-light
+  variable: --lfe-green-ink-light
+  hex: '#2d5b3f'
+  oklch: L 0.430 · C 0.069 · h 155.3°
+  origin: grid30.modes.light.statuses.success.roles.ink
+- name: green-tint-light
+  variable: --lfe-green-tint-light
+  hex: '#ebf7ee'
+  oklch: L 0.965 · C 0.017 · h 153.6°
+  origin: grid30.modes.light.statuses.success.roles.tint
+- name: green-border-light
+  variable: --lfe-green-border-light
+  hex: '#638b71'
+  oklch: L 0.599 · C 0.060 · h 155.7°
+  origin: grid30.modes.light.statuses.success.roles.border
+- name: gold-ink-light
+  variable: --lfe-gold-ink-light
+  hex: '#5c4f1d'
+  oklch: L 0.430 · C 0.070 · h 94.7°
+  origin: grid30.modes.light.statuses.warning.roles.ink
+- name: gold-tint-light
+  variable: --lfe-gold-tint-light
+  hex: '#f7f4e6'
+  oklch: L 0.966 · C 0.019 · h 96.9°
+  origin: grid30.modes.light.statuses.warning.roles.tint
+- name: gold-border-light
+  variable: --lfe-gold-border-light
+  hex: '#8b8057'
+  oklch: L 0.599 · C 0.059 · h 94.9°
+  origin: grid30.modes.light.statuses.warning.roles.border
+- name: red-ink-light
+  variable: --lfe-red-ink-light
+  hex: '#714135'
+  oklch: L 0.430 · C 0.070 · h 34.9°
+  origin: grid30.modes.light.statuses.error.roles.ink
+- name: red-tint-light
+  variable: --lfe-red-tint-light
+  hex: '#fff0ec'
+  oklch: L 0.966 · C 0.017 · h 35.3°
+  origin: grid30.modes.light.statuses.error.roles.tint
+- name: red-border-light
+  variable: --lfe-red-border-light
+  hex: '#a17468'
+  oklch: L 0.601 · C 0.060 · h 35.5°
+  origin: grid30.modes.light.statuses.error.roles.border
+- name: plum-ink-light
+  variable: --lfe-plum-ink-light
+  hex: '#68415f'
+  oklch: L 0.431 · C 0.070 · h 335.6°
+  origin: grid30.modes.light.statuses.plum.roles.ink
+- name: plum-tint-light
+  variable: --lfe-plum-tint-light
+  hex: '#fceff8'
+  oklch: L 0.965 · C 0.018 · h 336.5°
+  origin: grid30.modes.light.statuses.plum.roles.tint
+- name: plum-border-light
+  variable: --lfe-plum-border-light
+  hex: '#97738f'
+  oklch: L 0.600 · C 0.060 · h 334.3°
+  origin: grid30.modes.light.statuses.plum.roles.border
+- name: orange-action-dark
+  variable: --lfe-orange-action-dark
+  hex: '#f5ba81'
+  oklch: L 0.830 · C 0.100 · h 64.7°
+  origin: grid30.modes.dark.accents.action
+- name: orange-hover-dark
+  variable: --lfe-orange-hover-dark
+  hex: '#fed1a7'
+  oklch: L 0.889 · C 0.075 · h 64.7°
+  origin: grid30.modes.dark.accents.hover
+- name: plum-tagline-dark
+  variable: --lfe-plum-tagline-dark
+  hex: '#dbadd0'
+  oklch: L 0.800 · C 0.071 · h 334.8°
+  origin: grid30.modes.dark.accents.plum
+- name: blue-ink-dark
+  variable: --lfe-blue-ink-dark
+  hex: '#a8d0f3'
+  oklch: L 0.841 · C 0.065 · h 245.1°
+  origin: grid30.modes.dark.statuses.info.roles.ink
+- name: blue-tint-dark
+  variable: --lfe-blue-tint-dark
+  hex: '#1c242b'
+  oklch: L 0.256 · C 0.018 · h 245.0°
+  origin: grid30.modes.dark.statuses.info.roles.tint
+- name: blue-border-dark
+  variable: --lfe-blue-border-dark
+  hex: '#6a8aa6'
+  oklch: L 0.620 · C 0.056 · h 245.3°
+  origin: grid30.modes.dark.statuses.info.roles.border
+- name: green-ink-dark
+  variable: --lfe-green-ink-dark
+  hex: '#aad8b8'
+  oklch: L 0.841 · C 0.065 · h 154.4°
+  origin: grid30.modes.dark.statuses.success.roles.ink
+- name: green-tint-dark
+  variable: --lfe-green-tint-dark
+  hex: '#1c251f'
+  oklch: L 0.254 · C 0.017 · h 155.8°
+  origin: grid30.modes.dark.statuses.success.roles.tint
+- name: green-border-dark
+  variable: --lfe-green-border-dark
+  hex: '#6c9078'
+  oklch: L 0.619 · C 0.054 · h 155.3°
+  origin: grid30.modes.dark.statuses.success.roles.border
+- name: gold-ink-dark
+  variable: --lfe-gold-ink-dark
+  hex: '#d8cb9b'
+  oklch: L 0.841 · C 0.065 · h 94.7°
+  origin: grid30.modes.dark.statuses.warning.roles.ink
+- name: gold-tint-dark
+  variable: --lfe-gold-tint-dark
+  hex: '#252319'
+  oklch: L 0.255 · C 0.018 · h 98.1°
+  origin: grid30.modes.dark.statuses.warning.roles.tint
+- name: gold-border-dark
+  variable: --lfe-gold-border-dark
+  hex: '#908660'
+  oklch: L 0.619 · C 0.055 · h 95.1°
+  origin: grid30.modes.dark.statuses.warning.roles.border
+- name: red-ink-dark
+  variable: --lfe-red-ink-dark
+  hex: '#f2bcae'
+  oklch: L 0.840 · C 0.066 · h 35.0°
+  origin: grid30.modes.dark.statuses.error.roles.ink
+- name: red-tint-dark
+  variable: --lfe-red-tint-dark
+  hex: '#2b201d'
+  oklch: L 0.256 · C 0.018 · h 35.7°
+  origin: grid30.modes.dark.statuses.error.roles.tint
+- name: red-border-dark
+  variable: --lfe-red-border-dark
+  hex: '#a47b70'
+  oklch: L 0.620 · C 0.054 · h 35.5°
+  origin: grid30.modes.dark.statuses.error.roles.border
+- name: plum-ink-dark
+  variable: --lfe-plum-ink-dark
+  hex: '#e6bbdc'
+  oklch: L 0.840 · C 0.066 · h 334.4°
+  origin: grid30.modes.dark.statuses.plum.roles.ink
+- name: plum-tint-dark
+  variable: --lfe-plum-tint-dark
+  hex: '#282026'
+  oklch: L 0.255 · C 0.016 · h 334.9°
+  origin: grid30.modes.dark.statuses.plum.roles.tint
+- name: plum-border-dark
+  variable: --lfe-plum-border-dark
+  hex: '#9c7a93'
+  oklch: L 0.620 · C 0.055 · h 335.9°
+  origin: grid30.modes.dark.statuses.plum.roles.border
+- name: slate-muted-dark
+  variable: --lfe-slate-muted-dark
+  hex: '#bcc3d6'
+  oklch: L 0.818 · C 0.028 · h 269.6°
+  origin: accepted Slice04 nonstandard muted ink
+- name: slate-on-action-dark
+  variable: --lfe-slate-on-action-dark
+  hex: '#1d1e33'
+  oklch: L 0.245 · C 0.040 · h 280.9°
+  origin: accepted Slice04 nonstandard on-action ink
+roles:
+- name: --lfe-accent-divider
+  key: lfe-accent-divider
+  kind: site
+  category: Navigation and dividers
+  purpose: A quiet structural line between major header regions.
+  consumers: The top navigation upper rule and masthead lower rule.
+  light_expression: var(--lfe-orange-action-light)
+  light_hex: '#875315'
+  dark_expression: var(--lfe-orange-500)
+  dark_hex: '#bb8145'
+- name: --lfe-action
+  key: lfe-action
+  kind: site
+  category: Actions
+  purpose: Main action fill used with the on-action foreground.
+  consumers: Current and primary call-to-action controls.
+  light_expression: var(--lfe-orange-action-light)
+  light_hex: '#875315'
+  dark_expression: var(--lfe-orange-action-dark)
+  dark_hex: '#f5ba81'
+- name: --lfe-action-hover
+  key: lfe-action-hover
+  kind: site
+  category: Actions
+  purpose: Hover fill for the main action.
+  consumers: Current download and primary action hover states.
+  light_expression: var(--lfe-orange-hover-light)
+  light_hex: '#734300'
+  dark_expression: var(--lfe-orange-hover-dark)
+  dark_hex: '#fed1a7'
+- name: --lfe-action-quiet
+  key: lfe-action-quiet
+  kind: site
+  category: Actions
+  purpose: Quiet action fill with a slate foreground.
+  consumers: Development download action.
+  light_expression: var(--lfe-slate-600)
+  light_hex: '#4d5369'
+  dark_expression: var(--lfe-slate-700)
+  dark_hex: '#393f55'
+- name: --lfe-action-quiet-hover
+  key: lfe-action-quiet-hover
+  kind: site
+  category: Actions
+  purpose: Hover fill for the quiet development action.
+  consumers: Development download hover state.
+  light_expression: var(--lfe-slate-700)
+  light_hex: '#393f55'
+  dark_expression: var(--lfe-slate-600)
+  dark_hex: '#4d5369'
+- name: --lfe-action-quiet-text
+  key: lfe-action-quiet-text
+  kind: site
+  category: Actions
+  purpose: Foreground paired with the quiet action fill.
+  consumers: Development download action and hover.
+  light_expression: '#ffffff'
+  light_hex: '#ffffff'
+  dark_expression: var(--lfe-slate-200)
+  dark_hex: '#e4e7f0'
+- name: --lfe-action-secondary
+  key: lfe-action-secondary
+  kind: site
+  category: Actions
+  purpose: Secondary action fill that keeps the primary action visually distinct.
+  consumers: Previous-release download action.
+  light_expression: var(--lfe-slate-700)
+  light_hex: '#393f55'
+  dark_expression: var(--lfe-slate-600)
+  dark_hex: '#4d5369'
+- name: --lfe-action-secondary-hover
+  key: lfe-action-secondary-hover
+  kind: site
+  category: Actions
+  purpose: Hover fill for the secondary action.
+  consumers: Previous-release download hover state.
+  light_expression: var(--lfe-slate-600)
+  light_hex: '#4d5369'
+  dark_expression: var(--lfe-slate-700)
+  dark_hex: '#393f55'
+- name: --lfe-action-secondary-text
+  key: lfe-action-secondary-text
+  kind: site
+  category: Actions
+  purpose: Foreground paired with the secondary action fill.
+  consumers: Previous-release download action and hover.
+  light_expression: '#ffffff'
+  light_hex: '#ffffff'
+  dark_expression: var(--lfe-slate-200)
+  dark_hex: '#e4e7f0'
+- name: --lfe-boundary
+  key: lfe-boundary
+  kind: site
+  category: Surfaces and structure
+  purpose: General-purpose separation between adjacent surfaces.
+  consumers: Card, menu, search, section, and footer rules.
+  light_expression: var(--lfe-slate-500)
+  light_hex: '#6a728b'
+  dark_expression: var(--lfe-slate-400)
+  dark_hex: '#9aa1b8'
+- name: --lfe-brand-ink
+  key: lfe-brand-ink
+  kind: site
+  category: Surfaces and structure
+  purpose: Fixed ink for the historical category-count plate.
+  consumers: Category-count plate only; this identifier does not control the transparent navigation logo.
+  light_expression: var(--lfe-slate-800)
+  light_hex: '#23273b'
+  dark_expression: var(--lfe-slate-800)
+  dark_hex: '#23273b'
+- name: --lfe-brand-plate
+  key: lfe-brand-plate
+  kind: site
+  category: Surfaces and structure
+  purpose: Fixed light plate behind the historical category count.
+  consumers: Category-count plate only; not a logo background role.
+  light_expression: var(--lfe-slate-50)
+  light_hex: '#f9fafc'
+  dark_expression: var(--lfe-slate-50)
+  dark_hex: '#f9fafc'
+- name: --lfe-callout-title
+  key: lfe-callout-title
+  kind: site
+  category: Text and identity accents
+  purpose: Semantic emphasis for a highlighted callout heading.
+  consumers: The selected explanatory callout title.
+  light_expression: var(--lfe-orange-action-light)
+  light_hex: '#875315'
+  dark_expression: var(--lfe-orange-action-dark)
+  dark_hex: '#f5ba81'
+- name: --lfe-canvas
+  key: lfe-canvas
+  kind: site
+  category: Surfaces and structure
+  purpose: Main page background behind sections and panels.
+  consumers: Body and site page canvas utilities.
+  light_expression: var(--lfe-slate-50)
+  light_hex: '#f9fafc'
+  dark_expression: var(--lfe-slate-900)
+  dark_hex: '#15152a'
+- name: --lfe-code-boundary
+  key: lfe-code-boundary
+  kind: code/art
+  category: Code and artwork exceptions
+  purpose: Boundary owned by code and syntax presentation.
+  consumers: Existing code block and REPL borders; unrelated to page card boundaries.
+  light_expression: '#8a8173'
+  light_hex: '#8a8173'
+  dark_expression: '#8190a2'
+  dark_hex: '#8190a2'
+- name: --lfe-code-focus
+  key: lfe-code-focus
+  kind: code/art
+  category: Code and artwork exceptions
+  purpose: Focus paint for legacy code-tab controls.
+  consumers: Code example tab styling only; not the widget interface tabs.
+  light_expression: '#e9ca66'
+  light_hex: '#e9ca66'
+  dark_expression: '#e9ca66'
+  dark_hex: '#e9ca66'
+- name: --lfe-code-link
+  key: lfe-code-link
+  kind: code/art
+  category: Code and artwork exceptions
+  purpose: Link paint inside code-owned content.
+  consumers: Links within highlighted code and REPL panels.
+  light_expression: '#e9ca66'
+  light_hex: '#e9ca66'
+  dark_expression: '#e9ca66'
+  dark_hex: '#e9ca66'
+- name: --lfe-code-link-hover
+  key: lfe-code-link-hover
+  kind: code/art
+  category: Code and artwork exceptions
+  purpose: Hover paint for links inside code-owned content.
+  consumers: Hovered links in code and REPL panels.
+  light_expression: '#f6d977'
+  light_hex: '#f6d977'
+  dark_expression: '#f6d977'
+  dark_hex: '#f6d977'
+- name: --lfe-code-surface
+  key: lfe-code-surface
+  kind: code/art
+  category: Code and artwork exceptions
+  purpose: Background owned by code and terminal surfaces.
+  consumers: Syntax-highlighted blocks and REPL output.
+  light_expression: '#1e293b'
+  light_hex: '#1e293b'
+  dark_expression: '#1e293b'
+  dark_hex: '#1e293b'
+- name: --lfe-code-tab
+  key: lfe-code-tab
+  kind: code/art
+  category: Code and artwork exceptions
+  purpose: Inactive legacy code-tab text.
+  consumers: Legacy code example tabs only; current widget tabs retain their own ordinary UI roles.
+  light_expression: '#c3c7ca'
+  light_hex: '#c3c7ca'
+  dark_expression: '#c3c7ca'
+  dark_hex: '#c3c7ca'
+- name: --lfe-code-tab-active
+  key: lfe-code-tab-active
+  kind: code/art
+  category: Code and artwork exceptions
+  purpose: Active legacy code-tab text.
+  consumers: Legacy code example tabs only; not ordinary widget UI tabs.
+  light_expression: '#e9ca66'
+  light_hex: '#e9ca66'
+  dark_expression: '#e9ca66'
+  dark_hex: '#e9ca66'
+- name: --lfe-code-tab-hover
+  key: lfe-code-tab-hover
+  kind: code/art
+  category: Code and artwork exceptions
+  purpose: Hover paint for legacy code tabs.
+  consumers: Legacy code example tabs only.
+  light_expression: '#f6d977'
+  light_hex: '#f6d977'
+  dark_expression: '#f6d977'
+  dark_hex: '#f6d977'
+- name: --lfe-code-text
+  key: lfe-code-text
+  kind: code/art
+  category: Code and artwork exceptions
+  purpose: Foreground for code-owned text.
+  consumers: Highlighted code and REPL text.
+  light_expression: '#c3c7ca'
+  light_hex: '#c3c7ca'
+  dark_expression: '#c3c7ca'
+  dark_hex: '#c3c7ca'
+- name: --lfe-error-boundary
+  key: lfe-error-boundary
+  kind: site
+  category: Status roles
+  purpose: Boundary for an error treatment when one is rendered.
+  consumers: Pagefind error-state configuration; the site has no persistent alert panel.
+  light_expression: var(--lfe-red-border-light)
+  light_hex: '#a17468'
+  dark_expression: var(--lfe-red-border-dark)
+  dark_hex: '#a47b70'
+- name: --lfe-error-surface
+  key: lfe-error-surface
+  kind: site
+  category: Status roles
+  purpose: Tinted surface for an error treatment.
+  consumers: Pagefind error-state configuration; no live error alert is fabricated in this reference.
+  light_expression: var(--lfe-red-tint-light)
+  light_hex: '#fff0ec'
+  dark_expression: var(--lfe-red-tint-dark)
+  dark_hex: '#2b201d'
+- name: --lfe-error-text
+  key: lfe-error-text
+  kind: site
+  category: Status roles
+  purpose: Text ink for an error treatment.
+  consumers: Pagefind error-state configuration.
+  light_expression: var(--lfe-red-ink-light)
+  light_hex: '#714135'
+  dark_expression: var(--lfe-red-ink-dark)
+  dark_hex: '#f2bcae'
+- name: --lfe-focus
+  key: lfe-focus
+  kind: site
+  category: Links and focus
+  purpose: Visible keyboard focus outline colour.
+  consumers: Site links, buttons, menus, and keyboard-operable controls.
+  light_expression: var(--lfe-orange-action-light)
+  light_hex: '#875315'
+  dark_expression: var(--lfe-orange-action-dark)
+  dark_hex: '#f5ba81'
+- name: --lfe-footer
+  key: lfe-footer
+  kind: site
+  category: Footer
+  purpose: General footer text paint.
+  consumers: Footer copy and links where the shared footer role is applied.
+  light_expression: var(--lfe-slate-200)
+  light_hex: '#e4e7f0'
+  dark_expression: var(--lfe-slate-200)
+  dark_hex: '#e4e7f0'
+- name: --lfe-footer-focus
+  key: lfe-footer-focus
+  kind: site
+  category: Footer
+  purpose: Focus outline for footer links.
+  consumers: Keyboard focus on footer links.
+  light_expression: var(--lfe-orange-action-dark)
+  light_hex: '#f5ba81'
+  dark_expression: var(--lfe-orange-action-dark)
+  dark_hex: '#f5ba81'
+- name: --lfe-footer-hover
+  key: lfe-footer-hover
+  kind: site
+  category: Footer
+  purpose: Hover colour for footer links.
+  consumers: Footer link hover state.
+  light_expression: var(--lfe-orange-action-dark)
+  light_hex: '#f5ba81'
+  dark_expression: var(--lfe-orange-action-dark)
+  dark_hex: '#f5ba81'
+- name: --lfe-footer-surface
+  key: lfe-footer-surface
+  kind: site
+  category: Footer
+  purpose: Inverse footer background surface.
+  consumers: The site footer container.
+  light_expression: var(--lfe-slate-800)
+  light_hex: '#23273b'
+  dark_expression: var(--lfe-slate-900)
+  dark_hex: '#15152a'
+- name: --lfe-footer-text
+  key: lfe-footer-text
+  kind: site
+  category: Footer
+  purpose: Primary foreground on the inverse footer surface.
+  consumers: Footer text and supporting marks.
+  light_expression: var(--lfe-slate-200)
+  light_hex: '#e4e7f0'
+  dark_expression: var(--lfe-slate-200)
+  dark_hex: '#e4e7f0'
+- name: --lfe-header
+  key: lfe-header
+  kind: site
+  category: Navigation and dividers
+  purpose: Header navigation background surface.
+  consumers: The shared top navigation shell.
+  light_expression: var(--lfe-slate-200)
+  light_hex: '#e4e7f0'
+  dark_expression: var(--lfe-slate-900)
+  dark_hex: '#15152a'
+- name: --lfe-hover
+  key: lfe-hover
+  kind: site
+  category: Surfaces and structure
+  purpose: General surface used for hover feedback.
+  consumers: Hover treatments and Pagefind loading highlights.
+  light_expression: var(--lfe-slate-300)
+  light_hex: '#ced4e1'
+  dark_expression: var(--lfe-slate-600)
+  dark_hex: '#4d5369'
+- name: --lfe-info-boundary
+  key: lfe-info-boundary
+  kind: site
+  category: Status roles
+  purpose: Boundary for informative context.
+  consumers: Informational version banners.
+  light_expression: var(--lfe-blue-border-light)
+  light_hex: '#6284a2'
+  dark_expression: var(--lfe-blue-border-dark)
+  dark_hex: '#6a8aa6'
+- name: --lfe-info-surface
+  key: lfe-info-surface
+  kind: site
+  category: Status roles
+  purpose: Tinted background for informative context.
+  consumers: Informational version banners.
+  light_expression: var(--lfe-blue-tint-light)
+  light_hex: '#eaf5ff'
+  dark_expression: var(--lfe-blue-tint-dark)
+  dark_hex: '#1c242b'
+- name: --lfe-info-text
+  key: lfe-info-text
+  kind: site
+  category: Status roles
+  purpose: Text ink for informative context.
+  consumers: Informational version banners.
+  light_expression: var(--lfe-blue-ink-light)
+  light_hex: '#2c5374'
+  dark_expression: var(--lfe-blue-ink-dark)
+  dark_hex: '#a8d0f3'
+- name: --lfe-interactive-accent
+  key: lfe-interactive-accent
+  kind: site
+  category: Links and focus
+  purpose: Accent for interactive details that need a distinct mark.
+  consumers: Small interactive indicators and themed examples.
+  light_expression: var(--lfe-orange-action-light)
+  light_hex: '#875315'
+  dark_expression: var(--lfe-orange-action-dark)
+  dark_hex: '#f5ba81'
+- name: --lfe-link
+  key: lfe-link
+  kind: site
+  category: Links and focus
+  purpose: Default link colour.
+  consumers: Editorial links, navigation descendants, and Pagefind marks.
+  light_expression: var(--lfe-orange-action-light)
+  light_hex: '#875315'
+  dark_expression: var(--lfe-orange-action-dark)
+  dark_hex: '#f5ba81'
+- name: --lfe-link-hover
+  key: lfe-link-hover
+  kind: site
+  category: Links and focus
+  purpose: Link colour while the pointer is over a link.
+  consumers: Site links and Pagefind linked results.
+  light_expression: var(--lfe-orange-hover-light)
+  light_hex: '#734300'
+  dark_expression: var(--lfe-orange-hover-dark)
+  dark_hex: '#fed1a7'
+- name: --lfe-link-visited
+  key: lfe-link-visited
+  kind: site
+  category: Links and focus
+  purpose: Visited-link colour that stays within the identity accent.
+  consumers: Visited editorial and local reference links.
+  light_expression: var(--lfe-plum-tagline-light)
+  light_hex: '#704968'
+  dark_expression: var(--lfe-plum-tagline-dark)
+  dark_hex: '#dbadd0'
+- name: --lfe-masthead
+  key: lfe-masthead
+  kind: site
+  category: Navigation and dividers
+  purpose: Hero and masthead surface.
+  consumers: Shared page masthead region.
+  light_expression: var(--lfe-slate-50)
+  light_hex: '#f9fafc'
+  dark_expression: var(--lfe-slate-800)
+  dark_hex: '#23273b'
+- name: --lfe-nav
+  key: lfe-nav
+  kind: site
+  category: Navigation and dividers
+  purpose: Ordinary navigation text ink.
+  consumers: Shared top navigation links and controls.
+  light_expression: var(--lfe-slate-700)
+  light_hex: '#393f55'
+  dark_expression: var(--lfe-slate-300)
+  dark_hex: '#ced4e1'
+- name: --lfe-nav-accent
+  key: lfe-nav-accent
+  kind: site
+  category: Navigation and dividers
+  purpose: Hover accent for top navigation links.
+  consumers: Top navigation links on pointer hover.
+  light_expression: var(--lfe-orange-action-light)
+  light_hex: '#875315'
+  dark_expression: var(--lfe-orange-action-dark)
+  dark_hex: '#f5ba81'
+- name: --lfe-notice-boundary
+  key: lfe-notice-boundary
+  kind: site
+  category: Status roles
+  purpose: Boundary for a non-danger communication notice.
+  consumers: Ready semantic role; no live notice widget is claimed.
+  light_expression: var(--lfe-plum-border-light)
+  light_hex: '#97738f'
+  dark_expression: var(--lfe-plum-border-dark)
+  dark_hex: '#9c7a93'
+- name: --lfe-notice-surface
+  key: lfe-notice-surface
+  kind: site
+  category: Status roles
+  purpose: Plum-tinted surface for a non-danger communication notice.
+  consumers: Ready semantic role; illustrated only in the reference board.
+  light_expression: var(--lfe-plum-tint-light)
+  light_hex: '#fceff8'
+  dark_expression: var(--lfe-plum-tint-dark)
+  dark_hex: '#282026'
+- name: --lfe-notice-text
+  key: lfe-notice-text
+  kind: site
+  category: Status roles
+  purpose: Ink for a non-danger communication notice.
+  consumers: Ready semantic role; illustrated only in the reference board.
+  light_expression: var(--lfe-plum-ink-light)
+  light_hex: '#68415f'
+  dark_expression: var(--lfe-plum-ink-dark)
+  dark_hex: '#e6bbdc'
+- name: --lfe-on-action
+  key: lfe-on-action
+  kind: site
+  category: Actions
+  purpose: Foreground paired with the primary action fill.
+  consumers: Primary action buttons and links styled as buttons.
+  light_expression: '#ffffff'
+  light_hex: '#ffffff'
+  dark_expression: var(--lfe-slate-on-action-dark)
+  dark_hex: '#1d1e33'
+- name: --lfe-on-art
+  key: lfe-on-art
+  kind: code/art
+  category: Code and artwork exceptions
+  purpose: Foreground placed over retained artwork.
+  consumers: Existing image-overlay caption treatment.
+  light_expression: '#f1efe7'
+  light_hex: '#f1efe7'
+  dark_expression: '#f1efe7'
+  dark_hex: '#f1efe7'
+- name: --lfe-panel
+  key: lfe-panel
+  kind: site
+  category: Surfaces and structure
+  purpose: Main raised card and control surface.
+  consumers: Feature cards, menus, download controls, and Pagefind surfaces.
+  light_expression: '#ffffff'
+  light_hex: '#ffffff'
+  dark_expression: var(--lfe-slate-800)
+  dark_hex: '#23273b'
+- name: --lfe-raised
+  key: lfe-raised
+  kind: site
+  category: Surfaces and structure
+  purpose: Surface one step above a panel or canvas.
+  consumers: Raised controls, small cards, hover results, and skeletons.
+  light_expression: var(--lfe-slate-200)
+  light_hex: '#e4e7f0'
+  dark_expression: var(--lfe-slate-700)
+  dark_hex: '#393f55'
+- name: --lfe-success-boundary
+  key: lfe-success-boundary
+  kind: site
+  category: Status roles
+  purpose: Boundary for a success treatment.
+  consumers: Ready semantic role; no success alert is present on the site.
+  light_expression: var(--lfe-green-border-light)
+  light_hex: '#638b71'
+  dark_expression: var(--lfe-green-border-dark)
+  dark_hex: '#6c9078'
+- name: --lfe-success-surface
+  key: lfe-success-surface
+  kind: site
+  category: Status roles
+  purpose: Tinted surface for a success treatment.
+  consumers: Ready semantic role; illustrated only in the reference board.
+  light_expression: var(--lfe-green-tint-light)
+  light_hex: '#ebf7ee'
+  dark_expression: var(--lfe-green-tint-dark)
+  dark_hex: '#1c251f'
+- name: --lfe-success-text
+  key: lfe-success-text
+  kind: site
+  category: Status roles
+  purpose: Text ink for a success treatment.
+  consumers: Ready semantic role; illustrated only in the reference board.
+  light_expression: var(--lfe-green-ink-light)
+  light_hex: '#2d5b3f'
+  dark_expression: var(--lfe-green-ink-dark)
+  dark_hex: '#aad8b8'
+- name: --lfe-tagline
+  key: lfe-tagline
+  kind: site
+  category: Text and identity accents
+  purpose: Rotating tagline and selected plum identity accent.
+  consumers: Homepage tagline and the four feature heading/icon treatments.
+  light_expression: var(--lfe-plum-tagline-light)
+  light_hex: '#704968'
+  dark_expression: var(--lfe-plum-tagline-dark)
+  dark_hex: '#dbadd0'
+- name: --lfe-text-muted
+  key: lfe-text-muted
+  kind: site
+  category: Text and identity accents
+  purpose: Lower-emphasis text that remains readable on its intended surface.
+  consumers: Supporting labels, quiet metadata, and muted utility classes.
+  light_expression: var(--lfe-slate-600)
+  light_hex: '#4d5369'
+  dark_expression: var(--lfe-slate-muted-dark)
+  dark_hex: '#bcc3d6'
+- name: --lfe-text-primary
+  key: lfe-text-primary
+  kind: site
+  category: Text and identity accents
+  purpose: Main reading text on panels and the page canvas.
+  consumers: Headings, body text utilities, controls, and Pagefind results.
+  light_expression: var(--lfe-slate-800)
+  light_hex: '#23273b'
+  dark_expression: var(--lfe-slate-200)
+  dark_hex: '#e4e7f0'
+- name: --lfe-text-secondary
+  key: lfe-text-secondary
+  kind: site
+  category: Text and identity accents
+  purpose: Supporting reading text below primary emphasis.
+  consumers: Paragraphs, details, code captions, and secondary Pagefind text.
+  light_expression: var(--lfe-slate-700)
+  light_hex: '#393f55'
+  dark_expression: var(--lfe-slate-300)
+  dark_hex: '#ced4e1'
+- name: --lfe-warning-boundary
+  key: lfe-warning-boundary
+  kind: site
+  category: Status roles
+  purpose: Boundary for a caution or warning treatment.
+  consumers: Warning version banners.
+  light_expression: var(--lfe-gold-border-light)
+  light_hex: '#8b8057'
+  dark_expression: var(--lfe-gold-border-dark)
+  dark_hex: '#908660'
+- name: --lfe-warning-surface
+  key: lfe-warning-surface
+  kind: site
+  category: Status roles
+  purpose: Gold-tinted surface for a caution or warning treatment.
+  consumers: Warning version banners.
+  light_expression: var(--lfe-gold-tint-light)
+  light_hex: '#f7f4e6'
+  dark_expression: var(--lfe-gold-tint-dark)
+  dark_hex: '#252319'
+- name: --lfe-warning-text
+  key: lfe-warning-text
+  kind: site
+  category: Status roles
+  purpose: Text ink for a caution or warning treatment.
+  consumers: Warning version banners.
+  light_expression: var(--lfe-gold-ink-light)
+  light_hex: '#5c4f1d'
+  dark_expression: var(--lfe-gold-ink-dark)
+  dark_hex: '#d8cb9b'
+role_groups:
+- category: Actions
+  roles:
+  - name: --lfe-action
+    key: lfe-action
+    kind: site
+    category: Actions
+    purpose: Main action fill used with the on-action foreground.
+    consumers: Current and primary call-to-action controls.
+    light_expression: var(--lfe-orange-action-light)
+    light_hex: '#875315'
+    dark_expression: var(--lfe-orange-action-dark)
+    dark_hex: '#f5ba81'
+  - name: --lfe-action-hover
+    key: lfe-action-hover
+    kind: site
+    category: Actions
+    purpose: Hover fill for the main action.
+    consumers: Current download and primary action hover states.
+    light_expression: var(--lfe-orange-hover-light)
+    light_hex: '#734300'
+    dark_expression: var(--lfe-orange-hover-dark)
+    dark_hex: '#fed1a7'
+  - name: --lfe-action-quiet
+    key: lfe-action-quiet
+    kind: site
+    category: Actions
+    purpose: Quiet action fill with a slate foreground.
+    consumers: Development download action.
+    light_expression: var(--lfe-slate-600)
+    light_hex: '#4d5369'
+    dark_expression: var(--lfe-slate-700)
+    dark_hex: '#393f55'
+  - name: --lfe-action-quiet-hover
+    key: lfe-action-quiet-hover
+    kind: site
+    category: Actions
+    purpose: Hover fill for the quiet development action.
+    consumers: Development download hover state.
+    light_expression: var(--lfe-slate-700)
+    light_hex: '#393f55'
+    dark_expression: var(--lfe-slate-600)
+    dark_hex: '#4d5369'
+  - name: --lfe-action-quiet-text
+    key: lfe-action-quiet-text
+    kind: site
+    category: Actions
+    purpose: Foreground paired with the quiet action fill.
+    consumers: Development download action and hover.
+    light_expression: '#ffffff'
+    light_hex: '#ffffff'
+    dark_expression: var(--lfe-slate-200)
+    dark_hex: '#e4e7f0'
+  - name: --lfe-action-secondary
+    key: lfe-action-secondary
+    kind: site
+    category: Actions
+    purpose: Secondary action fill that keeps the primary action visually distinct.
+    consumers: Previous-release download action.
+    light_expression: var(--lfe-slate-700)
+    light_hex: '#393f55'
+    dark_expression: var(--lfe-slate-600)
+    dark_hex: '#4d5369'
+  - name: --lfe-action-secondary-hover
+    key: lfe-action-secondary-hover
+    kind: site
+    category: Actions
+    purpose: Hover fill for the secondary action.
+    consumers: Previous-release download hover state.
+    light_expression: var(--lfe-slate-600)
+    light_hex: '#4d5369'
+    dark_expression: var(--lfe-slate-700)
+    dark_hex: '#393f55'
+  - name: --lfe-action-secondary-text
+    key: lfe-action-secondary-text
+    kind: site
+    category: Actions
+    purpose: Foreground paired with the secondary action fill.
+    consumers: Previous-release download action and hover.
+    light_expression: '#ffffff'
+    light_hex: '#ffffff'
+    dark_expression: var(--lfe-slate-200)
+    dark_hex: '#e4e7f0'
+  - name: --lfe-on-action
+    key: lfe-on-action
+    kind: site
+    category: Actions
+    purpose: Foreground paired with the primary action fill.
+    consumers: Primary action buttons and links styled as buttons.
+    light_expression: '#ffffff'
+    light_hex: '#ffffff'
+    dark_expression: var(--lfe-slate-on-action-dark)
+    dark_hex: '#1d1e33'
+- category: Code and artwork exceptions
+  roles:
+  - name: --lfe-code-boundary
+    key: lfe-code-boundary
+    kind: code/art
+    category: Code and artwork exceptions
+    purpose: Boundary owned by code and syntax presentation.
+    consumers: Existing code block and REPL borders; unrelated to page card boundaries.
+    light_expression: '#8a8173'
+    light_hex: '#8a8173'
+    dark_expression: '#8190a2'
+    dark_hex: '#8190a2'
+  - name: --lfe-code-focus
+    key: lfe-code-focus
+    kind: code/art
+    category: Code and artwork exceptions
+    purpose: Focus paint for legacy code-tab controls.
+    consumers: Code example tab styling only; not the widget interface tabs.
+    light_expression: '#e9ca66'
+    light_hex: '#e9ca66'
+    dark_expression: '#e9ca66'
+    dark_hex: '#e9ca66'
+  - name: --lfe-code-link
+    key: lfe-code-link
+    kind: code/art
+    category: Code and artwork exceptions
+    purpose: Link paint inside code-owned content.
+    consumers: Links within highlighted code and REPL panels.
+    light_expression: '#e9ca66'
+    light_hex: '#e9ca66'
+    dark_expression: '#e9ca66'
+    dark_hex: '#e9ca66'
+  - name: --lfe-code-link-hover
+    key: lfe-code-link-hover
+    kind: code/art
+    category: Code and artwork exceptions
+    purpose: Hover paint for links inside code-owned content.
+    consumers: Hovered links in code and REPL panels.
+    light_expression: '#f6d977'
+    light_hex: '#f6d977'
+    dark_expression: '#f6d977'
+    dark_hex: '#f6d977'
+  - name: --lfe-code-surface
+    key: lfe-code-surface
+    kind: code/art
+    category: Code and artwork exceptions
+    purpose: Background owned by code and terminal surfaces.
+    consumers: Syntax-highlighted blocks and REPL output.
+    light_expression: '#1e293b'
+    light_hex: '#1e293b'
+    dark_expression: '#1e293b'
+    dark_hex: '#1e293b'
+  - name: --lfe-code-tab
+    key: lfe-code-tab
+    kind: code/art
+    category: Code and artwork exceptions
+    purpose: Inactive legacy code-tab text.
+    consumers: Legacy code example tabs only; current widget tabs retain their own ordinary UI roles.
+    light_expression: '#c3c7ca'
+    light_hex: '#c3c7ca'
+    dark_expression: '#c3c7ca'
+    dark_hex: '#c3c7ca'
+  - name: --lfe-code-tab-active
+    key: lfe-code-tab-active
+    kind: code/art
+    category: Code and artwork exceptions
+    purpose: Active legacy code-tab text.
+    consumers: Legacy code example tabs only; not ordinary widget UI tabs.
+    light_expression: '#e9ca66'
+    light_hex: '#e9ca66'
+    dark_expression: '#e9ca66'
+    dark_hex: '#e9ca66'
+  - name: --lfe-code-tab-hover
+    key: lfe-code-tab-hover
+    kind: code/art
+    category: Code and artwork exceptions
+    purpose: Hover paint for legacy code tabs.
+    consumers: Legacy code example tabs only.
+    light_expression: '#f6d977'
+    light_hex: '#f6d977'
+    dark_expression: '#f6d977'
+    dark_hex: '#f6d977'
+  - name: --lfe-code-text
+    key: lfe-code-text
+    kind: code/art
+    category: Code and artwork exceptions
+    purpose: Foreground for code-owned text.
+    consumers: Highlighted code and REPL text.
+    light_expression: '#c3c7ca'
+    light_hex: '#c3c7ca'
+    dark_expression: '#c3c7ca'
+    dark_hex: '#c3c7ca'
+  - name: --lfe-on-art
+    key: lfe-on-art
+    kind: code/art
+    category: Code and artwork exceptions
+    purpose: Foreground placed over retained artwork.
+    consumers: Existing image-overlay caption treatment.
+    light_expression: '#f1efe7'
+    light_hex: '#f1efe7'
+    dark_expression: '#f1efe7'
+    dark_hex: '#f1efe7'
+- category: Footer
+  roles:
+  - name: --lfe-footer
+    key: lfe-footer
+    kind: site
+    category: Footer
+    purpose: General footer text paint.
+    consumers: Footer copy and links where the shared footer role is applied.
+    light_expression: var(--lfe-slate-200)
+    light_hex: '#e4e7f0'
+    dark_expression: var(--lfe-slate-200)
+    dark_hex: '#e4e7f0'
+  - name: --lfe-footer-focus
+    key: lfe-footer-focus
+    kind: site
+    category: Footer
+    purpose: Focus outline for footer links.
+    consumers: Keyboard focus on footer links.
+    light_expression: var(--lfe-orange-action-dark)
+    light_hex: '#f5ba81'
+    dark_expression: var(--lfe-orange-action-dark)
+    dark_hex: '#f5ba81'
+  - name: --lfe-footer-hover
+    key: lfe-footer-hover
+    kind: site
+    category: Footer
+    purpose: Hover colour for footer links.
+    consumers: Footer link hover state.
+    light_expression: var(--lfe-orange-action-dark)
+    light_hex: '#f5ba81'
+    dark_expression: var(--lfe-orange-action-dark)
+    dark_hex: '#f5ba81'
+  - name: --lfe-footer-surface
+    key: lfe-footer-surface
+    kind: site
+    category: Footer
+    purpose: Inverse footer background surface.
+    consumers: The site footer container.
+    light_expression: var(--lfe-slate-800)
+    light_hex: '#23273b'
+    dark_expression: var(--lfe-slate-900)
+    dark_hex: '#15152a'
+  - name: --lfe-footer-text
+    key: lfe-footer-text
+    kind: site
+    category: Footer
+    purpose: Primary foreground on the inverse footer surface.
+    consumers: Footer text and supporting marks.
+    light_expression: var(--lfe-slate-200)
+    light_hex: '#e4e7f0'
+    dark_expression: var(--lfe-slate-200)
+    dark_hex: '#e4e7f0'
+- category: Links and focus
+  roles:
+  - name: --lfe-focus
+    key: lfe-focus
+    kind: site
+    category: Links and focus
+    purpose: Visible keyboard focus outline colour.
+    consumers: Site links, buttons, menus, and keyboard-operable controls.
+    light_expression: var(--lfe-orange-action-light)
+    light_hex: '#875315'
+    dark_expression: var(--lfe-orange-action-dark)
+    dark_hex: '#f5ba81'
+  - name: --lfe-interactive-accent
+    key: lfe-interactive-accent
+    kind: site
+    category: Links and focus
+    purpose: Accent for interactive details that need a distinct mark.
+    consumers: Small interactive indicators and themed examples.
+    light_expression: var(--lfe-orange-action-light)
+    light_hex: '#875315'
+    dark_expression: var(--lfe-orange-action-dark)
+    dark_hex: '#f5ba81'
+  - name: --lfe-link
+    key: lfe-link
+    kind: site
+    category: Links and focus
+    purpose: Default link colour.
+    consumers: Editorial links, navigation descendants, and Pagefind marks.
+    light_expression: var(--lfe-orange-action-light)
+    light_hex: '#875315'
+    dark_expression: var(--lfe-orange-action-dark)
+    dark_hex: '#f5ba81'
+  - name: --lfe-link-hover
+    key: lfe-link-hover
+    kind: site
+    category: Links and focus
+    purpose: Link colour while the pointer is over a link.
+    consumers: Site links and Pagefind linked results.
+    light_expression: var(--lfe-orange-hover-light)
+    light_hex: '#734300'
+    dark_expression: var(--lfe-orange-hover-dark)
+    dark_hex: '#fed1a7'
+  - name: --lfe-link-visited
+    key: lfe-link-visited
+    kind: site
+    category: Links and focus
+    purpose: Visited-link colour that stays within the identity accent.
+    consumers: Visited editorial and local reference links.
+    light_expression: var(--lfe-plum-tagline-light)
+    light_hex: '#704968'
+    dark_expression: var(--lfe-plum-tagline-dark)
+    dark_hex: '#dbadd0'
+- category: Navigation and dividers
+  roles:
+  - name: --lfe-accent-divider
+    key: lfe-accent-divider
+    kind: site
+    category: Navigation and dividers
+    purpose: A quiet structural line between major header regions.
+    consumers: The top navigation upper rule and masthead lower rule.
+    light_expression: var(--lfe-orange-action-light)
+    light_hex: '#875315'
+    dark_expression: var(--lfe-orange-500)
+    dark_hex: '#bb8145'
+  - name: --lfe-header
+    key: lfe-header
+    kind: site
+    category: Navigation and dividers
+    purpose: Header navigation background surface.
+    consumers: The shared top navigation shell.
+    light_expression: var(--lfe-slate-200)
+    light_hex: '#e4e7f0'
+    dark_expression: var(--lfe-slate-900)
+    dark_hex: '#15152a'
+  - name: --lfe-masthead
+    key: lfe-masthead
+    kind: site
+    category: Navigation and dividers
+    purpose: Hero and masthead surface.
+    consumers: Shared page masthead region.
+    light_expression: var(--lfe-slate-50)
+    light_hex: '#f9fafc'
+    dark_expression: var(--lfe-slate-800)
+    dark_hex: '#23273b'
+  - name: --lfe-nav
+    key: lfe-nav
+    kind: site
+    category: Navigation and dividers
+    purpose: Ordinary navigation text ink.
+    consumers: Shared top navigation links and controls.
+    light_expression: var(--lfe-slate-700)
+    light_hex: '#393f55'
+    dark_expression: var(--lfe-slate-300)
+    dark_hex: '#ced4e1'
+  - name: --lfe-nav-accent
+    key: lfe-nav-accent
+    kind: site
+    category: Navigation and dividers
+    purpose: Hover accent for top navigation links.
+    consumers: Top navigation links on pointer hover.
+    light_expression: var(--lfe-orange-action-light)
+    light_hex: '#875315'
+    dark_expression: var(--lfe-orange-action-dark)
+    dark_hex: '#f5ba81'
+- category: Status roles
+  roles:
+  - name: --lfe-error-boundary
+    key: lfe-error-boundary
+    kind: site
+    category: Status roles
+    purpose: Boundary for an error treatment when one is rendered.
+    consumers: Pagefind error-state configuration; the site has no persistent alert panel.
+    light_expression: var(--lfe-red-border-light)
+    light_hex: '#a17468'
+    dark_expression: var(--lfe-red-border-dark)
+    dark_hex: '#a47b70'
+  - name: --lfe-error-surface
+    key: lfe-error-surface
+    kind: site
+    category: Status roles
+    purpose: Tinted surface for an error treatment.
+    consumers: Pagefind error-state configuration; no live error alert is fabricated in this reference.
+    light_expression: var(--lfe-red-tint-light)
+    light_hex: '#fff0ec'
+    dark_expression: var(--lfe-red-tint-dark)
+    dark_hex: '#2b201d'
+  - name: --lfe-error-text
+    key: lfe-error-text
+    kind: site
+    category: Status roles
+    purpose: Text ink for an error treatment.
+    consumers: Pagefind error-state configuration.
+    light_expression: var(--lfe-red-ink-light)
+    light_hex: '#714135'
+    dark_expression: var(--lfe-red-ink-dark)
+    dark_hex: '#f2bcae'
+  - name: --lfe-info-boundary
+    key: lfe-info-boundary
+    kind: site
+    category: Status roles
+    purpose: Boundary for informative context.
+    consumers: Informational version banners.
+    light_expression: var(--lfe-blue-border-light)
+    light_hex: '#6284a2'
+    dark_expression: var(--lfe-blue-border-dark)
+    dark_hex: '#6a8aa6'
+  - name: --lfe-info-surface
+    key: lfe-info-surface
+    kind: site
+    category: Status roles
+    purpose: Tinted background for informative context.
+    consumers: Informational version banners.
+    light_expression: var(--lfe-blue-tint-light)
+    light_hex: '#eaf5ff'
+    dark_expression: var(--lfe-blue-tint-dark)
+    dark_hex: '#1c242b'
+  - name: --lfe-info-text
+    key: lfe-info-text
+    kind: site
+    category: Status roles
+    purpose: Text ink for informative context.
+    consumers: Informational version banners.
+    light_expression: var(--lfe-blue-ink-light)
+    light_hex: '#2c5374'
+    dark_expression: var(--lfe-blue-ink-dark)
+    dark_hex: '#a8d0f3'
+  - name: --lfe-notice-boundary
+    key: lfe-notice-boundary
+    kind: site
+    category: Status roles
+    purpose: Boundary for a non-danger communication notice.
+    consumers: Ready semantic role; no live notice widget is claimed.
+    light_expression: var(--lfe-plum-border-light)
+    light_hex: '#97738f'
+    dark_expression: var(--lfe-plum-border-dark)
+    dark_hex: '#9c7a93'
+  - name: --lfe-notice-surface
+    key: lfe-notice-surface
+    kind: site
+    category: Status roles
+    purpose: Plum-tinted surface for a non-danger communication notice.
+    consumers: Ready semantic role; illustrated only in the reference board.
+    light_expression: var(--lfe-plum-tint-light)
+    light_hex: '#fceff8'
+    dark_expression: var(--lfe-plum-tint-dark)
+    dark_hex: '#282026'
+  - name: --lfe-notice-text
+    key: lfe-notice-text
+    kind: site
+    category: Status roles
+    purpose: Ink for a non-danger communication notice.
+    consumers: Ready semantic role; illustrated only in the reference board.
+    light_expression: var(--lfe-plum-ink-light)
+    light_hex: '#68415f'
+    dark_expression: var(--lfe-plum-ink-dark)
+    dark_hex: '#e6bbdc'
+  - name: --lfe-success-boundary
+    key: lfe-success-boundary
+    kind: site
+    category: Status roles
+    purpose: Boundary for a success treatment.
+    consumers: Ready semantic role; no success alert is present on the site.
+    light_expression: var(--lfe-green-border-light)
+    light_hex: '#638b71'
+    dark_expression: var(--lfe-green-border-dark)
+    dark_hex: '#6c9078'
+  - name: --lfe-success-surface
+    key: lfe-success-surface
+    kind: site
+    category: Status roles
+    purpose: Tinted surface for a success treatment.
+    consumers: Ready semantic role; illustrated only in the reference board.
+    light_expression: var(--lfe-green-tint-light)
+    light_hex: '#ebf7ee'
+    dark_expression: var(--lfe-green-tint-dark)
+    dark_hex: '#1c251f'
+  - name: --lfe-success-text
+    key: lfe-success-text
+    kind: site
+    category: Status roles
+    purpose: Text ink for a success treatment.
+    consumers: Ready semantic role; illustrated only in the reference board.
+    light_expression: var(--lfe-green-ink-light)
+    light_hex: '#2d5b3f'
+    dark_expression: var(--lfe-green-ink-dark)
+    dark_hex: '#aad8b8'
+  - name: --lfe-warning-boundary
+    key: lfe-warning-boundary
+    kind: site
+    category: Status roles
+    purpose: Boundary for a caution or warning treatment.
+    consumers: Warning version banners.
+    light_expression: var(--lfe-gold-border-light)
+    light_hex: '#8b8057'
+    dark_expression: var(--lfe-gold-border-dark)
+    dark_hex: '#908660'
+  - name: --lfe-warning-surface
+    key: lfe-warning-surface
+    kind: site
+    category: Status roles
+    purpose: Gold-tinted surface for a caution or warning treatment.
+    consumers: Warning version banners.
+    light_expression: var(--lfe-gold-tint-light)
+    light_hex: '#f7f4e6'
+    dark_expression: var(--lfe-gold-tint-dark)
+    dark_hex: '#252319'
+  - name: --lfe-warning-text
+    key: lfe-warning-text
+    kind: site
+    category: Status roles
+    purpose: Text ink for a caution or warning treatment.
+    consumers: Warning version banners.
+    light_expression: var(--lfe-gold-ink-light)
+    light_hex: '#5c4f1d'
+    dark_expression: var(--lfe-gold-ink-dark)
+    dark_hex: '#d8cb9b'
+- category: Surfaces and structure
+  roles:
+  - name: --lfe-boundary
+    key: lfe-boundary
+    kind: site
+    category: Surfaces and structure
+    purpose: General-purpose separation between adjacent surfaces.
+    consumers: Card, menu, search, section, and footer rules.
+    light_expression: var(--lfe-slate-500)
+    light_hex: '#6a728b'
+    dark_expression: var(--lfe-slate-400)
+    dark_hex: '#9aa1b8'
+  - name: --lfe-brand-ink
+    key: lfe-brand-ink
+    kind: site
+    category: Surfaces and structure
+    purpose: Fixed ink for the historical category-count plate.
+    consumers: Category-count plate only; this identifier does not control the transparent navigation logo.
+    light_expression: var(--lfe-slate-800)
+    light_hex: '#23273b'
+    dark_expression: var(--lfe-slate-800)
+    dark_hex: '#23273b'
+  - name: --lfe-brand-plate
+    key: lfe-brand-plate
+    kind: site
+    category: Surfaces and structure
+    purpose: Fixed light plate behind the historical category count.
+    consumers: Category-count plate only; not a logo background role.
+    light_expression: var(--lfe-slate-50)
+    light_hex: '#f9fafc'
+    dark_expression: var(--lfe-slate-50)
+    dark_hex: '#f9fafc'
+  - name: --lfe-canvas
+    key: lfe-canvas
+    kind: site
+    category: Surfaces and structure
+    purpose: Main page background behind sections and panels.
+    consumers: Body and site page canvas utilities.
+    light_expression: var(--lfe-slate-50)
+    light_hex: '#f9fafc'
+    dark_expression: var(--lfe-slate-900)
+    dark_hex: '#15152a'
+  - name: --lfe-hover
+    key: lfe-hover
+    kind: site
+    category: Surfaces and structure
+    purpose: General surface used for hover feedback.
+    consumers: Hover treatments and Pagefind loading highlights.
+    light_expression: var(--lfe-slate-300)
+    light_hex: '#ced4e1'
+    dark_expression: var(--lfe-slate-600)
+    dark_hex: '#4d5369'
+  - name: --lfe-panel
+    key: lfe-panel
+    kind: site
+    category: Surfaces and structure
+    purpose: Main raised card and control surface.
+    consumers: Feature cards, menus, download controls, and Pagefind surfaces.
+    light_expression: '#ffffff'
+    light_hex: '#ffffff'
+    dark_expression: var(--lfe-slate-800)
+    dark_hex: '#23273b'
+  - name: --lfe-raised
+    key: lfe-raised
+    kind: site
+    category: Surfaces and structure
+    purpose: Surface one step above a panel or canvas.
+    consumers: Raised controls, small cards, hover results, and skeletons.
+    light_expression: var(--lfe-slate-200)
+    light_hex: '#e4e7f0'
+    dark_expression: var(--lfe-slate-700)
+    dark_hex: '#393f55'
+- category: Text and identity accents
+  roles:
+  - name: --lfe-callout-title
+    key: lfe-callout-title
+    kind: site
+    category: Text and identity accents
+    purpose: Semantic emphasis for a highlighted callout heading.
+    consumers: The selected explanatory callout title.
+    light_expression: var(--lfe-orange-action-light)
+    light_hex: '#875315'
+    dark_expression: var(--lfe-orange-action-dark)
+    dark_hex: '#f5ba81'
+  - name: --lfe-tagline
+    key: lfe-tagline
+    kind: site
+    category: Text and identity accents
+    purpose: Rotating tagline and selected plum identity accent.
+    consumers: Homepage tagline and the four feature heading/icon treatments.
+    light_expression: var(--lfe-plum-tagline-light)
+    light_hex: '#704968'
+    dark_expression: var(--lfe-plum-tagline-dark)
+    dark_hex: '#dbadd0'
+  - name: --lfe-text-muted
+    key: lfe-text-muted
+    kind: site
+    category: Text and identity accents
+    purpose: Lower-emphasis text that remains readable on its intended surface.
+    consumers: Supporting labels, quiet metadata, and muted utility classes.
+    light_expression: var(--lfe-slate-600)
+    light_hex: '#4d5369'
+    dark_expression: var(--lfe-slate-muted-dark)
+    dark_hex: '#bcc3d6'
+  - name: --lfe-text-primary
+    key: lfe-text-primary
+    kind: site
+    category: Text and identity accents
+    purpose: Main reading text on panels and the page canvas.
+    consumers: Headings, body text utilities, controls, and Pagefind results.
+    light_expression: var(--lfe-slate-800)
+    light_hex: '#23273b'
+    dark_expression: var(--lfe-slate-200)
+    dark_hex: '#e4e7f0'
+  - name: --lfe-text-secondary
+    key: lfe-text-secondary
+    kind: site
+    category: Text and identity accents
+    purpose: Supporting reading text below primary emphasis.
+    consumers: Paragraphs, details, code captions, and secondary Pagefind text.
+    light_expression: var(--lfe-slate-700)
+    light_hex: '#393f55'
+    dark_expression: var(--lfe-slate-300)
+    dark_hex: '#ced4e1'
+compatibility:
+- name: --gold-100
+  expression: var(--lfe-gold-100)
+  light_hex: '#f7f2e0'
+  dark_hex: '#f7f2e0'
+- name: --gold-200
+  expression: var(--lfe-gold-200)
+  light_hex: '#eae2c0'
+  dark_hex: '#eae2c0'
+- name: --gold-300
+  expression: var(--lfe-gold-300)
+  light_hex: '#d9cb97'
+  dark_hex: '#d9cb97'
+- name: --gold-400
+  expression: var(--lfe-gold-400)
+  light_hex: '#c0ae6a'
+  dark_hex: '#c0ae6a'
+- name: --gold-50
+  expression: var(--lfe-gold-50)
+  light_hex: '#fcfaf1'
+  dark_hex: '#fcfaf1'
+- name: --gold-500
+  expression: var(--lfe-gold-500)
+  light_hex: '#a38e3c'
+  dark_hex: '#a38e3c'
+- name: --gold-600
+  expression: var(--lfe-gold-600)
+  light_hex: '#877323'
+  dark_hex: '#877323'
+- name: --gold-700
+  expression: var(--lfe-gold-700)
+  light_hex: '#6a5a18'
+  dark_hex: '#6a5a18'
+- name: --gold-800
+  expression: var(--lfe-gold-800)
+  light_hex: '#4e420d'
+  dark_hex: '#4e420d'
+- name: --gold-900
+  expression: var(--lfe-gold-900)
+  light_hex: '#342b04'
+  dark_hex: '#342b04'
+- name: --gold-950
+  expression: var(--lfe-gold-950)
+  light_hex: '#1d1804'
+  dark_hex: '#1d1804'
+status_examples:
+- name: info
+  label: Information
+  title: 'Example: a version note'
+  body: A calm explanation can add context without sounding like an alarm.
+  light_text_hex: '#2c5374'
+  dark_text_hex: '#a8d0f3'
+  light_text_expression: var(--lfe-blue-ink-light)
+  dark_text_expression: var(--lfe-blue-ink-dark)
+  light_surface_hex: '#eaf5ff'
+  dark_surface_hex: '#1c242b'
+  light_surface_expression: var(--lfe-blue-tint-light)
+  dark_surface_expression: var(--lfe-blue-tint-dark)
+  light_boundary_hex: '#6284a2'
+  dark_boundary_hex: '#6a8aa6'
+  light_boundary_expression: var(--lfe-blue-border-light)
+  dark_boundary_expression: var(--lfe-blue-border-dark)
+- name: success
+  label: Success
+  title: 'Example: an operation completed'
+  body: A positive result can use green while keeping a clear text label.
+  light_text_hex: '#2d5b3f'
+  dark_text_hex: '#aad8b8'
+  light_text_expression: var(--lfe-green-ink-light)
+  dark_text_expression: var(--lfe-green-ink-dark)
+  light_surface_hex: '#ebf7ee'
+  dark_surface_hex: '#1c251f'
+  light_surface_expression: var(--lfe-green-tint-light)
+  dark_surface_expression: var(--lfe-green-tint-dark)
+  light_boundary_hex: '#638b71'
+  dark_boundary_hex: '#6c9078'
+  light_boundary_expression: var(--lfe-green-border-light)
+  dark_boundary_expression: var(--lfe-green-border-dark)
+- name: warning
+  label: Warning
+  title: 'Example: a compatibility caution'
+  body: A caution can be noticeable without using error language.
+  light_text_hex: '#5c4f1d'
+  dark_text_hex: '#d8cb9b'
+  light_text_expression: var(--lfe-gold-ink-light)
+  dark_text_expression: var(--lfe-gold-ink-dark)
+  light_surface_hex: '#f7f4e6'
+  dark_surface_hex: '#252319'
+  light_surface_expression: var(--lfe-gold-tint-light)
+  dark_surface_expression: var(--lfe-gold-tint-dark)
+  light_boundary_hex: '#8b8057'
+  dark_boundary_hex: '#908660'
+  light_boundary_expression: var(--lfe-gold-border-light)
+  dark_boundary_expression: var(--lfe-gold-border-dark)
+- name: error
+  label: Error
+  title: 'Example: an action needs repair'
+  body: Error is the explicit failure state; this specimen is illustrative only.
+  light_text_hex: '#714135'
+  dark_text_hex: '#f2bcae'
+  light_text_expression: var(--lfe-red-ink-light)
+  dark_text_expression: var(--lfe-red-ink-dark)
+  light_surface_hex: '#fff0ec'
+  dark_surface_hex: '#2b201d'
+  light_surface_expression: var(--lfe-red-tint-light)
+  dark_surface_expression: var(--lfe-red-tint-dark)
+  light_boundary_hex: '#a17468'
+  dark_boundary_hex: '#a47b70'
+  light_boundary_expression: var(--lfe-red-border-light)
+  dark_boundary_expression: var(--lfe-red-border-dark)
+- name: notice
+  label: Notice
+  title: 'Example: a community announcement'
+  body: The extra plum notice role is for communication, not danger severity.
+  light_text_hex: '#68415f'
+  dark_text_hex: '#e6bbdc'
+  light_text_expression: var(--lfe-plum-ink-light)
+  dark_text_expression: var(--lfe-plum-ink-dark)
+  light_surface_hex: '#fceff8'
+  dark_surface_hex: '#282026'
+  light_surface_expression: var(--lfe-plum-tint-light)
+  dark_surface_expression: var(--lfe-plum-tint-dark)
+  light_boundary_hex: '#97738f'
+  dark_boundary_hex: '#9c7a93'
+  light_boundary_expression: var(--lfe-plum-border-light)
+  dark_boundary_expression: var(--lfe-plum-border-dark)
+family_hues:
+- name: orange
+  degrees: 65.02235362898926
+- name: gold
+  degrees: 95.02235362898926
+- name: green
+  degrees: 155.02235362898932
+- name: blue
+  degrees: 245.02235362898932
+- name: red
+  degrees: 35.022353628989265
+- name: plum
+  degrees: 335.02235362898926
+boards:
+  light:
+    label: Light mode
+    declarations: '--lfe-accent-divider: var(--lfe-orange-action-light); --lfe-action: var(--lfe-orange-action-light); --lfe-action-hover: var(--lfe-orange-hover-light); --lfe-action-quiet: var(--lfe-slate-600); --lfe-action-quiet-hover: var(--lfe-slate-700); --lfe-action-quiet-text: #ffffff; --lfe-action-secondary: var(--lfe-slate-700); --lfe-action-secondary-hover: var(--lfe-slate-600); --lfe-action-secondary-text: #ffffff; --lfe-boundary: var(--lfe-slate-500); --lfe-brand-ink: var(--lfe-slate-800); --lfe-brand-plate: var(--lfe-slate-50); --lfe-callout-title: var(--lfe-orange-action-light); --lfe-canvas: var(--lfe-slate-50); --lfe-code-boundary: #8a8173; --lfe-code-focus: #e9ca66; --lfe-code-link: #e9ca66; --lfe-code-link-hover: #f6d977; --lfe-code-surface: #1e293b; --lfe-code-tab: #c3c7ca; --lfe-code-tab-active: #e9ca66; --lfe-code-tab-hover: #f6d977; --lfe-code-text: #c3c7ca; --lfe-error-boundary: var(--lfe-red-border-light); --lfe-error-surface: var(--lfe-red-tint-light); --lfe-error-text: var(--lfe-red-ink-light); --lfe-focus: var(--lfe-orange-action-light); --lfe-footer: var(--lfe-slate-200); --lfe-footer-focus: var(--lfe-orange-action-dark); --lfe-footer-hover: var(--lfe-orange-action-dark); --lfe-footer-surface: var(--lfe-slate-800); --lfe-footer-text: var(--lfe-slate-200); --lfe-header: var(--lfe-slate-200); --lfe-hover: var(--lfe-slate-300); --lfe-info-boundary: var(--lfe-blue-border-light); --lfe-info-surface: var(--lfe-blue-tint-light); --lfe-info-text: var(--lfe-blue-ink-light); --lfe-interactive-accent: var(--lfe-orange-action-light); --lfe-link: var(--lfe-orange-action-light); --lfe-link-hover: var(--lfe-orange-hover-light); --lfe-link-visited: var(--lfe-plum-tagline-light); --lfe-masthead: var(--lfe-slate-50); --lfe-nav: var(--lfe-slate-700); --lfe-nav-accent: var(--lfe-orange-action-light); --lfe-notice-boundary: var(--lfe-plum-border-light); --lfe-notice-surface: var(--lfe-plum-tint-light); --lfe-notice-text: var(--lfe-plum-ink-light); --lfe-on-action: #ffffff; --lfe-on-art: #f1efe7; --lfe-panel: #ffffff; --lfe-raised: var(--lfe-slate-200); --lfe-success-boundary: var(--lfe-green-border-light); --lfe-success-surface: var(--lfe-green-tint-light); --lfe-success-text: var(--lfe-green-ink-light); --lfe-tagline: var(--lfe-plum-tagline-light); --lfe-text-muted: var(--lfe-slate-600); --lfe-text-primary: var(--lfe-slate-800); --lfe-text-secondary: var(--lfe-slate-700); --lfe-warning-boundary: var(--lfe-gold-border-light); --lfe-warning-surface: var(--lfe-gold-tint-light); --lfe-warning-text: var(--lfe-gold-ink-light); '
+  dark:
+    label: Dark mode
+    declarations: '--lfe-accent-divider: var(--lfe-orange-500); --lfe-action: var(--lfe-orange-action-dark); --lfe-action-hover: var(--lfe-orange-hover-dark); --lfe-action-quiet: var(--lfe-slate-700); --lfe-action-quiet-hover: var(--lfe-slate-600); --lfe-action-quiet-text: var(--lfe-slate-200); --lfe-action-secondary: var(--lfe-slate-600); --lfe-action-secondary-hover: var(--lfe-slate-700); --lfe-action-secondary-text: var(--lfe-slate-200); --lfe-boundary: var(--lfe-slate-400); --lfe-brand-ink: var(--lfe-slate-800); --lfe-brand-plate: var(--lfe-slate-50); --lfe-callout-title: var(--lfe-orange-action-dark); --lfe-canvas: var(--lfe-slate-900); --lfe-code-boundary: #8190a2; --lfe-code-focus: #e9ca66; --lfe-code-link: #e9ca66; --lfe-code-link-hover: #f6d977; --lfe-code-surface: #1e293b; --lfe-code-tab: #c3c7ca; --lfe-code-tab-active: #e9ca66; --lfe-code-tab-hover: #f6d977; --lfe-code-text: #c3c7ca; --lfe-error-boundary: var(--lfe-red-border-dark); --lfe-error-surface: var(--lfe-red-tint-dark); --lfe-error-text: var(--lfe-red-ink-dark); --lfe-focus: var(--lfe-orange-action-dark); --lfe-footer: var(--lfe-slate-200); --lfe-footer-focus: var(--lfe-orange-action-dark); --lfe-footer-hover: var(--lfe-orange-action-dark); --lfe-footer-surface: var(--lfe-slate-900); --lfe-footer-text: var(--lfe-slate-200); --lfe-header: var(--lfe-slate-900); --lfe-hover: var(--lfe-slate-600); --lfe-info-boundary: var(--lfe-blue-border-dark); --lfe-info-surface: var(--lfe-blue-tint-dark); --lfe-info-text: var(--lfe-blue-ink-dark); --lfe-interactive-accent: var(--lfe-orange-action-dark); --lfe-link: var(--lfe-orange-action-dark); --lfe-link-hover: var(--lfe-orange-hover-dark); --lfe-link-visited: var(--lfe-plum-tagline-dark); --lfe-masthead: var(--lfe-slate-800); --lfe-nav: var(--lfe-slate-300); --lfe-nav-accent: var(--lfe-orange-action-dark); --lfe-notice-boundary: var(--lfe-plum-border-dark); --lfe-notice-surface: var(--lfe-plum-tint-dark); --lfe-notice-text: var(--lfe-plum-ink-dark); --lfe-on-action: var(--lfe-slate-on-action-dark); --lfe-on-art: #f1efe7; --lfe-panel: var(--lfe-slate-800); --lfe-raised: var(--lfe-slate-700); --lfe-success-boundary: var(--lfe-green-border-dark); --lfe-success-surface: var(--lfe-green-tint-dark); --lfe-success-text: var(--lfe-green-ink-dark); --lfe-tagline: var(--lfe-plum-tagline-dark); --lfe-text-muted: var(--lfe-slate-muted-dark); --lfe-text-primary: var(--lfe-slate-200); --lfe-text-secondary: var(--lfe-slate-300); --lfe-warning-boundary: var(--lfe-gold-border-dark); --lfe-warning-surface: var(--lfe-gold-tint-dark); --lfe-warning-text: var(--lfe-gold-ink-dark); '

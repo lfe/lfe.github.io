@@ -218,3 +218,16 @@ Typical consumers:
 - Standard ramps: 7 families × 11 stops = 77 literals; exact role anchors: 38; total unique primitives: 115.
 - Conversion: fixed L/h;50 binary-search C reductions when needed, inward C margin0.000001; nearest8bit sRGB; no clipping; full coordinates and all 56 affected context-pair checks are in `palette.json`.
 - Slate provenance: Tailwind3.4.17 source hex ramp -> per-stop OKLCH hue+15, L/C unchanged before quantisation; existing accepted stop hex preserved ([upstream source](https://raw.githubusercontent.com/tailwindlabs/tailwindcss/v3.4.17/src/public/colors.js)). OKLCH conversion reference: [https://www.w3.org/TR/css-color-4/#color-conversion-code](https://www.w3.org/TR/css-color-4/#color-conversion-code).
+
+## Visual identity reference projection
+
+The source-native `/visual-identity/` reference is generated from `palette.json`,
+`site.css`, and the human navigation/role notes in `src/_data/visual_identity.yml`.
+The bounded Rust projection runs during prerender, reads only flat `:root` and
+`.dark` declarations with literal six-digit hex values or simple `var(--name)`
+aliases, validates both sources and resolves aliases before writing the derived
+`src/_data/visual_identity_palette.yml`. Missing notes, stale values, malformed
+blocks, unsupported expressions, missing aliases, and cycles stop prerender with
+context; the derived file is written only when bytes change. If the reference
+pages are absent, the projection is skipped. Update the human notes and palette
+sources rather than editing the generated YAML; `make prerender` refreshes it.

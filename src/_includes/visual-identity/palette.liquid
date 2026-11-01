@@ -1,0 +1,56 @@
+<section class="vi-section" aria-labelledby="vi-ramp-title">
+    <div class="vi-section-heading">
+        <p class="vi-eyebrow">Source: tailwind/palette.json</p>
+        <h2 id="vi-ramp-title">Family ramps</h2>
+        <p>Names help locate a shade. They are not contrast grades or promises of equal visual steps.</p>
+    </div>
+    <nav class="vi-family-jump" aria-label="Colour families">
+        {% for family in site.data.visual_identity_palette.families %}<a href="#vi-family-{{ family.name }}">{{ family.title }}</a>{% endfor %}
+    </nav>
+    {% for family in site.data.visual_identity_palette.families %}
+        <section class="vi-family" id="vi-family-{{ family.name }}" aria-labelledby="vi-family-title-{{ family.name }}">
+            <div class="vi-family-heading"><h3 id="vi-family-title-{{ family.name }}">{{ family.title }}</h3><span>{{ family.stops.size }} named stops</span></div>
+            <div class="vi-swatch-grid">
+                {% for stop in family.stops %}
+                    <div class="vi-swatch">
+                        <span class="vi-swatch-paint" style="background-color:var({{ stop.variable }})" aria-hidden="true"></span>
+                        <code>{{ stop.variable }}</code>
+                        <strong>{{ stop.hex }}</strong>
+                        <span class="vi-coordinate">{{ stop.oklch }}</span>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+    {% endfor %}
+</section>
+<section class="vi-section" aria-labelledby="vi-anchor-title">
+    <div class="vi-section-heading">
+        <p class="vi-eyebrow">Exact role choices</p>
+        <h2 id="vi-anchor-title">Selected anchors</h2>
+        <p>These role-specific values sit beside the numbered ramps; they are not replaced by nearby stops.</p>
+    </div>
+    <div class="vi-anchor-grid">
+        {% for anchor in site.data.visual_identity_palette.anchors %}
+            <article class="vi-anchor-card">
+                <span class="vi-anchor-paint" style="background-color:var({{ anchor.variable }})" aria-hidden="true"></span>
+                <div><code>{{ anchor.variable }}</code><strong>{{ anchor.hex }}</strong><span class="vi-coordinate">{{ anchor.oklch }}</span><small>Source role: {{ anchor.origin }}</small></div>
+            </article>
+        {% endfor %}
+    </div>
+</section>
+<section class="vi-section vi-recipe-card" aria-labelledby="vi-recipe-title">
+    <div class="vi-section-heading">
+        <p class="vi-eyebrow">Selected source panel</p>
+        <h2 id="vi-recipe-title">A 30° OKLCH arrangement</h2>
+    </div>
+    <p>The adopted panel is arranged around dark slate-800 at {{ site.data.visual_identity_palette.design.anchor_hex }} ({{ site.data.visual_identity_palette.design.anchor_oklch }}). Nominal family hues are listed below; offsets are design choices. Lightness and chroma vary with role; gamut reductions and 8-bit sRGB quantization shift the actual measured coordinates. Equal angles do not promise equal perceptual distances or universal harmony.</p>
+    <ul class="vi-hue-list">{% for hue in site.data.visual_identity_palette.family_hues %}<li><span>{{ hue.name }}</span><strong>{{ hue.degrees }}°</strong></li>{% endfor %}</ul>
+    <dl class="vi-recipe-facts">
+        <div><dt>Direction</dt><dd>{{ site.data.visual_identity_palette.design.candidate }}</dd></div>
+        <div><dt>Gamut handling</dt><dd>{{ site.data.visual_identity_palette.recipe.gamut }}</dd></div>
+        <div><dt>Selected comparison</dt><dd><code>{{ site.data.visual_identity_palette.design.commit }}</code></dd></div>
+        <div><dt>Preserved source panel</dt><dd><code>{{ site.data.visual_identity_palette.design.artifact }}</code></dd></div>
+        <div><dt>Conversion reference</dt><dd><a href="{{ site.data.visual_identity_palette.recipe.conversion }}">W3C CSS Color 4 conversion code</a></dd></div>
+        <div><dt>Slate source</dt><dd><a href="{{ site.data.visual_identity_palette.recipe.slate_source }}">Tailwind CSS 3.4.17 public colors</a></dd></div>
+    </dl>
+</section>

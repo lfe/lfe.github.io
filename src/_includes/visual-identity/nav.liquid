@@ -1,0 +1,12 @@
+<nav class="vi-local-nav" aria-label="Visual identity sections">
+    <span class="vi-local-nav-title">Visual identity <span>Draft</span></span>
+    <div class="vi-local-nav-links">
+        {% for item in site.data.visual_identity.navigation %}
+            {% if page.permalink == item.permalink %}
+                <a href="{{ item.href }}" aria-current="page">{{ item.label }}</a>
+            {% else %}
+                <a href="{{ item.href }}">{{ item.label }}</a>
+            {% endif %}
+        {% endfor %}
+    </div>
+</nav>

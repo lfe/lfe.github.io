@@ -1,0 +1,21 @@
+<section class="vi-section vi-glossary-section" aria-labelledby="vi-glossary-title">
+    <div class="vi-section-heading">
+        <p class="vi-eyebrow">A small shared vocabulary</p>
+        <h2 id="vi-glossary-title">Three useful distinctions</h2>
+    </div>
+    <div class="vi-glossary-grid">
+        {% for item in site.data.visual_identity.glossary %}
+            <dl class="vi-glossary-card"><dt>{{ item.term }}</dt><dd>{{ item.definition }}</dd></dl>
+        {% endfor %}
+    </div>
+</section>
+<section class="vi-section vi-future-section" aria-labelledby="vi-future-title">
+    <div class="vi-section-heading">
+        <p class="vi-eyebrow">Open for later conversations</p>
+        <h2 id="vi-future-title">Other parts of visual identity</h2>
+    </div>
+    <ul class="vi-future-list">
+        {% for topic in site.data.visual_identity.future_topics %}<li>{{ topic }}</li>{% endfor %}
+    </ul>
+    <p>These headings reserve room for useful questions. They do not imply that a rule has already been chosen.</p>
+</section>

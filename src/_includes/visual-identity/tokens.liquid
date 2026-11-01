@@ -1,0 +1,27 @@
+<div class="vi-table-scroll" role="region" aria-label="All projected semantic and exception roles" tabindex="0">
+    <table class="vi-role-table">
+        <thead><tr><th scope="col">Role and purpose</th><th scope="col">Light expression / value</th><th scope="col">Dark expression / value</th><th scope="col">Current consumers and ownership</th></tr></thead>
+        {% for group in site.data.visual_identity_palette.role_groups %}
+            <tbody>
+                <tr class="vi-table-group"><th colspan="4" scope="colgroup">{{ group.category }}</th></tr>
+                {% for role in group.roles %}
+                    <tr>
+                        <th scope="row"><code>{{ role.name }}</code><span class="vi-role-kind">{{ role.kind }}</span><span class="vi-role-purpose">{{ role.purpose }}</span></th>
+                        <td><span class="vi-value-chip"><i style="background-color:{{ role.light_hex }}" aria-hidden="true"></i><code>{{ role.light_expression }}</code></span><strong>{{ role.light_hex }}</strong></td>
+                        <td><span class="vi-value-chip"><i style="background-color:{{ role.dark_hex }}" aria-hidden="true"></i><code>{{ role.dark_expression }}</code></span><strong>{{ role.dark_hex }}</strong></td>
+                        <td>{{ role.consumers }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        {% endfor %}
+    </table>
+</div>
+<section class="vi-section vi-compatibility" aria-labelledby="vi-compat-title">
+    <h2 id="vi-compat-title">Compatibility aliases</h2>
+    <p>The old gold names still resolve to the source ramp. They keep older consumers working; they do not add another set of paints.</p>
+    <div class="vi-compat-grid">
+        {% for alias in site.data.visual_identity_palette.compatibility %}
+            <div><code>{{ alias.name }}</code><span>{{ alias.expression }}</span><small>Light {{ alias.light_hex }} · Dark {{ alias.dark_hex }}</small></div>
+        {% endfor %}
+    </div>
+</section>

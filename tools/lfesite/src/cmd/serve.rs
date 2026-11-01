@@ -131,13 +131,14 @@ fn is_relevant_content_event(event: &notify::Event, project_dir: &Path) -> bool 
 
     let generated_css = project_dir.join("src/css/site.css");
     let generated_blog = project_dir.join("src/_data/blog_resolved.yml");
+    let generated_visual_identity = project_dir.join("src/_data/visual_identity_palette.yml");
     event.paths.iter().any(|path| {
         let path = if path.is_absolute() {
             path.clone()
         } else {
             project_dir.join(path)
         };
-        path != generated_css && path != generated_blog
+        path != generated_css && path != generated_blog && path != generated_visual_identity
     })
 }
 
@@ -169,7 +170,11 @@ mod tests {
             EventKind::Modify(ModifyKind::Data(notify::event::DataChange::Content)),
             EventKind::Create(CreateKind::File),
         ] {
-            for rel in ["src/css/site.css", "src/_data/blog_resolved.yml"] {
+            for rel in [
+                "src/css/site.css",
+                "src/_data/blog_resolved.yml",
+                "src/_data/visual_identity_palette.yml",
+            ] {
                 let ev = event(kind.clone(), vec![root().join(rel)]);
                 assert!(!is_relevant_content_event(&ev, &root()), "{rel}");
             }

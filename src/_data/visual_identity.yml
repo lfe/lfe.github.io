@@ -1,0 +1,300 @@
+title: Visual identity draft
+description: A source-backed working reference for LFE colour, semantic roles, examples, logos, and type.
+navigation:
+  - label: Overview
+    href: /visual-identity/
+    permalink: visual-identity/
+  - label: Colours
+    href: /visual-identity/colours/
+    permalink: visual-identity/colours/
+  - label: Semantic tokens
+    href: /visual-identity/tokens/
+    permalink: visual-identity/tokens/
+  - label: Themes and examples
+    href: /visual-identity/themes/
+    permalink: visual-identity/themes/
+  - label: Logos
+    href: /visual-identity/logos/
+    permalink: visual-identity/logos/
+  - label: Typography
+    href: /visual-identity/typography/
+    permalink: visual-identity/typography/
+glossary:
+  - term: Base shade
+    definition: A named stop in a colour family, useful for choosing a paint value but not a contrast rating.
+  - term: Semantic use
+    definition: A role such as page canvas, link, or warning boundary that can resolve to different shades by mode.
+  - term: Exact anchor
+    definition: A separately selected colour for a specific role; it is not an approximation of the nearest family stop.
+future_topics:
+  - Composition and layout
+  - Icons and illustration
+  - Photography and other imagery
+  - Motion and transitions
+  - Inclusive use and review
+status_examples:
+  - name: info
+    label: Information
+    title: "Example: a version note"
+    body: "A calm explanation can add context without sounding like an alarm."
+  - name: success
+    label: Success
+    title: "Example: an operation completed"
+    body: "A positive result can use green while keeping a clear text label."
+  - name: warning
+    label: Warning
+    title: "Example: a compatibility caution"
+    body: "A caution can be noticeable without using error language."
+  - name: error
+    label: Error
+    title: "Example: an action needs repair"
+    body: "Error is the explicit failure state; this specimen is illustrative only."
+  - name: notice
+    label: Notice
+    title: "Example: a community announcement"
+    body: "The extra plum notice role is for communication, not danger severity."
+roles:
+  lfe-accent-divider:
+    category: Navigation and dividers
+    purpose: A quiet structural line between major header regions.
+    consumers: The top navigation upper rule and masthead lower rule.
+  lfe-action:
+    category: Actions
+    purpose: Main action fill used with the on-action foreground.
+    consumers: Current and primary call-to-action controls.
+  lfe-action-hover:
+    category: Actions
+    purpose: Hover fill for the main action.
+    consumers: Current download and primary action hover states.
+  lfe-action-quiet:
+    category: Actions
+    purpose: Quiet action fill with a slate foreground.
+    consumers: Development download action.
+  lfe-action-quiet-hover:
+    category: Actions
+    purpose: Hover fill for the quiet development action.
+    consumers: Development download hover state.
+  lfe-action-quiet-text:
+    category: Actions
+    purpose: Foreground paired with the quiet action fill.
+    consumers: Development download action and hover.
+  lfe-action-secondary:
+    category: Actions
+    purpose: Secondary action fill that keeps the primary action visually distinct.
+    consumers: Previous-release download action.
+  lfe-action-secondary-hover:
+    category: Actions
+    purpose: Hover fill for the secondary action.
+    consumers: Previous-release download hover state.
+  lfe-action-secondary-text:
+    category: Actions
+    purpose: Foreground paired with the secondary action fill.
+    consumers: Previous-release download action and hover.
+  lfe-boundary:
+    category: Surfaces and structure
+    purpose: General-purpose separation between adjacent surfaces.
+    consumers: Card, menu, search, section, and footer rules.
+  lfe-brand-ink:
+    category: Surfaces and structure
+    purpose: Fixed ink for the historical category-count plate.
+    consumers: Category-count plate only; this identifier does not control the transparent navigation logo.
+  lfe-brand-plate:
+    category: Surfaces and structure
+    purpose: Fixed light plate behind the historical category count.
+    consumers: Category-count plate only; not a logo background role.
+  lfe-callout-title:
+    category: Text and identity accents
+    purpose: Semantic emphasis for a highlighted callout heading.
+    consumers: The selected explanatory callout title.
+  lfe-canvas:
+    category: Surfaces and structure
+    purpose: Main page background behind sections and panels.
+    consumers: Body and site page canvas utilities.
+  lfe-error-boundary:
+    category: Status roles
+    purpose: Boundary for an error treatment when one is rendered.
+    consumers: Pagefind error-state configuration; the site has no persistent alert panel.
+  lfe-error-surface:
+    category: Status roles
+    purpose: Tinted surface for an error treatment.
+    consumers: Pagefind error-state configuration; no live error alert is fabricated in this reference.
+  lfe-error-text:
+    category: Status roles
+    purpose: Text ink for an error treatment.
+    consumers: Pagefind error-state configuration.
+  lfe-focus:
+    category: Links and focus
+    purpose: Visible keyboard focus outline colour.
+    consumers: Site links, buttons, menus, and keyboard-operable controls.
+  lfe-footer:
+    category: Footer
+    purpose: General footer text paint.
+    consumers: Footer copy and links where the shared footer role is applied.
+  lfe-footer-focus:
+    category: Footer
+    purpose: Focus outline for footer links.
+    consumers: Keyboard focus on footer links.
+  lfe-footer-hover:
+    category: Footer
+    purpose: Hover colour for footer links.
+    consumers: Footer link hover state.
+  lfe-footer-surface:
+    category: Footer
+    purpose: Inverse footer background surface.
+    consumers: The site footer container.
+  lfe-footer-text:
+    category: Footer
+    purpose: Primary foreground on the inverse footer surface.
+    consumers: Footer text and supporting marks.
+  lfe-header:
+    category: Navigation and dividers
+    purpose: Header navigation background surface.
+    consumers: The shared top navigation shell.
+  lfe-hover:
+    category: Surfaces and structure
+    purpose: General surface used for hover feedback.
+    consumers: Hover treatments and Pagefind loading highlights.
+  lfe-info-boundary:
+    category: Status roles
+    purpose: Boundary for informative context.
+    consumers: Informational version banners.
+  lfe-info-surface:
+    category: Status roles
+    purpose: Tinted background for informative context.
+    consumers: Informational version banners.
+  lfe-info-text:
+    category: Status roles
+    purpose: Text ink for informative context.
+    consumers: Informational version banners.
+  lfe-interactive-accent:
+    category: Links and focus
+    purpose: Accent for interactive details that need a distinct mark.
+    consumers: Small interactive indicators and themed examples.
+  lfe-link:
+    category: Links and focus
+    purpose: Default link colour.
+    consumers: Editorial links, navigation descendants, and Pagefind marks.
+  lfe-link-hover:
+    category: Links and focus
+    purpose: Link colour while the pointer is over a link.
+    consumers: Site links and Pagefind linked results.
+  lfe-link-visited:
+    category: Links and focus
+    purpose: Visited-link colour that stays within the identity accent.
+    consumers: Visited editorial and local reference links.
+  lfe-masthead:
+    category: Navigation and dividers
+    purpose: Hero and masthead surface.
+    consumers: Shared page masthead region.
+  lfe-nav:
+    category: Navigation and dividers
+    purpose: Ordinary navigation text ink.
+    consumers: Shared top navigation links and controls.
+  lfe-nav-accent:
+    category: Navigation and dividers
+    purpose: Hover accent for top navigation links.
+    consumers: Top navigation links on pointer hover.
+  lfe-notice-boundary:
+    category: Status roles
+    purpose: Boundary for a non-danger communication notice.
+    consumers: Ready semantic role; no live notice widget is claimed.
+  lfe-notice-surface:
+    category: Status roles
+    purpose: Plum-tinted surface for a non-danger communication notice.
+    consumers: Ready semantic role; illustrated only in the reference board.
+  lfe-notice-text:
+    category: Status roles
+    purpose: Ink for a non-danger communication notice.
+    consumers: Ready semantic role; illustrated only in the reference board.
+  lfe-on-action:
+    category: Actions
+    purpose: Foreground paired with the primary action fill.
+    consumers: Primary action buttons and links styled as buttons.
+  lfe-panel:
+    category: Surfaces and structure
+    purpose: Main raised card and control surface.
+    consumers: Feature cards, menus, download controls, and Pagefind surfaces.
+  lfe-raised:
+    category: Surfaces and structure
+    purpose: Surface one step above a panel or canvas.
+    consumers: Raised controls, small cards, hover results, and skeletons.
+  lfe-success-boundary:
+    category: Status roles
+    purpose: Boundary for a success treatment.
+    consumers: Ready semantic role; no success alert is present on the site.
+  lfe-success-surface:
+    category: Status roles
+    purpose: Tinted surface for a success treatment.
+    consumers: Ready semantic role; illustrated only in the reference board.
+  lfe-success-text:
+    category: Status roles
+    purpose: Text ink for a success treatment.
+    consumers: Ready semantic role; illustrated only in the reference board.
+  lfe-tagline:
+    category: Text and identity accents
+    purpose: Rotating tagline and selected plum identity accent.
+    consumers: Homepage tagline and the four feature heading/icon treatments.
+  lfe-text-muted:
+    category: Text and identity accents
+    purpose: Lower-emphasis text that remains readable on its intended surface.
+    consumers: Supporting labels, quiet metadata, and muted utility classes.
+  lfe-text-primary:
+    category: Text and identity accents
+    purpose: Main reading text on panels and the page canvas.
+    consumers: Headings, body text utilities, controls, and Pagefind results.
+  lfe-text-secondary:
+    category: Text and identity accents
+    purpose: Supporting reading text below primary emphasis.
+    consumers: Paragraphs, details, code captions, and secondary Pagefind text.
+  lfe-warning-boundary:
+    category: Status roles
+    purpose: Boundary for a caution or warning treatment.
+    consumers: Warning version banners.
+  lfe-warning-surface:
+    category: Status roles
+    purpose: Gold-tinted surface for a caution or warning treatment.
+    consumers: Warning version banners.
+  lfe-warning-text:
+    category: Status roles
+    purpose: Text ink for a caution or warning treatment.
+    consumers: Warning version banners.
+  lfe-code-boundary:
+    category: Code and artwork exceptions
+    purpose: Boundary owned by code and syntax presentation.
+    consumers: Existing code block and REPL borders; unrelated to page card boundaries.
+  lfe-code-focus:
+    category: Code and artwork exceptions
+    purpose: Focus paint for legacy code-tab controls.
+    consumers: Code example tab styling only; not the widget interface tabs.
+  lfe-code-link:
+    category: Code and artwork exceptions
+    purpose: Link paint inside code-owned content.
+    consumers: Links within highlighted code and REPL panels.
+  lfe-code-link-hover:
+    category: Code and artwork exceptions
+    purpose: Hover paint for links inside code-owned content.
+    consumers: Hovered links in code and REPL panels.
+  lfe-code-surface:
+    category: Code and artwork exceptions
+    purpose: Background owned by code and terminal surfaces.
+    consumers: Syntax-highlighted blocks and REPL output.
+  lfe-code-tab:
+    category: Code and artwork exceptions
+    purpose: Inactive legacy code-tab text.
+    consumers: Legacy code example tabs only; current widget tabs retain their own ordinary UI roles.
+  lfe-code-tab-active:
+    category: Code and artwork exceptions
+    purpose: Active legacy code-tab text.
+    consumers: Legacy code example tabs only; not ordinary widget UI tabs.
+  lfe-code-tab-hover:
+    category: Code and artwork exceptions
+    purpose: Hover paint for legacy code tabs.
+    consumers: Legacy code example tabs only.
+  lfe-code-text:
+    category: Code and artwork exceptions
+    purpose: Foreground for code-owned text.
+    consumers: Highlighted code and REPL text.
+  lfe-on-art:
+    category: Code and artwork exceptions
+    purpose: Foreground placed over retained artwork.
+    consumers: Existing image-overlay caption treatment.

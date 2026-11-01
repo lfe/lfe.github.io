@@ -1,0 +1,56 @@
+<div class="vi-board-grid">
+    {% assign light = site.data.visual_identity_palette.boards.light %}
+    {% assign dark = site.data.visual_identity_palette.boards.dark %}
+    <section class="vi-board vi-board-light" style="color-scheme:light;{{ light.declarations }}" aria-labelledby="vi-board-light-title">
+        <header class="vi-board-header"><span>Fixed mode specimen</span><h2 id="vi-board-light-title">Light direction</h2><p>Always light, even when the site toggle is dark.</p></header>
+        <div class="vi-board-samples">
+            <div class="vi-board-pair">
+                <div class="vi-board-surface vi-board-canvas"><span>Canvas</span><strong>Page ground</strong></div>
+                <div class="vi-board-surface vi-board-header-surface"><span>Header</span><strong>Navigation shell</strong></div>
+                <div class="vi-board-surface vi-board-panel"><span>Panel</span><strong>Reading surface</strong></div>
+                <div class="vi-board-surface vi-board-raised"><span>Raised</span><strong>Control / hover</strong></div>
+            </div>
+            <div class="vi-board-type"><h3>Primary text <span>Secondary and muted labels</span></h3><p>Colour roles become clearer when viewed in their real reading order and surface context.</p><small>Supporting note · deliberately quiet</small></div>
+            <div class="vi-board-pair vi-board-controls">
+                <a class="vi-board-link" href="/visual-identity/colours/">Normal link · open colours</a>
+                <a class="vi-board-link vi-board-link-hover" href="/visual-identity/tokens/">Hover link reference</a>
+                <a class="vi-board-visited" href="/visual-identity/colours/">Visited-link plum reference</a>
+                <a class="vi-board-action" href="/visual-identity/tokens/">Action · on-action</a>
+                <span class="vi-board-focus"><i aria-hidden="true"></i>Focus outline reference</span>
+            </div>
+            <div class="vi-board-divider"><span>Header divider · structural</span><i aria-hidden="true"></i><small>The dark direction uses a quieter divider than links or actions.</small></div>
+            <div class="vi-board-inverse"><span>Inverse footer</span><a href="/visual-identity/">Hover or focus for the bright footer accent</a></div>
+            <div class="vi-status-grid">
+                {% for status in site.data.visual_identity_palette.status_examples %}
+                <article class="vi-status vi-status-{{ status.name }}"><span class="vi-status-label">{{ status.label }} · illustrative</span><h3>{{ status.title }}</h3><p>{{ status.body }}</p><small>Ink {{ status.light_text_hex }} · Surface {{ status.light_surface_hex }} · Boundary {{ status.light_boundary_hex }}</small></article>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <section class="vi-board vi-board-dark" style="color-scheme:dark;{{ dark.declarations }}" aria-labelledby="vi-board-dark-title">
+        <header class="vi-board-header"><span>Fixed mode specimen</span><h2 id="vi-board-dark-title">Dark direction</h2><p>Always dark, even when the site toggle is light.</p></header>
+        <div class="vi-board-samples">
+            <div class="vi-board-pair">
+                <div class="vi-board-surface vi-board-canvas"><span>Canvas</span><strong>Page ground</strong></div>
+                <div class="vi-board-surface vi-board-header-surface"><span>Header</span><strong>Navigation shell</strong></div>
+                <div class="vi-board-surface vi-board-panel"><span>Panel</span><strong>Reading surface</strong></div>
+                <div class="vi-board-surface vi-board-raised"><span>Raised</span><strong>Control / hover</strong></div>
+            </div>
+            <div class="vi-board-type"><h3>Primary text <span>Secondary and muted labels</span></h3><p>Colour roles become clearer when viewed in their real reading order and surface context.</p><small>Supporting note · deliberately quiet</small></div>
+            <div class="vi-board-pair vi-board-controls">
+                <a class="vi-board-link" href="/visual-identity/colours/">Normal link · open colours</a>
+                <a class="vi-board-link vi-board-link-hover" href="/visual-identity/tokens/">Hover link reference</a>
+                <a class="vi-board-visited" href="/visual-identity/colours/">Visited-link plum reference</a>
+                <a class="vi-board-action" href="/visual-identity/tokens/">Action · on-action</a>
+                <span class="vi-board-focus"><i aria-hidden="true"></i>Focus outline reference</span>
+            </div>
+            <div class="vi-board-divider"><span>Header divider · structural</span><i aria-hidden="true"></i><small>The dark direction uses a quieter divider than links or actions.</small></div>
+            <div class="vi-board-inverse"><span>Inverse footer</span><a href="/visual-identity/">Hover or focus for the bright footer accent</a></div>
+            <div class="vi-status-grid">
+                {% for status in site.data.visual_identity_palette.status_examples %}
+                <article class="vi-status vi-status-{{ status.name }}"><span class="vi-status-label">{{ status.label }} · illustrative</span><h3>{{ status.title }}</h3><p>{{ status.body }}</p><small>Ink {{ status.dark_text_hex }} · Surface {{ status.dark_surface_hex }} · Boundary {{ status.dark_boundary_hex }}</small></article>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+</div>

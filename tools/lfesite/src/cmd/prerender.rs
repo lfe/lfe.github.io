@@ -29,6 +29,8 @@ pub fn run_with_data_dir(base_dir: &Path) -> Result<()> {
         anyhow::bail!("data directory not found: {}", data_dir.display());
     }
 
+    super::visual_identity::refresh(base_dir)?;
+
     let mut scanned: usize = 0;
     let mut updated: usize = 0;
     let mut skipped: usize = 0;

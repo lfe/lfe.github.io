@@ -10,3 +10,4 @@ pub mod prerender;
 pub mod publish_post;
 pub mod serve;
 pub mod validate;
+pub mod visual_identity;

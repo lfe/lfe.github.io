@@ -474,6 +474,15 @@
         border-color: var(--lfe-tagline);
     }
 
+    .features-grid .feature-header-icon,
+    .features-grid .feature-header-title h3,
+    .features-grid .feature-header-title a,
+    .features-grid .feature-header-title a:visited,
+    .features-grid .feature-header-title a:hover,
+    .features-grid .feature-header-title a:focus-visible {
+        color: var(--lfe-tagline);
+    }
+
     .features-grid h3 {
         overflow-wrap: anywhere;
     }
